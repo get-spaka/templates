@@ -1,0 +1,10 @@
+label: What arrives
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [sunday-letter, long-walks, walking-tours]

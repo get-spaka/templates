@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Fernway help</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Fernway help">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article>
+  <header class="glow relative -mt-[4.75rem] text-base-content md:-mt-20">
+    <div class="relative mx-auto max-w-3xl px-5 pt-32 pb-14 md:px-8 md:pt-40 md:pb-16">
+      <a href="/help" class="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-base-content/70 hover:text-primary"><span aria-hidden="true">←</span> Help center</a>
+      <p class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
+        {% if record.topic %}<a href="/help#topic-{{ record.topic | downcase | replace: " ", "-" }}" class="kicker rounded-full bg-base-100/85 px-3.5 py-1.5 text-primary">{{ record.topic }}</a>{% endif %}
+        {% if record.updated %}<span class="text-[0.9375rem] text-base-content/65">Updated <time datetime="{{ record.updated }}">{{ record.updated | date: "%B %-d, %Y" }}</time></span>{% endif %}
+      </p>
+      <h1 class="mt-5 text-[clamp(2.75rem,6vw,4.75rem)] text-balance" data-reveal>{{ record.title }}</h1>
+      {% if record.summary %}<p class="mt-5 text-xl leading-relaxed text-pretty text-base-content/75" data-reveal>{{ record.summary }}</p>{% endif %}
+    </div>
+  </header>
+  <div class="bg-base-100">
+    <div class="pocket-prose mx-auto max-w-3xl px-5 py-10 text-[1.125rem] leading-relaxed text-pretty text-base-content/85 md:px-8 md:py-20" data-reveal>{{ record.body }}</div>
+  </div>
+  {% assign related = data["help-articles"] | where: "topic", record.topic %}
+  {% if related.size > 1 %}
+  <nav aria-label="More in this topic" class="bg-base-100">
+    <div class="mx-auto max-w-3xl border-t border-base-300 px-5 pt-12 pb-20 md:px-8">
+      <h2 class="text-[1.75rem]">More in {{ record.topic }}</h2>
+      <ul class="mt-6 grid gap-3">
+        {% for article in related %}{% if article.id != record.id %}
+        <li><a href="/help/{{ article.id }}" class="lift group flex items-center gap-5 rounded-box border border-base-300 bg-base-100 p-5"><span class="min-w-0 flex-1"><span class="block text-[1.125rem] font-semibold group-hover:text-primary">{{ article.title }}</span>{% if article.summary %}<span class="mt-1 block text-base-content/70">{{ article.summary }}</span>{% endif %}</span><span class="text-primary" aria-hidden="true">→</span></a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+  </nav>
+  {% endif %}
+</article>
+{% render 'write-to-us' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

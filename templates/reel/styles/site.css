@@ -1,0 +1,416 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt).
+   Archivo is variable in width (62 to 125) and weight (100 to 900): expanded for shouting,
+   normal for reading, condensed for numbers. Fragment Mono is for labels and metadata. */
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("/fonts/fragment-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-mono: "Fragment Mono", ui-monospace, monospace;
+  scroll-padding-top: 5rem;
+}
+
+/* In the base layer, so that Tailwind's classes (normal-case, leading-…, font-…) win over
+   them. Not the components layer: in Upstart's preview, daisyUI's stylesheet declares its
+   layers first (base, then utilities), so a components layer would come after the
+   utilities and beat them there. */
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    font-stretch: 100%;
+  }
+
+  /* Headlines: Archivo at its widest, black, uppercase, packed tight. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    line-height: 0.82;
+    letter-spacing: -0.02em;
+  }
+  h1 {
+    font-weight: 900;
+  }
+
+  /* The three widths of the family, as classes. */
+  .wide {
+    font-stretch: 125%;
+  }
+  .normal-width {
+    font-stretch: 100%;
+  }
+  .narrow {
+    font-stretch: 75%;
+    letter-spacing: -0.01em;
+  }
+
+  /* Labels and metadata in the mono face: "BRAND · MOTION · 2025" (not daisyUI's .label,
+     which is a form field's). On a desktop, never under 13 px. */
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 48rem) {
+    .meta {
+      --text-xs: 0.8125rem;
+      font-size: 0.8125rem;
+    }
+  }
+}
+
+/* Buttons: pills with a bold, slightly wide label (after daisyUI's own .btn). */
+@layer components {
+  .btn {
+    font-weight: 700;
+    font-stretch: 112%;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ---- The reel: a row of case panels ------------------------------------------------
+   With no script, in edit mode and under reduced motion: a row scrolled sideways, each
+   panel snapping into place. On a phone: a plain vertical stack. From 1024 px wide the
+   reel script pins it (data-pinned) and slides the row as the page scrolls down. */
+[data-reel-track] {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 1.25rem;
+  padding-inline: 1.25rem;
+  padding-bottom: 1.25rem;
+  scrollbar-color: var(--color-primary) transparent;
+  scrollbar-width: thin;
+}
+[data-reel-track] > * {
+  flex: none;
+  width: clamp(19rem, 34vw, 34rem);
+  scroll-snap-align: start;
+}
+/* A case's images run wider. */
+.reel-wide > * {
+  width: clamp(19rem, 56vw, 62rem);
+}
+@media (min-width: 48rem) {
+  [data-reel-track] {
+    gap: 1.25rem;
+    padding-inline: 2.5rem;
+    scroll-padding-inline: 2.5rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  [data-reel-track] {
+    flex-direction: column;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-bottom: 0;
+  }
+  [data-reel-track] > * {
+    width: auto;
+  }
+}
+[data-reel][data-pinned] [data-reel-stage] {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+[data-reel][data-pinned] [data-reel-track] {
+  overflow: visible;
+  scroll-snap-type: none;
+  padding-bottom: 0;
+}
+[data-reel-progress] {
+  display: none;
+}
+[data-reel][data-pinned] [data-reel-progress] {
+  display: block;
+}
+[data-reel-progress] > span {
+  display: block;
+  height: 100%;
+  background-color: var(--color-primary);
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+}
+
+/* ---- The kinetic headline: one <span data-drift> per line ------------------------- */
+[data-kinetic] [data-drift] {
+  display: block;
+}
+
+/* ---- Tilted slabs (data-tilt with a rotate class) overlap their headline from md: ---- */
+.slab {
+  position: relative;
+  z-index: 10;
+  border-radius: var(--radius-box);
+}
+
+/* ---- Acid smoke: a printed glow of the main color, and the WebGL ink over it ---------- */
+[data-smoke] {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-base-100);
+  background-image:
+    radial-gradient(52% 62% at 80% 28%, color-mix(in oklch, var(--color-primary) 34%, transparent), transparent 72%),
+    radial-gradient(40% 46% at 8% 92%, color-mix(in oklch, var(--color-primary) 16%, transparent), transparent 70%),
+    radial-gradient(30% 34% at 50% 60%, color-mix(in oklch, var(--color-accent) 10%, transparent), transparent 70%);
+}
+[data-smoke][data-running] {
+  background-image: none;
+}
+[data-shader] {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- The cursor disc that reads "View", "Drag" or "Next" (made by scripts/cursor.js) -- */
+.reel-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  width: 6rem;
+  height: 6rem;
+  margin: -3rem 0 0 -3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+html[data-cursoring] [data-cursor],
+html[data-cursoring] [data-cursor] * {
+  cursor: none;
+}
+
+/* ---- Cover zoom: the image is scaled by the zoom script; its frame keeps it in. ------ */
+[data-zoom] {
+  overflow: hidden;
+}
+
+/* ---- Hover fills ------------------------------------------------------------------- */
+/* A service row (.fill-row) fills with the main color from the left. */
+.fill-row {
+  position: relative;
+  isolation: isolate;
+}
+.fill-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.fill-row:is(:hover, :focus-visible)::before {
+  transform: scaleX(1);
+}
+.fill-row:is(:hover, :focus-visible),
+.fill-row:is(:hover, :focus-visible) .fill-muted {
+  color: var(--color-primary-content);
+}
+
+/* A client's name (.flip) turns into a block of the main color. */
+.flip {
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-inline: 0.08em;
+  border-radius: var(--radius-box);
+  background-image: linear-gradient(var(--color-primary), var(--color-primary));
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 0%;
+}
+@media (min-width: 48rem) {
+  .flip {
+    white-space: nowrap;
+  }
+}
+.flip:is(:hover, :focus-visible) {
+  background-size: 100% 100%;
+  color: var(--color-primary-content);
+}
+
+/* The team as a pile of cards, alternately tilted, from 1024 px; straight on a phone. */
+@media (min-width: 64rem) {
+  .pile > li {
+    position: relative;
+    rotate: var(--tilt, 0deg);
+  }
+  .pile > li:nth-child(odd) {
+    --tilt: -4deg;
+  }
+  .pile > li:nth-child(even) {
+    --tilt: 4deg;
+    translate: 0 2rem;
+  }
+  .pile > li + li {
+    margin-left: -1rem;
+  }
+  /* What the next card covers of each one is kept clear of text. */
+  .pile > li:not(:last-child) > * {
+    padding-right: 2.75rem;
+  }
+  .pile > li:is(:hover, :focus-within) {
+    z-index: 10;
+    rotate: 0deg;
+    scale: 1.04;
+  }
+}
+
+/* The work filter's button that is on. */
+[data-filter][aria-pressed="true"] {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+}
+
+/* Pill checkboxes and radios of the brief form: the chosen one fills. */
+.pill-choice:has(:checked) {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+}
+.pill-choice:has(:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* A case's text, in two columns on a wide screen. */
+.case-body h3 {
+  font-size: 1rem;
+  line-height: 1.1;
+  break-after: avoid;
+  margin-bottom: 0.75rem;
+}
+.case-body p + h3 {
+  margin-top: 2rem;
+}
+.case-body p {
+  break-inside: avoid-column;
+}
+.case-body p + p {
+  margin-top: 1rem;
+}
+
+/* Upstart's "Image credits" link, at the end of the footer. */
+footer [data-up-credits] {
+  padding: 0 1.25rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: 2.5rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+/* Splitting (MIT) */
+.splitting .word,
+.splitting .char {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Pages change with a sideways wipe: the new one comes in from the right as the old
+     one slides a little to the left. */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: reel-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
+  }
+  ::view-transition-new(root) {
+    animation: reel-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
+  }
+  @keyframes reel-out {
+    to {
+      translate: -10% 0;
+    }
+  }
+  @keyframes reel-in {
+    from {
+      clip-path: inset(0 0 0 100%);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .fill-row::before {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fill-row {
+    transition: color 0.3s ease;
+  }
+  .flip {
+    transition:
+      background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+  }
+  .pile > li {
+    transition:
+      rotate 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      scale 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reel-panel img {
+    transition: scale 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reel-panel:hover img {
+    scale: 1.04;
+  }
+}

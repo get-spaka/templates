@@ -1,0 +1,21 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-16 md:px-8 md:pt-24">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between" data-reveal>
+      <div>
+        <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70">@marlowstreetbakery</p>
+        <h2 class="mt-4 text-5xl leading-[0.9] font-extrabold uppercase md:text-7xl">From the <em>kitchen.</em></h2>
+      </div>
+      <a href="https://www.instagram.com/" class="btn btn-outline self-start sm:self-auto">Follow along</a>
+    </div>
+  </div>
+  <ul class="mt-10 flex snap-x gap-4 overflow-x-auto px-[max(1.25rem,calc((100%-80rem)/2+2rem))] scroll-px-[max(1.25rem,calc((100%-80rem)/2+2rem))] pb-6 md:gap-6" data-reveal>
+    {% for item in data["kitchen-photos"] %}
+    <li class="w-64 shrink-0 snap-start md:w-80">
+      <figure>
+        {% if item.image %}<img src="{{ item.image }}" class="aspect-square w-full rounded-box object-cover">{% else %}<div class="aspect-square w-full rounded-box bg-linear-to-br from-primary/25 to-accent/40"></div>{% endif %}
+        <figcaption class="mt-3 font-mono text-xs tracking-wider uppercase text-base-content/70">{{ item.caption }}</figcaption>
+      </figure>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

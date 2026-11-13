@@ -1,0 +1,25 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-24 md:px-10 md:py-32">
+    <div class="max-w-2xl" data-reveal>
+      <p class="tag text-primary">Wine dinners</p>
+      <h2 class="mt-6 text-5xl md:text-6xl">Growers at the table</h2>
+      <p class="prose-ember mt-6">A few times a season a winemaker comes to Wick, and Mara cooks for their bottles at one long table.</p>
+    </div>
+    <ul class="mt-14 divide-y divide-base-300 border-y border-base-300">
+      {% for event in data.events %}
+      <li class="flex gap-6 py-8 sm:gap-10" data-reveal>
+        <div class="w-20 shrink-0 text-center sm:w-24">
+          <span class="display block text-5xl leading-none text-primary sm:text-6xl">{{ event.date | date: "%-d" }}</span>
+          <span class="tag mt-2 block text-base-content/70">{{ event.date | date: "%b %Y" }}</span>
+        </div>
+        <div class="min-w-0 flex-1">
+          <h3 class="text-3xl"><a href="/events/{{ event.id }}" class="transition-colors hover:text-primary">{{ event.title }}</a></h3>
+          <p class="tag mt-3 text-base-content/70">{{ event.time }} · {{ event.price }}</p>
+          {% if event.summary %}<p class="prose-ember mt-3 max-w-2xl">{{ event.summary }}</p>{% endif %}
+          <a href="/events/{{ event.id }}" class="tag mt-4 inline-block text-primary hover:underline">Details <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

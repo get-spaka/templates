@@ -1,0 +1,23 @@
+{
+  "name": "Folio project index",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "A numbered index of projects, one row each with its title, category, place and year; with a mouse the row's picture follows the cursor, on a phone each row shows its thumbnail. Each row opens the project's page.",
+  "tags": ["index", "projects", "work", "list", "hover preview"],
+  "mood": ["editorial", "minimal"],
+  "synonyms": [
+    "index",
+    "project list",
+    "work list",
+    "portfolio",
+    "projects",
+    "index des projets",
+    "liste des projets",
+    "réalisations",
+    "travaux"
+  ],
+  "data": {
+    "name": "projects",
+    "family": "collection"
+  }
+}

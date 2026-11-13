@@ -1,0 +1,13 @@
+{
+  "name": "Reel pile of team cards",
+  "kind": "team",
+  "source": "upstart",
+  "description": "The team as colored cards with a photo or large initials, name, role and what each is obsessed with this month; on a wide screen they overlap, tilted alternately like a pile, and one straightens and comes forward under the pointer; on a phone a straight two-column grid.",
+  "tags": ["team", "people", "cards", "studio", "pile", "tilted"],
+  "mood": ["bold", "playful", "colorful"],
+  "synonyms": ["team", "people", "who we are", "staff", "équipe", "l'équipe", "qui sommes-nous", "collaborateurs"],
+  "data": {
+    "name": "team",
+    "family": "collection"
+  }
+}

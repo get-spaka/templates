@@ -1,0 +1,16 @@
+label: Steps
+fields:
+  - name: verb
+    label: Verb
+    kind: text
+    required: true
+  - name: title
+    label: Title
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+  - name: example
+    label: Example
+    kind: text
+order: [point, listen, wake]

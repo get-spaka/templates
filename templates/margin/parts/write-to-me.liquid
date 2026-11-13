@@ -1,0 +1,29 @@
+<section class="bg-base-100 text-base-content" id="write">
+  <div class="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-24">
+    <div class="grid gap-10 border-t border-base-content pt-10 md:grid-cols-12 md:gap-10 md:pt-14">
+      <div class="md:col-span-5" data-reveal>
+        <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary">Write to me</p>
+        <h2 class="mt-3 text-3xl leading-[1.1] tracking-tight text-balance md:text-5xl">A place I should walk, a name I got wrong</h2>
+        <p class="mt-5 text-pretty text-base-content/75">I read every letter; I answer most of them. Many of the best walks started as a reader's note about a corner of their street.</p>
+      </div>
+      <form hx-post="/_data/contact" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#write-problems swap:innerHTML" class="grid gap-x-4 sm:grid-cols-2 md:col-span-7" data-reveal>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend" for="write-name">Your name</label>
+          <input id="write-name" name="name" type="text" required maxlength="200" autocomplete="name" class="input w-full">
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend" for="write-email">Your email</label>
+          <input id="write-email" name="email" type="email" required maxlength="200" autocomplete="email" class="input w-full">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <label class="fieldset-legend" for="write-message">Your letter</label>
+          <textarea id="write-message" name="message" rows="6" required maxlength="5000" class="textarea w-full"></textarea>
+        </fieldset>
+        <div id="write-problems" class="sm:col-span-2"></div>
+        <div class="mt-4 sm:col-span-2">
+          <button type="submit" class="btn btn-primary">Send the letter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

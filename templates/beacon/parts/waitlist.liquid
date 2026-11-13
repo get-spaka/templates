@@ -1,0 +1,33 @@
+<section id="waitlist" class="relative overflow-hidden bg-neutral text-neutral-content">
+  <div class="beacon-aperture top-[-14rem] w-[min(48rem,130vw)] md:top-[-18rem]" aria-hidden="true">
+    <div class="beacon-aperture-glow"></div>
+    <div class="beacon-aperture-sweep" data-sweep></div>
+    <svg class="beacon-aperture-rings" viewBox="0 0 1000 1000" fill="none" stroke="currentColor">
+      <circle cx="500" cy="500" r="120" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="235" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="350" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="464" vector-effect="non-scaling-stroke"/>
+      <circle class="beacon-aperture-blip" cx="660" cy="300" r="4" stroke="none"/>
+    </svg>
+  </div>
+  <div class="relative mx-auto max-w-3xl px-5 pt-40 pb-24 text-center md:px-8 md:pt-56 md:pb-32">
+    <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-neutral-content/60 uppercase" data-reveal>1.0 on March 3, 2027</p>
+    <h2 class="mt-5 text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.02] font-medium tracking-tight text-balance" data-reveal>Be there on day one.</h2>
+    <p class="mx-auto mt-6 max-w-lg leading-relaxed text-pretty text-neutral-content/70" data-reveal>Join the list and we will let you in with the next wave of the beta. The founding price is yours if you join before 1.0.</p>
+    <form hx-post="/_data/waitlist" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#closing-waitlist-problems swap:innerHTML" class="mx-auto mt-10 grid max-w-xl gap-2 text-left sm:grid-cols-[minmax(0,1fr)_10rem_auto]" data-reveal>
+      <label class="sr-only" for="closing-waitlist-email">Work email</label>
+      <input id="closing-waitlist-email" name="email" type="email" class="input input-lg w-full border-neutral-content/20 bg-base-100 text-base text-base-content" placeholder="you@company.com" required maxlength="200" autocomplete="email">
+      <label class="sr-only" for="closing-waitlist-team">Team size (optional)</label>
+      <select id="closing-waitlist-team" name="team_size" class="select select-lg w-full border-neutral-content/20 bg-base-100 text-base text-base-content">
+        <option value="">Team size</option>
+        <option>Just me</option>
+        <option>2-10</option>
+        <option>11-50</option>
+        <option>50+</option>
+      </select>
+      <button type="submit" class="btn btn-primary btn-lg font-medium">Join</button>
+      <div id="closing-waitlist-problems" class="empty:hidden sm:col-span-3"></div>
+    </form>
+    <p class="mt-5 font-mono text-[0.6875rem] tracking-[0.08em] text-neutral-content/50 uppercase" data-reveal><span data-count>2,418</span> teams on the list · No card needed</p>
+  </div>
+</section>

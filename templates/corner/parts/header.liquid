@@ -1,0 +1,30 @@
+<header class="border-b border-base-300 bg-base-100 text-base-content">
+  <div class="navbar mx-auto max-w-7xl gap-4 px-5 md:px-8">
+    <div class="navbar-start">
+      <a href="/" class="flex flex-col leading-none">
+        <span class="text-xl font-extrabold tracking-tight whitespace-nowrap uppercase md:text-2xl">Marlow Street</span>
+        <span class="mt-1 font-mono text-[0.6rem] tracking-[0.2em] whitespace-nowrap uppercase text-base-content/70 md:text-[0.65rem] md:tracking-[0.25em]">Bakery · Since 2019</span>
+      </a>
+    </div>
+    <nav aria-label="Main" class="navbar-center hidden md:flex">
+      <ul class="flex gap-8 font-mono text-sm tracking-widest uppercase">
+        {% for item in data.navigation %}{% unless item.place == "footer" or item.place == "social" %}
+        <li><a href="{{ item.href }}" class="link-hover {% if page.url == item.href %}underline decoration-primary decoration-2 underline-offset-8{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endunless %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="navbar-end gap-2">
+      <a href="/visit#order" class="btn btn-primary btn-sm md:btn-md">Order a cake</a>
+      <div class="dropdown dropdown-end md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-square btn-sm" aria-label="Open menu">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        </div>
+        <ul tabindex="0" class="menu dropdown-content z-20 mt-3 w-56 rounded-box border border-base-300 bg-base-100 p-2 font-mono text-sm uppercase">
+          {% for item in data.navigation %}{% unless item.place == "footer" or item.place == "social" %}
+          <li><a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endunless %}{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

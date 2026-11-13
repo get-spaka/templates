@@ -1,0 +1,15 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-24 md:px-10 md:py-32">
+    <p class="tag text-primary" data-reveal>Said of us</p>
+    <ul class="mt-12 grid gap-14 md:grid-cols-3 md:gap-12">
+      {% for item in data["home-press"] %}
+      <li class="flex flex-col border-t border-base-300 pt-8" data-reveal>
+        <blockquote class="grow">
+          <p class="display text-2xl leading-snug text-pretty md:text-[1.75rem]">“{{ item.quote }}”</p>
+        </blockquote>
+        <p class="tag mt-8 text-base-content/70">{% if item.href %}<a href="{{ item.href }}" class="hover:text-primary">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

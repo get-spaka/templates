@@ -1,0 +1,56 @@
+label: Cases
+body: body
+fields:
+  - name: client
+    label: Client
+    kind: text
+    required: true
+  - name: title
+    label: In one line
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: disciplines
+    label: Disciplines
+    kind: list
+    choices: [Brand, Motion, Film, Digital]
+  - name: sector
+    label: Sector
+    kind: text
+  - name: tone
+    label: Color of its panel
+    kind: choice
+    choices: [lime, yellow, bone, graphite]
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: image_1
+    label: First image
+    kind: image
+  - name: image_2
+    label: Second image
+    kind: image
+  - name: image_3
+    label: Third image
+    kind: image
+  - name: image_4
+    label: Fourth image
+    kind: image
+  - name: results
+    label: "Results (figure / what it counts)"
+    kind: list
+  - name: credits
+    label: Credits
+    kind: list
+  - name: featured
+    label: In the home page's reel
+    kind: boolean
+  - name: body
+    label: The story
+    kind: markdown
+order: [maasveer, kino-zuid, hal-4, spaak-cycles, kade-nights, ploeg]

@@ -1,0 +1,24 @@
+{% assign first = data.evening | first %}
+<section class="text-base-content" data-evening>
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-24 md:grid-cols-[1fr_1.15fr] md:gap-16 md:px-10 md:py-36">
+    <div>
+      <div class="md:sticky md:top-28">
+        <p class="tag text-primary">An evening at Wick</p>
+        <h2 class="mt-6 max-w-md text-5xl text-balance md:text-6xl">From the first pour to the last glass</h2>
+        <p class="display mt-10 hidden text-[clamp(7rem,15vw,15rem)] leading-[0.85] tracking-tight text-primary md:block" data-evening-hour aria-hidden="true">{{ first.time }}</p>
+      </div>
+    </div>
+    <ol class="space-y-20 md:space-y-36 md:pt-40 md:pb-24">
+      {% for item in data.evening %}
+      <li class="grid gap-6" data-evening-moment>
+        <p class="evening-own-time display text-7xl leading-none text-primary md:text-4xl" data-evening-time>{{ item.time }}</p>
+        {% if item.image %}<div class="aspect-[4/3] overflow-hidden" data-drift data-grade><img src="{{ item.image }}" class="size-full object-cover"></div>{% endif %}
+        <div class="max-w-lg">
+          <h3 class="text-3xl md:text-4xl">{{ item.title }}</h3>
+          <p class="prose-ember mt-4">{{ item.text }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

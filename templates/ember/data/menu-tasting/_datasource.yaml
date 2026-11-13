@@ -1,0 +1,20 @@
+label: Tasting menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: wine
+    label: The pairing's wine
+    kind: text
+order:
+  [
+    oysters-cider-mignonette,
+    scallop-brown-butter-apple,
+    leeks-from-the-embers,
+    hake-over-the-coals,
+    burnt-honey-custard,
+  ]

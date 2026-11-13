@@ -1,0 +1,27 @@
+label: Updates
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: version
+    label: Version
+    kind: text
+  - name: date
+    label: Date
+    kind: date
+  - name: tag
+    label: Tag
+    kind: choice
+    choices: [New, Improved, Fixed]
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: -date

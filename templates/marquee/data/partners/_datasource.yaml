@@ -1,0 +1,14 @@
+label: Partners
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: tier
+    label: Tier
+    kind: choice
+    choices: [presenting, partner, media]
+  - name: link
+    label: Link
+    kind: link
+order: [rive-nord, semaphore-records, brasserie-du-mole, atelier-lumen, radio-basalte, le-petit-docker]

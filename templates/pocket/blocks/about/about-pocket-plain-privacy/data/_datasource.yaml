@@ -1,0 +1,14 @@
+label: Privacy
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [keep, never]
+order: [never-sold, no-ads, photos-yours, plants-and-history, email, light-readings]

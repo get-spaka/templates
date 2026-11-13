@@ -1,0 +1,49 @@
+label: Projects
+body: text
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: category
+    label: Category
+    kind: choice
+    required: true
+    choices: [Residential, Public, Hospitality, Objects]
+  - name: client
+    label: Client
+    kind: text
+  - name: location
+    label: Place
+    kind: text
+  - name: year
+    label: Year
+    kind: text
+  - name: architect
+    label: Architect or designer
+    kind: text
+  - name: role
+    label: The commission
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: cover
+    label: Cover
+    kind: image
+  - name: image_2
+    label: Second image
+    kind: image
+  - name: image_3
+    label: Third image
+    kind: image
+  - name: image_4
+    label: Fourth image
+    kind: image
+  - name: image_5
+    label: Fifth image
+    kind: image
+  - name: text
+    label: About the project
+    kind: markdown
+order: [casa-do-pinhal, ribeira-library, casa-alva, city-archive, roma-apartments, terra-stoneware, desk-pieces]

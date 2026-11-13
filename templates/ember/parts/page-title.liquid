@@ -1,0 +1,11 @@
+<section class="relative overflow-hidden bg-neutral text-neutral-content">
+  {% if image %}
+  <div class="absolute inset-0" data-drift data-grade><img src="{{ image }}" class="size-full object-cover"></div>
+  <div class="absolute inset-0 bg-linear-to-t from-neutral via-neutral/70 to-neutral/40" aria-hidden="true"></div>
+  {% endif %}
+  <div class="relative mx-auto flex max-w-[90rem] flex-col justify-end px-4 pt-36 pb-16 md:px-10 md:pt-48 md:pb-24 {% if image %}min-h-[min(70svh,39rem)]{% endif %}">
+    <p class="tag text-primary" data-reveal>{{ label }}</p>
+    <h1 class="mt-6 max-w-5xl text-[clamp(3.5rem,10vw,9rem)] leading-[0.92] tracking-tight text-balance" data-reveal>{{ title }}</h1>
+    {% if note %}<p class="mt-8 max-w-xl text-lg leading-relaxed text-neutral-content/85" data-reveal>{{ note }}</p>{% endif %}
+  </div>
+</section>

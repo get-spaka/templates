@@ -1,0 +1,20 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+  - name: tone
+    label: Color of the card
+    kind: choice
+    choices: [lime, yellow, bone, graphite]
+  - name: obsession
+    label: Currently obsessed with
+    kind: text
+order: [ines-bakker, ruben-okafor, lotte-visser, samir-el-idrissi, mei-lin-de-graaf, jonas-verhoef]

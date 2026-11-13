@@ -1,0 +1,10 @@
+{
+  "name": "Pocket review rows",
+  "kind": "testimonials",
+  "source": "upstart",
+  "description": "Store reviews in two rows of cards that drift in opposite directions and pause on hover or focus, each with its stars, the text, the name, the city and the store, under a heading and the average rating; with no script, rows that scroll sideways.",
+  "tags": ["testimonials", "reviews", "ratings", "app store", "marquee", "cards"],
+  "mood": ["friendly", "playful", "colorful"],
+  "synonyms": ["reviews", "testimonials", "ratings", "what people say", "avis", "témoignages", "notes", "avis clients"],
+  "data": { "name": "reviews", "family": "collection" }
+}

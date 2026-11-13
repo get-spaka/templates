@@ -1,0 +1,10 @@
+label: Principles
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [move-first, loud-and-legible, hand-it-over]

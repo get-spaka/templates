@@ -1,0 +1,29 @@
+<footer class="overflow-hidden bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[90rem] px-4 pt-14 md:px-10 md:pt-20">
+    <p class="tag text-sm md:text-base"><span data-countdown="2027-07-09T14:00:00+02:00" data-until="2027-07-12T00:00:00+02:00" data-days="{n} days to go" data-on="It's on. Gates open at 2 pm" data-over="See you next July">9—11 July 2027</span> · La Raffinerie, Marseille</p>
+    <p class="poster mt-4 text-[9.4vw] whitespace-nowrap md:text-[10.4vw] text-primary 2xl:text-[9.4rem]" style="--wdth: 150">Hot Static</p>
+    <div class="mt-10 grid gap-8 border-t-2 border-neutral-content/30 py-10 sm:grid-cols-2 lg:grid-cols-4">
+      <nav aria-label="Footer">
+        <ul class="space-y-2">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "footer" %}
+          <li><a href="{{ item.href }}" class="tag text-lg hover:text-primary">{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <ul class="space-y-2">
+        {% for item in data.navigation %}{% if item.place == "social" %}
+        <li><a href="{{ item.href }}" class="tag text-lg hover:text-primary">{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+      <div>
+        <p class="tag text-xs text-neutral-content/70">Press</p>
+        <a href="mailto:press@hotstatic.fr" class="mt-1 block hover:text-primary">press@hotstatic.fr</a>
+        <p class="tag mt-4 text-xs text-neutral-content/70">Access team</p>
+        <a href="mailto:access@hotstatic.fr" class="mt-1 block hover:text-primary">access@hotstatic.fr</a>
+        <p class="mt-1 text-neutral-content/85">+33 4 91 00 27 09, weekdays 10:00 to 18:00</p>
+      </div>
+      <p class="text-pretty text-neutral-content/85">Hot Static is an independent festival on the north docks of Marseille, run by a team of eleven and four hundred volunteers.</p>
+    </div>
+    <p class="tag border-t-2 border-neutral-content/30 py-6 text-xs text-neutral-content/70">© 2027 Hot Static · Marseille</p>
+  </div>
+</footer>

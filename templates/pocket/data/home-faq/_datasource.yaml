@@ -1,0 +1,11 @@
+label: Questions
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: markdown
+body: answer
+order: [really-free, which-plants, android, light-meter, housemates, stop-paying]

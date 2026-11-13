@@ -1,0 +1,17 @@
+<section class="bg-base-200 text-base-content" id="access">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 md:px-10 md:py-24 lg:grid-cols-[1fr_1.4fr]">
+    <div>
+      <h2 class="text-[clamp(3rem,9vw,8rem)]" data-rise>Access</h2>
+      <p class="mt-5 max-w-md text-pretty">Hot Static is for everyone who wants to come. If something here does not cover what you need, the access team will find a way.</p>
+      <a href="mailto:access@hotstatic.fr" class="btn btn-neutral tag mt-6">Write to the access team</a>
+    </div>
+    <ul class="grid gap-x-10 gap-y-6 rounded-box border-2 border-base-content bg-base-100 p-6 sm:grid-cols-2 md:p-10">
+      {% for item in data.access %}
+      <li>
+        <h3 class="flex items-center gap-3 text-2xl"><span class="text-primary" aria-hidden="true">✺</span>{{ item.title }}</h3>
+        <p class="mt-2 pl-8 text-pretty text-base-content/85">{{ item.text }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

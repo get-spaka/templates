@@ -1,0 +1,16 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="max-w-2xl">
+      <p class="kicker text-primary" data-reveal>Billing</p>
+      <h2 class="mt-4 text-[clamp(2.25rem,4.5vw,3.75rem)] text-balance" data-reveal>Money questions, <mark>plainly</mark></h2>
+    </div>
+    <dl class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
+      {% for item in data["pricing-faq"] %}
+      <div data-reveal>
+        <dt class="text-[1.1875rem] font-semibold text-balance">{{ item.question }}</dt>
+        <dd class="mt-2.5 leading-relaxed text-pretty text-base-content/75 [&_p+p]:mt-3">{{ item.answer }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+{
+  "name": "Ember menu by course",
+  "kind": "menu",
+  "source": "upstart",
+  "description": "The whole menu course by course, each with a large number and its picture held beside its dishes as you read (position: sticky), every dish with its line, its price and its diet marks.",
+  "tags": ["menu", "restaurant", "courses", "dishes", "prices", "sticky", "diet"],
+  "mood": ["elegant", "warm", "editorial"],
+  "synonyms": [
+    "menu",
+    "full menu",
+    "courses",
+    "à la carte",
+    "carte",
+    "menu complet",
+    "entrées plats desserts",
+    "la carte"
+  ],
+  "data": {
+    "name": "menu",
+    "family": "collection"
+  }
+}

@@ -1,0 +1,13 @@
+label: Services
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: summary
+    label: Summary
+    kind: text
+  - name: deliverables
+    label: What we deliver
+    kind: list
+order: [brand-identity, motion-systems, campaign-films, digital]

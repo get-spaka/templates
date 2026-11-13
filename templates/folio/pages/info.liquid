@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Info — Noor Haddad</title>
+<meta name="description" content="About Noor Haddad, architecture and interiors photographer in Lisbon: services, clients, recognition and how to commission her.">
+<meta property="og:title" content="Info — Noor Haddad">
+<meta property="og:description" content="About Noor Haddad, architecture and interiors photographer in Lisbon: services, clients, recognition and how to commission her.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[96rem] px-5 pt-10 pb-16 md:px-10 md:pt-16 md:pb-24">
+    <h1 class="text-[clamp(4rem,15vw,14rem)] leading-[0.85] font-light tracking-tighter" data-split>Info</h1>
+    <div class="mt-10 grid gap-10 md:mt-14 md:grid-cols-12">
+      <div class="flex aspect-[4/5] w-40 items-end bg-primary p-4 text-primary-content md:col-span-3 md:w-full" data-reveal>
+        <span class="text-6xl font-light tracking-tighter md:text-8xl" aria-hidden="true">NH</span>
+      </div>
+      <div class="md:col-span-7 md:col-start-5" data-reveal>
+        <p class="text-3xl leading-[1.15] font-light tracking-tight text-pretty md:text-5xl">Noor Haddad photographs architecture and interiors <em>from Lisbon.</em></p>
+        <div class="mt-8 max-w-xl space-y-4 text-lg text-pretty text-base-content/80">
+          <p>Born in Amman, she studied architecture in Porto before trading drawings for a camera in 2014. She works for architects, interior designers, hotels and makers, mostly in Portugal and Spain, and travels for buildings that need it.</p>
+          <p>She works with daylight and as little equipment as the place allows, and likes to come back to a building at another season. Her pictures have been published in Revista Casa and Habitat Journal and shown at the Lisbon City Archive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% render 'lists' %}
+{% render 'clients' %}
+<section id="enquire" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[96rem] gap-12 px-5 py-16 md:grid-cols-12 md:px-10 md:py-28">
+    <div class="md:col-span-5" data-reveal>
+      <p class="font-mono text-[0.7rem] tracking-[0.12em] uppercase text-base-content/60">Commissions</p>
+      <h2 class="mt-4 text-4xl leading-[1] font-light tracking-tighter text-balance md:text-6xl">Tell me about <em>the building.</em></h2>
+      <p class="mt-6 max-w-md text-lg text-pretty text-base-content/80">Where it is, what it is for and when it will be ready. I reply within two working days, with my availability and a first idea of how I would approach it.</p>
+      <p class="mt-6 text-sm"><a href="mailto:studio@noorhaddad.com" class="link-hover hover:text-primary">studio@noorhaddad.com</a></p>
+    </div>
+    <form hx-post="/_data/enquiries" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#folio-enquiry-problems swap:innerHTML" class="flex flex-col gap-2 self-start md:col-span-7" data-reveal>
+      <div class="grid gap-2 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend font-normal">Your name</legend>
+          <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend font-normal">Your email</legend>
+          <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+        </fieldset>
+      </div>
+      <div class="grid gap-2 sm:grid-cols-3">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend font-normal">Type of project</legend>
+          <select name="project" class="select w-full">
+            <option>Architecture</option>
+            <option>Interiors</option>
+            <option>Hospitality</option>
+            <option>Objects</option>
+            <option>Editorial</option>
+            <option>Something else</option>
+          </select>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend font-normal">When</legend>
+          <input name="timing" type="text" class="input w-full" maxlength="200" placeholder="Spring 2027">
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend font-normal">Budget <span class="text-base-content/60">(optional)</span></legend>
+          <input name="budget" type="text" class="input w-full" maxlength="200">
+        </fieldset>
+      </div>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend font-normal">About the project</legend>
+        <textarea name="message" class="textarea w-full" rows="6" required maxlength="5000"></textarea>
+      </fieldset>
+      <div id="folio-enquiry-problems"></div>
+      <button type="submit" class="btn btn-primary mt-2 self-start font-normal">Send the enquiry</button>
+    </form>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+label: Features
+fields:
+  - name: label
+    label: Label
+    kind: text
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: figure
+    label: Figure
+    kind: choice
+    choices: [rings, grid, bars, nodes, wave, stack]
+  - name: wide
+    label: Wide card
+    kind: boolean
+order: [twelve-regions, one-incident, cron-heartbeats, on-call, status-pages, quiet-retries]

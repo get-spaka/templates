@@ -1,0 +1,29 @@
+<section class="glow relative -mt-[4.75rem] text-base-content md:-mt-20">
+  <div class="relative mx-auto max-w-6xl px-5 pt-32 pb-16 md:px-8 md:pt-40 md:pb-24">
+    <div class="max-w-3xl">
+      <p class="kicker text-primary" data-reveal>Privacy</p>
+      <h1 class="mt-4 text-[clamp(3rem,7vw,6rem)] text-balance" data-reveal>Privacy, in <mark>plain words</mark></h1>
+      <p class="mt-5 text-lg text-pretty text-base-content/75" data-reveal>What Fernway keeps, what it never does, and the policy in full below. Updated <time datetime="2026-10-01">October 1, 2026</time>.</p>
+    </div>
+    <div class="mt-12 grid gap-8 lg:grid-cols-2">
+      {% for kind in (1..2) %}
+      {% if kind == 1 %}{% assign group = "never" %}{% else %}{% assign group = "keep" %}{% endif %}
+      {% assign points = data["privacy-points"] | where: "kind", group %}
+      <div class="rounded-box bg-base-100/80 p-6 soft-shadow backdrop-blur md:p-8" data-reveal>
+        <h2 class="text-[2rem]">{% if group == "never" %}What we never do{% else %}What we keep{% endif %}</h2>
+        <ul class="mt-6 space-y-5">
+          {% for point in points %}
+          <li class="flex gap-4">
+            <span class="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full {% if group == "never" %}bg-accent text-accent-content{% else %}bg-secondary text-secondary-content{% endif %}" aria-hidden="true">{% if group == "never" %}<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="m6 6 12 12"/><path d="M18 6 6 18"/></svg>{% else %}<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>{% endif %}</span>
+            <div>
+              <h3 class="text-[1.3125rem]">{{ point.title }}</h3>
+              {% if point.text %}<p class="mt-1.5 leading-relaxed text-pretty text-base-content/75">{{ point.text }}</p>{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

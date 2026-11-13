@@ -1,0 +1,9 @@
+{
+  "name": "Corner poster hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A poster-sized headline of three short lines, one word in the italic serif, beside a photo in an arch with a turning stamp, two buttons and the open-now line.",
+  "tags": ["hero", "large type", "arch photo", "stamp", "opening hours"],
+  "mood": ["bold", "warm"],
+  "synonyms": ["hero", "big headline", "poster", "shopfront", "en-tête", "grand titre", "accroche", "affiche"]
+}

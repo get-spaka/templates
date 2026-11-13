@@ -1,0 +1,29 @@
+label: Help articles
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: topic
+    label: Topic
+    kind: choice
+    choices: [Getting started, Reminders, Plus and billing, Account and data]
+  - name: summary
+    label: Summary
+    kind: text
+  - name: updated
+    label: Updated
+    kind: date
+  - name: body
+    label: Article
+    kind: markdown
+body: body
+order:
+  [
+    adding-your-first-plant,
+    rooms-and-windows,
+    why-a-reminder-moved,
+    snoozing-and-skipping,
+    starting-or-canceling-plus,
+    exporting-or-deleting-your-data,
+  ]

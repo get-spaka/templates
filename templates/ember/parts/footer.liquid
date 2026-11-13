@@ -1,0 +1,51 @@
+<footer class="overflow-hidden bg-neutral text-neutral-content" data-candle>
+  <div class="mx-auto max-w-[90rem] px-4 pt-24 md:px-10 md:pt-32">
+    <div class="grid gap-14 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-4">
+        <p class="tag text-primary">Find us</p>
+        <address class="mt-6 space-y-1 text-lg not-italic">
+          <span class="display block text-3xl">62 Chandler Lane</span>
+          <span class="block text-neutral-content/75">Portland, Maine 04101</span>
+          <a href="tel:+12075550162" class="block text-neutral-content/75 hover:text-primary">+1 207 555 0162</a>
+          <a href="mailto:evenings@wick.example" class="block text-neutral-content/75 hover:text-primary">evenings@wick.example</a>
+        </address>
+        <a href="/visit#gift-cards" class="btn btn-outline btn-primary tag mt-8">Give an evening</a>
+      </div>
+      <div class="md:col-span-4">
+        <p class="tag text-primary">Hours</p>
+        <ul class="mt-6 space-y-2">
+          {% for item in data.hours %}
+          <li class="flex items-baseline justify-between gap-4 border-b border-neutral-content/10 pb-2" data-hours-row data-weekday="{{ item.weekday }}" data-day="{{ item.day }}" data-opens="{{ item.opens }}" data-kitchen="{{ item.kitchen }}" data-closes="{{ item.closes }}">
+            <span>{{ item.day }}</span>
+            <span class="tag text-neutral-content/75">{{ item.hours }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="mt-4 text-sm text-neutral-content/70">Kitchen until 10:30. The bar is kept for walk-ins.</p>
+      </div>
+      <div class="md:col-span-4">
+        <p class="tag text-primary">The monthly letter</p>
+        <p class="mt-6 leading-relaxed text-neutral-content/80">One email a month: the wine dinners first, and what has just come into the cellar.</p>
+        <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#newsletter-problems swap:innerHTML" class="mt-6">
+          <label for="newsletter-email" class="tag text-neutral-content/70">Your email</label>
+          <div class="mt-2 flex gap-2">
+            <input id="newsletter-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com" class="input field-ember w-full">
+            <button type="submit" class="btn btn-outline btn-primary tag">Join</button>
+          </div>
+          <div id="newsletter-problems" class="mt-3"></div>
+        </form>
+      </div>
+    </div>
+    <p class="kern-first display mt-24 text-center text-[clamp(7rem,38vw,36rem)] leading-[0.72] tracking-[-0.04em] text-neutral-content md:mt-28" aria-hidden="true">Wick</p>
+    <div class="flex flex-col gap-6 border-t border-neutral-content/15 py-8 md:flex-row md:items-center md:justify-between">
+      <nav aria-label="Footer">
+        <ul class="flex flex-wrap gap-x-7 gap-y-3">
+          {% for item in data.navigation %}{% unless item.place == "header" %}
+          <li><a href="{{ item.href }}" class="tag text-neutral-content/80 transition-colors hover:text-primary">{{ item.label }}</a></li>
+          {% endunless %}{% endfor %}
+        </ul>
+      </nav>
+      <p class="tag text-neutral-content/60">Wine, fire and a late kitchen · since 2021</p>
+    </div>
+  </div>
+</footer>

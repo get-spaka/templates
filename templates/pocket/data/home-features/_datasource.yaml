@@ -1,0 +1,18 @@
+label: Features
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: size
+    label: Size
+    kind: choice
+    choices: [wide, square]
+  - name: visual
+    label: Picture
+    kind: choice
+    choices: [reminders, light, identify, household, vacation, widgets]
+order: [reminders-that-learn, light-meter, name-any-plant, one-home, vacation-mode, widgets]

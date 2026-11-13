@@ -1,0 +1,23 @@
+<section class="bg-secondary text-secondary-content" data-candle>
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-4 py-24 md:grid-cols-12 md:gap-10 md:px-10 md:py-32">
+    <div class="md:col-span-4" data-reveal>
+      <p class="tag text-secondary-content/80">Who we buy from</p>
+      <h2 class="mt-6 text-5xl text-balance md:text-6xl">Boats, farms and a woodlot</h2>
+      <p class="mt-6 max-w-sm leading-relaxed text-secondary-content/80">Five suppliers send most of what we cook, all of them within a morning's drive. Their names are on the menu when their food is.</p>
+    </div>
+    <ul class="border-t border-secondary-content/20 md:col-span-7 md:col-start-6">
+      {% for item in data["story-suppliers"] %}
+      <li class="grid gap-2 border-b border-secondary-content/20 py-7 sm:grid-cols-[1fr_1.2fr] sm:gap-8" data-reveal>
+        <div>
+          <h3 class="text-2xl md:text-3xl">{{ item.name }}</h3>
+          <p class="tag mt-2 text-secondary-content/70">{{ item.place }}</p>
+        </div>
+        <div>
+          <p class="tag text-secondary-content/80">{{ item.what }}</p>
+          {% if item.text %}<p class="mt-2 leading-relaxed text-secondary-content/80">{{ item.text }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

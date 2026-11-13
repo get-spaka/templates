@@ -1,0 +1,17 @@
+label: Story chapters
+fields:
+  - name: kicker
+    label: Kicker
+    kind: text
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: screen
+    label: Screen
+    kind: choice
+    choices: [today, plant, light, doctor, home]
+order: [one-short-list, its-own-story, hold-it-to-the-window, a-yellow-leaf, share-the-watering]

@@ -1,0 +1,65 @@
+<section class="bg-neutral text-neutral-content" id="reserve">
+  <div class="mx-auto max-w-[90rem] px-4 pt-36 pb-20 md:px-10 md:pt-48 md:pb-28">
+    <p class="tag text-primary" data-reveal>Visit</p>
+    <h1 class="mt-6 max-w-5xl text-[clamp(3.5rem,10vw,9rem)] leading-[0.92] tracking-tight text-balance" data-reveal>Request a table</h1>
+    <div class="mt-14 grid gap-14 md:mt-20 md:grid-cols-12 md:gap-10">
+      <aside class="md:col-span-4" data-reveal>
+        <div class="aspect-[4/3] overflow-hidden" data-grade><img src="/media/corner.jpg" class="size-full object-cover"></div>
+        <dl class="mt-8 space-y-6">
+          <div><dt class="tag text-primary">Dinner</dt><dd class="mt-2 text-lg">Tuesday to Saturday, 5 pm to midnight</dd></div>
+          <div><dt class="tag text-primary">The kitchen</dt><dd class="mt-2 text-lg">Until 10:30, then the bar menu</dd></div>
+          <div><dt class="tag text-primary">Walk-ins</dt><dd class="mt-2 text-lg leading-relaxed">The bar is kept for walk-ins: twelve seats and the two tables by the window.</dd></div>
+          <div><dt class="tag text-primary">Eight or more</dt><dd class="mt-2 text-lg">See <a href="/private-dining" class="text-primary hover:underline">private dining</a>, or call <a href="tel:+12075550162" class="text-primary hover:underline">+1 207 555 0162</a></dd></div>
+        </dl>
+      </aside>
+      <form hx-post="/_data/reservations" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#reservations-problems swap:innerHTML" class="grid grid-cols-1 gap-x-6 gap-y-2 self-start border border-neutral-content/15 p-6 sm:grid-cols-2 md:col-span-7 md:col-start-6 md:p-10">
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-date">Date</label>
+          <input id="reserve-date" name="date" type="date" required class="input field-ember w-full">
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-time">Time</label>
+          <select id="reserve-time" name="time" required class="select field-ember w-full">
+            {% assign times = "5:00,5:30,6:00,6:30,7:00,7:30,8:00,8:30,9:00,9:30" | split: "," %}
+            {% for time in times %}<option value="{{ time }} pm" {% if time == "7:00" %}selected{% endif %}>{{ time }} pm</option>{% endfor %}
+          </select>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-guests">Guests</label>
+          <input id="reserve-guests" name="guests" type="number" required min="1" max="7" value="2" class="input field-ember w-full">
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-occasion">The occasion</label>
+          <select id="reserve-occasion" name="occasion" class="select field-ember w-full">
+            <option>Just dinner</option>
+            <option>A birthday</option>
+            <option>An anniversary</option>
+            <option>A first date</option>
+            <option>Business</option>
+          </select>
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <label class="fieldset-legend tag" for="reserve-name">Your name</label>
+          <input id="reserve-name" name="name" type="text" required maxlength="200" autocomplete="name" class="input field-ember w-full">
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-email">Your email</label>
+          <input id="reserve-email" name="email" type="email" required maxlength="200" autocomplete="email" class="input field-ember w-full">
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="fieldset-legend tag" for="reserve-phone">Your phone (optional)</label>
+          <input id="reserve-phone" name="phone" type="tel" maxlength="30" autocomplete="tel" class="input field-ember w-full">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <label class="fieldset-legend tag" for="reserve-notes">Allergies, a wine to open, anything we should know (optional)</label>
+          <textarea id="reserve-notes" name="notes" rows="3" maxlength="2000" class="textarea field-ember w-full rounded-box"></textarea>
+        </fieldset>
+        <div id="reservations-problems" class="sm:col-span-2"></div>
+        <div class="mt-4 flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+          <button type="submit" class="btn btn-primary btn-lg tag">Request the table</button>
+          <p class="max-w-xs text-sm leading-relaxed text-neutral-content/70">A request becomes a booking once we confirm it by email.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

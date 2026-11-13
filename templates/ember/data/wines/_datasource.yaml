@@ -1,0 +1,62 @@
+label: Wines
+fields:
+  - name: name
+    label: Wine
+    kind: text
+    required: true
+  - name: producer
+    label: Producer
+    kind: text
+  - name: region
+    label: Region
+    kind: text
+  - name: vintage
+    label: Vintage
+    kind: text
+  - name: style
+    label: Style
+    kind: choice
+    required: true
+    choices: [sparkling, white, skin-contact, rosé, red, sweet]
+  - name: glass
+    label: Price by the glass
+    kind: text
+  - name: bottle
+    label: Price by the bottle
+    kind: text
+  - name: by_the_glass
+    label: Poured by the glass
+    kind: boolean
+  - name: note
+    label: Note
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+order:
+  [
+    cremant-de-loire-brut,
+    pet-nat-cayuga,
+    muscadet-sevre-et-maine,
+    savennieres,
+    dry-riesling,
+    cotes-du-jura-chardonnay,
+    savagnin-sous-voile,
+    arneis-macerato,
+    gewurztraminer-on-skins,
+    cabernet-franc-rose,
+    poulsard,
+    saumur-champigny,
+    langhe-nebbiolo,
+    vin-de-paille,
+    vouvray-brut,
+    sancerre-les-caillottes,
+    arbois-chardonnay-les-graviers,
+    timorasso,
+    vin-jaune,
+    chinon-vieilles-vignes,
+    trousseau,
+    cabernet-franc,
+    barolo-bricco,
+    coteaux-du-layon,
+  ]

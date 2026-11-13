@@ -1,0 +1,19 @@
+<section class="bg-neutral text-neutral-content" id="getting-there">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <p class="tag text-sm md:text-base">Getting there</p>
+    <address class="poster mt-5 text-[clamp(3rem,9vw,8.5rem)] not-italic" style="--wdth: 58">La Raffinerie<br><span class="text-primary">Quai Nord,</span> 13002 Marseille</address>
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1fr_24rem]">
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {% for item in data.travel %}
+        <li class="rounded-box border-2 border-neutral-content/40 p-6">
+          <h3 class="text-2xl">{{ item.mode }}</h3>
+          <p class="mt-3 text-pretty text-neutral-content/85">{{ item.text }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      <figure class="duotone aspect-[4/5] self-start rounded-box border-2 border-neutral-content/40 lg:rotate-2">
+        <img src="/media/info-docks.jpg" class="size-full object-cover">
+      </figure>
+    </div>
+  </div>
+</section>

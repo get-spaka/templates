@@ -1,0 +1,19 @@
+{
+  "name": "Margin masthead",
+  "kind": "header",
+  "source": "upstart",
+  "description": "A publication's masthead: a dateline in small capitals with what it is and its issue number and season, the name at poster size in a reading serif, centered, and a ruled row with the links and a Subscribe button, folding into a menu on a phone.",
+  "tags": ["masthead", "magazine", "newsletter", "publication", "serif", "dateline"],
+  "mood": ["editorial", "elegant"],
+  "synonyms": [
+    "masthead",
+    "magazine header",
+    "newsletter header",
+    "publication title",
+    "en-tête de magazine",
+    "bandeau de titre",
+    "titre de la publication",
+    "en-tête de la lettre"
+  ],
+  "data": { "name": "navigation", "family": "collection" }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Marquee crossing tape",
+  "kind": "banner",
+  "source": "upstart",
+  "description": "Two tilted bands of words, one in the main color and one dark, crossing over the edge between two sections and running in opposite directions.",
+  "tags": ["tape", "ticker", "marquee", "band", "words"],
+  "mood": ["bold", "playful", "colorful"],
+  "synonyms": ["tape", "ticker", "scrolling band", "marquee", "bandeau défilant", "ruban", "bande", "défilé"],
+  "data": {
+    "name": "tape",
+    "family": "section"
+  }
+}

@@ -1,0 +1,10 @@
+label: Kitchen photos
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: image
+    label: Photo
+    kind: image
+order: [baguettes-cooling, rolls-before-the-oven, loaves-in-the-oven, a-good-crust, the-pastry-counter, coffee-for-two]

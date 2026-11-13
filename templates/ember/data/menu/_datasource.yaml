@@ -1,0 +1,48 @@
+label: Menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: course
+    label: Course
+    kind: choice
+    required: true
+    choices: [snacks, raw-bar, small-plates, hearth, sides, sweet]
+  - name: tags
+    label: Diet
+    kind: list
+    choices: [vegetarian, vegan, gluten-free]
+  - name: image
+    label: Photo
+    kind: image
+  - name: featured
+    label: On tonight's menu card (home page)
+    kind: boolean
+order:
+  [
+    hearth-bread-and-cultured-butter,
+    smoked-bluefish-pate,
+    warm-olives-and-almonds,
+    oysters-by-the-half-dozen,
+    scallop-crudo,
+    cured-fluke,
+    charred-carrots,
+    leeks-from-the-embers,
+    clams-in-cider,
+    hake-over-the-coals,
+    half-chicken-under-a-brick,
+    dry-aged-strip-for-two,
+    fire-roasted-potatoes,
+    bitter-leaves,
+    squash-from-the-embers,
+    burnt-honey-custard,
+    dark-chocolate-and-olive-oil,
+    cheese-from-inland-farms,
+  ]

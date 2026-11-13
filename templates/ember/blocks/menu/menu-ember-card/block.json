@@ -1,0 +1,22 @@
+{
+  "name": "Ember menu card",
+  "kind": "menu",
+  "source": "upstart",
+  "description": "A tilted cream menu card overlapping a drifting photo of a dish: the featured dishes with dotted leaders and their prices, straightening under the pointer, then a link to the whole menu.",
+  "tags": ["menu", "restaurant", "dishes", "featured", "card", "prices"],
+  "mood": ["elegant", "warm", "dark"],
+  "synonyms": [
+    "menu",
+    "featured dishes",
+    "menu card",
+    "tonight's menu",
+    "carte",
+    "plats du jour",
+    "menu du soir",
+    "suggestions"
+  ],
+  "data": {
+    "name": "menu",
+    "family": "collection"
+  }
+}

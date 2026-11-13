@@ -1,0 +1,22 @@
+{
+  "name": "Reel wall of client names",
+  "kind": "logos",
+  "source": "upstart",
+  "description": "The clients as a wall of names in extended black capitals separated by slashes of the main color, each turning into a block of the main color under the pointer.",
+  "tags": ["clients", "logos", "names", "type", "wall", "references"],
+  "mood": ["bold", "dark"],
+  "synonyms": [
+    "clients",
+    "logos",
+    "references",
+    "brands",
+    "références",
+    "ils nous font confiance",
+    "nos clients",
+    "marques"
+  ],
+  "data": {
+    "name": "clients",
+    "family": "collection"
+  }
+}

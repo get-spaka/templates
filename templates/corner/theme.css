@@ -1,0 +1,19 @@
+:root {
+  --theme-color-primary: oklch(0.47 0.17 262);
+  --theme-color-primary-content: oklch(0.97 0.015 85);
+  --theme-color-secondary: oklch(0.6 0.12 50);
+  --theme-color-secondary-content: oklch(0.98 0.01 85);
+  --theme-color-accent: oklch(0.87 0.14 92);
+  --theme-color-accent-content: oklch(0.24 0.03 60);
+  --theme-color-neutral: oklch(0.24 0.035 258);
+  --theme-color-neutral-content: oklch(0.95 0.018 85);
+  --theme-color-surface: oklch(0.965 0.018 85);
+  --theme-color-surface-alt: oklch(0.925 0.026 80);
+  --theme-color-border: oklch(0.8 0.025 75);
+  --theme-color-text: oklch(0.22 0.02 40);
+  --theme-font-heading: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --theme-font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 1rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+}

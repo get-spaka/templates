@@ -1,0 +1,35 @@
+label: Private dining enquiries
+collected: true
+answer: enquiries-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Your enquiry is with us."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: date
+    label: The date you have in mind
+    kind: date
+  - name: guests
+    label: Guests
+    kind: number
+    required: true
+  - name: kind
+    label: The kind of evening
+    kind: choice
+    choices: [A dinner in the Cellar Room, The whole house, A wine dinner of our own, Something else]
+  - name: message
+    label: Tell us about it
+    kind: markdown

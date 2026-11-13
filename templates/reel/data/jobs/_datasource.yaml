@@ -1,0 +1,20 @@
+label: Jobs
+body: body
+fields:
+  - name: title
+    label: Role
+    kind: text
+    required: true
+  - name: type
+    label: Type
+    kind: text
+  - name: location
+    label: Where
+    kind: text
+  - name: summary
+    label: In one line
+    kind: text
+  - name: body
+    label: About the role
+    kind: markdown
+order: [senior-motion-designer, front-end-developer, film-producer]

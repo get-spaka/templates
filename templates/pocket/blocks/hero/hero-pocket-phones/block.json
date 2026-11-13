@@ -1,0 +1,19 @@
+{
+  "name": "Pocket fanned phones hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "An app's hero: a large headline with one word on a soft gradient pill, one sentence, two store buttons and the rating, beside three phones whose screens are drawn in HTML (a plant page, a Today list whose plants can be ticked as watered, a light meter), fanned out over a soft glow that drifts and leans toward the cursor; the phones rise into their fan as the page opens.",
+  "tags": ["hero", "app", "mobile app", "phones", "download", "store buttons", "rating", "glow"],
+  "mood": ["friendly", "playful", "colorful"],
+  "synonyms": [
+    "hero",
+    "app hero",
+    "phone mockups",
+    "download header",
+    "en-tête",
+    "accroche application",
+    "téléphones",
+    "grand titre"
+  ],
+  "data": { "name": "plants", "family": "collection" }
+}

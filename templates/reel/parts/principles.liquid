@@ -1,0 +1,14 @@
+<section class="bg-base-100 text-base-content" aria-labelledby="principles-title">
+  <div class="mx-auto max-w-[110rem] px-5 pb-20 md:px-10 md:pb-28">
+    <h2 id="principles-title" class="meta text-base-content/70">How we work</h2>
+    <ol class="mt-6 border-b-2 border-base-content">
+      {% for item in data["studio-principles"] %}
+      <li class="grid gap-3 border-t-2 border-base-content py-8 md:grid-cols-12 md:gap-8 md:py-10">
+        <span class="narrow text-6xl leading-[0.8] font-bold text-primary md:col-span-2 md:text-8xl">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+        <h3 class="text-[clamp(1.75rem,3.6vw,3.5rem)] leading-[0.88] md:col-span-5">{{ item.title }}</h3>
+        <p class="max-w-xl text-lg leading-relaxed text-pretty text-base-content/80 md:col-span-5">{{ item.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

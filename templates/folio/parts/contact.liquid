@@ -1,0 +1,15 @@
+<section class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[96rem] px-5 pt-20 pb-16 md:px-10 md:pt-32 md:pb-20">
+    <p class="font-mono text-[0.7rem] tracking-[0.12em] uppercase text-neutral-content/60" data-reveal>Have a project in mind?</p>
+    <a href="mailto:studio@noorhaddad.com" class="mt-6 block text-[clamp(2.25rem,7.5vw,7.5rem)] leading-[0.95] font-light tracking-tighter break-words transition-colors hover:text-primary" data-reveal>studio@<wbr>noorhaddad.com</a>
+    <div class="mt-14 grid gap-6 border-t border-neutral-content/20 pt-6 text-sm sm:grid-cols-3" data-reveal>
+      <p>I reply within two working days.</p>
+      <p>Commissions in Portugal, Spain <em>and further.</em></p>
+      <ul class="flex gap-6 sm:justify-end">
+        {% for item in data.navigation %}{% if item.place == "social" %}
+        <li><a href="{{ item.href }}" class="link-hover hover:text-primary">{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

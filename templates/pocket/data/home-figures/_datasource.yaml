@@ -1,0 +1,13 @@
+label: Figures
+fields:
+  - name: value
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [plants, still-alive, languages]

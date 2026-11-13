@@ -1,0 +1,13 @@
+label: Recognition
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: by
+    label: Publication or prize
+    kind: text
+  - name: year
+    label: Year
+    kind: text
+order: [light-in-concrete, shortlist, casa-feature, archive-exhibition, new-talent]

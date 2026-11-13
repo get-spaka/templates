@@ -1,0 +1,29 @@
+label: Plants in the screens
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: species
+    label: Species
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+  - name: water_every
+    label: Water every (days)
+    kind: number
+  - name: next_water
+    label: Next watering
+    kind: date
+  - name: light
+    label: Light
+    kind: choice
+    choices: [low, medium, bright]
+  - name: room
+    label: Room
+    kind: text
+  - name: health
+    label: Health (%)
+    kind: number
+order: [monty, pearl, bram, goldie, fig, stanley]

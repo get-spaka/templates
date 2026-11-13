@@ -1,0 +1,22 @@
+label: Stages
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: kind
+    label: What it is
+    kind: text
+  - name: plays
+    label: What plays there
+    kind: text
+  - name: capacity
+    label: Capacity
+    kind: text
+  - name: access
+    label: Access
+    kind: text
+  - name: image
+    label: Image
+    kind: image
+order: [the-tank, machine-hall, the-barge, the-roof]

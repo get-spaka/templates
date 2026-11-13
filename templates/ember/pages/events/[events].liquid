@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Wick, Portland, Maine</title>
+<meta name="description" content="{{ record.title }} at Wick, {{ record.date | date: '%A %-d %B %Y' }}, {{ record.time }}. {{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Wick">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.cover %}<meta property="og:image" content="{{ record.cover }}">{% endif %}
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[90rem] px-4 pt-36 md:px-10 md:pt-48">
+    <a href="/private-dining" class="tag text-neutral-content/80 hover:text-primary"><span aria-hidden="true">←</span> Private dining and events</a>
+    <div class="mt-10 grid gap-8 md:grid-cols-12 md:items-end">
+      <div class="md:col-span-8">
+        <p class="flex flex-wrap items-baseline gap-x-5 gap-y-2" data-reveal>
+          <span class="display text-6xl leading-none text-primary md:text-8xl">{{ record.date | date: "%-d %b" }}</span>
+          <span class="tag text-neutral-content/80">{{ record.date | date: "%A %Y" }}</span>
+        </p>
+        <h1 class="mt-8 text-[clamp(3rem,8vw,7rem)] leading-[0.95] tracking-tight text-balance" data-reveal>{{ record.title }}</h1>
+      </div>
+      {% if record.summary %}<p class="text-xl leading-relaxed text-pretty text-neutral-content/85 md:col-span-4" data-reveal>{{ record.summary }}</p>{% endif %}
+    </div>
+  </div>
+  {% if record.cover %}
+  <div class="mx-auto mt-14 max-w-[90rem] px-4 md:mt-20 md:px-10">
+    <div class="aspect-[16/9] overflow-hidden md:aspect-[21/9]" data-curtain data-grade><img src="{{ record.cover }}" class="size-full object-cover"></div>
+  </div>
+  {% endif %}
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-4 py-20 md:grid-cols-12 md:gap-10 md:px-10 md:py-28">
+    <aside class="md:col-span-4">
+      <dl class="divide-y divide-neutral-content/15 border-y border-neutral-content/15 md:sticky md:top-28">
+        <div class="py-5"><dt class="tag text-neutral-content/70">Date</dt><dd class="mt-1 text-lg">{{ record.date | date: "%A %-d %B %Y" }}</dd></div>
+        {% if record.time %}<div class="py-5"><dt class="tag text-neutral-content/70">Time</dt><dd class="mt-1 text-lg">{{ record.time }}</dd></div>{% endif %}
+        {% if record.price %}<div class="py-5"><dt class="tag text-neutral-content/70">Price</dt><dd class="mt-1 text-lg">{{ record.price }}</dd></div>{% endif %}
+        <div class="py-6"><a href="/private-dining#enquire" class="btn btn-primary tag w-full">Request seats</a></div>
+      </dl>
+    </aside>
+    <div class="prose-ember max-w-2xl space-y-5 text-lg md:col-span-7 md:col-start-6 [&_a]:text-primary [&_a]:underline [&_h2]:pt-6 [&_h2]:font-[family-name:var(--font-heading)] [&_h2]:text-4xl [&_h2]:text-neutral-content [&_li]:border-b [&_li]:border-neutral-content/15 [&_li]:py-3 [&_ul]:border-t [&_ul]:border-neutral-content/15">{{ record.body }}</div>
+  </div>
+</article>
+{% render 'whats-on', tone: "room", skip: record.id %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,326 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/martian-mono.woff2") format("woff2");
+  font-weight: 100 800;
+  font-stretch: 75% 112.5%;
+  font-display: swap;
+}
+
+/* Labels, versions, dates, figures and status lines in the mono face. */
+:root {
+  --font-mono: "Martian Mono", ui-monospace, monospace;
+  scroll-padding-top: 5rem;
+}
+
+/* Headings: Sora at its regular weight, tight; the hero sets 500 on its own. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+body {
+  font-weight: 300;
+}
+
+/* Inside the product's window, where the data is dense, the mono face runs narrower. */
+[data-window] .font-mono,
+.beacon-window .font-mono {
+  font-stretch: 87.5%;
+}
+
+/* ---- The aperture: rings, a still glow, a sweep that turns -------------------- */
+.beacon-aperture {
+  position: absolute;
+  left: 50%;
+  width: min(64rem, 150vw);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  pointer-events: none;
+  mask-image: radial-gradient(closest-side, var(--color-base-content) 55%, transparent 100%);
+}
+.beacon-aperture-glow {
+  position: absolute;
+  inset: 18%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    closest-side,
+    oklch(from var(--color-primary) l c h / 0.34),
+    oklch(from var(--color-secondary) l c h / 0.12) 55%,
+    transparent 100%
+  );
+}
+.beacon-aperture-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    oklch(from var(--color-primary) l c h / 0.02) 30deg,
+    oklch(from var(--color-primary) l c h / 0.09) 66deg,
+    oklch(from var(--color-primary) l c h / 0.15) 82deg,
+    oklch(from var(--color-primary) l c h / 0.05) 94deg,
+    transparent 108deg
+  );
+  rotate: 40deg;
+}
+.beacon-aperture-rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-base-300);
+}
+.beacon-aperture-blip {
+  fill: var(--color-accent);
+}
+
+/* ---- The window: the product drawn in HTML ------------------------------------ */
+.beacon-stage {
+  perspective: 1600px;
+}
+.beacon-window {
+  transform-origin: 50% 0%;
+  box-shadow:
+    0 0 0 1px oklch(from var(--color-primary) l c h / 0.12),
+    0 50px 140px -30px oklch(from var(--color-primary) l c h / 0.45);
+}
+[data-bars] {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 1.375rem;
+}
+[data-bars] > span {
+  flex: 1;
+  height: 100%;
+  border-radius: 1px;
+  transform-origin: 50% 100%;
+}
+@media (max-width: 47.99rem) {
+  /* A phone shows the last half of the bars. */
+  [data-bars] > :nth-child(-n + 15) {
+    display: none;
+  }
+}
+
+/* ---- The cards' glow, which follows the pointer --------------------------------- */
+[data-glow] {
+  --glow-x: -40rem;
+  --glow-y: -40rem;
+  position: relative;
+  isolation: isolate;
+}
+[data-glow]::before,
+[data-glow]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+[data-glow]::before {
+  z-index: -1;
+  background: radial-gradient(
+    26rem circle at var(--glow-x) var(--glow-y),
+    oklch(from var(--color-primary) l c h / 0.18),
+    transparent 45%
+  );
+}
+[data-glow]::after {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(
+    18rem circle at var(--glow-x) var(--glow-y),
+    oklch(from var(--color-primary) l c h / 0.75),
+    transparent 60%
+  );
+  mask:
+    linear-gradient(var(--color-base-content) 0 0) content-box,
+    linear-gradient(var(--color-base-content) 0 0);
+  mask-composite: exclude;
+}
+/* A card that is always lit (the highlighted plan): its glow sits on its top edge. */
+[data-glow][data-lit] {
+  --glow-x: 50%;
+  --glow-y: 0%;
+}
+
+/* The features' small figures, drawn in the theme's hairline and main color. */
+.beacon-figure {
+  color: var(--color-base-300);
+}
+.beacon-figure .lit {
+  color: var(--color-primary);
+}
+
+/* ---- The launch track ---------------------------------------------------------- */
+[data-track] > li {
+  position: relative;
+}
+.beacon-node {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+}
+.beacon-node[data-state="now"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid var(--color-accent);
+  scale: 1.9;
+  opacity: 0.45;
+}
+[data-track-seg] {
+  position: absolute;
+  left: calc(0.5rem - 0.5px);
+  top: 1.5rem;
+  bottom: -0.25rem;
+  width: 1px;
+  background: var(--color-base-300);
+}
+[data-track-lit] {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px oklch(from var(--color-primary) l c h / 0.8);
+  transform-origin: 50% 0%;
+}
+@media (min-width: 48rem) {
+  [data-track] {
+    grid-template-columns: repeat(var(--nodes, 5), minmax(0, 1fr));
+  }
+  .beacon-node {
+    top: 0;
+  }
+  [data-track-seg] {
+    top: calc(0.5rem - 0.5px);
+    left: 1.5rem;
+    right: 0.5rem;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+  }
+  [data-track-lit] {
+    transform-origin: 0% 50%;
+  }
+}
+
+/* Update bodies written in Markdown. */
+.beacon-prose > * + * {
+  margin-top: 1.1em;
+}
+.beacon-prose h2 {
+  margin-top: 2.2em;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-base-content);
+  opacity: 0.6;
+}
+.beacon-prose ul {
+  list-style: none;
+  padding: 0;
+  border-top: 1px solid var(--color-base-300);
+}
+.beacon-prose li {
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--color-base-300);
+  position: relative;
+}
+.beacon-prose li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 1.35rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: var(--color-primary);
+}
+.beacon-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background: var(--color-base-200);
+}
+.beacon-prose a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Splitting (MIT) */
+.splitting .word,
+.splitting .char {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Anchor links glide to their section. */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* The aperture's sweep turns once every 14 seconds; its blips breathe. */
+  [data-sweep] {
+    animation: beacon-sweep 14s linear infinite;
+  }
+  @keyframes beacon-sweep {
+    from {
+      rotate: 40deg;
+    }
+    to {
+      rotate: 400deg;
+    }
+  }
+  .beacon-aperture-blip {
+    animation: beacon-blip 3.5s ease-in-out infinite;
+  }
+  .beacon-aperture-blip + .beacon-aperture-blip {
+    animation-delay: 1.6s;
+  }
+  @keyframes beacon-blip {
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  /* The "now" node of the launch track gives off a slow ring. */
+  .beacon-node[data-state="now"]::after {
+    animation: beacon-ping 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+  @keyframes beacon-ping {
+    from {
+      scale: 1;
+      opacity: 0.9;
+    }
+    to {
+      scale: 2.8;
+      opacity: 0;
+    }
+  }
+
+  /* Links and arrows ease on hover. */
+  .beacon-arrow {
+    transition: translate 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .beacon-arrow {
+    translate: 0.25rem 0;
+  }
+}

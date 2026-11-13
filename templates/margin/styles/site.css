@@ -1,0 +1,350 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("/fonts/schibsted-grotesk.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+/* Labels, dates, the navigation, buttons and forms in the grotesk: the class font-sans. */
+:root {
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Running text in the reading serif, with old-style figures; Literata picks its optical size from the font size. */
+body {
+  font-optical-sizing: auto;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  text-rendering: optimizeLegibility;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  font-style: normal;
+}
+/* A heading set as a label keeps the grotesk: the runtime sets every heading's font. */
+:is(h1, h2, h3, h4).font-sans {
+  font-family: var(--font-sans);
+}
+:is(.btn, .input, .textarea, .fieldset-legend, label, header nav, footer nav, .menu, summary) {
+  font-family: var(--font-sans);
+}
+:is(.btn, .input, .textarea, .fieldset-legend, label, header nav, footer nav, .menu, summary, time) {
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.btn {
+  font-weight: 600;
+}
+
+/* Links in a text: fir, underlined finely. */
+[data-text] a,
+.margin-link {
+  color: var(--color-primary);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+[data-text] a:hover,
+.margin-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* An image alone in a paragraph of a letter is a figure, as wide as the text. */
+[data-letter] p:has(> img) {
+  margin-block: 2.25rem;
+  border-radius: 0;
+}
+[data-letter] p:has(> img) img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Ink: every picture of a list printed in one green ink ----------------------
+   A frame marked data-ink: the picture in greyscale multiplied onto the sage, then
+   the main color screened over it, so that dark becomes fir, light becomes sage and the tones between are greens. */
+:is([data-ink], [data-develop], [data-letter] p:has(> img)) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+:is([data-ink], [data-develop], [data-letter] p:has(> img)) img {
+  mix-blend-mode: multiply;
+}
+:is([data-ink], [data-develop], [data-letter] p:has(> img))::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background-color: transparent;
+}
+:is([data-ink], [data-develop][data-inked], [data-letter] p:has(> img)[data-inked]) {
+  background-color: var(--color-base-200);
+}
+:is([data-ink], [data-develop][data-inked], [data-letter] p:has(> img)[data-inked]) img {
+  filter: grayscale(1) contrast(1.3) brightness(0.96);
+}
+:is([data-ink], [data-develop][data-inked], [data-letter] p:has(> img)[data-inked])::after {
+  background-color: var(--color-primary);
+}
+
+/* On a desktop, once the page moves (never while editing), hovering or focusing the
+   link of an inked picture brings its color back. */
+@media (hover: hover) {
+  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink] {
+    background-color: transparent;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink] img {
+    filter: none;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink]::after {
+    background-color: transparent;
+  }
+}
+
+/* ---- A letter's text ------------------------------------------------------------- */
+[data-letter] {
+  counter-reset: margin-note;
+  hanging-punctuation: first;
+}
+[data-letter] > * + * {
+  margin-top: 1.25em;
+}
+[data-letter] h2 {
+  margin-top: 2.25em;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+[data-letter] h3 {
+  margin-top: 2em;
+  font-size: 1.25rem;
+}
+[data-letter] :is(ul, ol) {
+  padding-left: 1.5em;
+}
+[data-letter] ul {
+  list-style: disc;
+}
+[data-letter] ol {
+  list-style: decimal;
+}
+[data-letter] li + li {
+  margin-top: 0.4em;
+}
+[data-letter] li::marker {
+  color: var(--color-secondary);
+}
+
+/* The first paragraph's drop cap, three lines tall, in the main color. */
+[data-letter] > p:first-child::first-letter {
+  initial-letter: 3;
+  margin-right: 0.12em;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+@supports not (initial-letter: 3) {
+  [data-letter] > p:first-child::first-letter {
+    float: left;
+    font-size: 4.4em;
+    line-height: 0.8;
+    padding: 0.06em 0.1em 0 0;
+  }
+}
+
+/* A blockquote of the Markdown is a pull quote: large, light, upright, its opening mark hanging. */
+[data-letter] > blockquote {
+  margin-block: 2.5rem;
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--color-base-300);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  line-height: 1.3;
+  font-style: normal;
+  text-wrap: balance;
+}
+[data-letter] > blockquote {
+  position: relative;
+}
+[data-letter] > blockquote p:first-child::before {
+  content: "\201C";
+  color: var(--color-primary);
+}
+/* On a wide screen the opening mark hangs in the gutter, large. */
+@media (min-width: 64rem) {
+  [data-letter] > blockquote p:first-child::before {
+    position: absolute;
+    top: 1.15rem;
+    left: -0.5em;
+    font-size: 2.25em;
+    line-height: 1;
+  }
+}
+[data-letter] > blockquote p::after {
+  content: "\201D";
+  color: var(--color-primary);
+}
+[data-letter] > blockquote + * {
+  margin-top: 2.5rem;
+}
+
+/* A <mark> is a fern highlight. */
+[data-text] mark {
+  padding-inline: 0.12em;
+  color: var(--color-accent-content);
+  background-color: transparent;
+  background-image: linear-gradient(var(--color-accent), var(--color-accent));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  box-decoration-break: clone;
+}
+
+/* Margin notes: an <aside> written on its own line after a paragraph. The paragraph
+   gets the note's number at its end; the note sits indented under it on a phone and
+   in the right margin on a desktop, level with that number. */
+[data-letter] p:has(+ aside) {
+  counter-increment: margin-note;
+}
+[data-letter] p:has(+ aside)::after {
+  content: counter(margin-note);
+  margin-left: 0.15em;
+  font-family: var(--font-sans);
+  font-size: 0.68em;
+  font-weight: 600;
+  line-height: 0;
+  vertical-align: super;
+  font-variant-numeric: lining-nums;
+  color: var(--color-secondary);
+}
+[data-letter] > aside {
+  margin: 0.75rem 0 0 1.25rem;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--color-base-300);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: color-mix(in oklch, var(--color-base-content) 75%, transparent);
+  text-wrap: pretty;
+  hyphens: auto;
+}
+[data-letter] > aside::before {
+  content: counter(margin-note) "  ";
+  white-space: pre;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-variant-numeric: lining-nums;
+  color: var(--color-secondary);
+}
+[data-letter] > aside + * {
+  margin-top: 1.25em;
+}
+@media (min-width: 80rem) {
+  [data-letter] > aside {
+    float: right;
+    clear: right;
+    position: relative;
+    width: 15rem;
+    /* one line of the text up, level with the paragraph's last line; out by the gap and its width */
+    margin: calc(-1.65 * 1.1875rem) -18rem 0 0;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+@media (max-width: 47.99rem) {
+  [data-letter] {
+    hyphens: auto;
+  }
+}
+
+/* ---- The header's reading rule: it fills in fir as the letter is read -------------- */
+[data-progress] {
+  position: relative;
+}
+[data-progress]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform-origin: left center;
+}
+
+/* ---- Lucky dip, the archive's year headings and the topics' current link ----------- */
+[aria-current="page"].margin-topic {
+  background-color: var(--color-accent);
+  color: var(--color-accent-content);
+  border-color: var(--color-accent);
+}
+
+/* The phone's menu, a <details>: its marker hidden. */
+details.margin-menu > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.margin-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* The newsletter's checkbox tiles: the chosen one outlined in fir. */
+.margin-tile:has(:checked) {
+  border-color: var(--color-primary);
+  background-color: color-mix(in oklch, var(--color-accent) 35%, var(--color-base-100));
+}
+
+/* Upstart's "Image credits" link, centered at the end of the footer like the rest of it. */
+footer [data-up-credits] {
+  padding: 0 1.25rem 2.5rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The ink: its color comes back over half a second, a letter's pictures develop over 1.2 s. */
+  [data-ink],
+  [data-ink] img,
+  [data-ink]::after {
+    transition:
+      background-color 0.5s ease,
+      filter 0.5s ease;
+  }
+  :is([data-develop], [data-letter] p:has(> img)),
+  :is([data-develop], [data-letter] p:has(> img)) img,
+  :is([data-develop], [data-letter] p:has(> img))::after {
+    transition:
+      background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+      filter 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* The reading rule follows the page's scroll. */
+  @supports (animation-timeline: scroll()) {
+    [data-progress]::after {
+      animation: margin-read linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+  @keyframes margin-read {
+    from {
+      scale: 0 1;
+    }
+    to {
+      scale: 1 1;
+    }
+  }
+}

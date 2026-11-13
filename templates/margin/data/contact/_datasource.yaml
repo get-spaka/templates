@@ -1,0 +1,22 @@
+label: Letters to Nell
+collected: true
+answer: contact-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many messages were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your letter was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: message
+    label: Your letter
+    kind: markdown
+    required: true

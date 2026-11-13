@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Halfvolt — brand, motion and film studio in Rotterdam</title>
+<meta name="description" content="Halfvolt is a studio of fourteen in a harbor warehouse in Rotterdam. We make identities that move, the films that launch them and the sites they live on.">
+<meta property="og:title" content="Halfvolt — brand, motion and film studio in Rotterdam">
+<meta property="og:description" content="Identities that move, the films that launch them and the sites they live on. Fourteen people on Keileweg, Rotterdam, since 2014.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'hero' %}
+{% render 'statement' %}
+{% render 'reel' %}
+{% render 'services' %}
+{% render 'clients' %}
+{% render 'quote' %}
+{% render 'figures', figures: data["home-figures"] %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

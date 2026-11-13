@@ -1,0 +1,17 @@
+label: Waitlist
+collected: true
+answer: waitlist-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many sign-ups came from here. Please try again in a few minutes."
+  sent: "You're on the list. We'll write when your wave opens."
+fields:
+  - name: email
+    label: Work email
+    kind: email
+    required: true
+  - name: team_size
+    label: Team size
+    kind: choice
+    choices: [Just me, 2-10, 11-50, 50+]

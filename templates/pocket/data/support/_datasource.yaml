@@ -1,0 +1,30 @@
+label: Support messages
+collected: true
+answer: support-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many messages were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your message was sent. We reply within a day, Monday to Friday."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: device
+    label: Your phone
+    kind: choice
+    choices: [iPhone, Android]
+  - name: topic
+    label: Topic
+    kind: choice
+    choices: [Getting started, Reminders, Plus and billing, Account and data, Something else]
+  - name: message
+    label: Your message
+    kind: markdown
+    required: true

@@ -1,0 +1,13 @@
+label: Said of us
+fields:
+  - name: name
+    label: Publication
+    kind: text
+    required: true
+  - name: quote
+    label: Quote
+    kind: text
+  - name: href
+    label: Link
+    kind: link
+order: [the-casco-ledger, night-menu, northeast-wine-letter]

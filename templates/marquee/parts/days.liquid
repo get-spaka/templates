@@ -1,0 +1,26 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-6xl px-4 pt-16 pb-12 md:px-10 md:pt-24 md:pb-16">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="text-[clamp(3rem,9vw,8rem)]" data-rise>Three days</h2>
+      <p class="max-w-sm text-pretty">Each day has its own pace: a long night, a sunset, a slow Sunday. Pick one, or stay for all three.</p>
+    </div>
+    <ul class="mt-12 space-y-10 pb-8 md:space-y-14" data-stack>
+      {% for day in data.days %}
+      {% assign k = forloop.index0 | modulo: 3 %}
+      <li style="--askew: {% case k %}{% when 0 %}-1.25deg{% when 1 %}1deg{% else %}-0.5deg{% endcase %}">
+        <article class="grid overflow-hidden rounded-box border-2 border-base-content {% case k %}{% when 0 %}bg-primary text-primary-content{% when 1 %}bg-secondary text-secondary-content{% else %}bg-neutral text-neutral-content{% endcase %} md:grid-cols-[1.15fr_1fr]">
+          <div class="flex flex-col gap-4 p-6 md:p-10">
+            <p class="tag text-sm md:text-base">{{ day.date | date: "%d.%m.%Y" }} · Gates {{ day.gates }} · Last set {{ day.curfew }}</p>
+            <h3 class="poster text-[clamp(4rem,17vw,8.5rem)]" style="--wdth: 58">{{ day.title }}</h3>
+            <p class="text-2xl leading-tight font-semibold text-balance md:text-3xl">{{ day.line }}</p>
+            <a href="/timetable" class="tag mt-auto inline-flex items-center gap-2 pt-6 text-lg underline decoration-2 underline-offset-4 hover:no-underline">{{ day.title }}'s timetable <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="{% if k == 0 %}duotone-secondary{% else %}duotone{% endif %} min-h-64 border-t-2 border-base-content md:border-t-0 md:border-l-2">
+            {% if day.image %}<img src="{{ day.image }}" class="absolute inset-0 size-full object-cover">{% endif %}
+          </div>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

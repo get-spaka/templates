@@ -1,0 +1,17 @@
+label: Awards
+fields:
+  - name: year
+    label: Year
+    kind: text
+    required: true
+  - name: award
+    label: Award
+    kind: text
+    required: true
+  - name: category
+    label: Category
+    kind: text
+  - name: project
+    label: Project
+    kind: text
+sort: -year

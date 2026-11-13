@@ -1,0 +1,22 @@
+{
+  "name": "Reel numbered service rows",
+  "kind": "services",
+  "source": "upstart",
+  "description": "Huge numbered rows in extended capitals that fill with the main color from the left under the pointer, each opening on its summary and the list of what it delivers.",
+  "tags": ["services", "numbered", "accordion", "offer", "studio", "rows"],
+  "mood": ["bold", "dark"],
+  "synonyms": [
+    "services",
+    "what we do",
+    "offer",
+    "expertise",
+    "nos services",
+    "savoir-faire",
+    "prestations",
+    "ce que nous faisons"
+  ],
+  "data": {
+    "name": "services",
+    "family": "collection"
+  }
+}

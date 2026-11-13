@@ -1,0 +1,25 @@
+label: Days
+fields:
+  - name: title
+    label: Day
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: gates
+    label: Gates open (24 h)
+    kind: text
+  - name: curfew
+    label: Last set ends (24 h)
+    kind: text
+  - name: line
+    label: The day in one line
+    kind: text
+  - name: image
+    label: Image
+    kind: image
+  - name: more
+    label: And also
+    kind: list
+sort: date

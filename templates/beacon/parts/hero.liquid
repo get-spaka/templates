@@ -1,0 +1,36 @@
+<section class="relative overflow-x-clip bg-base-100 text-base-content [clip-path:inset(0_0_-80rem_0)]">
+  <div class="beacon-aperture top-[-6rem] md:top-[-10rem]" aria-hidden="true">
+    <div class="beacon-aperture-glow"></div>
+    <div class="beacon-aperture-sweep" data-sweep></div>
+    <svg class="beacon-aperture-rings" viewBox="0 0 1000 1000" fill="none" stroke="currentColor">
+      <circle cx="500" cy="500" r="96" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="188" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="280" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="372" vector-effect="non-scaling-stroke"/>
+      <circle cx="500" cy="500" r="464" vector-effect="non-scaling-stroke"/>
+      <path d="M500 20v960M20 500h960" stroke-dasharray="2 10" vector-effect="non-scaling-stroke"/>
+      <circle class="beacon-aperture-blip" cx="736" cy="372" r="4" stroke="none"/>
+      <circle class="beacon-aperture-blip" cx="318" cy="246" r="3" stroke="none"/>
+    </svg>
+  </div>
+  <div class="relative mx-auto max-w-5xl px-5 pt-16 pb-14 text-center md:px-8 md:pt-28 md:pb-20">
+    <a href="/updates/status-pages" class="group inline-flex items-center gap-2.5 rounded-full border border-base-300 bg-base-200/70 py-1 pr-3.5 pl-1 text-[0.8125rem] backdrop-blur transition-colors hover:border-primary/60" data-reveal>
+      <span class="rounded-full bg-accent px-2.5 py-0.5 font-mono text-[0.625rem] tracking-[0.08em] text-accent-content uppercase">New in 0.9</span>
+      <span>Status pages</span>
+      <span class="beacon-arrow text-base-content/60" aria-hidden="true">→</span>
+    </a>
+    <p class="mt-8 flex items-center justify-center gap-2.5 font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/60 uppercase" data-reveal>
+      <span class="inline-block size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+      Public beta · 1.0 on March 3, 2027
+    </p>
+    <h1 class="mx-auto mt-6 max-w-4xl text-[clamp(2.75rem,6.4vw,5.25rem)] leading-[1.02] font-medium tracking-tight text-balance" data-split>Quiet until it matters. <span class="text-base-content/45">Then it wakes the right person.</span></h1>
+    <p class="mx-auto mt-7 max-w-xl text-[1.0625rem] leading-relaxed text-pretty text-base-content/70" data-reveal>Nightjar watches your websites, APIs and cron jobs from twelve regions, groups what fails together into one incident, and wakes only whoever is on call.</p>
+    <form hx-post="/_data/waitlist" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#hero-waitlist-problems swap:innerHTML" class="mx-auto mt-10 flex max-w-md flex-col gap-2 sm:flex-row sm:flex-wrap" data-reveal>
+      <label for="hero-waitlist-email" class="sr-only">Work email</label>
+      <input id="hero-waitlist-email" name="email" type="email" class="input input-lg w-full sm:flex-1 border-base-300 bg-base-200/80 text-base" placeholder="you@company.com" required maxlength="200" autocomplete="email">
+      <button type="submit" class="btn btn-primary btn-lg font-medium">Join the waitlist</button>
+      <div id="hero-waitlist-problems" class="w-full text-left empty:hidden"></div>
+    </form>
+    <p class="mt-5 font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase" data-reveal><span data-count>2,418</span> teams on the list · No card needed</p>
+  </div>
+</section>

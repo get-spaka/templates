@@ -1,0 +1,29 @@
+<section class="bg-secondary text-secondary-content" data-candle>
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-4 py-24 md:grid-cols-[1fr_1.2fr] md:gap-20 md:px-10 md:py-32">
+    <div data-reveal>
+      <p class="tag text-secondary-content/80">Tasting menu</p>
+      <h2 class="mt-6 text-5xl text-balance md:text-7xl">Trust the hearth</h2>
+      <p class="mt-6 max-w-md leading-relaxed text-secondary-content/85">Five courses chosen by Mara from tonight's menu, for the whole table, with a glass for each course if you like.</p>
+      <dl class="mt-12 grid max-w-sm grid-cols-2 gap-8 border-t border-secondary-content/25 pt-8">
+        <div><dt class="tag text-secondary-content/80">Per guest</dt><dd class="display mt-2 text-6xl">$95</dd></div>
+        <div><dt class="tag text-secondary-content/80">The pairing</dt><dd class="display mt-2 text-6xl">$60</dd></div>
+      </dl>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="/visit#reserve" class="btn btn-outline tag border-secondary-content text-secondary-content hover:bg-secondary-content hover:text-secondary">Reserve a table</a>
+        <a href="/wine" class="btn btn-ghost tag text-secondary-content">The wine list</a>
+      </div>
+    </div>
+    <ol class="border-t border-secondary-content/25" data-reveal>
+      {% for item in data["menu-tasting"] %}
+      <li class="grid grid-cols-[3.5rem_1fr] gap-x-4 border-b border-secondary-content/25 py-7 md:grid-cols-[5rem_1fr]">
+        <span class="display text-5xl leading-none" aria-hidden="true">{{ forloop.index }}</span>
+        <div>
+          <h3 class="text-2xl md:text-3xl">{{ item.name }}</h3>
+          {% if item.description %}<p class="mt-2 leading-relaxed text-secondary-content/85">{{ item.description }}</p>{% endif %}
+          {% if item.wine %}<p class="tag mt-3 text-secondary-content/80">{{ item.wine }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

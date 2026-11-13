@@ -1,0 +1,37 @@
+<section class="bg-base-100 text-base-content" id="bill">
+  <div class="mx-auto max-w-[90rem] px-4 pt-16 pb-20 md:px-10 md:pt-24 md:pb-28">
+    <div class="flex flex-wrap items-end justify-between gap-4 border-b-2 border-base-content pb-5">
+      <h2 class="text-[clamp(3rem,9vw,8rem)]" data-rise>The bill</h2>
+      <p class="tag text-sm md:text-base">41 acts · 3 days · 4 stages</p>
+    </div>
+    <div class="grid divide-y-2 divide-base-content md:grid-cols-3 md:divide-x-2 md:divide-y-0" data-bill>
+      {% for day in data.days %}
+      {% assign acts = data.acts | where: "day", day.title %}
+      <div class="flex flex-col items-center px-2 py-10 text-center md:px-6 md:py-12">
+        <p class="tag text-base">{{ day.title | slice: 0, 3 }} {{ day.date | date: "%d" }}</p>
+        <ul class="mt-5 w-full">
+          {% for act in acts %}{% if act.billing == "headliner" %}
+          <li><a href="/lineup/{{ act.id }}" class="block font-heading text-[clamp(3rem,13vw,4rem)] leading-[0.85] font-black uppercase md:text-[5vw] 2xl:text-[5.25rem] hover:text-primary">{{ act.name }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+        <ul class="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[clamp(1.75rem,2.6vw,2.5rem)] leading-none">
+          {% for act in acts %}{% if act.billing == "main" %}
+          <li class="flex items-center gap-3"><a href="/lineup/{{ act.id }}" class="font-heading font-extrabold uppercase hover:text-primary">{{ act.name }}</a><span class="text-primary" aria-hidden="true">✺</span></li>
+          {% endif %}{% endfor %}
+        </ul>
+        <ul class="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xl leading-none">
+          {% for act in acts %}{% if act.billing == "support" %}
+          <li><a href="/lineup/{{ act.id }}" class="font-heading font-bold uppercase hover:text-primary">{{ act.name }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+        {% if day.more.size > 0 %}
+        <p class="mt-6 max-w-sm text-pretty text-base-content/80"><span class="tag text-xs">And also</span><br>{{ day.more | join: " · " }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="border-t-2 border-base-content pt-6 text-center">
+      <a href="/lineup" class="btn btn-primary btn-lg tag">Full lineup and timetable →</a>
+    </div>
+  </div>
+</section>

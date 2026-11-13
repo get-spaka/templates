@@ -1,0 +1,23 @@
+{
+  "name": "Reel of case panels",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "The featured case studies as a row of colored panels, each with its number in condensed figures, its client in extended capitals, a one-line title, disciplines, year and cover; on a wide screen the row is pinned and slides sideways as the page scrolls, on a phone the panels stack. Each case has its own page.",
+  "tags": ["work", "case studies", "portfolio", "projects", "horizontal scroll", "reel"],
+  "mood": ["bold", "dark", "colorful"],
+  "synonyms": [
+    "work",
+    "projects",
+    "case studies",
+    "portfolio",
+    "réalisations",
+    "projets",
+    "études de cas",
+    "nos travaux",
+    "défilement horizontal"
+  ],
+  "data": {
+    "name": "cases",
+    "family": "collection"
+  }
+}

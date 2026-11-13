@@ -1,0 +1,23 @@
+{
+  "name": "Folio image strip",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "An endless strip of images at the same height, each with a small caption, looping slowly sideways and pausing under the mouse.",
+  "tags": ["strip", "images", "marquee", "carousel", "photos"],
+  "mood": ["editorial", "calm"],
+  "synonyms": [
+    "strip",
+    "image strip",
+    "marquee",
+    "filmstrip",
+    "carousel",
+    "bandeau d'images",
+    "défilé",
+    "pellicule",
+    "carrousel"
+  ],
+  "data": {
+    "name": "strip",
+    "family": "section"
+  }
+}

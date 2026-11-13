@@ -1,0 +1,14 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-6xl px-5 pt-16 pb-10 text-center md:px-10 md:pt-24 md:pb-14">
+    <p class="text-4xl leading-none tracking-tight text-balance md:text-6xl">The Long Way Round</p>
+    <p class="mx-auto mt-5 max-w-md text-pretty text-neutral-content/80">A letter every Sunday about walking one city slowly, and the things you pass on the way.</p>
+    <nav aria-label="Footer" class="mt-10">
+      <ul class="flex flex-wrap justify-center gap-x-7 gap-y-2 text-[0.9375rem] font-medium">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "footer" %}
+        <li><a href="{{ item.href }}" class="underline-offset-4 hover:underline">{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <p class="mt-14 border-t border-neutral-content/20 pt-6 font-sans text-xs font-semibold tracking-[0.08em] uppercase text-neutral-content/70">Written in Providence since 2021 · © Nell Ashby</p>
+  </div>
+</footer>

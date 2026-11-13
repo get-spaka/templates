@@ -1,0 +1,23 @@
+label: Reviews
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: city
+    label: City
+    kind: text
+  - name: stars
+    label: Stars
+    kind: number
+  - name: text
+    label: Review
+    kind: text
+  - name: store
+    label: Store
+    kind: choice
+    choices: [App Store, Google Play]
+  - name: date
+    label: Date
+    kind: date
+order: [priya-n, tomas-r, hannah-k, jules-m, kofi-a, mei-l, sam-o, lena-f]

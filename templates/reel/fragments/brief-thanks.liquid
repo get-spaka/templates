@@ -1,0 +1,5 @@
+<div class="slab -rotate-[1.5deg] bg-primary p-7 text-primary-content md:-rotate-2 md:p-12 lg:col-span-8" role="status">
+  <p class="meta">Brief received</p>
+  <p class="wide mt-4 text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.82] font-black tracking-[-0.03em] uppercase">Thank you, {{ record.name }}.</p>
+  <p class="mt-6 max-w-xl text-xl leading-snug font-medium text-pretty">Jonas reads every brief in person. Expect an answer at {{ record.email }} within two working days, with a time for a first call{% if record.needs.size > 0 %} about {{ record.needs | join: ", " | downcase }}{% endif %}.</p>
+</div>

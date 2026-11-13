@@ -1,0 +1,17 @@
+label: The evening
+fields:
+  - name: time
+    label: Time
+    kind: text
+    required: true
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [bar-menu, first-pour, hearth, last-glass]

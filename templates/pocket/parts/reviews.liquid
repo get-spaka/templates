@@ -1,0 +1,31 @@
+<section id="reviews" class="scroll-mt-24 overflow-hidden bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-20 md:px-8 md:pt-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <p class="kicker text-primary" data-reveal>Reviews</p>
+        <h2 class="mt-4 text-[clamp(2.5rem,5.5vw,4.5rem)] text-balance" data-reveal>Loved on <mark>both</mark> stores.</h2>
+      </div>
+      <p class="flex items-baseline gap-3" data-reveal><span class="numeral text-[clamp(3rem,6vw,5rem)]" data-count>4.8</span><span class="max-w-[12rem] text-[0.9375rem] leading-snug text-base-content/70">out of 5, from 21,400 ratings</span></p>
+    </div>
+  </div>
+  <div class="mt-12 space-y-2 pb-20 md:pb-28">
+    {% for row in (0..1) %}
+    <div class="review-row" data-marquee {% if row == 1 %}data-reverse{% endif %}>
+      <ul>
+        {% for review in data.reviews %}{% assign side = forloop.index0 | modulo: 2 %}{% if side == row %}
+        <li class="w-[min(21rem,82vw)]">
+          <figure class="flex h-full flex-col rounded-box border border-base-300 bg-base-100 p-6 soft-shadow">
+            <p class="flex gap-0.5 text-primary" aria-label="{{ review.stars }} out of 5 stars">{% for i in (1..5) %}<svg class="size-4 {% if i > review.stars %}opacity-25{% endif %}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.5 2.3a.55.55 0 0 1 1 0l2.6 5.3 5.8.85a.55.55 0 0 1 .3.94l-4.2 4.1 1 5.8a.55.55 0 0 1-.8.58L12 17.1l-5.2 2.75a.55.55 0 0 1-.8-.58l1-5.8-4.2-4.1a.55.55 0 0 1 .3-.94l5.8-.85Z"/></svg>{% endfor %}</p>
+            <blockquote class="mt-4 flex-1 text-[1.0625rem] leading-relaxed text-pretty">{{ review.text }}</blockquote>
+            <figcaption class="mt-5 flex items-center justify-between gap-3 border-t border-base-300 pt-4 text-[0.875rem]">
+              <span><b class="font-semibold">{{ review.name }}</b>{% if review.city %} <span class="text-base-content/60">· {{ review.city }}</span>{% endif %}</span>
+              {% if review.store %}<span class="rounded-full bg-base-200 px-2.5 py-0.5 text-[0.8125rem] font-medium text-base-content/75">{{ review.store }}</span>{% endif %}
+            </figcaption>
+          </figure>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,11 @@
+{
+  "id": "marquee",
+  "version": "1.0.0",
+  "name": "Marquee",
+  "description": "A festival site that is its own poster: the name at poster size whose letters stretch with the cursor, a halftone field, every photo in two inks, a lineup like a bill, days stacked like flyers and passes as ticket stubs, with calm, complete practical pages.",
+  "category": "event",
+  "original": true,
+  "tags": ["festival", "music", "event", "lineup", "tickets", "timetable", "conference"],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

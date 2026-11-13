@@ -1,0 +1,17 @@
+label: Ticket alerts
+collected: true
+answer: alert-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many sign-ups from here. Please try again in a few minutes."
+  sent: "You're on the list."
+fields:
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: days
+    label: The days you care about
+    kind: list
+    choices: [Friday, Saturday, Sunday]

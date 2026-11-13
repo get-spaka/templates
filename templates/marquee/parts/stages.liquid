@@ -1,0 +1,25 @@
+<section class="bg-base-100 text-base-content" id="stages">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="text-[clamp(3rem,9vw,8rem)]" data-rise>Four stages</h2>
+      <p class="max-w-sm text-pretty">La Raffinerie made sugar from 1907 to 1994. Its tank, its press hall, its roof and the barge on its basin are where the music is.</p>
+    </div>
+    <ul class="mt-12 divide-y-2 divide-base-content border-y-2 border-base-content">
+      {% for stage in data.stages %}
+      <li class="grid gap-6 py-8 md:grid-cols-[18rem_1fr_16rem] md:items-center md:gap-10">
+        <div class="{% cycle 'duotone', 'duotone-secondary' %} aspect-[4/3] rounded-box border-2 border-base-content">
+          {% if stage.image %}<img src="{{ stage.image }}" class="size-full object-cover">{% endif %}
+        </div>
+        <div>
+          <h3 class="text-5xl md:text-6xl">{{ stage.name }}</h3>
+          <p class="mt-2 text-lg text-pretty">{{ stage.kind }}. {{ stage.plays }}.</p>
+        </div>
+        <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-2 text-sm">
+          <dt class="tag text-sm">Capacity</dt><dd>{{ stage.capacity }}</dd>
+          <dt class="tag text-sm">Access</dt><dd class="text-pretty">{{ stage.access }}</dd>
+        </dl>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

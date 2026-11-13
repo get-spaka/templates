@@ -1,0 +1,13 @@
+{
+  "name": "Corner wordmark footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A dark footer with the address, the hours, the pages and the social links in four columns, above the business's name across the whole width.",
+  "tags": ["footer", "wordmark", "address", "links"],
+  "mood": ["bold", "dark"],
+  "synonyms": ["footer", "site footer", "bottom", "wordmark", "pied de page", "bas de page", "pied", "signature"],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

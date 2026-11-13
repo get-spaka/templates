@@ -1,0 +1,16 @@
+label: Testimonials
+fields:
+  - name: quote
+    label: Quote
+    kind: text
+    required: true
+  - name: name
+    label: Name
+    kind: text
+  - name: role
+    label: Role
+    kind: text
+  - name: company
+    label: Company
+    kind: text
+order: [ines-moreau, tomas-varga, priya-raman, jonah-brandt, aiko-tanaka]

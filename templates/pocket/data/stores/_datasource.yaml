@@ -1,0 +1,14 @@
+label: Stores
+fields:
+  - name: label
+    label: Store name
+    kind: text
+    required: true
+  - name: store
+    label: Store
+    kind: choice
+    choices: [app-store, google-play]
+  - name: url
+    label: Link to the app
+    kind: link
+order: [app-store, google-play]

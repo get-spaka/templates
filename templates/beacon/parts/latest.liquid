@@ -1,0 +1,20 @@
+<section class="border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-12 md:px-8 md:py-28">
+    <div class="md:col-span-4">
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase" data-reveal>Fig. 10 · Changelog</p>
+      <h2 class="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-tight text-balance" data-reveal>Latest updates. <span class="text-base-content/45">Every two weeks.</span></h2>
+      <a href="/updates" class="group mt-8 inline-flex items-center gap-2 text-sm text-base-content/80 hover:text-primary" data-reveal>All updates <span class="beacon-arrow" aria-hidden="true">→</span></a>
+    </div>
+    <ul class="border-t border-base-300 md:col-span-8">
+      {% for update in data.updates limit: 3 %}
+      <li class="border-b border-base-300" data-reveal>
+        <a href="/updates/{{ update.id }}" class="group grid gap-2 py-6 sm:grid-cols-[12rem_minmax(0,1fr)_auto] sm:items-baseline sm:gap-6">
+          <span class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">{% if update.date %}<time datetime="{{ update.date }}">{{ update.date | date: "%b %-d, %Y" }}</time>{% endif %}{% if update.version %} · v{{ update.version }}{% endif %}</span>
+          <span class="text-xl tracking-tight transition-colors group-hover:text-primary">{{ update.title }}</span>
+          <span class="beacon-arrow hidden text-base-content/50 sm:block" aria-hidden="true">→</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

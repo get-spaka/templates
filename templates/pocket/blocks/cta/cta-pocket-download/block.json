@@ -1,0 +1,19 @@
+{
+  "name": "Pocket download band",
+  "kind": "cta",
+  "source": "upstart",
+  "description": "A closing download band over a soft glow: a large headline, one sentence, the store buttons and the rating, beside a phone whose Today screen is drawn in HTML, rising from the band's bottom edge, with a notification card that drops from its island.",
+  "tags": ["cta", "download", "app", "phone", "store buttons", "notification", "glow"],
+  "mood": ["friendly", "playful", "colorful"],
+  "synonyms": [
+    "download",
+    "get the app",
+    "call to action",
+    "app download",
+    "télécharger",
+    "appel à l'action",
+    "application",
+    "télécharger l'app"
+  ],
+  "data": { "name": "plants", "family": "collection" }
+}

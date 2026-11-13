@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Letters — The Long Way Round</title>
+<meta name="description" content="Every letter of The Long Way Round since 2021, by year and by topic: walks, essays and notes about the streets, buildings, rivers and names of Providence.">
+<meta property="og:title" content="Letters — The Long Way Round">
+<meta property="og:description" content="Every letter since 2021, by year and by topic.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-12 pb-12 md:px-10 md:pt-20 md:pb-16">
+    <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary lining-nums" data-reveal>{{ data.blog.first.number }} letters since 2021</p>
+    <h1 class="mt-4 text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] font-normal tracking-tight" data-reveal>Letters</h1>
+    <p class="mt-6 max-w-2xl text-xl leading-snug text-pretty text-base-content/75 md:text-2xl" data-reveal>Walks, essays, short notes and reading lists, newest first. Every one was sent on a Sunday morning.</p>
+    <nav aria-label="Topics" class="mt-10" data-reveal>
+      <ul class="flex flex-wrap gap-2">
+        {% for topic in data.topics %}
+        <li><a href="/topics/{{ topic.id }}" class="margin-topic btn btn-sm btn-outline border-base-300 font-medium">{{ topic.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</section>
+{% render 'archive' %}
+{% render 'letterbox' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

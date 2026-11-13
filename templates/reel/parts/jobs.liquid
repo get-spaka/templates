@@ -1,0 +1,26 @@
+<section class="bg-base-100 text-base-content" id="jobs">
+  <div class="mx-auto max-w-[110rem] px-5 py-20 md:px-10 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="text-[clamp(2.75rem,8vw,7.5rem)]">Join us</h2>
+      <p class="max-w-sm text-lg text-pretty text-base-content/75">We hire slowly and keep people for a long time. Three seats are open for 2027.</p>
+    </div>
+    <ul class="mt-12 space-y-3">
+      {% for item in data.jobs %}
+      <li>
+        <details class="group rounded-box bg-base-200">
+          <summary class="flex cursor-pointer list-none flex-wrap items-center gap-x-6 gap-y-3 p-5 md:flex-nowrap md:p-7 [&::-webkit-details-marker]:hidden">
+            <h3 class="normal-width min-w-0 flex-1 basis-full text-2xl leading-[0.95] md:basis-auto md:text-4xl">{{ item.title }}</h3>
+            <span class="meta text-base-content/75">{{ item.type }} · {{ item.location }}</span>
+            <span class="meta rounded-full bg-accent px-3 py-1.5 text-accent-content">Hiring</span>
+            <span class="ml-auto text-3xl leading-none font-light group-open:rotate-45 motion-safe:transition-transform md:ml-0" aria-hidden="true">+</span>
+          </summary>
+          <div class="grid gap-6 border-t border-base-300 p-5 md:grid-cols-[1fr_1.4fr] md:gap-12 md:p-7">
+            <p class="text-xl leading-snug font-semibold text-pretty">{{ item.summary }}</p>
+            <div class="space-y-4 leading-relaxed text-pretty text-base-content/85 [&_a]:font-bold [&_a]:text-primary [&_a]:underline">{{ item.body }}</div>
+          </div>
+        </details>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

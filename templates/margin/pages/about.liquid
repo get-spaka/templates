@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>About — The Long Way Round</title>
+<meta name="description" content="Nell Ashby has walked Providence one street at a time since 2021, and writes about it every Sunday in The Long Way Round.">
+<meta property="og:title" content="About — The Long Way Round">
+<meta property="og:description" content="Nell Ashby has walked Providence one street at a time since 2021, and writes about it every Sunday.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-12 pb-16 md:px-10 md:pt-20 md:pb-24">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-10">
+      <div class="md:col-span-4" data-reveal>
+        <div class="flex aspect-[4/5] w-40 items-center justify-center rounded-box bg-accent text-accent-content md:w-full" aria-hidden="true">
+          <span class="text-6xl tracking-tight md:text-9xl">NA</span>
+        </div>
+      </div>
+      <div class="md:col-span-8">
+        <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary" data-reveal>About</p>
+        <h1 class="mt-4 text-[clamp(2.75rem,6vw,5rem)] leading-[1] font-normal tracking-tight text-balance" data-reveal>I walk one city, slowly, and write it down</h1>
+        <div class="mt-8 max-w-[62ch] space-y-5 text-lg leading-[1.65] text-pretty md:text-xl" data-text data-reveal>
+          <p>I'm Nell Ashby. I have lived in Providence for fourteen years and walked it, properly, for five. The Long Way Round is a letter I send every Sunday morning about what I find: the public stairs, the rivers under the streets, the mills, the ghost signs on the brick and the names on the corners.</p>
+          <p>Before this I was a copy editor at a newspaper, which is where I learned to check a date twice and to love a footnote. I still check the dates twice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24">
+    <div class="grid gap-10 border-t border-base-content pt-10 md:grid-cols-12 md:gap-10 md:pt-14">
+      <div class="md:col-span-5" data-reveal>
+        <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary">How it began</p>
+        <h2 class="mt-3 text-3xl leading-[1.1] tracking-tight text-balance md:text-5xl">A car that broke down, and a year of walking to work</h2>
+      </div>
+      <div class="max-w-[62ch] space-y-5 text-lg leading-[1.65] text-pretty md:col-span-7" data-text data-reveal>
+        <p>In the spring of 2021 my car died on the hill and I could not afford another one. So I walked to work, forty minutes each way, and because I get bored I took a different street every day.</p>
+        <p>By the summer I had a notebook full of things I had passed for a decade without seeing. I started writing them up for six friends. There are rather more of you now, and I still walk to work.</p>
+      </div>
+      <div class="grid grid-cols-5 gap-4 md:col-span-12 md:mt-6 md:gap-6">
+        <figure class="col-span-3" data-reveal>
+          <div class="aspect-[4/3] rounded-box" data-ink><img src="/media/aerial.jpg" class="size-full object-cover"></div>
+          <figcaption class="mt-3 text-sm text-pretty text-base-content/75">The city from the air: the rivers meet downtown, and the hills rise on both sides.</figcaption>
+        </figure>
+        <figure class="col-span-2" data-reveal>
+          <div class="aspect-[3/4] rounded-box md:aspect-[4/5]" data-ink><img src="/media/field-notebook.jpg" class="size-full object-cover"></div>
+          <figcaption class="mt-3 text-sm text-pretty text-base-content/75">A route sketched in pencil, the way every walk starts.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+{% render 'about-now' %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-16 md:px-10 md:pt-24">
+    <div class="max-w-2xl" data-reveal>
+      <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary">Colophon</p>
+      <h2 class="mt-3 text-3xl leading-[1.1] tracking-tight text-balance md:text-4xl">How the letter is made</h2>
+    </div>
+    <dl class="mt-10 grid gap-8 border-t border-base-300 pt-8 sm:grid-cols-2 md:grid-cols-4" data-reveal>
+      <div>
+        <dt class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">Set in</dt>
+        <dd class="mt-2 text-pretty">Literata, a serif made for reading on screens, and Schibsted Grotesk for the small print.</dd>
+      </div>
+      <div>
+        <dt class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">The pictures</dt>
+        <dd class="mt-2 text-pretty">My own, and old maps and prints of the city, all printed in one green ink.</dd>
+      </div>
+      <div>
+        <dt class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">When it comes</dt>
+        <dd class="mt-2 text-pretty">Every Sunday by eight in the morning, about forty-eight times a year. Free.</dd>
+      </div>
+      <div>
+        <dt class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">Where</dt>
+        <dd class="mt-2 text-pretty">Written in Providence, Rhode Island, mostly on foot, since 2021.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+{% render 'write-to-me' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<section class="bg-neutral text-neutral-content" id="getting-there">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <p class="tag text-sm md:text-base">Getting there</p>
+    <address class="poster mt-5 text-[clamp(3rem,9vw,8.5rem)] not-italic" style="--wdth: 58">La Raffinerie<br><span class="text-primary">Quai Nord,</span> 13002 Marseille</address>
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {% for item in data.travel %}{% if item.home %}
+      <li class="rounded-box border-2 border-neutral-content/40 p-6">
+        <h3 class="text-2xl">{{ item.mode }}</h3>
+        <p class="mt-3 text-pretty text-neutral-content/85">{{ item.text }}</p>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+    <div class="mt-10 flex flex-col gap-6 border-t-2 border-neutral-content/30 pt-6 md:flex-row md:items-center md:justify-between">
+      <p class="max-w-2xl text-pretty">Every stage, bar and toilet block is reachable without a step, and there is a quiet room behind the machine hall.</p>
+      <a href="/info" class="btn btn-primary tag text-base self-start md:self-auto">Plan your visit →</a>
+    </div>
+  </div>
+</section>

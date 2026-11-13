@@ -1,0 +1,17 @@
+<section id="faq" class="border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-12 md:px-8 md:py-28">
+    <div class="md:col-span-4">
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase" data-reveal>Fig. 11 · Questions</p>
+      <h2 class="mt-5 text-[clamp(2rem,4vw,3rem)] leading-[1.05] tracking-tight text-balance" data-reveal>Asked often. <span class="text-base-content/45">Answered plainly.</span></h2>
+      <p class="mt-8 text-sm leading-relaxed text-base-content/70" data-reveal>Still curious?<br><a href="mailto:hello@nightjar.dev" class="text-base-content underline decoration-base-content/30 underline-offset-4 hover:text-primary hover:decoration-primary">hello@nightjar.dev</a>. All five of us read it.</p>
+    </div>
+    <div class="space-y-2 md:col-span-8">
+      {% for item in data["home-faq"] %}
+      <details class="group collapse collapse-plus rounded-box border border-base-300 bg-base-200/60 open:bg-base-200" {% if forloop.first %}open{% endif %} data-reveal>
+        <summary class="collapse-title pr-12 text-[1.0625rem] font-normal">{{ item.question }}</summary>
+        <div class="collapse-content text-pretty leading-relaxed text-base-content/70 [&_p+p]:mt-3">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

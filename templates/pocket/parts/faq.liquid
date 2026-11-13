@@ -1,0 +1,17 @@
+<section id="faq" class="scroll-mt-24 bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[0.9fr_1.6fr] lg:gap-16">
+    <div>
+      <p class="kicker text-primary" data-reveal>Questions</p>
+      <h2 class="mt-4 text-[clamp(2.5rem,5vw,4rem)] text-balance" data-reveal>Asked <mark>often</mark></h2>
+      <p class="mt-5 text-lg leading-relaxed text-pretty text-base-content/75" data-reveal>Something else? The <a href="/help" class="font-semibold text-primary underline underline-offset-4">help center</a> has the rest, and we reply within a day.</p>
+    </div>
+    <div class="space-y-3">
+      {% for item in data["home-faq"] %}
+      <details class="group collapse collapse-plus rounded-box border border-base-300 bg-base-100 open:soft-shadow" {% if forloop.first %}open{% endif %} data-reveal>
+        <summary class="collapse-title pr-12 text-[1.125rem] font-semibold">{{ item.question }}</summary>
+        <div class="collapse-content leading-relaxed text-pretty text-base-content/75 [&_p+p]:mt-3">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

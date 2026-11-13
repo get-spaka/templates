@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Work — Noor Haddad</title>
+<meta name="description" content="Houses, public buildings, hotels and objects photographed by Noor Haddad since 2014.">
+<meta property="og:title" content="Work — Noor Haddad">
+<meta property="og:description" content="Houses, public buildings, hotels and objects photographed by Noor Haddad since 2014.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[96rem] px-5 pt-10 pb-16 md:px-10 md:pt-16 md:pb-28">
+    <h1 class="text-[clamp(4rem,15vw,14rem)] leading-[0.85] font-light tracking-tighter" data-split>Work</h1>
+    <div class="mt-10 flex flex-col gap-6 md:mt-14 md:flex-row md:items-end md:justify-between">
+      <p class="max-w-xl text-2xl leading-[1.15] font-light tracking-tight text-pretty md:text-3xl" data-reveal>Commissions since 2014, <em>newest first.</em></p>
+      {% assign categories = "Residential,Public,Hospitality,Objects" | split: "," %}
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Show" data-filters data-reveal>
+        <button type="button" class="btn btn-sm btn-outline font-normal" aria-pressed="true" data-filter="">All</button>
+        {% for category in categories %}
+        <button type="button" class="btn btn-sm btn-outline font-normal" aria-pressed="false" data-filter="{{ category }}">{{ category }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="mt-12 flex items-end justify-between gap-6 border-b border-base-content pb-4">
+      <h2 class="text-sm font-medium">All projects</h2>
+      <p class="hidden font-mono text-[0.65rem] tracking-[0.12em] uppercase text-base-content/60 sm:block">Category · Place · Year</p>
+    </div>
+    <ol data-index>
+      {% for item in data.projects %}
+      <li data-category="{{ item.category }}">
+        <a href="/work/{{ item.id }}" class="group grid grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-1 border-b border-base-300 py-4 transition-colors hover:text-primary md:grid-cols-[4rem_1fr_10rem_12rem_4rem_5rem] md:py-6" data-index-row data-image="{{ item.cover }}" data-id="{{ item.id }}">
+          <span class="font-mono text-xs text-base-content/60 group-hover:text-primary">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <span class="text-2xl font-light tracking-tight md:text-4xl">{{ item.title }}</span>
+          <span class="col-start-2 font-mono text-[0.65rem] tracking-[0.12em] uppercase text-base-content/60 md:col-start-auto md:text-xs">{{ item.category }}</span>
+          <span class="hidden font-mono text-xs tracking-[0.12em] uppercase text-base-content/60 md:block">{{ item.location }}</span>
+          <span class="hidden font-mono text-xs text-base-content/60 md:block">{{ item.year }}</span>
+          {% if item.cover %}<img src="{{ item.cover }}" class="col-start-3 row-span-2 row-start-1 aspect-[4/3] w-20 object-cover md:col-start-auto md:row-span-1 md:row-start-auto md:w-20 md:justify-self-end" data-thumb style="view-transition-name: project-{{ item.id }}">{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% render 'contact' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Lineup — Hot Static 2027</title>
+<meta name="description" content="All 41 acts of Hot Static, 9 to 11 July 2027 on the north docks of Marseille, by day, with their stage, time and genre.">
+<meta property="og:title" content="Lineup — Hot Static 2027">
+<meta property="og:description" content="All 41 acts of Hot Static, 9 to 11 July 2027 on the north docks of Marseille, by day, with their stage, time and genre.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="relative overflow-hidden text-secondary-content" data-halftone>
+  <div class="relative z-10 mx-auto max-w-[90rem] px-4 pt-28 pb-12 md:px-10 md:pt-36 md:pb-16">
+    <p class="tag text-sm md:text-base">41 acts · 9—11 July 2027</p>
+    <h1 class="poster mt-3 text-[clamp(3rem,17vw,12.5rem)] md:text-[14vw] 2xl:text-[12.5rem]" data-stretch>Lineup</h1>
+    <div class="mt-8 flex flex-wrap gap-2" role="group" aria-label="Show the acts of" data-filters>
+      <button type="button" class="btn btn-outline tag border-secondary-content text-secondary-content" aria-pressed="true" data-filter="">All days</button>
+      {% for day in data.days %}
+      <button type="button" class="btn btn-outline tag border-secondary-content text-secondary-content" aria-pressed="false" data-filter="{{ day.title }}">{{ day.title }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% render 'bill' %}
+{% render 'acts' %}
+{% render 'alert' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

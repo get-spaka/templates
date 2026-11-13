@@ -1,0 +1,50 @@
+<section id="support" class="scroll-mt-24 bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+    <div>
+      <p class="kicker text-primary" data-reveal>Support</p>
+      <h2 class="mt-4 text-[clamp(2.5rem,5vw,4rem)] text-balance" data-reveal>Still <mark>stuck?</mark></h2>
+      <p class="mt-5 text-lg leading-relaxed text-pretty text-base-content/75" data-reveal>Tell us what's going on. We reply within a day, Monday to Friday, and a real person reads every message.</p>
+      <figure class="mt-8 hidden overflow-hidden rounded-box lg:block" data-reveal>
+        <img src="/media/watering-can.jpg" class="aspect-[4/3] w-full object-cover">
+      </figure>
+    </div>
+    <form hx-post="/_data/support" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#support-problems swap:innerHTML" class="grid grid-cols-1 gap-x-4 gap-y-1 self-start rounded-box border border-base-300 bg-base-100 p-6 soft-shadow sm:grid-cols-2 md:p-8" data-reveal>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+        <input name="name" type="text" class="input input-lg w-full text-base" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+        <input name="email" type="email" class="input input-lg w-full text-base" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Your phone</legend>
+        <select name="device" class="select select-lg w-full text-base">
+          <option value="">Choose one</option>
+          <option>iPhone</option>
+          <option>Android</option>
+        </select>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Topic</legend>
+        <select name="topic" class="select select-lg w-full text-base">
+          <option value="">Choose one</option>
+          <option>Getting started</option>
+          <option>Reminders</option>
+          <option>Plus and billing</option>
+          <option>Account and data</option>
+          <option>Something else</option>
+        </select>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend text-[0.9375rem]">Your message</legend>
+        <textarea name="message" class="textarea w-full rounded-box text-base" rows="5" required maxlength="5000" placeholder="What happened, and what did you expect?"></textarea>
+      </fieldset>
+      <div id="support-problems" class="empty:hidden sm:col-span-2"></div>
+      <div class="mt-3 flex flex-wrap items-center justify-between gap-4 sm:col-span-2">
+        <p class="text-[0.9375rem] text-base-content/65">We reply within a day, Monday to Friday.</p>
+        <button type="submit" class="btn btn-primary h-12 px-7 text-base">Send message</button>
+      </div>
+    </form>
+  </div>
+</section>

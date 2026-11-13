@@ -1,0 +1,31 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24">
+    {% capture years %}{% for post in data.blog %}{{ post.date | date: "%Y" }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+    {% assign years = years | split: "," | uniq %}
+    <div class="space-y-14 md:space-y-20">
+      {% for year in years %}
+      <div class="grid gap-2 border-t border-base-content pt-5 md:grid-cols-12 md:gap-10 md:pt-6">
+        <h2 class="text-4xl leading-none tracking-tight lining-nums md:col-span-3 md:text-6xl" data-reveal>{{ year }}</h2>
+        <ol class="md:col-span-9">
+          {% for post in data.blog %}{% assign posted = post.date | date: "%Y" %}{% if posted == year %}
+          <li data-reveal>
+            <a href="/blog/{{ post.id }}" class="group flex flex-col gap-1 border-b border-base-300 py-4 md:grid md:grid-cols-[6.5rem_3rem_1fr] md:items-baseline md:gap-x-6 md:py-5 md:first:pt-0">
+              <span class="font-sans text-sm text-base-content/70 lining-nums tabular-nums"><time datetime="{{ post.date }}">{{ post.date | date: "%-d %B" }}</time><span class="text-secondary md:hidden"> · No. {{ post.number }}</span></span>
+              <span class="hidden font-sans text-sm font-semibold text-secondary lining-nums tabular-nums md:block">{{ post.number }}</span>
+              <span class="block">
+                <h3 class="text-xl leading-snug font-medium text-balance transition-colors group-hover:text-primary md:text-2xl">{{ post.title }}</h3>
+                <span class="mt-1.5 block font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65 lining-nums">{{ post.category }} · {{ post.topics | join: " · " }} · {{ post.minutes }} min</span>
+              </span>
+            </a>
+          </li>
+          {% endif %}{% endfor %}
+        </ol>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="mt-14 flex flex-col gap-4 rounded-box bg-base-200 p-6 sm:flex-row sm:items-center sm:justify-between md:p-8" data-reveal>
+      <p class="text-xl leading-snug tracking-tight text-pretty md:text-2xl">Not sure where to start? Let the archive choose.</p>
+      <a href="/blog/{{ data.blog.last.id }}" class="btn btn-primary shrink-0" data-lucky-dip data-posts="{% for item in data.blog %}/blog/{{ item.id }} {% endfor %}">Read one at random</a>
+    </div>
+  </div>
+</section>

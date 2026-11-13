@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.48 0.1 200);
+  --theme-color-primary-content: oklch(0.985 0.006 220);
+  --theme-color-secondary: oklch(0.9 0.09 165);
+  --theme-color-secondary-content: oklch(0.24 0.035 265);
+  --theme-color-accent: oklch(0.86 0.08 305);
+  --theme-color-accent-content: oklch(0.24 0.035 265);
+  --theme-color-neutral: oklch(0.26 0.04 275);
+  --theme-color-neutral-content: oklch(0.97 0.01 220);
+  --theme-color-surface: oklch(0.985 0.006 220);
+  --theme-color-surface-alt: oklch(0.94 0.035 230);
+  --theme-color-border: oklch(0.87 0.022 245);
+  --theme-color-text: oklch(0.24 0.035 265);
+  --theme-font-heading: "Fredoka", ui-rounded, ui-sans-serif, system-ui, sans-serif;
+  --theme-font-body: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 1.5rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

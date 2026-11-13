@@ -1,0 +1,21 @@
+<section class="bg-base-100 text-base-content" id="hours">
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-4 py-24 md:grid-cols-12 md:gap-10 md:px-10 md:py-32">
+    <div class="md:col-span-5" data-reveal>
+      <p class="tag text-primary">The hours</p>
+      <h2 class="mt-6 text-5xl text-balance md:text-6xl">Five o'clock until the last glass</h2>
+      <p class="tag mt-8 inline-flex items-center gap-3 border border-base-300 px-5 py-3" data-tonight data-open="Open now · kitchen until {kitchen}" data-bar="Open now · the bar until {closes}" data-midnight="midnight" data-later="Open tonight from {opens}" data-next="Closed tonight · back {day} at {opens}">
+        <span class="tonight-dot size-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+        <span data-tonight-text>Tuesday to Saturday, 5 pm till late</span>
+      </p>
+    </div>
+    <ul class="divide-y divide-base-300 border-y border-base-300 md:col-span-7 md:col-start-6" data-reveal>
+      {% for item in data.hours %}
+      <li class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5" data-hours-row data-weekday="{{ item.weekday }}" data-day="{{ item.day }}" data-opens="{{ item.opens }}" data-kitchen="{{ item.kitchen }}" data-closes="{{ item.closes }}">
+        <span class="display text-3xl md:text-4xl">{{ item.day }}</span>
+        <span class="tag text-sm">{{ item.hours }}</span>
+        {% if item.note %}<span class="col-span-2 text-sm text-base-content/70">{{ item.note }}</span>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

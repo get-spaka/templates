@@ -1,0 +1,16 @@
+label: Who we buy from
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: what
+    label: What they send
+    kind: text
+  - name: place
+    label: Where
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [halfmoon-cove-oyster-co, the-sea-smoke, ridgeback-farm, two-ponds-dairy, fernald-woodlots]

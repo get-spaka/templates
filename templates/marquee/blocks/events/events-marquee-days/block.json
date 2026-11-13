@@ -1,0 +1,22 @@
+{
+  "name": "Marquee day flyers",
+  "kind": "events",
+  "source": "upstart",
+  "description": "One card per day, each slightly askew, alternating the main, second and dark colors, with the day at poster size, its date, gates and last set, a line and a two-ink photo; as the page scrolls they stick and pile up like flyers pasted on a wall.",
+  "tags": ["days", "program", "festival", "schedule", "cards", "stack"],
+  "mood": ["bold", "playful", "colorful"],
+  "synonyms": [
+    "days",
+    "festival days",
+    "program by day",
+    "flyers",
+    "jours",
+    "programme par jour",
+    "journées",
+    "affichettes"
+  ],
+  "data": {
+    "name": "days",
+    "family": "collection"
+  }
+}

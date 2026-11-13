@@ -1,0 +1,11 @@
+{
+  "id": "folio",
+  "version": "1.0.0",
+  "name": "Folio",
+  "description": "A quiet, editorial portfolio: a numbered index of projects whose pictures follow the cursor, the name at poster size, a page per project and small signs that someone is there.",
+  "category": "portfolio",
+  "original": false,
+  "tags": ["photographer", "architect", "designer", "studio", "projects", "index"],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

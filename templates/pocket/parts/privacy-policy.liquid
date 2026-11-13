@@ -1,0 +1,27 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[15rem_1fr] lg:gap-16">
+    <nav aria-label="On this page" class="toc lg:sticky lg:top-28 lg:self-start">
+      <h2 class="kicker text-base-content/60">The policy</h2>
+      <ol class="mt-4 flex flex-wrap gap-2 lg:flex-col lg:gap-0 lg:border-l lg:border-base-300">
+        {% for section in data["privacy-sections"] %}
+        <li><a href="#policy-{{ section.id }}" class="block rounded-full border border-base-300 px-3.5 py-1.5 text-[0.9375rem] text-base-content/70 hover:text-primary lg:-ml-px lg:rounded-none lg:border-0 lg:border-l-2 lg:border-transparent lg:py-2 lg:pl-4 lg:hover:border-primary">{{ section.title }}</a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+    <div class="max-w-3xl">
+      {% for section in data["privacy-sections"] %}
+      <div id="policy-{{ section.id }}" class="scroll-mt-28 border-b border-base-300 pb-10 {% unless forloop.first %}pt-10{% endunless %}" data-reveal>
+        <h2 class="flex items-baseline gap-4 text-[clamp(1.75rem,3vw,2.25rem)]"><span class="numeral text-[0.8em] text-accent">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>{{ section.title }}</h2>
+        <div class="pocket-prose mt-5 text-[1.0625rem] leading-relaxed text-pretty text-base-content/80">{{ section.body }}</div>
+      </div>
+      {% endfor %}
+      <div class="mt-10 flex flex-col gap-5 rounded-box bg-base-200 p-6 sm:flex-row sm:items-center md:p-8" data-reveal>
+        <span class="grid size-12 shrink-0 place-items-center rounded-full bg-accent font-heading text-lg font-semibold text-accent-content" aria-hidden="true">LV</span>
+        <div class="flex-1">
+          <p class="text-[1.125rem] font-semibold">Questions about your data?</p>
+          <p class="mt-1 text-base-content/75">Lotte de Vries looks after data at Fernway. Write to her at <a href="mailto:privacy@fernway.app" class="font-semibold text-primary underline underline-offset-4">privacy@fernway.app</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

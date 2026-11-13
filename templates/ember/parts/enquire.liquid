@@ -1,0 +1,48 @@
+<section class="bg-base-200 text-base-content" id="enquire">
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-4 py-24 md:grid-cols-12 md:gap-10 md:px-10 md:py-32">
+    <div class="md:col-span-4" data-reveal>
+      <p class="tag text-primary">Enquire</p>
+      <h2 class="mt-6 text-5xl text-balance md:text-6xl">Tell us about your evening</h2>
+      <p class="prose-ember mt-6">Rafael answers every enquiry within two days. For an evening in the next fortnight, call us after four on <a href="tel:+12075550162" class="text-primary hover:underline">+1 207 555 0162</a>.</p>
+    </div>
+    <form hx-post="/_data/enquiries" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#enquiries-problems swap:innerHTML" class="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2 md:col-span-7 md:col-start-6">
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-name">Your name</label>
+        <input id="enquiry-name" name="name" type="text" required maxlength="200" autocomplete="name" class="input field-ember w-full">
+      </fieldset>
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-email">Your email</label>
+        <input id="enquiry-email" name="email" type="email" required maxlength="200" autocomplete="email" class="input field-ember w-full">
+      </fieldset>
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-phone">Your phone (optional)</label>
+        <input id="enquiry-phone" name="phone" type="tel" maxlength="30" autocomplete="tel" class="input field-ember w-full">
+      </fieldset>
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-date">The date you have in mind</label>
+        <input id="enquiry-date" name="date" type="date" class="input field-ember w-full">
+      </fieldset>
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-guests">Guests</label>
+        <input id="enquiry-guests" name="guests" type="number" required min="2" max="60" value="12" class="input field-ember w-full">
+      </fieldset>
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag" for="enquiry-kind">The kind of evening</label>
+        <select id="enquiry-kind" name="kind" class="select field-ember w-full">
+          <option>A dinner in the Cellar Room</option>
+          <option>The whole house</option>
+          <option>A wine dinner of our own</option>
+          <option>Something else</option>
+        </select>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <label class="fieldset-legend tag" for="enquiry-message">Tell us about it</label>
+        <textarea id="enquiry-message" name="message" rows="5" maxlength="4000" class="textarea field-ember w-full rounded-box" placeholder="The occasion, the guests, a wine you love…"></textarea>
+      </fieldset>
+      <div id="enquiries-problems" class="sm:col-span-2"></div>
+      <div class="mt-4 sm:col-span-2">
+        <button type="submit" class="btn btn-primary btn-lg tag w-full sm:w-auto">Send the enquiry</button>
+      </div>
+    </form>
+  </div>
+</section>

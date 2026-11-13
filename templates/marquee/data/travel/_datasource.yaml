@@ -1,0 +1,13 @@
+label: Getting there
+fields:
+  - name: mode
+    label: How
+    kind: text
+    required: true
+  - name: text
+    label: Directions
+    kind: text
+  - name: home
+    label: On the home page
+    kind: boolean
+order: [metro, tram, bike, night-bus, train, car]

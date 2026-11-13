@@ -1,0 +1,26 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-24 md:px-10 md:py-32">
+    <div class="max-w-2xl" data-reveal>
+      <p class="tag text-primary">Two ways to gather</p>
+      <h2 class="mt-6 text-5xl md:text-6xl">The vaults, or the whole house</h2>
+    </div>
+    <ul class="mt-16 space-y-24 md:space-y-32">
+      {% for room in data["private-rooms"] %}
+      <li class="grid items-center gap-10 md:grid-cols-12 md:gap-12">
+        <div class="aspect-[4/3] overflow-hidden md:col-span-7 {% cycle '', 'md:order-2 md:col-start-6' %}" data-curtain data-grade>
+          {% if room.image %}<img src="{{ room.image }}" class="size-full object-cover">{% else %}<div class="size-full bg-linear-to-br from-secondary/50 to-neutral"></div>{% endif %}
+        </div>
+        <div class="md:col-span-5 {% cycle 'md:col-start-8', 'md:order-1 md:col-start-1 md:row-start-1' %}" data-reveal>
+          <h3 class="text-4xl md:text-5xl">{{ room.name }}</h3>
+          <dl class="mt-8 grid grid-cols-2 gap-6 border-y border-base-300 py-6">
+            <div><dt class="tag text-base-content/70">Seats</dt><dd class="display mt-2 text-5xl">{{ room.seats }}</dd></div>
+            <div><dt class="tag text-base-content/70">Minimum spend</dt><dd class="mt-2 text-lg leading-snug">{{ room.minimum }}</dd></div>
+          </dl>
+          <p class="prose-ember mt-6">{{ room.text }}</p>
+          <a href="#enquire" class="btn btn-outline btn-primary tag mt-8">Enquire about {{ room.name | downcase }}</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

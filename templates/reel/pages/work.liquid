@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Work — Halfvolt</title>
+<meta name="description" content="Identities, motion systems, films and websites made by Halfvolt in Rotterdam for a water taxi line, a cinema, a skate hall, a bike maker, a night market and a wine importer.">
+<meta property="og:title" content="Work — Halfvolt">
+<meta property="og:description" content="Identities, motion systems, films and websites made by Halfvolt in Rotterdam.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="overflow-x-clip bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[110rem] px-5 pt-12 pb-20 md:px-10 md:pt-20 md:pb-28">
+    <p class="meta text-base-content/70">Cases · 2023—2026</p>
+    <h1 class="mt-6 text-[clamp(3.25rem,14vw,13rem)] leading-[0.82] tracking-[-0.02em]" data-kinetic>
+      <span data-drift="left">Work</span>
+      <span data-drift="right" class="narrow font-bold text-primary">({% if data.cases.size < 10 %}0{% endif %}{{ data.cases.size }})</span>
+    </h1>
+    <div class="mt-10 flex flex-col gap-6 md:mt-14 md:flex-row md:items-end md:justify-between">
+      <p class="max-w-xl text-xl leading-snug text-pretty md:text-2xl">Brands for people who move: on the water, on boards, on bikes and on Friday nights.</p>
+      {% assign kinds = "Brand,Motion,Film,Digital" | split: "," %}
+      <div class="flex flex-wrap gap-2" role="group" aria-label="Show" data-filters>
+        <button type="button" class="btn btn-outline btn-sm border-base-300 md:btn-md" aria-pressed="true" data-filter="">All</button>
+        {% for kind in kinds %}
+        <button type="button" class="btn btn-outline btn-sm border-base-300 md:btn-md" aria-pressed="false" data-filter="{{ kind }}">{{ kind }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <ul class="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-x-6 md:gap-y-12 md:pb-48">
+      {% for item in data.cases %}
+      <li class="md:even:translate-y-48" data-disciplines="{{ item.disciplines | join: '|' }}">
+        <a href="/work/{{ item.id }}" class="reel-panel block rounded-box p-4 md:p-6 {% case item.tone %}{% when 'yellow' %}bg-accent text-accent-content{% when 'bone' %}bg-secondary text-secondary-content{% when 'graphite' %}bg-base-200 text-base-content{% else %}bg-primary text-primary-content{% endcase %}" data-cursor="View">
+          <div class="aspect-[4/3] overflow-hidden rounded-box bg-base-100">{% if item.cover %}<img src="{{ item.cover }}" class="size-full object-cover">{% endif %}</div>
+          <div class="mt-5 flex items-start gap-4 md:mt-6 md:gap-6">
+            <span class="narrow text-6xl leading-[0.78] font-bold md:text-8xl">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+            <div class="min-w-0 flex-1">
+              <h2 class="text-[clamp(1.75rem,3.2vw,3.25rem)] leading-[0.85] break-words">{{ item.client }}</h2>
+              <p class="mt-2 text-lg leading-snug font-medium text-pretty">{{ item.title }}</p>
+              <p class="meta mt-3">{{ item.disciplines | join: " · " }} · {{ item.year }}</p>
+            </div>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'clients' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

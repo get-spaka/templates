@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Hot Static 2027</title>
+<meta name="description" content="{{ record.name }} plays {{ record.stage }} on {{ record.day }} at {{ record.start }}, at Hot Static 2027 in Marseille. {{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Hot Static 2027">
+<meta property="og:description" content="{{ record.name }} plays {{ record.stage }} on {{ record.day }} at {{ record.start }}. {{ record.summary }}">
+{% if record.image %}<meta property="og:image" content="{{ record.image }}">{% endif %}
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% assign day = data.days | where: "title", record.day | first %}
+<article class="bg-base-100 text-base-content">
+  <div class="relative overflow-hidden text-secondary-content" data-halftone>
+    <div class="relative z-10 mx-auto max-w-[90rem] px-4 pt-28 pb-12 md:px-10 md:pt-36 md:pb-16">
+      <a href="/lineup" class="tag text-sm hover:underline md:text-base"><span aria-hidden="true">←</span> Lineup · {{ record.day }}</a>
+      <h1 class="poster mt-4 text-[clamp(3.5rem,13vw,12rem)] break-words" data-stretch>{{ record.name }}</h1>
+      <p class="mt-5 max-w-2xl text-2xl leading-tight font-semibold text-balance md:text-3xl">{{ record.summary }}</p>
+    </div>
+  </div>
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-4 py-14 md:px-10 md:py-20 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+    <div>
+      <dl class="grid grid-cols-[6.5rem_1fr] border-t-2 border-base-content text-lg">
+        <dt class="tag border-b-2 border-base-content py-3 text-sm">Day</dt><dd class="border-b-2 border-base-content py-3">{{ record.day }} {{ day.date | date: "%-d July" }}</dd>
+        <dt class="tag border-b-2 border-base-content py-3 text-sm">Time</dt><dd class="border-b-2 border-base-content py-3">{{ record.start }}—{{ record.end }}</dd>
+        <dt class="tag border-b-2 border-base-content py-3 text-sm">Stage</dt><dd class="border-b-2 border-base-content py-3">{{ record.stage }}</dd>
+        <dt class="tag border-b-2 border-base-content py-3 text-sm">From</dt><dd class="border-b-2 border-base-content py-3">{{ record.origin }}</dd>
+        <dt class="tag border-b-2 border-base-content py-3 text-sm">Genre</dt><dd class="border-b-2 border-base-content py-3">{{ record.genre }}</dd>
+      </dl>
+      <div class="mt-8 max-w-xl space-y-4 text-lg leading-relaxed text-pretty">{{ record.bio }}</div>
+      {% if record.listen %}<a href="{{ record.listen }}" class="btn btn-neutral tag mt-8">Listen to {{ record.name }} <span aria-hidden="true">↗</span></a>{% endif %}
+    </div>
+    <div class="relative self-start px-2 pt-4">
+      <figure class="duotone aspect-[4/5] rotate-2 rounded-box border-2 border-base-content">
+        {% if record.image %}<img src="{{ record.image }}" class="size-full object-cover">{% endif %}
+      </figure>
+      <span class="sticker tag absolute -top-2 -left-1 size-28 -rotate-12 rounded-full p-3 text-2xl leading-none md:-left-6 md:size-36 md:text-3xl" data-sticker>{{ record.day | slice: 0, 3 }}<br>{{ day.date | date: "%d" }}</span>
+    </div>
+  </div>
+  {% assign others = data.acts | where: "day", record.day %}
+  <div class="bg-base-200">
+    <div class="mx-auto max-w-[90rem] px-4 py-14 md:px-10 md:py-20">
+      <h2 class="text-[clamp(2.75rem,7vw,6rem)]" data-rise>Also on {{ record.day }}</h2>
+      <ul class="mt-10 grid gap-6 md:grid-cols-3">
+        {% for act in others %}{% if act.id != record.id %}
+        <li>
+          <a href="/lineup/{{ act.id }}" class="group flex h-full flex-col overflow-hidden rounded-box border-2 border-base-content bg-base-100 transition-transform hover:-translate-y-1">
+            <div class="{% cycle 'duotone-secondary', 'duotone' %} aspect-[3/2] border-b-2 border-base-content">
+              {% if act.image %}<img src="{{ act.image }}" class="size-full object-cover">{% endif %}
+            </div>
+            <div class="flex flex-col gap-2 p-5">
+              <p class="tag text-xs">{{ act.start }} · {{ act.stage }}</p>
+              <h3 class="text-3xl group-hover:text-primary">{{ act.name }}</h3>
+            </div>
+          </a>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+      <div class="mt-12 flex flex-col items-start gap-4 rounded-box border-2 border-base-content bg-primary p-6 text-primary-content md:flex-row md:items-center md:justify-between md:p-8">
+        <p class="font-heading text-[clamp(2rem,4vw,3.5rem)] leading-[0.9] font-extrabold uppercase" style="font-stretch: 70%">A day pass for {{ record.day }}, €59</p>
+        <a href="/tickets" class="btn btn-neutral btn-lg tag">Get a {{ record.day }} pass</a>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+<section class="overflow-hidden bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl items-end gap-12 px-5 pt-10 pb-16 md:grid-cols-12 md:gap-8 md:px-8 md:pt-16 md:pb-24">
+    <div class="md:col-span-7">
+      <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70" data-reveal>Sourdough bakery &amp; café · 214 Marlow Street</p>
+      <h1 class="mt-6 text-[clamp(4rem,14vw,10.5rem)] leading-[0.82] font-extrabold tracking-tight uppercase" data-reveal>Bread,<br>baked<br><em>slowly.</em></h1>
+      <p class="mt-8 max-w-md text-lg text-pretty text-base-content/80" data-reveal>Long-fermented loaves, flaky pastries and good coffee, out of our ovens every morning but Monday.</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3" data-reveal>
+        <a href="/menu" class="btn btn-primary btn-lg">See the menu</a>
+        <a href="/visit" class="btn btn-outline btn-lg">Find us</a>
+      </div>
+      <p class="mt-8 inline-flex items-center gap-3 rounded-full bg-accent px-4 py-2 font-mono text-sm text-accent-content" data-open-now data-open="Open now · until {time}" data-later="Opens today at {time}" data-next="Opens {day} at {time}" data-reveal>
+        <span class="size-2 shrink-0 rounded-full bg-success" aria-hidden="true"></span>
+        <span data-open-now-text>Open Tuesday to Sunday from 7 am</span>
+      </p>
+    </div>
+    <div class="relative md:col-span-5" data-reveal>
+      <div class="aspect-[4/5] overflow-hidden rounded-t-full rounded-b-box bg-base-200">
+        <img src="/media/sourdough-loaves.jpg" class="size-full object-cover" data-arch>
+      </div>
+      <div class="absolute -bottom-6 -left-4 grid size-32 place-items-center rounded-full bg-primary text-primary-content md:-left-10 md:size-40" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="absolute inset-0 size-full" data-spin>
+          <defs><path id="corner-stamp-circle" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+          <text font-size="16" fill="currentColor" font-family="DM Mono, monospace"><textPath href="#corner-stamp-circle" textLength="448" lengthAdjust="spacing">BAKED DAILY ✻ SINCE 2019 ✻ BAKED DAILY ✻ SINCE 2019 ✻ </textPath></text>
+        </svg>
+        <svg class="size-9 text-accent md:size-11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 6.1L20 6l-3.6 5.3L22 14l-6.3.5L16 21l-4-5-4 5 .3-6.5L2 14l5.6-2.7L4 6l6.1 2.1z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>

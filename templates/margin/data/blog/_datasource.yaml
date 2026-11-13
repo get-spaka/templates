@@ -1,0 +1,46 @@
+label: Letters
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: number
+    label: Letter no.
+    kind: number
+  - name: category
+    label: Kind of letter
+    kind: choice
+    choices: [Essay, Note, Walk, Reading]
+  - name: season
+    label: Season
+    kind: choice
+    choices: [Winter 2025, Spring 2026, Summer 2026, Autumn 2026, Winter 2026, Spring 2027]
+  - name: date
+    label: Sent on
+    kind: date
+  - name: summary
+    label: The line under the title
+    kind: text
+  - name: cover
+    label: Cover picture
+    kind: image
+  - name: cover_caption
+    label: Cover caption
+    kind: text
+  - name: topics
+    label: Topics
+    kind: list
+  - name: minutes
+    label: Minutes to read
+    kind: number
+  - name: author
+    label: Written by
+    kind: text
+  - name: featured
+    label: Lead letter on the home page
+    kind: boolean
+  - name: body
+    label: The letter
+    kind: markdown
+body: body
+sort: -date

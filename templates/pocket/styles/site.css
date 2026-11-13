@@ -1,0 +1,602 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt).
+   Fredoka is variable in width (75 to 125) and weight (300 to 700); Figtree in weight (300 to 900). */
+@font-face {
+  font-family: "Fredoka";
+  src: url("/fonts/fredoka.woff2") format("woff2");
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+/* Registered so that a ring fills smoothly when its value changes. */
+@property --fill {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+/* In the components layer, so that Tailwind's classes (text-2xl, leading-…) win over them. */
+@layer components {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  /* Headings: Fredoka, semibold, a little narrow (width 85), packed tight. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-stretch: 85%;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+  }
+  h3 {
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  /* Chapter numbers and big figures: "01", "4.8", "$29.99". */
+  .numeral {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-stretch: 100%;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Small labels: chapter kickers, "Most popular" (not daisyUI's .label, a form field's). */
+  .kicker {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* The marker: one word of a heading on a soft pill from the second color to the third. */
+  mark {
+    display: inline-block;
+    color: inherit;
+    background: linear-gradient(100deg, var(--color-secondary), var(--color-accent));
+    border-radius: 9999px;
+    padding: 0.02em 0.24em 0.1em;
+    line-height: 0.92;
+  }
+
+  /* Long texts: help articles and the privacy policy. */
+  .pocket-prose > * + * {
+    margin-top: 1rem;
+  }
+  .pocket-prose h2 {
+    margin-top: 2.25rem;
+    font-size: 1.625rem;
+    line-height: 1.1;
+  }
+  .pocket-prose h3 {
+    margin-top: 1.75rem;
+    font-size: 1.25rem;
+  }
+  .pocket-prose a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .pocket-prose ul,
+  .pocket-prose ol {
+    padding-left: 1.25rem;
+  }
+  .pocket-prose ul {
+    list-style: disc;
+  }
+  .pocket-prose ol {
+    list-style: decimal;
+  }
+  .pocket-prose li + li {
+    margin-top: 0.375rem;
+  }
+  .pocket-prose strong {
+    font-weight: 650;
+    color: var(--color-base-content);
+  }
+}
+
+/* A heading set as a label keeps the body font (the runtime's own h1-h4 rule is outside the layers). */
+:is(h1, h2, h3, h4).kicker {
+  font-family: var(--font-body);
+}
+
+/* ---- The glow: three soft lights in the theme's second color, alternate surface and third color.
+   The section's own background, which shows with no script, in edit mode and without WebGL;
+   once the WebGL glow runs over it (data-running), it gives way. */
+.glow {
+  background-color: var(--color-base-100);
+  background-image:
+    radial-gradient(42% 52% at 18% 30%, oklch(from var(--color-secondary) l c h / 0.85), transparent 70%),
+    radial-gradient(40% 48% at 58% 72%, oklch(from var(--color-base-200) l c h / 0.95), transparent 72%),
+    radial-gradient(44% 54% at 86% 24%, oklch(from var(--color-accent) l c h / 0.8), transparent 70%);
+}
+.glow[data-running] {
+  background-image: none;
+}
+.glow > canvas[data-aurora] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- Store buttons: the template's own pills, a glyph and the store's name (never the official badges). */
+.store-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding: 0.5rem 1.375rem 0.5rem 1rem;
+  border-radius: 9999px;
+  background: var(--color-neutral);
+  color: var(--color-neutral-content);
+  box-shadow: 0 10px 24px -12px oklch(from var(--color-neutral) l c h / 0.5);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.store-pill small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+.store-pill strong {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.store-pill:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+@media (min-width: 768px) {
+  .store-pill small {
+    font-size: 0.8125rem;
+  }
+}
+/* On the plum footer: outlined. */
+.store-pill-ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px oklch(from var(--color-neutral-content) l c h / 0.3);
+}
+
+/* ---- The phone frame: an ink-plum bezel, an island, a status bar and a tab bar; its screen is HTML. */
+.phone {
+  --phone-w: 16.5rem;
+  position: relative;
+  width: var(--phone-w);
+  aspect-ratio: 9 / 19.2;
+  padding: 0.5rem;
+  border-radius: 2.75rem;
+  background: var(--color-neutral);
+  box-shadow:
+    0 0 0 1px oklch(from var(--color-neutral-content) l c h / 0.08) inset,
+    0 40px 70px -30px oklch(from var(--color-neutral) l c h / 0.45),
+    0 18px 30px -18px oklch(from var(--color-neutral) l c h / 0.3);
+  transform-style: preserve-3d;
+  font-family: var(--font-body);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+.phone-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2.25rem;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.phone-status {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.375rem;
+  padding: 0.25rem 1.25rem 0;
+  font-size: 12px;
+  font-weight: 650;
+}
+.phone-island {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  width: 5.25rem;
+  height: 1.375rem;
+  translate: -50% 0;
+  border-radius: 9999px;
+  background: var(--color-neutral);
+}
+.phone-slot {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.screen {
+  height: 100%;
+  padding: 0.375rem 0.875rem 0.75rem;
+  background: var(--color-base-100);
+}
+.phone-tabs {
+  display: flex;
+  flex: none;
+  justify-content: space-around;
+  padding: 0.5rem 0.75rem 1.125rem;
+  border-top: 1px solid var(--color-base-300);
+  background: var(--color-base-100);
+  color: oklch(from var(--color-base-content) l c h / 0.4);
+}
+.phone-tabs span {
+  display: grid;
+  justify-items: center;
+  gap: 0.125rem;
+  font-size: 9px;
+  font-weight: 650;
+}
+.phone-tabs svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+.phone[data-tab="today"] [data-for~="today"],
+.phone[data-tab="plant"] [data-for~="plant"],
+.phone[data-tab="light"] [data-for~="light"],
+.phone[data-tab="doctor"] [data-for~="doctor"],
+.phone[data-tab="home"] [data-for~="home"] {
+  color: var(--color-primary);
+}
+@media (max-width: 639px) {
+  .phone {
+    --phone-w: 15.5rem;
+  }
+}
+
+/* ---- Rings: a value from 0 to 1 in --fill, drawn as an arc in the main color. */
+.ring {
+  --size: 2.25rem;
+  --stroke: 3.5px;
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 9999px;
+  color: var(--color-primary);
+}
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    var(--color-primary) calc(var(--fill) * 360deg),
+    oklch(from var(--color-primary) l c h / 0.14) 0
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--stroke) - 0.5px),
+    var(--color-base-content) calc(100% - var(--stroke))
+  );
+}
+.ring svg {
+  position: relative;
+  width: 45%;
+  height: 45%;
+}
+
+/* ---- The watering tick (data-water on a <label> around a checkbox): ticked, the ring fills and a drop falls. */
+[data-water] {
+  --fill: var(--start, 0.22);
+  cursor: pointer;
+}
+li:nth-child(2) > [data-water] {
+  --start: 0.36;
+}
+li:nth-child(3) > [data-water] {
+  --start: 0.12;
+}
+[data-water]:has(:checked) {
+  --fill: 1;
+}
+[data-water] .tick,
+[data-water] .drop-fall {
+  display: none;
+}
+[data-water]:has(:checked) .tick {
+  display: block;
+}
+[data-water]:has(:checked) .thirsty {
+  display: none;
+}
+[data-water]:has(:checked) .ring {
+  background: oklch(from var(--color-secondary) l c h / 0.7);
+}
+[data-water]:has(:checked) .plant-name {
+  text-decoration: line-through;
+  text-decoration-color: oklch(from var(--color-base-content) l c h / 0.35);
+}
+[data-water]:has(:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-water] {
+    transition: --fill 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-water]:has(:checked) .drop-fall {
+    display: block;
+    animation: drop-fall 0.8s cubic-bezier(0.55, 0, 0.6, 1) both;
+  }
+  @keyframes drop-fall {
+    0% {
+      translate: 0 -14px;
+      scale: 0.6;
+    }
+    55% {
+      translate: 0 2px;
+      scale: 1;
+    }
+    100% {
+      translate: 0 8px;
+      scale: 1.3;
+      opacity: 0;
+    }
+  }
+}
+
+/* ---- The fan (data-fan): three phones, the side ones turned and behind. */
+.fan {
+  position: relative;
+  height: calc(16.5rem * 19.2 / 9 + 3rem);
+  isolation: isolate;
+}
+.fan-slot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.fan-middle {
+  z-index: 2;
+}
+.fan-left {
+  translate: calc(-50% - 56%) calc(-50% + 1.75rem);
+  rotate: -8deg;
+  scale: 0.92;
+}
+.fan-right {
+  translate: calc(-50% + 56%) calc(-50% + 1.25rem);
+  rotate: 7deg;
+  scale: 0.92;
+}
+@media (max-width: 639px) {
+  .fan {
+    height: calc(15.5rem * 19.2 / 9 + 2.5rem);
+  }
+  .fan-left {
+    translate: calc(-50% - 30%) calc(-50% + 1.25rem);
+    scale: 0.84;
+  }
+  .fan-right {
+    translate: calc(-50% + 30%) calc(-50% + 1rem);
+    scale: 0.84;
+  }
+}
+
+/* ---- The phone story (data-phone-story). With no script, each chapter shows its text beside its own phone.
+   On a wide screen the script gathers the screens into the first phone (data-story-on, data-stage). */
+.story-rail a[aria-current="step"] {
+  background: var(--color-accent);
+  color: var(--color-accent-content);
+}
+@media (min-width: 1024px) {
+  [data-story-on] .story-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: clamp(3rem, 7vw, 7rem);
+  }
+  [data-story-on] .story-list > li {
+    display: contents;
+  }
+  [data-story-on] .story-text {
+    grid-column: 1;
+    order: 0;
+    display: flex;
+    min-height: min(78vh, 42rem);
+    flex-direction: column;
+    justify-content: center;
+    justify-self: start;
+  }
+  /* The chapters not shown dim gently: the number and the title, while the body stays above AA. */
+  [data-story-on] .story-text:not([data-active]) :is(h3, .numeral) {
+    opacity: 0.55;
+  }
+  [data-story-on] .story-text:not([data-active]) .story-body {
+    color: oklch(from var(--color-base-content) l c h / 0.62);
+  }
+  [data-story-on] .story-phone {
+    display: none;
+  }
+  [data-story-on] .story-phone[data-stage] {
+    display: block;
+    grid-column: 2;
+    grid-row: 1 / span var(--chapters, 5);
+  }
+  [data-story-on] [data-stage] .story-sticky {
+    position: sticky;
+    top: calc(50vh - 17.5rem);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  [data-story-on] [data-stage] .story-rail {
+    flex-direction: column;
+  }
+  [data-story-on] [data-stage] .phone-slot > [data-screen] {
+    position: absolute;
+    inset: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-story-on] .story-text :is(h3, .numeral, .story-body) {
+    transition:
+      opacity 0.5s ease,
+      color 0.5s ease;
+  }
+  .story-rail a {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+}
+
+/* ---- Review rows (data-marquee): rows that scroll sideways with snap points; once the script has
+   copied the cards (data-looping), they drift in opposite directions and pause on hover or focus. */
+.review-row {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-block: 0.5rem 1rem;
+}
+.review-row > ul {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding-inline: 1.25rem;
+}
+.review-row > ul > li {
+  scroll-snap-align: start;
+}
+.review-row[data-looping] {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .review-row[data-looping] > ul {
+    animation: review-loop var(--loop-time, 60s) linear infinite;
+  }
+  .review-row[data-looping][data-reverse] > ul {
+    animation-direction: reverse;
+  }
+  .review-row[data-looping]:is(:hover, :focus-within) > ul {
+    animation-play-state: paused;
+  }
+  @keyframes review-loop {
+    to {
+      translate: var(--loop, -50%) 0;
+    }
+  }
+}
+
+/* ---- Pricing: the billing switch shows one price; the price fades in when it is flipped. */
+@media (prefers-reduced-motion: no-preference) {
+  .plan-price {
+    animation: price-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes price-in {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
+  }
+  .lift {
+    transition:
+      translate 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease;
+  }
+  .lift:hover {
+    translate: 0 -4px;
+    box-shadow: 0 24px 40px -24px oklch(from var(--color-neutral) l c h / 0.4);
+  }
+}
+
+/* ---- The soft shadow of cards, from the neutral color. */
+.soft-shadow {
+  box-shadow: 0 24px 48px -28px oklch(from var(--color-neutral) l c h / 0.28);
+}
+
+/* ---- Small things that move, in CSS: the light meter's needle sways, the doctor's scan line sweeps. */
+.needle {
+  transform-origin: 50% 100%;
+  rotate: var(--needle, 28deg);
+}
+.scan-line {
+  position: absolute;
+  inset-inline: 8%;
+  top: 50%;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--color-secondary);
+  box-shadow: 0 0 12px 2px oklch(from var(--color-secondary) l c h / 0.8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .needle-sway {
+    animation: needle-sway 4.5s ease-in-out infinite alternate;
+  }
+  @keyframes needle-sway {
+    from {
+      rotate: -24deg;
+    }
+    to {
+      rotate: 38deg;
+    }
+  }
+  .scan-sweep {
+    animation: scan-sweep 3.2s ease-in-out infinite alternate;
+  }
+  @keyframes scan-sweep {
+    from {
+      top: 12%;
+    }
+    to {
+      top: 86%;
+    }
+  }
+}
+
+/* ---- The sticky table of contents of the privacy policy. */
+.toc a[aria-current="true"] {
+  color: var(--color-base-content);
+  font-weight: 650;
+}
+
+/* The "Image credits" line Upstart adds at the end of the footer. */
+footer [data-up-credits] {
+  padding: 0 max(1.25rem, calc((100% - 72rem) / 2 + 2rem)) 2rem;
+  color: oklch(from var(--color-neutral-content) l c h / 0.6);
+  font-size: 0.875rem;
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

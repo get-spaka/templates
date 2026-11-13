@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Tickets — Hot Static 2027</title>
+<meta name="description" content="Day, weekend and late-swim passes for Hot Static, 9 to 11 July 2027 in Marseille, from €59, with a free companion ticket for access card holders.">
+<meta property="og:title" content="Tickets — Hot Static 2027">
+<meta property="og:description" content="Day, weekend and late-swim passes for Hot Static, 9 to 11 July 2027 in Marseille, from €59, with a free companion ticket for access card holders.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="relative overflow-hidden text-secondary-content" data-halftone>
+  <div class="relative z-10 mx-auto max-w-[90rem] px-4 pt-28 pb-12 md:px-10 md:pt-36 md:pb-16">
+    <p class="tag text-sm md:text-base">Day €59 · Weekend €129 · Companion free</p>
+    <h1 class="poster mt-3 text-[clamp(3rem,17vw,12.5rem)] md:text-[14vw] 2xl:text-[12.5rem]" data-stretch>Tickets</h1>
+
+  </div>
+</section>
+{% render 'passes' %}
+<section class="bg-neutral text-neutral-content" id="access-tickets">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 md:grid-cols-2 md:px-10 md:py-24">
+    <div>
+      <p class="tag text-sm md:text-base">Access tickets</p>
+      <h2 class="mt-4 text-[clamp(2.75rem,6vw,5.5rem)]" data-rise>Your companion comes free</h2>
+    </div>
+    <div class="space-y-5 text-pretty md:pt-10">
+      <p class="text-xl">If you hold an access card, or need someone with you to enjoy the festival, the person who comes with you gets a free companion ticket for the same days as your own pass.</p>
+      <ol class="space-y-3">
+        <li class="flex gap-4"><span class="tag text-primary text-xl">01</span><span>Buy your own pass as usual.</span></li>
+        <li class="flex gap-4"><span class="tag text-primary text-xl">02</span><span>Write to the access team with your pass number and a copy of your card.</span></li>
+        <li class="flex gap-4"><span class="tag text-primary text-xl">03</span><span>Your companion ticket arrives within three working days, with a map of the step-free routes.</span></li>
+      </ol>
+      <a href="mailto:access@hotstatic.fr" class="btn btn-primary tag">access@hotstatic.fr</a>
+    </div>
+  </div>
+</section>
+{% render 'faq', only: "Tickets" %}
+{% render 'alert' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

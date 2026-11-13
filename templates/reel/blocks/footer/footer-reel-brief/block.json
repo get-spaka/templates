@@ -1,0 +1,22 @@
+{
+  "name": "Reel brief footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A full band of the main color with GOT A BRIEF? at poster size, the new-business email large and a button to start a project; below, the address, the pages, the social links and a contact.",
+  "tags": ["footer", "call to action", "contact", "studio", "brief", "big type"],
+  "mood": ["bold", "dark"],
+  "synonyms": [
+    "footer",
+    "brief footer",
+    "bottom",
+    "contact footer",
+    "pied de page",
+    "bas de page",
+    "appel à l'action",
+    "nous contacter"
+  ],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

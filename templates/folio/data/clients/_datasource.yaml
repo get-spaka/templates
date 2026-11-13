@@ -1,0 +1,21 @@
+label: Clients
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: link
+    label: Website
+    kind: link
+order:
+  [
+    atelier-rio-seco,
+    moura-faria,
+    studio-leve,
+    casa-alva-hotels,
+    habitar,
+    oficina-terra,
+    galeria-mobilia,
+    revista-casa,
+    lisbon-city-archive,
+  ]

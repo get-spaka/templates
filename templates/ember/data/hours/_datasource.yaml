@@ -1,0 +1,27 @@
+label: Opening hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: hours
+    label: Hours shown
+    kind: text
+  - name: weekday
+    label: Day of the week
+    kind: choice
+    required: true
+    choices: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+  - name: opens
+    label: Opens at (24 h, e.g. 17:00; empty when closed)
+    kind: text
+  - name: kitchen
+    label: Kitchen closes at (24 h, e.g. 22:30)
+    kind: text
+  - name: closes
+    label: Closes at (24 h, e.g. 00:00 for midnight)
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

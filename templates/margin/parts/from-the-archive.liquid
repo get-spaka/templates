@@ -1,0 +1,20 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24">
+    <div class="border-b border-base-content pb-3" data-reveal>
+      <h2 class="font-sans text-xs font-semibold tracking-[0.08em] uppercase">From the archive</h2>
+    </div>
+    <div class="grid gap-10 pt-8 md:grid-cols-3 md:gap-0 md:divide-x md:divide-base-300 md:pt-10">
+      {% for post in data.blog offset: 6 limit: 3 %}
+      <article class="md:px-8 md:first:pl-0 md:last:pr-0" data-reveal>
+        <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary lining-nums">{{ post.category }} · No. {{ post.number }} · {{ post.season }}</p>
+        <h3 class="mt-3 text-2xl leading-snug font-medium text-balance"><a href="/blog/{{ post.id }}" class="transition-colors hover:text-primary">{{ post.title }}</a></h3>
+        <p class="mt-3 text-pretty text-base-content/75">{{ post.summary }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="mt-12 flex flex-wrap items-center gap-3 border-t border-base-300 pt-8" data-reveal>
+      <a href="/blog/{{ data.blog.last.id }}" class="btn btn-outline btn-primary" data-lucky-dip data-posts="{% for item in data.blog %}/blog/{{ item.id }} {% endfor %}">Read one at random</a>
+      <a href="/blog" class="btn btn-ghost">All {{ data.blog.first.number }} letters <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

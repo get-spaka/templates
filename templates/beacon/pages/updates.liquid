@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Updates — Nightjar</title>
+<meta name="description" content="What we shipped in Nightjar, every two weeks: new features, improvements and fixes, from the private alpha to 1.0.">
+<meta property="og:title" content="Updates — Nightjar">
+<meta property="og:description" content="What we shipped in Nightjar, every two weeks.">
+<meta property="og:image" content="/media/rotterdam-harbor.jpg">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+<section class="relative overflow-hidden border-b border-base-300">
+  <div class="pointer-events-none absolute inset-x-0 -top-40 mx-auto h-80 max-w-3xl rounded-full bg-primary/15 blur-3xl" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-7xl px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-20">
+    <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase" data-reveal>Changelog · {{ data.updates.size }} releases</p>
+    <h1 class="mt-5 text-[clamp(2.75rem,7vw,6rem)] leading-[1.02] font-medium tracking-tight" data-split>Updates</h1>
+    <p class="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-pretty text-base-content/70" data-reveal>What we shipped, every two weeks. New things, better things and the things we fixed, in plain words.</p>
+  </div>
+</section>
+<section>
+  <ol class="mx-auto max-w-7xl px-5 md:px-8">
+    {% for update in data.updates %}
+    <li class="grid gap-6 border-b border-base-300 py-12 md:grid-cols-12 md:gap-8 md:py-16">
+      <div class="md:col-span-3">
+        <div class="md:sticky md:top-24">
+          <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">{% if update.date %}<time datetime="{{ update.date }}">{{ update.date | date: "%B %-d, %Y" }}</time>{% endif %}</p>
+          {% if update.version %}<p class="mt-2 font-mono text-[clamp(1.5rem,2.5vw,2rem)] font-light tracking-[-0.03em]">v{{ update.version }}</p>{% endif %}
+        </div>
+      </div>
+      <article class="md:col-span-8 md:col-start-5" data-reveal>
+        {% if update.tag %}<p><span class="rounded-full border px-2.5 py-0.5 font-mono text-[0.625rem] tracking-[0.08em] uppercase {% if update.tag == "New" %}border-primary/60 text-primary{% elsif update.tag == "Fixed" %}border-base-300 text-base-content/70{% else %}border-accent/50 text-accent{% endif %}">{{ update.tag }}</span></p>{% endif %}
+        <h2 class="mt-4 text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-tight text-balance"><a href="/updates/{{ update.id }}" class="transition-colors hover:text-primary">{{ update.title }}</a></h2>
+        {% if update.summary %}<p class="mt-4 max-w-2xl text-[1.0625rem] leading-relaxed text-pretty text-base-content/70">{{ update.summary }}</p>{% endif %}
+        {% if update.cover %}<a href="/updates/{{ update.id }}" class="mt-8 block overflow-hidden rounded-box border border-base-300"><img src="{{ update.cover }}" class="aspect-[2/1] w-full object-cover transition-transform duration-700 hover:scale-[1.02]"></a>{% endif %}
+        <a href="/updates/{{ update.id }}" class="group mt-6 inline-flex items-center gap-2 text-sm text-base-content/80 hover:text-primary">Read <span class="beacon-arrow" aria-hidden="true">→</span></a>
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+<section>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-8 rounded-box border border-base-300 bg-base-200/60 p-7 md:grid-cols-2 md:items-center md:p-10" data-glow data-reveal>
+      <div>
+        <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase">1.0 on March 3, 2027</p>
+        <h2 class="mt-3 text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.1] tracking-tight">Hear about 1.0 first.</h2>
+        <p class="mt-3 text-sm leading-relaxed text-base-content/70">One email when your wave opens, one when 1.0 ships. Nothing else.</p>
+      </div>
+      <form hx-post="/_data/waitlist" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#updates-waitlist-problems swap:innerHTML" class="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+        <label for="updates-waitlist-email" class="sr-only">Work email</label>
+        <input id="updates-waitlist-email" name="email" type="email" class="input w-full sm:flex-1 border-base-300 bg-base-100" placeholder="you@company.com" required maxlength="200" autocomplete="email">
+        <button type="submit" class="btn btn-primary font-medium">Join the waitlist</button>
+        <div id="updates-waitlist-problems" class="w-full empty:hidden"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+label: Beta wordmarks
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: logo
+    label: Logo
+    kind: image
+order: [halyard, parcelpost, tidewater, outpost, kiln, northfold]

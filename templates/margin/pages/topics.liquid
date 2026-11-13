@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Topics — The Long Way Round</title>
+<meta name="description" content="Five ways into the letters: streets, buildings, rivers, signs and names, and books.">
+<meta property="og:title" content="Topics — The Long Way Round">
+<meta property="og:description" content="Five ways into the letters: streets, buildings, rivers, signs and names, and books.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-12 pb-20 md:px-10 md:pt-20 md:pb-28">
+    <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary" data-reveal>Five ways in</p>
+    <h1 class="mt-4 text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] font-normal tracking-tight" data-reveal>Topics</h1>
+    <p class="mt-6 max-w-2xl text-xl leading-snug text-pretty text-base-content/75 md:text-2xl" data-reveal>Every letter belongs to one topic or more. The plates are cut from old maps and engravings of the city.</p>
+    <ul class="mt-14 grid gap-x-8 gap-y-14 border-t border-base-content pt-10 sm:grid-cols-2 lg:grid-cols-3">
+      {% for topic in data.topics %}
+      {% assign count = 0 %}
+      {% for post in data.blog %}{% if post.topics contains topic.title %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+      <li data-reveal>
+        <a href="/topics/{{ topic.id }}" class="group block">
+          {% if topic.plate %}<span class="block aspect-[3/2] rounded-box" data-ink><img src="{{ topic.plate }}" class="size-full object-cover"></span>{% else %}<span class="block aspect-[3/2] rounded-box bg-base-200" aria-hidden="true"></span>{% endif %}
+          <span class="mt-5 flex items-baseline justify-between gap-4">
+            <h2 class="text-3xl leading-tight tracking-tight transition-colors group-hover:text-primary">{{ topic.title }}</h2>
+            <span class="shrink-0 font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65 lining-nums">{{ count }} {% if count == 1 %}letter{% else %}letters{% endif %}</span>
+          </span>
+          <span class="mt-2 block text-pretty text-base-content/75">{{ topic.summary }}</span>
+        </a>
+      </li>
+      {% endfor %}
+      <li class="flex flex-col justify-between gap-6 rounded-box bg-base-200 p-6 md:p-8" data-reveal>
+        <p class="text-2xl leading-snug tracking-tight text-pretty">Or let the archive choose: one letter, from any topic, at random.</p>
+        <a href="/blog/{{ data.blog.last.id }}" class="btn btn-primary self-start" data-lucky-dip data-posts="{% for item in data.blog %}/blog/{{ item.id }} {% endfor %}">Read one at random</a>
+      </li>
+    </ul>
+  </div>
+</section>
+{% render 'letterbox' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

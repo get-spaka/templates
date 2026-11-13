@@ -1,0 +1,17 @@
+label: Milestones
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: when
+    label: When
+    kind: text
+  - name: state
+    label: State
+    kind: choice
+    choices: [done, now, next]
+  - name: note
+    label: Note
+    kind: text
+order: [private-alpha, public-beta, status-pages, version-1, mobile-app]

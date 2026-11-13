@@ -1,0 +1,33 @@
+<section class="bg-base-100 text-base-content" aria-labelledby="reel-title" data-reel>
+  <div class="py-16 md:py-20" data-reel-stage>
+    <div class="mx-auto flex w-full max-w-[110rem] items-end justify-between gap-6 px-5 md:px-10">
+      <h2 id="reel-title" class="meta text-base-content">Selected work</h2>
+      <p class="meta text-base-content/70">2023—2026</p>
+    </div>
+    <div class="mx-auto mt-4 w-full max-w-[110rem] px-5 md:px-10" aria-hidden="true">
+      <div class="h-[3px] rounded-full bg-base-300" data-reel-progress><span></span></div>
+    </div>
+    <ul class="mt-8 w-full" data-reel-track>
+      {% assign n = 0 %}
+      {% for item in data.cases %}{% if item.featured %}{% assign n = n | plus: 1 %}
+      <li class="reel-panel">
+        <a href="/work/{{ item.id }}" class="flex h-full flex-col rounded-box p-5 md:p-6 {% case item.tone %}{% when 'yellow' %}bg-accent text-accent-content{% when 'bone' %}bg-secondary text-secondary-content{% when 'graphite' %}bg-base-200 text-base-content{% else %}bg-primary text-primary-content{% endcase %}" data-cursor="View">
+          <div class="flex items-start justify-between gap-4">
+            <span class="narrow text-[5.5rem] leading-[0.78] font-bold md:text-[7rem]">{% if n < 10 %}0{% endif %}{{ n }}</span>
+            <span class="meta text-right">{{ item.disciplines | join: " · " }}<br>{{ item.year }}</span>
+          </div>
+          <div class="mt-5 aspect-[4/3] overflow-hidden rounded-box bg-base-100">{% if item.cover %}<img src="{{ item.cover }}" class="size-full object-cover">{% endif %}</div>
+          <h3 class="mt-6 text-[clamp(2rem,3vw,3rem)] leading-[0.85] break-words">{{ item.client }}</h3>
+          <p class="mt-3 text-lg leading-snug font-medium text-pretty">{{ item.title }}</p>
+        </a>
+      </li>
+      {% endif %}{% endfor %}
+      <li class="reel-panel">
+        <a href="/work" class="flex h-full min-h-72 flex-col justify-between rounded-box bg-primary p-5 text-primary-content md:p-6" data-cursor="View">
+          <span class="meta">Every case · 2014—2026</span>
+          <span class="wide text-[clamp(3rem,5.5vw,5.5rem)] leading-[0.82] font-black tracking-[-0.03em] uppercase">All work <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

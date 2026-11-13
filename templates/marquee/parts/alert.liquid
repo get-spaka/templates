@@ -1,0 +1,29 @@
+<section class="bg-primary text-primary-content" id="alert">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 md:grid-cols-2 md:px-10 md:py-24">
+    <div>
+      <p class="tag text-sm md:text-base">Ticket alert</p>
+      <h2 class="mt-4 text-[clamp(2.75rem,6vw,5.5rem)]" data-rise>Be first when Sunday tickets drop</h2>
+      <p class="mt-5 max-w-md text-pretty">One email when tickets go on sale for the days you pick, and one when the last acts are announced. Nothing else.</p>
+    </div>
+    <form hx-post="/_data/alerts" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#alert-problems swap:innerHTML" class="self-end rounded-box border-2 border-primary-content bg-base-100 p-6 text-base-content md:p-8">
+      <fieldset class="fieldset">
+        <label class="fieldset-legend tag text-sm" for="alert-email">Your email</label>
+        <input id="alert-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com" class="input input-lg w-full">
+      </fieldset>
+      <fieldset class="fieldset mt-4">
+        <legend class="fieldset-legend tag text-sm">The days you care about</legend>
+        <div class="flex flex-wrap gap-2">
+          {% assign choices = "Friday,Saturday,Sunday" | split: "," %}
+          {% for choice in choices %}
+          <label class="flex cursor-pointer items-center gap-2 rounded-full border-2 border-base-content px-4 py-2 has-checked:bg-base-content has-checked:text-base-100">
+            <input type="checkbox" name="days" value="{{ choice }}" class="checkbox checkbox-sm checkbox-primary" {% if forloop.last %}checked{% endif %}>
+            <span class="tag text-sm">{{ choice }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+      <div id="alert-problems" class="mt-4"></div>
+      <button type="submit" class="btn btn-neutral btn-lg tag mt-6 w-full">Tell me first</button>
+    </form>
+  </div>
+</section>

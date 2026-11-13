@@ -1,0 +1,15 @@
+label: Questions
+body: answer
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: topic
+    label: Topic
+    kind: choice
+    choices: [Tickets, On site, Getting there, Access]
+  - name: answer
+    label: Answer
+    kind: markdown
+order: [change-name, sunday-tickets, what-to-bring, swimming, getting-home, companion-ticket]

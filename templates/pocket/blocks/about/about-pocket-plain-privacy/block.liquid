@@ -1,0 +1,24 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div class="max-w-2xl">
+        <p class="kicker text-primary" data-reveal>Privacy</p>
+        <h2 class="mt-4 text-[clamp(2.5rem,5vw,4rem)] text-balance" data-reveal>Privacy, in <mark>plain words</mark></h2>
+        <p class="mt-5 text-lg leading-relaxed text-pretty text-base-content/75" data-reveal>What we keep, and what we never do with it.</p>
+      </div>
+      <a href="/privacy" class="btn btn-outline h-12 border-base-300 px-6 text-base hover:border-base-content hover:bg-base-content hover:text-base-100" data-reveal>Read the privacy page</a>
+    </div>
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {% for point in data.privacy %}
+      <li class="flex flex-col rounded-box p-6 md:p-7 {% if point.kind == "never" %}bg-accent/60 text-accent-content{% else %}bg-secondary/60 text-secondary-content{% endif %}" data-reveal>
+        <p class="kicker flex items-center gap-2">
+          <span class="grid size-7 place-items-center rounded-full bg-base-100 text-primary" aria-hidden="true">{% if point.kind == "never" %}<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="m6 6 12 12"/><path d="M18 6 6 18"/></svg>{% else %}<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>{% endif %}</span>
+          {% if point.kind == "never" %}We never{% else %}We keep{% endif %}
+        </p>
+        <h3 class="mt-5 text-[1.5rem]">{{ point.title }}</h3>
+        {% if point.text %}<p class="mt-2 text-[0.9375rem] leading-relaxed text-pretty opacity-80">{{ point.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

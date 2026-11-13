@@ -1,0 +1,20 @@
+label: Newsletter
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many sign-ups were sent from here. Please try again in a few minutes."
+  sent: "Thank you, you're on the list."
+fields:
+  - name: email
+    label: Email address
+    kind: email
+    required: true
+  - name: name
+    label: First name
+    kind: text
+  - name: topics
+    label: What you receive
+    kind: list
+    choices: [The Sunday letter, The seasonal long walks, The spring walking tours]

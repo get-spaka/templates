@@ -1,0 +1,39 @@
+<section id="compare" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-4xl px-5 py-20 md:px-8 md:py-28">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="kicker text-primary" data-reveal>Compare plans</p>
+      <h2 class="mt-4 text-[clamp(2.25rem,4.5vw,3.75rem)] text-balance" data-reveal>What you get, <mark>side by side</mark></h2>
+    </div>
+    <div class="mt-12 overflow-x-auto rounded-box border border-base-300 bg-base-100 soft-shadow" data-reveal>
+      <table class="table table-sm text-[0.875rem] sm:table-md sm:text-[0.9375rem] md:text-base">
+        <thead>
+          <tr class="border-base-300">
+            <th class="text-left sm:w-1/2"><span class="sr-only">Feature</span></th>
+            {% for plan in data.plans %}
+            <th class="text-center text-base-content {% if plan.highlighted %}bg-secondary/60{% endif %}">
+              <span class="block text-[0.9375rem] leading-tight font-bold text-balance sm:text-[1.0625rem]">{{ plan.name }}</span>
+              <span class="numeral mt-1 hidden text-[1.75rem] sm:block">{{ plan.monthly }}<span class="font-body text-[0.875rem] font-normal text-base-content/65"> a month</span></span>
+            </th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data["pricing-compare"] %}
+          <tr class="border-base-300">
+            <th class="text-left font-medium">{{ row.feature }}</th>
+            {% for cell in (1..2) %}
+            {% if cell == 1 %}{% assign value = row.free %}{% else %}{% assign value = row.plus %}{% endif %}
+            <td class="text-center {% if cell == 2 %}bg-secondary/25{% endif %}">
+              {% if value == "yes" %}<svg class="mx-auto size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span class="sr-only">Included</span>
+              {% elsif value == "no" or value == blank %}<svg class="mx-auto size-5 text-base-content/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg><span class="sr-only">Not included</span>
+              {% else %}<span class="font-semibold">{{ value }}</span>{% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-5 text-center text-[0.9375rem] text-base-content/65" data-reveal>Fernway Plus is $29.99 a year if you pay yearly. One subscription covers the whole home.</p>
+  </div>
+</section>

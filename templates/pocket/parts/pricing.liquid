@@ -1,0 +1,45 @@
+{% assign level = level | default: 2 %}
+<section id="pricing" class="group scroll-mt-24 {% if level == 1 %}glow relative -mt-[4.75rem] md:-mt-20{% else %}bg-base-200{% endif %} text-base-content">
+  <div class="relative mx-auto max-w-5xl px-5 {% if level == 1 %}pt-32 md:pt-40{% else %}pt-20 md:pt-28{% endif %} pb-20 md:px-8 md:pb-28">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="kicker text-primary" data-reveal>Pricing</p>
+      {% if level == 1 %}<h1 class="mt-4 text-[clamp(2.75rem,6vw,5rem)] text-balance" data-reveal>Free to start. <mark>One plan</mark> for more.</h1>{% else %}<h2 class="mt-4 text-[clamp(2.5rem,5.5vw,4.5rem)] text-balance" data-reveal>Free to start. <mark>One plan</mark> for more.</h2>{% endif %}
+      <p class="mt-5 text-lg text-pretty text-base-content/75" data-reveal>Ten plants and every reminder cost nothing, for good. Plus adds the rest, after a 14-day trial.</p>
+    </div>
+    <fieldset class="mx-auto mt-10 flex w-fit gap-1 rounded-full border border-base-300 bg-base-100 p-1 soft-shadow" data-reveal>
+      <legend class="sr-only">Billing period</legend>
+      <label class="flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-semibold has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary">
+        <input type="radio" name="pocket-billing" id="pocket-billing-monthly" value="monthly" class="sr-only" checked>
+        Monthly
+      </label>
+      <label class="flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-semibold has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary">
+        <input type="radio" name="pocket-billing" id="pocket-billing-yearly" value="yearly" class="sr-only">
+        Yearly
+        <span class="rounded-full bg-secondary px-2 py-0.5 text-[0.8125rem] text-secondary-content">Save 37%</span>
+      </label>
+    </fieldset>
+    <ul class="mt-10 grid gap-5 md:grid-cols-2">
+      {% for plan in data.plans %}
+      <li class="lift relative flex flex-col rounded-box p-7 md:p-9 {% if plan.highlighted %}bg-secondary text-secondary-content soft-shadow{% else %}border border-base-300 bg-base-100{% endif %}" data-reveal>
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="text-[1.75rem]">{{ plan.name }}</h3>
+          {% if plan.highlighted %}<span class="kicker shrink-0 rounded-full bg-base-100 px-3 py-1 whitespace-nowrap text-base-content">Most popular</span>{% endif %}
+        </div>
+        {% if plan.summary %}<p class="mt-2 text-pretty opacity-80">{{ plan.summary }}</p>{% endif %}
+        <p class="plan-price mt-7 flex items-baseline gap-2 group-has-[#pocket-billing-yearly:checked]:hidden"><span class="numeral text-[clamp(3.25rem,6vw,4.5rem)]">{{ plan.monthly }}</span><span class="opacity-70">a month</span></p>
+        <p class="plan-price mt-7 hidden items-baseline gap-2 group-has-[#pocket-billing-yearly:checked]:flex"><span class="numeral text-[clamp(3.25rem,6vw,4.5rem)]">{{ plan.yearly }}</span><span class="opacity-70">a year</span></p>
+        <ul class="mt-7 flex-1 space-y-3 border-t border-current/15 pt-6">
+          {% for feature in plan.features %}
+          <li class="flex gap-3"><span class="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full {% if plan.highlighted %}bg-base-100 text-primary{% else %}bg-secondary text-secondary-content{% endif %}"><svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>{{ feature }}</li>
+          {% endfor %}
+        </ul>
+        {% if plan.button %}<a href="/#download" class="btn mt-8 h-12 text-base {% if plan.highlighted %}btn-primary{% else %}btn-outline border-base-300 bg-base-100 hover:border-base-content hover:bg-base-content hover:text-base-100{% endif %}">{{ plan.button }}</a>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-[0.9375rem] text-base-content/70" data-reveal>
+      <span>Prices in US dollars · Cancel any time from your phone</span>
+      {% if level == 2 %}<a href="/pricing#compare" class="font-semibold text-primary hover:underline">Compare plans →</a>{% endif %}
+    </p>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-10 md:px-10 md:py-14">
+    <div class="grid gap-8 rounded-box bg-base-200 px-6 py-10 md:grid-cols-12 md:gap-10 md:px-12 md:py-14">
+      <div class="md:col-span-4" data-reveal>
+        <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary">Now</p>
+        <h2 class="mt-3 text-3xl leading-[1.1] tracking-tight text-balance md:text-4xl">On my walks now</h2>
+        <p class="mt-4 font-sans text-sm text-base-content/70">Last updated 9 November 2026</p>
+      </div>
+      <dl class="divide-y divide-base-300 border-y border-base-300 md:col-span-8">
+        {% for item in data["about-now"] %}
+        <div class="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-6" data-reveal>
+          <dt class="pt-1 font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary">{{ item.label }}</dt>
+          <dd class="text-lg leading-snug text-pretty">{{ item.line }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
+</section>

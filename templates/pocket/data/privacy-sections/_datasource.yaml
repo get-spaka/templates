@@ -1,0 +1,11 @@
+label: Privacy policy
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+order: [who-we-are, what-we-collect, why-we-use-it, who-else-sees-it, how-long-we-keep-it, your-rights]

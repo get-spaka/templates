@@ -1,0 +1,7 @@
+label: Tape
+fields:
+  - name: label
+    label: Words
+    kind: text
+    required: true
+order: [music, light, late-swims, three-days, four-stages, north-docks]

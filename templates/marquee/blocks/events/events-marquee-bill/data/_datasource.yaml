@@ -1,0 +1,59 @@
+label: Acts
+body: bio
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: day
+    label: Day
+    kind: choice
+    required: true
+    choices: [Friday, Saturday, Sunday]
+  - name: stage
+    label: Stage
+    kind: choice
+    choices: [The Tank, Machine Hall, The Barge, The Roof]
+  - name: start
+    label: Starts (24 h)
+    kind: text
+  - name: end
+    label: Ends (24 h)
+    kind: text
+  - name: billing
+    label: Billing
+    kind: choice
+    choices: [headliner, main, support]
+  - name: genre
+    label: Genre
+    kind: text
+  - name: origin
+    label: From
+    kind: text
+  - name: summary
+    label: In one line
+    kind: text
+  - name: image
+    label: Image
+    kind: image
+  - name: listen
+    label: Listen link
+    kind: link
+  - name: bio
+    label: About
+    kind: markdown
+order:
+  [
+    vela-contra,
+    okuru,
+    les-petroliers,
+    maree-basse-trio,
+    halcyon-dial,
+    paper-comets,
+    sabkha-sound-system,
+    low-tide-brass,
+    amaro-lumen,
+    glass-harbour,
+    desert-relay,
+    ostra,
+  ]

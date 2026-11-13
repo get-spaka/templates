@@ -1,0 +1,10 @@
+<section class="bg-base-100 text-base-content" aria-labelledby="clients-title">
+  <div class="mx-auto max-w-[110rem] px-5 py-20 md:px-10 md:py-28">
+    <h2 id="clients-title" class="meta text-base-content/70">Clients, 2014—2026</h2>
+    <ul class="wide mt-8 text-[clamp(2.25rem,7.2vw,7.5rem)] leading-[1] font-black tracking-[-0.03em] uppercase">
+      {% for item in data.clients %}
+      <li class="inline"><span class="flip">{{ item.name }}</span>{% unless forloop.last %}<span class="mx-[0.14em] font-extralight text-primary" aria-hidden="true">/</span> {% endunless %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

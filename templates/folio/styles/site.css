@@ -1,0 +1,158 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Inter Tight";
+  src: url("/fonts/inter-tight.woff2") format("woff2");
+  font-weight: 300 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/fonts/geist-mono.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+/* Every number, place, year and caption in the mono face. */
+:root {
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+/* Quiet headings: the grotesk, light, never bold. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+}
+
+/* A few words of a heading or a statement in the book serif's italic: write them as <em>. */
+:is(h1, h2, h3, p, blockquote, a) em {
+  font-family: "Newsreader", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* The index: the row in the middle of a touch screen gets the main color's hairline. */
+[data-index-row] {
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+[data-index-row][data-current] {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* With a mouse, the picture that follows the cursor, made and shown by the preview script. */
+.folio-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: clamp(16rem, 24vw, 26rem);
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  scale: 0.92;
+  transition:
+    opacity 0.25s,
+    scale 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.folio-preview[data-shown] {
+  scale: 1;
+}
+.folio-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The work page's filter that is on. */
+[data-filter][aria-pressed="true"] {
+  background: var(--color-base-content);
+  border-color: var(--color-base-content);
+  color: var(--color-base-100);
+}
+
+/* The clock's dot turns to the main color in working hours. */
+[data-clock][data-at-work] [data-clock-dot] {
+  background: var(--color-primary);
+}
+
+/* Each word of a split heading clips its letters as they rise. */
+[data-split-word] {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* The strip's own scroll bar is hidden; it scrolls by hand when it does not loop. */
+[data-strip-track] {
+  scrollbar-width: none;
+}
+[data-strip-track]:has([data-looping]) {
+  overflow: hidden;
+}
+
+/* Upstart's "Image credits" link, at the end of the footer. */
+footer [data-up-credits] {
+  max-width: 96rem;
+  margin-inline: auto;
+  padding: 0 1.25rem 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* From the index to a project, its picture grows into the project's page. */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-group(*) {
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  /* The strip loops once the strip script has copied its images. */
+  [data-strip][data-looping] {
+    animation: folio-strip 70s linear infinite;
+  }
+  [data-strip][data-looping]:hover {
+    animation-play-state: paused;
+  }
+  @keyframes folio-strip {
+    to {
+      translate: -50% 0;
+    }
+  }
+}

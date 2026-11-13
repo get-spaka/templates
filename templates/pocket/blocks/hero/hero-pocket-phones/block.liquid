@@ -1,0 +1,20 @@
+<section class="glow relative -mt-[4.75rem] overflow-hidden text-base-content md:-mt-20" data-glow>
+  <canvas data-aurora aria-hidden="true"></canvas>
+  <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-5 pt-32 pb-16 md:px-8 md:pt-40 lg:grid-cols-[1.05fr_1fr] lg:gap-6 lg:pb-24">
+    <div class="max-w-2xl">
+      <p class="kicker inline-flex items-center gap-2 rounded-full bg-base-100/70 px-3.5 py-1.5 text-base-content/80 backdrop-blur" data-reveal><span class="size-2 rounded-full bg-primary" aria-hidden="true"></span>Plant care for iPhone and Android</p>
+      <h1 class="mt-6 text-[clamp(3rem,8vw,7.5rem)] text-balance" data-reveal>Every plant, <mark>on time</mark></h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-base-content/75 md:text-xl" data-reveal>Fernway tells you when each plant needs water or food, reads your windows' light with the camera and checks a sick leaf from one photo.</p>
+      <div class="mt-9" data-reveal><ul class="flex flex-wrap gap-3">
+        <li><a href="https://apps.apple.com/" class="store-pill lift"><svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 5.5h3"/><path d="M12 10v6"/><path d="m9.5 13.5 2.5 2.5 2.5-2.5"/></svg><span><small>Download on the</small><strong>App Store</strong></span></a></li>
+        <li><a href="https://play.google.com/store/apps" class="store-pill lift"><svg class="size-6 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17a.5.5 0 0 0 .76.43l14.2-8.5a.5.5 0 0 0 0-.86L5.76 3.07A.5.5 0 0 0 5 3.5Z"/><path d="m5.3 3.3 9.2 8.7-9.2 8.7"/></svg><span><small>Get it on</small><strong>Google Play</strong></span></a></li>
+      </ul></div>
+      <div class="mt-6" data-reveal>{% render 'rating' %}</div>
+    </div>
+    <div class="fan" data-fan>
+      <div class="fan-slot fan-left" aria-hidden="true"><div class="fan-move"><div class="fan-rise">{% render 'phone', screen: 'plant', tilt: true %}</div></div></div>
+      <div class="fan-slot fan-right" aria-hidden="true"><div class="fan-move"><div class="fan-rise">{% render 'phone', screen: 'light', tilt: true %}</div></div></div>
+      <div class="fan-slot fan-middle"><div class="fan-move"><div class="fan-rise">{% render 'phone', screen: 'today', tilt: true %}</div></div></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+label: Plan comparison
+fields:
+  - name: feature
+    label: Feature
+    kind: text
+    required: true
+  - name: free
+    label: Free
+    kind: text
+  - name: plus
+    label: Plus
+    kind: text
+order: [plants, reminders, light-meter, widgets, identify, doctor, shared-home, vacation, seasonal-plans, backup]

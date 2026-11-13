@@ -1,0 +1,28 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="max-w-3xl">
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase" data-reveal>Fig. 07 · Six weeks of public beta</p>
+      <h2 class="mt-5 text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-tight text-balance" data-reveal>Fewer alerts. <span class="text-base-content/45">None of them missed.</span></h2>
+    </div>
+    <dl class="mt-12 grid grid-cols-2 border-y border-base-300 md:mt-16 lg:grid-cols-4">
+      {% for stat in data["home-stats"] %}
+      <div class="border-base-300 px-4 py-8 md:px-6 md:py-10 {% cycle 'border-r', 'lg:border-r', 'border-r', '' %} {% if forloop.index <= 2 %}border-b lg:border-b-0{% endif %}" data-reveal>
+        <dt class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/60 uppercase">{{ stat.label }}</dt>
+        <dd class="mt-4 font-mono text-[clamp(2.25rem,5vw,4.5rem)] leading-none font-light tracking-[-0.04em] tabular-nums" data-count>{{ stat.value }}</dd>
+        {% if stat.note %}<dd class="mt-4 max-w-[16rem] text-sm leading-relaxed text-pretty text-base-content/55">{{ stat.note }}</dd>{% endif %}
+      </div>
+      {% endfor %}
+    </dl>
+    <ul class="mt-16 gap-4 sm:columns-2 lg:columns-3">
+      {% for t in data.testimonials %}
+      <li class="mb-4 break-inside-avoid rounded-box border border-base-300 bg-base-200/60 p-6 md:p-7" data-reveal>
+        <blockquote class="text-[1.0625rem] leading-relaxed text-pretty {% if forloop.index == 3 %}text-2xl leading-snug tracking-tight{% endif %}">“{{ t.quote }}”</blockquote>
+        <p class="mt-6 flex items-center gap-3">
+          <span class="grid size-9 shrink-0 place-items-center rounded-full border border-base-300 bg-base-100 font-mono text-[0.6875rem] text-primary" aria-hidden="true">{{ t.name | split: " " | first | slice: 0 }}{{ t.name | split: " " | last | slice: 0 }}</span>
+          <span class="text-sm leading-tight"><span class="block">{{ t.name }}</span><span class="block text-base-content/55">{{ t.role }}{% if t.company %}, {{ t.company }}{% endif %}</span></span>
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

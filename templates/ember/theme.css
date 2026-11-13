@@ -1,0 +1,21 @@
+:root {
+  --theme-color-surface: oklch(0.17 0.014 45);
+  --theme-color-surface-alt: oklch(0.215 0.02 40);
+  --theme-color-text: oklch(0.93 0.022 80);
+  --theme-color-primary: oklch(0.8 0.13 72);
+  --theme-color-primary-content: oklch(0.17 0.014 45);
+  --theme-color-secondary: oklch(0.36 0.11 22);
+  --theme-color-secondary-content: oklch(0.93 0.022 80);
+  --theme-color-accent: oklch(0.68 0.16 42);
+  --theme-color-accent-content: oklch(0.14 0.012 40);
+  --theme-color-neutral: oklch(0.12 0.01 40);
+  --theme-color-neutral-content: oklch(0.93 0.022 80);
+  --theme-color-border: oklch(0.32 0.02 50);
+  --theme-font-heading: "Bodoni Moda", ui-serif, Georgia, serif;
+  --theme-font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+  --theme-border: 1px;
+  --theme-size: 0.28125rem;
+}

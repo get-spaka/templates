@@ -1,0 +1,24 @@
+{
+  "name": "Beacon launch track",
+  "kind": "steps",
+  "source": "upstart",
+  "description": "A line of dated milestones (done, now, next) lit in violet as far as now, the current one giving off a slow ring; sideways on a wide screen, downward on a phone. It says where a launch stands better than a countdown.",
+  "tags": ["roadmap", "milestones", "timeline", "launch", "progress", "steps"],
+  "mood": ["dark", "professional"],
+  "synonyms": [
+    "roadmap",
+    "timeline",
+    "milestones",
+    "launch track",
+    "where we are",
+    "feuille de route",
+    "étapes",
+    "jalons",
+    "chronologie",
+    "calendrier de lancement"
+  ],
+  "data": {
+    "name": "milestones",
+    "family": "section"
+  }
+}

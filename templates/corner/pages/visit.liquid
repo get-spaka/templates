@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Visit — Marlow Street Bakery</title>
+<meta name="description" content="Opening hours, how to find us at 214 Marlow Street, and how to order a cake.">
+<meta property="og:title" content="Visit — Marlow Street Bakery">
+<meta property="og:description" content="Opening hours, how to find us at 214 Marlow Street, and how to order a cake.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24">
+    <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70" data-reveal>214 Marlow Street</p>
+    <h1 class="mt-6 text-[clamp(3.5rem,12vw,9rem)] leading-[0.82] font-extrabold tracking-tight uppercase" data-reveal>Come say<br><em>hello.</em></h1>
+  </div>
+</section>
+{% render 'hours' %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-3 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70">By bus or tram</p>
+      <p class="mt-4 text-lg text-pretty">Lines 4 and 11 stop at Marlow Library, a minute's walk. The tram stops at the old depot, across the square.</p>
+    </div>
+    <div data-reveal>
+      <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70">By bike or car</p>
+      <p class="mt-4 text-lg text-pretty">Bike racks right outside the window. Street parking is free for an hour on Marlow Street before 9 am.</p>
+    </div>
+    <div data-reveal>
+      <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70">Inside</p>
+      <p class="mt-4 text-lg text-pretty">Step-free entrance, twelve seats and a long bench by the window. Dogs welcome; there is water by the door.</p>
+    </div>
+  </div>
+</section>
+<section id="order" class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-2 md:gap-16 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="font-mono text-xs tracking-[0.25em] uppercase text-base-content/70">Write to us</p>
+      <h2 class="mt-4 text-5xl leading-[0.9] font-extrabold uppercase md:text-6xl">A question? <em>A cake?</em></h2>
+      <p class="mt-6 max-w-md text-lg text-pretty text-base-content/80">For a cake, give us three days and the day you want it: we reply with the flavors of the season and the price before we start. For anything else, we answer within a day.</p>
+      <img src="/media/pastry-counter.jpg" class="mt-10 hidden aspect-[4/3] w-full rounded-box object-cover md:block">
+    </div>
+    <form hx-post="/_data/contact" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#corner-contact-problems swap:innerHTML" class="flex flex-col gap-2 self-start rounded-box bg-base-100 p-6 md:p-8" data-reveal>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <div class="grid gap-2 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+          <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">For which day <span class="font-normal text-base-content/70">(cakes)</span></legend>
+          <input name="wanted_for" type="date" class="input w-full">
+        </fieldset>
+      </div>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your message</legend>
+        <textarea name="message" class="textarea w-full" rows="5" required maxlength="5000"></textarea>
+      </fieldset>
+      <div id="corner-contact-problems"></div>
+      <button type="submit" class="btn btn-primary mt-2 self-start">Send</button>
+    </form>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Start a project — Halfvolt</title>
+<meta name="description" content="Send Halfvolt a brief: who you are, what you need, your budget and your timing. We reply within two working days.">
+<meta property="og:title" content="Start a project — Halfvolt">
+<meta property="og:description" content="Send Halfvolt a brief. We reply within two working days.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="overflow-x-clip bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[110rem] px-5 pt-12 pb-14 md:px-10 md:pt-20 md:pb-20">
+    <p class="meta text-base-content/70">Start a project · Now booking spring 2027</p>
+    <h1 class="mt-6 text-[clamp(3.5rem,15vw,14rem)] leading-[0.8] tracking-[-0.03em]" data-kinetic>
+      <span data-drift="left">Got a</span>
+      <span data-drift="right" class="text-primary">brief?</span>
+    </h1>
+    <p class="mt-8 max-w-2xl text-xl leading-snug text-pretty md:mt-12 md:text-2xl">Three short groups of questions. Answer what you can: a rough idea is enough to start a conversation.</p>
+  </div>
+</section>
+{% render 'brief-form' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

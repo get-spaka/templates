@@ -1,0 +1,18 @@
+{
+  "name": "Marquee poster hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "The event's name, dates and place at poster size on the second color, over a field of halftone dots that swells under the cursor; the name's letters stretch as the pointer passes, the day numbers part as the page scrolls, and three tilted stickers give the figures, the price and a countdown.",
+  "tags": ["hero", "poster", "festival", "event", "dates", "countdown", "halftone", "stickers"],
+  "mood": ["bold", "playful", "colorful"],
+  "synonyms": [
+    "hero",
+    "poster",
+    "festival hero",
+    "event header",
+    "affiche",
+    "en-tête festival",
+    "grand titre",
+    "accroche"
+  ]
+}

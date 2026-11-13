@@ -1,0 +1,25 @@
+label: Plans
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: monthly
+    label: Price a month
+    kind: text
+  - name: yearly
+    label: Price a year
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: features
+    label: What it includes
+    kind: list
+  - name: highlighted
+    label: Most popular
+    kind: boolean
+  - name: button
+    label: Button
+    kind: text
+order: [free, plus]

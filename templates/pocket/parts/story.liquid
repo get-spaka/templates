@@ -1,0 +1,31 @@
+<section id="how-it-works" class="bg-base-100 text-base-content" data-phone-story>
+  <div class="mx-auto max-w-6xl px-5 pt-10 pb-20 md:px-8 md:pb-28">
+    <div class="max-w-3xl">
+      <p class="kicker text-primary" data-reveal>How it works</p>
+      <h2 class="mt-4 text-[clamp(2.5rem,5.5vw,4.5rem)] text-balance" data-reveal>Five small habits, <mark>one app</mark></h2>
+    </div>
+    <nav aria-label="Chapters" class="story-rail-wrap mt-8" data-reveal>
+      <ol class="story-rail flex flex-wrap gap-2">
+        {% for chapter in data["home-chapters"] %}
+        <li><a href="#chapter-{{ forloop.index }}" class="numeral grid size-11 place-items-center rounded-full border border-base-300 bg-base-100 text-[1.0625rem] hover:border-primary" {% if forloop.first %}aria-current="step"{% endif %}>{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</a></li>
+        {% endfor %}
+      </ol>
+    </nav>
+    <ol class="story-list mt-10 space-y-20 lg:mt-6 lg:space-y-0">
+      {% for chapter in data["home-chapters"] %}
+      <li id="chapter-{{ forloop.index }}" class="scroll-mt-28 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-10">
+        <div class="story-text max-w-lg {% assign side = forloop.index | modulo: 2 %}{% if side == 0 %}lg:order-2 lg:justify-self-end{% endif %}" data-chapter>
+          <p class="flex items-baseline gap-4"><span class="numeral text-[clamp(3.25rem,6vw,5.5rem)] text-accent">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>{% if chapter.kicker %}<span class="kicker text-base-content/70">{{ chapter.kicker }}</span>{% endif %}</p>
+          <h3 class="mt-4 text-[clamp(2rem,3.6vw,3rem)] text-balance">{{ chapter.title }}</h3>
+          {% if chapter.text %}<p class="story-body mt-5 text-lg leading-relaxed text-pretty text-base-content/75">{{ chapter.text }}</p>{% endif %}
+        </div>
+        <div class="story-phone mt-10 flex justify-center lg:mt-0">
+          <div class="story-sticky">
+            {% render 'phone', screen: chapter.screen, tilt: true %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

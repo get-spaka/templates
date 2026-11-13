@@ -1,0 +1,28 @@
+label: Messages and cake orders
+collected: true
+answer: contact-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many messages were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your message was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: wanted_for
+    label: For which day
+    kind: date
+  - name: message
+    label: Your message
+    kind: markdown
+    required: true

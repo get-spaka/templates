@@ -1,0 +1,20 @@
+{
+  "name": "Beacon product window",
+  "kind": "features",
+  "source": "upstart",
+  "description": "The product's own interface drawn in HTML inside a window frame with three dots: a sidebar, a response-time chart and a list of monitors with their uptime bars. It is tipped back in perspective and lies flat as the page scrolls, its bars filling one after another. Rewrite its contents for another product, or replace them with a screenshot.",
+  "tags": ["product", "interface", "app", "mockup", "dashboard", "window", "screenshot"],
+  "mood": ["dark", "professional"],
+  "synonyms": [
+    "product window",
+    "app mockup",
+    "interface",
+    "dashboard",
+    "screenshot",
+    "maquette",
+    "interface du produit",
+    "capture d'écran",
+    "fenêtre",
+    "aperçu de l'application"
+  ]
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.client }} — Halfvolt</title>
+<meta name="description" content="{{ record.client }}, {{ record.year }}: {{ record.summary }}">
+<meta property="og:title" content="{{ record.client }}: {{ record.title }} — Halfvolt">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.cover %}<meta property="og:image" content="{{ record.cover }}">{% endif %}
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <div class="overflow-x-clip {% case record.tone %}{% when 'yellow' %}bg-accent text-accent-content{% when 'bone' %}bg-secondary text-secondary-content{% when 'graphite' %}bg-base-200 text-base-content{% else %}bg-primary text-primary-content{% endcase %}">
+    <div class="mx-auto max-w-[110rem] px-5 pt-10 pb-12 md:px-10 md:pt-14 md:pb-16">
+      <a href="/work" class="meta inline-flex gap-2 hover:underline"><span aria-hidden="true">←</span> All work</a>
+      <h1 class="mt-8 text-[clamp(2.5rem,11.5vw,11rem)] leading-[0.82] tracking-[-0.03em] break-words md:mt-12" data-kinetic><span data-drift="left">{{ record.client }}</span></h1>
+      <div class="mt-8 grid gap-8 md:mt-12 md:grid-cols-12 md:items-end">
+        <p class="normal-width text-[clamp(1.5rem,3vw,2.75rem)] leading-[1] font-extrabold tracking-[-0.025em] text-balance md:col-span-7">{{ record.title }}</p>
+        <dl class="meta grid grid-cols-[7.5rem_1fr] gap-x-4 border-t-2 border-current md:col-span-5">
+          <dt class="border-b border-current/30 py-2.5 opacity-75">Client</dt><dd class="border-b border-current/30 py-2.5">{{ record.client }}</dd>
+          <dt class="border-b border-current/30 py-2.5 opacity-75">Year</dt><dd class="border-b border-current/30 py-2.5">{{ record.year }}</dd>
+          <dt class="border-b border-current/30 py-2.5 opacity-75">Disciplines</dt><dd class="border-b border-current/30 py-2.5">{{ record.disciplines | join: " · " }}</dd>
+          <dt class="py-2.5 opacity-75">Sector</dt><dd class="py-2.5">{{ record.sector }}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  {% if record.cover %}
+  <figure class="aspect-[4/3] w-full bg-base-200 md:aspect-[21/9]" data-zoom><img src="{{ record.cover }}" class="size-full object-cover"></figure>
+  {% endif %}
+  <div class="mx-auto max-w-[110rem] px-5 py-16 md:px-10 md:py-24">
+    <p class="normal-width max-w-[24em] text-[clamp(1.5rem,3.4vw,3.25rem)] leading-[1.05] font-bold tracking-[-0.025em] text-pretty">{{ record.summary }}</p>
+    <div class="case-body mt-12 max-w-[80rem] text-lg leading-relaxed text-base-content/85 md:mt-16 md:columns-2 md:gap-16">{{ record.body }}</div>
+    {% if record.results.size > 0 %}
+    <dl class="mt-16 grid border-t-2 border-base-content md:mt-24 md:grid-cols-3">
+      {% for result in record.results limit: 3 %}
+      {% assign parts = result | split: " / " %}
+      <div class="flex flex-col-reverse justify-end border-b border-base-300 py-8 md:border-b-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0">
+        <dt class="meta mt-4 text-base-content/75">{{ parts[1] }}</dt>
+        <dd class="narrow text-[clamp(4rem,8vw,8rem)] leading-[0.8] font-bold tracking-[-0.02em] text-primary">{{ parts[0] }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+  </div>
+  <section class="bg-base-100" aria-label="Images of {{ record.client }}" data-reel>
+    <div class="pb-16 md:pb-20" data-reel-stage>
+      <div class="mx-auto flex w-full max-w-[110rem] items-end justify-between gap-6 px-5 md:px-10">
+        <h2 class="meta text-base-content">The work, frame by frame</h2>
+        <p class="meta text-base-content/70">{{ record.client }} · {{ record.year }}</p>
+      </div>
+      <div class="mx-auto mt-4 w-full max-w-[110rem] px-5 md:px-10" aria-hidden="true">
+        <div class="h-[3px] rounded-full bg-base-300" data-reel-progress><span></span></div>
+      </div>
+      <ul class="reel-wide mt-8 w-full" data-reel-track>
+        {% if record.image_1 %}<li><figure class="aspect-[3/2] overflow-hidden rounded-box bg-base-200"><img src="{{ record.image_1 }}" class="size-full object-cover"></figure></li>{% endif %}
+        {% if record.image_2 %}<li><figure class="aspect-[3/2] overflow-hidden rounded-box bg-base-200"><img src="{{ record.image_2 }}" class="size-full object-cover"></figure></li>{% endif %}
+        {% if record.image_3 %}<li><figure class="aspect-[3/2] overflow-hidden rounded-box bg-base-200"><img src="{{ record.image_3 }}" class="size-full object-cover"></figure></li>{% endif %}
+        {% if record.image_4 %}<li><figure class="aspect-[3/2] overflow-hidden rounded-box bg-base-200"><img src="{{ record.image_4 }}" class="size-full object-cover"></figure></li>{% endif %}
+      </ul>
+    </div>
+  </section>
+  {% if record.credits.size > 0 %}
+  <div class="mx-auto max-w-[110rem] px-5 pb-16 md:px-10 md:pb-24">
+    <h2 class="meta border-t-2 border-base-content pt-4 text-base-content/70">Credits</h2>
+    <ul class="meta mt-4 gap-x-10 space-y-2 sm:columns-2 lg:columns-3">
+      {% for line in record.credits %}<li>{{ line }}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% for item in data.cases %}{% if item.id == record.id %}{% assign at = forloop.index %}{% endif %}{% endfor %}
+  {% assign next = data.cases[at] | default: data.cases.first %}
+  {% if next and next.id != record.id %}
+  <a href="/work/{{ next.id }}" class="group block overflow-x-clip {% case next.tone %}{% when 'yellow' %}bg-accent text-accent-content{% when 'bone' %}bg-secondary text-secondary-content{% when 'graphite' %}bg-base-200 text-base-content{% else %}bg-primary text-primary-content{% endcase %}" data-cursor="Next">
+    <span class="mx-auto block max-w-[110rem] px-5 py-14 md:px-10 md:py-20">
+      <span class="meta block">Next case · {{ next.disciplines | join: " · " }}</span>
+      <span class="wide mt-5 block text-[clamp(2.5rem,11vw,10.5rem)] leading-[0.82] font-black tracking-[-0.03em] break-words uppercase">{{ next.client }} <span class="inline-block motion-safe:transition-transform motion-safe:group-hover:translate-x-4" aria-hidden="true">→</span></span>
+      <span class="mt-5 block max-w-2xl text-xl leading-snug font-medium">{{ next.title }}</span>
+    </span>
+  </a>
+  {% endif %}
+</article>
+</main>
+{% render 'footer' %}
+</body>
+</html>

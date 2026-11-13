@@ -1,0 +1,9 @@
+<section class="overflow-hidden bg-base-100 py-10 text-primary-content md:py-14" aria-label="Baked today">
+  <div class="-mx-8 -rotate-2 bg-primary py-4 md:py-5">
+    <ul class="flex w-max items-center text-3xl font-extrabold whitespace-nowrap uppercase md:text-5xl" data-ribbon>
+      {% for item in data.ribbon %}
+      <li class="flex items-center gap-8 pr-8 md:gap-12 md:pr-12">{{ item.name }}<span class="text-accent" aria-hidden="true">✻</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

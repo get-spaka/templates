@@ -1,0 +1,26 @@
+label: Events
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: time
+    label: Time
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: body
+    label: Description
+    kind: markdown
+body: body
+sort: date

@@ -1,0 +1,12 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto flex max-w-[96rem] flex-col gap-6 border-t border-neutral-content/20 px-5 py-8 font-mono text-[0.7rem] tracking-[0.12em] uppercase md:flex-row md:items-center md:justify-between md:px-10">
+    <p class="text-neutral-content/60">© 2026 Noor Haddad · Lisbon</p>
+    <nav aria-label="Footer">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "footer" or item.place == "social" %}
+        <li><a href="{{ item.href }}" class="link-hover hover:text-primary">{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</footer>

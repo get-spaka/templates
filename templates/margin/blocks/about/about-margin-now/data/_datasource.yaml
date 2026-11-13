@@ -1,0 +1,10 @@
+label: On my walks now
+fields:
+  - name: label
+    label: Label
+    kind: text
+    required: true
+  - name: line
+    label: Line
+    kind: text
+order: [walking, reading, looking-for, eating, wondering]

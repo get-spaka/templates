@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Privacy — Nightjar</title>
+<meta name="description" content="What Nightjar's waitlist keeps (an email and, if you like, your team's size), what it never does with it, where it is stored and how to be removed.">
+<meta property="og:title" content="Privacy — Nightjar">
+<meta property="og:description" content="What the waitlist keeps, what it never does, and how to be removed.">
+<meta property="og:image" content="/media/rotterdam-harbor.jpg">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+<section class="relative isolate overflow-hidden border-b border-base-300">
+  <img src="/media/rotterdam-harbor.jpg" class="absolute inset-0 -z-10 h-full w-full object-cover opacity-45">
+  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-base-100 via-base-100/70 to-base-100/20" aria-hidden="true"></div>
+  <div class="mx-auto max-w-3xl px-5 pt-28 pb-14 md:px-8 md:pt-44 md:pb-20">
+    <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/70 uppercase" data-reveal>Last updated November 2026</p>
+    <h1 class="mt-5 text-[clamp(2.75rem,7vw,6rem)] leading-[1.02] font-medium tracking-tight" data-split>Privacy</h1>
+    <p class="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-pretty text-base-content/80" data-reveal>How the waitlist treats what you give it. Short, because it keeps very little.</p>
+  </div>
+</section>
+<div class="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
+  <aside class="rounded-box border border-primary/40 bg-base-200/70 p-6 md:p-8" data-glow data-lit data-reveal>
+    <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-primary uppercase">In short</p>
+    <ul class="mt-5 space-y-3 text-[1.0625rem] leading-relaxed">
+      <li class="flex gap-3"><span class="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>We keep your email and, if you give it, your team's size. Nothing else.</li>
+      <li class="flex gap-3"><span class="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>We use them to let you into the beta and tell you about 1.0, and never sell or share them.</li>
+      <li class="flex gap-3"><span class="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true"></span>One email to hello@nightjar.dev removes you, within a week.</li>
+    </ul>
+  </aside>
+  <div class="mt-16 space-y-14">
+    <section data-reveal>
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">01</p>
+      <h2 class="mt-2 text-2xl tracking-tight">What the waitlist keeps</h2>
+      <p class="mt-4 leading-relaxed text-pretty text-base-content/75">Your email address, the size of your team if you choose one, and the date you joined, which decides your place in the queue. The site sets no advertising or tracking cookies and keeps no record of your visits beyond the server's usual logs, deleted after fourteen days.</p>
+    </section>
+    <section data-reveal>
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">02</p>
+      <h2 class="mt-2 text-2xl tracking-tight">What it never does</h2>
+      <p class="mt-4 leading-relaxed text-pretty text-base-content/75">We do not sell your address, rent it, share it with partners or add it to a newsletter you did not ask for. You will get an email when your wave of the beta opens, one when 1.0 ships, and nothing more unless you sign up for an account.</p>
+    </section>
+    <section data-reveal>
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">03</p>
+      <h2 class="mt-2 text-2xl tracking-tight">Where it is stored</h2>
+      <p class="mt-4 leading-relaxed text-pretty text-base-content/75">In the European Union, on servers in Frankfurt and Amsterdam, encrypted at rest. Our email provider, which sends the two messages above, is also based in the EU and keeps addresses only as long as we do.</p>
+    </section>
+    <section data-reveal>
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">04</p>
+      <h2 class="mt-2 text-2xl tracking-tight">How to be removed</h2>
+      <p class="mt-4 leading-relaxed text-pretty text-base-content/75">Write to hello@nightjar.dev from the address you signed up with, or use the link at the bottom of any email we send. We delete your entry within seven days and confirm it by email. You can also ask us for a copy of what we hold first.</p>
+    </section>
+    <section data-reveal>
+      <p class="font-mono text-[0.6875rem] tracking-[0.08em] text-base-content/50 uppercase">05</p>
+      <h2 class="mt-2 text-2xl tracking-tight">Whom to write to</h2>
+      <p class="mt-4 leading-relaxed text-pretty text-base-content/75">Nightjar Labs B.V., Rotterdam, the Netherlands, is responsible for this data. Write to <a href="mailto:hello@nightjar.dev" class="text-base-content underline decoration-base-content/30 underline-offset-4 hover:text-primary hover:decoration-primary">hello@nightjar.dev</a>. If you think we got something wrong, you can also complain to the Dutch data protection authority.</p>
+    </section>
+  </div>
+</div>
+</main>
+{% render 'footer' %}
+</body>
+</html>

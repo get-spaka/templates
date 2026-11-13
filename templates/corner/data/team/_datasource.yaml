@@ -1,0 +1,16 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: bio
+    label: A few words
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+order: [maya-okafor, tom-reyes, lena-kowalski, sam-whitfield]

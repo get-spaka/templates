@@ -1,0 +1,41 @@
+label: Menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: category
+    label: Category
+    kind: choice
+    required: true
+    choices: [Bread, Pastries, Coffee, Cakes to order]
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: image
+    label: Photo
+    kind: image
+order:
+  [
+    country-sourdough,
+    dark-rye,
+    seeded-spelt,
+    olive-fougasse,
+    focaccia,
+    butter-croissant,
+    pain-au-chocolat,
+    cinnamon-knot,
+    almond-croissant,
+    flat-white,
+    filter-coffee,
+    chai,
+    summer-fruit-tart,
+    chocolate-layer-cake,
+    birthday-sponge,
+  ]

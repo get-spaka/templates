@@ -1,0 +1,372 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt).
+   Bodoni Moda is variable in optical size (6 to 96) and weight (400 to 900); only its roman is shipped. */
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/bodoni-moda.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("/fonts/hanken-grotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* In the components layer, so that Tailwind's classes (text-6xl, leading-…) win over them. */
+@layer components {
+  body {
+    font-size: 1.0625rem;
+  }
+
+  /* Headings and the large figures: Bodoni at its display end, light, never bold. */
+  h1,
+  h2,
+  h3,
+  .display {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
+  }
+  h3 {
+    font-weight: 500;
+  }
+
+  /* Labels, times and prices (not daisyUI's .label, which is a form label's). */
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Running text, in candle cream at 80%. */
+  .prose-ember {
+    line-height: 1.7;
+    color: color-mix(in oklch, var(--color-base-content) 80%, transparent);
+  }
+}
+
+/* .kern-first: the name's first letter pulled toward the second, for a name that begins with
+   W, V, T, Y or A, whose diagonal leaves a wide gap at poster size ("W ick"). In plain text
+   by ::first-letter, and once Splitting has cut the name into letters, on its first letter. */
+.kern-first::first-letter {
+  letter-spacing: -0.14em;
+}
+.kern-first .word:first-child .char:first-child {
+  margin-right: -0.1em;
+}
+
+/* Small labels and buttons have a floor of 13 px on a desktop. */
+@media (min-width: 48rem) {
+  .tag {
+    font-size: 0.8125rem;
+  }
+}
+/* A heading set as a label keeps the label's font (the runtime's heading rule would win). */
+:is(h1, h2, h3, h4).tag {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+}
+/* Pill buttons: outlined in amber, filled on hover, with the labels' letters. */
+.btn.tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  padding-inline: 1.6em;
+}
+@media (min-width: 48rem) {
+  .btn.tag {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Every photo of the set graded alike: a little less color, a little more contrast. */
+[data-grade] img,
+img[data-grade] {
+  filter: saturate(0.85) contrast(1.08);
+}
+
+/* The header: night by default (what editing and older browsers show), transparent over
+   the hero until the page scrolls, by a scroll-driven animation. */
+.site-header {
+  background-color: color-mix(in oklch, var(--color-neutral) 90%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--color-base-content) 10%, transparent);
+}
+
+/* The phone's full-screen menu, a <details> that needs no script. */
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu[open] .menu-open,
+.site-menu:not([open]) .menu-close {
+  display: none;
+}
+
+/* The candlelight hero. With no script, the photo as it is with night at its foot so the
+   name reads; once the script runs, the WebGL light (data-lit="gl") or the CSS one
+   (data-lit="css", from --candle-x and --candle-y) darkens the room around the pointer. */
+.candle {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-neutral);
+}
+.candle-media {
+  position: absolute;
+  inset: 0;
+}
+.candle-media img,
+.candle-media canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.candle-media canvas {
+  pointer-events: none;
+}
+.candle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      color-mix(in oklch, var(--color-neutral) 88%, transparent) 0%,
+      color-mix(in oklch, var(--color-neutral) 45%, transparent) 28%,
+      transparent 60%
+    ),
+    linear-gradient(to bottom, color-mix(in oklch, var(--color-neutral) 55%, transparent), transparent 22%);
+}
+.candle[data-lit="gl"]::after {
+  background: linear-gradient(to bottom, color-mix(in oklch, var(--color-neutral) 45%, transparent), transparent 20%);
+}
+.candle[data-lit="css"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at var(--candle-x, 40%) var(--candle-y, 70%),
+      color-mix(in oklch, var(--color-primary) 16%, transparent) 0,
+      transparent 18rem
+    ),
+    radial-gradient(
+      circle at var(--candle-x, 40%) var(--candle-y, 70%),
+      transparent 0,
+      color-mix(in oklch, var(--color-neutral) 35%, transparent) 14rem,
+      color-mix(in oklch, var(--color-neutral) 62%, transparent) 34rem
+    );
+}
+
+/* data-candle: a soft amber light that follows the pointer over a dark section, drawn
+   only once the script has turned it on (data-candle-on). */
+[data-candle] {
+  position: relative;
+  isolation: isolate;
+}
+[data-candle][data-candle-on]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    32rem circle at var(--cx, 50%) var(--cy, 50%),
+    color-mix(in oklch, var(--color-primary) 20%, transparent),
+    color-mix(in oklch, var(--color-primary) 6%, transparent) 45%,
+    transparent 70%
+  );
+  opacity: var(--candle-o, 0);
+  transition: opacity 0.8s ease;
+}
+
+/* data-drift: the image is a little larger than its frame; the page's scroll moves it from
+   above to below. The stylesheet's own state is the middle of the drift. */
+[data-drift] {
+  overflow: hidden;
+  view-timeline-name: --drift;
+}
+[data-drift] img {
+  scale: 1.12;
+}
+
+/* The evening: its background deepens down its length, from the second surface through the
+   second color to night, so the room darkens as you scroll through it. */
+[data-evening] {
+  background-color: var(--color-base-200);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-base-200) 0%,
+    color-mix(in oklch, var(--color-base-200), var(--color-secondary) 60%) 30%,
+    var(--color-secondary) 55%,
+    color-mix(in oklch, var(--color-secondary), var(--color-neutral) 70%) 80%,
+    var(--color-neutral) 100%
+  );
+}
+/* Once the evening script writes the hour, each moment's own time is a small figure. */
+@media (min-width: 48rem) {
+  [data-evening][data-evening-on] .evening-own-time {
+    font-size: var(--text-2xl);
+    opacity: 0.8;
+  }
+}
+
+/* The menu card: cream paper, the one light surface of the site. */
+.menu-card {
+  background-color: var(--color-base-content);
+  color: var(--color-base-100);
+}
+
+/* Dotted leaders between a name and its price. */
+.leader {
+  flex: 1;
+  min-width: 1.5rem;
+  margin-inline: 0.75rem;
+  margin-bottom: 0.4em;
+  border-bottom: 1px dotted currentColor;
+  opacity: 0.4;
+}
+
+/* The hours row of today, marked by the tonight script. */
+[data-hours-row][data-today] {
+  color: var(--color-primary);
+}
+
+/* The open tonight dot; it glows while open. */
+[data-tonight][data-closed] .tonight-dot {
+  background-color: color-mix(in oklch, var(--color-base-content) 45%, transparent);
+}
+
+/* Fields on the dark: hairline borders, the pill shape from the theme. */
+.field-ember {
+  background-color: transparent;
+  border-color: color-mix(in oklch, var(--color-base-content) 28%, transparent);
+}
+.field-ember:focus,
+.field-ember:focus-within {
+  border-color: var(--color-primary);
+  outline-color: var(--color-primary);
+}
+select.field-ember option {
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+}
+
+/* Upstart's "Image credits" link, at the end of the footer. */
+footer [data-up-credits] {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.7;
+  padding-bottom: 2rem;
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+/* Splitting (MIT) */
+.splitting .word,
+.splitting .char {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* A cut through black between pages: the old one fades to night, the new one up from it. */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-group(root) {
+    background-color: var(--color-neutral);
+  }
+  ::view-transition-old(root) {
+    animation: ember-fade-out 0.25s ease-in both;
+  }
+  ::view-transition-new(root) {
+    animation: ember-fade-in 0.3s ease-out 0.2s both;
+  }
+  @keyframes ember-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes ember-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  /* The header is transparent over the hero, then night once the page has scrolled. */
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: ember-header linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 60vh;
+    }
+    @keyframes ember-header {
+      from {
+        background-color: transparent;
+        border-bottom-color: transparent;
+      }
+      70% {
+        background-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  /* data-drift, scrubbed by the page's scroll. */
+  @supports (animation-timeline: view()) {
+    [data-drift] img {
+      animation: ember-drift linear both;
+      animation-timeline: --drift;
+      animation-range: cover;
+    }
+    @keyframes ember-drift {
+      from {
+        translate: 0 -6%;
+      }
+      to {
+        translate: 0 6%;
+      }
+    }
+  }
+
+  /* The menu card straightens under the pointer. */
+  .menu-card {
+    transition: rotate 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .menu-card:hover {
+      rotate: 0deg;
+    }
+  }
+}

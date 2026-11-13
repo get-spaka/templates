@@ -1,0 +1,36 @@
+label: Menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: course
+    label: Course
+    kind: choice
+    required: true
+    choices: [snacks, raw-bar, small-plates, hearth, sides, sweet]
+  - name: tags
+    label: Diet
+    kind: list
+    choices: [vegetarian, vegan, gluten-free]
+  - name: image
+    label: Photo
+    kind: image
+  - name: featured
+    label: On tonight's menu card (home page)
+    kind: boolean
+order:
+  [
+    hearth-bread-and-cultured-butter,
+    oysters-by-the-half-dozen,
+    leeks-from-the-embers,
+    hake-over-the-coals,
+    squash-from-the-embers,
+    burnt-honey-custard,
+  ]

@@ -1,0 +1,28 @@
+<header class="bg-base-100 text-base-content">
+  <div class="mx-auto flex max-w-[96rem] items-center justify-between gap-6 px-5 py-5 md:px-10">
+    <a href="/" class="text-base font-medium tracking-tight whitespace-nowrap">Noor Haddad</a>
+    <nav aria-label="Main" class="hidden md:block">
+      <ul class="flex gap-8 text-sm">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="link-hover hover:text-primary {% if page.url == item.href %}text-primary{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="flex items-center gap-4">
+      <p class="flex items-center gap-2 font-mono text-[0.7rem] tracking-[0.12em] whitespace-nowrap uppercase text-base-content/70" data-clock data-tz="Europe/Lisbon" data-hours="09:00-18:00" data-days="1-5" data-working="At work" data-away="Away">
+        <span class="inline-block size-2 rounded-full bg-base-content/30" data-clock-dot aria-hidden="true"></span>
+        <span>Lisbon</span>
+        <span data-clock-time></span>
+        <span class="sr-only" data-clock-state></span>
+      </p>
+      <div class="dropdown dropdown-end md:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-sm px-1 font-normal" aria-label="Open menu">Menu</div>
+        <ul tabindex="0" class="menu dropdown-content z-20 mt-3 w-52 border border-base-300 bg-base-100 p-2">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+          <li><a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

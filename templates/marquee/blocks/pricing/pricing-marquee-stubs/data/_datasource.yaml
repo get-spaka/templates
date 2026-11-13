@@ -1,0 +1,23 @@
+label: Passes
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: price
+    label: Price
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+  - name: includes
+    label: What it includes
+    kind: list
+  - name: status
+    label: Status
+    kind: choice
+    choices: [on sale, few left, sold out]
+  - name: link
+    label: Ticket link
+    kind: link
+order: [day, weekend, weekend-swims, companion]

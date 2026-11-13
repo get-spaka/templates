@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — The Long Way Round</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — The Long Way Round">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.cover %}<meta property="og:image" content="{{ record.cover }}">{% endif %}
+</head>
+<body>
+{% render 'header', progress: true %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-10 md:px-10 md:pt-16">
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary lining-nums"><a href="/blog" class="hover:text-primary">{{ record.category }}</a> · No. {{ record.number }}</p>
+      <h1 class="mt-5 text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.03] font-medium tracking-tight text-balance">{{ record.title }}</h1>
+      {% if record.summary %}<p class="mx-auto mt-6 max-w-2xl text-xl leading-snug text-pretty text-base-content/75 md:text-2xl">{{ record.summary }}</p>{% endif %}
+      <p class="mt-7 font-sans text-sm text-base-content/70 lining-nums">By <span class="font-semibold text-base-content">{{ record.author }}</span> · <time datetime="{{ record.date }}">{{ record.date | date: "%-d %B %Y" }}</time> · {{ record.minutes }} min</p>
+    </div>
+    {% if record.cover %}
+    <figure class="mt-10 md:mt-14">
+      <div class="aspect-[3/2] rounded-box md:aspect-[16/9]" data-develop><img src="{{ record.cover }}" class="size-full object-cover"></div>
+      {% if record.cover_caption %}<figcaption class="mt-3 text-sm text-pretty text-base-content/75">{{ record.cover_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+  </div>
+  <div class="mx-auto max-w-6xl px-5 pt-12 pb-16 text-[1.125rem] md:px-10 md:pt-16 md:text-[1.1875rem] lg:grid lg:grid-cols-[10rem_minmax(0,66ch)] lg:gap-x-12 xl:grid-cols-[11rem_minmax(0,66ch)_15rem]">
+    <div class="mb-10 lg:mb-0">
+      <dl class="flex flex-wrap gap-x-8 gap-y-4 border-y border-base-300 py-4 font-sans text-sm lg:sticky lg:top-24 lg:block lg:border-y-0 lg:border-t lg:py-0 lg:pt-4">
+        <div>
+          <dt class="text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">Season</dt>
+          <dd class="mt-1">{{ record.season }}</dd>
+        </div>
+        {% if record.topics.size > 0 %}
+        <div class="lg:mt-6">
+          <dt class="text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">Topics</dt>
+          <dd class="mt-1">
+            <ul class="flex flex-wrap gap-x-3 gap-y-1 lg:block lg:space-y-1">
+              {% for name in record.topics %}{% for topic in data.topics %}{% if topic.title == name %}
+              <li><a href="/topics/{{ topic.id }}" class="hover:text-primary">{{ name }}</a></li>
+              {% endif %}{% endfor %}{% endfor %}
+            </ul>
+          </dd>
+        </div>
+        {% endif %}
+        <div class="lg:mt-6">
+          <dt class="text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65">Reading time</dt>
+          <dd class="mt-1 lining-nums">{{ record.minutes }} minutes</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="min-w-0">
+      <div class="max-w-[66ch] leading-[1.65] text-pretty" data-letter data-text data-highlight>{{ record.body }}</div>
+      <div class="max-w-[66ch]">{% render 'sign-off' %}</div>
+    </div>
+  </div>
+</article>
+{% render 'letterbox' %}
+{% assign topic = record.topics.first %}
+{% assign shown = 0 %}
+{% for post in data.blog %}{% if post.id != record.id and post.topics contains topic %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
+{% if topic and shown > 0 %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-10 pb-6 md:px-10 md:pt-14">
+    <div class="flex items-baseline justify-between gap-4 border-b border-base-content pb-3" data-reveal>
+      <h2 class="font-sans text-xs font-semibold tracking-[0.08em] uppercase">More on {{ topic }}</h2>
+      {% for item in data.topics %}{% if item.title == topic %}<a href="/topics/{{ item.id }}" class="font-sans text-sm font-medium hover:text-primary">All of them <span aria-hidden="true">→</span></a>{% endif %}{% endfor %}
+    </div>
+    <div class="grid gap-10 pt-8 md:grid-cols-3 md:gap-8">
+      {% assign shown = 0 %}
+      {% for post in data.blog %}{% if post.id != record.id and post.topics contains topic and shown < 3 %}{% assign shown = shown | plus: 1 %}
+      <a href="/blog/{{ post.id }}" class="group block" data-reveal>
+        {% if post.cover %}<span class="block aspect-[3/2] rounded-box" data-ink><img src="{{ post.cover }}" class="size-full object-cover"></span>{% endif %}
+        <span class="mt-4 block font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary lining-nums">{{ post.category }} · No. {{ post.number }}</span>
+        <h3 class="mt-2 text-2xl leading-snug font-medium text-balance transition-colors group-hover:text-primary">{{ post.title }}</h3>
+        <span class="mt-2 block text-pretty text-base-content/75">{{ post.summary }}</span>
+      </a>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% assign at = 0 %}
+{% for post in data.blog %}{% if post.id == record.id %}{% assign at = forloop.index0 %}{% endif %}{% endfor %}
+{% assign older_at = at | plus: 1 %}
+{% assign older = data.blog[older_at] %}
+{% assign newer = nil %}
+{% if at > 0 %}{% assign newer_at = at | minus: 1 %}{% assign newer = data.blog[newer_at] %}{% endif %}
+<nav aria-label="Letters before and after" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-6xl gap-px px-5 pt-10 pb-20 md:grid-cols-2 md:px-10 md:pb-28">
+    {% if older %}
+    <a href="/blog/{{ older.id }}" class="group block border-t border-base-content py-6 md:pr-10">
+      <span class="block font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65 lining-nums"><span aria-hidden="true">←</span> Previous letter · No. {{ older.number }}</span>
+      <span class="mt-3 block text-2xl leading-snug font-medium text-balance transition-colors group-hover:text-primary md:text-3xl">{{ older.title }}</span>
+    </a>
+    {% else %}<span class="hidden md:block"></span>{% endif %}
+    {% if newer %}
+    <a href="/blog/{{ newer.id }}" class="group block border-t border-base-content py-6 md:pl-10 md:text-right">
+      <span class="block font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65 lining-nums">Next letter · No. {{ newer.number }} <span aria-hidden="true">→</span></span>
+      <span class="mt-3 block text-2xl leading-snug font-medium text-balance transition-colors group-hover:text-primary md:text-3xl">{{ newer.title }}</span>
+    </a>
+    {% endif %}
+  </div>
+</nav>
+</main>
+{% render 'footer' %}
+</body>
+</html>

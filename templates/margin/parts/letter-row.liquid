@@ -1,0 +1,11 @@
+<li data-reveal>
+  <a href="/blog/{{ post.id }}" class="group grid grid-cols-[2.75rem_1fr] gap-x-4 border-b border-base-300 py-5 md:grid-cols-[4rem_1fr_9rem] md:gap-x-8 md:py-7">
+    <span class="pt-1 font-sans text-sm font-semibold text-secondary lining-nums tabular-nums">{{ post.number }}</span>
+    <span class="block">
+      <h3 class="text-xl leading-snug font-medium text-balance transition-colors group-hover:text-primary md:text-2xl">{{ post.title }}</h3>
+      <span class="mt-1.5 block text-pretty text-base-content/75">{{ post.summary }}</span>
+      <span class="mt-3 block font-sans text-xs font-semibold tracking-[0.08em] uppercase text-base-content/65 lining-nums">{{ post.topics | join: " · " }} · {{ post.minutes }} min</span>
+    </span>
+    {% if post.cover %}<span class="hidden aspect-[4/3] rounded-box md:block" data-ink><img src="{{ post.cover }}" class="size-full object-cover"></span>{% endif %}
+  </a>
+</li>

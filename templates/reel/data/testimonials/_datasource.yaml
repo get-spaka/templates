@@ -1,0 +1,17 @@
+label: Testimonials
+fields:
+  - name: quote
+    label: Quote
+    kind: text
+    required: true
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: company
+    label: Company
+    kind: text
+order: [marit-de-vries, joel-haddou, saskia-ploeg]

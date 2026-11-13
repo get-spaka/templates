@@ -1,0 +1,13 @@
+label: Figures
+fields:
+  - name: value
+    label: Value
+    kind: text
+    required: true
+  - name: label
+    label: Label
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [time-to-alert, regions, incidents-grouped, blips]

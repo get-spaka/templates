@@ -1,0 +1,28 @@
+<section class="bg-base-100 text-base-content" id="awards">
+  <div class="mx-auto max-w-[110rem] px-5 py-20 md:px-10 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="text-[clamp(2.75rem,8vw,7.5rem)]">The ledger</h2>
+      <p class="max-w-sm text-lg text-pretty text-base-content/75">Thirty-one awards since 2014. We keep them in a drawer; the latest are here.</p>
+    </div>
+    <table class="mt-12 w-full border-b border-base-300 text-left">
+      <thead class="meta text-base-content/60">
+        <tr class="border-b-2 border-base-content">
+          <th scope="col" class="w-20 py-3 pr-4 font-normal md:w-36">Year</th>
+          <th scope="col" class="py-3 pr-4 font-normal">Award</th>
+          <th scope="col" class="hidden py-3 pr-4 font-normal md:table-cell">Category</th>
+          <th scope="col" class="py-3 text-right font-normal">Project</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data.awards %}
+        <tr class="border-t border-base-300 align-baseline first:border-t-0">
+          <td class="narrow py-4 pr-4 text-3xl leading-none font-bold text-primary md:py-5 md:text-5xl">{{ item.year }}</td>
+          <td class="py-4 pr-4 text-lg leading-snug font-semibold md:py-5 md:text-2xl">{{ item.award }}</td>
+          <td class="meta hidden py-4 pr-4 text-base-content/75 md:table-cell md:py-5">{{ item.category }}</td>
+          <td class="py-4 text-right font-bold uppercase md:py-5 md:text-lg">{{ item.project }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

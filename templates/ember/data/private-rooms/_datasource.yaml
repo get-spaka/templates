@@ -1,0 +1,19 @@
+label: Rooms
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: seats
+    label: Seats
+    kind: text
+  - name: minimum
+    label: Minimum spend
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [cellar-room, whole-house]

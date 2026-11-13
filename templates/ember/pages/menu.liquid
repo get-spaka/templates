@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Menu — Wick, Portland, Maine</title>
+<meta name="description" content="Tonight's menu at Wick: snacks, the raw bar, small plates, fish and meat from the hearth, sides and sweets, and a five-course tasting menu at $95.">
+<meta property="og:title" content="Menu — Wick, Portland, Maine">
+<meta property="og:description" content="Snacks, the raw bar, small plates, the hearth, sides and sweets, and a five-course tasting menu at $95.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render "page-title", image: "/media/embers.jpg", label: "The menu", title: "Course by course, over the coals", note: "It changes with the boats and the farms; this is tonight's." %}
+{% render 'courses' %}
+{% render 'tasting' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

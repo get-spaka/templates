@@ -1,0 +1,37 @@
+label: Briefs
+collected: true
+answer: brief-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many briefs were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your brief was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: company
+    label: Company
+    kind: text
+  - name: needs
+    label: What you need
+    kind: list
+    choices: [Brand identity, Motion system, Campaign film, Website, Not sure yet]
+  - name: message
+    label: About the project
+    kind: markdown
+    required: true
+  - name: budget
+    label: Budget
+    kind: choice
+    choices: [Under €20k, €20-50k, €50-100k, €100k+]
+  - name: timing
+    label: Timing
+    kind: choice
+    choices: [ASAP, This quarter, Next quarter, Just exploring]

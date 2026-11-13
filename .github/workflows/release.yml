@@ -1,0 +1,23 @@
+# Each tag v* builds a release of the templates from their sources: the
+# catalogue, the pictures and one .zip per template, attached to the GitHub
+# release the Upstart app reads (its latest one). Nothing built is committed.
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Check and build the templates
+        run: node scripts/release.mjs templates dist "$GITHUB_REF_NAME"
+      - name: Publish the release
+        run: gh release create "$GITHUB_REF_NAME" dist/catalogue.json dist/*.webp dist/*.zip --title "$GITHUB_REF_NAME" --notes-file dist/notes.md --latest
+        env:
+          GH_TOKEN: ${{ github.token }}

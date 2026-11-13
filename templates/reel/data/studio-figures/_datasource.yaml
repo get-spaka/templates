@@ -1,0 +1,11 @@
+label: Figures
+fields:
+  - name: figure
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+    required: true
+order: [people, languages, warehouse, days]

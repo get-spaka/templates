@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — The Long Way Round</title>
+<meta name="description" content="{{ record.summary }} Letters about {{ record.title }} from The Long Way Round.">
+<meta property="og:title" content="{{ record.title }} — The Long Way Round">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.plate %}<meta property="og:image" content="{{ record.plate }}">{% endif %}
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-10 pb-12 md:px-10 md:pt-16 md:pb-16">
+    <a href="/topics" class="font-sans text-xs font-semibold tracking-[0.08em] uppercase text-secondary hover:text-primary"><span aria-hidden="true">←</span> Topics</a>
+    <div class="mt-6 grid gap-8 md:grid-cols-12 md:items-end md:gap-10">
+      <div class="md:col-span-6">
+        <h1 class="text-[clamp(3rem,7vw,5.5rem)] leading-[0.95] font-normal tracking-tight text-balance" data-reveal>{{ record.title }}</h1>
+        <p class="mt-5 text-xl leading-snug text-pretty text-base-content/75 md:text-2xl" data-reveal>{{ record.summary }}</p>
+        <div class="mt-5 max-w-xl text-pretty text-base-content/80 [&_p+p]:mt-3" data-text data-reveal>{{ record.text }}</div>
+      </div>
+      {% if record.plate %}<div class="aspect-[3/2] rounded-box md:col-span-6" data-develop data-reveal><img src="{{ record.plate }}" class="size-full object-cover"></div>{% endif %}
+    </div>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pb-16 md:px-10 md:pb-24">
+    {% assign count = 0 %}
+    {% for post in data.blog %}{% if post.topics contains record.title %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+    <div class="border-b border-base-content pb-3" data-reveal>
+      <h2 class="font-sans text-xs font-semibold tracking-[0.08em] uppercase lining-nums">{{ count }} {% if count == 1 %}letter{% else %}letters{% endif %} on {{ record.title }}</h2>
+    </div>
+    <ol>
+      {% for post in data.blog %}{% if post.topics contains record.title %}{% render 'letter-row', post: post %}{% endif %}{% endfor %}
+    </ol>
+  </div>
+</section>
+{% render 'letterbox' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+label: Strip of images
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: image
+    label: Image
+    kind: image
+order: [spiral, chairs, circle, table, corner, bowl, skylights, chair]

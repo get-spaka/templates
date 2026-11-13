@@ -1,0 +1,16 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: bio
+    label: Bio
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+order: [mara-lindqvist, julien-okafor, dana-whitcomb, rafael-duarte]

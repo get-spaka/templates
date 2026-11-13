@@ -1,0 +1,346 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt).
+   Anybody is variable in width (50 to 150) and weight (100 to 900). */
+@font-face {
+  font-family: "Anybody";
+  src: url("/fonts/anybody.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Rethink Sans";
+  src: url("/fonts/rethink-sans.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+/* Registered so that it moves smoothly when a script, a hover or a rise changes it. */
+@property --wdth {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}
+
+/* In the components layer, so that Tailwind's classes (text-2xl, leading-…) win over them. */
+@layer components {
+  /* Width is one variable, --wdth (50 to 150), read by font-stretch. The scripts change it. */
+  h1,
+  h2,
+  h3,
+  .tag,
+  .poster,
+  [data-stretch] .char,
+  [data-bill] a {
+    font-stretch: calc(var(--wdth, 100) * 1%);
+  }
+
+  /* Headings: Anybody, heavy, narrow, uppercase, packed tight. */
+  h1,
+  h2,
+  h3 {
+    --wdth: 70;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -0.01em;
+  }
+  h1 {
+    --wdth: 100;
+    font-weight: 900;
+  }
+
+  /* Poster type: the name and the dates, at the weight of a printed bill. */
+  .poster {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.8;
+  }
+
+  /* Labels, times and codes (not daisyUI's .label, which is a form label's): "FRI 09 · 22:30 · THE TANK". */
+  .tag {
+    --wdth: 55;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  .tabs .tab.tag {
+    font-size: 1rem;
+  }
+
+  body {
+    font-size: 1.0625rem;
+  }
+}
+
+/* Every photo in two inks, made from the theme's colors: wrap the <img> in .duotone
+   (the main color as the light ink) or .duotone-secondary (the second color). */
+.duotone,
+.duotone-secondary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--color-primary);
+}
+.duotone-secondary {
+  background-color: var(--color-secondary);
+}
+.duotone img,
+.duotone-secondary img {
+  filter: grayscale(1) contrast(1.2) brightness(1.08);
+  mix-blend-mode: multiply;
+}
+.duotone::after,
+.duotone-secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-neutral);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+/* The printed halftone under the poster: dots of the main color, larger toward the top right.
+   The WebGL field covers it while it runs (data-running), and it shows again when it stops. */
+[data-halftone] {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-secondary);
+  background-image: radial-gradient(circle, var(--color-primary) 0 17%, transparent 19%);
+  background-size: 1rem 1rem;
+}
+[data-halftone]::before,
+[data-halftone]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 1rem 1rem;
+}
+[data-halftone]::before {
+  background-image: radial-gradient(circle, var(--color-primary) 0 30%, transparent 32%);
+  mask-image: radial-gradient(circle at 100% 0%, black 0%, transparent 75%);
+}
+[data-halftone]::after {
+  background-image: radial-gradient(circle, var(--color-primary) 0 44%, transparent 46%);
+  mask-image: radial-gradient(circle at 100% 0%, black 0%, transparent 42%);
+}
+[data-halftone][data-running] {
+  background-image: none;
+}
+[data-halftone][data-running]::before,
+[data-halftone][data-running]::after {
+  content: none;
+}
+[data-shader] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Stickers: round or pill-shaped apricot badges with an inked outline, tilted by their classes. */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-base-content);
+  background-color: var(--color-accent);
+  color: var(--color-accent-content);
+  text-align: center;
+}
+
+/* The tape: two crossing bands. On a phone they tilt half as much. */
+.tape-band {
+  rotate: var(--tilt);
+}
+@media (max-width: 47.99rem) {
+  .tape-band {
+    rotate: calc(var(--tilt) / 2);
+  }
+}
+
+/* The day flyers sit askew; once the stack script runs they stick and pile up. */
+[data-stack] > li {
+  rotate: var(--askew, 0deg);
+}
+[data-stack][data-stacking] > li {
+  position: sticky;
+  top: calc(6rem + var(--i, 0) * 1.25rem);
+}
+
+/* Ticket stubs: notched on both sides by a mask, a perforation down the tear line. */
+.stub {
+  mask:
+    radial-gradient(circle at 0 14rem, transparent 1rem, black 1.05rem) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 14rem, transparent 1rem, black 1.05rem) right / 51% 100% no-repeat;
+}
+.stub-tear {
+  border-top: 2px dashed currentColor;
+}
+[data-tilt] > li:nth-child(odd) .stub-turn {
+  rotate: -1.5deg;
+}
+[data-tilt] > li:nth-child(even) .stub-turn {
+  rotate: 1deg;
+}
+
+/* On a desktop, small condensed type reads too small at width 55: labels and buttons widen
+   a little, track a little more, and Tailwind's two smallest sizes get a floor (13 px and
+   15 px) on them alone, by their variables, so that the classes written stay the same. */
+@media (min-width: 48rem) {
+  .tag {
+    --wdth: 64;
+    --text-xs: 0.8125rem;
+    --text-sm: 0.9375rem;
+    letter-spacing: 0.075em;
+  }
+  .btn.tag {
+    --wdth: 68;
+  }
+}
+
+/* The bill's names, narrow at rest; the bill script lets a hovered one widen. */
+[data-bill] a {
+  --wdth: 70;
+}
+
+/* The status stamp on a stub. */
+.stamp {
+  display: inline-block;
+  border: 2px solid currentColor;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.6rem;
+  rotate: -8deg;
+}
+
+/* The lineup's day filter that is on. */
+[data-filter][aria-pressed="true"] {
+  background-color: var(--color-base-content);
+  border-color: var(--color-base-content);
+  color: var(--color-base-100);
+}
+
+/* Upstart's "Image credits" link, at the end of the footer. */
+footer [data-up-credits] {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 0 1.25rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+/* Splitting (MIT) */
+.splitting .word,
+.splitting .char {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Each page wipes in behind a diagonal edge. */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: none;
+  }
+  ::view-transition-new(root) {
+    animation: marquee-wipe 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  @keyframes marquee-wipe {
+    from {
+      clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    }
+    60% {
+      clip-path: polygon(0 0, 130% 0, 0 130%, 0 100%);
+    }
+    to {
+      clip-path: polygon(0 0, 200% 0, 0 200%, 0 100%);
+    }
+  }
+
+  /* Headings rise and widen as they come into view. */
+  [data-rise] {
+    animation: marquee-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 100%;
+  }
+  @keyframes marquee-rise {
+    from {
+      opacity: 0;
+      translate: 0 0.4em;
+      --wdth: 50;
+    }
+  }
+
+  /* The day numbers move apart as the poster scrolls away. */
+  [data-part] > * {
+    animation: linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 100%;
+  }
+  [data-part] > :first-child {
+    animation-name: marquee-part-left;
+  }
+  [data-part] > :last-child {
+    animation-name: marquee-part-right;
+  }
+  @keyframes marquee-part-left {
+    from {
+      translate: 0.12em 0;
+    }
+  }
+  @keyframes marquee-part-right {
+    from {
+      translate: -0.12em 0;
+    }
+  }
+
+  /* The tape runs once the tape script has copied its items; the second band the other way. */
+  [data-tape][data-looping] {
+    animation: marquee-tape 38s linear infinite;
+  }
+  [data-tape][data-looping][data-reverse] {
+    animation-direction: reverse;
+  }
+  @keyframes marquee-tape {
+    to {
+      translate: -50% 0;
+    }
+  }
+
+  /* With the bill script on, a hovered or focused name widens. */
+  [data-bill][data-live] a {
+    transition: font-stretch 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-bill][data-live] a:is(:hover, :focus-visible) {
+    --wdth: 110;
+  }
+}

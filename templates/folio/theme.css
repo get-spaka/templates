@@ -1,0 +1,20 @@
+:root {
+  --theme-color-primary: oklch(0.6 0.2 35);
+  --theme-color-primary-content: oklch(0.985 0.004 90);
+  --theme-color-secondary: oklch(0.42 0.01 90);
+  --theme-color-secondary-content: oklch(0.985 0.004 90);
+  --theme-color-accent: oklch(0.88 0.05 60);
+  --theme-color-accent-content: oklch(0.19 0.005 90);
+  --theme-color-neutral: oklch(0.17 0.005 90);
+  --theme-color-neutral-content: oklch(0.95 0.004 90);
+  --theme-color-surface: oklch(0.975 0.004 90);
+  --theme-color-surface-alt: oklch(0.94 0.005 90);
+  --theme-color-border: oklch(0.86 0.005 90);
+  --theme-color-text: oklch(0.19 0.005 90);
+  --theme-font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --theme-font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0rem;
+  --theme-radius-field: 0rem;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+}
