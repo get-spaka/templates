@@ -1,6 +1,6 @@
 # Templates
 
-A template starts a website: the maker chooses one on the start screen, describes their business, and the agent adapts it, rewriting its texts, replacing its images, adding or removing pages, keeping its design (Q229, Q246). This folder holds the app's own, one folder per template named after its `id`; `templates.test.ts` checks each as a finished template.
+A template starts a website: the maker chooses one on the start screen, describes their business, and the agent adapts it, rewriting its texts, replacing its images, adding or removing pages, keeping its design (Q229, Q246). This repository holds Upstart's own, one folder per template named after its `id`; Upstart's tests check each as a finished template, and so does each release.
 
 ## On disk
 
@@ -23,7 +23,7 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
   ```
 
   `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
-- `blocks/<kind>/<id>/`: its own blocks, in the gallery's format (see `../gallery/README.md`), which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
+- `blocks/<kind>/<id>/`: its own blocks, in the format of Upstart's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
 - `.upstart/skills/<id>-design/SKILL.md`: its design notes for the agent, a skill named `<id>-design`: its spirit, its effects and how to use them, what not to break (Q239).
 - `pictures/`: made by `pnpm template:shoot`: `cover.webp` (the home page's first screen), `hover.webp` (an animated sequence of it, for the start screen), and `pages/<page>-desktop.webp` and `pages/<page>-phone.webp` for each page (`home` for `/`) and for the first record's page of each page per record (`work-casa-do-pinhal` for `/work/casa-do-pinhal`).
 

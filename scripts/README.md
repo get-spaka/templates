@@ -1,1 +1,1 @@
-`release.mjs` is built by `pnpm template:publish` in Upstart's repository: do not edit it here.
+`release.mjs` is the Upstart app's own checks, bundled by `pnpm template:release-script` in Upstart's repository: it is not edited here.
