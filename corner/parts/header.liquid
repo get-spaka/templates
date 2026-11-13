@@ -6,8 +6,8 @@
         <span class="mt-1 font-mono text-[0.6rem] tracking-[0.2em] whitespace-nowrap uppercase text-base-content/70 md:text-[0.65rem] md:tracking-[0.25em]">Bakery · Since 2019</span>
       </a>
     </div>
-    <nav aria-label="Main" class="navbar-center hidden md:flex">
-      <ul class="flex gap-8 font-mono text-sm tracking-widest uppercase">
+    <nav aria-label="Main" class="navbar-center hidden lg:flex">
+      <ul class="flex gap-8 font-mono text-sm tracking-widest whitespace-nowrap uppercase">
         {% for item in data.navigation %}{% unless item.place == "footer" or item.place == "social" %}
         <li><a href="{{ item.href }}" class="link-hover {% if page.url == item.href %}underline decoration-primary decoration-2 underline-offset-8{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
         {% endunless %}{% endfor %}
@@ -15,7 +15,7 @@
     </nav>
     <div class="navbar-end gap-2">
       <a href="/visit#order" class="btn btn-primary btn-sm md:btn-md">Order a cake</a>
-      <div class="dropdown dropdown-end md:hidden">
+      <div class="dropdown dropdown-end lg:hidden">
         <div tabindex="0" role="button" class="btn btn-ghost btn-square btn-sm" aria-label="Open menu">
           <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
         </div>
