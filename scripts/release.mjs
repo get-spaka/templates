@@ -1,4 +1,4 @@
-// Built by `pnpm template:publish` in Upstart's repository, from the app's own checks: do not edit.
+// Built by `pnpm template:release-script` in Upstart's repository, from the app's own checks: do not edit.
 import { createRequire } from "node:module";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
