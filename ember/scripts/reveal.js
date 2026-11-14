@@ -23,7 +23,11 @@ export function start(root) {
       Motion.inView(
         el,
         () => {
-          Motion.animate(el, { opacity: 1, y: [32, 0], filter: ["blur(6px)", "blur(0px)"] }, { duration: 1.2, ease });
+          Motion.animate(
+            el,
+            { opacity: [0, 1], y: [32, 0], filter: ["blur(6px)", "blur(0px)"] },
+            { duration: 1.2, ease },
+          );
         },
         { amount: 0.05 },
       ),

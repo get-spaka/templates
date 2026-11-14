@@ -30,7 +30,7 @@ export function start(root) {
       rise.style.transform = "translateY(60px)";
       Motion.animate(
         rise,
-        { opacity: 1, y: [60, 0] },
+        { opacity: [0, 1], y: [60, 0] },
         { type: "spring", stiffness: 140, damping: 18, opacity: { duration: 0.4 } },
       );
       undo.push(() => (rise.style.cssText = ""));
@@ -47,7 +47,7 @@ export function start(root) {
         lift.style.transform = `translateX(${dx}px) rotate(${-turned}deg) translateY(40px)`;
         Motion.animate(
           lift,
-          { opacity: 1, x: [dx, 0], rotate: [-turned, 0], y: [40, 0] },
+          { opacity: [0, 1], x: [dx, 0], rotate: [-turned, 0], y: [40, 0] },
           {
             delay: 0.25 + i * 0.12,
             type: "spring",

@@ -118,7 +118,11 @@ function tiltIn(section) {
     const stopView = Motion.inView(
       cell,
       () => {
-        Motion.animate(cell, { opacity: 1, y: [32, 0], rotate: [4, 0] }, { duration: 0.9, ease: [0.22, 1, 0.36, 1] });
+        Motion.animate(
+          cell,
+          { opacity: [0, 1], y: [32, 0], rotate: [4, 0] },
+          { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+        );
       },
       { amount: 0.1 },
     );

@@ -16,7 +16,7 @@ export function start(root) {
       Motion.inView(
         el,
         () => {
-          Motion.animate(el, { opacity: 1, y: [12, 0] }, { duration: 0.6, ease: [0.22, 1, 0.36, 1] });
+          Motion.animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.05 },
       ),

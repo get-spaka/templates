@@ -150,9 +150,9 @@ export function start(root) {
       section.removeEventListener("pointermove", onMove);
       section.removeEventListener("pointerleave", onLeave);
       section.removeAttribute("data-running");
+      // The context is kept: the same canvas starts again after a new rendering of the preview.
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.getExtension("WEBGL_lose_context")?.loseContext();
     });
   }
 }

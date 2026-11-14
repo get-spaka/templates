@@ -22,7 +22,7 @@ export function start(root) {
       word.style.transform = "translateY(0.25em)";
       Motion.animate(
         word,
-        { opacity: 1, filter: ["blur(8px)", "blur(0px)"], y: ["0.25em", "0em"] },
+        { opacity: [0, 1], filter: ["blur(8px)", "blur(0px)"], y: ["0.25em", "0em"] },
         { duration: 0.9, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] },
       );
     });
