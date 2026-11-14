@@ -21,6 +21,7 @@ A product's page in the weeks before and after its launch. Dark and precise, lik
 - `primary` (violet) is the one light: buttons, the sweep, the lit part of the track, the cards' glow, links on hover, section labels. `accent` (pale lilac) marks what is new or current: the "New in 0.9" pill, the founding offer, the "now" milestone. `secondary` is used only inside the glow gradients, never alone.
 - Status colors for status: `bg-success` for up and "All systems normal", `bg-warning` for degraded, `bg-error` for down. Never colors of their own.
 - Cards: `rounded-box border border-base-300 bg-base-200/60`, a hairline, no shadow. The only shadow is the window's violet glow.
+- The footer's last line holds the "Image credits" link itself (`<p data-up-credits>`), beside the social links: keep it there, so Upstart does not add another.
 
 ## Effects, and the attribute or class that turns each on
 
@@ -33,32 +34,10 @@ A product's page in the weeks before and after its launch. Dark and precise, lik
 - `data-count` on a figure: it counts up to its own text when it comes into view ("4,100", "38 s"), then shows that text exactly. Leave it off a figure that is not a number.
 - The update pill and `beacon-arrow` on an arrow inside a `group` link: the arrow steps right on hover.
 - Anchor links glide to their section; the sticky header leaves room for them (`scroll-padding-top` in the stylesheet).
+- Never a countdown timer, a pop-up or a chat widget: the launch date in words never goes stale.
 
 ## Lists
 
 - `updates` holds the changelog, newest first by `date`; each has its page at `/updates/<id>`. Its body is Markdown: paragraphs, then `## Fixed` and a list; `code` shows as a chip. `tag` is New, Improved or Fixed. The home page shows the three newest; the hero's pill links to the one it names.
 - `waitlist` is collected (email required, team size optional): the hero, the closing band and the updates page all post to it, each form with its own problems element (`#hero-waitlist-problems`, `#closing-waitlist-problems`, `#updates-waitlist-problems`). A new form needs a new id.
 - `home-features` (six reads best; `wide` makes a card span two columns, two wide ones together), `home-steps` (three verbs that make the section's heading), `home-stats` (four), `testimonials` (five, uneven columns), `home-milestones`, `home-plans` (`highlighted` on one), `home-faq`, `home-logos` (typographic wordmarks unless a logo image is given).
-
-## When adapting
-
-- The product's name is in the header, the footer, the window's title bar and every page's `<title>`; its email in the FAQ and the privacy page; its launch date in the hero's status line, the closing band, the track and the updates page.
-- The waitlist count ("2,418 teams on the list"), the founding offer and the figures are promises: ask the maker for them or leave them out rather than invent them.
-- For a product that is not software (a book, a course, hardware taking pre-orders), keep the structure: the window becomes what the product shows (a contents page, a lesson, a spec sheet drawn in HTML), the steps its three verbs, the track its own milestones.
-- The footer's last line holds the "Image credits" link itself (`<p data-up-credits>`), beside the social links: keep it there, so Upstart does not add another.
-- Never a countdown timer, a pop-up or a chat widget: the launch date in words never goes stale.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### What do visitors sign up for?
-
-- A waitlist: keep the three forms and `waitlist`.
-- Pre-orders: the plans in `parts/pricing.liquid` become founding offers (one `data-lit`), each button "Reserve"; the hero's and closing band's forms say "Reserve yours" and `waitlist` gains a `plan` choice field with the plans' names. No payment is taken on the site: say that the maker will write to confirm.
-- Already launched: replace each form (`parts/hero.liquid`, `parts/waitlist.liquid`, `pages/updates.liquid`) by a `btn btn-primary` "Start free" or "Sign up" link to the product's address (ask it, or `#` until given); the track's last milestone is the launch, done; delete `data/waitlist/`.
-
-### Show pricing yet?
-
-- Yes, the plans: keep `parts/pricing.liquid` and `home-plans`, with the maker's prices.
-- Not yet: remove `{% render 'pricing' %}` from the home page, delete `data/home-plans/`, renumber the figures' labels, and add a question to `home-faq` saying pricing comes at launch.

@@ -7,37 +7,5 @@
   "original": false,
   "tags": ["bakery", "café", "shop", "local", "opening hours", "menu"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "Do customers order ahead?",
-      "header": "Orders",
-      "options": [
-        {
-          "label": "Yes, orders ahead",
-          "description": "The order card and its form stay, for what is made or set aside to order."
-        },
-        {
-          "label": "No, they just come by",
-          "description": "The order card and buttons go; the hours lead."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Show prices on the menu?",
-      "header": "Prices",
-      "options": [
-        {
-          "label": "Yes",
-          "description": "Each item with its price."
-        },
-        {
-          "label": "No",
-          "description": "Names and descriptions only."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

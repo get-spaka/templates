@@ -19904,22 +19904,6 @@ const OPEN_LICENCES = [
 	"CC0-1.0"
 ];
 const MANIFEST = "template.json";
-/**
-* A question on what varies in the template's design (Q287, Q293), in
-* AskUserQuestion's form: shown on the start screen once the template is
-* chosen, set to its first choice, the recommended one. Its design notes say
-* what each answer changes.
-*/
-const TemplateQuestion = object({
-	question: string().min(1).max(120),
-	/** A word or two. */
-	header: string().max(16).default(""),
-	options: array(object({
-		label: string().min(1).max(40),
-		description: string().max(160).default("")
-	})).min(2).max(4),
-	multiSelect: boolean().default(false)
-}).refine((q) => new Set(q.options.map((o) => o.label)).size === q.options.length, { message: "each choice has a label of its own" });
 const Manifest = object({
 	/** Its folder's name, and the name of its design notes' skill: `<id>-design`. */
 	id: string().regex(/^[a-z][a-z0-9-]{1,47}$/, "lowercase letters, digits and dashes, starting with a letter"),
@@ -19937,9 +19921,7 @@ const Manifest = object({
 		url: url().optional()
 	}),
 	/** The template's own licence: what a maker and another author may do with it. */
-	licence: string().min(1),
-	/** 1 to 4 questions on what varies in its design, answered on the start screen (Q287). */
-	questions: array(TemplateQuestion).max(4).default([]).refine((qs) => new Set(qs.map((q) => q.question)).size === qs.length, { message: "each question is asked once" })
+	licence: string().min(1)
 });
 const Described = object({
 	name: string().min(1),
@@ -20107,6 +20089,10 @@ function writeZip(files) {
 const PICTURES = "pictures";
 const BLOCKS = "blocks";
 const DESIGN_SKILL = (id) => `.upstart/skills/${id}-design`;
+/** Its guide, for the agent that adapts it (Q299): read once, never copied into the website. */
+const GUIDE = "TEMPLATE.md";
+/** Where the guide says what to ask before building (Q300). */
+const BEFORE_BUILDING = "## Before building";
 /** What a template holds at its root; anything else is not copied into a project. */
 const TEMPLATE_ENTRIES = /* @__PURE__ */ new Set([
 	"template.json",
@@ -20122,6 +20108,7 @@ const TEMPLATE_ENTRIES = /* @__PURE__ */ new Set([
 	"blocks",
 	"pictures",
 	".upstart",
+	"TEMPLATE.md",
 	"README.md",
 	"LICENSE",
 	"LICENSE.md",
@@ -20373,8 +20360,9 @@ function checkTemplate(files, { finished = false } = {}) {
 		const skill = parseSkill(text(notes));
 		if ("problem" in skill) errors.push(`${notes}: ${skill.problem}`);
 		else if (skill.name !== `${manifest.id}-design`) errors.push(`${notes}: its name is ${manifest.id}-design.`);
-		for (const q of manifest.questions) if (!text(notes).includes(q.question)) warnings.push(`${notes}: say under "## Template questions" what each answer to "${q.question}" changes.`);
 	}
+	if (!files.has("TEMPLATE.md")) warnings.push(`${GUIDE} is missing: the guide the agent reads to adapt it (what it is, how it is made, how to adapt it, ${BEFORE_BUILDING}).`);
+	else if (!new RegExp(`^## Before building\\s*$`, "m").test(text("TEMPLATE.md"))) warnings.push(`${GUIDE} has no "${BEFORE_BUILDING}" section: the choices that vary, each option with what it changes, the first the template as built (or "Nothing to ask.").`);
 	const blockFolders = new Set(paths.filter((p) => p.startsWith(`${BLOCKS}/`)).map((p) => p.split("/").slice(1, 3).join("/")));
 	const readFolders = template.blocks.map((b) => `${b.kind}/${b.id}`);
 	for (const folder of blockFolders) if (!readFolders.includes(folder)) {

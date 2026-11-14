@@ -7,8 +7,6 @@ description: The Pocket template's design notes — read before changing this si
 
 An app's site where the app itself does the talking: its screens are built in the page, in HTML from the theme, inside phone frames, never screenshots. Three phones fan out over a soft living glow; then one phone stays in place while the page scrolls and its screen changes with each chapter of the story. It is light, rounded and friendly, with small things a visitor can touch (a plant in the Today screen can be ticked as watered).
 
-It was written for Fernway, a houseplant care app; it suits any consumer app: a habit tracker, a budget, a language course, a sleep, recipe or fitness app. Rewrite the texts, the screens' parts and the records that fill them, and keep the shapes.
-
 ## Type
 
 - **Headings** (`h1`, `h2`, `h3`) are Fredoka, semibold, a little narrow and packed tight (the stylesheet sets them). A section title is `text-[clamp(2.5rem,5.5vw,4.5rem)] text-balance`; the hero's `text-[clamp(3rem,8vw,7.5rem)]`.
@@ -49,24 +47,4 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 
 - `stores`: one record per store, `store` app-store or google-play (it chooses the glyph and "Download on the" or "Get it on"); `url` the app's page in that store. The buttons are the template's own pills: never put the stores' official badges in their place unless the maker gives theirs.
 - `home-chapters`: kicker, title, a two-sentence text and the `screen` its phone shows. `home-figures` (figures with a label and a note), `home-features` (`size` wide or square: alternate them so the rows of three columns fill; `visual` chooses the small piece of interface drawn in the tile), `reviews` (shown in two rows, alternately), `plans` (the home page and the pricing page, `highlighted` marks the one on mint), `pricing-compare` (`free` and `plus`: "yes", "no" or a short text), `home-faq`, `pricing-faq`, `help-articles` (by `topic`, each with its page at `/help/<id>`), `privacy-points` (`kind` keep or never; the home page shows three of the "never" ones), `privacy-sections` (the policy, with its table of contents), and `support`, the support form's messages.
-
-## When adapting
-
-- The app's name is in the header, the footer and every `<title>`; its rating ("4.8", "21,400 ratings") in `parts/rating.liquid` and the reviews' heading; its prices in `plans`, the pricing heading, the comparison's note and the billing questions. Ratings, prices and privacy promises are the maker's: ask for them or leave them out rather than guess.
-- The privacy page's policy is a sample: tell the maker it must be checked against what their app really does.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### Where is the app?
-
-- iPhone and Android: keep both `stores` records.
-- iPhone only, or Android only: keep that store's record only; `parts/store-buttons.liquid` draws what is left.
-- On the web: delete `data/stores/`; in `parts/store-buttons.liquid`, one `btn btn-primary` pill "Open <app>" to the app's address (ask it, or `#` until given), the same size as the store pills; the phones stay.
-
-### How is the app paid for?
-
-- Free, with a paid plan: keep `plans`, the pricing page and the comparison.
-- Free: delete `pages/pricing.liquid`, `parts/pricing.liquid`, `parts/compare.liquid`, `data/plans/`, `data/pricing-compare/`, `data/pricing-faq/` and its navigation record; the FAQ says it is free.
-- Paid: one plan, its price set in `numeral`, in place of the plans on the home page; the pricing page keeps one card and the comparison goes.
+- The rating ("4.8", "21,400 ratings") is written in `parts/rating.liquid` and the reviews' heading; the prices in `plans`, the pricing heading, the comparison's note and the billing questions. When one changes, change it everywhere it is written.

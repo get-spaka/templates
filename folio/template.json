@@ -7,37 +7,5 @@
   "original": false,
   "tags": ["photographer", "architect", "designer", "studio", "projects", "index"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "Are you taking commissions?",
-      "header": "Availability",
-      "options": [
-        {
-          "label": "Yes",
-          "description": "The availability line and the enquiry form stay."
-        },
-        {
-          "label": "Not now",
-          "description": "The availability line goes; an email link replaces the form."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "A page for each project?",
-      "header": "Projects",
-      "options": [
-        {
-          "label": "Yes, a page each",
-          "description": "Each project opens on its own page, with its pictures and story."
-        },
-        {
-          "label": "The index only",
-          "description": "The numbered index with its pictures, and no project pages."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

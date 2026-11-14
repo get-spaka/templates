@@ -7,41 +7,5 @@
   "original": false,
   "tags": ["launch", "waitlist", "software", "saas", "app", "product", "changelog", "pre-order"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "What do visitors sign up for?",
-      "header": "Sign-up",
-      "options": [
-        {
-          "label": "A waitlist",
-          "description": "An email to hear at launch, at the top and at the end of the page."
-        },
-        {
-          "label": "Pre-orders",
-          "description": "The plans become founding offers to reserve; the form takes a reservation."
-        },
-        {
-          "label": "Already launched",
-          "description": "The forms become a sign-up button to the product; the track ends at launch."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Show pricing yet?",
-      "header": "Pricing",
-      "options": [
-        {
-          "label": "Yes, the plans",
-          "description": "The plans section stays, with the maker's prices."
-        },
-        {
-          "label": "Not yet",
-          "description": "The plans go; the questions say pricing comes at launch."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

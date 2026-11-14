@@ -7,8 +7,6 @@ description: The Ember template's design notes — read before changing this sit
 
 An evening seen by candlelight. The site opens on the dark room, and the visitor's pointer carries a warm light that brings it out of the shadow. The pages are paced like a film: one scene per screen, slow reveals, photos that drift as the page scrolls, an evening that runs from the first pour to the last glass as you scroll down it. A table, a private room or a gift card is never more than one tap away.
 
-It was written for a wine bar and wood-fire kitchen; it suits a cocktail bar, a steakhouse, a tasting-menu dining room, an izakaya, a jazz bar, a wine shop with a bar or a hotel's restaurant. Rewrite the dishes, the wines, the rooms and the evening, and keep the dark, the one warm light and the slow pace.
-
 ## Type
 
 - **Bodoni Moda** for headings, the name and large figures, light (400 to 500, never bold), in sentence case. A section title is `text-5xl md:text-6xl`; a page title `text-[clamp(3.5rem,10vw,9rem)] leading-[0.92] tracking-tight`. Large figures (the evening's hours, the course numbers, the "14" of the Cellar Room, prices of the tasting menu) take `class="display"` on a `<p>` or `<span>`.
@@ -21,6 +19,7 @@ It was written for a wine bar and wood-fire kitchen; it suits a cocktail bar, a 
 - The room is dark: `bg-base-100` (warm near-black) and `bg-base-200` for long sections, `bg-neutral` (night) for the hero, page titles, what's on and the footer, `bg-secondary` (oxblood) for one warm band a page at most (the Cellar Room, the tasting menu, the cellar, gift cards).
 - The main color (amber) is the candlelight: labels, links, buttons, prices on the lists. The accent (ember) is only for the open tonight dot.
 - The menu card (`class="menu-card"`) is the one light surface of the site: cream paper with the room's dark as ink. Keep it unique.
+- Keep one oxblood band per page and the cream card unique, or the room stops being dark.
 - Square photos and panels (no radius), pill buttons and fields, hairline borders (`border-base-300`, `divide-base-300`), dotted leaders between a name and its price (`<span class="leader" aria-hidden="true"></span>` in a `flex items-end` row).
 - Fields on a dark section: `input field-ember`, `select field-ember`, `textarea field-ember rounded-box`.
 - **Photos** are chosen low-key: tungsten or firelight, deep shadows, dark backgrounds, no daylight or white tablecloths, no faces but the team's. Put `data-grade` on an image's frame (or the `<img>`): a little less color, a little more contrast, so any set reads as one.
@@ -50,26 +49,4 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - `wines`: `style` groups them; `by_the_glass` puts a wine in the glass list (with its glass and bottle prices), the others are the cellar's bottles; `featured` puts five on the home page.
 - `home-evening`: the evening's moments, four is best. `private-rooms`: the rooms with their seats and minimum spend. `events`: each has its page at `/events/<id>`, newest last by date. `team`, `hours` (one row per weekday), `home-press`, `story-suppliers` and `visit-faq`.
 - `reservations`, `enquiries` and `newsletter` collect the forms' answers.
-
-## When adapting
-
-- The name is in the header, the hero, the footer's wordmark and every `<title>`; the address in the footer, the visit page and the event pages.
-- Opening hours, prices, minimum spends, corkage and the kitchen's last orders are the owner's: ask for them or leave them out rather than guess. When the hours change, change the `hours` records, the written open tonight lines and the reservation form's times together.
-- Keep one oxblood band per page and the cream card unique, or the room stops being dark.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### How do guests book a table?
-
-- Online, with the form: keep `parts/reserve.liquid` on the visit page and the `reservations` datasource; its times follow the `hours`.
-- By phone: replace the form in `parts/reserve.liquid` by the phone number set large (`display`) and a `btn btn-primary tag` call button (`href="tel:…"`); point every "Book a table" link to it; delete `data/reservations/`.
-- Walk-ins only: the reserve section says how the evening works without booking (first come, the bar while you wait); remove the booking buttons from the header and the hero, and `data/reservations/`.
-
-### Private dining and events?
-
-- Both: keep them.
-- Events only: delete `pages/private-dining.liquid`, `parts/cellar-room.liquid` where it is rendered, `data/private-rooms/`, `data/enquiries/` and its navigation record.
-- Private dining only: delete `pages/events/`, `data/events/`, `parts/whats-on.liquid` and `parts/wine-dinners.liquid` where they are rendered.
-- Neither: both of the above. The home page keeps its rhythm: one scene per screen, one oxblood band.
+- When the hours change, change the `hours` records, the written open tonight lines and the reservation form's times together.

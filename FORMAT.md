@@ -22,28 +22,36 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
   }
   ```
 
-  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). `questions`, optional, asks 1 to 4 questions on what really varies in the design (Q287, Q293), in the form of the agent's own questions: each with a `question`, a short `header` (a word or two), 2 to 4 `options` with a `label` and a `description`, and `multiSelect` when several go together. The first option is the recommended one, and holds for the template as it is:
+  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
+- `TEMPLATE.md`, its guide for the agent that adapts it (Q299): Upstart puts it in the first message of a website started from the template, and does not copy it into the website. It says what matters only while adapting:
 
-  ```json
-  "questions": [
-    {
-      "question": "How do guests book a table?",
-      "header": "Booking",
-      "options": [
-        { "label": "Online, with the form", "description": "The reservation form stays." },
-        { "label": "By phone", "description": "A call button in place of the form." }
-      ],
-      "multiSelect": false
-    }
-  ]
+  ```markdown
+  # Ember
+
+  What it is, then whom it suits ("It was written for a wine bar…; it suits a cocktail bar, a steakhouse…").
+
+  ## How it is made
+
+  Each page by its route and what it shows; the lists by name, with the page that shows them.
+
+  ## When adapting
+
+  Where the name, the address and the dates appear; what to ask or leave out rather than guess.
+
+  ## Before building
+
+  ### How do guests book a table?
+
+  - **Online, with the form** (as built): the reservation form stays; requests arrive in the Content tab. Keep `parts/reserve.liquid`…
+  - **By phone**: a call button and the number in place of the form. Replace the form in `parts/reserve.liquid` by…
   ```
 
-  Once the template is chosen, the start screen shows them under the message box, each set to its first option; the maker changes some or none, then sends, and the agent gets the answers with the first message, each marked as the maker's choice or left on the recommended one. The design notes say what each answer changes, under `## Template questions`, a `### ` heading per question written as asked. Ask only what the maker knows and the design cannot guess, and what costs the agent work to change: how a visitor books, orders or signs up, which pages exist, what is sold and how. Facts (the hours, the prices) are the agent's to ask after. What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
+  `## Before building` is the one section `template:check` asks for (Q300): the choices that really vary in the design and cost the agent work to change (how a visitor books, orders or signs up, which pages exist, what is sold and how), 1 to 4 of them, each a `###` heading written as a question, with 2 to 4 options: its label in bold, a sentence for the maker on what it means, then what to change in the files. The first option is the one recommended, most often the template as built, which `(as built)` marks wherever it is: Reel recommends "No open roles", since its invented jobs are not the maker's. Before it changes any file, the agent asks the maker in one card the choices the maker's message leaves open, and builds at once when the message settles them all (Q297, Q298). Facts (the hours, the prices) are not choices: the agent asks about them once the site is built. A template where nothing varies says `Nothing to ask.` under the heading.
 - `blocks/<kind>/<id>/`: its own blocks, in the format of Upstart's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
-- `.upstart/skills/<id>-design/SKILL.md`: its design notes for the agent, a skill named `<id>-design`: its spirit, its effects and how to use them, what not to break (Q239).
+- `.upstart/skills/<id>-design/SKILL.md`: its design notes, a skill named `<id>-design`, which stays with the website for the agent's later turns (Q239): its spirit, its type, colors and shapes, its effects and the attribute or class that turns each on, how its lists work, and the rules that hold for the website's whole life ("keep one oxblood band per page"). What only matters while adapting goes in the guide.
 - `pictures/`: made by `pnpm template:shoot`: `cover.webp` (the home page's first screen), `hover.webp` (an animated sequence of it, for the start screen), and `pages/<page>-desktop.webp` and `pages/<page>-phone.webp` for each page (`home` for `/`) and for the first record's page of each page per record (`work-casa-do-pinhal` for `/work/casa-do-pinhal`).
 
-A new site copies everything but `template.json`, `pictures/`, a readme and a licence. Of `.upstart/`, a template keeps only `skills/` and `test-records/`.
+A new site copies everything but `template.json`, `TEMPLATE.md`, `pictures/`, a readme and a licence. Of `.upstart/`, a template keeps only `skills/` and `test-records/`.
 
 As a `.zip` (an outside author's, Q236), the same files at its root or in the one folder it holds.
 
@@ -66,7 +74,7 @@ No program, no `package.json`; anything at its root that is not part of a templa
 
 ## Starting a website from one
 
-The start screen lists the templates (originals first) and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest or pictures), its sentences are noted in `.upstart/template-texts.json`, and the agent is told to adapt it: read the design notes, rewrite every text and record for the maker's business, replace the images, add or remove pages, keep the design. At the end of its turns Upstart names the template's sentences still in the site to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
+The start screen lists the templates (originals first) and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the agent gets the guide with the maker's first message and is told to adapt it: ask the choices of `## Before building` the message leaves open, read the design notes, rewrite every text and record for the maker's business, replace the images, add or remove pages, keep the design, then ask the maker about what it guessed. At the end of its turns Upstart names the template's sentences still in the site to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
 
 ## Commands
 

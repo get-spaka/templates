@@ -7,8 +7,6 @@ description: The Reel template's design notes — read before changing this site
 
 A loud, confident studio site where the work moves sideways. Heavy extended capitals on a near-black ground, slabs of the main color (chartreuse) that tilt and overlap the headlines, and a home page whose case studies run past as a reel when you scroll down. Each case opens onto a page in its own color, and everything ends on one question, "Got a brief?", with a form that asks for one.
 
-It was written for Halfvolt, a brand, motion and film studio in Rotterdam. It suits a branding or design agency, a motion or animation studio, a film production company, an architecture collective, or a freelancer who wants to look bigger: rewrite the cases, the services, the people and the lists, and keep the shapes.
-
 ## Type
 
 One family, Archivo, in three widths, plus a mono face for labels.
@@ -48,25 +46,5 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - `clients`: names only, set as type. Six to twelve.
 - `testimonials`: the first is the large quote on the bone slab, the next two sit below it.
 - `home-figures` and `studio-figures`: four each, the figure short (`140+`, `620 m²`) and its label a sentence.
-- `studio-principles`: three. `team`: six cards; without a photo a card shows the initials on its tone; with photos, use people at work, from behind or at a distance. `awards`: newest first, the category hidden on a phone; `jobs`: each a row that opens, its text ending with how to apply.
+- `studio-principles`: three. `team`: six cards; without a photo a card shows the initials on its tone; with photos, use people at work, from behind or at a distance. `awards`: newest first, the category hidden on a phone; never name a real award show beside a project that did not win there. `jobs`: each a row that opens, its text ending with how to apply.
 - `briefs`: what the contact form collects. Its choices (needs, budget, timing) are written twice, in the definition and in `parts/brief-form.liquid`: change them together.
-
-## When adapting
-
-- The studio's name is in the header, the footer and every `<title>`; the address, email and phone in the footer and the contact page; the new-business lead in the footer band, the contact page and the thank-you fragment.
-- "Now booking spring 2027" in the header and the contact page is a date: update it or remove it.
-- Awards, figures and results are the business's own: ask for them or leave them out rather than invent them. Never name a real award show beside a project that did not win there.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### How do clients get in touch?
-
-- The brief form: keep `parts/brief-form.liquid` on the contact page and `briefs`, its choices rewritten for the business.
-- Email and phone: replace the form on the contact page by the email and phone set in the display face, as links; "Got a brief?" stays as the question; delete `data/briefs/`.
-
-### Are you hiring?
-
-- No open roles: remove `{% render 'jobs' %}` from the studio page and delete `data/jobs/`.
-- Yes: keep the jobs, with the maker's roles (ask them, or leave the section out rather than invent them).

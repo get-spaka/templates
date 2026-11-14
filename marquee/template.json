@@ -7,49 +7,5 @@
   "original": true,
   "tags": ["festival", "music", "event", "lineup", "tickets", "timetable", "conference"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "How many days?",
-      "header": "Days",
-      "options": [
-        {
-          "label": "Three",
-          "description": "Three days in the lineup, the timetable and the passes."
-        },
-        {
-          "label": "One",
-          "description": "One day: one timetable, no day passes."
-        },
-        {
-          "label": "Two",
-          "description": "Two days."
-        },
-        {
-          "label": "Four or more",
-          "description": "A day each in the lineup and timetable."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "How do people get tickets?",
-      "header": "Tickets",
-      "options": [
-        {
-          "label": "A ticketing site",
-          "description": "Each pass links to where it is sold."
-        },
-        {
-          "label": "Free, with sign-up",
-          "description": "The passes become a free registration form."
-        },
-        {
-          "label": "Free, no tickets",
-          "description": "The tickets page goes; the info page says entry is free."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

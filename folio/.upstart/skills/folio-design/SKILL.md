@@ -21,6 +21,7 @@ A quiet, editorial portfolio: the work first, the person close behind. Off-white
 - `primary` (vermilion) is the only color: the availability dot, the clock's dot in working hours, links and rows on hover (`hover:text-primary`), the row in view on a phone, the enquiry button, the initials' square. Use it on small things only; never as a section's background.
 - Hairlines separate everything: `border-b border-base-300` between rows, `border-base-content` above a list. No cards, no shadows, no rounded corners (the theme's radius is 0).
 - Images are never cropped into shapes: plain rectangles. Only the index's thumbnails and the strip crop them (`object-cover`); a project's page shows each whole.
+- With a portrait of the person, replace the initials' square on the info page by `<img src="…" class="aspect-[4/5] w-40 object-cover md:w-full">`, keeping its place in the grid.
 
 ## Effects, and the attribute that turns each on
 
@@ -39,23 +40,3 @@ A quiet, editorial portfolio: the work first, the person close behind. Off-white
 - `projects` holds the work; each record has its page at `/work/<id>`, from `pages/work/[projects].liquid`. `featured` puts a project in the home page's index (six at most reads best). The order of the datasource is the order of the index and its numbers: newest first.
 - A project's page shows `cover` large, then `image_2` and `image_3` side by side (portrait images read best there), `image_4` narrower, `image_5` large again; each is optional. They keep their own proportions, never cropped: the work is shown as it was taken. Its text is about eighty words, in the first person.
 - `category` is one of four choices. For another kind of work, change the choices in `data/projects/_datasource.yaml`, the categories on the work page's buttons and each record together.
-
-## When adapting
-
-- The person's name is in the header, the hero, the footer and every page's `<title>`; their email in the contact band and the info page; their city in the header's clock and the hero's line.
-- The availability line ("Booking commissions from March 2027") and the reply time ("within two working days") are the site's promises: ask for them or leave them out rather than guess.
-- With a portrait of the person, replace the initials' square on the info page by `<img src="…" class="aspect-[4/5] w-40 object-cover md:w-full">`, keeping its place in the grid.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### Are you taking commissions?
-
-- Yes: keep the availability line in `parts/hero.liquid` and the info page, with the maker's date (ask it, or leave the line out), and the enquiry form posting to `enquiries`.
-- Not now: remove the availability line; on the info page, replace the form by the email set large as a `mailto:` link; delete `data/enquiries/`.
-
-### A page for each project?
-
-- Yes, a page each: keep `pages/work/[projects].liquid`.
-- The index only: delete `pages/work/[projects].liquid`; the index's rows are no longer links (keep the pictures following the cursor), and a project's text goes in its row's short line.

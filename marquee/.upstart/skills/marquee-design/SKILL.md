@@ -7,8 +7,6 @@ description: The Marquee template's design notes — read before changing this s
 
 A festival site that is its own poster: the name, the dates and the place are the headline, at poster size, in two loud inks (the main color and the second color) over a deep dark one. The letters of the name stretch as if the music pushed them, a field of halftone dots swells under the cursor, every photo is printed in two inks. The lineup reads like a bill, the days stack up like flyers, the passes are ticket stubs. Under the noise, the practical pages (timetable, getting there, access, questions) stay calm and complete.
 
-It was written for a music festival; it suits any festival, a conference, a biennale or a club's season. Rewrite the acts as speakers, films or chefs, the stages as rooms, the passes as tickets, and keep the shapes.
-
 ## Type
 
 One family, Anybody, whose **width** changes (from 50, very narrow, to 150, very wide): it is the template's voice. Width is one variable, `--wdth`, read by `font-stretch`; set it with `style="--wdth: 62"` on an element, never with `font-stretch` directly on a heading.
@@ -24,6 +22,7 @@ One family, Anybody, whose **width** changes (from 50, very narrow, to 150, very
 - Outlines are drawn, not hinted: `border-2 border-base-content` on cards, photos and stubs, `divide-y-2` between rows. Chunky corners (`rounded-box`), pill buttons and fields.
 - **Stickers** (`class="sticker tag"` with `rounded-full`, a size or padding and a tilt class such as `-rotate-6` or `rotate-3`): round or pill-shaped badges in the accent color with an inked outline, for a figure, a price, a day. Two or three per page at most. On a phone they sit in a row (`flex flex-wrap`); from `md:` they may sit over the poster (`md:absolute md:top-[22%] md:right-[5%]`), never over its text.
 - **Two-ink photos**: wrap every `<img>` in `<div class="duotone …">` (main color as the light ink) or `duotone-secondary` (second color), with a size (`aspect-[4/3]`) and the image `size-full object-cover`. The stylesheet makes it grayscale and prints it in the theme's inks, so any photo and any palette match. Use `duotone-secondary` on a card of the main color, and alternate the two in a grid (`{% cycle 'duotone', 'duotone-secondary' %}`). Choose photos for strong light and shape (instruments, lights, crowds from behind, buildings), not for their colors.
+- With portraits of the artists, use them as the acts' images: the two inks keep them in the design.
 
 ## Effects, and the attribute that turns each on
 
@@ -49,24 +48,3 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - The timetable places each set on a grid of quarter hours from the day's gates, one column per record of `stages`: keep each act's `stage` equal to a stage's `name`, and four stages at most side by side.
 - `passes`: `status` is "on sale", "few left" (an accent stamp) or "sold out" (a grey stub with no button).
 - `stages`, `travel` (`home` puts four of them on the home page), `access`, `faq` (by `topic`; the tickets page shows the Tickets topic), `partners` (`tier` sets the weight and width of each name, the presenting one larger), `home-tape`, and `alerts`, the ticket alert's sign-ups.
-
-## When adapting
-
-- The name is in the header, the poster, the footer and every `<title>`; the dates in the header ("09—11.07.27"), the poster, the countdowns, the day records and the passes' numbers; the place in the poster, getting there and the info page.
-- Prices, capacities, opening hours and the access team's promises are the organizer's: ask for them or leave them out rather than guess.
-- With portraits of the artists, use them as the acts' images: the two inks keep them in the design.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### How many days?
-
-- Three: one `days` record each, as now.
-- One, Two or Four or more: one `days` record per day, the `day` choices of `acts` the same words, each act on one of them; the header's dates and the poster's follow; with one day, drop the day and weekend passes for a single one.
-
-### How do people get tickets?
-
-- A ticketing site: keep the passes; each pass's `link` is its page there (ask it, or leave it empty until given).
-- Free, with sign-up: the passes become one stub "Free · sign up" whose button opens a form posting to `alerts` (name, email), renamed "Sign-ups"; the countdowns stay.
-- Free, no tickets: delete `pages/tickets.liquid`, `data/passes/` and its navigation record, remove `{% render 'passes' %}` from the home page, and say on the info page that entry is free.

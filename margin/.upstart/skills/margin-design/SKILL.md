@@ -23,11 +23,13 @@ A small publication that people actually read: one writer (or a few), a numbered
 ## Effects, and what turns each on
 
 - **Ink**, `data-ink` on the frame of a picture (`<span class="block aspect-[4/3] rounded-box" data-ink><img src="…" class="size-full object-cover"></span>`): the picture is printed in fir on sage, in CSS. Put it on every picture of a list or a card. When the frame is inside a link, hovering the link on a desktop brings its color back once the page moves (never while editing).
+- With a portrait of the writer, replace the initials' square on the home page and the about page by `<span class="block aspect-[4/5] w-40 rounded-box md:w-full" data-ink><img src="…" class="size-full object-cover"></span>`, keeping its place in the grid.
 - **Develop**, `data-develop` on the frame of a large picture on a record's page (a letter's cover, a topic's plate): it starts inked and develops into color as it comes into view. An image alone in a paragraph of a letter's text (`![alt](/media/…)` on its own line) does the same. With no script, under reduced motion and in edit mode they are in full color.
 - **Reveal**, `data-reveal` on a row, a heading or a form: it rises a little into view. Put it on the elements of every new section.
 - **The reading rule**: `{% render 'header', progress: true %}` gives the compact header a fir rule that fills from left to right as the page is read. Only a letter's page has it.
 - **Highlights**: a `<mark>` in a text marked `data-highlight` (a letter's body has it) has its fern swept in as it comes into view.
 - **Read one at random**: a link with `data-lucky-dip` and every letter's address in `data-posts` (`{% for item in data.blog %}/blog/{{ item.id }} {% endfor %}`) goes to one at random; its `href` is the letter it goes to without a script.
+- Don't add smooth scrolling, page transitions, carousels, popups, share buttons or view counts: reading wants a still page.
 
 ## A letter's text (the `body` of `blog`)
 
@@ -46,25 +48,4 @@ Write it in Markdown; the page sets it:
 - The home page shows the lead letter, the next five as "This season", then the three after those "From the archive": nine letters fill it. The masthead's dateline and the "All 142 letters" link take the latest letter's number and season by themselves.
 - `topics` holds the five topics, each with its page at `/topics/<id>` listing the letters whose `topics` holds its title. Renaming a topic means changing its title in the letters too. Their plates are old maps and engravings: for another city, find old maps or prints of it, or plain photographs; the ink makes them one set.
 - The letters page groups them by year by itself.
-
-## When adapting
-
-- The publication's name is in the masthead, the compact header, the footer and every page's `<title>`; the writer's name in the masthead's row, the writer section, the sign-off (`parts/sign-off.liquid`), the about page and the letters' `author`.
-- The reader count ("Read by 6,400 walkers"), the day it comes and "since 2021" are the site's promises: ask for them or leave them out rather than guess.
-- With a portrait of the writer, replace the initials' square on the home page and the about page by `<span class="block aspect-[4/5] w-40 rounded-box md:w-full" data-ink><img src="…" class="size-full object-cover"></span>`, keeping its place in the grid.
-- For several writers, keep `author` on each letter and make the sign-off say the author's name (`{{ record.author }}`) rather than one.
-- Don't add smooth scrolling, page transitions, carousels, popups, share buttons or view counts: reading wants a still page.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### Where do readers subscribe?
-
-- Here, in Upstart: keep the forms posting to `newsletter` (`pages/newsletter.liquid`, `parts/letterbox.liquid`).
-- On another service: replace each form by a `btn btn-primary` "Subscribe" link to the maker's newsletter page (ask its address, or `#` until given), keeping the sentence beside it; delete `data/newsletter/`.
-
-### Who writes?
-
-- One writer: one name everywhere, as now.
-- Several writers: keep `author` on each letter, make `parts/sign-off.liquid` say `{{ record.author }}`, and present each writer on the about page, initials or portrait, in the same grid.
+- Each letter keeps its writer in `author`; with several writers, the sign-off (`parts/sign-off.liquid`) says `{{ record.author }}`.

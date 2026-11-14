@@ -7,49 +7,5 @@
   "original": true,
   "tags": ["restaurant", "wine bar", "bar", "dinner", "menu", "reservations", "private dining", "events"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "How do guests book a table?",
-      "header": "Booking",
-      "options": [
-        {
-          "label": "Online, with the form",
-          "description": "The reservation form stays; requests arrive in Upstart's Content tab."
-        },
-        {
-          "label": "By phone",
-          "description": "A call button and the number in place of the form."
-        },
-        {
-          "label": "Walk-ins only",
-          "description": "The booking buttons and form go; the visit page says how it works."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "Private dining and events?",
-      "header": "Pages",
-      "options": [
-        {
-          "label": "Both",
-          "description": "The private dining page with its rooms, and the events, each with its page."
-        },
-        {
-          "label": "Events only",
-          "description": "The private dining page goes."
-        },
-        {
-          "label": "Private dining only",
-          "description": "The events go."
-        },
-        {
-          "label": "Neither",
-          "description": "Both go; the menu, the cellar and the visit page stay."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

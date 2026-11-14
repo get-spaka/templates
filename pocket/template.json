@@ -7,49 +7,5 @@
   "original": true,
   "tags": ["app", "mobile app", "ios", "android", "consumer", "download", "pricing", "help center", "privacy"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT",
-  "questions": [
-    {
-      "question": "Where is the app?",
-      "header": "Stores",
-      "options": [
-        {
-          "label": "iPhone and Android",
-          "description": "Both store buttons."
-        },
-        {
-          "label": "iPhone only",
-          "description": "The App Store button only."
-        },
-        {
-          "label": "Android only",
-          "description": "The Google Play button only."
-        },
-        {
-          "label": "On the web",
-          "description": "The store buttons become one button that opens the app."
-        }
-      ],
-      "multiSelect": false
-    },
-    {
-      "question": "How is the app paid for?",
-      "header": "Pricing",
-      "options": [
-        {
-          "label": "Free, with a paid plan",
-          "description": "The plans and the pricing page stay."
-        },
-        {
-          "label": "Free",
-          "description": "The pricing page and the plans go."
-        },
-        {
-          "label": "Paid",
-          "description": "One price, shown where the plans were."
-        }
-      ],
-      "multiSelect": false
-    }
-  ]
+  "licence": "MIT"
 }

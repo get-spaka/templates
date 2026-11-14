@@ -13,11 +13,13 @@ A neighborhood shop's site that reads like its shopfront: poster-sized type on w
 - **One word or two of each heading in `<em>`**: the stylesheet sets it in the italic serif, lowercase as written ("Fresh from <em>the oven.</em>"). Keep exactly one `<em>` per heading.
 - A small mono label sits above each heading: `font-mono text-xs tracking-[0.25em] uppercase text-base-content/70`. Prices, hours, captions and figures are mono too.
 - Keep headings short: three to six words. A page title is two or three lines of one or two words (`<br>` between them), the last in `<em>`.
+- The footer's huge wordmark (`Marlow St.`) is one line at `text-[23vw]`: keep it to about ten characters, or lower `text-[23vw]`.
 
 ## Color and shape
 
 - Warm paper (`bg-base-100`, `bg-base-200`) for most sections; one section per page flipped to `bg-primary text-primary-content` (the hours); the accent for the open-now line and the order card; `bg-neutral` for the footer. Every color comes from the theme.
 - Portrait photos sit in an **arch**: `aspect-[4/5] rounded-t-full rounded-b-box object-cover`. Use portrait photos (taller than wide) there.
+- What not to break: the arches, the flipped hours section, no color of its own.
 
 ## Effects, and the attribute that turns each on
 
@@ -27,25 +29,10 @@ A neighborhood shop's site that reads like its shopfront: poster-sized type on w
 - `data-spin` on the stamp's SVG: it turns. Its words are in the `<textPath>`: rewrite them for the business, keeping about the same length (around 45 characters, two phrases repeated) so they fill the circle.
 - `data-open-now` on the open-now line: it says whether the shop is open now, from the hours rows on the same page. Its sentences are its attributes, in the site's language: `data-open` ("Open now · until {time}"), `data-later` ("Opens today at {time}"), `data-next` ("Opens {day} at {time}"); its written text (`data-open-now-text`) is what shows while editing and on a page without hours. Translate all four with the site.
 - The hours rows (`parts/hours.liquid`) carry `data-hours-row`, `data-weekday`, `data-opens` and `data-closes` from the `hours` datasource: keep one record per day, `weekday` one of the English day keys, `opens` and `closes` in 24 h (`07:00`), both empty on a closed day. `hours` and `day` are what visitors read, in the site's language.
+- Nothing is hidden by the stylesheet: a script hides what it animates only when it starts, so a page shows whole without its scripts. Keep it that way in new styles.
 - Smooth scrolling runs on every page by itself.
 
-## When adapting it
+## Lists
 
-- The hero's headline, the stamp's words, the footer's huge wordmark (`Marlow St.`: keep it to about ten characters, or lower `text-[23vw]`), the footer's short hours line and the phone and address in `parts/hours.liquid` and `parts/footer.liquid` are written in the parts: change them all with the business.
 - The menu page lists categories by name in `pages/menu.liquid` (`"Bread,Pastries,Coffee,Cakes to order"`), the same names as the `category` choices in `data/menu/_datasource.yaml`: change both together. `featured: true` puts an item on the home page's counter (six at most).
-- For a business other than a bakery, keep the structure and rename: the counter is what it sells, the ribbon its products or services, the order card its booking or order.
-- What not to break: one `<em>` per heading, the arches, the flipped hours section, no color of its own, nothing hidden by the stylesheet.
-
-## Template questions
-
-The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
-
-### Do customers order ahead?
-
-- Yes, orders ahead: keep `parts/order.liquid`, the visit page's `#order` section and its form posting to `contact`; rename what is ordered for the business (a cake, a bouquet, a table).
-- No, they just come by: remove `{% render 'order' %}` from the pages, the visit page's `#order` section, the header's and the hours' order buttons (the header keeps its links); `contact` becomes plain messages ("Messages"). The flipped hours section is then the home page's one call.
-
-### Show prices on the menu?
-
-- Yes: keep `price` on each `menu` record, set in mono.
-- No: remove the price from `parts/counter.liquid` and the menu page, and the `price` field from `data/menu/_datasource.yaml` and its records.
+- When the hours change, change the `hours` records, the open-now lines' written text (`data-open-now-text`) and the footer's short hours line together.
