@@ -55,3 +55,18 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - The name is in the header, the poster, the footer and every `<title>`; the dates in the header ("09—11.07.27"), the poster, the countdowns, the day records and the passes' numbers; the place in the poster, getting there and the info page.
 - Prices, capacities, opening hours and the access team's promises are the organizer's: ask for them or leave them out rather than guess.
 - With portraits of the artists, use them as the acts' images: the two inks keep them in the design.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### How many days?
+
+- Three: one `days` record each, as now.
+- One, Two or Four or more: one `days` record per day, the `day` choices of `acts` the same words, each act on one of them; the header's dates and the poster's follow; with one day, drop the day and weekend passes for a single one.
+
+### How do people get tickets?
+
+- A ticketing site: keep the passes; each pass's `link` is its page there (ask it, or leave it empty until given).
+- Free, with sign-up: the passes become one stub "Free · sign up" whose button opens a form posting to `alerts` (name, email), renamed "Sign-ups"; the countdowns stay.
+- Free, no tickets: delete `pages/tickets.liquid`, `data/passes/` and its navigation record, remove `{% render 'passes' %}` from the home page, and say on the info page that entry is free.

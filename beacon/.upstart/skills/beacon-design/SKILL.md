@@ -47,3 +47,18 @@ A product's page in the weeks before and after its launch. Dark and precise, lik
 - For a product that is not software (a book, a course, hardware taking pre-orders), keep the structure: the window becomes what the product shows (a contents page, a lesson, a spec sheet drawn in HTML), the steps its three verbs, the track its own milestones.
 - The footer's last line holds the "Image credits" link itself (`<p data-up-credits>`), beside the social links: keep it there, so Upstart does not add another.
 - Never a countdown timer, a pop-up or a chat widget: the launch date in words never goes stale.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### What do visitors sign up for?
+
+- A waitlist: keep the three forms and `waitlist`.
+- Pre-orders: the plans in `parts/pricing.liquid` become founding offers (one `data-lit`), each button "Reserve"; the hero's and closing band's forms say "Reserve yours" and `waitlist` gains a `plan` choice field with the plans' names. No payment is taken on the site: say that the maker will write to confirm.
+- Already launched: replace each form (`parts/hero.liquid`, `parts/waitlist.liquid`, `pages/updates.liquid`) by a `btn btn-primary` "Start free" or "Sign up" link to the product's address (ask it, or `#` until given); the track's last milestone is the launch, done; delete `data/waitlist/`.
+
+### Show pricing yet?
+
+- Yes, the plans: keep `parts/pricing.liquid` and `home-plans`, with the maker's prices.
+- Not yet: remove `{% render 'pricing' %}` from the home page, delete `data/home-plans/`, renumber the figures' labels, and add a question to `home-faq` saying pricing comes at launch.

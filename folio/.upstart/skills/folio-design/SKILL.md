@@ -45,3 +45,17 @@ A quiet, editorial portfolio: the work first, the person close behind. Off-white
 - The person's name is in the header, the hero, the footer and every page's `<title>`; their email in the contact band and the info page; their city in the header's clock and the hero's line.
 - The availability line ("Booking commissions from March 2027") and the reply time ("within two working days") are the site's promises: ask for them or leave them out rather than guess.
 - With a portrait of the person, replace the initials' square on the info page by `<img src="…" class="aspect-[4/5] w-40 object-cover md:w-full">`, keeping its place in the grid.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### Are you taking commissions?
+
+- Yes: keep the availability line in `parts/hero.liquid` and the info page, with the maker's date (ask it, or leave the line out), and the enquiry form posting to `enquiries`.
+- Not now: remove the availability line; on the info page, replace the form by the email set large as a `mailto:` link; delete `data/enquiries/`.
+
+### A page for each project?
+
+- Yes, a page each: keep `pages/work/[projects].liquid`.
+- The index only: delete `pages/work/[projects].liquid`; the index's rows are no longer links (keep the pictures following the cursor), and a project's text goes in its row's short line.

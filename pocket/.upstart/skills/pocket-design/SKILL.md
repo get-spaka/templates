@@ -54,3 +54,19 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 
 - The app's name is in the header, the footer and every `<title>`; its rating ("4.8", "21,400 ratings") in `parts/rating.liquid` and the reviews' heading; its prices in `plans`, the pricing heading, the comparison's note and the billing questions. Ratings, prices and privacy promises are the maker's: ask for them or leave them out rather than guess.
 - The privacy page's policy is a sample: tell the maker it must be checked against what their app really does.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### Where is the app?
+
+- iPhone and Android: keep both `stores` records.
+- iPhone only, or Android only: keep that store's record only; `parts/store-buttons.liquid` draws what is left.
+- On the web: delete `data/stores/`; in `parts/store-buttons.liquid`, one `btn btn-primary` pill "Open <app>" to the app's address (ask it, or `#` until given), the same size as the store pills; the phones stay.
+
+### How is the app paid for?
+
+- Free, with a paid plan: keep `plans`, the pricing page and the comparison.
+- Free: delete `pages/pricing.liquid`, `parts/pricing.liquid`, `parts/compare.liquid`, `data/plans/`, `data/pricing-compare/`, `data/pricing-faq/` and its navigation record; the FAQ says it is free.
+- Paid: one plan, its price set in `numeral`, in place of the plans on the home page; the pricing page keeps one card and the comparison goes.

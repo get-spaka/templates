@@ -22,7 +22,23 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
   }
   ```
 
-  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
+  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). `questions`, optional, asks 1 to 4 questions on what really varies in the design (Q287, Q293), in the form of the agent's own questions: each with a `question`, a short `header` (a word or two), 2 to 4 `options` with a `label` and a `description`, and `multiSelect` when several go together. The first option is the recommended one, and holds for the template as it is:
+
+  ```json
+  "questions": [
+    {
+      "question": "How do guests book a table?",
+      "header": "Booking",
+      "options": [
+        { "label": "Online, with the form", "description": "The reservation form stays." },
+        { "label": "By phone", "description": "A call button in place of the form." }
+      ],
+      "multiSelect": false
+    }
+  ]
+  ```
+
+  Once the template is chosen, the start screen shows them under the message box, each set to its first option; the maker changes some or none, then sends, and the agent gets the answers with the first message, each marked as the maker's choice or left on the recommended one. The design notes say what each answer changes, under `## Template questions`, a `### ` heading per question written as asked. Ask only what the maker knows and the design cannot guess, and what costs the agent work to change: how a visitor books, orders or signs up, which pages exist, what is sold and how. Facts (the hours, the prices) are the agent's to ask after. What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
 - `blocks/<kind>/<id>/`: its own blocks, in the format of Upstart's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
 - `.upstart/skills/<id>-design/SKILL.md`: its design notes for the agent, a skill named `<id>-design`: its spirit, its effects and how to use them, what not to break (Q239).
 - `pictures/`: made by `pnpm template:shoot`: `cover.webp` (the home page's first screen), `hover.webp` (an animated sequence of it, for the start screen), and `pages/<page>-desktop.webp` and `pages/<page>-phone.webp` for each page (`home` for `/`) and for the first record's page of each page per record (`work-casa-do-pinhal` for `/work/casa-do-pinhal`).

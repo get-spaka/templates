@@ -56,3 +56,20 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - The name is in the header, the hero, the footer's wordmark and every `<title>`; the address in the footer, the visit page and the event pages.
 - Opening hours, prices, minimum spends, corkage and the kitchen's last orders are the owner's: ask for them or leave them out rather than guess. When the hours change, change the `hours` records, the written open tonight lines and the reservation form's times together.
 - Keep one oxblood band per page and the cream card unique, or the room stops being dark.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### How do guests book a table?
+
+- Online, with the form: keep `parts/reserve.liquid` on the visit page and the `reservations` datasource; its times follow the `hours`.
+- By phone: replace the form in `parts/reserve.liquid` by the phone number set large (`display`) and a `btn btn-primary tag` call button (`href="tel:…"`); point every "Book a table" link to it; delete `data/reservations/`.
+- Walk-ins only: the reserve section says how the evening works without booking (first come, the bar while you wait); remove the booking buttons from the header and the hero, and `data/reservations/`.
+
+### Private dining and events?
+
+- Both: keep them.
+- Events only: delete `pages/private-dining.liquid`, `parts/cellar-room.liquid` where it is rendered, `data/private-rooms/`, `data/enquiries/` and its navigation record.
+- Private dining only: delete `pages/events/`, `data/events/`, `parts/whats-on.liquid` and `parts/wine-dinners.liquid` where they are rendered.
+- Neither: both of the above. The home page keeps its rhythm: one scene per screen, one oxblood band.

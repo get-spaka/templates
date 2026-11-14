@@ -19904,6 +19904,22 @@ const OPEN_LICENCES = [
 	"CC0-1.0"
 ];
 const MANIFEST = "template.json";
+/**
+* A question on what varies in the template's design (Q287, Q293), in
+* AskUserQuestion's form: shown on the start screen once the template is
+* chosen, set to its first choice, the recommended one. Its design notes say
+* what each answer changes.
+*/
+const TemplateQuestion = object({
+	question: string().min(1).max(120),
+	/** A word or two. */
+	header: string().max(16).default(""),
+	options: array(object({
+		label: string().min(1).max(40),
+		description: string().max(160).default("")
+	})).min(2).max(4),
+	multiSelect: boolean().default(false)
+}).refine((q) => new Set(q.options.map((o) => o.label)).size === q.options.length, { message: "each choice has a label of its own" });
 const Manifest = object({
 	/** Its folder's name, and the name of its design notes' skill: `<id>-design`. */
 	id: string().regex(/^[a-z][a-z0-9-]{1,47}$/, "lowercase letters, digits and dashes, starting with a letter"),
@@ -19921,7 +19937,9 @@ const Manifest = object({
 		url: url().optional()
 	}),
 	/** The template's own licence: what a maker and another author may do with it. */
-	licence: string().min(1)
+	licence: string().min(1),
+	/** 1 to 4 questions on what varies in its design, answered on the start screen (Q287). */
+	questions: array(TemplateQuestion).max(4).default([]).refine((qs) => new Set(qs.map((q) => q.question)).size === qs.length, { message: "each question is asked once" })
 });
 const Described = object({
 	name: string().min(1),
@@ -20355,6 +20373,7 @@ function checkTemplate(files, { finished = false } = {}) {
 		const skill = parseSkill(text(notes));
 		if ("problem" in skill) errors.push(`${notes}: ${skill.problem}`);
 		else if (skill.name !== `${manifest.id}-design`) errors.push(`${notes}: its name is ${manifest.id}-design.`);
+		for (const q of manifest.questions) if (!text(notes).includes(q.question)) warnings.push(`${notes}: say under "## Template questions" what each answer to "${q.question}" changes.`);
 	}
 	const blockFolders = new Set(paths.filter((p) => p.startsWith(`${BLOCKS}/`)).map((p) => p.split("/").slice(1, 3).join("/")));
 	const readFolders = template.blocks.map((b) => `${b.kind}/${b.id}`);

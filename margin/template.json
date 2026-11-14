@@ -1,11 +1,43 @@
 {
   "id": "margin",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Margin",
   "description": "A weekly letter and blog built for reading: a serif made for long text, notes in the margin, pull quotes, every picture on the lists printed in one green ink, and the newsletter as its plain main call.",
   "category": "blog",
   "original": false,
   "tags": ["blog", "newsletter", "writer", "magazine", "essays", "letters", "journal"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "questions": [
+    {
+      "question": "Where do readers subscribe?",
+      "header": "Newsletter",
+      "options": [
+        {
+          "label": "Here, in Upstart",
+          "description": "The sign-up forms stay; subscribers arrive in Upstart's Content tab."
+        },
+        {
+          "label": "On another service",
+          "description": "The forms become a button to the maker's Substack, Buttondown or other page."
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Who writes?",
+      "header": "Writers",
+      "options": [
+        {
+          "label": "One writer",
+          "description": "One name in the masthead, the sign-off and the about page."
+        },
+        {
+          "label": "Several writers",
+          "description": "Each letter signed by its author; the about page presents them."
+        }
+      ],
+      "multiSelect": false
+    }
+  ]
 }

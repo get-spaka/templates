@@ -56,3 +56,17 @@ Nothing moves while editing or under reduced motion: everything is where the sty
 - The studio's name is in the header, the footer and every `<title>`; the address, email and phone in the footer and the contact page; the new-business lead in the footer band, the contact page and the thank-you fragment.
 - "Now booking spring 2027" in the header and the contact page is a date: update it or remove it.
 - Awards, figures and results are the business's own: ask for them or leave them out rather than invent them. Never name a real award show beside a project that did not win there.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### How do clients get in touch?
+
+- The brief form: keep `parts/brief-form.liquid` on the contact page and `briefs`, its choices rewritten for the business.
+- Email and phone: replace the form on the contact page by the email and phone set in the display face, as links; "Got a brief?" stays as the question; delete `data/briefs/`.
+
+### Are you hiring?
+
+- No open roles: remove `{% render 'jobs' %}` from the studio page and delete `data/jobs/`.
+- Yes: keep the jobs, with the maker's roles (ask them, or leave the section out rather than invent them).

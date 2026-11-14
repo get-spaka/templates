@@ -54,3 +54,17 @@ Write it in Markdown; the page sets it:
 - With a portrait of the writer, replace the initials' square on the home page and the about page by `<span class="block aspect-[4/5] w-40 rounded-box md:w-full" data-ink><img src="…" class="size-full object-cover"></span>`, keeping its place in the grid.
 - For several writers, keep `author` on each letter and make the sign-off say the author's name (`{{ record.author }}`) rather than one.
 - Don't add smooth scrolling, page transitions, carousels, popups, share buttons or view counts: reading wants a still page.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### Where do readers subscribe?
+
+- Here, in Upstart: keep the forms posting to `newsletter` (`pages/newsletter.liquid`, `parts/letterbox.liquid`).
+- On another service: replace each form by a `btn btn-primary` "Subscribe" link to the maker's newsletter page (ask its address, or `#` until given), keeping the sentence beside it; delete `data/newsletter/`.
+
+### Who writes?
+
+- One writer: one name everywhere, as now.
+- Several writers: keep `author` on each letter, make `parts/sign-off.liquid` say `{{ record.author }}`, and present each writer on the about page, initials or portrait, in the same grid.

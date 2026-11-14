@@ -35,3 +35,17 @@ A neighborhood shop's site that reads like its shopfront: poster-sized type on w
 - The menu page lists categories by name in `pages/menu.liquid` (`"Bread,Pastries,Coffee,Cakes to order"`), the same names as the `category` choices in `data/menu/_datasource.yaml`: change both together. `featured: true` puts an item on the home page's counter (six at most).
 - For a business other than a bakery, keep the structure and rename: the counter is what it sells, the ribbon its products or services, the order card its booking or order.
 - What not to break: one `<em>` per heading, the arches, the flipped hours section, no color of its own, nothing hidden by the stylesheet.
+
+## Template questions
+
+The maker answered these on the start screen; the first message says how. Do what the answer says, then adapt the rest as usual.
+
+### Do customers order ahead?
+
+- Yes, orders ahead: keep `parts/order.liquid`, the visit page's `#order` section and its form posting to `contact`; rename what is ordered for the business (a cake, a bouquet, a table).
+- No, they just come by: remove `{% render 'order' %}` from the pages, the visit page's `#order` section, the header's and the hours' order buttons (the header keeps its links); `contact` becomes plain messages ("Messages"). The flipped hours section is then the home page's one call.
+
+### Show prices on the menu?
+
+- Yes: keep `price` on each `menu` record, set in mono.
+- No: remove the price from `parts/counter.liquid` and the menu page, and the `price` field from `data/menu/_datasource.yaml` and its records.

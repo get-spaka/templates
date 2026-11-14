@@ -1,11 +1,43 @@
 {
   "id": "corner",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Corner",
   "description": "A neighborhood shop that reads like its shopfront: poster-sized type on warm paper, one strong color, the day's hours always in sight and a ribbon of what is on the counter.",
   "category": "business",
   "original": false,
   "tags": ["bakery", "café", "shop", "local", "opening hours", "menu"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "questions": [
+    {
+      "question": "Do customers order ahead?",
+      "header": "Orders",
+      "options": [
+        {
+          "label": "Yes, orders ahead",
+          "description": "The order card and its form stay, for what is made or set aside to order."
+        },
+        {
+          "label": "No, they just come by",
+          "description": "The order card and buttons go; the hours lead."
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Show prices on the menu?",
+      "header": "Prices",
+      "options": [
+        {
+          "label": "Yes",
+          "description": "Each item with its price."
+        },
+        {
+          "label": "No",
+          "description": "Names and descriptions only."
+        }
+      ],
+      "multiSelect": false
+    }
+  ]
 }

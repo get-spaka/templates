@@ -1,11 +1,43 @@
 {
   "id": "reel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Reel",
   "description": "A loud studio site where the work moves sideways: heavy extended capitals on black, tilted chartreuse slabs, a pinned reel of case panels each in its own color, a page per case and a real brief to send.",
   "category": "portfolio",
   "original": true,
   "tags": ["studio", "agency", "branding", "motion", "film", "design", "portfolio", "case studies"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "questions": [
+    {
+      "question": "How do clients get in touch?",
+      "header": "Contact",
+      "options": [
+        {
+          "label": "The brief form",
+          "description": "Needs, budget and timing; briefs arrive in Upstart's Content tab."
+        },
+        {
+          "label": "Email and phone",
+          "description": "The form goes; the contact page gives the address, email and phone."
+        }
+      ],
+      "multiSelect": false
+    },
+    {
+      "question": "Are you hiring?",
+      "header": "Jobs",
+      "options": [
+        {
+          "label": "No open roles",
+          "description": "The jobs list goes from the studio page."
+        },
+        {
+          "label": "Yes",
+          "description": "The jobs list stays, with the maker's roles."
+        }
+      ],
+      "multiSelect": false
+    }
+  ]
 }
