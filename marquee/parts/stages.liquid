@@ -6,7 +6,7 @@
     </div>
     <ul class="mt-12 divide-y-2 divide-base-content border-y-2 border-base-content">
       {% for stage in data.stages %}
-      <li class="grid gap-6 py-8 md:grid-cols-[18rem_1fr_16rem] md:items-center md:gap-10">
+      <li class="grid gap-6 py-8 md:grid-cols-[14rem_minmax(0,1fr)] md:items-center md:gap-10 lg:grid-cols-[18rem_minmax(0,1fr)_16rem]">
         <div class="{% cycle 'duotone', 'duotone-secondary' %} aspect-[4/3] rounded-box border-2 border-base-content">
           {% if stage.image %}<img src="{{ stage.image }}" class="size-full object-cover">{% endif %}
         </div>
@@ -14,7 +14,7 @@
           <h3 class="text-5xl md:text-6xl">{{ stage.name }}</h3>
           <p class="mt-2 text-lg text-pretty">{{ stage.kind }}. {{ stage.plays }}.</p>
         </div>
-        <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-2 text-sm">
+        <dl class="grid grid-cols-[6rem_1fr] gap-x-3 gap-y-2 text-sm md:col-start-2 lg:col-start-auto">
           <dt class="tag text-sm">Capacity</dt><dd>{{ stage.capacity }}</dd>
           <dt class="tag text-sm">Access</dt><dd class="text-pretty">{{ stage.access }}</dd>
         </dl>
