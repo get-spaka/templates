@@ -1,0 +1,50 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <div class="border-t border-base-300">
+      {% for member in data.team %}
+      {% assign first = member.name | split: " " | first %}
+      <article class="grid gap-8 border-b border-base-300 py-12 md:grid-cols-12 md:gap-12 md:py-16" data-reveal>
+        <a href="/team/{{ member.id }}" class="block w-[45%] max-w-56 md:col-span-4 md:w-full md:max-w-none lg:col-span-3">
+          {% if member.photo %}
+          <img src="{{ member.photo }}" class="aspect-[4/5] w-full max-w-sm rounded-box object-cover">
+          {% else %}
+          {% assign words = member.name | split: " " %}
+          <div class="flex aspect-[4/5] w-full max-w-sm items-center justify-center rounded-box bg-secondary text-secondary-content" aria-hidden="true"><span class="font-heading text-5xl md:text-6xl">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>
+          {% endif %}
+        </a>
+        <div class="md:col-span-8 lg:col-span-9 lg:grid lg:grid-cols-9 lg:gap-12">
+          <div class="lg:col-span-5">
+            <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-[1.1]"><a href="/team/{{ member.id }}" class="hover:text-primary">{{ member.name }}</a></h2>
+            {% if member.role != blank %}<p class="mt-2 text-lg text-base-content/70">{{ member.role }}</p>{% endif %}
+            {% if member.bio != blank %}<p class="mt-6 text-[1.1875rem] leading-relaxed text-base-content/85">{{ member.bio }}</p>{% endif %}
+            <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href="/book?with={{ member.id }}" class="btn btn-primary h-auto min-h-10 max-w-full shrink py-2.5 leading-snug whitespace-normal">Request an appointment with {{ first }}</a>
+              <a href="/team/{{ member.id }}" class="font-semibold text-primary underline-offset-4 hover:underline">About {{ first }}</a>
+            </div>
+          </div>
+          <dl class="mt-10 space-y-6 lg:col-span-4 lg:mt-0">
+            {% if member.sees.size > 0 %}
+            <div>
+              <dt class="tag text-base-content/60">Sees most</dt>
+              <dd class="mt-2"><ul class="flex flex-wrap gap-2">{% for item in member.sees %}<li class="rounded-full bg-base-200 px-3.5 py-1.5 text-[0.9375rem]">{{ item }}</li>{% endfor %}</ul></dd>
+            </div>
+            {% endif %}
+            {% if member.days != blank %}
+            <div>
+              <dt class="tag text-base-content/60">In clinic</dt>
+              <dd class="mt-1.5 text-[1.0625rem]">{{ member.days }}</dd>
+            </div>
+            {% endif %}
+            {% if member.languages != blank %}
+            <div>
+              <dt class="tag text-base-content/60">Languages</dt>
+              <dd class="mt-1.5 text-[1.0625rem]">{{ member.languages }}</dd>
+            </div>
+            {% endif %}
+          </dl>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

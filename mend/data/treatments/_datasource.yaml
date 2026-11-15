@@ -1,0 +1,29 @@
+label: Treatments
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: summary
+    label: Summary
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: first_minutes
+    label: First visit (minutes)
+    kind: number
+  - name: follow_minutes
+    label: Follow-up visit (minutes)
+    kind: number
+  - name: price_from
+    label: Price from
+    kind: text
+  - name: covered
+    label: Covered by most extended health plans
+    kind: boolean
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+order: [physiotherapy, osteopathy, pelvic-health, sports-injuries, after-surgery]

@@ -1,0 +1,34 @@
+{
+  "name": "Mend first hour",
+  "kind": "steps",
+  "source": "upstart",
+  "description": "A first visit drawn as a ring of sixty minutes cut into its steps, each arc filling in turn as the section comes into view, beside the numbered steps with their minutes, on clay.",
+  "tags": [
+    "steps",
+    "first visit",
+    "how it works",
+    "process",
+    "timeline",
+    "minutes",
+    "ring"
+  ],
+  "mood": [
+    "warm",
+    "professional",
+    "minimal"
+  ],
+  "synonyms": [
+    "steps",
+    "first visit",
+    "how it works",
+    "process",
+    "étapes",
+    "première visite",
+    "déroulé",
+    "comment ça se passe"
+  ],
+  "data": {
+    "name": "steps",
+    "family": "section"
+  }
+}

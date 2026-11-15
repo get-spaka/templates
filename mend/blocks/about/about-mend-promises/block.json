@@ -1,0 +1,32 @@
+{
+  "name": "Mend promises",
+  "kind": "about",
+  "source": "upstart",
+  "description": "A practice's promises to every patient, each under a terracotta dot, in four columns on oat. A calm place for what testimonials cannot say.",
+  "tags": [
+    "about",
+    "values",
+    "promises",
+    "commitments",
+    "clinic"
+  ],
+  "mood": [
+    "warm",
+    "minimal",
+    "professional"
+  ],
+  "synonyms": [
+    "promises",
+    "values",
+    "our commitments",
+    "how we work",
+    "engagements",
+    "valeurs",
+    "notre approche",
+    "nos promesses"
+  ],
+  "data": {
+    "name": "promises",
+    "family": "section"
+  }
+}

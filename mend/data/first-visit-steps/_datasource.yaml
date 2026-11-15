@@ -1,0 +1,16 @@
+label: First visit steps
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: minutes
+    label: Minutes
+    kind: number
+  - name: text
+    label: In short
+    kind: text
+  - name: long
+    label: In full
+    kind: text
+order: [the-conversation, the-assessment, treatment, a-plan-you-understand]

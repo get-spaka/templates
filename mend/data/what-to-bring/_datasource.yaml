@@ -1,0 +1,10 @@
+label: What to wear and bring
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [loose-clothes, your-plan, scans-and-notes, medications, ten-minutes-early]

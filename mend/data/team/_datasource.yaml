@@ -1,0 +1,38 @@
+label: Practitioners
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: registration
+    label: Registration
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+  - name: bio
+    label: Short line
+    kind: text
+  - name: sees
+    label: Sees most
+    kind: list
+  - name: treats
+    label: Treatments they give (as named in Treatments)
+    kind: list
+  - name: training
+    label: Training
+    kind: list
+  - name: languages
+    label: Languages
+    kind: text
+  - name: days
+    label: Days in clinic
+    kind: text
+  - name: body
+    label: In their words
+    kind: markdown
+body: body
+order: [maren-holt, theo-lachance, priya-raman, owen-achterberg]

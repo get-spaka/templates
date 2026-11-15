@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Prices and insurance — Tern Physiotherapy &amp; Osteopathy</title>
+<meta name="description" content="What a visit to Tern costs, and how your extended health plan, a car accident claim or workers' compensation pays for it.">
+<meta property="og:title" content="Prices and insurance — Tern Physiotherapy &amp; Osteopathy">
+<meta property="og:description" content="What a visit to Tern costs, and how your extended health plan, a car accident claim or workers' compensation pays for it.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-6 px-5 pt-14 pb-14 md:px-8 md:pt-20 md:pb-20 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-7" data-reveal>
+      <p class="tag text-primary">Prices &amp; insurance</p>
+      <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.05] tracking-[-0.015em] text-balance">Prices and insurance</h1>
+    </div>
+    <p class="max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:col-span-5" data-reveal>What a visit costs, and how your plan pays for it.</p>
+  </div>
+</section>
+{% render 'fees' %}
+{% render 'insurance' %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-16 md:px-8 md:pt-20">
+    <div class="grid gap-4 border-y border-base-300 py-8 md:grid-cols-12 md:items-baseline" data-reveal>
+      <h2 class="text-[1.5rem] md:col-span-4">Cancelling</h2>
+      <p class="text-[1.0625rem] leading-relaxed text-base-content/80 md:col-span-8"><span class="font-semibold text-base-content">24 hours' notice, or half the fee.</span> Call or email us to move or cancel a visit; if you're unwell, tell us and we'll understand.</p>
+    </div>
+  </div>
+</section>
+{% render 'price-questions' %}
+{% render 'request-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

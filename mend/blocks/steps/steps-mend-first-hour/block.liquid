@@ -1,0 +1,49 @@
+{% assign steps = data.steps %}
+{% assign total = 0 %}{% for step in steps %}{% assign total = total | plus: step.minutes %}{% endfor %}
+<section id="first-visit" class="bg-secondary text-secondary-content" data-hour>
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5" data-reveal>
+            <p class="tag">Your first visit</p>
+      <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3rem)] leading-[1.1] text-balance">An hour, start to finish</h2>
+      <svg viewBox="0 0 200 200" class="mt-10 w-full max-w-[24rem]" aria-hidden="true">
+        <circle class="ring-disc" cx="100" cy="100" r="99"/>
+        <g transform="rotate(-90 100 100)">
+          <circle class="ring-track" cx="100" cy="100" r="76"/>
+          {% assign offset = 0 %}
+          {% for step in steps %}
+          {% assign tone = forloop.index | modulo: 4 %}
+          <circle class="arc tone-{{ tone }}" data-arc="{{ forloop.index }}" cx="100" cy="100" r="76" pathLength="{{ total }}" stroke-dasharray="{{ step.minutes | minus: 0.4 }} {{ total }}" stroke-dashoffset="-{{ offset }}"/>
+          {% assign offset = offset | plus: step.minutes %}
+          {% endfor %}
+        </g>
+        <text x="100" y="108" text-anchor="middle" class="display" font-size="48" fill="currentColor">{{ total }}</text>
+        <text x="100" y="132" text-anchor="middle" class="ring-label" font-size="11" fill="currentColor">minutes</text>
+      </svg>
+    </div>
+    <div class="lg:col-span-7 lg:pt-4">
+      <div class="flex items-start gap-5 border-b border-secondary-content/15 pb-7" data-reveal>
+        <span class="breath-dot mt-2.5" data-breath aria-hidden="true"></span>
+        <div>
+          <h3 class="text-[1.375rem] leading-snug">Before: tell us what's going on</h3>
+          <p class="mt-2 text-[1.0625rem] leading-relaxed text-secondary-content/80">Send a request or call. We reply within one working day to find a time that suits you.</p>
+        </div>
+      </div>
+      <ol data-reveal="stagger">
+        {% for step in steps %}
+        {% assign tone = forloop.index | modulo: 4 %}
+        <li class="grid grid-cols-[3.5rem_1fr] gap-x-5 border-b border-secondary-content/15 py-7 outline-none md:grid-cols-[4.5rem_1fr]" data-step="{{ forloop.index }}" tabindex="0">
+          <span class="display text-[2.75rem] text-accent md:text-[3.25rem]" aria-hidden="true">{{ forloop.index }}</span>
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+              <h3 class="text-[1.375rem] leading-snug md:text-[1.5rem]">{{ step.title }}</h3>
+              <p class="tag flex items-center gap-2 whitespace-nowrap"><span class="swatch tone-{{ tone }} size-2.5 rounded-full" aria-hidden="true"></span>{{ step.minutes }} minutes</p>
+            </div>
+            {% if step.text != blank %}<p class="mt-2 max-w-[62ch] text-[1.0625rem] leading-relaxed text-secondary-content/80">{{ step.text }}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      <a href="/first-visit" class="btn btn-primary mt-10">More about your first visit</a>
+    </div>
+  </div>
+</section>

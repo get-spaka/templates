@@ -1,0 +1,20 @@
+label: Areas of the body
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: joint
+    label: Joints lit on the figure
+    kind: choice
+    choices: [head-neck, shoulder-arm, back, hip-pelvis, knee, ankle-foot]
+  - name: conditions
+    label: Conditions seen most
+    kind: list
+  - name: text
+    label: How we help
+    kind: text
+  - name: links
+    label: Treatments that fit
+    kind: links
+order: [head-jaw-and-neck, shoulder-arm-and-hand, back, hip-and-pelvis, knee, ankle-and-foot]

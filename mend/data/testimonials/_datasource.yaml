@@ -1,0 +1,17 @@
+label: Testimonials
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: What they came in for
+    kind: text
+  - name: quote
+    label: Quote
+    kind: text
+    required: true
+  - name: headline
+    label: Headline
+    kind: text
+order: [joanne, raj, celeste]

@@ -1,0 +1,33 @@
+{
+  "name": "Mend appointment request",
+  "kind": "forms",
+  "source": "upstart",
+  "description": "An appointment request in four numbered steps (what for, when suits you, where it hurts, your details) with choice cards, beside a sticky aside with the phone, the hours and a line that it is not for emergencies; it says when the practice replies.",
+  "tags": [
+    "form",
+    "booking",
+    "appointment",
+    "request",
+    "clinic",
+    "contact"
+  ],
+  "mood": [
+    "warm",
+    "professional",
+    "minimal"
+  ],
+  "synonyms": [
+    "booking form",
+    "appointment request",
+    "request form",
+    "contact",
+    "prise de rendez-vous",
+    "demande de rendez-vous",
+    "formulaire",
+    "réserver"
+  ],
+  "data": {
+    "name": "bookings",
+    "family": "collection"
+  }
+}

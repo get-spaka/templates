@@ -1,0 +1,45 @@
+label: Appointment requests
+collected: true
+answer: bookings-thanks
+body: note
+messages:
+  required: "{field} is needed so we can reach you."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us."
+  sent: "Thank you, your request is with us."
+fields:
+  - name: treatment
+    label: What for
+    kind: choice
+    choices: [Physiotherapy, Osteopathy, Pelvic health, Not sure yet]
+    required: true
+  - name: practitioner
+    label: Who you would like to see
+    kind: text
+  - name: visit
+    label: First visit or returning
+    kind: choice
+    choices: [First visit, Returning patient]
+    required: true
+  - name: when
+    label: When suits you
+    kind: list
+    choices: [Weekday mornings, Weekday afternoons, Evenings, Saturday morning, Any time]
+  - name: area
+    label: Where it hurts
+    kind: text
+  - name: note
+    label: A short note
+    kind: markdown
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+    required: true

@@ -1,0 +1,32 @@
+{
+  "name": "Mend practitioners",
+  "kind": "team",
+  "source": "upstart",
+  "description": "Tall portraits in soft frames, or initials on clay, each with the name, the role and a \"Sees most\" line, linking to the practitioner's page.",
+  "tags": [
+    "team",
+    "practitioners",
+    "portraits",
+    "clinic",
+    "people"
+  ],
+  "mood": [
+    "warm",
+    "professional",
+    "minimal"
+  ],
+  "synonyms": [
+    "team",
+    "practitioners",
+    "our people",
+    "staff",
+    "équipe",
+    "praticiens",
+    "thérapeutes",
+    "qui sommes-nous"
+  ],
+  "data": {
+    "name": "team",
+    "family": "collection"
+  }
+}

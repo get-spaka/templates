@@ -1,0 +1,23 @@
+label: Fees
+fields:
+  - name: treatment
+    label: Treatment
+    kind: text
+    required: true
+  - name: visit
+    label: Visit
+    kind: choice
+    choices: [First visit, Follow-up]
+  - name: minutes
+    label: Minutes
+    kind: number
+  - name: price
+    label: Price
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+  - name: featured
+    label: On the home page's fee card
+    kind: boolean
+order: [physiotherapy-first-visit, physiotherapy-follow-up, osteopathy-first-visit, osteopathy-follow-up, pelvic-health-first-visit, pelvic-health-follow-up]

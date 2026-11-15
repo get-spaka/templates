@@ -1,0 +1,10 @@
+label: Promises
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [one-practitioner, never-two-at-once, explain-before-we-treat, refer-you-on]

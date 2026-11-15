@@ -1,0 +1,35 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="tag text-primary">Prices &amp; insurance</p>
+      <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3rem)] leading-[1.1] text-balance">Plain fees. Insurance, handled.</h2>
+      <ul class="mt-8 space-y-4 text-[1.0625rem] leading-relaxed">
+        <li class="flex gap-4"><span class="mt-[0.6em] size-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>No referral needed: book us directly.</span></li>
+        <li class="flex gap-4"><span class="mt-[0.6em] size-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>We bill most extended health plans directly, so you pay only what your plan doesn't.</span></li>
+        <li class="flex gap-4"><span class="mt-[0.6em] size-2 shrink-0 rounded-full bg-accent" aria-hidden="true"></span><span>For everything else, a receipt by email, ready for your claim.</span></li>
+      </ul>
+      <a href="/prices" class="mt-9 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline">
+        All fees and how insurance works
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="rounded-box bg-base-200 p-7 md:p-10 lg:col-span-7" data-reveal>
+      <div class="flex items-baseline justify-between gap-4">
+        <h3 class="text-[1.375rem]">Fees per visit</h3>
+        <p class="tag text-base-content/70">Card or debit, at the clinic</p>
+      </div>
+      <ul class="mt-6 divide-y divide-base-content/10 border-y border-base-content/10">
+        {% for fee in data.fees %}{% if fee.featured %}
+        <li class="flex items-center justify-between gap-6 py-5">
+          <div>
+            <p class="text-[1.125rem] font-semibold">{{ fee.treatment }}</p>
+            <p class="tag mt-1 text-base-content/70">{{ fee.visit }} · {{ fee.minutes }} min</p>
+          </div>
+          <p class="display text-[2.5rem] md:text-[2.75rem]">{{ fee.price }}</p>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+      <p class="mt-5 text-base leading-relaxed text-base-content/70">Sports injuries and recovery after surgery are physiotherapy fees. No deposit, nothing to pay online.</p>
+    </div>
+  </div>
+</section>

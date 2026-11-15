@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Treatments — Tern Physiotherapy &amp; Osteopathy</title>
+<meta name="description" content="Physiotherapy, osteopathy, pelvic health, sports injuries and recovery after surgery in Halifax's North End. Hands-on treatment, exercise and clear explanations.">
+<meta property="og:title" content="Treatments — Tern Physiotherapy &amp; Osteopathy">
+<meta property="og:description" content="Physiotherapy, osteopathy, pelvic health, sports injuries and recovery after surgery in Halifax's North End.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-6 px-5 pt-14 pb-14 md:px-8 md:pt-20 md:pb-20 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-7" data-reveal>
+      <p class="tag text-primary">Treatments</p>
+      <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.05] tracking-[-0.015em] text-balance">How we treat</h1>
+    </div>
+    <p class="max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:col-span-5" data-reveal>Hands-on treatment, exercise you'll actually do, and clear explanations. Most plans combine all three.</p>
+  </div>
+</section>
+{% render 'treatment-rows' %}
+{% render 'by-area' %}
+{% render 'request-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

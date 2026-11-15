@@ -1,0 +1,39 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-7xl px-5 pt-16 md:px-8 md:pt-20">
+    <div class="grid gap-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <a href="/" class="font-heading text-5xl leading-none">Tern<span class="text-accent">.</span></a>
+        <p class="tag mt-4 text-neutral-content/70">Physiotherapy &amp; Osteopathy</p>
+        <p class="mt-6 max-w-xs text-base leading-relaxed text-neutral-content/80">Above the bike shop on Ropewalk Lane since 2018. Step-free entrance and an elevator.</p>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-3 lg:col-span-8">
+        <div>
+          <h2 class="tag text-neutral-content/60">Find us</h2>
+          <address class="mt-4 leading-relaxed not-italic">41 Ropewalk Lane, 2nd floor<br>North End, Halifax, NS B3K 2X4</address>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=41+Ropewalk+Lane+Halifax+NS" class="mt-3 inline-flex items-center gap-2 font-semibold underline underline-offset-4">Get directions</a>
+          <p class="mt-6 leading-relaxed"><a href="tel:+19025550148" class="hover:underline">(902) 555-0148</a><br><a href="mailto:hello@ternphysio.ca" class="hover:underline">hello@ternphysio.ca</a></p>
+        </div>
+        <div>
+          <h2 class="tag text-neutral-content/60">Hours</h2>
+          <ul class="mt-4 space-y-1 tabular-nums">
+            {% for row in data.hours %}
+            <li class="flex justify-between gap-4"><span>{{ row.day }}</span><span class="text-neutral-content/80">{% if row.opens != blank %}{{ row.opens }} – {{ row.closes }}{% else %}{{ row.note }}{% endif %}</span></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <nav aria-label="Footer">
+          <h2 class="tag text-neutral-content/60">Pages</h2>
+          <ul class="mt-4 space-y-2">
+            {% for item in data.navigation %}{% unless item.place == "header" or item.place == "social" %}
+            <li><a href="{{ item.href }}" class="hover:underline">{{ item.label }}</a></li>
+            {% endunless %}{% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="mt-16 flex flex-col gap-3 border-t border-neutral-content/15 py-6 text-sm text-neutral-content/70 md:flex-row md:items-center md:justify-between">
+      <p>Not an emergency service: in an emergency, call 911.</p>
+      <p>© 2026 Tern Physiotherapy &amp; Osteopathy</p>
+    </div>
+  </div>
+</footer>

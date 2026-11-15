@@ -1,0 +1,513 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt):
+   Latin and Latin Extended, for names such as Théo. */
+@font-face {
+  font-family: "Young Serif";
+  src: url("/fonts/young-serif-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Young Serif";
+  src: url("/fonts/young-serif-latin-ext.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/fonts/inclusive-sans-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/fonts/inclusive-sans-latin-ext.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/fonts/inclusive-sans-latin-italic.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inclusive Sans";
+  src: url("/fonts/inclusive-sans-latin-ext-italic.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Type, below Tailwind's utilities so that a class still wins. */
+@layer base {
+  /* Young Serif has one weight and no italic: never a synthesized bold or slant. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .display {
+    font-family: var(--theme-font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-synthesis: none;
+  }
+  .display {
+    font-variant-numeric: lining-nums tabular-nums;
+    line-height: 1;
+  }
+
+  /* Labels, prices and hours: sentence case, a little open, tabular figures. Not daisyUI's form label. */
+  .tag {
+    font-family: var(--theme-font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A long text written in Markdown: a treatment, a practitioner's words, a note. */
+  .prose-mend {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+  }
+  .prose-mend > * + * {
+    margin-top: 1.1em;
+  }
+  .prose-mend > :first-child {
+    margin-top: 0;
+  }
+  .prose-mend h2 {
+    margin-top: 2.2em;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: var(--color-base-content);
+  }
+  .prose-mend h3 {
+    margin-top: 1.8em;
+    font-size: 1.375rem;
+    line-height: 1.25;
+    color: var(--color-base-content);
+  }
+  .prose-mend ul,
+  .prose-mend ol {
+    padding-left: 1.3em;
+  }
+  .prose-mend ul {
+    list-style: disc;
+  }
+  .prose-mend ol {
+    list-style: decimal;
+  }
+  .prose-mend li + li {
+    margin-top: 0.4em;
+  }
+  .prose-mend li::marker {
+    color: var(--color-accent);
+  }
+  .prose-mend a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .prose-mend strong {
+    font-weight: 600;
+    color: var(--color-base-content);
+  }
+  .prose-mend blockquote {
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1em;
+    font-family: var(--theme-font-heading);
+    font-size: 1.375rem;
+    line-height: 1.4;
+    color: var(--color-base-content);
+  }
+
+  /* Anchored sections stop under the sticky header. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  /* The areas' and the questions' disclosures, without the browser's triangle. */
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* A heading set as a label: Upstart's own heading rule comes after the layers, so this one is outside them too. */
+:is(h1, h2, h3, h4).tag {
+  font-family: var(--theme-font-body);
+}
+
+/* Buttons a little larger than daisyUI's, for readers of every age. */
+@layer components {
+  .btn:not(.btn-sm, .btn-xs) {
+    font-size: 1rem;
+  }
+}
+
+/* ---- The breathing dot (data-breath on a .breath-dot) --------------------- */
+.breath-dot {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-accent);
+}
+.breath-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  opacity: 0.25;
+  transform: scale(2.2);
+}
+
+/* ---- The jointed figure (data-body-map) ----------------------------------- */
+[data-body-map] .figure {
+  overflow: visible;
+}
+[data-body-map] .figure .limb,
+[data-body-map] .figure .dot {
+  fill: var(--color-base-100);
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+[data-body-map] .figure .floor {
+  fill: currentColor;
+  opacity: 0.08;
+}
+[data-body-map] .figure [data-part] {
+  transform-box: view-box;
+}
+[data-body-map] .figure .halo {
+  fill: var(--color-accent);
+  opacity: 0.2;
+  transform: scale(0);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+[data-body-map] .figure .hit {
+  fill: transparent;
+  cursor: pointer;
+}
+
+/* The joints of the open area, and of an area under the pointer or focused, are lit. */
+:is(
+    [data-body-map]:has(details[data-area="head-neck"]:is([open], :hover, :focus-within)) [data-joint="head-neck"],
+    [data-body-map]:has(details[data-area="shoulder-arm"]:is([open], :hover, :focus-within)) [data-joint="shoulder-arm"],
+    [data-body-map]:has(details[data-area="back"]:is([open], :hover, :focus-within)) [data-joint="back"],
+    [data-body-map]:has(details[data-area="hip-pelvis"]:is([open], :hover, :focus-within)) [data-joint="hip-pelvis"],
+    [data-body-map]:has(details[data-area="knee"]:is([open], :hover, :focus-within)) [data-joint="knee"],
+    [data-body-map]:has(details[data-area="ankle-foot"]:is([open], :hover, :focus-within)) [data-joint="ankle-foot"]
+  )
+  .dot {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+}
+/* The open area's joints carry a soft halo. */
+:is(
+    [data-body-map]:has(details[data-area="head-neck"][open]) [data-joint="head-neck"],
+    [data-body-map]:has(details[data-area="shoulder-arm"][open]) [data-joint="shoulder-arm"],
+    [data-body-map]:has(details[data-area="back"][open]) [data-joint="back"],
+    [data-body-map]:has(details[data-area="hip-pelvis"][open]) [data-joint="hip-pelvis"],
+    [data-body-map]:has(details[data-area="knee"][open]) [data-joint="knee"],
+    [data-body-map]:has(details[data-area="ankle-foot"][open]) [data-joint="ankle-foot"]
+  )
+  .halo {
+  transform: scale(2.2);
+}
+
+/* The open area in the list. */
+[data-body-map] details[data-area][open] > summary .area-plus {
+  rotate: 45deg;
+}
+
+/* ---- The hour (data-hour) -------------------------------------------------- */
+[data-hour] .ring-disc {
+  fill: var(--color-base-100);
+}
+[data-hour] .ring-track {
+  fill: none;
+  stroke: var(--color-base-300);
+  stroke-width: 14;
+}
+[data-hour] .arc {
+  fill: none;
+  stroke-width: 14;
+}
+[data-hour] .ring-label {
+  font-family: var(--theme-font-body);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+[data-hour] .tone-1 {
+  stroke: var(--color-accent);
+}
+[data-hour] .tone-2 {
+  stroke: var(--color-primary);
+}
+[data-hour] .tone-3 {
+  stroke: color-mix(in oklab, var(--color-primary) 60%, var(--color-base-100));
+}
+[data-hour] .tone-0 {
+  stroke: oklch(from var(--color-secondary) calc(l - 0.2) c h);
+}
+[data-hour] .swatch.tone-1 {
+  background: var(--color-accent);
+}
+[data-hour] .swatch.tone-2 {
+  background: var(--color-primary);
+}
+[data-hour] .swatch.tone-3 {
+  background: color-mix(in oklab, var(--color-primary) 60%, var(--color-base-100));
+}
+[data-hour] .swatch.tone-0 {
+  background: oklch(from var(--color-secondary) calc(l - 0.2) c h);
+}
+/* The step under the pointer, or focused, thickens its arc and dims the others. */
+[data-hour]:has([data-step]:is(:hover, :focus-within)) .arc {
+  opacity: 0.3;
+}
+:is(
+    [data-hour]:has([data-step="1"]:is(:hover, :focus-within)) [data-arc="1"],
+    [data-hour]:has([data-step="2"]:is(:hover, :focus-within)) [data-arc="2"],
+    [data-hour]:has([data-step="3"]:is(:hover, :focus-within)) [data-arc="3"],
+    [data-hour]:has([data-step="4"]:is(:hover, :focus-within)) [data-arc="4"],
+    [data-hour]:has([data-step="5"]:is(:hover, :focus-within)) [data-arc="5"],
+    [data-hour]:has([data-step="6"]:is(:hover, :focus-within)) [data-arc="6"]
+  ) {
+  opacity: 1;
+  stroke-width: 22;
+}
+
+/* ---- The request form ------------------------------------------------------ */
+.choice-card {
+  border: 1px solid var(--color-base-300);
+  background: var(--color-base-100);
+}
+.choice-card:has(input:checked) {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+.choice-card:has(input:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Upstart's "Image credits" link, at the end of the footer. */
+footer [data-up-credits] {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: 0 1.25rem 2rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
+@media (min-width: 768px) {
+  footer [data-up-credits] {
+    padding-inline: 2rem;
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---- Movement: only for visitors who have not asked for less. Upstart stops it all while editing. ---- */
+@media (prefers-reduced-motion: no-preference) {
+  /* The breath: three seconds in, five out. */
+  .breath-dot[data-breath]::after {
+    animation: mend-breath-dot 8s ease-in-out infinite;
+  }
+  @keyframes mend-breath-dot {
+    0%,
+    100% {
+      opacity: 0.1;
+      transform: scale(1.4);
+    }
+    37.5% {
+      opacity: 0.35;
+      transform: scale(3);
+    }
+  }
+  :is(
+      [data-body-map][data-breath]:has(details[data-area="head-neck"][open]) [data-joint="head-neck"],
+      [data-body-map][data-breath]:has(details[data-area="shoulder-arm"][open]) [data-joint="shoulder-arm"],
+      [data-body-map][data-breath]:has(details[data-area="back"][open]) [data-joint="back"],
+      [data-body-map][data-breath]:has(details[data-area="hip-pelvis"][open]) [data-joint="hip-pelvis"],
+      [data-body-map][data-breath]:has(details[data-area="knee"][open]) [data-joint="knee"],
+      [data-body-map][data-breath]:has(details[data-area="ankle-foot"][open]) [data-joint="ankle-foot"]
+    )
+    .halo {
+    animation: mend-breath 8s ease-in-out infinite;
+  }
+  @keyframes mend-breath {
+    0%,
+    100% {
+      opacity: 0.12;
+      transform: scale(1.5);
+    }
+    37.5% {
+      opacity: 0.32;
+      transform: scale(2.9);
+    }
+  }
+
+  /* The figure moves the open area's joint through its range, once every eight seconds. */
+  [data-body-map][data-move]:has(details[data-area="head-neck"][open]) .figure [data-part="head"] {
+    animation: mend-turn 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="shoulder-arm"][open]) .figure [data-part="arm-l"] {
+    animation: mend-raise 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="back"][open]) .figure [data-part="chest"] {
+    animation: mend-bend 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="hip-pelvis"][open]) .figure [data-part="thigh-r"] {
+    animation: mend-lift 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open])
+    .figure
+    :is([data-part="body"], [data-part="leg-l"], [data-part="leg-r"]) {
+    animation: mend-lower 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="thigh-l"] {
+    animation: mend-thigh-l 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="thigh-r"] {
+    animation: mend-thigh-r 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="shin-l"] {
+    animation: mend-shin-l 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="shin-r"] {
+    animation: mend-shin-r 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="foot-l"] {
+    animation: mend-foot-l 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="knee"][open]) .figure [data-part="foot-r"] {
+    animation: mend-foot-r 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="ankle-foot"][open]) .figure [data-part="figure"] {
+    animation: mend-rise 8s ease-in-out infinite;
+  }
+  [data-body-map][data-move]:has(details[data-area="ankle-foot"][open])
+    .figure
+    :is([data-part="foot-l"], [data-part="foot-r"]) {
+    animation: mend-toes 8s ease-in-out infinite;
+  }
+  @keyframes mend-turn {
+    25% {
+      transform: rotate(-13deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(13deg);
+    }
+  }
+  @keyframes mend-raise {
+    37.5% {
+      transform: rotate(80deg);
+    }
+  }
+  @keyframes mend-bend {
+    37.5% {
+      transform: rotate(-9deg);
+    }
+  }
+  @keyframes mend-lift {
+    37.5% {
+      transform: rotate(-20deg);
+    }
+  }
+  @keyframes mend-lower {
+    37.5% {
+      transform: translateY(18px);
+    }
+  }
+  @keyframes mend-thigh-l {
+    37.5% {
+      transform: rotate(7deg) scaleY(0.86);
+    }
+  }
+  @keyframes mend-thigh-r {
+    37.5% {
+      transform: rotate(-7deg) scaleY(0.86);
+    }
+  }
+  @keyframes mend-shin-l {
+    37.5% {
+      transform: rotate(-14deg) scaleY(1.14);
+    }
+  }
+  @keyframes mend-shin-r {
+    37.5% {
+      transform: rotate(14deg) scaleY(1.14);
+    }
+  }
+  @keyframes mend-foot-l {
+    37.5% {
+      transform: rotate(7deg) scaleY(1.02);
+    }
+  }
+  @keyframes mend-foot-r {
+    37.5% {
+      transform: rotate(-7deg) scaleY(1.02);
+    }
+  }
+  @keyframes mend-rise {
+    37.5% {
+      transform: translateY(-9px);
+    }
+  }
+  @keyframes mend-toes {
+    37.5% {
+      transform: scaleY(1.35);
+    }
+  }
+
+  /* The area's plus turns as it opens; the hour's arcs ease as a step is pointed at. */
+  [data-body-map] .area-plus {
+    transition: rotate 0.3s ease;
+  }
+  [data-hour] .arc {
+    transition:
+      opacity 0.3s ease,
+      stroke-width 0.3s ease;
+  }
+  .choice-card {
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+}

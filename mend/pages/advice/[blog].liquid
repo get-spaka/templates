@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Tern Physiotherapy &amp; Osteopathy</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Tern Physiotherapy &amp; Osteopathy">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+<article>
+  <header class="mx-auto grid max-w-7xl gap-10 px-5 pt-12 pb-12 md:px-8 md:pt-16 lg:grid-cols-12 lg:items-center lg:gap-14">
+    <div class="lg:col-span-7" data-reveal>
+      <a href="/advice" class="tag inline-flex items-center gap-2 text-primary hover:underline"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Advice</a>
+      {% if record.category != blank %}<p class="tag mt-8 flex items-center gap-2 text-base-content/70"><span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>{{ record.category }}</p>{% endif %}
+      <h1 class="mt-4 text-[clamp(2.25rem,3.5vw+1rem,4rem)] leading-[1.06] tracking-[-0.015em] text-balance">{{ record.title }}</h1>
+      {% if record.summary != blank %}<p class="mt-6 max-w-[52ch] text-xl leading-relaxed text-base-content/80">{{ record.summary }}</p>{% endif %}
+      <p class="tag mt-6 text-base-content/60">{{ record.author }}{% if record.date %} · <time datetime="{{ record.date }}">{{ record.date | date: "%B %-d, %Y" }}</time>{% endif %}{% if record.minutes %} · {{ record.minutes }} min read{% endif %}</p>
+    </div>
+    <div class="lg:col-span-5" data-reveal>
+      {% if record.cover %}
+      <img src="{{ record.cover }}" class="aspect-[4/3] w-full rounded-box object-cover lg:aspect-square">
+      {% else %}
+      <div class="aspect-[4/3] w-full rounded-box bg-secondary lg:aspect-square" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+  </header>
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="prose-mend max-w-[40rem] border-t border-base-300 pt-12 text-base-content/85 lg:ml-[calc(100%/12)]" data-reveal>{{ record.body }}</div>
+  </div>
+</article>
+{% assign author = data.team | where: "name", record.author | first %}
+{% if author %}
+{% assign first = author.name | split: " " | first %}
+<section class="mx-auto max-w-7xl px-5 pt-16 md:px-8 md:pt-20">
+  <div class="flex max-w-[40rem] flex-col gap-6 rounded-box bg-base-200 p-6 sm:flex-row sm:items-center md:p-8 lg:ml-[calc(100%/12)]" data-reveal>
+    {% if author.photo %}<img src="{{ author.photo }}" class="size-24 shrink-0 rounded-box object-cover">{% else %}{% assign words = author.name | split: " " %}<span class="flex size-24 shrink-0 items-center justify-center rounded-box bg-secondary font-heading text-3xl" aria-hidden="true">{{ words.first | slice: 0 }}{{ words.last | slice: 0 }}</span>{% endif %}
+    <div>
+      <p class="tag text-base-content/60">Written by</p>
+      <p class="mt-1 font-heading text-[1.375rem]"><a href="/team/{{ author.id }}" class="hover:text-primary">{{ author.name }}</a></p>
+      <p class="text-base text-base-content/70">{{ author.role }}</p>
+      <a href="/book?with={{ author.id }}" class="btn btn-primary btn-sm mt-4">Request an appointment with {{ first }}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+<section class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
+  <h2 class="text-[1.75rem]">More notes</h2>
+  <ul class="mt-8 grid gap-8 md:grid-cols-3" data-reveal="stagger">
+    {% assign shown = 0 %}
+    {% for post in data.blog %}{% if post.id != record.id and shown < 3 %}{% assign shown = shown | plus: 1 %}
+    <li>
+      <a href="/advice/{{ post.id }}" class="group block">
+        {% if post.cover %}<img src="{{ post.cover }}" class="aspect-[4/3] w-full rounded-box object-cover">{% else %}<div class="aspect-[4/3] w-full rounded-box bg-secondary" aria-hidden="true"></div>{% endif %}
+        {% if post.category != blank %}<p class="tag mt-5 text-primary">{{ post.category }}</p>{% endif %}
+        <h3 class="mt-2 text-[1.375rem] leading-snug group-hover:text-primary">{{ post.title }}</h3>
+        <p class="tag mt-2 text-base-content/60">{{ post.author }}{% if post.minutes %} · {{ post.minutes }} min read{% endif %}</p>
+      </a>
+    </li>
+    {% endif %}{% endfor %}
+  </ul>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

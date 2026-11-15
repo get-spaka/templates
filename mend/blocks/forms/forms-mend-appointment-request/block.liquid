@@ -1,0 +1,128 @@
+<section id="request" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-16">
+    <form data-prefill hx-post="/_data/bookings" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#request-problems swap:innerHTML" class="flex flex-col gap-14 lg:col-span-8">
+      <fieldset>
+        <legend class="flex items-center gap-4"><span class="display text-[2.25rem] text-accent" aria-hidden="true">1</span><span class="font-heading text-[1.625rem] leading-tight">What for</span></legend>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <label class="choice-card flex cursor-pointer items-start gap-3 rounded-field p-4">
+            <input type="radio" name="treatment" value="Physiotherapy" class="radio radio-primary radio-sm mt-1" data-key="physiotherapy sports-injuries after-surgery" required>
+            <span><span class="block font-semibold">Physiotherapy</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">Pain, injury, stiffness, sport, or after surgery</span></span>
+          </label>
+          <label class="choice-card flex cursor-pointer items-start gap-3 rounded-field p-4">
+            <input type="radio" name="treatment" value="Osteopathy" class="radio radio-primary radio-sm mt-1" data-key="osteopathy">
+            <span><span class="block font-semibold">Osteopathy</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">Hands-on treatment of joints, muscles and spine</span></span>
+          </label>
+          <label class="choice-card flex cursor-pointer items-start gap-3 rounded-field p-4">
+            <input type="radio" name="treatment" value="Pelvic health" class="radio radio-primary radio-sm mt-1" data-key="pelvic-health">
+            <span><span class="block font-semibold">Pelvic health</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">Pregnancy, after birth, the pelvic floor, pelvic pain</span></span>
+          </label>
+          <label class="choice-card flex cursor-pointer items-start gap-3 rounded-field p-4">
+            <input type="radio" name="treatment" value="Not sure yet" class="radio radio-primary radio-sm mt-1" data-key="not-sure">
+            <span><span class="block font-semibold">Not sure yet</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">Tell us what's going on and we'll suggest the right person</span></span>
+          </label>
+        </div>
+        <fieldset class="mt-8">
+          <legend class="text-[1.0625rem] font-semibold">Who would you like to see?</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+              <input type="radio" name="practitioner" value="No preference" class="radio radio-primary radio-xs" checked>
+              <span>No preference</span>
+            </label>
+            {% for member in data.team %}
+            <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+              <input type="radio" name="practitioner" value="{{ member.name }}" class="radio radio-primary radio-xs" data-key="{{ member.id }}">
+              <span>{{ member.name }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </fieldset>
+        <fieldset class="mt-8">
+          <legend class="text-[1.0625rem] font-semibold">Have you been to Tern before?</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+              <input type="radio" name="visit" value="First visit" class="radio radio-primary radio-xs" checked required>
+              <span>No, a first visit</span>
+            </label>
+            <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+              <input type="radio" name="visit" value="Returning patient" class="radio radio-primary radio-xs">
+              <span>Yes, I'm a returning patient</span>
+            </label>
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-center gap-4"><span class="display text-[2.25rem] text-accent" aria-hidden="true">2</span><span class="font-heading text-[1.625rem] leading-tight">When suits you</span></legend>
+        <p class="mt-3 text-base text-base-content/70">Choose all that work; we'll offer the nearest times.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {% assign times = "Weekday mornings,Weekday afternoons,Evenings,Saturday morning,Any time" | split: "," %}
+          {% for time in times %}
+          <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+            <input type="checkbox" name="when" value="{{ time }}" class="checkbox checkbox-primary checkbox-xs rounded-[0.3rem]">
+            <span>{{ time }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-center gap-4"><span class="display text-[2.25rem] text-accent" aria-hidden="true">3</span><span class="font-heading text-[1.625rem] leading-tight">Where it hurts <span class="font-body text-base text-base-content/60">(optional)</span></span></legend>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {% for area in data.areas %}
+          <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+            <input type="radio" name="area" value="{{ area.name }}" class="radio radio-primary radio-xs" data-key="{{ area.joint }}">
+            <span>{{ area.name }}</span>
+          </label>
+          {% endfor %}
+          <label class="choice-card flex cursor-pointer items-center gap-2.5 rounded-field px-4 py-2.5">
+            <input type="radio" name="area" value="Not sure" class="radio radio-primary radio-xs">
+            <span>Not sure</span>
+          </label>
+        </div>
+        <label class="mt-7 block">
+          <span class="text-[1.0625rem] font-semibold">A short note <span class="font-normal text-base-content/60">(optional)</span></span>
+          <span class="mt-1 block text-[0.9375rem] text-base-content/70">No need for your full history; we'll ask at your visit.</span>
+          <textarea name="note" class="textarea mt-3 w-full text-base" rows="4" maxlength="600"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-center gap-4"><span class="display text-[2.25rem] text-accent" aria-hidden="true">4</span><span class="font-heading text-[1.625rem] leading-tight">Your details</span></legend>
+        <div class="mt-5 grid gap-x-4 gap-y-5 sm:grid-cols-2">
+          <label class="block sm:col-span-2">
+            <span class="text-[0.9375rem] font-semibold">Your name</span>
+            <input name="name" type="text" class="input mt-2 w-full text-base" required maxlength="120" autocomplete="name">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-semibold">Your email</span>
+            <input name="email" type="email" class="input mt-2 w-full text-base" required maxlength="200" autocomplete="email">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-semibold">Your phone</span>
+            <input name="phone" type="tel" class="input mt-2 w-full text-base" required maxlength="30" autocomplete="tel">
+          </label>
+        </div>
+      </fieldset>
+
+      <div id="request-problems" class="empty:hidden"></div>
+      <div class="flex flex-col gap-5 border-t border-base-300 pt-8 sm:flex-row sm:items-center sm:gap-8">
+        <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Send my request</button>
+        <p class="flex items-start gap-3 text-[0.9375rem] leading-relaxed text-base-content/70"><span class="breath-dot mt-2" data-breath aria-hidden="true"></span><span>We call or email within one working day; nothing is booked until we confirm.</span></p>
+      </div>
+    </form>
+
+    <aside class="lg:col-span-4">
+      <div class="rounded-box bg-base-200 p-7 md:p-8 lg:sticky lg:top-28">
+        <h2 class="text-[1.375rem]">Prefer to call?</h2>
+        <a href="tel:+19025550148" class="display mt-3 block text-[1.875rem] text-primary">(902) 555-0148</a>
+        <p class="mt-2 text-base leading-relaxed text-base-content/70">Our front desk answers during opening hours.</p>
+        <ul class="mt-6 space-y-1.5 border-t border-base-content/10 pt-5 text-[0.9375rem] tabular-nums">
+          {% for row in data.hours %}
+          <li class="flex justify-between gap-4"><span>{{ row.day }}</span><span class="text-base-content/70">{% if row.opens != blank %}{{ row.opens }} – {{ row.closes }}{% else %}{{ row.note }}{% endif %}</span></li>
+          {% endfor %}
+        </ul>
+        <p class="mt-6 rounded-field bg-base-100 p-4 text-[0.9375rem] leading-relaxed"><span class="font-semibold">This form isn't for emergencies.</span> For sudden severe pain, numbness or an injury that needs care today, call 911 or go to the nearest emergency department.</p>
+      </div>
+    </aside>
+  </div>
+</section>
