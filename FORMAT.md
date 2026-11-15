@@ -23,7 +23,7 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
   ```
 
   `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
-- `TEMPLATE.md`, its guide for the agent that adapts it (Q299): Upstart puts it in the first message of a website started from the template, and does not copy it into the website. It says what matters only while adapting:
+- `TEMPLATE.md`, its guide for the agent that adapts it (Q299, Q306): Upstart keeps it beside a website started from the template while the website is adapted, page type by page type, and does not copy it into the website. A page type is the pages that share a first folder of `pages/`, with their records: `pages/index.liquid` is the home page, `/`; `pages/events/[events].liquid` belongs to `/events`. The guide says what matters only while adapting:
 
   ```markdown
   # Ember
@@ -32,21 +32,31 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
 
   ## How it is made
 
-  Each page by its route and what it shows; the lists by name, with the page that shows them.
+  What every page shares (the header, the footer); the lists by name, with the pages that show them.
 
   ## When adapting
 
   Where the name, the address and the dates appear; what to ask or leave out rather than guess.
 
-  ## Before building
+  ## Pages
 
-  ### How do guests book a table?
+  ### Home (`/`)
 
-  - **Online, with the form** (as built): the reservation form stays; requests arrive in the Content tab. Keep `parts/reserve.liquid`…
-  - **By phone**: a call button and the number in place of the form. Replace the form in `parts/reserve.liquid` by…
+  The hero (the name and the open tonight line), the house's statement, the evening, the menu card…
+
+  #### How do guests book a table?
+
+  - **Online, with the form** (as built): the reservation form stays; requests arrive in the Content tab. Keep the booking links…
+  - **By phone**: a call button and the number in place of the form. Point every booking link to the phone…
+
+  ### Visit (`/visit`)
+
+  The reservation form, the hours, how to find the place, gift cards and questions.
+
+  When removed: delete `pages/visit.liquid`, `parts/reserve.liquid`, … and its navigation record; point the booking links to the phone.
   ```
 
-  `## Before building` is the one section `template:check` asks for (Q300): the choices that really vary in the design and cost the agent work to change (how a visitor books, orders or signs up, which pages exist, what is sold and how), 1 to 4 of them, each a `###` heading written as a question, with 2 to 4 options: its label in bold, a sentence for the maker on what it means, then what to change in the files. The first option is the one recommended, most often the template as built, which `(as built)` marks wherever it is: Reel recommends "No open roles", since its invented jobs are not the maker's. Before it changes any file, the agent asks the maker in one card the choices the maker's message leaves open, and builds at once when the message settles them all (Q297, Q298). Facts (the hours, the prices) are not choices: the agent asks about them once the site is built. A template where nothing varies says `Nothing to ask.` under the heading.
+  `## Pages` is the section `template:check` asks for: a `### Name (`/route`)` section per page type, the home page first, in the order the agent adapts them (Q303). A section's first paragraph says what the page shows: the agent starts from it to describe the page to the maker in the card of pages (Q302). Its `####` choices are those that really vary on that page and cost the agent work to change (how a visitor books, orders or signs up, what is sold and how), each written as a question, with 2 to 4 options: its label in bold, a sentence for the maker on what it means, then what to change in the files. The first option is the one recommended, most often the template as built, which `(as built)` marks wherever it is: Reel recommends "No open roles", since its invented jobs are not the maker's. A choice for the whole website goes with the home page, which is adapted with what every page shares; a page it also changes says so in its own section ("Its reserve section follows how guests book, chosen with the home page"). Whether a page exists is not a choice: the maker keeps or leaves page types in the card of pages, and each section's `When removed:` line says what to delete with it and where to point what led to it (Q304, Q307). The agent asks a page type's choices the maker's messages leave open in its turn, before changing its files. Facts (the hours, the prices) are not choices: the agent asks about them once the page is built. During the adaptation, the agent gets the guide's general part and the section of the page type it adapts.
 - `blocks/<kind>/<id>/`: its own blocks, in the format of Upstart's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
 - `.upstart/skills/<id>-design/SKILL.md`: its design notes, a skill named `<id>-design`, which stays with the website for the agent's later turns (Q239): its spirit, its type, colors and shapes, its effects and the attribute or class that turns each on, how its lists work, and the rules that hold for the website's whole life ("keep one oxblood band per page"). What only matters while adapting goes in the guide.
 - `pictures/`: made by `pnpm template:shoot`: `cover.webp` (the home page's first screen), `hover.webp` (an animated sequence of it, for the start screen), and `pages/<page>-desktop.webp` and `pages/<page>-phone.webp` for each page (`home` for `/`) and for the first record's page of each page per record (`work-casa-do-pinhal` for `/work/casa-do-pinhal`).
@@ -74,7 +84,7 @@ No program, no `package.json`; anything at its root that is not part of a templa
 
 ## Starting a website from one
 
-The start screen lists the templates (originals first) and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the agent gets the guide with the maker's first message and is told to adapt it: ask the choices of `## Before building` the message leaves open, read the design notes, rewrite every text and record for the maker's business, replace the images, add or remove pages, keep the design, then ask the maker about what it guessed. At the end of its turns Upstart names the template's sentences still in the site to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
+The start screen lists the templates (originals first) and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the website is adapted page type by page type (Q302-Q313). In the first turn the agent shows the maker the card of pages, asks the home page's choices the message leaves open, then adapts the home page and what every page shares and removes the page types not kept; it stops after each page type with a line on what it invented, and the maker continues to the next from the list under the conversation. The pages still to do keep the template's contents meanwhile. At the end of its turns Upstart names the template's sentences still in what was adapted to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
 
 ## Commands
 

@@ -19923,6 +19923,82 @@ const Manifest = object({
 	/** The template's own licence: what a maker and another author may do with it. */
 	licence: string().min(1)
 });
+// apps/desktop/src/main/templates/pages.ts
+/** Where the guide has a section per page type (Q306). */
+const PAGES_SECTION = "## Pages";
+/** The page type a page file belongs to: "/" for pages/index.liquid, "/events" for pages/events/[events].liquid. */
+function pageTypeOf(path) {
+	const m = /^pages\/(.+)\.(?:liquid|html?)$/.exec(path);
+	if (!m) return void 0;
+	return m[1] === "index" ? "/" : `/${m[1].split("/")[0]}`;
+}
+/** The page types of a site's files: the home page first, then by route. */
+function pageTypes(paths) {
+	const types = /* @__PURE__ */ new Map();
+	for (const path of paths) {
+		const route = pageTypeOf(path);
+		if (!route) continue;
+		const files = types.get(route) ?? [];
+		files.push(path);
+		types.set(route, files);
+	}
+	return [...types].map(([route, files]) => ({
+		route,
+		files: files.sort()
+	})).sort((a, b) => a.route === "/" ? -1 : b.route === "/" ? 1 : a.route.localeCompare(b.route));
+}
+const PAGE_HEADING = /^###\s+(.+?)\s*\(`(\/[^`]*)`\)\s*$/;
+/**
+* The guide's sections: under "## Pages", each "### Name (`/route`)" up to the
+* next; the rest of the guide is its general part.
+*/
+function guideSections(guide) {
+	const lines = guide.replace(/\r\n/g, "\n").split("\n");
+	const start = lines.findIndex((l) => l.trim() === PAGES_SECTION);
+	if (start < 0) return {
+		general: guide.trim(),
+		pages: []
+	};
+	let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+	if (end < 0) end = lines.length;
+	const pages = [];
+	let current;
+	const close = () => {
+		if (current) pages.push({
+			route: current.route,
+			name: current.name,
+			text: current.lines.join("\n").trim()
+		});
+	};
+	for (const line of lines.slice(start + 1, end)) {
+		const heading = PAGE_HEADING.exec(line);
+		if (heading) {
+			close();
+			current = {
+				route: heading[2],
+				name: heading[1],
+				lines: [line]
+			};
+		} else if (/^###\s/.test(line)) {
+			close();
+			current = void 0;
+		} else current?.lines.push(line);
+	}
+	close();
+	return {
+		general: [...lines.slice(0, start), ...lines.slice(end)].join("\n").replace(/\n{3,}/g, "\n\n").trim(),
+		pages
+	};
+}
+/** The headings of the guide's "### " sections under "## Pages" that do not name a page type's route. */
+function strayPageHeadings(guide) {
+	const lines = guide.replace(/\r\n/g, "\n").split("\n");
+	const start = lines.findIndex((l) => l.trim() === PAGES_SECTION);
+	if (start < 0) return [];
+	let end = lines.findIndex((l, i) => i > start && /^##\s/.test(l));
+	if (end < 0) end = lines.length;
+	return lines.slice(start + 1, end).filter((l) => /^###\s/.test(l) && !PAGE_HEADING.test(l));
+}
 const Described = object({
 	name: string().min(1),
 	kind: _enum(BLOCK_KINDS),
@@ -20089,10 +20165,8 @@ function writeZip(files) {
 const PICTURES = "pictures";
 const BLOCKS = "blocks";
 const DESIGN_SKILL = (id) => `.upstart/skills/${id}-design`;
-/** Its guide, for the agent that adapts it (Q299): read once, never copied into the website. */
+/** Its guide, for the agent that adapts it (Q299): kept for the adaptation only, never among the website's files (Q307). */
 const GUIDE = "TEMPLATE.md";
-/** Where the guide says what to ask before building (Q300). */
-const BEFORE_BUILDING = "## Before building";
 /** What a template holds at its root; anything else is not copied into a project. */
 const TEMPLATE_ENTRIES = /* @__PURE__ */ new Set([
 	"template.json",
@@ -20361,8 +20435,16 @@ function checkTemplate(files, { finished = false } = {}) {
 		if ("problem" in skill) errors.push(`${notes}: ${skill.problem}`);
 		else if (skill.name !== `${manifest.id}-design`) errors.push(`${notes}: its name is ${manifest.id}-design.`);
 	}
-	if (!files.has("TEMPLATE.md")) warnings.push(`${GUIDE} is missing: the guide the agent reads to adapt it (what it is, how it is made, how to adapt it, ${BEFORE_BUILDING}).`);
-	else if (!new RegExp(`^## Before building\\s*$`, "m").test(text("TEMPLATE.md"))) warnings.push(`${GUIDE} has no "${BEFORE_BUILDING}" section: the choices that vary, each option with what it changes, the first the template as built (or "Nothing to ask.").`);
+	if (!files.has("TEMPLATE.md")) warnings.push(`${GUIDE} is missing: the guide the agent reads to adapt it (what it is, how it is made, how to adapt it, and under "${PAGES_SECTION}" a section per page type).`);
+	else if (!new RegExp(`^## Pages\\s*$`, "m").test(text("TEMPLATE.md"))) warnings.push(`${GUIDE} has no "${PAGES_SECTION}" section: a "### Name (\`/route\`)" section per page type, the home page first, each saying what the page shows, its choices and what to change when it is removed.`);
+	else {
+		const sections = guideSections(text(GUIDE));
+		const types = pageTypes(paths);
+		for (const type of types) if (!sections.pages.some((p) => p.route === type.route)) warnings.push(`${GUIDE} has no section for ${type.route} under "${PAGES_SECTION}" (${type.files.join(", ")}): add "### Name (\`${type.route}\`)".`);
+		for (const page of sections.pages) if (!types.some((t) => t.route === page.route)) warnings.push(`${GUIDE}: "${page.name}" (${page.route}) is no page type of the template: its pages are pages/${page.route.slice(1)}… .`);
+		for (const heading of strayPageHeadings(text(GUIDE))) warnings.push(`${GUIDE}: "${heading.trim()}" under "${PAGES_SECTION}" does not name its page type: "### Name (\`/route\`)".`);
+		if (sections.pages.length && sections.pages[0].route !== "/") warnings.push(`${GUIDE}: the home page's section (\`/\`) comes first under "${PAGES_SECTION}": it is adapted first.`);
+	}
 	const blockFolders = new Set(paths.filter((p) => p.startsWith(`${BLOCKS}/`)).map((p) => p.split("/").slice(1, 3).join("/")));
 	const readFolders = template.blocks.map((b) => `${b.kind}/${b.id}`);
 	for (const folder of blockFolders) if (!readFolders.includes(folder)) {
