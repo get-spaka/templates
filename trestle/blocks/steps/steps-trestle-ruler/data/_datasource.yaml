@@ -1,0 +1,13 @@
+label: Steps
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: when
+    label: When
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [a-free-visit, a-drawing-and-a-price, made-in-the-workshop, fitted-and-finished, a-year-later]

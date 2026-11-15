@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The workshop — Ostrom &amp; Kemp</title>
+<meta name="description" content="Nine people in a brick carriage barn on Union Street in Hudson: how the firm began, who makes what, and the wood we work with.">
+<meta property="og:title" content="The workshop — Ostrom &amp; Kemp">
+<meta property="og:description" content="Nine people in a brick carriage barn on Union Street in Hudson: how the firm began, who makes what, and the wood we work with.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 md:px-8 lg:pt-20" data-reveal>
+    <p class="mono text-base-content/70">The workshop</p>
+    <h1 class="mt-6 max-w-5xl text-[clamp(2.75rem,6vw,5.5rem)] font-light">Nine people in a carriage barn on Union Street</h1>
+  </div>
+  <figure class="mx-auto mt-14 max-w-7xl px-5 md:px-8 lg:mt-16">
+    <p data-measure class="text-base-content/70">The bench room · 48′ × 26′</p>
+    <img src="/media/bench-room.jpg" class="mt-4 aspect-[16/9] w-full object-cover">
+  </figure>
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:px-8 lg:grid-cols-12 lg:gap-16 lg:py-28">
+    <div class="lg:col-span-5" data-reveal>
+      <h2 class="text-4xl font-light md:text-5xl">How we got here</h2>
+      <p class="mt-6 text-lg text-pretty text-base-content/80">Ida Ostrom spent ten years in a Brooklyn millwork shop; Calvin Kemp grew up fixing old houses in Catskill with his father. They met on a porch job in 2012 and started the firm the next spring.</p>
+    </div>
+    <ol class="border-t border-base-300 lg:col-span-7">
+      {% for milestone in data["workshop-story"] %}
+      <li class="grid gap-3 border-b border-base-300 py-7 sm:grid-cols-[8rem_1fr] sm:gap-8" data-reveal>
+        <p class="figure text-4xl text-base-content/80">{{ milestone.year }}</p>
+        <div>
+          <h3 class="text-xl leading-tight">{{ milestone.title }}</h3>
+          {% if milestone.text %}<p class="mt-2 text-pretty text-base-content/80">{{ milestone.text }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section class="border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="mono text-base-content/70">The people</p>
+        <h2 class="mt-5 text-4xl font-light md:text-6xl">Who makes what</h2>
+      </div>
+      <p class="text-lg text-pretty text-base-content/80 lg:col-span-5">Four at the benches, four on site and one who keeps the calendar. The person who measures your house is the one who makes what goes in it.</p>
+    </div>
+    <ul class="mt-14 grid grid-cols-2 gap-x-5 gap-y-12 lg:mt-16 lg:grid-cols-3 lg:gap-x-8">
+      {% for member in data.team %}
+      <li data-reveal>
+        {% if member.photo %}
+        <img src="{{ member.photo }}" class="aspect-[4/5] w-full object-cover">
+        {% else %}
+        {% assign words = member.name | split: " " %}
+        <div class="flex aspect-[4/5] w-full items-center justify-center bg-secondary text-secondary-content" aria-hidden="true"><span class="figure text-5xl md:text-7xl">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>
+        {% endif %}
+        <h3 class="mt-5 text-xl leading-tight">{{ member.name }}</h3>
+        {% if member.role %}<p class="mono mt-2 text-base-content/70">{{ member.role }}</p>{% endif %}
+        {% if member.bio %}<p class="mt-3 text-sm text-pretty text-base-content/80 md:text-base">{{ member.bio }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="mono text-base-content/70">The wood</p>
+        <h2 class="mt-5 text-4xl font-light md:text-6xl">Where it comes from, what it becomes</h2>
+      </div>
+      <p class="text-lg text-pretty text-base-content/80 lg:col-span-5">We buy most of our timber from people we know by name, and dry it in the barn before it goes near a bench.</p>
+    </div>
+    <ol class="mt-14 border-t border-base-content/20 lg:mt-16">
+      {% for wood in data["workshop-woods"] %}
+      <li class="grid gap-4 border-b border-base-content/20 py-8 md:grid-cols-12 md:gap-8" data-reveal>
+        <span class="figure text-4xl text-base-content/70 md:col-span-1">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+        <h3 class="text-2xl leading-tight md:col-span-3">{{ wood.title }}</h3>
+        <div class="md:col-span-4"><p class="mono text-base-content/70">From</p><p class="mt-2 text-pretty">{{ wood.source }}</p></div>
+        <div class="md:col-span-4"><p class="mono text-base-content/70">Becomes</p><p class="mt-2 text-pretty">{{ wood.becomes }}</p></div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:py-28">
+    <div data-reveal>
+      <p class="mono text-base-content/70">What you can count on</p>
+      <h2 class="mt-5 max-w-3xl text-4xl font-light md:text-5xl">Certified, insured, and back in a year</h2>
+    </div>
+    <ul class="title-block mt-12 sm:grid-cols-3">
+      {% for item in data.credentials %}
+      <li class="p-6 md:p-8" data-reveal>
+        <svg class="size-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.7 2.7L16.5 9"/></svg>
+        <h3 class="mt-6 text-xl leading-tight">{% if item.href %}<a href="{{ item.href }}" class="link-hover">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}</h3>
+        {% if item.caption %}<p class="mt-3 text-pretty text-base-content/80">{{ item.caption }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'request' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

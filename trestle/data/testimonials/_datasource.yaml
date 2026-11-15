@@ -1,0 +1,23 @@
+label: Reviews
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Town and project
+    kind: text
+  - name: headline
+    label: Headline
+    kind: text
+  - name: quote
+    label: Their words
+    kind: text
+    required: true
+  - name: rating
+    label: Rating (1 to 5)
+    kind: number
+  - name: date
+    label: Date
+    kind: date
+sort: -date

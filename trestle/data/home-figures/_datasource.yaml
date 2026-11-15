@@ -1,0 +1,13 @@
+label: Workshop figures
+fields:
+  - name: label
+    label: Label
+    kind: text
+    required: true
+  - name: value
+    label: Figure
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [founded, people, houses, oldest]

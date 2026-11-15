@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Work — Ostrom &amp; Kemp</title>
+<meta name="description" content="Kitchens, libraries, stairs, sash windows, porches and whole houses in the Hudson Valley, each with its drawing, its weeks and its client's words.">
+<meta property="og:title" content="Work — Ostrom &amp; Kemp">
+<meta property="og:description" content="Kitchens, libraries, stairs, sash windows, porches and whole houses in the Hudson Valley, each with its drawing, its weeks and its client's words.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content" data-filter>
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-20 md:px-8 lg:pt-20 lg:pb-28">
+    <div data-reveal>
+      <p class="mono text-base-content/70">Work · {{ data.projects.size }} projects</p>
+      <h1 class="mt-6 text-[clamp(2.75rem,6vw,5.5rem)] font-light">Houses we have put right</h1>
+      <p class="mt-6 max-w-2xl text-lg text-pretty text-base-content/80">We take on ten to twelve projects a year, most of them in houses older than anyone living in them. Each opens on its own page, with its drawing, its weeks and its client's words.</p>
+    </div>
+    <fieldset class="mt-12 flex flex-wrap gap-2" data-reveal>
+      <legend class="sr-only">Show the projects of one type</legend>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="all" class="sr-only" checked>All</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="kitchen" class="sr-only">Kitchens</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="built-ins" class="sr-only">Built-ins</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="stairs-doors" class="sr-only">Stairs and doors</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="windows" class="sr-only">Windows</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="porch" class="sr-only">Porches</label>
+      <label class="mono inline-flex cursor-pointer items-center rounded-box border border-base-300 px-3.5 py-2 whitespace-nowrap transition-colors hover:border-base-content has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="kind" value="whole-house" class="sr-only">Whole houses</label>
+    </fieldset>
+    <ul class="mt-12 grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+      {% for project in data.projects %}
+      <li data-kind="{{ project.kind }}" data-reveal>
+        <a href="/work/{{ project.id }}" class="group block">
+          <div class="overflow-hidden">
+            {% if project.after %}<img src="{{ project.after }}" class="aspect-[3/4] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]">{% else %}<div class="aspect-[3/4] w-full bg-base-200"></div>{% endif %}
+          </div>
+          <p data-measure class="mt-4 text-base-content/70">{{ project.weeks }} weeks</p>
+          <h2 class="mt-4 text-2xl leading-tight underline-offset-4 group-hover:underline">{{ project.title }}</h2>
+          <p class="mono mt-2 text-base-content/70">{{ project.town }} · {{ project.finished }}</p>
+          {% if project.summary %}<p class="mt-3 text-pretty text-base-content/80">{{ project.summary }}</p>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'request' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+label: The wood
+fields:
+  - name: title
+    label: Wood or material
+    kind: text
+    required: true
+  - name: source
+    label: Where it comes from
+    kind: text
+  - name: becomes
+    label: What it becomes
+    kind: text
+order: [white-oak-and-ash, cherry, old-growth-pine, black-locust-and-douglas-fir, linseed-oil-and-milk-paint]

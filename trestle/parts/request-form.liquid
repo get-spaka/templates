@@ -1,0 +1,111 @@
+<section id="request" class="scroll-mt-20 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-20 md:px-8 lg:pt-20 lg:pb-28">
+    <div data-reveal>
+      <p class="mono text-base-content/70">Request a visit</p>
+      <h1 class="mt-6 max-w-4xl text-[clamp(2.75rem,6vw,5.5rem)] font-light">Tell us about your house</h1>
+      <p class="mt-6 max-w-2xl text-lg text-pretty text-base-content/80">Four short parts, the way we would start a brief. The visit is free, and nothing is paid before you have agreed a drawing and a price.</p>
+    </div>
+    <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
+      <form hx-post="/_data/quote-requests" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#quote-request-problems swap:innerHTML" class="flex flex-col gap-12 bg-base-200 p-5 sm:p-8 lg:col-span-8 lg:p-10">
+        <fieldset>
+          <legend class="flex items-baseline gap-4"><span class="figure text-3xl text-base-content/70">01</span><span class="text-2xl">The work</span></legend>
+          <p class="mt-2 text-sm text-base-content/70">Choose as many as you like.</p>
+          <div class="mt-5 grid gap-2 sm:grid-cols-2">
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Kitchen or pantry" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Kitchen or pantry</span><span class="block text-sm text-base-content/70">Cabinets, pantry walls, islands</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Built-ins" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Built-ins</span><span class="block text-sm text-base-content/70">Bookcases, window seats, closets</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Stairs or doors" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Stairs or doors</span><span class="block text-sm text-base-content/70">A new stair, doors made to match</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Windows" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Windows</span><span class="block text-sm text-base-content/70">Sash windows restored</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Porch" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Porch</span><span class="block text-sm text-base-content/70">Rebuilt or repaired</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10"><input type="checkbox" name="work" value="Whole house" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Whole house</span><span class="block text-sm text-base-content/70">Room by room, cellar to attic</span></span></label>
+            <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 bg-base-100 p-4 transition-colors has-checked:border-primary has-checked:bg-primary/10 sm:col-span-2"><input type="checkbox" name="work" value="Something else" class="checkbox checkbox-primary checkbox-sm mt-0.5"><span><span class="block">Something else</span><span class="block text-sm text-base-content/70">Tell us about it in the last part</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class="flex items-baseline gap-4"><span class="figure text-3xl text-base-content/70">02</span><span class="text-2xl">The house</span></legend>
+          <div class="mt-3 grid gap-x-4 sm:grid-cols-2">
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Town</legend>
+              <input name="town" type="text" class="input w-full" required maxlength="120" autocomplete="address-level2">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">When it was built</legend>
+              <select name="built" class="select w-full">
+                <option>Before 1900</option>
+                <option>1900 to 1950</option>
+                <option>After 1950</option>
+                <option selected>Not sure</option>
+              </select>
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class="flex items-baseline gap-4"><span class="figure text-3xl text-base-content/70">03</span><span class="text-2xl">The timing and the budget</span></legend>
+          <div class="mt-3 grid gap-x-4 sm:grid-cols-2">
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">When you would like it done</legend>
+              <select name="when" class="select w-full">
+                <option>As soon as we can</option>
+                <option selected>Within six months</option>
+                <option>Next year</option>
+                <option>Just planning</option>
+              </select>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Budget</legend>
+              <select name="budget" class="select w-full">
+                <option>Under $25,000</option>
+                <option>$25,000 to $75,000</option>
+                <option>$75,000 to $150,000</option>
+                <option>Over $150,000</option>
+                <option selected>Not sure yet</option>
+              </select>
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class="flex items-baseline gap-4"><span class="figure text-3xl text-base-content/70">04</span><span class="text-2xl">You</span></legend>
+          <div class="mt-3 grid gap-x-4 sm:grid-cols-2">
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend">Your name</legend>
+              <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Your email</legend>
+              <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+            </fieldset>
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend">The best time for a visit</legend>
+              <div class="flex flex-wrap gap-2">
+                <label class="flex cursor-pointer items-center gap-2 rounded-box border border-base-300 bg-base-100 px-3 py-2 has-checked:border-primary"><input type="radio" name="visit" value="Weekday morning" class="radio radio-primary radio-xs" checked>Weekday morning</label>
+                <label class="flex cursor-pointer items-center gap-2 rounded-box border border-base-300 bg-base-100 px-3 py-2 has-checked:border-primary"><input type="radio" name="visit" value="Weekday afternoon" class="radio radio-primary radio-xs">Weekday afternoon</label>
+                <label class="flex cursor-pointer items-center gap-2 rounded-box border border-base-300 bg-base-100 px-3 py-2 has-checked:border-primary"><input type="radio" name="visit" value="Saturday morning" class="radio radio-primary radio-xs">Saturday morning</label>
+              </div>
+            </fieldset>
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend">Tell us about the house <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <textarea name="message" class="textarea w-full" rows="5" maxlength="4000" placeholder="The rooms, what is wrong with them, what you have in mind."></textarea>
+            </fieldset>
+          </div>
+        </fieldset>
+        <div id="quote-request-problems" class="empty:hidden"></div>
+        <div class="flex flex-col gap-4 border-t border-base-300 pt-8 sm:flex-row sm:items-center">
+          <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Send the request</button>
+          <p class="text-sm text-pretty text-base-content/70">Nothing to pay, and no obligation. We call within two working days.</p>
+        </div>
+      </form>
+      <aside class="lg:col-span-4" data-reveal>
+        <h2 class="text-base-content/70"><span class="mono">What happens next</span></h2>
+        <ol class="mt-4 border-t border-base-300">
+          <li class="border-b border-base-300 py-5"><p class="mono text-accent">Within two working days</p><p class="mt-2 text-pretty">Teresa calls you to find a time for the visit, and asks whatever the form left out.</p></li>
+          <li class="border-b border-base-300 py-5"><p class="mono text-accent">On the day</p><p class="mt-2 text-pretty">Ida or Calvin comes to the house for about an hour, measures and listens.</p></li>
+          <li class="border-b border-base-300 py-5"><p class="mono text-accent">Within three weeks</p><p class="mt-2 text-pretty">A measured drawing and a written price arrive by email. You decide in your own time.</p></li>
+        </ol>
+        <p class="mt-8 text-pretty text-base-content/80">Rather talk first? Call the office on <a href="tel:+15185550161" class="link whitespace-nowrap">(518) 555-0161</a>, Monday to Friday, 8 am to 5 pm.</p>
+      </aside>
+    </div>
+  </div>
+</section>

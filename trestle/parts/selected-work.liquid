@@ -1,0 +1,26 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 lg:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-8" data-reveal>
+      <div>
+        <p class="mono text-base-content/70">Selected work</p>
+        <h2 class="mt-5 text-4xl font-light md:text-6xl">Houses we have put right</h2>
+      </div>
+      <a href="/work" class="btn btn-outline whitespace-nowrap">All projects</a>
+    </div>
+    {% assign featured = data.projects | where: "featured" %}
+    <ul class="mt-14 grid grid-cols-1 gap-x-5 gap-y-14 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-6">
+      {% for project in featured limit: 4 %}
+      <li data-reveal>
+        <a href="/work/{{ project.id }}" class="group block">
+          <div class="overflow-hidden">
+            {% if project.after %}<img src="{{ project.after }}" class="aspect-[3/4] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]">{% else %}<div class="aspect-[3/4] w-full bg-base-200"></div>{% endif %}
+          </div>
+          <p data-measure class="mt-4 text-base-content/70">{{ project.weeks }} weeks</p>
+          <h3 class="mt-4 text-xl leading-tight underline-offset-4 group-hover:underline">{{ project.title }}</h3>
+          <p class="mono mt-2 text-base-content/70">{{ project.town }} · {{ project.finished }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

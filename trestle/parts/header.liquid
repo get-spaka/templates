@@ -1,0 +1,38 @@
+<header class="sticky top-[-2.25rem] z-30 bg-base-100 text-base-content" data-hairline>
+  <div class="border-b border-base-300">
+    <div class="mx-auto flex h-[2.25rem] max-w-7xl items-center justify-between gap-6 overflow-hidden px-5 font-mono text-[0.6875rem] tracking-[0.06em] whitespace-nowrap uppercase text-base-content/70 md:px-8">
+      <a href="tel:+15185550161" class="link-hover">(518) 555-0161</a>
+      <p class="truncate"><span class="sm:hidden">Hudson and 45 minutes around</span><span class="hidden sm:inline">Hudson, NY, and 45 minutes around</span></p>
+      <p class="hidden md:block">Office Monday to Friday, 8 am – 5 pm</p>
+    </div>
+  </div>
+  <div class="navbar mx-auto min-h-[4.25rem] max-w-7xl gap-4 px-5 md:px-8">
+    <div class="navbar-start">
+      <a href="/" class="flex items-center gap-2.5 whitespace-nowrap">
+        <svg class="size-6 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M2 7h20"/><path d="M6 7 3.5 21"/><path d="M18 7l2.5 14"/><path d="M9.5 7 8.5 21"/><path d="M14.5 7l1 14"/><path d="M5 14h14"/></svg>
+        <span class="text-xl tracking-[-0.02em]">Ostrom &amp; Kemp</span>
+      </a>
+    </div>
+    <nav aria-label="Main" class="navbar-center hidden lg:flex">
+      <ul class="flex gap-9 whitespace-nowrap">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="link-hover underline-offset-[0.4em] {% if page.url == item.href %}underline decoration-accent decoration-1{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="navbar-end gap-2">
+      <a href="/quote#request" class="btn btn-primary btn-sm whitespace-nowrap sm:btn-md">Request a visit</a>
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-square btn-sm sm:btn-md" aria-label="Open menu">
+          <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        </div>
+        <ul tabindex="0" class="menu dropdown-content z-40 mt-3 w-60 border border-base-300 bg-base-100 p-2 text-base">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+          <li><a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+          <li class="mt-2 border-t border-base-300 pt-2"><a href="tel:+15185550161" class="font-mono text-xs tracking-[0.06em] uppercase">(518) 555-0161</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

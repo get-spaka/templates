@@ -1,0 +1,9 @@
+{
+  "name": "Trestle measured hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A large light headline with two buttons and a booking line, beside a tall photograph with its width and height drawn along its edges as dimension lines, and a caption in mono below.",
+  "tags": ["hero", "headline", "photo", "dimension lines", "craft", "renovation"],
+  "mood": ["minimal", "warm", "professional"],
+  "synonyms": ["hero", "headline", "top of page", "measured photo", "en-tête", "accroche", "haut de page", "photo cotée"]
+}

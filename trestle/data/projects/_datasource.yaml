@@ -1,0 +1,66 @@
+label: Projects
+body: story
+fields:
+  - name: title
+    label: Name
+    kind: text
+    required: true
+  - name: town
+    label: Town
+    kind: text
+  - name: built
+    label: House built
+    kind: text
+  - name: finished
+    label: Year finished
+    kind: text
+  - name: weeks
+    label: Weeks of work
+    kind: number
+  - name: kind
+    label: Type of work
+    kind: choice
+    choices: [kitchen, built-ins, stairs-doors, windows, porch, whole-house]
+  - name: work
+    label: The work, in a line
+    kind: text
+  - name: wood
+    label: Woods and materials
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: after
+    label: Photo after
+    kind: image
+  - name: before
+    label: Photo before
+    kind: image
+  - name: same_view
+    label: Before and after taken from the same spot
+    kind: boolean
+  - name: detail_1
+    label: Detail photo
+    kind: image
+  - name: detail_2
+    label: Second detail photo
+    kind: image
+  - name: detail_3
+    label: Third detail photo
+    kind: image
+  - name: stages
+    label: "Stages (week · stage)"
+    kind: list
+  - name: client
+    label: Client
+    kind: text
+  - name: words
+    label: "The client's words"
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: story
+    label: The story
+    kind: markdown
+order: [allen-street-kitchen, broad-street-porch, claverack-farmhouse, montgomery-street-library, william-street-windows, ghent-stair]

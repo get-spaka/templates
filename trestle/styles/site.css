@@ -1,0 +1,554 @@
+/* Chivo and Chivo Mono, files of the template, under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Chivo";
+  src: url("/fonts/chivo-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Chivo";
+  src: url("/fonts/chivo-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Chivo Mono";
+  src: url("/fonts/chivo-mono-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Chivo Mono";
+  src: url("/fonts/chivo-mono-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* The drawing's lettering: Chivo Mono, for every label, spec, dimension and figure (font-mono). */
+:root {
+  --font-mono: "Chivo Mono", ui-monospace, monospace;
+  --trestle-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  /* Headings: sentence case, never bold; display sizes take font-light in the markup. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  /* A label, a spec, a caption: small mono capitals. */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  /* A large figure: a project's weeks, the workshop's figures, a step's number. */
+  .figure {
+    font-family: var(--font-mono);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .btn {
+    font-weight: 500;
+    letter-spacing: 0.005em;
+  }
+}
+
+/* ---- The dimension line (data-measure): a fine line with a tick at each end, its figure in the middle. */
+[data-measure] {
+  --measure-line: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+[data-measure]::before,
+[data-measure]::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 0.75rem;
+  height: 0.625rem;
+  background:
+    linear-gradient(var(--measure-line), var(--measure-line)) left center / 1px 100% no-repeat,
+    linear-gradient(var(--measure-line), var(--measure-line)) center / 100% 1px no-repeat;
+  transform-origin: right center;
+}
+[data-measure]::after {
+  background-position: right center, center;
+  transform-origin: left center;
+}
+[data-measure]:empty {
+  gap: 0;
+}
+/* Along a photo's side: the line stands up and its figure reads from the bottom. */
+[data-measure="side"] {
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+[data-measure="side"]::before,
+[data-measure="side"]::after {
+  min-width: 0;
+  min-height: 0.75rem;
+  width: 0.625rem;
+  height: auto;
+  background:
+    linear-gradient(var(--measure-line), var(--measure-line)) center top / 100% 1px no-repeat,
+    linear-gradient(var(--measure-line), var(--measure-line)) center / 1px 100% no-repeat;
+  transform-origin: center bottom;
+}
+[data-measure="side"]::after {
+  background-position: center bottom, center;
+  transform-origin: center top;
+}
+
+/* ---- The scribe (data-scribe): the house before and after. */
+[data-before] {
+  filter: saturate(0.6) contrast(0.95);
+}
+/* Once the scribe script lays the after over the before (visitor mode, photos from the same spot). */
+[data-scribing] [data-scribe-frame] {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+}
+[data-scribing] :is([data-scribe-before], [data-scribe-after]) {
+  grid-area: 1 / 1;
+  position: relative;
+  margin: 0;
+}
+[data-scribing] [data-scribe-after] {
+  clip-path: inset(0 0 0 var(--split, 50%));
+}
+[data-scribing] :is([data-scribe-before], [data-scribe-after]) figcaption {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  margin: 0;
+  padding: 0.35rem 0.5rem;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+[data-scribing] [data-scribe-after] figcaption {
+  left: auto;
+  right: 0.75rem;
+}
+.scribe-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--split, 50%);
+  width: 1px;
+  translate: -50% 0;
+  background: var(--color-accent);
+  pointer-events: none;
+}
+/* The raw-oak tab, with three fine grooves. */
+.scribe-handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.875rem;
+  height: 3.25rem;
+  translate: -50% -50%;
+  border-radius: var(--radius-box);
+  background:
+    linear-gradient(var(--color-accent-content), var(--color-accent-content)) 3px center / 1px 40% no-repeat,
+    linear-gradient(var(--color-accent-content), var(--color-accent-content)) center / 1px 40% no-repeat,
+    linear-gradient(var(--color-accent-content), var(--color-accent-content)) calc(100% - 3px) center / 1px 40% no-repeat,
+    var(--color-accent);
+}
+[data-scribing]:has(.scribe-input:focus-visible) .scribe-handle::after {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+.scribe-input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  appearance: none;
+  background: none;
+}
+.scribe-input::-webkit-slider-thumb {
+  appearance: none;
+  width: 2px;
+  height: 100%;
+}
+
+/* ---- The work filter: the type chips are radio buttons; the checked one keeps its projects. */
+[data-filter]:has(input[value="kitchen"]:checked) [data-kind]:not([data-kind="kitchen"]),
+[data-filter]:has(input[value="built-ins"]:checked) [data-kind]:not([data-kind="built-ins"]),
+[data-filter]:has(input[value="stairs-doors"]:checked) [data-kind]:not([data-kind="stairs-doors"]),
+[data-filter]:has(input[value="windows"]:checked) [data-kind]:not([data-kind="windows"]),
+[data-filter]:has(input[value="porch"]:checked) [data-kind]:not([data-kind="porch"]),
+[data-filter]:has(input[value="whole-house"]:checked) [data-kind]:not([data-kind="whole-house"]) {
+  display: none;
+}
+
+/* ---- The drive-time rings (data-rings): 15, 30 and 45 minutes around the workshop. */
+[data-rings] {
+  position: relative;
+  aspect-ratio: 1;
+  container-type: inline-size;
+}
+.rings-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--ring) / 45 * 92cqi);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.55;
+}
+/* Each ring's minutes, on its edge to the south-southeast, where the towns are fewest. */
+.rings-ring > span {
+  position: absolute;
+  top: 93.3%;
+  left: 75%;
+  translate: -50% -50%;
+  padding: 0 0.4rem;
+  background: var(--color-secondary);
+}
+/* A town: its minutes from the workshop give its distance from the center, its bearing the direction. */
+.rings-town {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(calc(var(--deg) * 1deg)) translateY(calc(var(--min) / 45 * -46cqi)) rotate(calc(var(--deg) * -1deg));
+}
+.rings-town > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  border-radius: 50%;
+  background: var(--color-base-content);
+  color: var(--color-base-100);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+}
+.rings-town:first-child > span:first-child {
+  background: var(--color-accent);
+  color: var(--color-accent-content);
+}
+/* Its name, beside the point on hover and focus; read by screen readers always. */
+.rings-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.rings-town:is(:hover, :focus-visible) {
+  z-index: 2;
+  outline: none;
+}
+.rings-town:is(:hover, :focus-visible) .rings-name {
+  top: 50%;
+  left: calc(100% + 0.4rem);
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  translate: 0 -50%;
+  padding: 0.3rem 0.5rem;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+.rings-town:focus-visible > span:first-child {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ---- The build ruler (data-ruler): a tape measure, a small tick a week and a tall one at each stage. */
+[data-ruler] {
+  --ruler-line: var(--color-accent);
+  position: relative;
+}
+/* The steps, evenly spaced along it: down the left on a phone, across the top from lg. */
+.ruler-steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.5rem;
+  border-left: 1px solid var(--ruler-line);
+  background: repeating-linear-gradient(to bottom, var(--ruler-line) 0 1px, transparent 1px 1.5rem);
+}
+.ruler-steps > li {
+  position: relative;
+  padding-left: 2.25rem;
+}
+.ruler-steps > li::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--ruler-line);
+}
+@media (width >= 64rem) {
+  .ruler-steps::before {
+    right: 0;
+    bottom: auto;
+    width: auto;
+    height: 0.5rem;
+    border-left: 0;
+    border-top: 1px solid var(--ruler-line);
+    background: repeating-linear-gradient(to right, var(--ruler-line) 0 1px, transparent 1px calc(100% / (var(--steps, 5) * 4)));
+  }
+  .ruler-steps > li {
+    padding-left: 0;
+    padding-top: 2.25rem;
+    padding-right: 2rem;
+  }
+  .ruler-steps > li::before {
+    top: 0;
+    width: 1px;
+    height: 1.5rem;
+  }
+}
+/* A project's weeks, top to bottom, each stage at its week. */
+.ruler-weeks {
+  height: calc(var(--weeks) * 2.25rem + 2rem);
+  min-height: 20rem;
+  max-height: 44rem;
+}
+.ruler-weeks::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.5rem;
+  border-left: 1px solid var(--ruler-line);
+  border-bottom: 1px solid var(--ruler-line);
+  background: repeating-linear-gradient(to bottom, var(--ruler-line) 0 1px, transparent 1px calc(100% / var(--weeks)));
+}
+.ruler-weeks > li {
+  position: absolute;
+  top: calc(var(--week) / var(--weeks) * 100%);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-left: 2.25rem;
+  translate: 0 -0.55rem;
+  line-height: 1.1;
+}
+.ruler-weeks > li::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--ruler-line);
+}
+
+/* ---- The header: a hairline below it once the page is scrolled. */
+[data-hairline] {
+  border-bottom: 1px solid var(--color-base-300);
+}
+
+/* ---- The footer, a drawing's title block: ruled cells. */
+.title-block {
+  display: grid;
+  border-top: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+  border-left: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+}
+.title-block > * {
+  border-right: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, currentColor 30%, transparent);
+}
+
+/* Upstart's "Image credits" link, the last line of the title block. */
+footer [data-up-credits] {
+  /* Lined up with the footer's content (max-w-7xl, px-5 then px-8); the link's own style sets its margin. */
+  padding: 0 calc(max(0px, (100% - 80rem) / 2) + 1.25rem) 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---- Movement, only where it is welcome. Nothing here hides anything until a script asks it to wait. */
+@media (prefers-reduced-motion: no-preference) {
+  /* The header's hairline comes with the first scroll. */
+  @supports (animation-timeline: scroll()) {
+    [data-hairline] {
+      animation: trestle-hairline linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 4rem;
+    }
+  }
+
+  /* The hero's lines draw once on load. */
+  [data-measure-on="load"]::before,
+  [data-measure-on="load"]::after {
+    animation: trestle-measure 1s 0.3s var(--trestle-ease) both;
+  }
+  [data-measure-on="load"] {
+    animation: trestle-figure 0.6s 1s ease-out both;
+  }
+
+  /* The other lines, the rings and the rulers draw as they come into view: the draw script
+     sets data-draw="wait" on each, then "go" once it is on the screen. */
+  [data-measure][data-draw]::before,
+  [data-measure][data-draw]::after {
+    animation: trestle-measure 0.9s var(--trestle-ease) both;
+  }
+  [data-measure][data-draw] {
+    animation: trestle-figure 0.5s 0.6s ease-out both;
+  }
+  [data-measure="side"][data-draw]::before,
+  [data-measure="side"][data-draw]::after {
+    animation-name: trestle-measure-side;
+  }
+
+  [data-rings][data-draw] .rings-ring {
+    animation: trestle-ring 0.8s var(--trestle-ease) both;
+  }
+  [data-rings][data-draw] .rings-ring:nth-of-type(2) {
+    animation-delay: 0.15s;
+  }
+  [data-rings][data-draw] .rings-ring:nth-of-type(3) {
+    animation-delay: 0.3s;
+  }
+  [data-rings][data-draw] .rings-town {
+    animation: trestle-town 0.35s calc(0.3s + var(--min) * 0.015s) ease-out both;
+  }
+
+  [data-ruler][data-draw]::before {
+    animation: trestle-draw-down 1.1s var(--trestle-ease) both;
+  }
+  [data-ruler][data-draw] > li {
+    animation: trestle-stage 0.5s calc(0.25s + var(--step, 0) * 0.15s) ease-out both;
+  }
+  .ruler-weeks[data-draw] > li {
+    animation-delay: calc(0.2s + var(--week) / var(--weeks) * 0.9s);
+  }
+  @media (width >= 64rem) {
+    .ruler-steps[data-draw]::before {
+      animation-name: trestle-draw-across;
+    }
+  }
+
+  [data-draw="wait"],
+  [data-draw="wait"]::before,
+  [data-draw="wait"]::after,
+  [data-draw="wait"] .rings-ring,
+  [data-draw="wait"] .rings-town,
+  [data-draw="wait"] > li {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes trestle-hairline {
+  from {
+    border-bottom-color: transparent;
+  }
+}
+@keyframes trestle-measure {
+  from {
+    scale: 0 1;
+  }
+}
+@keyframes trestle-measure-side {
+  from {
+    scale: 1 0;
+  }
+}
+@keyframes trestle-figure {
+  from {
+    color: transparent;
+  }
+}
+@keyframes trestle-ring {
+  from {
+    scale: 0.85;
+    opacity: 0;
+  }
+}
+@keyframes trestle-town {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+@keyframes trestle-draw-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+@keyframes trestle-draw-across {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@keyframes trestle-stage {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+}

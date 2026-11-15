@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Reviews — Ostrom &amp; Kemp</title>
+<meta name="description" content="What our clients in Hudson, Kinderhook, Rhinebeck, Catskill, Claverack and Ghent say about the kitchens, porches, windows and stairs we made for them.">
+<meta property="og:title" content="Reviews — Ostrom &amp; Kemp">
+<meta property="og:description" content="What our clients in the Hudson Valley say about the kitchens, porches, windows and stairs we made for them.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 pt-14 pb-20 md:px-8 lg:grid-cols-12 lg:gap-16 lg:pt-20 lg:pb-28">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-base-content/70">Reviews</p>
+      <h1 class="mt-6 text-[clamp(2.75rem,5vw,4.5rem)] font-light">What our clients say</h1>
+      {% assign total = 0 %}{% assign count = 0 %}
+      {% for item in data.testimonials %}{% if item.rating %}{% assign total = total | plus: item.rating %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+      {% if count > 0 %}
+      {% assign average = total | times: 1.0 | divided_by: count | round: 1 %}
+      {% assign stars = average | round %}
+      <div class="mt-10 border-t border-base-300 pt-6">
+        <p class="figure text-7xl tracking-[-0.1em]">{{ average }}</p>
+        <div class="mt-4 flex items-center gap-1 text-accent" aria-hidden="true">
+          {% for i in (1..5) %}<svg class="size-5" viewBox="0 0 24 24" fill="{% if i <= stars %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>{% endfor %}
+        </div>
+        <p class="mono mt-4 text-base-content/70">{{ average }} out of 5 · {{ count }} {% if count == 1 %}review{% else %}reviews{% endif %}</p>
+      </div>
+      {% endif %}
+      <p class="mt-10 text-pretty text-base-content/80">Every review here is from a client whose house we worked on, copied with their permission. More are on our Google page.</p>
+      <a href="https://www.google.com/maps/search/Ostrom+%26+Kemp+Hudson+NY" class="btn btn-outline mt-6 whitespace-nowrap">Read our reviews on Google</a>
+    </div>
+    <ul class="border-t border-base-300 lg:col-span-8">
+      {% for item in data.testimonials %}
+      <li class="border-b border-base-300 py-10" data-reveal>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          {% if item.rating %}
+          <div class="flex items-center gap-1 text-accent">
+            <span class="sr-only">Rated {{ item.rating }} out of 5</span>
+            {% for i in (1..5) %}<svg class="size-4" viewBox="0 0 24 24" fill="{% if i <= item.rating %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>{% endfor %}
+          </div>
+          {% endif %}
+          {% if item.date %}<p class="mono text-base-content/70">{{ item.date | date: "%B %Y" }}</p>{% endif %}
+        </div>
+        {% if item.headline %}<h2 class="mt-5 text-3xl font-light">{{ item.headline }}</h2>{% endif %}
+        <blockquote class="mt-4 max-w-3xl text-lg text-pretty text-base-content/80"><p>“{{ item.quote }}”</p></blockquote>
+        <p class="mt-6"><span class="font-medium">{{ item.name }}</span><span class="mono ml-3 text-base-content/70">{{ item.role }}</span></p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'request' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

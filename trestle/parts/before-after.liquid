@@ -1,0 +1,30 @@
+{% assign shown = data.projects | where: "same_view" | first %}
+{% unless shown %}{% assign shown = data.projects | first %}{% endunless %}
+{% if shown %}
+<section class="bg-neutral text-neutral-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:px-8 lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-28">
+    <figure data-scribe {% if shown.same_view %}data-same-view{% endif %} data-scribe-label="Move the line to compare the {{ shown.title }} before and after" class="lg:col-span-8">
+      <div data-scribe-frame class="grid gap-4 sm:grid-cols-2">
+        <figure data-scribe-before>
+          {% if shown.before %}<img data-before src="{{ shown.before }}" class="aspect-[4/3] w-full object-cover">{% else %}<div class="aspect-[4/3] w-full bg-neutral-content/10"></div>{% endif %}
+          <figcaption class="mono mt-3 text-neutral-content/70">Before</figcaption>
+        </figure>
+        <figure data-scribe-after>
+          {% if shown.after %}<img src="{{ shown.after }}" class="aspect-[4/3] w-full object-cover">{% else %}<div class="aspect-[4/3] w-full bg-neutral-content/10"></div>{% endif %}
+          <figcaption class="mono mt-3 text-neutral-content/70">After</figcaption>
+        </figure>
+      </div>
+    </figure>
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-neutral-content/70">Before and after</p>
+      <h2 class="mt-5 text-4xl font-light md:text-5xl">{{ shown.title }}</h2>
+      <p class="mono mt-6 text-accent">House built {{ shown.built }} · {{ shown.weeks }} weeks · {{ shown.wood }}</p>
+      {% if shown.words %}
+      <blockquote class="mt-8 text-xl leading-snug font-light text-pretty md:text-2xl"><p>“{{ shown.words }}”</p></blockquote>
+      <p class="mt-4 text-sm text-neutral-content/70">{{ shown.client }}, {{ shown.town }}</p>
+      {% endif %}
+      <a href="/work/{{ shown.id }}" class="btn btn-accent mt-10 whitespace-nowrap">See the project</a>
+    </div>
+  </div>
+</section>
+{% endif %}

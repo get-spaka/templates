@@ -1,0 +1,13 @@
+label: The workshop's story
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [a-garage-in-catskill, the-carriage-barn, the-first-whole-house, nine-people]

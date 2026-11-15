@@ -1,0 +1,28 @@
+<section class="border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:px-8 lg:grid-cols-12 lg:gap-16 lg:py-28">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="mono text-base-content/70">The workshop</p>
+      <h2 class="mt-5 text-4xl font-light md:text-5xl">Come and see the benches</h2>
+      <p class="mt-6 text-lg text-pretty text-base-content/80">We open the carriage barn on Saturday mornings, by appointment, to anyone who wants to see their kitchen being made or choose the boards for it.</p>
+      <address class="mt-8 text-lg not-italic">61 Union Street<br>Hudson, NY 12534</address>
+      <p class="mt-4"><a href="tel:+15185550161" class="link-hover">(518) 555-0161</a> · <a href="mailto:office@ostromkemp.com" class="link-hover">office@ostromkemp.com</a></p>
+      <a href="https://www.openstreetmap.org/search?query=61%20Union%20Street%2C%20Hudson%2C%20NY" class="btn btn-outline mt-8 whitespace-nowrap">Get directions</a>
+    </div>
+    <div class="lg:col-span-7" data-reveal>
+      <table class="table text-base">
+        <caption class="sr-only">Office and workshop hours</caption>
+        <thead>
+          <tr class="border-base-300"><th scope="col" class="mono px-0 font-normal text-base-content/70">Day</th><th scope="col" class="mono px-0 text-right font-normal text-base-content/70">Hours</th></tr>
+        </thead>
+        <tbody>
+          {% for item in data.hours %}
+          <tr class="border-base-300">
+            <th scope="row" class="px-0 py-5 align-top font-normal">{{ item.day }}{% if item.note %}<span class="mt-1 block text-sm text-base-content/70">{{ item.note }}</span>{% endif %}</th>
+            <td class="px-0 py-5 text-right align-top tabular-nums">{{ item.hours }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

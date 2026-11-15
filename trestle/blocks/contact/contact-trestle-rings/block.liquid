@@ -1,0 +1,34 @@
+<section id="area" class="bg-secondary text-secondary-content">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 py-20 md:px-8 lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-28">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="mono text-secondary-content/70">Where we work</p>
+      <h2 class="mt-5 text-4xl font-light md:text-5xl">Within 45 minutes of the workshop</h2>
+      <p class="mt-6 text-lg text-pretty text-secondary-content/80">We take on houses we can reach before eight in the morning: Columbia County, and across the river into Greene and Ulster.</p>
+      <ol class="mt-10 grid border-t border-secondary-content/20 sm:grid-cols-2 sm:gap-x-8">
+        {% for town in data.area %}
+        <li class="flex items-baseline gap-3 border-b border-secondary-content/20 py-2.5">
+          <span class="mono w-6 shrink-0 text-secondary-content/70">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+          <span class="min-w-0 flex-1 leading-snug">{{ town.name }}{% if town.note %}<span class="block text-sm text-secondary-content/70">{{ town.note }}</span>{% endif %}</span>
+          <span class="mono shrink-0 text-secondary-content/70">{{ town.minutes }} min</span>
+        </li>
+        {% endfor %}
+      </ol>
+      <p class="mt-8 text-pretty text-secondary-content/80">Not on the list? Ask anyway; we travel for workshop pieces.</p>
+    </div>
+    <div class="lg:col-span-7">
+      <div data-rings class="mx-auto max-w-[36rem]">
+        <span class="rings-ring" style="--ring: 15" aria-hidden="true"><span class="mono">15 min</span></span>
+        <span class="rings-ring" style="--ring: 30" aria-hidden="true"><span class="mono">30 min</span></span>
+        <span class="rings-ring" style="--ring: 45" aria-hidden="true"><span class="mono">45 min</span></span>
+        <ol aria-label="Towns by driving time from the workshop">
+          {% for town in data.area %}
+          <li class="rings-town" style="--min: {{ town.minutes | default: 0 }}; --deg: {{ town.bearing | default: 0 }}" tabindex="0">
+            <span aria-hidden="true">{{ forloop.index }}</span>
+            <span class="rings-name">{{ town.name }}, {{ town.minutes }} min</span>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+{
+  "name": "Trestle steps along a ruler",
+  "kind": "steps",
+  "source": "upstart",
+  "description": "Numbered steps evenly spaced along a tape measure with a small tick every quarter step and a tall one at each step, across the page on a large screen and down its side on a phone; the ruler draws itself as it comes into view.",
+  "tags": ["steps", "process", "how it works", "timeline", "ruler"],
+  "mood": ["minimal", "professional"],
+  "synonyms": ["steps", "process", "how it works", "our method", "étapes", "déroulement", "comment ça marche", "méthode"],
+  "data": { "name": "steps", "family": "section" }
+}

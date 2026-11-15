@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }}, {{ record.town }} — Ostrom &amp; Kemp</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }}, {{ record.town }} — Ostrom &amp; Kemp">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.after %}<meta property="og:image" content="{{ record.after }}">{% endif %}
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <header class="mx-auto max-w-7xl px-5 pt-10 md:px-8 lg:pt-14">
+    <a href="/work" class="mono text-base-content/70 link-hover"><span aria-hidden="true">←</span> All projects</a>
+    <dl class="title-block mt-8 grid-cols-2 bg-base-200 md:grid-cols-3 lg:grid-cols-6" data-reveal>
+      <div class="p-4"><dt class="mono text-base-content/70">Town</dt><dd class="mt-2">{{ record.town }}</dd></div>
+      <div class="p-4"><dt class="mono text-base-content/70">House built</dt><dd class="mt-2 tabular-nums">{{ record.built }}</dd></div>
+      <div class="col-span-2 p-4 md:col-span-1"><dt class="mono text-base-content/70">The work</dt><dd class="mt-2 text-pretty">{{ record.work }}</dd></div>
+      <div class="col-span-2 p-4 md:col-span-1"><dt class="mono text-base-content/70">Woods</dt><dd class="mt-2 text-pretty">{{ record.wood }}</dd></div>
+      <div class="p-4"><dt class="mono text-base-content/70">Weeks</dt><dd class="mt-2 tabular-nums">{{ record.weeks }}</dd></div>
+      <div class="p-4"><dt class="mono text-base-content/70">Finished</dt><dd class="mt-2 tabular-nums">{{ record.finished }}</dd></div>
+    </dl>
+    <h1 class="mt-12 text-[clamp(2.75rem,6.5vw,6rem)] font-light" data-reveal>{{ record.title }}</h1>
+    {% if record.summary %}<p class="mt-6 max-w-3xl text-xl text-pretty text-base-content/80" data-reveal>{{ record.summary }}</p>{% endif %}
+  </header>
+
+  <div class="mx-auto mt-14 max-w-7xl px-5 md:px-8 lg:mt-20">
+    {% if record.before %}
+    <figure data-scribe {% if record.same_view %}data-same-view{% endif %} data-scribe-label="Move the line to compare the {{ record.title }} before and after">
+      <div data-scribe-frame class="grid gap-4 md:grid-cols-2">
+        <figure data-scribe-before>
+          <img data-before src="{{ record.before }}" class="aspect-[3/2] w-full object-cover">
+          <figcaption class="mono mt-3 text-base-content/70">Before</figcaption>
+        </figure>
+        <figure data-scribe-after>
+          {% if record.after %}<img src="{{ record.after }}" class="aspect-[3/2] w-full object-cover">{% else %}<div class="aspect-[3/2] w-full bg-base-200"></div>{% endif %}
+          <figcaption class="mono mt-3 text-base-content/70">After</figcaption>
+        </figure>
+      </div>
+    </figure>
+    {% elsif record.after %}
+    <img src="{{ record.after }}" class="aspect-[3/2] w-full object-cover">
+    {% endif %}
+  </div>
+
+  <div class="mx-auto mt-20 grid max-w-7xl gap-14 px-5 md:px-8 lg:mt-28 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-4">
+      <p class="mono text-base-content/70">The build</p>
+      <p class="figure mt-4 text-6xl md:text-7xl">{{ record.weeks }}<span class="ml-3 text-2xl tracking-normal">weeks</span></p>
+      {% if record.stages.size > 0 %}
+      <ol data-ruler class="ruler-weeks mt-10" style="--weeks: {{ record.weeks | default: 1 }}" aria-label="The stages of the work, week by week">
+        {% for stage in record.stages %}{% assign bits = stage | split: " · " %}
+        <li style="--week: {{ bits[0] | strip | default: 0 }}"><span class="mono w-16 shrink-0 text-base-content/70">Week {{ bits[0] | strip }}</span><span class="text-sm leading-snug">{{ bits[1] }}</span></li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+    </div>
+    <div class="max-w-2xl text-lg text-pretty text-base-content/80 lg:col-span-7 lg:col-start-6 [&_a]:link [&_h2]:mt-14 [&_h2]:text-3xl [&_h2]:font-light [&_h2]:text-base-content [&_h2:first-child]:mt-0 [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6" data-reveal>{{ record.story }}</div>
+  </div>
+
+  {% if record.detail_1 or record.detail_2 or record.detail_3 %}
+  <div class="mx-auto mt-20 grid max-w-7xl items-start gap-4 px-5 sm:grid-cols-2 md:px-8 lg:mt-28 {% if record.detail_1 and record.detail_2 and record.detail_3 %}lg:grid-cols-3{% endif %} lg:gap-6">
+    {% if record.detail_1 %}<img src="{{ record.detail_1 }}" class="h-auto w-full" data-reveal>{% endif %}
+    {% if record.detail_2 %}<img src="{{ record.detail_2 }}" class="h-auto w-full lg:mt-16" data-reveal>{% endif %}
+    {% if record.detail_3 %}<img src="{{ record.detail_3 }}" class="h-auto w-full" data-reveal>{% endif %}
+  </div>
+  {% endif %}
+
+  {% if record.words %}
+  <figure class="mx-auto max-w-7xl px-5 pt-20 pb-20 md:px-8 lg:pt-28 lg:pb-28" data-reveal>
+    <blockquote class="max-w-5xl text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.15] font-light tracking-[-0.02em] text-pretty"><p>“{{ record.words }}”</p></blockquote>
+    <figcaption class="mt-10 flex items-center gap-4">
+      <span data-measure class="w-16 shrink-0" aria-hidden="true"></span>
+      <span><span class="font-medium">{{ record.client }}</span><span class="mono ml-3 text-base-content/70">{{ record.town }}</span></span>
+    </figcaption>
+  </figure>
+  {% endif %}
+
+  {% for item in data.projects %}{% if item.id == record.id %}{% assign at = forloop.index %}{% endif %}{% endfor %}
+  {% assign next = data.projects[at] | default: data.projects.first %}
+  {% if next and next.id != record.id %}
+  <div class="border-t border-base-300">
+    <a href="/work/{{ next.id }}" class="group mx-auto grid max-w-7xl items-center gap-8 px-5 py-14 md:grid-cols-12 md:px-8 lg:py-20">
+      <span class="md:col-span-3">
+        <span class="mono block text-base-content/70">Next project</span>
+        <span data-measure class="mt-4 text-base-content/70">{{ next.weeks }} weeks</span>
+      </span>
+      <span class="text-4xl leading-[1.02] font-light tracking-[-0.025em] underline-offset-8 group-hover:underline md:col-span-6 md:text-6xl">{{ next.title }} <span aria-hidden="true">→</span></span>
+      {% if next.after %}<img src="{{ next.after }}" class="aspect-[4/3] w-48 object-cover md:col-span-3 md:w-full">{% endif %}
+    </a>
+  </div>
+  {% endif %}
+</article>
+{% render 'request' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

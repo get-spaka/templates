@@ -1,0 +1,48 @@
+label: Visit requests
+collected: true
+answer: quote-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: town
+    label: Town
+    kind: text
+    required: true
+  - name: built
+    label: When the house was built
+    kind: choice
+    choices: [Before 1900, 1900 to 1950, After 1950, Not sure]
+  - name: work
+    label: The work
+    kind: list
+    choices: [Kitchen or pantry, Built-ins, Stairs or doors, Windows, Porch, Whole house, Something else]
+  - name: when
+    label: When
+    kind: choice
+    choices: [As soon as we can, Within six months, Next year, Just planning]
+  - name: budget
+    label: Budget
+    kind: choice
+    choices: ["Under $25,000", "$25,000 to $75,000", "$75,000 to $150,000", "Over $150,000", "Not sure yet"]
+  - name: visit
+    label: Best time for a visit
+    kind: choice
+    choices: [Weekday morning, Weekday afternoon, Saturday morning]
+  - name: message
+    label: About the house
+    kind: markdown

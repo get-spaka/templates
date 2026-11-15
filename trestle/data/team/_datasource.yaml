@@ -1,0 +1,16 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: bio
+    label: What they make
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+order: [ida-ostrom, calvin-kemp, rosa-delgado, ben-whitaker, june-park, teresa-quinn]

@@ -1,0 +1,16 @@
+label: Where we work
+fields:
+  - name: name
+    label: Town
+    kind: text
+    required: true
+  - name: minutes
+    label: Minutes from the workshop
+    kind: number
+  - name: bearing
+    label: "Direction from the workshop (compass degrees: 0 north, 90 east)"
+    kind: number
+  - name: note
+    label: Note
+    kind: text
+sort: minutes

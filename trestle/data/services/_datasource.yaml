@@ -1,0 +1,30 @@
+label: Services
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: summary
+    label: Summary
+    kind: text
+  - name: included
+    label: What it includes
+    kind: list
+  - name: takes
+    label: How long it usually takes
+    kind: text
+  - name: range
+    label: Typical range
+    kind: text
+  - name: made
+    label: Where it is done
+    kind: choice
+    choices: [workshop, on site]
+  - name: kind
+    label: Type of work, as the projects'
+    kind: choice
+    choices: [kitchen, built-ins, stairs-doors, windows, porch, whole-house]
+  - name: image
+    label: Photo
+    kind: image
+order: [kitchens-and-pantries, built-ins, stairs-and-doors, windows, porches, whole-houses]
