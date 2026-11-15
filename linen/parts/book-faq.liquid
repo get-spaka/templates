@@ -1,0 +1,18 @@
+<section class="weave bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-3 md:px-10 md:py-28">
+    <div>
+      <p class="tag text-primary">Good to know</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4vw,3.75rem)] leading-[1.02] text-balance">Before you <em>come</em></h2>
+      <p class="mt-5 text-base-content/80">Something we have not answered? Write to us, or ask in your request's note.</p>
+      <a href="mailto:stay@casahilo.example" class="btn btn-outline mt-7">Write to us</a>
+    </div>
+    <div class="divide-y divide-base-300 border-y border-base-300 md:col-span-2">
+      {% for item in data["book-faq"] %}
+      <details class="collapse collapse-plus rounded-none" {% if forloop.first %}open{% endif %}>
+        <summary class="collapse-title display pr-10 pl-0 text-2xl">{{ item.question }}</summary>
+        <div class="collapse-content space-y-2 px-0 text-base-content/80">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

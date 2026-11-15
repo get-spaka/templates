@@ -1,0 +1,20 @@
+label: From the door
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: minutes
+    label: Minutes from the door
+    kind: number
+  - name: by
+    label: How
+    kind: choice
+    choices: [on foot, by car]
+  - name: line
+    label: One line
+    kind: text
+  - name: photo
+    label: Picture
+    kind: image
+sort: minutes

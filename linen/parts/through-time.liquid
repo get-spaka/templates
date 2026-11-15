@@ -1,0 +1,18 @@
+<section class="bg-secondary text-secondary-content">
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 py-20 md:grid-cols-12 md:gap-10 md:px-10 md:py-28">
+    <div class="md:col-span-4">
+      <p class="tag text-accent">Through time</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">A hundred and fifty years on Calle del <em>Telar</em></h2>
+    </div>
+    <ol class="border-l-[1.5px] border-dashed border-accent md:col-span-7 md:col-start-6">
+      {% for milestone in data["story-milestones"] %}
+      <li class="relative pb-12 pl-8 last:pb-0 md:pl-12" data-settle>
+        <span class="absolute top-3 -left-[0.45rem] size-3.5 rounded-full bg-accent" aria-hidden="true"></span>
+        {% if milestone.year != blank %}<p class="figure text-5xl text-accent">{{ milestone.year }}</p>{% endif %}
+        <h3 class="mt-3 text-2xl">{{ milestone.title }}</h3>
+        {% if milestone.text != blank %}<p class="mt-2 max-w-xl text-secondary-content/85">{{ milestone.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

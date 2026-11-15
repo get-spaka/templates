@@ -1,0 +1,19 @@
+label: Outings
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: line
+    label: One line
+    kind: text
+  - name: length
+    label: How long
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: photo
+    label: Picture
+    kind: image
+order: [looms, market-morning, palenque, monte-alban-at-opening]

@@ -1,0 +1,20 @@
+label: Guests' words
+fields:
+  - name: name
+    label: Guest's first name
+    kind: text
+    required: true
+  - name: quote
+    label: What they said
+    kind: text
+    required: true
+  - name: from
+    label: Where they live
+    kind: text
+  - name: room
+    label: Their room
+    kind: text
+  - name: month
+    label: When they stayed
+    kind: text
+order: [hannah, daniel, camille, rafael]

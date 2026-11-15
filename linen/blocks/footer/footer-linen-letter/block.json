@@ -1,0 +1,34 @@
+{
+  "name": "Linen indigo footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "An indigo footer under a marigold thread: \"Come and stay\" with the booking button, the address with a link to open it in Maps, email, phone and WhatsApp, the season's letter (its form posts to the site's newsletter list) and the links.",
+  "tags": [
+    "footer",
+    "hotel",
+    "guesthouse",
+    "address",
+    "contact",
+    "newsletter"
+  ],
+  "mood": [
+    "elegant",
+    "warm",
+    "colorful"
+  ],
+  "synonyms": [
+    "footer",
+    "site footer",
+    "contact and address",
+    "bottom",
+    "pied de page",
+    "adresse",
+    "coordonnées",
+    "bas de page",
+    "lettre d'information"
+  ],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

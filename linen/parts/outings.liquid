@@ -1,0 +1,26 @@
+<section class="weave bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-20 md:px-10 md:py-28">
+    <div class="grid gap-6 md:grid-cols-12 md:items-end">
+      <div class="md:col-span-7">
+        <p class="tag text-primary">We can arrange</p>
+        <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">Four days out, with people we <em>know</em></h2>
+      </div>
+      <p class="text-lg text-base-content/80 md:col-span-4 md:col-start-9">Tell us when you ask for your dates, and we will set it up with the families and guides we have worked with since we opened.</p>
+    </div>
+    <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+      {% for outing in data.outings %}
+      <li data-settle>
+        <div class="aspect-[4/3] overflow-hidden rounded-box bg-base-300 sm:aspect-[3/4]" data-sun>
+          {% if outing.photo %}<img src="{{ outing.photo }}" class="size-full object-cover">{% endif %}
+        </div>
+        <h3 class="mt-5 text-2xl text-balance">{{ outing.name }}</h3>
+        {% if outing.line != blank %}<p class="mt-2 text-base-content/80">{{ outing.line }}</p>{% endif %}
+        <p class="tag mt-4 flex flex-wrap gap-x-3 text-base-content/75">{% if outing.length %}<span>{{ outing.length }}</span>{% endif %}{% if outing.price %}<span class="text-primary">{{ outing.price }}</span>{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="mt-14 flex justify-center">
+      <a href="/book#request" class="btn btn-primary">Ask with your dates</a>
+    </div>
+  </div>
+</section>

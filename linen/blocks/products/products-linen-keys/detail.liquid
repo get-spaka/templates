@@ -1,0 +1,67 @@
+<section class="text-base-content">
+<div>
+  <div class="dyed" data-tint="{{ record.tint | default: 'primary' }}">
+    <div class="mx-auto grid max-w-[90rem] gap-10 px-4 pt-8 pb-16 md:grid-cols-12 md:gap-10 md:px-10 md:pt-10 md:pb-24">
+      <div class="flex items-start justify-between md:col-span-12">
+        <a href="/rooms" class="tag inline-flex items-center gap-2 opacity-85 hover:underline"><span aria-hidden="true">←</span> All the rooms</a>
+        <p class="tag opacity-85">Room {{ record.number }} · {{ record.floor }}</p>
+      </div>
+      <div class="flex justify-center md:col-span-4 md:justify-start md:pl-8">
+        <div class="hook-rail">
+        {% render 'key', room: record, large: true %}
+        </div>
+      </div>
+      <div class="md:col-span-8">
+        <p class="figure text-[clamp(6rem,14vw,9rem)] leading-[0.8] opacity-90" aria-hidden="true">{{ record.number }}</p>
+        <h1 class="mt-6 text-[clamp(3rem,7vw,7rem)] leading-[0.98] tracking-[-0.015em] text-balance">{{ record.name }}</h1>
+        <p class="script mt-4 max-w-2xl text-[clamp(1.5rem,2.4vw,2.25rem)] leading-snug text-balance">{{ record.line }}</p>
+        <dl class="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-current/25 pt-6 sm:grid-cols-3 lg:grid-cols-5">
+          <div><dt class="tag opacity-75">Size</dt><dd class="mt-1">{{ record.size }}</dd></div>
+          <div><dt class="tag opacity-75">Bed</dt><dd class="mt-1">{{ record.bed }}</dd></div>
+          <div><dt class="tag opacity-75">Sleeps</dt><dd class="mt-1">{{ record.sleeps }}</dd></div>
+          <div><dt class="tag opacity-75">View</dt><dd class="mt-1">{{ record.view }}</dd></div>
+          <div><dt class="tag opacity-75">Floor</dt><dd class="mt-1">{{ record.floor }}</dd></div>
+        </dl>
+        <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
+          {% if record.price %}<p class="text-lg">from <span class="display text-4xl">${{ record.price }}</span> a night, breakfast included</p>{% endif %}
+          <a href="/book?room={{ record.id }}#request" class="btn btn-lg border-current bg-transparent text-current hover:bg-current/10">Ask for this room</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-4 py-16 md:grid-cols-12 md:gap-10 md:px-10 md:py-24">
+    {% if record.photo %}<figure class="aspect-[4/5] overflow-hidden rounded-box md:col-span-6" data-settle data-sun><img src="{{ record.photo }}" class="size-full object-cover"></figure>{% endif %}
+    <div class="md:col-span-5 md:col-start-8 md:self-center">
+      <div class="prose-linen text-xl [&_a]:text-primary [&_a]:underline">{{ record.text }}</div>
+      {% if record.amenities.size > 0 %}
+      <h2 class="tag mt-12 text-primary">In the room</h2>
+      <ul class="mt-5 divide-y divide-base-300 border-y border-base-300">
+        {% for item in record.amenities %}<li class="py-3.5">{{ item }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  {% if record.photo_2 or record.photo_3 %}
+  <div class="mx-auto grid max-w-6xl gap-4 px-4 sm:grid-cols-2 md:gap-6 md:px-10">
+    {% if record.photo_2 %}<figure class="aspect-[4/5] overflow-hidden rounded-box" data-settle data-sun><img src="{{ record.photo_2 }}" class="size-full object-cover"></figure>{% endif %}
+    {% if record.photo_3 %}<figure class="aspect-[4/5] overflow-hidden rounded-box sm:mt-16" data-settle data-sun><img src="{{ record.photo_3 }}" class="size-full object-cover"></figure>{% endif %}
+  </div>
+  {% endif %}
+</div>
+<div>
+  <div class="mx-auto max-w-[90rem] px-4 pb-24 md:px-10 md:pb-32">
+    <h2 class="text-[clamp(2.25rem,4vw,3.75rem)] leading-[1.02]">The other <em>rooms</em></h2>
+    <ul class="keyboard-rail mt-12 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-4" data-keyboard>
+      {% for room in data.rooms %}{% if room.id != record.id %}
+      <li class="key-rail" data-key-card>
+        <a href="/rooms/{{ room.id }}" class="group flex flex-col items-center text-center">
+          <span class="text-[0.75rem]">{% render 'key', room: room %}</span>
+          <span class="mt-4 text-2xl group-hover:text-primary">{{ room.name }}</span>
+          {% if room.price %}<span class="tag mt-1 text-base-content/70">from ${{ room.price }}</span>{% endif %}
+        </a>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</div>
+</section>

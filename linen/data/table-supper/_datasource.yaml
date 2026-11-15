@@ -1,0 +1,10 @@
+label: Thursday supper
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+order: [tlayuda, squash-blossom, mole-amarillo, tasajo, nicuatole]

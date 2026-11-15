@@ -1,0 +1,44 @@
+label: Requests for dates
+collected: true
+answer: stay-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Your request is with us."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: kind
+    label: What you are asking for
+    kind: choice
+    choices: [A stay, The whole house]
+  - name: arrival
+    label: Arrive
+    kind: date
+    required: true
+  - name: departure
+    label: Leave
+    kind: date
+    required: true
+  - name: guests
+    label: Guests
+    kind: number
+    required: true
+  - name: room
+    label: Room
+    kind: choice
+    choices: [No preference, Cochineal, Indigo, Marigold, Walnut, Undyed]
+  - name: note
+    label: Anything else
+    kind: markdown

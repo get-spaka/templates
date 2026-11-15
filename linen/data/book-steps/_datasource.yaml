@@ -1,0 +1,10 @@
+label: How it works
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [ask, we-write-back, deposit, the-door]

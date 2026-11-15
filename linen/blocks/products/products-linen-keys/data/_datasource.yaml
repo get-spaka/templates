@@ -1,0 +1,51 @@
+label: Rooms
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: number
+    label: Number
+    kind: number
+  - name: tint
+    label: Color
+    kind: choice
+    choices: [primary, secondary, accent, neutral, linen]
+  - name: line
+    label: One line
+    kind: text
+  - name: photo
+    label: Main picture
+    kind: image
+  - name: photo_2
+    label: Second picture
+    kind: image
+  - name: photo_3
+    label: Third picture
+    kind: image
+  - name: size
+    label: Size
+    kind: text
+  - name: bed
+    label: Bed
+    kind: text
+  - name: sleeps
+    label: Sleeps
+    kind: number
+  - name: view
+    label: View
+    kind: text
+  - name: floor
+    label: Floor
+    kind: text
+  - name: price
+    label: From, a night
+    kind: number
+  - name: amenities
+    label: In the room
+    kind: list
+  - name: text
+    label: About the room
+    kind: markdown
+body: text
+order: [cochineal, indigo, marigold, walnut, undyed]

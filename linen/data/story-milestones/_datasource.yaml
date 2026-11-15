@@ -1,0 +1,13 @@
+label: Through time
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [the-dyers, the-tailor, the-doors-close, the-fig-tree, the-first-guests]

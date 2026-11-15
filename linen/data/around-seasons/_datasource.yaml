@@ -1,0 +1,13 @@
+label: When to come
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: when
+    label: When
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [dry-season, guelaguetza, day-of-the-dead, rains]

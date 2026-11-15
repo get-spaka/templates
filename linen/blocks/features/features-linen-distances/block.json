@@ -1,0 +1,36 @@
+{
+  "name": "Linen distances from the door",
+  "kind": "features",
+  "source": "upstart",
+  "description": "What is near, by minutes from the door: each place in a row with its minutes set large, on foot or by car, its name, a line and a small picture, sorted from the nearest.",
+  "tags": [
+    "nearby",
+    "location",
+    "neighborhood",
+    "distances",
+    "places",
+    "hotel",
+    "travel"
+  ],
+  "mood": [
+    "elegant",
+    "warm",
+    "editorial"
+  ],
+  "synonyms": [
+    "nearby",
+    "around us",
+    "neighborhood",
+    "location",
+    "distances",
+    "à proximité",
+    "aux alentours",
+    "le quartier",
+    "à deux pas",
+    "distances"
+  ],
+  "data": {
+    "name": "places",
+    "family": "collection"
+  }
+}

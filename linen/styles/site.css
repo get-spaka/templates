@@ -1,0 +1,547 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt).
+   Fraunces is variable in optical size, weight, softness (SOFT) and wonkiness (WONK), roman and
+   italic; Jost in weight. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Jost";
+  src: url("/fonts/jost.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The weave: two fine lines of the ink at 3%, crossing, like undyed linen. On the page's ground,
+   and on any section with class="weave" (the oatmeal ones); never on the deep bands. */
+:root {
+  --weave:
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in oklch, var(--color-base-content) 3.5%, transparent) 0 1px,
+      transparent 1px 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--color-base-content) 2.5%, transparent) 0 1px,
+      transparent 1px 3px
+    );
+}
+
+/* Type rules in the base layer, so that Tailwind's classes (text-6xl, leading-…) win over them. */
+@layer base {
+  body {
+    font-size: 1.125rem;
+    background-color: var(--color-base-100);
+    background-image: var(--weave);
+  }
+
+  /* Headings and large figures: Fraunces, light, at its display end, soft and not wonky. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .display {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "SOFT" 50, "WONK" 0;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
+  }
+  h3,
+  h4 {
+    font-weight: 350;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  /* One italic word or phrase per heading, its livelier shapes on (WONK 1). */
+  :is(h1, h2, h3, h4, .display) em,
+  .script {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: "SOFT" 50, "WONK" 1;
+  }
+  /* Room numbers and the minutes from the door: Fraunces 400 with lining figures. */
+  .figure {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-variation-settings: "SOFT" 50, "WONK" 0;
+    font-variant-numeric: lining-nums;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* Labels, facts and prices (not daisyUI's .label, a form field's): Jost 500, spaced capitals. */
+  .tag {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-variant-numeric: lining-nums;
+  }
+
+  /* Running text in walnut at 80%. */
+  .prose-linen {
+    line-height: 1.7;
+    color: color-mix(in oklch, currentColor 80%, transparent);
+  }
+  .prose-linen > * + * {
+    margin-top: 1em;
+  }
+}
+
+/* A heading set as a label keeps the label's font (the runtime's heading rule would win). */
+:is(h1, h2, h3, h4).tag {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+}
+@media (min-width: 48rem) {
+  .tag {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Buttons: small corners, the labels' capitals, and a dashed seam sewn inside the edge. */
+@layer components {
+  .btn {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .btn:not(.btn-square, .btn-circle) {
+    padding-inline: 1.5rem;
+  }
+  .btn-sm {
+    font-size: 0.75rem;
+  }
+  .btn-sm:not(.btn-square, .btn-circle) {
+    padding-inline: 1.1rem;
+  }
+  .btn:not(.btn-ghost, .btn-link) {
+    outline: 1px dashed color-mix(in oklch, currentColor 55%, transparent);
+    outline-offset: -5px;
+  }
+  .btn:not(.btn-ghost, .btn-link):focus-visible {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 2px;
+  }
+}
+
+.weave {
+  background-image: var(--weave);
+}
+
+/* The shared treatment of the photos: a touch of sepia and a little less color, so any set reads
+   as one in the same sun. Filters only. */
+[data-sun] img,
+img[data-sun] {
+  filter: sepia(0.14) saturate(0.88) contrast(1.02);
+}
+
+/* A room's color: data-tint (primary, secondary, accent, neutral or linen) sets --tint and
+   --tint-content; .dyed paints with them. */
+[data-tint] {
+  --tint: var(--color-primary);
+  --tint-content: var(--color-primary-content);
+}
+[data-tint="secondary"] {
+  --tint: var(--color-secondary);
+  --tint-content: var(--color-secondary-content);
+}
+[data-tint="accent"] {
+  --tint: var(--color-accent);
+  --tint-content: var(--color-accent-content);
+}
+[data-tint="neutral"] {
+  --tint: var(--color-neutral);
+  --tint-content: var(--color-neutral-content);
+}
+[data-tint="linen"] {
+  --tint: var(--color-base-200);
+  --tint-content: var(--color-base-content);
+}
+.dyed {
+  background-color: var(--tint);
+  color: var(--tint-content);
+}
+.tint-dot {
+  background-color: var(--tint);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--color-base-content) 18%, transparent);
+}
+
+/* The header: linen with a hairline (what editing and older browsers show), transparent at the top
+   of the page until it scrolls, by a scroll-driven animation below. No backdrop-filter: it would
+   hold the phone menu's fixed panel inside the header. */
+.site-header {
+  background-color: var(--color-base-100);
+  border-bottom: 1px solid var(--color-base-300);
+}
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu[open] .menu-open,
+.site-menu:not([open]) .menu-close {
+  display: none;
+}
+
+/* data-stitch: a thread between chapters, sewn in running stitches (a dashed stroke), with a loop
+   in it. It lies still. The primary color on linen, the accent on indigo (text-accent). */
+[data-stitch] svg {
+  overflow: visible;
+}
+[data-stitch] :is(path, line) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 7 6;
+}
+
+/* The window: a photo inset in the linen with a fine double casing. */
+.casing {
+  padding: 0.4rem;
+  border: 1px solid var(--color-base-300);
+  border-radius: calc(var(--radius-box) + 0.4rem);
+}
+.window {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+  box-shadow: 0 0 0 1px var(--color-base-300);
+  background-color: var(--color-base-200);
+}
+.window > img,
+.window > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.window > img {
+  object-fit: cover;
+}
+.window > canvas {
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* The sheer without WebGL (data-sheer-css, set by the script): two panels of folds in the linen,
+   drawn aside to the window's edges as --sheer-open goes from 0 to 1. */
+.window[data-sheer-css]::before,
+.window[data-sheer-css]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: calc(50.5% - 41% * var(--sheer-open, 0));
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-base-100) 62%, transparent) 0,
+    color-mix(in oklch, var(--color-base-100) 34%, transparent) calc(1.6rem - 0.8rem * var(--sheer-open, 0)),
+    color-mix(in oklch, var(--color-neutral) 16%, transparent) calc(2.4rem - 1.2rem * var(--sheer-open, 0)),
+    color-mix(in oklch, var(--color-base-100) 62%, transparent) calc(3.2rem - 1.6rem * var(--sheer-open, 0))
+  );
+  transform-origin: top center;
+}
+.window[data-sheer-css]::before {
+  left: 0;
+}
+.window[data-sheer-css]::after {
+  right: 0;
+}
+
+/* The key board: a rail in the casing's color, a hook for each key, and keys that hang from it,
+   their origin at the hook (the script swings them). */
+/* On a wide screen one rail runs across the board (.keyboard-rail on the list); narrower, each
+   card has its own length of it (.key-rail). */
+.keyboard-rail,
+.key-rail {
+  position: relative;
+}
+@media (min-width: 64rem) {
+  .keyboard-rail::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    right: -1rem;
+    top: 0;
+    height: 0.7rem;
+    border-radius: 2px;
+    background-color: var(--color-base-300);
+    box-shadow: inset 0 -1px 0 color-mix(in oklch, var(--color-base-content) 12%, transparent);
+  }
+}
+@media not (min-width: 64rem) {
+  .key-rail::before {
+    content: "";
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    top: 0;
+    height: 0.7rem;
+    border-radius: 2px;
+    background-color: var(--color-base-300);
+    box-shadow: inset 0 -1px 0 color-mix(in oklch, var(--color-base-content) 12%, transparent);
+  }
+}
+.key {
+  position: relative;
+  width: 6em;
+  height: 13.5em;
+  transform-origin: 50% 0.2em;
+}
+.key > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-neutral);
+}
+.key :is(path, circle) {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* A room's page: a short length of rail for its one key. */
+.hook-rail {
+  position: relative;
+}
+.hook-rail::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  right: -2rem;
+  top: 0;
+  height: 0.7rem;
+  border-radius: 2px;
+  background-color: color-mix(in oklch, var(--tint-content, var(--color-base-300)) 30%, transparent);
+}
+
+/* The fob, in the room's tint: an arch like the courtyard's, its seam sewn inside the edge. */
+.fob {
+  position: absolute;
+  top: 2.75em;
+  left: 50%;
+  width: 5.25em;
+  height: 8.25em;
+  margin-left: -2.625em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  padding: 1.4em 0.4em 0.6em;
+  text-align: center;
+  border-radius: 2.625em 2.625em 0.45em 0.45em;
+  background-color: var(--tint);
+  color: var(--tint-content);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--tint-content) 14%, transparent);
+  outline: 1px dashed color-mix(in oklch, var(--tint-content) 45%, transparent);
+  outline-offset: -0.35em;
+}
+.fob::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 50%;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: -0.275em;
+  border-radius: 9999px;
+  background-color: var(--color-base-100);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--tint-content) 35%, transparent);
+}
+.fob-number {
+  font-size: 2.5em;
+}
+.fob-name {
+  font-family: var(--font-body);
+  font-size: 0.625em;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+/* A room's page: the large key's fob in linen with the tint's ink, on the dyed top. */
+.key-large {
+  font-size: 1.6rem;
+}
+.key-large > svg {
+  color: var(--tint-content);
+}
+.key-large .fob {
+  background-color: var(--tint-content);
+  color: var(--tint);
+}
+.key-large .fob::before {
+  background-color: var(--tint);
+}
+.key-large .fob-number {
+  font-size: 2.25em;
+}
+
+/* data-settle: pictures and cards settle as if just hung on a nail; the script sets where they
+   start from. Their origin is their top. */
+[data-settle] {
+  transform-origin: 50% 0;
+}
+
+/* The form's room cards: the chosen one takes the ink's edge and the oatmeal. */
+.choice {
+  border: 1px solid var(--color-base-300);
+  border-radius: var(--radius-box);
+  background-color: var(--color-base-100);
+}
+.choice:has(:checked) {
+  border-color: var(--color-base-content);
+  box-shadow: inset 0 0 0 1px var(--color-base-content);
+}
+.choice:has(:focus-visible) {
+  outline: 2px solid var(--color-base-content);
+  outline-offset: 2px;
+}
+
+/* Fields on linen and oatmeal: hairline edges, a little lighter than the ground. */
+.field-linen {
+  background-color: color-mix(in oklch, var(--color-base-100) 70%, transparent);
+  border-color: var(--color-base-300);
+}
+.field-linen:focus,
+.field-linen:focus-within {
+  border-color: var(--color-base-content);
+  outline-color: var(--color-base-content);
+}
+/* Fields on indigo. */
+.field-indigo {
+  background-color: transparent;
+  border-color: color-mix(in oklch, var(--color-secondary-content) 35%, transparent);
+  color: var(--color-secondary-content);
+}
+.field-indigo::placeholder {
+  color: color-mix(in oklch, var(--color-secondary-content) 55%, transparent);
+}
+.field-indigo:focus {
+  border-color: var(--color-accent);
+  outline-color: var(--color-accent);
+}
+
+/* A step's number in a stitched ring. */
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border: 1px dashed currentColor;
+  font-size: 1.375rem;
+}
+
+/* Dotted leaders between a name and when it is served. */
+.leader {
+  flex: 1;
+  min-width: 1.5rem;
+  margin-inline: 0.75rem;
+  margin-bottom: 0.45em;
+  border-bottom: 1px dotted currentColor;
+  opacity: 0.35;
+}
+
+/* A timeline's thread: a dashed line down the left. */
+.thread-line {
+  border-left: 1.5px dashed var(--color-primary);
+}
+
+/* Upstart's "Image credits" link, at the end of the indigo footer. */
+footer [data-up-credits] {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.75;
+  padding-bottom: 2rem;
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The header is transparent at the top of the page, then linen once it scrolls. */
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: linen-header linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 6rem;
+    }
+    @keyframes linen-header {
+      from {
+        background-color: transparent;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  /* The CSS sheer sways in the breeze, the hem more than the rail. */
+  .window[data-sheer-css]::before {
+    animation: linen-sway 7s ease-in-out infinite alternate;
+  }
+  .window[data-sheer-css]::after {
+    animation: linen-sway 8.5s ease-in-out -3s infinite alternate-reverse;
+  }
+  @keyframes linen-sway {
+    from {
+      transform: skewX(-1.2deg);
+    }
+    to {
+      transform: skewX(1.4deg);
+    }
+  }
+
+  .choice {
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+}

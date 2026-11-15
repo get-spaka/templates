@@ -1,0 +1,14 @@
+label: In every room
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+  - name: icon
+    label: Icon
+    kind: choice
+    choices: [linen, fan, heater, water, desk, quiet]
+order: [linen, fan, heater, water, desk, quiet]

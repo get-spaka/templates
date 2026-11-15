@@ -1,0 +1,25 @@
+<section class="text-base-content">
+  <div class="mx-auto max-w-3xl px-4 py-20 md:px-10 md:py-28">
+    <div class="text-center">
+      <p class="tag text-primary">Thursday supper</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">One long table for <em>twelve</em></h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-base-content/80">On Thursdays Marisol cooks five courses for our guests and a few neighbors, served at one table under the arcade.</p>
+    </div>
+    <ol class="mt-14 space-y-10 text-center">
+      {% for item in data["table-supper"] %}
+      <li>
+        <p class="figure text-xl text-primary">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</p>
+        <h3 class="mt-1 text-3xl text-balance">{{ item.name }}</h3>
+        {% if item.description %}<p class="mx-auto mt-2 max-w-md text-base-content/80">{{ item.description }}</p>{% endif %}
+        {% unless forloop.last %}<div class="mx-auto mt-10 h-0 w-12 border-t-[1.5px] border-dashed border-primary" aria-hidden="true"></div>{% endunless %}
+      </li>
+      {% endfor %}
+    </ol>
+    <div class="weave mt-16 rounded-box border border-base-300 bg-base-200 p-8 text-center md:p-10">
+      <p class="display text-5xl">$48 <span class="tag align-middle text-base-content/75">a guest</span></p>
+      <p class="mt-2 text-base-content/80">$22 more with a mezcal for each course</p>
+      <p class="mx-auto mt-4 max-w-sm text-base-content/75">Thursdays at eight, for our guests first. Tell us about allergies when you ask, and Marisol will cook around them.</p>
+      <a href="/book?note=A%20seat%20at%20Thursday%20supper#request" class="btn btn-primary mt-7">Ask for a seat</a>
+    </div>
+  </div>
+</section>

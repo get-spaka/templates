@@ -1,0 +1,34 @@
+<section class="weave bg-base-200 text-base-content">
+  <div class="mx-auto max-w-3xl px-4 py-20 md:px-10 md:py-28">
+    <div class="text-center">
+      <p class="tag text-primary">Every morning</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">What comes up the <em>stairs</em></h2>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-base-content/80">Breakfast is part of the stay, so there are no prices: only what is on the table, and when.</p>
+    </div>
+    {% assign courses = "kitchen,market,drinks" | split: "," %}
+    {% for course in courses %}
+    {% assign dishes = data["table-breakfast"] | where: "course", course %}
+    {% if dishes.size > 0 %}
+    <div class="mt-14">
+      <div class="flex items-center gap-4 text-primary">
+        <span class="h-0 flex-1 border-t-[1.5px] border-dashed border-current" aria-hidden="true"></span>
+        <h3 class="tag">{% case course %}{% when "kitchen" %}From the kitchen{% when "market" %}From the market{% else %}To drink{% endcase %}</h3>
+        <span class="h-0 flex-1 border-t-[1.5px] border-dashed border-current" aria-hidden="true"></span>
+      </div>
+      <ul class="mt-8 space-y-6">
+        {% for item in dishes %}
+        <li>
+          <div class="flex items-end">
+            <h4 class="text-2xl">{{ item.name }}</h4>
+            <span class="leader" aria-hidden="true"></span>
+            {% if item.when %}<span class="tag whitespace-nowrap text-base-content/75">{{ item.when }}</span>{% endif %}
+          </div>
+          {% if item.description %}<p class="mt-1 text-base-content/80">{{ item.description }}</p>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>

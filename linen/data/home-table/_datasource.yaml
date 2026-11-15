@@ -1,0 +1,13 @@
+label: The table, on the home page
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: time
+    label: When
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [breakfast, mezcal, supper]

@@ -1,0 +1,13 @@
+label: Made nearby
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: place
+    label: Where
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [linen, black-clay, beds, soap]

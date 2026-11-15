@@ -1,0 +1,22 @@
+<section class="text-base-content">
+  <div class="mx-auto max-w-6xl px-4 pb-20 md:px-10 md:pb-28">
+    <div class="max-w-2xl">
+      <p class="tag text-primary">How it works</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">From your request to our <em>door</em></h2>
+    </div>
+    <ol class="mt-14 grid gap-10 md:auto-cols-fr md:grid-flow-col md:gap-0">
+      {% for step in data["book-steps"] %}
+      <li class="flex gap-5 md:flex-col md:gap-6" data-settle>
+        <div class="flex items-center">
+          <span class="step-number figure text-primary">{{ forloop.index }}</span>
+          {% unless forloop.last %}<span class="mx-4 hidden h-0 flex-1 border-t-[1.5px] border-dashed border-primary md:block" aria-hidden="true"></span>{% endunless %}
+        </div>
+        <div class="md:pr-10">
+          <h3 class="text-2xl">{{ step.title }}</h3>
+          {% if step.text != blank %}<p class="mt-2 text-base-content/80">{{ step.text }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

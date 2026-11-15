@@ -1,0 +1,24 @@
+<section class="weave bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 md:grid-cols-2 md:px-10 md:py-28 lg:gap-20">
+    <div class="aspect-[4/5] overflow-hidden rounded-box" data-settle data-sun>
+      <img src="/media/breakfast.jpg" class="size-full object-cover">
+    </div>
+    <div>
+      <p class="tag text-primary">The table</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">Breakfast on the <em>roof</em>, every morning</h2>
+      <p class="prose-linen mt-6 text-lg">Marisol cooks it with what she finds at the market that morning, and it is part of every stay.</p>
+      <ul class="mt-10 divide-y divide-base-300 border-y border-base-300">
+        {% for moment in data["home-table"] %}
+        <li class="grid grid-cols-[6.5rem_1fr] gap-5 py-6 sm:grid-cols-[8rem_1fr]">
+          <p class="tag pt-1.5 text-primary">{{ moment.time }}</p>
+          <div>
+            <h3 class="text-2xl">{{ moment.title }}</h3>
+            {% if moment.text != blank %}<p class="mt-2 text-base-content/80">{{ moment.text }}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="/table" class="btn btn-outline mt-10">See the table</a>
+    </div>
+  </div>
+</section>

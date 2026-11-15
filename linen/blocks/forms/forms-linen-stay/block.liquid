@@ -1,0 +1,103 @@
+<section class="text-base-content" id="request">
+  <div class="mx-auto max-w-5xl px-4 pb-20 md:px-10 md:pb-28">
+    <form hx-post="/_data/stays" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#stays-problems swap:innerHTML" class="weave flex flex-col gap-12 rounded-box border border-base-300 bg-base-200 p-6 sm:p-10 md:p-14" data-request>
+      <fieldset>
+        <legend class="flex items-center gap-4 text-3xl">
+          <span class="step-number figure text-primary">1</span>
+          <span class="display">Your <em>dates</em></span>
+        </legend>
+        <div class="mt-6 grid gap-x-5 gap-y-2 sm:grid-cols-3">
+          <fieldset class="fieldset">
+            <label class="fieldset-legend tag" for="stay-arrival">Arrive</label>
+            <input id="stay-arrival" name="arrival" type="date" required class="input field-linen w-full" data-arrival>
+          </fieldset>
+          <fieldset class="fieldset">
+            <label class="fieldset-legend tag" for="stay-departure">Leave</label>
+            <input id="stay-departure" name="departure" type="date" required class="input field-linen w-full" data-departure>
+          </fieldset>
+          <fieldset class="fieldset">
+            <label class="fieldset-legend tag" for="stay-guests">Guests</label>
+            <input id="stay-guests" name="guests" type="number" required min="1" max="11" value="2" class="input field-linen w-full">
+          </fieldset>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="flex items-center gap-4 text-3xl">
+          <span class="step-number figure text-primary">2</span>
+          <span class="display">Your <em>room</em></span>
+        </legend>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <label class="choice flex cursor-pointer items-center gap-4 p-4">
+            <input type="radio" name="room" value="No preference" class="radio radio-sm" checked>
+            <span class="flex size-9 shrink-0 items-center justify-center rounded-full border border-dashed border-base-content/40" aria-hidden="true"></span>
+            <span><span class="block text-lg">No preference</span><span class="tag block text-base-content/70">The best free on your dates</span></span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-4 p-4" data-tint="primary">
+            <input type="radio" name="room" value="Cochineal" class="radio radio-sm" data-room="cochineal">
+            <span class="tint-dot size-9 shrink-0 rounded-full" aria-hidden="true"></span>
+            <span><span class="block text-lg">Cochineal</span><span class="tag block text-base-content/70">Courtyard · from $165</span></span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-4 p-4" data-tint="secondary">
+            <input type="radio" name="room" value="Indigo" class="radio radio-sm" data-room="indigo">
+            <span class="tint-dot size-9 shrink-0 rounded-full" aria-hidden="true"></span>
+            <span><span class="block text-lg">Indigo</span><span class="tag block text-base-content/70">The street · from $150</span></span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-4 p-4" data-tint="accent">
+            <input type="radio" name="room" value="Marigold" class="radio radio-sm" data-room="marigold">
+            <span class="tint-dot size-9 shrink-0 rounded-full" aria-hidden="true"></span>
+            <span><span class="block text-lg">Marigold</span><span class="tag block text-base-content/70">Balcony · from $175</span></span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-4 p-4" data-tint="neutral">
+            <input type="radio" name="room" value="Walnut" class="radio radio-sm" data-room="walnut">
+            <span class="tint-dot size-9 shrink-0 rounded-full" aria-hidden="true"></span>
+            <span><span class="block text-lg">Walnut</span><span class="tag block text-base-content/70">Sleeps 3 · from $195</span></span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-4 p-4" data-tint="linen">
+            <input type="radio" name="room" value="Undyed" class="radio radio-sm" data-room="undyed">
+            <span class="tint-dot size-9 shrink-0 rounded-full" aria-hidden="true"></span>
+            <span><span class="block text-lg">Undyed</span><span class="tag block text-base-content/70">Roof terrace · from $240</span></span>
+          </label>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3" role="group" aria-label="What you are asking for">
+          <label class="choice flex cursor-pointer items-center gap-3 px-4 py-3">
+            <input type="radio" name="kind" value="A stay" class="radio radio-sm" checked>
+            <span>A stay</span>
+          </label>
+          <label class="choice flex cursor-pointer items-center gap-3 px-4 py-3">
+            <input type="radio" name="kind" value="The whole house" class="radio radio-sm" data-kind="house">
+            <span>The whole house, up to eleven</span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="flex items-center gap-4 text-3xl">
+          <span class="step-number figure text-primary">3</span>
+          <span class="display">About <em>you</em></span>
+        </legend>
+        <div class="mt-6 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset sm:col-span-2">
+            <label class="fieldset-legend tag" for="stay-name">Your name</label>
+            <input id="stay-name" name="name" type="text" required maxlength="200" autocomplete="name" class="input field-linen w-full">
+          </fieldset>
+          <fieldset class="fieldset">
+            <label class="fieldset-legend tag" for="stay-email">Your email</label>
+            <input id="stay-email" name="email" type="email" required maxlength="200" autocomplete="email" class="input field-linen w-full">
+          </fieldset>
+          <fieldset class="fieldset">
+            <label class="fieldset-legend tag" for="stay-phone">Your phone (optional)</label>
+            <input id="stay-phone" name="phone" type="tel" maxlength="30" autocomplete="tel" class="input field-linen w-full">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <label class="fieldset-legend tag" for="stay-note">Anything else: your arrival time, a crib, an occasion (optional)</label>
+            <textarea id="stay-note" name="note" rows="4" maxlength="2000" class="textarea field-linen w-full" data-note></textarea>
+          </fieldset>
+        </div>
+      </fieldset>
+      <div id="stays-problems" class="empty:hidden"></div>
+      <div class="flex flex-col gap-5 border-t border-base-300 pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <button type="submit" class="btn btn-primary btn-lg">Send my request</button>
+        <p class="max-w-sm text-base-content/75">Nothing is charged now. A deposit of one night confirms the room once we have written back.</p>
+      </div>
+    </form>
+  </div>
+</section>

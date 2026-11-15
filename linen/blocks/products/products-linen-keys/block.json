@@ -1,0 +1,36 @@
+{
+  "name": "Linen key board",
+  "kind": "products",
+  "source": "upstart",
+  "description": "The rooms hanging as keys from a rail, each fob dyed in its room's color with its number and name, swinging in turn as the board comes into view and one by one under the pointer; under each key the room's picture, name, facts and price from a night. Each room has its own page, dyed in its color, with its large key, its facts and pictures, and the other rooms.",
+  "tags": [
+    "rooms",
+    "hotel",
+    "guesthouse",
+    "keys",
+    "accommodation",
+    "suites",
+    "prices"
+  ],
+  "mood": [
+    "elegant",
+    "warm",
+    "playful"
+  ],
+  "synonyms": [
+    "rooms",
+    "our rooms",
+    "suites",
+    "accommodation",
+    "key board",
+    "chambres",
+    "nos chambres",
+    "hébergement",
+    "suites",
+    "tableau des clés"
+  ],
+  "data": {
+    "name": "rooms",
+    "family": "collection"
+  }
+}

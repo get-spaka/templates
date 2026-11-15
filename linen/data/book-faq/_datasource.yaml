@@ -1,0 +1,11 @@
+label: Good to know
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: markdown
+body: answer
+order: [deposit-and-cancellation, children, stairs, pets, paying-at-the-house, late-arrivals, groups]

@@ -1,0 +1,31 @@
+<section class="text-base-content">
+  <div class="mx-auto max-w-6xl px-4 py-20 md:px-10 md:py-28">
+    {% unless bare %}
+    <div class="max-w-3xl">
+      <p class="tag text-primary">From the door</p>
+      <h2 class="mt-5 text-[clamp(2.5rem,4.6vw,4.25rem)] leading-[1.02] text-balance">Everything is a walk away, except the <em>mountains</em></h2>
+    </div>
+    {% endunless %}
+    <ul class="{% unless bare %}mt-14{% endunless %} border-t border-base-300">
+      {% if bare %}{% assign shown = 12 %}{% else %}{% assign shown = 4 %}{% endif %}
+      {% for place in data.places limit: shown %}
+      <li class="grid grid-cols-[1fr_6rem] gap-x-5 gap-y-3 border-b border-base-300 py-7 sm:grid-cols-[12rem_1fr_9rem] sm:items-center md:grid-cols-[15rem_1fr_11rem] md:gap-x-10">
+        <p class="col-span-2 flex items-baseline gap-3 sm:col-span-1">
+          <span class="figure text-[clamp(3.5rem,6vw,5.5rem)] text-primary">{{ place.minutes }}</span>
+          <span class="tag text-base-content/70">min {{ place.by }}</span>
+        </p>
+        <div>
+          <h3 class="text-2xl md:text-3xl">{{ place.name }}</h3>
+          {% if place.line != blank %}<p class="mt-2 max-w-xl text-base-content/80">{{ place.line }}</p>{% endif %}
+        </div>
+        <div class="aspect-[4/3] overflow-hidden rounded-box bg-base-200" data-sun>
+          {% if place.photo %}<img src="{{ place.photo }}" class="size-full object-cover">{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% unless bare %}
+    <a href="/around" class="btn btn-outline mt-12">Around the house</a>
+    {% endunless %}
+  </div>
+</section>

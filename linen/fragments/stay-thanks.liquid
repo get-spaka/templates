@@ -1,0 +1,6 @@
+<div class="weave rounded-box border border-base-300 bg-base-200 p-8 md:p-14" role="status">
+  <p class="tag text-primary">Your request is with us</p>
+  <p class="display mt-5 text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.05] text-balance">Thank you, <em>{{ record.name }}</em>.</p>
+  <p class="prose-linen mt-5 max-w-2xl text-lg">Inés will write within a day to confirm your room and its price for {{ record.arrival | date: "%B %-d" }} to {{ record.departure | date: "%B %-d" }}, and how to pay the one-night deposit that holds it.</p>
+  <p class="mt-6 text-base-content/75">Nothing has been charged. If you do not hear from us, look in your spam folder or write to <a href="mailto:stay@casahilo.example" class="text-primary underline">stay@casahilo.example</a>.</p>
+</div>
