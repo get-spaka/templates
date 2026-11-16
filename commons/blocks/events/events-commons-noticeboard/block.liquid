@@ -1,0 +1,16 @@
+<section class="bg-secondary text-secondary-content" data-torn="both" data-tear="1">
+  <div class="mx-auto max-w-[80rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="kicker">The noticeboard</p>
+        <h2 class="mt-4 text-5xl md:text-7xl">Coming up at the shed</h2>
+      </div>
+      <a href="/events" class="ink-link text-lg font-semibold">Everything on the porch →</a>
+    </div>
+    <div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {% for event in data.events limit: 3 %}
+      {% render 'notice', event: event, tear: forloop.index %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

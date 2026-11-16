@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>About — Bread &amp; Bolts</title>
+<meta name="description" content="How a garage full of borrowed tools became the shed on Couler Lane: our story since 2017, our year in numbers, the people who run it, and how to find us.">
+<meta property="og:title" content="About — Bread &amp; Bolts">
+<meta property="og:description" content="How a garage full of borrowed tools became the shed on Couler Lane: our story since 2017, our year in numbers, the people who run it, and how to find us.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto grid max-w-[80rem] gap-8 px-5 pt-16 pb-16 md:px-8 lg:grid-cols-12 lg:items-end lg:pt-24 lg:pb-20" data-reveal>
+      <h1 class="page-title lg:col-span-8">Neighbors since 2017</h1>
+      <p class="text-lg text-base-content/80 lg:col-span-4">Bread &amp; Bolts started with a retired shop teacher's tools and a school nurse's soup pot. It still runs on what the North End lends it.</p>
+    </div>
+  </section>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 lg:pb-28">
+      <h2 class="kicker text-base-content/70" data-reveal>How it started</h2>
+      <ol class="mt-8 border-t-2 border-base-content">
+        {% for step in data["about-milestones"] %}
+        <li class="grid gap-3 border-b-2 border-base-content/15 py-8 md:grid-cols-12 md:gap-8" data-reveal>
+          <p class="figure text-6xl md:col-span-3 md:text-7xl">{{ step.year }}</p>
+          <h3 class="text-2xl font-bold md:col-span-3 md:pt-2 md:text-3xl">{{ step.title }}</h3>
+          <p class="text-lg text-base-content/80 md:col-span-6 md:pt-2">{{ step.text }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+  <div id="numbers" class="scroll-mt-24">
+    {% render 'count', figures: data["about-figures"], about: true %}
+  </div>
+  <section class="bg-base-200 text-base-content">
+    <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 lg:py-28">
+      <div data-reveal>
+        <p class="kicker text-base-content/70">Who runs it</p>
+        <h2 class="mt-4 text-5xl md:text-7xl">Three staff, a board of five</h2>
+      </div>
+      {%- assign groups = "staff,board" | split: "," -%}
+      {% for group in groups %}
+      <h3 class="kicker mt-14 border-b-2 border-base-content pb-3">{% if group == "staff" %}Staff{% else %}The board{% endif %}</h3>
+      <ul class="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 {% if group == 'staff' %}lg:grid-cols-3{% else %}lg:grid-cols-5{% endif %}">
+        {% for person in data.team %}{% if person.group == group %}
+        <li data-reveal>
+          {% if person.photo %}
+          <img src="{{ person.photo }}" class="size-28 rounded-full object-cover">
+          {% else %}
+          <span class="grid size-28 place-items-center rounded-full font-heading text-4xl font-extrabold tracking-[-0.03em]" data-tone="{{ person.tone }}" aria-hidden="true">{{ person.initials }}</span>
+          {% endif %}
+          <p class="mt-5 text-xl font-bold">{{ person.name }}</p>
+          <p class="mt-1 kicker text-base-content/70">{{ person.role }}</p>
+          <p class="mt-3 text-base-content/80">{{ person.bio }}</p>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 lg:py-24">
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+          <p class="kicker text-base-content/70">Kept going by</p>
+          <h2 class="mt-4 text-4xl md:text-5xl">{{ data["about-logos"].size }} neighbors in business, and 304 on the porch</h2>
+        </div>
+      </div>
+      <ul class="mt-12 grid grid-cols-2 border-t-2 border-l-2 border-base-content md:grid-cols-3">
+        {% for logo in data["about-logos"] %}
+        <li class="flex min-h-36 flex-col justify-between gap-4 border-r-2 border-b-2 border-base-content p-5 md:p-7" data-reveal>
+          <p class="font-heading text-2xl leading-[1.05] font-extrabold tracking-[-0.03em] md:text-3xl">{{ logo.name }}</p>
+          <p class="kicker text-base-content/70">{{ logo.kind }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  <section id="visit" class="bg-base-200 text-base-content">
+    <div class="mx-auto grid max-w-[80rem] gap-14 px-5 py-20 md:px-8 lg:grid-cols-12 lg:py-28">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="kicker text-base-content/70">Find us</p>
+        <h2 class="mt-4 text-5xl md:text-6xl">The shed</h2>
+        <div class="mt-8 overflow-hidden rounded-t-box" data-torn="bottom" data-tear="3"><img src="/media/storefront.jpg" class="aspect-[16/10] w-full object-cover"></div>
+        <address class="mt-8 font-heading text-3xl leading-tight font-bold not-italic">41 Couler Lane<br>Dubuque, Iowa 52001</address>
+        <p class="mt-4 text-lg text-base-content/80">The old hardware store with the fridge on the porch, two blocks up from Rhomberg Avenue.</p>
+        <a href="https://www.openstreetmap.org/search?query=41%20Couler%20Lane%2C%20Dubuque%2C%20Iowa" class="btn btn-outline mt-6 border-base-content" target="_blank" rel="noopener">Get directions</a>
+        <dl class="mt-10 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 border-t-2 border-base-content pt-6 text-lg">
+          {% for item in data.hours %}<dt class="font-semibold">{{ item.day }}</dt><dd class="text-right tabular-nums">{{ item.hours }}</dd>{% endfor %}
+        </dl>
+        <p class="mt-8 text-lg font-semibold"><a href="tel:+15635550141" class="ink-link">(563) 555-0141</a><br><a href="mailto:hello@breadandbolts.org" class="ink-link break-all">hello@breadandbolts.org</a></p>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+        <p class="kicker text-base-content/70">Write to us</p>
+        <h2 class="mt-4 text-4xl md:text-5xl">A question, an idea, a tool to give</h2>
+        <form hx-post="/_data/contact" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#contact-problems swap:innerHTML" class="mt-8 flex flex-col gap-5">
+          <label class="flex flex-col gap-2">
+            <span class="font-semibold">Your name</span>
+            <input name="name" required maxlength="120" autocomplete="name" class="input input-lg w-full">
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="font-semibold">Your email</span>
+            <input name="email" type="email" required maxlength="200" autocomplete="email" class="input input-lg w-full">
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="font-semibold">Your message</span>
+            <textarea name="message" rows="5" required maxlength="4000" class="textarea w-full rounded-box text-base"></textarea>
+          </label>
+          <div id="contact-problems" class="empty:hidden"></div>
+          <button class="btn btn-primary btn-lg self-start">Send it</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

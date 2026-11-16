@@ -1,0 +1,30 @@
+label: Appeal
+fields:
+  - name: title
+    label: What it is for
+    kind: text
+    required: true
+  - name: short
+    label: Short name, for the header's strip
+    kind: text
+  - name: summary
+    label: Why
+    kind: text
+  - name: goal
+    label: Goal in dollars
+    kind: number
+  - name: raised
+    label: Raised so far in dollars
+    kind: number
+  - name: donors
+    label: Number of givers
+    kind: number
+  - name: deadline
+    label: By
+    kind: date
+  - name: image
+    label: Photo
+    kind: image
+  - name: link
+    label: Your donation page
+    kind: link

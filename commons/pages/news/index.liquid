@@ -1,0 +1,49 @@
+{%- assign lead = data.news | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>News — Bread &amp; Bolts</title>
+<meta name="description" content="Stories, updates and notes from the porch: what the Repair Café fixed, what the Tool Library lent, and what the shed needs next.">
+<meta property="og:title" content="News — Bread &amp; Bolts">
+<meta property="og:description" content="Stories, updates and notes from the porch: what the Repair Café fixed, what the Tool Library lent, and what the shed needs next.">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-16 pb-24 md:px-8 lg:pt-24 lg:pb-32">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <h1 class="page-title lg:col-span-8">From the porch</h1>
+      <p class="text-lg text-base-content/80 lg:col-span-4">Stories of neighbors, updates on the appeal, and what came through the shed's door this month.</p>
+    </div>
+    {% if lead %}
+    <a href="/news/{{ lead.id }}" class="group mt-14 grid items-center gap-8 lg:mt-20 lg:grid-cols-12 lg:gap-12" data-reveal>
+      <div class="overflow-hidden rounded-t-box lg:col-span-6" data-torn="bottom" data-tear="3">
+        {% if lead.cover %}<img src="{{ lead.cover }}" class="aspect-[3/2] w-full object-cover transition-[scale] duration-700 group-hover:scale-[1.03] motion-reduce:transition-none">{% else %}<div class="aspect-[3/2] w-full bg-base-200"></div>{% endif %}
+      </div>
+      <div class="lg:col-span-6">
+        <p class="kicker text-base-content/70">{{ lead.kind }} · <span class="tabular-nums">{{ lead.date | date: "%B %-d, %Y" }}</span></p>
+        <h2 class="mt-4 text-4xl md:text-5xl xl:text-6xl"><span class="underline decoration-transparent decoration-[3px] underline-offset-[0.15em] transition-[text-decoration-color] group-hover:decoration-current">{% render 'whole-words', text: lead.title %}</span></h2>
+        <p class="mt-5 text-lg text-base-content/80">{{ lead.summary }}</p>
+        <p class="mt-5 font-semibold">By {{ lead.author }}</p>
+      </div>
+    </a>
+    {% endif %}
+    <ul class="mt-20 border-t-2 border-base-content">
+      {% for post in data.news offset: 1 %}
+      <li class="border-b-2 border-base-content/15" data-reveal>
+        <a href="/news/{{ post.id }}" class="group grid gap-4 py-8 md:grid-cols-12 md:items-center md:gap-8">
+          <p class="kicker text-base-content/70 md:col-span-3">{{ post.kind }}<br><span class="tabular-nums">{{ post.date | date: "%B %-d, %Y" }}</span></p>
+          <div class="md:col-span-7">
+            <h3 class="text-2xl font-bold md:text-3xl"><span class="underline decoration-transparent decoration-[3px] underline-offset-[0.2em] transition-[text-decoration-color] group-hover:decoration-current">{{ post.title }}</span></h3>
+            <p class="mt-2 text-base-content/80">{{ post.summary }}</p>
+          </div>
+          {% if post.cover %}<div class="hidden overflow-hidden rounded-t-[0.5rem] md:col-span-2 md:block" data-torn="bottom" data-tear="{{ forloop.index | modulo: 3 | plus: 1 }}" style="--tear: 0.5rem; --tear-tile: 8rem"><img src="{{ post.cover }}" class="aspect-[4/3] w-full object-cover"></div>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+{% render 'footer' %}
+</body>
+</html>

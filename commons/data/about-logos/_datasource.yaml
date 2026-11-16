@@ -1,0 +1,10 @@
+label: About logos
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: kind
+    label: What they give
+    kind: text
+order: [couler-valley-grocers, tenth-street-bakehouse, riverbend-community-fund, north-end-hardware-guild, eagle-point-credit-union, rhomberg-bread-company]

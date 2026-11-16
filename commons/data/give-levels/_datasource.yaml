@@ -1,0 +1,20 @@
+label: Give levels
+fields:
+  - name: amount
+    label: Amount
+    kind: text
+    required: true
+  - name: what
+    label: What it does
+    kind: text
+  - name: text
+    label: In a sentence
+    kind: text
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [tomato, sky, marigold, kraft, paper]
+  - name: button
+    label: Button
+    kind: text
+order: [twenty-five, sixty, one-fifty, monthly]

@@ -1,0 +1,10 @@
+label: Volunteer steps
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: text
+    label: What happens
+    kind: text
+order: [tell-us, come-to-an-orientation, pick-your-shifts]

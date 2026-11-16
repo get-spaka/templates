@@ -1,0 +1,5 @@
+<div class="rounded-b-box px-6 pt-10 pb-8 md:px-8" data-tone="marigold" data-torn="top" data-tear="2" role="status">
+  <p class="hand text-[2rem]">See you there!</p>
+  <p class="mt-4 font-heading text-3xl leading-tight font-bold tracking-[-0.02em]">Your spot is saved{% if record.name %}, {{ record.name }}{% endif %}.</p>
+  <p class="mt-4 text-lg">{% if record.event %}{{ record.event }}{% if record.date %}, {{ record.date }}{% endif %}, {% endif %}{% if record.people %}for {{ record.people }}{% endif %}. If your plans change, just call the shed at (563) 555-0141.</p>
+</div>

@@ -1,0 +1,69 @@
+<section id="form" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-14 px-5 py-20 md:px-8 lg:grid-cols-12 lg:py-28">
+    <div class="lg:col-span-7" data-reveal>
+      <p class="kicker text-base-content/70">Sign up</p>
+      <h2 class="mt-4 text-5xl md:text-6xl">Tell us about you</h2>
+      <form hx-post="/_data/volunteers" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#volunteer-problems swap:innerHTML" class="mt-10 flex flex-col gap-6">
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="flex flex-col gap-2 sm:col-span-2">
+            <span class="font-semibold">Your name</span>
+            <input name="name" required maxlength="120" autocomplete="name" class="input input-lg w-full">
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="font-semibold">Your email</span>
+            <input name="email" type="email" required maxlength="200" autocomplete="email" class="input input-lg w-full">
+          </label>
+          <label class="flex flex-col gap-2">
+            <span class="font-semibold">Your phone</span>
+            <input name="phone" type="tel" maxlength="40" autocomplete="tel" class="input input-lg w-full">
+          </label>
+        </div>
+        <fieldset>
+          <legend class="font-semibold">What you'd like to do</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-primary"><input type="checkbox" name="programs" value="The Tool Library" class="sr-only">The Tool Library</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-primary"><input type="checkbox" name="programs" value="The Repair Café" class="sr-only">The Repair Café</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-primary"><input type="checkbox" name="programs" value="The Porch Pantry" class="sr-only">The Porch Pantry</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-primary"><input type="checkbox" name="programs" value="The Winter Swap" class="sr-only">The Winter Swap</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-primary"><input type="checkbox" name="programs" value="The Lot" class="sr-only">The Lot</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend class="font-semibold">When you're free</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-secondary"><input type="checkbox" name="free" value="Weekday mornings" class="sr-only">Weekday mornings</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-secondary"><input type="checkbox" name="free" value="Weekday evenings" class="sr-only">Weekday evenings</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-secondary"><input type="checkbox" name="free" value="Saturdays" class="sr-only">Saturdays</label>
+            <label class="btn btn-outline border-base-content font-semibold has-[:checked]:btn-secondary"><input type="checkbox" name="free" value="Now and then" class="sr-only">Now and then</label>
+          </div>
+        </fieldset>
+        <label class="flex flex-col gap-2">
+          <span class="font-semibold">Something you're good at</span>
+          <input name="skills" maxlength="200" placeholder="Sewing, bikes, lifting heavy things, Spanish…" class="input input-lg w-full">
+        </label>
+        <label class="flex flex-col gap-2">
+          <span class="font-semibold">Anything else</span>
+          <textarea name="note" rows="4" maxlength="2000" class="textarea w-full rounded-box text-base"></textarea>
+        </label>
+        <div id="volunteer-problems" class="empty:hidden"></div>
+        <button class="btn btn-primary btn-lg self-start">Count me in</button>
+      </form>
+    </div>
+    <aside class="lg:col-span-4 lg:col-start-9" data-reveal>
+      <div class="rounded-b-box px-6 pt-10 pb-8 md:px-8" data-tone="sky" data-torn="top" data-tear="2">
+        <p class="kicker">Who reads it</p>
+        <p class="mt-3 font-heading text-3xl font-bold tracking-[-0.02em]">Theo Brandt</p>
+        <p class="mt-1">Volunteer coordinator</p>
+        <p class="mt-4 font-semibold"><a href="mailto:theo@breadandbolts.org" class="ink-link break-all">theo@breadandbolts.org</a></p>
+        <p class="mt-6 text-lg">We call you within a week, and find you a first shift that fits.</p>
+      </div>
+      {% if orientation %}
+      <div class="mt-6 rounded-box bg-base-200 px-6 py-6 md:px-8">
+        <p class="kicker text-base-content/70">Next orientation</p>
+        <p class="mt-2 text-xl font-bold"><a href="/events/{{ orientation.id }}" class="ink-link">{{ orientation.date | date: "%A, %B %-d" }}</a></p>
+        <p class="mt-1 text-base-content/80"><span class="tabular-nums">{{ orientation.start }} – {{ orientation.end }}</span> · {{ orientation.place }}</p>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</section>

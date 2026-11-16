@@ -1,0 +1,16 @@
+label: The Porch Letter
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many were sent from here. Please try again in a few minutes."
+  sent: "Thank you, you're on the list."
+fields:
+  - name: name
+    label: First name
+    kind: text
+  - name: email
+    label: Email
+    kind: email
+    required: true

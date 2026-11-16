@@ -1,0 +1,10 @@
+label: Give ways
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: text
+order: [by-check, from-your-employer, in-memory]

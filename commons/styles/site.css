@@ -1,0 +1,601 @@
+/* Gabarito, Public Sans and Caveat, files of the template, under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Gabarito";
+  src: url("/fonts/gabarito-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Gabarito";
+  src: url("/fonts/gabarito-latin-ext.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url("/fonts/public-sans-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/caveat-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --font-hand: "Caveat", ui-rounded, cursive;
+  --commons-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* The height of a torn edge, and the width of one tile of it. */
+  --tear: 0.875rem;
+  --tear-tile: 17rem;
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.625;
+  }
+  /* Headings: Gabarito, sentence case, tight. Section titles 700; the hero and figures take font-extrabold. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* A label: small capitals in Public Sans, for an eyebrow, a date, an hour. */
+  .kicker {
+    font-family: var(--theme-font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  /* A line written by hand, pinned at -2°: at most one per section, never the only place a fact is said. */
+  .hand {
+    display: inline-block;
+    font-family: var(--font-hand);
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+    rotate: -2deg;
+  }
+  /* Larger hands: Tailwind's text-* sizes do not reach .hand, so these do. */
+  .hand-lg {
+    font-size: 2rem;
+  }
+  .hand-xl {
+    font-size: 3rem;
+  }
+  /* A figure at poster size (the count, a day, a step's number). */
+  .figure {
+    font-family: var(--theme-font-heading);
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+    font-variant-numeric: tabular-nums;
+  }
+  /* The hero's headline and a page's title. */
+  .poster {
+    font-weight: 800;
+    font-size: clamp(3rem, 9vw, 8.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .page-title {
+    font-weight: 800;
+    font-size: clamp(2.75rem, 7vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .btn {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  /* A long label in a narrow column wraps rather than overflowing a phone. */
+  .btn-wrap {
+    max-width: 100%;
+    flex-shrink: 1;
+    height: auto;
+    min-height: var(--size);
+    padding-block: 0.65rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+  /* Text links: an underline that thickens and comes closer on hover. */
+  .ink-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.28em;
+  }
+  .ink-link:hover,
+  .ink-link:focus-visible,
+  .ink-link[aria-current="page"] {
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.16em;
+  }
+}
+
+/* The header's links: the underline appears on hover, and stays thick under the current page's. */
+.nav-link {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.4em;
+}
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link[aria-current="page"] {
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.2em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-link {
+    transition:
+      text-decoration-color 0.2s ease,
+      text-underline-offset 0.2s ease;
+  }
+  .ink-link {
+    transition:
+      text-decoration-thickness 0.2s ease,
+      text-underline-offset 0.2s ease;
+  }
+}
+
+/* ---- Tones: a card, slip, notice or band in one of the flyer's colors (data-tone). */
+[data-tone] {
+  --tone: var(--color-base-100);
+  --on-tone: var(--color-base-content);
+  background-color: var(--tone);
+  color: var(--on-tone);
+}
+[data-tone="tomato"] {
+  --tone: var(--color-primary);
+  --on-tone: var(--color-primary-content);
+}
+[data-tone="sky"] {
+  --tone: var(--color-secondary);
+  --on-tone: var(--color-secondary-content);
+}
+[data-tone="marigold"] {
+  --tone: var(--color-accent);
+  --on-tone: var(--color-accent-content);
+}
+[data-tone="kraft"] {
+  --tone: var(--color-base-200);
+  --on-tone: var(--color-base-content);
+}
+[data-tone="ink"] {
+  --tone: var(--color-neutral);
+  --on-tone: var(--color-neutral-content);
+}
+
+/* ---- Torn paper (data-torn="top|bottom|both"): a mask from styles/edges/, three variants
+   so that two neighbors do not tear alike (data-tear="1|2|3" chooses one). */
+[data-torn] {
+  --edge-top: url("/styles/edges/top-1.svg");
+  --edge-bottom: url("/styles/edges/bottom-1.svg");
+  --solid: linear-gradient(var(--color-base-content) 0 0);
+}
+[data-torn]:nth-child(3n + 2),
+[data-torn][data-tear="2"] {
+  --edge-top: url("/styles/edges/top-2.svg");
+  --edge-bottom: url("/styles/edges/bottom-2.svg");
+}
+[data-torn]:nth-child(3n),
+[data-torn][data-tear="3"] {
+  --edge-top: url("/styles/edges/top-3.svg");
+  --edge-bottom: url("/styles/edges/bottom-3.svg");
+}
+[data-torn][data-tear="1"] {
+  --edge-top: url("/styles/edges/top-1.svg");
+  --edge-bottom: url("/styles/edges/bottom-1.svg");
+}
+[data-torn="top"] {
+  mask:
+    var(--edge-top) top left / var(--tear-tile) var(--tear) repeat-x,
+    var(--solid) bottom / 100% calc(100% - var(--tear) + 1px) no-repeat;
+}
+[data-torn="bottom"] {
+  mask:
+    var(--solid) top / 100% calc(100% - var(--tear) + 1px) no-repeat,
+    var(--edge-bottom) bottom left / var(--tear-tile) var(--tear) repeat-x;
+}
+[data-torn="both"] {
+  mask:
+    var(--edge-top) top left / var(--tear-tile) var(--tear) repeat-x,
+    var(--solid) center / 100% calc(100% - 2 * var(--tear) + 2px) no-repeat,
+    var(--edge-bottom) bottom left / var(--tear-tile) var(--tear) repeat-x;
+}
+/* A torn image sits on its paper, never cut through its subject: the tear eats only its edge. */
+img[data-torn],
+[data-torn] > img {
+  display: block;
+}
+
+/* ---- The two doors (data-doors on the hero's row). From lg they share the row and the
+   door under the pointer or holding the focus opens wider; below, they are stacked. */
+.door {
+  --dir: 1;
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+}
+.door + .door {
+  --dir: -1;
+}
+.door-photo {
+  overflow: hidden;
+}
+.door-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.door-arrow {
+  display: inline-block;
+  font-family: var(--theme-font-heading);
+  font-weight: 800;
+  line-height: 1;
+}
+@media (min-width: 64rem) {
+  [data-doors] {
+    display: flex;
+    gap: 1.25rem;
+  }
+  [data-doors] > .door {
+    flex: 1 1 0;
+  }
+}
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+  [data-doors] > .door {
+    transition: flex-grow 0.6s var(--commons-ease);
+  }
+  [data-doors] .door-photo img {
+    transition:
+      scale 0.6s var(--commons-ease),
+      opacity 0.6s var(--commons-ease);
+  }
+  [data-doors] .door-arrow {
+    transition: translate 0.5s var(--commons-ease);
+  }
+  [data-doors] .door-way {
+    transition:
+      translate 0.45s var(--commons-ease) calc(var(--i, 0) * 60ms),
+      opacity 0.4s ease;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) {
+    flex-grow: 1.7;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-photo img {
+    scale: 1.04;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-arrow {
+    translate: 0.6rem 0;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-way {
+    translate: calc(var(--dir) * 0.5rem) 0;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still)))
+    [data-doors]:has(> .door:is(:hover, :focus-within))
+    > .door:not(:hover, :focus-within)
+    .door-photo
+    img {
+    scale: 0.97;
+    opacity: 0.8;
+  }
+}
+@media (min-width: 64rem) {
+  :root:is([data-up-moving], :not(:has(#up-still)))
+    [data-doors]:has(> .door:is(:hover, :focus-within))
+    > .door:not(:hover, :focus-within)
+    .door-way {
+    opacity: 0.6;
+  }
+}
+@media (min-width: 64rem) and (prefers-reduced-motion: reduce) {
+  [data-doors] .door-way {
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* ---- The jar (data-jar): an ink outline filled with marigold to --level, the goal at its brim. */
+.jar {
+  --level: 50%;
+  position: relative;
+  width: min(100%, 17rem);
+  aspect-ratio: 3 / 4.2;
+  margin-inline: auto;
+}
+.jar-lid {
+  position: absolute;
+  inset-inline: 22%;
+  top: 0;
+  height: 9%;
+  border: 3px solid var(--color-base-content);
+  border-radius: 0.6rem;
+  background-color: var(--color-base-200);
+}
+.jar-neck {
+  position: absolute;
+  inset-inline: 26%;
+  top: 8%;
+  height: 5%;
+  border-inline: 3px solid var(--color-base-content);
+}
+.jar-body {
+  position: absolute;
+  inset: 12.5% 0 0;
+  overflow: hidden;
+  border: 3px solid var(--color-base-content);
+  border-radius: 3.25rem 3.25rem 2.25rem 2.25rem / 2.75rem 2.75rem 2.25rem 2.25rem;
+  background-color: var(--color-base-100);
+}
+.jar-fill {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--level);
+  background-color: var(--color-accent);
+}
+.jar-wave {
+  position: absolute;
+  bottom: calc(100% - 1px);
+  left: -50%;
+  width: 200%;
+  height: 0.9rem;
+  color: var(--color-accent);
+}
+/* The goal, a dashed line just under the brim, and where the appeal stands. */
+.jar-brim {
+  position: absolute;
+  inset-inline: 0;
+  top: 7%;
+  border-top: 2px dashed oklch(from var(--color-base-content) l c h / 0.55);
+}
+.jar-mark {
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  bottom: calc(var(--level) * 0.875);
+  translate: 0 50%;
+  white-space: nowrap;
+}
+.jar-mark::before {
+  content: "";
+  position: absolute;
+  right: calc(100% + 0.25rem);
+  top: 50%;
+  width: 0.6rem;
+  border-top: 3px solid var(--color-base-content);
+}
+.jar-goal {
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  top: 12.5%;
+  translate: 0 -50%;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-jar][data-filling] .jar-wave {
+    animation: jar-sway 1.4s ease-in-out 2;
+  }
+  @keyframes jar-sway {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    25% {
+      translate: 12% 0.15rem;
+    }
+    75% {
+      translate: -12% -0.1rem;
+    }
+  }
+}
+
+/* ---- Notices torn from the pad, and their tear-off tabs (data-tabs on the fringe). */
+.notice {
+  display: flex;
+  flex-direction: column;
+}
+.notice[data-tone] {
+  background-color: transparent;
+}
+.notice-sheet {
+  flex: 1;
+  background-color: var(--tone, var(--color-base-100));
+  padding-top: calc(var(--tear) + 1rem);
+  border-bottom: 2px dashed oklch(from var(--on-tone, var(--color-base-content)) l c h / 0.6);
+}
+.notice-tabs {
+  display: flex;
+  gap: 3px;
+  outline-offset: 4px;
+}
+.tab {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 9rem;
+  /* In vertical writing, the main axis runs down the tab: the label starts at its top, centered across it. */
+  align-items: center;
+  justify-content: flex-start;
+  padding-block: 0.75rem;
+  background-color: var(--tone, var(--color-base-100));
+  color: var(--on-tone, var(--color-base-content));
+  font-family: var(--font-hand);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform-origin: 50% 0;
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+.notice-tabs:hover .tab:hover {
+  background-color: color-mix(in oklab, var(--tone, var(--color-base-100)), var(--color-base-content) 10%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tab {
+    transition:
+      rotate 0.3s var(--commons-ease),
+      box-shadow 0.3s ease,
+      background-color 0.2s ease;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) .notice-tabs:hover .tab:hover,
+  :root:is([data-up-moving], :not(:has(#up-still))) .notice-tabs:focus-visible .tab:first-child {
+    rotate: 8deg;
+    box-shadow: 0.35rem 0.5rem 0.6rem oklch(from var(--color-base-content) l c h / 0.15);
+  }
+}
+
+/* ---- "Free", on marigold. */
+.free {
+  display: inline-block;
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-content);
+  padding: 0.1rem 0.6rem;
+}
+
+/* ---- Where each dollar goes: a bar of torn strips, each as wide as its share (--share). */
+.spending {
+  display: flex;
+  gap: 0.25rem;
+}
+.spending > * {
+  flex: var(--share) 1 0;
+  min-width: 0;
+}
+
+/* ---- A record's long text (posts, programs, events), with a pull quote. */
+.story-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.story-text > * + * {
+  margin-top: 1.1em;
+}
+.story-text h2 {
+  margin-top: 2em;
+  font-size: 2rem;
+}
+.story-text h3 {
+  margin-top: 1.6em;
+  font-size: 1.5rem;
+}
+.story-text a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.28em;
+}
+.story-text ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+.story-text ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.story-text blockquote {
+  margin-block: 2.25em;
+  font-family: var(--theme-font-heading);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+.story-text blockquote::before {
+  content: "\201C";
+  display: block;
+  height: 0.55em;
+  color: var(--color-primary);
+  font-size: 3em;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ---- The quotation marks of a story: Gabarito's, huge, in tomato. */
+.quote-mark {
+  display: block;
+  height: 0.55em;
+  color: var(--color-primary);
+  font-family: var(--theme-font-heading);
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ---- The header's menu below the width where all its links fit: a full-screen sheet. */
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu .menu-close,
+.site-menu[open] .menu-open {
+  display: none;
+}
+.site-menu[open] .menu-close {
+  display: block;
+}
+
+/* ---- Upstart's credits link at the foot of the footer, lined up with its content. */
+footer [data-up-credits] {
+  padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}

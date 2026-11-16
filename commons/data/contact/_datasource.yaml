@@ -1,0 +1,22 @@
+label: Messages
+collected: true
+answer: contact-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your message was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: message
+    label: Your message
+    kind: markdown
+    required: true

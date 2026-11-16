@@ -1,0 +1,35 @@
+{%- assign featured = data.stories | where: "featured", true | first -%}
+{%- unless featured %}{% assign featured = data.stories | first %}{% endunless -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 lg:py-28">
+    <div data-reveal>
+      <p class="kicker text-base-content/70">Stories from the porch</p>
+      <h2 class="mt-4 text-5xl md:text-7xl">Neighbors, in their own words</h2>
+    </div>
+    {% if featured %}
+    <figure class="mt-14 grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="overflow-hidden rounded-t-box lg:col-span-5" data-torn="bottom" data-tear="2" data-reveal>
+        {% if featured.photo %}<img src="{{ featured.photo }}" class="aspect-[4/5] w-full object-cover">{% else %}<div class="aspect-[4/5] w-full bg-secondary"></div>{% endif %}
+      </div>
+      <div class="lg:col-span-7" data-reveal>
+        <span class="quote-mark text-[9rem]" aria-hidden="true">“</span>
+        <blockquote class="font-heading text-[clamp(1.75rem,3.4vw,3rem)] leading-[1.1] font-semibold tracking-[-0.02em] text-balance">{{ featured.quote }}</blockquote>
+        <figcaption class="mt-8 text-lg"><span class="font-bold">{{ featured.name }}</span>, {{ featured.detail }}</figcaption>
+      </div>
+    </figure>
+    {% endif %}
+    <div class="mt-16 grid gap-6 md:grid-cols-2">
+      {% assign shown = 0 %}
+      {% for story in data.stories %}{% if story.id != featured.id and shown < 2 %}{% assign shown = shown | plus: 1 %}
+      <figure class="flex flex-col gap-6 rounded-box bg-base-200 p-6 sm:flex-row sm:items-start md:p-8" data-reveal>
+        {% if story.photo %}<div class="w-32 shrink-0 overflow-hidden rounded-t-[0.5rem] sm:w-36" data-torn="bottom" data-tear="{{ shown | plus: 1 }}"><img src="{{ story.photo }}" class="aspect-square w-full object-cover"></div>{% endif %}
+        <div>
+          <span class="quote-mark text-7xl" aria-hidden="true">“</span>
+          <blockquote class="text-xl leading-snug font-semibold">{{ story.quote }}</blockquote>
+          <figcaption class="mt-4"><span class="font-bold">{{ story.name }}</span>, {{ story.detail }}</figcaption>
+        </div>
+      </figure>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>

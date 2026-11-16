@@ -1,0 +1,41 @@
+{%- assign appeal = data.appeal | first -%}
+{%- if appeal -%}
+{%- assign level = appeal.raised | times: 100 | divided_by: appeal.goal | floor -%}
+{%- if level > 100 %}{% assign level = 100 %}{% endif -%}
+<section id="appeal" class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] items-center gap-14 px-5 py-20 md:px-8 lg:grid-cols-12 lg:py-28">
+    <div class="lg:col-span-5">
+      <div class="max-w-[24rem] pr-28 sm:mx-auto lg:pr-28">
+        <div data-jar class="jar" style="--level: {{ level }}%" role="img" aria-label="The appeal stands at {{ level }}% of its goal">
+          <div class="jar-neck"></div>
+          <div class="jar-lid"></div>
+          <div class="jar-body">
+            <div class="jar-brim"></div>
+            <div class="jar-fill">
+              <svg class="jar-wave" viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 7 Q12.5 0 25 7 T50 7 T75 7 T100 7 T125 7 T150 7 T175 7 T200 7 V14 H0 Z"/></svg>
+            </div>
+          </div>
+          <p class="jar-goal kicker">Goal<br>{% render 'dollars', n: appeal.goal %}</p>
+          <p class="jar-mark kicker">{{ level }}%</p>
+        </div>
+        <p class="hand hand-lg mt-6 ml-2" data-jar-note>{{ level }}% there!</p>
+      </div>
+    </div>
+    <div class="lg:col-span-7" data-reveal>
+      <p class="kicker text-base-content/70">This winter's appeal</p>
+      <h2 class="mt-4 text-5xl md:text-7xl">{{ appeal.title }}</h2>
+      <p class="mt-8 font-heading text-3xl leading-tight font-bold tracking-[-0.02em] md:text-4xl"><span class="tabular-nums">{% render 'dollars', n: appeal.raised %}</span> of <span class="tabular-nums">{% render 'dollars', n: appeal.goal %}</span></p>
+      <p class="mt-2 text-lg font-semibold">from {{ appeal.donors }} neighbors, by {{ appeal.deadline | date: "%B %-d" }}</p>
+      <p class="mt-6 max-w-2xl text-lg text-base-content/80">{{ appeal.summary }}</p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a {% if appeal.link != blank %}href="{{ appeal.link }}" target="_blank" rel="noopener"{% else %}href="/give#levels"{% endif %} class="btn btn-primary btn-lg btn-wrap">Give to the cooler</a>
+        {% if page.url == "/give" %}
+        <a href="#ways" class="btn btn-ghost btn-lg btn-wrap ink-link">Other ways to give</a>
+        {% else %}
+        <a href="/give" class="btn btn-ghost btn-lg btn-wrap ink-link">Other ways to give</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}

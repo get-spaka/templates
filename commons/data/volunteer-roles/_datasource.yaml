@@ -1,0 +1,19 @@
+label: Volunteer roles
+fields:
+  - name: title
+    label: Role
+    kind: text
+    required: true
+  - name: program
+    label: Program
+    kind: text
+  - name: when
+    label: When
+    kind: text
+  - name: often
+    label: How often
+    kind: text
+  - name: text
+    label: What you'd do
+    kind: text
+order: [fixer, porch-restocker, tool-desk, swap-sorter, garden-crew]

@@ -1,0 +1,23 @@
+label: Stories
+fields:
+  - name: quote
+    label: In their words
+    kind: text
+    required: true
+  - name: name
+    label: Name
+    kind: text
+  - name: detail
+    label: Who they are
+    kind: text
+  - name: program
+    label: Program
+    kind: choice
+    choices: [tool-library, repair-cafe, porch-pantry, winter-swap, the-lot]
+  - name: photo
+    label: Photo of what it is about
+    kind: image
+  - name: featured
+    label: Told large on the home page
+    kind: boolean
+order: [ruth, marcus, lena, jonah]

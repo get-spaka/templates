@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Bread &amp; Bolts — Tools, mending, food and coats on Dubuque's North End</title>
+<meta name="description" content="A neighborhood nonprofit in Dubuque, Iowa: a tool library, a repair café, a porch pantry open day and night, a winter coat swap and a garden. Lend a hand, or take what you need.">
+<meta property="og:title" content="Bread &amp; Bolts — Tools, mending, food and coats on Dubuque's North End">
+<meta property="og:description" content="A neighborhood nonprofit in Dubuque, Iowa: a tool library, a repair café, a porch pantry open day and night, a winter coat swap and a garden. Lend a hand, or take what you need.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'hero-doors' %}
+{% render 'promise' %}
+{% render 'count', figures: data["home-figures"] %}
+{% render 'program-cards' %}
+{% render 'jar' %}
+{% render 'stories' %}
+{% render 'noticeboard' %}
+{% render 'latest-news' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

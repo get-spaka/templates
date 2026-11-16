@@ -1,0 +1,9 @@
+{
+  "name": "Commons two doors",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A poster-size headline over two doors side by side, Lend a hand in tomato and Take what you need in sky, each with a photo torn at its foot and four ways in; the door under the pointer opens wider while the other steps back.",
+  "tags": ["hero", "headline", "nonprofit", "two doors", "volunteer", "help", "torn paper"],
+  "mood": ["friendly", "colorful", "bold"],
+  "synonyms": ["hero", "top of page", "headline", "two doors", "en-tête", "haut de page", "accroche", "deux portes"]
+}

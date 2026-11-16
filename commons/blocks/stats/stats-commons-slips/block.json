@@ -1,0 +1,10 @@
+{
+  "name": "Commons figures on torn slips",
+  "kind": "stats",
+  "source": "upstart",
+  "description": "Large figures at poster size, each on its own slip of colored paper torn at the top, in two staggered columns, with a line written by hand pinned under one of them.",
+  "tags": ["stats", "figures", "impact", "numbers", "torn paper", "handwriting"],
+  "mood": ["friendly", "colorful", "bold"],
+  "synonyms": ["figures", "key figures", "impact", "numbers", "chiffres", "chiffres clés", "impact", "en chiffres"],
+  "data": { "name": "figures", "family": "section" }
+}

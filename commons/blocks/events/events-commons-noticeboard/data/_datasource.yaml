@@ -1,0 +1,44 @@
+label: Events
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+    required: true
+  - name: also
+    label: Other dates
+    kind: text
+  - name: start
+    label: Starts
+    kind: text
+  - name: end
+    label: Ends
+    kind: text
+  - name: place
+    label: Where
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [Repair Café, Swap, Supper, Workshop, Orientation]
+  - name: program
+    label: Program
+    kind: choice
+    choices: [tool-library, repair-cafe, porch-pantry, winter-swap, the-lot]
+  - name: price
+    label: Price (leave empty when free)
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Photo
+    kind: image
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: date

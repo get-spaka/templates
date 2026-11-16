@@ -1,0 +1,1 @@
+{%- assign n = n | floor -%}{%- if n >= 1000 -%}{%- assign thousands = n | divided_by: 1000 | floor -%}{%- assign rest = n | modulo: 1000 -%}${{ thousands }},{% if rest < 10 %}00{% elsif rest < 100 %}0{% endif %}{{ rest }}{%- else -%}${{ n }}{%- endif -%}

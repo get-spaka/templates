@@ -1,0 +1,16 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 lg:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="kicker text-base-content/70">News</p>
+        <h2 class="mt-4 text-5xl md:text-7xl">From the porch</h2>
+      </div>
+      <a href="/news" class="ink-link text-lg font-semibold">All the news →</a>
+    </div>
+    <div class="mt-14 grid gap-10 md:grid-cols-3 md:gap-6">
+      {% for post in data.news limit: 3 %}
+      {% render 'post-card', post: post, tear: forloop.index %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

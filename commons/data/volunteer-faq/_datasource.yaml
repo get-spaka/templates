@@ -1,0 +1,10 @@
+label: Volunteer questions
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: text
+order: [age, groups, service-hours, background-checks, access]

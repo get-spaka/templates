@@ -1,0 +1,14 @@
+label: Give spending
+fields:
+  - name: label
+    label: Where it goes
+    kind: text
+    required: true
+  - name: cents
+    label: Cents of each dollar
+    kind: number
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [tomato, sky, marigold, kraft]
+order: [programs, the-shed, raising-money]

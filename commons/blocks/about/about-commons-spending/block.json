@@ -1,0 +1,10 @@
+{
+  "name": "Commons where each dollar goes",
+  "kind": "about",
+  "source": "upstart",
+  "description": "Where each dollar goes as one wide bar of torn paper strips in the flyer's colors, each as wide as its share in cents, with a legend whose labels are written by hand.",
+  "tags": ["about", "transparency", "spending", "finances", "nonprofit", "chart"],
+  "mood": ["friendly", "colorful"],
+  "synonyms": ["spending", "where the money goes", "transparency", "finances", "dépenses", "où va l'argent", "transparence", "finances"],
+  "data": { "name": "spending", "family": "section" }
+}

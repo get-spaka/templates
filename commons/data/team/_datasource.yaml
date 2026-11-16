@@ -1,0 +1,27 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: group
+    label: Group
+    kind: choice
+    choices: [staff, board]
+  - name: tone
+    label: Color of their initials
+    kind: choice
+    choices: [tomato, sky, marigold]
+  - name: initials
+    label: Initials
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+  - name: bio
+    label: A line about them
+    kind: text
+order: [dee-hartwig, marisol-vega, theo-brandt, sam-adeyemi, ann-kaufmann, reggie-toliver, peg-schroeder, luis-ortega]

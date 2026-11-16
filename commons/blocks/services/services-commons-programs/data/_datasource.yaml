@@ -1,0 +1,48 @@
+label: Programs
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: tagline
+    label: In one line
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: when
+    label: When
+    kind: text
+  - name: where
+    label: Where
+    kind: text
+  - name: who
+    label: Who it's for
+    kind: text
+  - name: cost
+    label: What it costs
+    kind: text
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [tomato, sky, marigold, kraft, paper]
+  - name: figure
+    label: Its figure
+    kind: text
+  - name: figure_label
+    label: What the figure counts
+    kind: text
+  - name: steps
+    label: How it works, step by step
+    kind: list
+  - name: cover
+    label: Photo
+    kind: image
+  - name: image
+    label: Second photo
+    kind: image
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+order: [tool-library, repair-cafe, porch-pantry, winter-swap, the-lot]

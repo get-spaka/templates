@@ -1,0 +1,35 @@
+{%- assign orientation = data.events | where: "kind", "Orientation" | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>Volunteer — Bread &amp; Bolts</title>
+<meta name="description" content="Fix things at the Repair Café, restock the porch, staff the tool desk, sort coats or dig on the Lot. Tell us what you'd like to do, and we call you within a week.">
+<meta property="og:title" content="Volunteer — Bread &amp; Bolts">
+<meta property="og:description" content="Fix things at the Repair Café, restock the porch, staff the tool desk, sort coats or dig on the Lot. Tell us what you'd like to do, and we call you within a week.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto grid max-w-[80rem] gap-10 px-5 pt-16 pb-16 md:px-8 lg:grid-cols-12 lg:items-end lg:pt-24 lg:pb-24">
+      <div class="lg:col-span-7" data-reveal>
+        <h1 class="page-title">Lend a hand</h1>
+        <div class="mt-10 overflow-hidden rounded-t-box" data-torn="bottom" data-tear="2"><img src="/media/seedlings.jpg" class="aspect-[16/9] w-full object-cover"></div>
+      </div>
+      <div class="lg:col-span-5" data-reveal>
+        <p class="text-lg text-base-content/80">186 neighbors keep the shed open, the porch full and the Lot watered. Two hours a month is plenty, and you don't need to know how to fix anything yet.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <a href="#form" class="btn btn-primary btn-lg">Sign up</a>
+          <p class="hand">takes two minutes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% render 'volunteer-roles' %}
+  {% render 'volunteer-steps' %}
+  {% render 'volunteer-form', orientation: orientation %}
+  {% render 'volunteer-faq' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+label: Volunteers
+collected: true
+answer: volunteer-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many were sent from here. Please try again in a few minutes."
+  sent: "Thank you, we'll call you within a week."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: programs
+    label: What you'd like to do
+    kind: list
+    choices: [The Tool Library, The Repair Café, The Porch Pantry, The Winter Swap, The Lot]
+  - name: free
+    label: When you're free
+    kind: list
+    choices: [Weekday mornings, Weekday evenings, Saturdays, Now and then]
+  - name: skills
+    label: Something you're good at
+    kind: text
+  - name: note
+    label: Anything else
+    kind: markdown

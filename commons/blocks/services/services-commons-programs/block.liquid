@@ -1,0 +1,28 @@
+<section id="programs" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-8">
+        <p class="kicker text-base-content/70">Our programs</p>
+        <h2 class="mt-4 text-5xl md:text-7xl">Five ways in</h2>
+      </div>
+      <p class="text-lg text-base-content/80 lg:col-span-4">Each one is open to the whole North End, and most of them are free. Come for one, stay for the rest.</p>
+    </div>
+    <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+      {% for program in data.programs %}
+      <a href="/programs/{{ program.id }}" class="group flex flex-col overflow-hidden rounded-box {% if forloop.index <= 2 %}lg:col-span-3{% else %}lg:col-span-2{% endif %} {% if forloop.last and forloop.length == 5 %}md:col-span-2 lg:col-span-2{% endif %}" data-tone="{{ program.tone }}" data-reveal>
+        {% if program.cover %}
+        <div class="overflow-hidden {% if forloop.index <= 2 %}aspect-[16/9]{% else %}aspect-[4/3]{% endif %} {% if forloop.last and forloop.length == 5 %}md:aspect-[21/9] lg:aspect-[4/3]{% endif %}" data-torn="bottom" data-tear="{{ forloop.index0 | modulo: 3 | plus: 1 }}">
+          <img src="{{ program.cover }}" class="size-full object-cover transition-[scale] duration-700 group-hover:scale-[1.03] motion-reduce:transition-none">
+        </div>
+        {% endif %}
+        <div class="flex flex-1 flex-col px-6 pt-4 pb-7 md:px-7">
+          <h3 class="text-3xl font-bold md:text-4xl">{{ program.name }}</h3>
+          <p class="mt-3 text-lg">{{ program.tagline }}</p>
+          <p class="kicker mt-5">{{ program.when }}</p>
+          <span class="mt-auto pt-6 font-semibold"><span class="underline decoration-2 underline-offset-[0.3em] group-hover:decoration-[3px] group-hover:underline-offset-[0.18em]">More about it</span> →</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

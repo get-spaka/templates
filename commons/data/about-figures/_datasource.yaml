@@ -1,0 +1,17 @@
+label: About figures
+fields:
+  - name: figure
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [tomato, sky, marigold, kraft, paper]
+  - name: note
+    label: A note written by hand (one per section at most)
+    kind: text
+order: [tools, mended, food, coats, volunteers, hours]

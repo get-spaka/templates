@@ -1,0 +1,27 @@
+label: News
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [Story, Update, From the porch]
+  - name: author
+    label: Written by
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Photo
+    kind: image
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: -date

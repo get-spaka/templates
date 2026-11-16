@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Give — Bread &amp; Bolts</title>
+<meta name="description" content="Give to the walk-in cooler for the Porch Pantry, restock the porch, buy a drill for the Tool Library, or give tools, coats and time. Every gift stays on Dubuque's North End.">
+<meta property="og:title" content="Give — Bread &amp; Bolts">
+<meta property="og:description" content="Give to the walk-in cooler for the Porch Pantry, restock the porch, buy a drill for the Tool Library, or give tools, coats and time. Every gift stays on Dubuque's North End.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto grid max-w-[80rem] gap-8 px-5 pt-16 pb-16 md:px-8 lg:grid-cols-12 lg:items-end lg:pt-24 lg:pb-24" data-reveal>
+      <h1 class="page-title lg:col-span-8">Every gift stays on the North End</h1>
+      <p class="text-lg text-base-content/80 lg:col-span-4">Money buys what the neighborhood can't lend: a cooler, new blades, the porch's electricity. Things and time keep the rest going.</p>
+    </div>
+  </section>
+  {% render 'jar' %}
+  {% render 'give-levels' %}
+  {% render 'give-things' %}
+  {% render 'give-ways' %}
+  {% render 'give-spending' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

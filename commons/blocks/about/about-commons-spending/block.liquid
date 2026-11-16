@@ -1,0 +1,24 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-24 md:px-8 lg:pb-32">
+    <div class="border-t-2 border-base-content pt-16" data-reveal>
+      <p class="kicker text-base-content/70">Where each dollar goes</p>
+      <h2 class="mt-4 text-5xl md:text-6xl">Out of every dollar</h2>
+    </div>
+    <div class="spending mt-12" data-reveal aria-hidden="true">
+      {% for share in data.spending %}
+      <div class="h-24 md:h-36" style="--share: {{ share.cents }}" data-tone="{{ share.tone }}" data-torn="both" data-tear="{{ forloop.index }}">
+        {% if share.cents >= 10 %}<p class="figure hidden px-5 pt-7 text-6xl md:block">{{ share.cents }}¢</p>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <ul class="mt-8 grid gap-6 sm:grid-cols-3" data-reveal>
+      {% for share in data.spending %}
+      <li class="flex items-start gap-4">
+        <span class="mt-2 size-5 shrink-0 rounded-full" data-tone="{{ share.tone }}"></span>
+        <p><span class="figure block text-5xl">{{ share.cents }}¢</span><span class="hand mt-2">{{ share.label }}</span></p>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="mt-12 text-lg text-base-content/80">Our 2025 report and our tax filings are yours on request: write to <a href="mailto:hello@breadandbolts.org" class="ink-link">hello@breadandbolts.org</a>.</p>
+  </div>
+</section>

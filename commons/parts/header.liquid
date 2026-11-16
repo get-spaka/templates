@@ -1,0 +1,46 @@
+{%- assign appeal = data.appeal | first -%}
+<header class="site-header sticky top-[-2.5rem] z-40 bg-base-100 text-base-content">
+  {%- if appeal %}
+  {%- assign level = appeal.raised | times: 100 | divided_by: appeal.goal | floor %}
+  <a href="/give#appeal" class="flex h-10 items-center justify-center gap-2 overflow-hidden bg-neutral px-4 text-sm font-semibold whitespace-nowrap text-neutral-content">
+    <span class="truncate">{{ appeal.short }}</span>
+    <span aria-hidden="true">·</span>
+    <span class="text-accent tabular-nums">{{ level }}% there</span>
+    <span aria-hidden="true">→</span>
+  </a>
+  {%- endif %}
+  <div class="border-b-2 border-base-content">
+    <div class="mx-auto flex h-[4.75rem] max-w-[90rem] items-center gap-6 px-5 md:px-8">
+      <a href="/" class="font-heading text-[1.6rem] leading-none font-extrabold tracking-[-0.03em] whitespace-nowrap md:text-[1.9rem]">Bread <span class="text-primary">&amp;</span> Bolts</a>
+      <nav aria-label="Main" class="ml-auto hidden xl:block">
+        <ul class="flex items-center gap-7 font-semibold whitespace-nowrap">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+          <li><a href="{{ item.href }}" class="nav-link py-2" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <div class="ml-auto flex items-center gap-2 xl:ml-4">
+        <a href="/volunteer#form" class="btn btn-outline hidden border-base-content min-[88rem]:inline-flex">Volunteer</a>
+        <a {% if appeal.link != blank %}href="{{ appeal.link }}" target="_blank" rel="noopener"{% else %}href="/give"{% endif %} class="btn btn-primary">Donate</a>
+        <details class="site-menu xl:hidden">
+          <summary class="btn btn-ghost btn-square relative z-[60]" aria-label="Menu">
+            <svg class="menu-open size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16"/><path d="M4 16h11"/></svg>
+            <svg class="menu-close size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6 6 18"/></svg>
+          </summary>
+          <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-base-100 px-6 pt-32 pb-10 text-base-content">
+            <ul class="space-y-1">
+              {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+              <li><a href="{{ item.href }}" class="nav-link block font-heading text-5xl leading-[1.15] font-extrabold tracking-[-0.03em]" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+            <div class="mt-12 flex flex-col gap-3">
+              <a href="/volunteer#form" class="btn btn-outline btn-lg border-base-content">Volunteer</a>
+              <a {% if appeal.link != blank %}href="{{ appeal.link }}" target="_blank" rel="noopener"{% else %}href="/give"{% endif %} class="btn btn-primary btn-lg">Donate</a>
+              <p class="kicker mt-3 text-base-content/70">41 Couler Lane · Dubuque, Iowa</p>
+            </div>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>

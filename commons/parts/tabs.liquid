@@ -1,0 +1,5 @@
+<a href="{{ href }}" class="notice-tabs" data-tabs aria-label="{{ aria }}"{% if external %} target="_blank" rel="noopener"{% endif %}>
+  {%- for i in (1..5) %}
+  <span class="tab" aria-hidden="true">{{ label }}</span>
+  {%- endfor %}
+</a>

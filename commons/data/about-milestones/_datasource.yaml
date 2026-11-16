@@ -1,0 +1,13 @@
+label: About milestones
+fields:
+  - name: year
+    label: Year
+    kind: text
+    required: true
+  - name: title
+    label: What happened
+    kind: text
+  - name: text
+    label: The story
+    kind: text
+order: [garage, fridge, nonprofit, hardware-store, the-lot]

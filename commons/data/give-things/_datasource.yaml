@@ -1,0 +1,16 @@
+label: Give things
+fields:
+  - name: title
+    label: What
+    kind: text
+    required: true
+  - name: when
+    label: When
+    kind: text
+  - name: where
+    label: Where to drop it off
+    kind: text
+  - name: text
+    label: What we take
+    kind: text
+order: [tools, coats-and-boots, food, time]

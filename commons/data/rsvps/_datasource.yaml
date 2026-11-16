@@ -1,0 +1,27 @@
+label: Saved spots
+collected: true
+answer: rsvp-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your spot is saved."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: people
+    label: How many of you
+    kind: number
+    required: true
+  - name: event
+    label: Event
+    kind: text
+  - name: date
+    label: Date
+    kind: text

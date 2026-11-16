@@ -1,0 +1,10 @@
+{
+  "name": "Commons appeal jar",
+  "kind": "cta",
+  "source": "upstart",
+  "description": "An appeal for a goal: an ink jar that fills with marigold to where the appeal stands as it comes into view, its goal at the brim, beside the amount raised, from how many, by when, why, and two buttons.",
+  "tags": ["cta", "donation", "appeal", "fundraising", "goal", "progress", "nonprofit"],
+  "mood": ["friendly", "colorful", "warm"],
+  "synonyms": ["donate", "appeal", "fundraiser", "goal", "faire un don", "collecte", "appel aux dons", "objectif"],
+  "data": { "name": "appeal", "family": "collection" }
+}

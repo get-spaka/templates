@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Bread &amp; Bolts</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Bread &amp; Bolts">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+  <article class="mx-auto max-w-[80rem] px-5 pt-14 pb-20 md:px-8 lg:pt-20 lg:pb-28">
+    <header class="max-w-4xl" data-reveal>
+      <p class="kicker text-base-content/70"><a href="/news" class="ink-link">News</a> · {{ record.kind }} · <span class="tabular-nums">{{ record.date | date: "%B %-d, %Y" }}</span></p>
+      <h1 class="mt-5 text-[clamp(2.5rem,6vw,5.5rem)] font-extrabold">{% render 'whole-words', text: record.title %}</h1>
+      <p class="mt-6 text-xl md:text-2xl">{{ record.summary }}</p>
+      <p class="mt-5 font-semibold">By {{ record.author }}</p>
+    </header>
+    {% if record.cover %}<div class="mt-12 overflow-hidden rounded-t-box" data-torn="bottom" data-tear="1" data-reveal><img src="{{ record.cover }}" class="aspect-[16/9] w-full object-cover"></div>{% endif %}
+    <div class="story-text mx-auto mt-14 max-w-2xl" data-reveal>{{ record.body }}</div>
+  </article>
+  <section class="bg-base-200">
+    <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 lg:py-24">
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <h2 class="text-5xl md:text-6xl">More from the porch</h2>
+        <a href="/news" class="ink-link text-lg font-semibold">All the news →</a>
+      </div>
+      <div class="mt-12 grid gap-10 md:grid-cols-3 md:gap-6">
+        {% assign shown = 0 %}
+        {% for post in data.news %}{% if post.id != record.id and shown < 3 %}{% assign shown = shown | plus: 1 %}
+        {% render 'post-card', post: post, tear: shown %}
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>
