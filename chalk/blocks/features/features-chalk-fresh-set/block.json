@@ -3,19 +3,8 @@
   "kind": "features",
   "source": "upstart",
   "description": "The newest problems as hold tags: each a chunky hold in its circuit's color with the grade on it, then the problem's name, its wall, its setter and when it was set, with a New tag for the week's; two columns on a phone, three on a large screen.",
-  "tags": [
-    "climbing",
-    "problems",
-    "new",
-    "routes",
-    "grades",
-    "list"
-  ],
-  "mood": [
-    "bold",
-    "playful",
-    "colorful"
-  ],
+  "tags": ["climbing", "problems", "new", "routes", "grades", "list"],
+  "mood": ["bold", "playful", "colorful"],
   "synonyms": [
     "new problems",
     "new routes",

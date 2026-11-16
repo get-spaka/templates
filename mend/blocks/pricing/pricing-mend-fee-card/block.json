@@ -3,29 +3,9 @@
   "kind": "pricing",
   "source": "upstart",
   "description": "Plain fees on an oat card, each with its visit, minutes and price in large serif figures, beside three lines on referral, direct billing and receipts.",
-  "tags": [
-    "pricing",
-    "fees",
-    "insurance",
-    "prices",
-    "clinic",
-    "sessions"
-  ],
-  "mood": [
-    "warm",
-    "minimal",
-    "professional"
-  ],
-  "synonyms": [
-    "prices",
-    "fees",
-    "rates",
-    "insurance",
-    "tarifs",
-    "honoraires",
-    "prix des séances",
-    "remboursement"
-  ],
+  "tags": ["pricing", "fees", "insurance", "prices", "clinic", "sessions"],
+  "mood": ["warm", "minimal", "professional"],
+  "synonyms": ["prices", "fees", "rates", "insurance", "tarifs", "honoraires", "prix des séances", "remboursement"],
   "data": {
     "name": "fees",
     "family": "collection"

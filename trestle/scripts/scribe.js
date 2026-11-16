@@ -16,7 +16,7 @@ let stops = [];
 export function start(root) {
   for (const figure of within(root, "[data-scribe][data-same-view]")) {
     const frame = figure.querySelector("[data-scribe-frame]");
-    if (!frame || !frame.querySelector("[data-before]") || !frame.querySelector("[data-scribe-after] img")) continue;
+    if (!frame?.querySelector("[data-before]") || !frame.querySelector("[data-scribe-after] img")) continue;
 
     const set = (value) => figure.style.setProperty("--split", `${value}%`);
     const handle = document.createElement("span");

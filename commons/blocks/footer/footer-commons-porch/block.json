@@ -5,6 +5,15 @@
   "description": "A deep ink footer torn at the top: Come by the porch at poster size, Donate and Volunteer, a newsletter sign-up, a marigold notice with the address, hours, phone and email ending in tear-off tabs to directions, then the links and the social links.",
   "tags": ["footer", "address", "hours", "newsletter", "contact", "tear-off tabs"],
   "mood": ["dark", "friendly"],
-  "synonyms": ["footer", "site footer", "contact details", "bottom", "pied de page", "coordonnées", "bas de page", "nous trouver"],
+  "synonyms": [
+    "footer",
+    "site footer",
+    "contact details",
+    "bottom",
+    "pied de page",
+    "coordonnées",
+    "bas de page",
+    "nous trouver"
+  ],
   "data": { "name": "navigation", "family": "collection" }
 }

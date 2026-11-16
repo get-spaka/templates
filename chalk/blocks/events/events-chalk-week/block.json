@@ -3,17 +3,8 @@
   "kind": "events",
   "source": "upstart",
   "description": "The week's timetable colored by level: on a large screen seven columns from 6 am to 10 pm with each session placed at its time, on a phone a day picker and that day's sessions as a list; today is marked with a line at the current time.",
-  "tags": [
-    "timetable",
-    "schedule",
-    "classes",
-    "week",
-    "calendar"
-  ],
-  "mood": [
-    "bold",
-    "colorful"
-  ],
+  "tags": ["timetable", "schedule", "classes", "week", "calendar"],
+  "mood": ["bold", "colorful"],
   "synonyms": [
     "timetable",
     "schedule",

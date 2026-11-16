@@ -3,19 +3,8 @@
   "kind": "hero",
   "source": "upstart",
   "description": "The name at poster size with a line under it, and beside it the featured record (or the newest) as a square sleeve whose black disc slides out on load and keeps turning, with its kind, title, the services it is on, a Listen button and a Buy button.",
-  "tags": [
-    "hero",
-    "band",
-    "musician",
-    "record",
-    "album",
-    "release",
-    "music"
-  ],
-  "mood": [
-    "bold",
-    "dark"
-  ],
+  "tags": ["hero", "band", "musician", "record", "album", "release", "music"],
+  "mood": ["bold", "dark"],
   "synonyms": [
     "hero",
     "new album",

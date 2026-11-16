@@ -178,7 +178,9 @@ export function start(root) {
     const still = reduced();
     const scene = canvas ? sceneOf(canvas) : undefined;
     const cleanups = [];
-    running.set(figure, () => cleanups.forEach((undo) => undo()));
+    running.set(figure, () => {
+      for (const undo of cleanups) undo();
+    });
 
     if (!scene) {
       // No WebGL: the stylesheet's panels, drawn aside by the scroll.

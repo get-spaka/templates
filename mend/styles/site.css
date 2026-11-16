@@ -5,14 +5,16 @@
   src: url("/fonts/young-serif-latin.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Young Serif";
   src: url("/fonts/young-serif-latin-ext.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: "Inclusive Sans";
@@ -20,7 +22,8 @@
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Inclusive Sans";
@@ -28,7 +31,8 @@
   font-weight: 300 700;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: "Inclusive Sans";
@@ -36,7 +40,8 @@
   font-weight: 300 700;
   font-style: italic;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
   font-family: "Inclusive Sans";
@@ -44,7 +49,8 @@
   font-weight: 300 700;
   font-style: italic;
   font-display: swap;
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 /* Type, below Tailwind's utilities so that a class still wins. */
@@ -212,7 +218,8 @@
 /* The joints of the open area, and of an area under the pointer or focused, are lit. */
 :is(
     [data-body-map]:has(details[data-area="head-neck"]:is([open], :hover, :focus-within)) [data-joint="head-neck"],
-    [data-body-map]:has(details[data-area="shoulder-arm"]:is([open], :hover, :focus-within)) [data-joint="shoulder-arm"],
+    [data-body-map]:has(details[data-area="shoulder-arm"]:is([open], :hover, :focus-within))
+      [data-joint="shoulder-arm"],
     [data-body-map]:has(details[data-area="back"]:is([open], :hover, :focus-within)) [data-joint="back"],
     [data-body-map]:has(details[data-area="hip-pelvis"]:is([open], :hover, :focus-within)) [data-joint="hip-pelvis"],
     [data-body-map]:has(details[data-area="knee"]:is([open], :hover, :focus-within)) [data-joint="knee"],
@@ -287,13 +294,13 @@
   opacity: 0.3;
 }
 :is(
-    [data-hour]:has([data-step="1"]:is(:hover, :focus-within)) [data-arc="1"],
-    [data-hour]:has([data-step="2"]:is(:hover, :focus-within)) [data-arc="2"],
-    [data-hour]:has([data-step="3"]:is(:hover, :focus-within)) [data-arc="3"],
-    [data-hour]:has([data-step="4"]:is(:hover, :focus-within)) [data-arc="4"],
-    [data-hour]:has([data-step="5"]:is(:hover, :focus-within)) [data-arc="5"],
-    [data-hour]:has([data-step="6"]:is(:hover, :focus-within)) [data-arc="6"]
-  ) {
+  [data-hour]:has([data-step="1"]:is(:hover, :focus-within)) [data-arc="1"],
+  [data-hour]:has([data-step="2"]:is(:hover, :focus-within)) [data-arc="2"],
+  [data-hour]:has([data-step="3"]:is(:hover, :focus-within)) [data-arc="3"],
+  [data-hour]:has([data-step="4"]:is(:hover, :focus-within)) [data-arc="4"],
+  [data-hour]:has([data-step="5"]:is(:hover, :focus-within)) [data-arc="5"],
+  [data-hour]:has([data-step="6"]:is(:hover, :focus-within)) [data-arc="6"]
+) {
   opacity: 1;
   stroke-width: 22;
 }

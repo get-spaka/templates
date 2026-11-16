@@ -3,19 +3,8 @@
   "kind": "footer",
   "source": "upstart",
   "description": "An indigo footer under a marigold thread: \"Come and stay\" with the booking button, the address with a link to open it in Maps, email, phone and WhatsApp, the season's letter (its form posts to the site's newsletter list) and the links.",
-  "tags": [
-    "footer",
-    "hotel",
-    "guesthouse",
-    "address",
-    "contact",
-    "newsletter"
-  ],
-  "mood": [
-    "elegant",
-    "warm",
-    "colorful"
-  ],
+  "tags": ["footer", "hotel", "guesthouse", "address", "contact", "newsletter"],
+  "mood": ["elegant", "warm", "colorful"],
   "synonyms": [
     "footer",
     "site footer",

@@ -13,4 +13,11 @@ fields:
   - name: link_label
     label: Button
     kind: text
-order: [sign-the-waiver-online, wear-something-you-can-move-in, shoes-and-chalk-at-the-desk, thirty-minutes-with-a-coach, climb-the-yellows]
+order:
+  [
+    sign-the-waiver-online,
+    wear-something-you-can-move-in,
+    shoes-and-chalk-at-the-desk,
+    thirty-minutes-with-a-coach,
+    climb-the-yellows,
+  ]

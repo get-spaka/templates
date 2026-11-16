@@ -63,4 +63,12 @@ fields:
   - name: story
     label: The story
     kind: markdown
-order: [allen-street-kitchen, broad-street-porch, claverack-farmhouse, montgomery-street-library, william-street-windows, ghent-stair]
+order:
+  [
+    allen-street-kitchen,
+    broad-street-porch,
+    claverack-farmhouse,
+    montgomery-street-library,
+    william-street-windows,
+    ghent-stair,
+  ]

@@ -24,7 +24,11 @@ export function start(root) {
       holds.forEach((hold, i) => {
         const delay = 0.12 + i * 0.09;
         Motion.animate(hold, { opacity: [0, 1] }, { duration: 0.2, delay });
-        Motion.animate(hold, { scale: [0.4, 1], rotate: [-90, 0] }, { type: "spring", stiffness: 260, damping: 13, delay });
+        Motion.animate(
+          hold,
+          { scale: [0.4, 1], rotate: [-90, 0] },
+          { type: "spring", stiffness: 260, damping: 13, delay },
+        );
       });
     };
     if (group.getAttribute("data-bolt") === "load") go();

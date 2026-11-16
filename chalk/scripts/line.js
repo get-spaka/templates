@@ -68,7 +68,11 @@ function route(el) {
     }
     const stops = holds.map((h) => {
       const r = h.getBoundingClientRect();
-      return { x: r.left + r.width / 2 - box.left, y: r.top + r.height / 2 - box.top, page: r.top + r.height / 2 + scrollY };
+      return {
+        x: r.left + r.width / 2 - box.left,
+        y: r.top + r.height / 2 - box.top,
+        page: r.top + r.height / 2 + scrollY,
+      };
     });
 
     // The points the path goes through: each stop, and where it changes side, two

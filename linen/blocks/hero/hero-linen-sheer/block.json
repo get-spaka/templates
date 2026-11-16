@@ -3,21 +3,8 @@
   "kind": "hero",
   "source": "upstart",
   "description": "A line and a large heading with one italic word over a wide photo inset in the linen with a fine double casing; a sheer curtain of two linen panels moves over it in the breeze (WebGL, with CSS panels where it is not available) and draws aside as the page scrolls; a booking bar for the dates and guests straddles the window's bottom edge.",
-  "tags": [
-    "hero",
-    "hotel",
-    "guesthouse",
-    "booking",
-    "dates",
-    "photo",
-    "curtain",
-    "webgl"
-  ],
-  "mood": [
-    "elegant",
-    "warm",
-    "minimal"
-  ],
+  "tags": ["hero", "hotel", "guesthouse", "booking", "dates", "photo", "curtain", "webgl"],
+  "mood": ["elegant", "warm", "minimal"],
   "synonyms": [
     "hero",
     "hotel hero",

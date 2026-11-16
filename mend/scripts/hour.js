@@ -38,7 +38,7 @@ export function start(root) {
     stops.push(() => {
       stopView();
       for (const animation of running) animation.stop();
-      arcs.forEach((arc, i) => arc.setAttribute("stroke-dasharray", dash[i]));
+      for (const [i, arc] of arcs.entries()) arc.setAttribute("stroke-dasharray", dash[i]);
     });
   }
 }

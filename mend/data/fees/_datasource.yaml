@@ -20,4 +20,12 @@ fields:
   - name: featured
     label: On the home page's fee card
     kind: boolean
-order: [physiotherapy-first-visit, physiotherapy-follow-up, osteopathy-first-visit, osteopathy-follow-up, pelvic-health-first-visit, pelvic-health-follow-up]
+order:
+  [
+    physiotherapy-first-visit,
+    physiotherapy-follow-up,
+    osteopathy-first-visit,
+    osteopathy-follow-up,
+    pelvic-health-first-visit,
+    pelvic-health-follow-up,
+  ]

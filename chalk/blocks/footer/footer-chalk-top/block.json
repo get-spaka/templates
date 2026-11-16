@@ -3,17 +3,8 @@
   "kind": "footer",
   "source": "upstart",
   "description": "A graphite footer that ends the page's route on a large TOP hold under 'Topped out?', with a sign-up for the weekly set list, the week's hours as bars with their busy hours shaded, the address, the pages and the social links.",
-  "tags": [
-    "footer",
-    "newsletter",
-    "hours",
-    "address",
-    "contact"
-  ],
-  "mood": [
-    "dark",
-    "bold"
-  ],
+  "tags": ["footer", "newsletter", "hours", "address", "contact"],
+  "mood": ["dark", "bold"],
   "synonyms": [
     "footer",
     "site footer",

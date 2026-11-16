@@ -38,7 +38,15 @@ export function start(root) {
     const cards = [...board.querySelectorAll("[data-key-card]")];
     if (wide && mouse) {
       const keys = cards.map((card) => card.querySelector("[data-key]")).filter(Boolean);
-      stops.push(Motion.inView(board, () => keys.forEach((key, i) => draft(key, i * 0.09)), { amount: 0.15 }));
+      stops.push(
+        Motion.inView(
+          board,
+          () => {
+            for (const [i, key] of keys.entries()) draft(key, i * 0.09);
+          },
+          { amount: 0.15 },
+        ),
+      );
     } else {
       for (const card of cards) {
         const key = card.querySelector("[data-key]");

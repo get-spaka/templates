@@ -21,9 +21,8 @@ export function start(root) {
       Motion.inView(
         el,
         () => {
-          items.forEach((item, i) =>
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.9, ease: EASE, delay: i * 0.08 }),
-          );
+          for (const [i, item] of items.entries())
+            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.9, ease: EASE, delay: i * 0.08 });
         },
         { amount: 0.05 },
       ),

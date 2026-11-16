@@ -20,4 +20,17 @@ fields:
   - name: featured
     label: On the home page
     kind: boolean
-order: [monthly, annual, student, youth, family-add-on, first-visit, day-pass, off-peak-day-pass, ten-visit-card, youth-day-pass, shoe-rental]
+order:
+  [
+    monthly,
+    annual,
+    student,
+    youth,
+    family-add-on,
+    first-visit,
+    day-pass,
+    off-peak-day-pass,
+    ten-visit-card,
+    youth-day-pass,
+    shoe-rental,
+  ]

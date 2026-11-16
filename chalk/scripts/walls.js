@@ -23,7 +23,11 @@ export function start(root) {
         drawing,
         () => {
           walls.forEach(({ el, lean }, i) => {
-            Motion.animate(el, { rotate: [-lean, 0] }, { type: "spring", stiffness: 90, damping: 11, delay: 0.15 + i * 0.14 });
+            Motion.animate(
+              el,
+              { rotate: [-lean, 0] },
+              { type: "spring", stiffness: 90, damping: 11, delay: 0.15 + i * 0.14 },
+            );
           });
         },
         { amount: 0.2 },

@@ -3,20 +3,8 @@
   "kind": "gallery",
   "source": "upstart",
   "description": "The records as square sleeves in a row, a black disc peeking out of each that slides out and turns at the record's speed under the pointer, with the title, kind and year; each sleeve flies to the record's own page, the sleeve large with its disc rolling out as you scroll, the listen links, then the paper back of the sleeve with the sides, the credits and the liner notes.",
-  "tags": [
-    "records",
-    "discography",
-    "albums",
-    "releases",
-    "music",
-    "vinyl",
-    "tracklist"
-  ],
-  "mood": [
-    "bold",
-    "dark",
-    "playful"
-  ],
+  "tags": ["records", "discography", "albums", "releases", "music", "vinyl", "tracklist"],
+  "mood": ["bold", "dark", "playful"],
   "synonyms": [
     "discography",
     "records",

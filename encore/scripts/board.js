@@ -24,11 +24,14 @@ function flip(char, delay, timers) {
   char.setAttribute("data-glyph", random());
   for (let i = 0; i <= steps; i++) {
     timers.push(
-      setTimeout(() => {
-        if (i < steps) char.setAttribute("data-glyph", random());
-        else char.removeAttribute("data-glyph");
-        Motion.animate(char, { rotateX: [-80, 0] }, { duration: STEP / 1000, ease: "easeOut" });
-      }, delay + i * STEP),
+      setTimeout(
+        () => {
+          if (i < steps) char.setAttribute("data-glyph", random());
+          else char.removeAttribute("data-glyph");
+          Motion.animate(char, { rotateX: [-80, 0] }, { duration: STEP / 1000, ease: "easeOut" });
+        },
+        delay + i * STEP,
+      ),
     );
   }
 }
@@ -58,10 +61,9 @@ export function start(root) {
     };
     // Every tile shows another letter until its turn comes.
     for (const char of board.querySelectorAll("[data-flap] .char")) char.setAttribute("data-glyph", random());
-    const stopView =
-      board.getAttribute("data-board") === "load"
-        ? (timers.push(setTimeout(play, 250)), () => {})
-        : Motion.inView(board, play, { amount: 0.05 });
+    let stopView = () => {};
+    if (board.getAttribute("data-board") === "load") timers.push(setTimeout(play, 250));
+    else stopView = Motion.inView(board, play, { amount: 0.05 });
 
     stops.push(() => {
       stopView();
