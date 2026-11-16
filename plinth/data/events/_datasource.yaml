@@ -1,0 +1,57 @@
+label: Program
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [talk, tour, family, evening]
+  - name: date
+    label: Date (the first, for an event that repeats)
+    kind: date
+  - name: time
+    label: Starts
+    kind: text
+  - name: ends
+    label: Ends
+    kind: text
+  - name: repeats
+    label: Repeats
+    kind: text
+  - name: place
+    label: Where in the museum
+    kind: text
+  - name: price
+    label: Price (leave empty when free with admission)
+    kind: text
+  - name: speaker
+    label: Speaker
+    kind: text
+  - name: summary
+    label: One line
+    kind: text
+  - name: work
+    label: The work it starts from
+    kind: choice
+    choices:
+      [
+        summer-evening-southern-beach,
+        summer-evening-wife-and-dog,
+        sunlight-in-the-blue-room,
+        interior-strandgade-30,
+        moonlight-strandgade-30,
+        moonlight-evening,
+        riddarfjarden-stockholm,
+        hornsgatan-by-night,
+        night-roros-church,
+        winter-night-in-the-mountains,
+        nordic-summer-evening,
+        summer-night,
+      ]
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: date

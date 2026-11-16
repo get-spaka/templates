@@ -1,0 +1,44 @@
+{%- assign tickets = data.navigation | where: "place", "tickets" | first -%}
+{%- assign here = page.url | append: "/" -%}
+<header class="site-header sticky z-40 bg-base-100 text-base-content">
+  <div class="mx-auto flex h-9 max-w-[84rem] items-center justify-between gap-6 px-5 ui md:px-8">
+    {% render 'today', class: "" %}
+    <p class="hidden shrink-0 text-base-content/70 md:block">Hallgren Museum of Art · Pier 7, Astoria</p>
+  </div>
+  <span hidden data-today-hours>{% for h in data.hours %}<i data-weekday="{{ h.weekday }}" data-day="{{ h.day }}" data-opens="{{ h.opens }}" data-closes="{{ h.closes }}" data-note="{{ h.note }}"></i>{% endfor %}</span>
+  <div class="site-bar">
+    <div class="mx-auto flex h-[4.5rem] max-w-[84rem] items-center gap-8 px-5 md:px-8">
+      <a href="/" class="flex shrink-0 items-baseline gap-2 font-heading whitespace-nowrap">
+        <span class="text-[1.375rem] leading-none font-semibold tracking-[-0.03em]">Long Light</span>
+        <span class="hidden text-base text-base-content/70 xl:inline">at the Hallgren</span>
+      </a>
+      <nav aria-label="Main" class="ml-auto hidden lg:block">
+        <ul class="flex items-center gap-7 font-heading text-[0.9375rem] font-medium whitespace-nowrap">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}{% assign base = item.href | append: "/" %}
+          <li><a href="{{ item.href }}" class="nav-link py-2" {% if here contains base %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <div class="ml-auto flex items-center gap-2 lg:ml-0">
+        {% if tickets %}<a href="{{ tickets.href }}" target="_blank" rel="noopener" class="btn btn-primary">{{ tickets.label }}</a>{% endif %}
+        <details class="site-menu lg:hidden">
+          <summary class="btn btn-ghost btn-square relative z-[60]" aria-label="Menu">
+            <svg class="menu-open size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M3 8h18"/><path d="M3 16h18"/></svg>
+            <svg class="menu-close size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14"/><path d="M19 5 5 19"/></svg>
+          </summary>
+          <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-base-100 px-5 pt-32 pb-10 text-base-content">
+            <ul class="space-y-1">
+              {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}{% assign base = item.href | append: "/" %}
+              <li><a href="{{ item.href }}" class="nav-link block font-heading text-5xl leading-[1.15] font-medium tracking-[-0.03em]" {% if here contains base %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+            <div class="mt-12 flex flex-col gap-4">
+              {% if tickets %}<a href="{{ tickets.href }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg">{{ tickets.label }}</a>{% endif %}
+              <p class="ui text-base-content/70">Hallgren Museum of Art · Pier 7, Astoria</p>
+            </div>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>

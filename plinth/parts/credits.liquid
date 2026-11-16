@@ -1,0 +1,21 @@
+{%- comment -%} Who made the exhibition: the organizer, the collections the works belong to, and the supporters, as typographic wordmarks. {%- endcomment -%}
+{%- assign organizers = data["exhibition-credits"] | where: "group", "organizer" -%}
+{%- assign collections = data["exhibition-credits"] | where: "group", "collection" -%}
+{%- assign supporters = data["exhibition-credits"] | where: "group", "supporter" -%}
+<section class="border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-3">
+    <div>
+      <h2 class="ui text-base-content/70">Organized by</h2>
+      <ul class="mt-5 space-y-2">{% for c in organizers %}<li class="font-heading text-2xl font-semibold tracking-[-0.02em]">{{ c.name }}</li>{% endfor %}</ul>
+      <p class="mt-6 max-w-[24em] text-base-content/80">Curated by Signe Aaltonen, with the museum's conservation and education teams.</p>
+    </div>
+    <div>
+      <h2 class="ui text-base-content/70">Where the works belong</h2>
+      <ul class="mt-5 space-y-2">{% for c in collections %}<li class="font-heading text-xl font-medium tracking-[-0.015em]">{{ c.name }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2 class="ui text-base-content/70">Supported by</h2>
+      <ul class="mt-5 space-y-2">{% for c in supporters %}<li class="font-body text-xl italic">{{ c.name }}</li>{% endfor %}</ul>
+    </div>
+  </div>
+</section>

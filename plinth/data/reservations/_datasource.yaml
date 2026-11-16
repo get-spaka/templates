@@ -1,0 +1,25 @@
+label: Reserved seats
+collected: true
+answer: reservation-thanks
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your seats are reserved."
+fields:
+  - name: event
+    label: Event
+    kind: text
+    required: true
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: seats
+    label: Seats
+    kind: number
+    required: true

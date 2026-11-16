@@ -1,0 +1,35 @@
+label: Artists
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: born
+    label: Born
+    kind: number
+  - name: died
+    label: Died
+    kind: number
+  - name: places
+    label: Places
+    kind: text
+  - name: country
+    label: Country
+    kind: text
+  - name: initials
+    label: Initials (shown when there is no portrait)
+    kind: text
+  - name: portrait
+    label: Portrait
+    kind: image
+  - name: portrait_label
+    label: The portrait's label
+    kind: text
+  - name: summary
+    label: One line
+    kind: text
+  - name: body
+    label: Life
+    kind: markdown
+body: body
+order: [peder-severin-kroyer, anna-ancher, vilhelm-hammershoi, eugene-jansson, richard-bergh, harald-sohlberg]

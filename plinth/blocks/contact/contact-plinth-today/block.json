@@ -1,0 +1,19 @@
+{
+  "name": "Plinth open today",
+  "kind": "contact",
+  "source": "upstart",
+  "description": "A museum's visit section: the open today line, read in the museum's own time zone (open until, open tonight, opens tomorrow), the address set large, admission in one line, a Buy tickets button and the week's hours as a table.",
+  "tags": ["hours", "opening hours", "visit", "address", "tickets", "museum", "open today"],
+  "mood": ["minimal", "editorial"],
+  "synonyms": [
+    "hours",
+    "opening hours",
+    "visit us",
+    "open today",
+    "horaires",
+    "heures d'ouverture",
+    "venir",
+    "ouvert aujourd'hui"
+  ],
+  "data": { "name": "hours", "family": "collection" }
+}

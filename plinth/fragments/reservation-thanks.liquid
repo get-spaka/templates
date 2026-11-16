@@ -1,0 +1,5 @@
+<div class="border-t border-base-content pt-6" role="status">
+  <p class="ui text-base-content/70">Reserved</p>
+  <p class="mt-2 text-2xl leading-snug">Thank you, {{ record.name }}. {{ record.seats }} {% if record.seats == 1 %}seat is{% else %}seats are{% endif %} held for you at {{ record.event }}.</p>
+  <p class="mt-3 text-base-content/80">We hold them until ten minutes before the start; after that, they go to whoever is waiting at the door. A note is on its way to {{ record.email }}.</p>
+</div>

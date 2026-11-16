@@ -1,0 +1,18 @@
+{
+  "name": "Plinth one work",
+  "kind": "about",
+  "source": "upstart",
+  "description": "One work shown large and whole on a wall painted in the theme's green, with its full museum label (artist and dates, title in italic, year, medium, size, collection) and a paragraph about it: a work of the month, a highlight or a new acquisition.",
+  "tags": ["artwork", "highlight", "work of the month", "painting", "label", "museum"],
+  "mood": ["elegant", "editorial", "minimal"],
+  "synonyms": [
+    "featured work",
+    "highlight",
+    "work of the month",
+    "spotlight",
+    "œuvre du mois",
+    "œuvre phare",
+    "coup de projecteur",
+    "focus"
+  ]
+}

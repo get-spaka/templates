@@ -1,0 +1,13 @@
+label: Letter sign-ups
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many sign-ups were sent from here. Please try again in a few minutes."
+  sent: "Thank you, you're on the list."
+fields:
+  - name: email
+    label: Your email
+    kind: email
+    required: true

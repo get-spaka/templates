@@ -1,0 +1,30 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[84rem] gap-14 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-20">
+    <div>
+      <p class="ui text-base-content/70">Visit</p>
+      <p class="mt-6 flex min-w-0 items-center gap-3 font-heading text-2xl font-medium tracking-[-0.01em] md:text-[2rem]" data-today data-tz="America/Los_Angeles">
+        <span class="today-dot size-3" aria-hidden="true"></span>
+        <span data-today-text>Wednesday to Sunday, 10 to 5</span>
+        <template data-say="open">Open today until {closes}</template>
+        <template data-say="late">Open tonight until {closes} · {note}</template>
+        <template data-say="later">Opens today at {opens}</template>
+        <template data-say="tomorrow">Opens tomorrow at {opens}</template>
+        <template data-say="next">Opens {day} at {opens}</template>
+      </p>
+      <address class="mt-10 font-heading text-[2.5rem] leading-[1.02] font-medium tracking-[-0.03em] not-italic md:text-[3.75rem]">Pier 7, foot of 7th&nbsp;Street<br>Astoria, Oregon</address>
+      <p class="mt-8 max-w-[30em] text-base-content/80">Admission $16, $12 for seniors and students, free under 18 and for members. Free for everyone on Thursdays after 5.</p>
+      <a href="https://example.org/tickets" target="_blank" rel="noopener" class="btn btn-primary btn-lg mt-10">Buy tickets</a>
+    </div>
+    <table class="w-full ui-lg" data-today-hours>
+      <caption class="sr-only">Opening hours</caption>
+      <tbody>
+        {%- for h in data.hours %}
+        <tr class="border-t border-base-300" data-weekday="{{ h.weekday }}" data-day="{{ h.day }}" data-opens="{{ h.opens }}" data-closes="{{ h.closes }}" data-note="{{ h.note }}">
+          <th scope="row" class="py-3 text-left font-medium">{{ h.day }}</th>
+          <td class="py-3 text-right tabular-nums">{% if h.opens != blank %}{% render 'clock', time: h.opens %} to {% render 'clock', time: h.closes %}{% if h.note != blank %}<span class="block ui text-base-content/70">{{ h.note }}</span>{% endif %}{% else %}<span class="text-base-content/70">Closed</span>{% endif %}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

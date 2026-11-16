@@ -1,0 +1,44 @@
+<form hx-post="/_data/group-visits" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#groups-problems swap:innerHTML" class="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+  <fieldset class="fieldset sm:col-span-2">
+    <legend class="fieldset-legend ui">Kind of group</legend>
+    <div class="chips ui">
+      <label><input type="radio" name="group" value="School" checked>School</label>
+      <label><input type="radio" name="group" value="College or university">College or university</label>
+      <label><input type="radio" name="group" value="Community group">Community group</label>
+      <label><input type="radio" name="group" value="Private group">Private group</label>
+    </div>
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">How many people</legend>
+    <input name="size" type="number" min="5" max="60" required class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Date you would like</legend>
+    <input name="date" type="date" min="2027-01-23" max="2027-05-16" required class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Time you would like <span class="font-normal text-base-content/70">(optional)</span></legend>
+    <input name="time" type="text" maxlength="60" placeholder="Morning, around 10" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Your name</legend>
+    <input name="name" type="text" required maxlength="200" autocomplete="name" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Your email</legend>
+    <input name="email" type="email" required maxlength="200" autocomplete="email" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+    <input name="phone" type="tel" maxlength="30" autocomplete="tel" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset sm:col-span-2">
+    <legend class="fieldset-legend ui">Anything we should know <span class="font-normal text-base-content/70">(optional)</span></legend>
+    <textarea name="message" rows="4" maxlength="2000" class="textarea w-full border-base-content" placeholder="Ages, a subject you are studying, access needs, an ASL tour"></textarea>
+  </fieldset>
+  <div id="groups-problems" class="empty:hidden sm:col-span-2"></div>
+  <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 sm:col-span-2">
+    <button class="btn btn-primary btn-lg">Ask for a visit</button>
+    <p class="ui text-base-content/70">We confirm by email within two working days.</p>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 pt-24 pb-12 md:px-8 md:pt-32">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="display">Five rooms, five dusks</h2>
+      <p class="max-w-[24em] text-base-content/80">Each room is painted a color of the evening, and hangs the works that belong to it.</p>
+    </div>
+  </div>
+  <ol class="border-b border-base-content/15">
+    {%- for room in data.rooms %}
+    <li>
+      <a href="/exhibition#{{ room.id }}" class="chip block border-t border-base-content/15" data-wall="{{ room.wall }}">
+        <div class="mx-auto grid max-w-[84rem] grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-x-5 gap-y-3 px-5 py-8 md:grid-cols-[9rem_minmax(0,1fr)_auto] md:gap-x-10 md:px-8 md:py-10">
+          <span class="numeral text-[5rem] md:text-[8rem]" aria-hidden="true">{{ room.number }}</span>
+          <div>
+            <p class="ui muted">Room {{ room.number }}</p>
+            <h3 class="mt-1 text-3xl md:text-[2.75rem]">{{ room.title }}</h3>
+            <p class="mt-3 max-w-[34em] muted">{{ room.summary }}</p>
+          </div>
+          <p class="col-start-2 ui whitespace-nowrap md:col-start-auto">Enter the room <span aria-hidden="true">→</span></p>
+        </div>
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

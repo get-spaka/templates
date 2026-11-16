@@ -1,0 +1,46 @@
+label: Works
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: artist
+    label: Artist
+    kind: choice
+    choices: [peder-severin-kroyer, anna-ancher, vilhelm-hammershoi, eugene-jansson, richard-bergh, harald-sohlberg]
+  - name: year
+    label: Year
+    kind: text
+  - name: medium
+    label: Medium
+    kind: text
+  - name: height
+    label: Height (cm)
+    kind: number
+  - name: width
+    label: Width (cm)
+    kind: number
+  - name: collection
+    label: Collection
+    kind: text
+  - name: room
+    label: Room
+    kind: choice
+    choices: [room-1, room-2, room-3, room-4, room-5]
+  - name: number
+    label: Catalogue number
+    kind: number
+  - name: image
+    label: Image
+    kind: image
+  - name: focus
+    label: Detail to step back from (x% y%)
+    kind: text
+  - name: featured
+    label: On the home page's wall
+    kind: boolean
+  - name: body
+    label: About the work
+    kind: markdown
+body: body
+sort: number

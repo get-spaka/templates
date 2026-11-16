@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.36 0.1 258);
+  --theme-color-primary-content: oklch(0.975 0.004 95);
+  --theme-color-secondary: oklch(0.4 0.06 160);
+  --theme-color-secondary-content: oklch(0.97 0.008 95);
+  --theme-color-accent: oklch(0.86 0.13 88);
+  --theme-color-accent-content: oklch(0.21 0.012 265);
+  --theme-color-neutral: oklch(0.2 0.02 262);
+  --theme-color-neutral-content: oklch(0.97 0.008 95);
+  --theme-color-surface: oklch(0.975 0.004 95);
+  --theme-color-surface-alt: oklch(0.925 0.012 85);
+  --theme-color-border: oklch(0.86 0.008 85);
+  --theme-color-text: oklch(0.21 0.012 265);
+  --theme-font-heading: "Familjen Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --theme-font-body: "Source Serif 4", ui-serif, Georgia, serif;
+  --theme-radius: 0rem;
+  --theme-radius-field: 0rem;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

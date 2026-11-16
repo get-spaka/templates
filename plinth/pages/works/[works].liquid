@@ -1,0 +1,84 @@
+{%- assign room = data.rooms | where: "id", record.room | first -%}
+{%- assign artist = data.artists | where: "id", record.artist | first -%}
+{%- assign in_room = data.works | where: "room", record.room -%}
+{%- assign place = 1 -%}{%- for w in in_room -%}{%- if w.id == record.id -%}{%- assign place = forloop.index -%}{%- endif -%}{%- endfor -%}
+{%- assign i = 0 -%}{%- for w in data.works -%}{%- if w.id == record.id -%}{%- assign i = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign prev_i = i | minus: 1 -%}{%- assign next_i = i | plus: 1 -%}
+{%- if i > 0 -%}{%- assign prev = data.works[prev_i] -%}{%- endif -%}
+{%- assign next = data.works[next_i] -%}
+{%- assign theirs = data.works | where: "artist", record.artist -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — {{ artist.name }} — Long Light at the Hallgren</title>
+<meta name="description" content="{{ artist.name }}, {{ record.title }}, {{ record.year }}. {{ record.medium }}, {{ record.height }} × {{ record.width }} cm. Collection: {{ record.collection }}. In Long Light, Room {{ room.number }}.">
+<meta property="og:title" content="{{ record.title }} — {{ artist.name }} — Long Light at the Hallgren">
+<meta property="og:description" content="{{ artist.name }}, {{ record.title }}, {{ record.year }}. In Long Light, Room {{ room.number }}, at the Hallgren Museum of Art.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+  <section data-wall="{{ room.wall }}">
+    <div class="mx-auto max-w-[84rem] px-5 pt-10 pb-16 md:px-8 md:pt-14 md:pb-24">
+      <p class="ui muted"><a href="/exhibition#{{ room.id }}" class="ink-link">Room {{ room.number }}, {{ room.title }}</a> · {{ place }} of {{ in_room.size }}</p>
+      <figure class="mt-10 flex justify-center md:mt-14">
+        {%- if record.image %}
+        <img src="{{ record.image }}" class="block h-auto max-h-[min(76svh,42rem)] w-auto max-w-full object-contain">
+        {%- else %}
+        <span class="block w-full max-w-[36rem] bg-base-200" style="aspect-ratio: {{ record.width }} / {{ record.height }}" aria-hidden="true"></span>
+        {%- endif %}
+      </figure>
+    </div>
+  </section>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto grid max-w-[84rem] gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
+      <div>
+        {% render 'plaque', work: record, artist: artist, full: true, number: true, class: "text-[0.9375rem] [&_.plaque-title]:text-[1.375rem]" %}
+        {%- if record.image %}
+        <a href="{{ record.image }}" class="btn btn-outline mt-8 border-base-content" data-look>Look closer</a>
+        {%- endif %}
+      </div>
+      <div>
+        <h1 class="display"><i class="font-body font-light">{{ record.title }}</i></h1>
+        <div class="copy measure mt-10 text-lg leading-relaxed">{{ record.body }}</div>
+        <p class="mt-10 ui-lg"><a href="/artists/{{ artist.id }}" class="ink-link">More about {{ artist.name }}</a></p>
+      </div>
+    </div>
+  </section>
+  <nav aria-label="In the hang" class="border-y border-base-300 bg-base-100 text-base-content">
+    <div class="mx-auto grid max-w-[84rem] gap-6 px-5 py-10 md:grid-cols-2 md:px-8">
+      <div>
+        {%- if prev %}
+        <a href="/works/{{ prev.id }}" class="group block">
+          <span class="ui text-base-content/70">← Before it in the hang</span>
+          <span class="mt-2 block text-2xl leading-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4"><i class="font-body">{{ prev.title }}</i></span>
+        </a>
+        {%- endif %}
+      </div>
+      <div class="md:text-right">
+        {%- if next %}
+        <a href="/works/{{ next.id }}" class="group block">
+          <span class="ui text-base-content/70">After it in the hang →</span>
+          <span class="mt-2 block text-2xl leading-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4"><i class="font-body">{{ next.title }}</i></span>
+        </a>
+        {%- endif %}
+      </div>
+    </div>
+  </nav>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-28">
+      {%- if theirs.size > 1 %}
+      <h2 class="display">Also by {{ artist.name }}</h2>
+      {% render 'hang', works: theirs, artists: data.artists, skip: record.id, class: "mt-14" %}
+      {%- endif %}
+      <div class="mt-14 flex flex-wrap gap-3">
+        <a href="/works" class="btn btn-outline border-base-content">All works</a>
+        <a href="/exhibition#{{ room.id }}" class="btn btn-ghost">Room {{ room.number }}</a>
+      </div>
+    </div>
+  </section>
+</main>
+{% render 'look' %}
+{% render 'footer' %}
+</body>
+</html>

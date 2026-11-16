@@ -1,0 +1,12 @@
+{%- comment -%} The open today line: the museum's hours read in its own time zone by scripts/today.js, which says them with the sentences below; with no script, the line as written. {%- endcomment -%}
+<p class="flex min-w-0 items-center gap-2 {{ class }}" data-today data-tz="America/Los_Angeles" data-last-day="2027-05-16">
+  <span class="today-dot" aria-hidden="true"></span>
+  <span class="truncate" data-today-text>Wednesday to Sunday, 10 to 5</span>
+  <template data-say="open">Open today until {closes}</template>
+  <template data-say="late">Open tonight until {closes} · {note}</template>
+  <template data-say="later">Opens today at {opens}</template>
+  <template data-say="tomorrow">Opens tomorrow at {opens}</template>
+  <template data-say="next">Opens {day} at {opens}</template>
+  <template data-say="last">Last {days} days</template>
+  <template data-say="over">Long Light has now closed</template>
+</p>

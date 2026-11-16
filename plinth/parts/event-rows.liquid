@@ -1,0 +1,38 @@
+{%- comment -%} Events by date: day at poster size (or the repeat), kind and place, title and line, time and price. filter: true adds the kind filter (scripts/filter.js). {%- endcomment -%}
+<div {% if filter %}data-filter="kind"{% endif %}>
+  {%- if filter %}
+  <fieldset class="chips mb-10 ui">
+    <legend class="sr-only">Show one kind of event</legend>
+    <label><input type="radio" name="kind" value="all" checked>Everything</label>
+    <label><input type="radio" name="kind" value="talk">Talks</label>
+    <label><input type="radio" name="kind" value="tour">Tours</label>
+    <label><input type="radio" name="kind" value="family">Families</label>
+    <label><input type="radio" name="kind" value="evening">Evenings</label>
+  </fieldset>
+  {%- endif %}
+  <ul class="border-b border-base-300">
+    {%- for event in events limit: limit %}
+    <li class="grid gap-x-10 gap-y-4 border-t border-base-300 py-8 md:grid-cols-[11rem_minmax(0,1fr)_14rem] md:py-10" data-keys="{{ event.kind }}">
+      <div class="font-heading">
+        {%- if event.repeats != blank %}
+        <p class="text-[2rem] leading-none font-medium tracking-[-0.03em]">{{ event.repeats }}</p>
+        <p class="mt-2 ui text-base-content/70">from {{ event.date | date: "%B %-d" }}</p>
+        {%- else %}
+        <p class="flex items-baseline gap-3"><span class="numeral text-[4.5rem]">{{ event.date | date: "%-d" }}</span><span class="ui-lg">{{ event.date | date: "%b %Y" }}</span></p>
+        <p class="mt-1 ui text-base-content/70">{{ event.date | date: "%A" }}</p>
+        {%- endif %}
+      </div>
+      <div>
+        <p class="ui text-base-content/70">{% case event.kind %}{% when "talk" %}Talk{% when "tour" %}Tour{% when "family" %}Families{% when "evening" %}Evening{% endcase %} · {{ event.place }}</p>
+        <h3 class="mt-2 text-3xl leading-[1.05] md:text-4xl"><a href="/program/{{ event.id }}" class="hover:underline hover:decoration-1 hover:underline-offset-4">{{ event.title }}</a></h3>
+        <p class="mt-3 max-w-[34em] text-base-content/80">{{ event.summary }}</p>
+      </div>
+      <div class="ui-lg md:text-right">
+        <p class="tabular-nums">{{ event.time }}{% if event.ends != blank %} – {{ event.ends }}{% endif %}</p>
+        <p class="mt-1 text-base-content/70">{% if event.price != blank %}{{ event.price }}{% else %}Free with admission{% endif %}</p>
+        <a href="/program/{{ event.id }}" class="ink-link mt-4 inline-block">Reserve a seat</a>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</div>

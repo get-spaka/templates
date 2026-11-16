@@ -1,0 +1,14 @@
+{%- comment -%} A work's museum label: the artist and dates first, then the title in italic and the year, then (full) the medium, the size and the collection. {%- endcomment -%}
+{%- assign h_in = work.height | divided_by: 2.54 | round: 1 -%}{%- assign w_in = work.width | divided_by: 2.54 | round: 1 -%}
+<p class="plaque {{ class }}">
+  {%- if number %}<span class="block muted">Cat. {% if work.number < 10 %}0{% endif %}{{ work.number }}</span>{% endif -%}
+  {%- if artist %}<span class="plaque-artist">{{ artist.name }}</span> <span class="muted">{{ artist.country }}, {{ artist.born }}–{{ artist.died }}</span>{% endif %}
+  <span class="plaque-title"><i>{{ work.title }}</i>, <span class="whitespace-nowrap">{{ work.year }}</span></span>
+  {%- if full %}
+  <span class="mt-1 block">{{ work.medium }}</span>
+  <span class="block">{{ work.height }} × {{ work.width }} cm ({{ h_in }} × {{ w_in }} in.)</span>
+  <span class="plaque-collection block">Collection: {{ work.collection }}</span>
+  {%- else %}
+  <span class="block muted">{{ work.height }} × {{ work.width }} cm</span>
+  {%- endif %}
+</p>

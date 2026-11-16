@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The artists — Long Light at the Hallgren</title>
+<meta name="description" content="P. S. Krøyer, Anna Ancher, Vilhelm Hammershøi, Eugène Jansson, Richard Bergh and Harald Sohlberg: the six painters of Long Light.">
+<meta property="og:title" content="The artists — Long Light at the Hallgren">
+<meta property="og:description" content="P. S. Krøyer, Anna Ancher, Vilhelm Hammershøi, Eugène Jansson, Richard Bergh and Harald Sohlberg: the six painters of Long Light.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32">
+    <p class="ui text-base-content/70">The artists</p>
+    <h1 class="mt-4 page-title">Six painters, three countries</h1>
+    <p class="mt-6 max-w-[34em] text-lg text-base-content/80">Two Danes at Skagen, a Dane in Copenhagen, two Swedes in Stockholm and a Norwegian in the mountains. Some of them knew each other; all of them painted the same hour.</p>
+    <div class="mt-16">{% render 'artist-rows', artists: data.artists, works: data.works, portraits: true %}</div>
+  </div>
+</main>
+{% render 'footer' %}
+</body>
+</html>

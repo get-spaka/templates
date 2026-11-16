@@ -1,0 +1,40 @@
+label: Group visits
+collected: true
+answer: group-visit-thanks
+body: message
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent."
+fields:
+  - name: group
+    label: Kind of group
+    kind: choice
+    choices: [School, College or university, Community group, Private group]
+    required: true
+  - name: size
+    label: How many people
+    kind: number
+    required: true
+  - name: date
+    label: Date you would like
+    kind: date
+    required: true
+  - name: time
+    label: Time you would like
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: message
+    label: Anything we should know
+    kind: markdown

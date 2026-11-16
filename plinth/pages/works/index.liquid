@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The works — Long Light at the Hallgren</title>
+<meta name="description" content="All twelve paintings in Long Light, hung to scale on one center line or listed as the exhibition's checklist, room by room.">
+<meta property="og:title" content="The works — Long Light at the Hallgren">
+<meta property="og:description" content="All twelve paintings in Long Light, hung to scale on one center line or listed as the exhibition's checklist, room by room.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32">
+    <p class="ui text-base-content/70">The works</p>
+    <h1 class="mt-4 page-title">Twelve works in five rooms</h1>
+    <p class="mt-6 max-w-[34em] text-lg text-base-content/80">Every painting in the exhibition, whole and untinted, at its real size relative to the others. Switch to the list for the checklist: catalogue number, medium, size and the collection each work belongs to.</p>
+    {% render 'hang', works: data.works, artists: data.artists, rooms: data.rooms, switch: true, legend: true, class: "mt-16" %}
+  </div>
+</main>
+{% render 'footer' %}
+</body>
+</html>

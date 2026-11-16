@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Talks and tours — Long Light at the Hallgren</title>
+<meta name="description" content="The program of Long Light: a curator's talk, slow-looking tours every Saturday, a conservator on the blues of dusk, a family afternoon and Long Thursdays with music.">
+<meta property="og:title" content="Talks and tours — Long Light at the Hallgren">
+<meta property="og:description" content="The program of Long Light: a curator's talk, slow-looking tours every Saturday, a conservator on the blues of dusk, a family afternoon and Long Thursdays with music.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 pt-16 pb-24 md:px-8 md:pt-24 md:pb-32">
+    <p class="ui text-base-content/70">The program</p>
+    <h1 class="mt-4 page-title">Talks and tours</h1>
+    <p class="mt-6 max-w-[34em] text-lg text-base-content/80">Talks and tours are free with admission unless a price is shown. Seats are limited: reserve one on the event's page, and it is held until ten minutes before the start.</p>
+    <div class="mt-14">{% render 'event-rows', events: data.events, filter: true %}</div>
+  </div>
+</main>
+{% render 'footer' %}
+</body>
+</html>

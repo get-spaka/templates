@@ -1,0 +1,8 @@
+{%- comment -%} The full-screen dialog Look closer opens (scripts/look.js): the image at its own size, on night. {%- endcomment -%}
+<dialog class="look-dialog" data-wall="neutral" data-look-dialog aria-label="The work at full size">
+  <div class="look-pan" data-look-pan data-lenis-prevent></div>
+  <form method="dialog" class="fixed top-4 right-4 z-10">
+    <button class="btn btn-wall">Close</button>
+  </form>
+  <p class="pointer-events-none fixed bottom-4 left-4 ui text-neutral-content/70">Drag or scroll to look around. Escape closes.</p>
+</dialog>

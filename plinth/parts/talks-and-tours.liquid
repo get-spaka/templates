@@ -1,0 +1,12 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-24 md:px-8 md:py-32">
+    <div class="mb-12 flex flex-wrap items-end justify-between gap-6" data-rise>
+      <div>
+        <p class="ui text-base-content/70">Talks and tours</p>
+        <h2 class="mt-4 display">Come and look with us</h2>
+      </div>
+      <a href="/program" class="btn btn-outline border-base-content">The whole program</a>
+    </div>
+    {% render 'event-rows', events: data.events, limit: 3 %}
+  </div>
+</section>

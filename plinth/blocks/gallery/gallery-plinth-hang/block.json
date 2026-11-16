@@ -1,0 +1,20 @@
+{
+  "name": "Plinth hang to scale",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "Works hung on one center line, each frame sized from the work's real height and width so that a large canvas is truly larger, each with its museum label; a switch turns the wall into the checklist of catalogue numbers, media, sizes and collections, each work gliding from its frame to its row.",
+  "tags": ["gallery", "artworks", "paintings", "exhibition", "checklist", "to scale", "museum"],
+  "mood": ["minimal", "elegant", "editorial"],
+  "synonyms": [
+    "gallery",
+    "artworks",
+    "works",
+    "checklist",
+    "hang",
+    "galerie",
+    "œuvres",
+    "accrochage",
+    "liste des œuvres"
+  ],
+  "data": { "name": "works", "family": "collection" }
+}

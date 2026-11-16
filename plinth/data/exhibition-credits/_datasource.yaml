@@ -1,0 +1,26 @@
+label: Credits
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: group
+    label: Group
+    kind: choice
+    choices: [organizer, collection, supporter]
+order:
+  [
+    hallgren,
+    skagens-museum,
+    stadel,
+    met,
+    waldemarsudde,
+    nationalmuseum,
+    trondheim,
+    nasjonalmuseet,
+    goteborg,
+    lindqvist-foundation,
+    columbia-pacific-arts-fund,
+    nordic-heritage-society,
+    members,
+  ]

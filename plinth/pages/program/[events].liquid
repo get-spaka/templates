@@ -1,0 +1,48 @@
+{%- assign work = data.works | where: "id", record.work | first -%}
+{%- if work -%}{%- assign artist = data.artists | where: "id", work.artist | first -%}{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Long Light at the Hallgren</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Long Light at the Hallgren">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[84rem] px-5 pt-16 md:px-8 md:pt-24">
+    <p class="ui text-base-content/70"><a href="/program" class="ink-link">The program</a> · {% case record.kind %}{% when "talk" %}Talk{% when "tour" %}Tour{% when "family" %}Families{% when "evening" %}Evening{% endcase %}</p>
+    <h1 class="mt-6 page-title max-w-[14em]">{{ record.title }}</h1>
+    <dl class="mt-10 grid gap-6 border-t border-base-content pt-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div><dt class="ui text-base-content/70">When</dt><dd class="mt-1 font-heading text-xl">{% if record.repeats != blank %}{{ record.repeats }}, from {{ record.date | date: "%B %-d" }}{% else %}{{ record.date | date: "%A, %B %-d, %Y" }}{% endif %}</dd></div>
+      <div><dt class="ui text-base-content/70">Time</dt><dd class="mt-1 font-heading text-xl tabular-nums">{{ record.time }}{% if record.ends != blank %} – {{ record.ends }}{% endif %}</dd></div>
+      <div><dt class="ui text-base-content/70">Where</dt><dd class="mt-1 font-heading text-xl">{{ record.place }}</dd></div>
+      <div><dt class="ui text-base-content/70">Price</dt><dd class="mt-1 font-heading text-xl">{% if record.price != blank %}{{ record.price }}{% else %}Free with admission{% endif %}</dd></div>
+    </dl>
+  </section>
+  <section class="mx-auto grid max-w-[84rem] gap-14 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:gap-20">
+    <div>
+      {%- if record.speaker != blank %}<p class="ui-lg"><span class="text-base-content/70">With</span> {{ record.speaker }}</p>{% endif %}
+      <div class="copy measure mt-8 text-lg leading-relaxed">{{ record.body }}</div>
+    </div>
+    <div class="lg:border-l lg:border-base-300 lg:pl-12">
+      <h2 class="text-3xl">Reserve a seat</h2>
+      <div class="mt-6">{% render 'reserve', event: record %}</div>
+    </div>
+  </section>
+  {%- if work %}
+  <section data-wall="alt">
+    <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-24">
+      <p class="ui muted">It starts from</p>
+      <div class="mt-10 grid items-end gap-10 md:grid-cols-[minmax(0,1fr)_16rem]">
+        <a href="/works/{{ work.id }}" class="block md:justify-self-end">{% if work.image %}<img src="{{ work.image }}" class="block h-auto max-h-[min(70svh,34rem)] w-auto max-w-full">{% endif %}</a>
+        {% render 'plaque', work: work, artist: artist, full: true, number: true %}
+      </div>
+    </div>
+  </section>
+  {%- endif %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

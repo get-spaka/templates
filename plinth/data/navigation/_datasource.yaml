@@ -1,0 +1,12 @@
+label: Navigation
+fields:
+  - name: label
+    kind: text
+    required: true
+  - name: href
+    kind: link
+  - name: place
+    label: Where it shows
+    kind: choice
+    choices: [both, header, footer, social, tickets]
+order: [exhibition, works, artists, program, visit, tickets, instagram, facebook]

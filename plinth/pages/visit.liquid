@@ -1,0 +1,116 @@
+{%- assign tickets = data.navigation | where: "place", "tickets" | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>Visit — Long Light at the Hallgren</title>
+<meta name="description" content="Hours, admission and tickets, getting to Pier 7 in Astoria, access, school and group visits, and questions about visiting the Hallgren Museum of Art.">
+<meta property="og:title" content="Visit — Long Light at the Hallgren">
+<meta property="og:description" content="Hours, admission and tickets, getting to Pier 7 in Astoria, access, school and group visits, and questions about visiting the Hallgren Museum of Art.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[84rem] px-5 pt-16 md:px-8 md:pt-24">
+    <p class="ui text-base-content/70">Visit</p>
+    <h1 class="mt-4 page-title">Plan your visit</h1>
+  </section>
+
+  <section id="hours" class="mx-auto grid max-w-[84rem] gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
+    <div>
+      <h2 class="ui text-base-content/70">Today</h2>
+      {% render 'today', class: "mt-5 font-heading text-[2rem] leading-tight font-medium tracking-[-0.02em] md:text-[2.75rem] [&_.today-dot]:size-3.5" %}
+      <p class="mt-6 measure text-base-content/80">Every Thursday is a Long Thursday: the galleries stay open until eight, and admission is free for everyone after five. On Sundays the first hour, from 10 to 11, is a quiet hour.</p>
+    </div>
+    <table class="w-full ui-lg">
+      <caption class="sr-only">Opening hours</caption>
+      <tbody>
+        {%- for h in data.hours %}
+        <tr class="border-t border-base-300">
+          <th scope="row" class="py-3.5 text-left font-medium">{{ h.day }}</th>
+          <td class="py-3.5 text-right tabular-nums">{% if h.opens != blank %}{% render 'clock', time: h.opens %} to {% render 'clock', time: h.closes %}{% if h.note != blank %}<span class="block ui text-base-content/70">{{ h.note }}</span>{% endif %}{% else %}<span class="text-base-content/70">Closed</span>{% endif %}</td>
+        </tr>
+        {%- endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section id="admission" class="bg-base-200">
+    <div class="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-20">
+      <div>
+        <h2 class="display">Admission and tickets</h2>
+        <p class="mt-6 measure text-base-content/80">One ticket covers Long Light and the collection galleries for the whole day. Buy it online and skip the desk, or at the door.</p>
+        {% if tickets %}<a href="{{ tickets.href }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg mt-8">{{ tickets.label }}</a>{% endif %}
+        <p class="mt-4 ui text-base-content/70">Tickets are sold on the museum's own ticketing page, which opens in a new tab.</p>
+      </div>
+      <ul class="border-b border-base-content/20">
+        {%- for row in data["visit-admission"] %}
+        <li class="grid grid-cols-[minmax(0,1fr)_auto] gap-x-6 border-t border-base-content/20 py-4">
+          <span class="ui-lg font-medium">{{ row.label }}{% if row.note != blank %}<span class="block ui font-normal text-base-content/70">{{ row.note }}</span>{% endif %}</span>
+          <span class="font-heading text-2xl tabular-nums">{{ row.price }}</span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section id="getting-here" class="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-20">
+    <div>
+      <h2 class="ui text-base-content/70">Getting here</h2>
+      <address class="mt-6 not-italic">
+        <span class="block ui-lg">Hallgren Museum of Art</span>
+        <span class="mt-3 block font-heading text-[2.5rem] leading-[1] font-medium tracking-[-0.035em] md:text-[3.75rem]">Pier 7, foot of 7th&nbsp;Street<br>Astoria, Oregon&nbsp;97103</span>
+      </address>
+      <a href="https://www.openstreetmap.org/search?query=7th%20Street%20Astoria%20Oregon" target="_blank" rel="noopener" class="ink-link mt-8 inline-block ui-lg">Get directions</a>
+      <img src="/media/river-pilings.jpg" class="mt-12 aspect-[16/9] w-full object-cover">
+    </div>
+    <dl class="divide-y divide-base-300 border-y border-base-300 lg:mt-14">
+      <div class="py-5"><dt class="ui-lg font-medium">By car</dt><dd class="mt-1 text-base-content/80">Free parking in the pier's lot, entered from Marine Drive at 7th Street. Two spaces by the door are kept for visitors with a disability permit.</dd></div>
+      <div class="py-5"><dt class="ui-lg font-medium">By bus</dt><dd class="mt-1 text-base-content/80">City buses stop on Marine Drive at 8th Street, a two-minute walk away.</dd></div>
+      <div class="py-5"><dt class="ui-lg font-medium">On foot or by bike</dt><dd class="mt-1 text-base-content/80">The Riverwalk passes the museum's door. Bike racks are on the pier, under cover.</dd></div>
+      <div class="py-5"><dt class="ui-lg font-medium">By trolley</dt><dd class="mt-1 text-base-content/80">In season, the riverfront trolley stops at 6th Street. Ask the driver for Pier 7.</dd></div>
+    </dl>
+  </section>
+
+  <section id="access" class="border-t border-base-300">
+    <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-28">
+      <h2 class="display">Access</h2>
+      <ul class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        {%- for item in data["visit-access"] %}
+        <li class="border-t border-base-content pt-5">
+          <h3 class="flex items-start gap-3 text-2xl"><svg class="mt-1.5 size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{{ item.title }}</h3>
+          <p class="mt-3 text-base-content/80">{{ item.text }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section id="groups" class="bg-base-200">
+    <div class="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-20">
+      <div>
+        <h2 class="display">Schools and groups</h2>
+        <p class="mt-6 measure text-base-content/80">Groups of five to sixty can visit Long Light with a guide, Wednesday to Friday mornings, before the doors open to everyone. School visits are free, with a guide for every fifteen students; other groups pay $12 a person.</p>
+        <p class="mt-4 measure text-base-content/80">Tell us what you would like, and our education team writes back to confirm.</p>
+      </div>
+      {% render 'group-form' %}
+    </div>
+  </section>
+
+  <section id="questions" class="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+    <div>
+      <h2 class="display">Questions</h2>
+      <p class="mt-6 text-base-content/80">Something else? Call the desk at <a href="tel:+15035550147" class="ink-link whitespace-nowrap">(503) 555-0147</a>.</p>
+    </div>
+    <div class="divide-y divide-base-300 border-y border-base-300">
+      {%- for item in data["visit-faq"] %}
+      <details class="collapse collapse-plus rounded-none" {% if forloop.first %}open{% endif %}>
+        <summary class="collapse-title pl-0 pr-10 font-heading text-xl font-medium">{{ item.question }}</summary>
+        <div class="collapse-content copy px-0 text-base-content/80">{{ item.answer }}</div>
+      </details>
+      {%- endfor %}
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

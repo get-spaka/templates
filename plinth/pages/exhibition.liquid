@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The exhibition — Long Light at the Hallgren</title>
+<meta name="description" content="Long Light: Nordic Painters of the Evening, 1885–1915. Twelve paintings in five rooms, curated by Signe Aaltonen at the Hallgren Museum of Art, January 23 to May 16, 2027.">
+<meta property="og:title" content="The exhibition — Long Light at the Hallgren">
+<meta property="og:description" content="Long Light: Nordic Painters of the Evening, 1885–1915. Twelve paintings in five rooms, curated by Signe Aaltonen at the Hallgren Museum of Art.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+  <section class="bg-base-100 text-base-content">
+    <div class="mx-auto max-w-[84rem] px-5 pt-16 pb-12 md:px-8 md:pt-24">
+      <p class="ui text-base-content/70">The exhibition</p>
+      <h1 class="mt-6 poster-title">Long Light</h1>
+      <div class="mt-8 grid gap-6 border-t border-base-content pt-6 font-heading md:grid-cols-3">
+        <p class="text-xl leading-snug font-medium md:text-2xl">Nordic painters of the evening, <span class="whitespace-nowrap">1885–1915</span></p>
+        <p class="text-xl leading-snug tabular-nums md:text-2xl">January 23 – May 16, 2027</p>
+        <p class="text-xl leading-snug md:text-2xl">Curated by Signe Aaltonen</p>
+      </div>
+    </div>
+  </section>
+  {% render 'essay' %}
+  {% render 'room-bands' %}
+  {% render 'credits' %}
+  {% render 'catalogue' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

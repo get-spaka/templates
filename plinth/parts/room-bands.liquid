@@ -1,0 +1,17 @@
+{%- comment -%} One band per room in its wall's colors (data-wall): its number at poster size, its title and text, and its works hung on that wall. {%- endcomment -%}
+{%- for room in data.rooms %}
+{%- assign held = data.works | where: "room", room.id %}
+<section id="{{ room.id }}" class="scroll-mt-20" data-wall="{{ room.wall }}">
+  <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-x-12 gap-y-6 md:grid-cols-[minmax(0,14rem)_minmax(0,1fr)]">
+      <p class="numeral text-[9rem] md:text-[13rem]" aria-hidden="true">{{ room.number }}</p>
+      <div class="md:pt-4">
+        <p class="ui muted">Room {{ room.number }} · {{ held.size }} {% if held.size == 1 %}work{% else %}works{% endif %}</p>
+        <h2 class="mt-3 display">{{ room.title }}</h2>
+        <div class="copy measure mt-6 text-lg leading-relaxed">{{ room.body }}</div>
+      </div>
+    </div>
+    {% render 'hang', works: held, artists: data.artists, class: "mt-16 md:mt-20" %}
+  </div>
+</section>
+{%- endfor %}

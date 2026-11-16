@@ -1,0 +1,673 @@
+/* Plinth: an exhibition that hangs itself. A white wall, black ink, rooms painted in the
+   theme's colors, every work whole and to scale with its museum label. */
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("/fonts/familjen-grotesk-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("/fonts/familjen-grotesk-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-latin-ext.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-italic-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("/fonts/source-serif-4-italic-latin-ext.woff2") format("woff2");
+  font-weight: 200 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --plinth-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* The header's height once its top line has scrolled away, for what sits under it. */
+  --plinth-bar: 4.5rem;
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  body {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    font-optical-sizing: auto;
+    font-kerning: normal;
+  }
+  /* Headings: Familjen Grotesk 500, sentence case, close. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h3,
+  h4 {
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  /* Italics are for the titles of works, as in all writing about art. */
+  cite,
+  i,
+  em {
+    font-family: var(--theme-font-body);
+    font-style: italic;
+  }
+  cite {
+    font-weight: inherit;
+  }
+}
+
+@layer components {
+  /* ---- The museum label (.plaque): artist and dates, the title in italic and the year, the
+     medium, the size and the collection. Typography does the work of a frame. */
+  .plaque {
+    font-family: var(--theme-font-heading);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+  }
+  .plaque-artist {
+    font-weight: 600;
+  }
+  .plaque-title {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--theme-font-body);
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  .plaque-title i {
+    font-weight: 400;
+  }
+  .plaque-collection {
+    color: color-mix(in oklab, currentColor 70%, transparent);
+  }
+  .plaque-rule {
+    border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent);
+  }
+
+  /* The exhibition's title at poster size: one line on a wide screen, two on a phone. */
+  .poster-title {
+    font-family: var(--theme-font-heading);
+    font-weight: 600;
+    font-size: clamp(4.5rem, 15vw, 14rem);
+    line-height: 0.85;
+    letter-spacing: -0.045em;
+    text-wrap: nowrap;
+  }
+  .poster-title .line {
+    display: block;
+  }
+  @media (min-width: 48rem) {
+    .poster-title .line {
+      display: inline-block;
+    }
+  }
+  /* A page's title, a heading at display size, an artist's name in a list. */
+  .page-title {
+    font-weight: 500;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+  .display {
+    font-weight: 500;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .name-xl {
+    font-weight: 500;
+    font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  /* A room's number, a catalogue number set large: poster size, tabular. */
+  .numeral {
+    font-family: var(--theme-font-heading);
+    font-weight: 500;
+    line-height: 0.8;
+    letter-spacing: -0.05em;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Small UI and labels: Familjen Grotesk 500 at 13 px, tabular figures. */
+  .ui {
+    font-family: var(--theme-font-heading);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.005em;
+    font-variant-numeric: tabular-nums;
+  }
+  .ui-lg {
+    font-family: var(--theme-font-heading);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+  }
+  /* The curator's statement and pull quotes: Source Serif light at its display size. */
+  .statement {
+    font-family: var(--theme-font-body);
+    font-weight: 300;
+    font-size: clamp(1.875rem, 3.6vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.012em;
+    font-variation-settings: "opsz" 60;
+  }
+  .pull {
+    font-family: var(--theme-font-body);
+    font-weight: 300;
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+    line-height: 1.18;
+    font-variation-settings: "opsz" 60;
+  }
+  /* Running text: Source Serif on a measure of about 34em. */
+  .measure {
+    max-width: 34em;
+  }
+  .copy > * + * {
+    margin-top: 1em;
+  }
+  .copy h2,
+  .copy h3 {
+    margin-top: 1.6em;
+    font-size: 1.5rem;
+  }
+  .copy blockquote {
+    margin-block: 1.6em;
+    font-weight: 300;
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+    line-height: 1.18;
+    font-variation-settings: "opsz" 60;
+  }
+  .copy a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  /* Text at seven tenths of whatever ink the wall gives it: on white, on putty or on a painted room. */
+  .muted {
+    color: color-mix(in oklab, currentColor 72%, transparent);
+  }
+  /* Buttons: square, flat, Familjen Grotesk 500, never uppercase. */
+  .btn {
+    font-family: var(--theme-font-heading);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    letter-spacing: 0.005em;
+    white-space: nowrap;
+  }
+  .btn-wrap {
+    max-width: 100%;
+    flex-shrink: 1;
+    height: auto;
+    min-height: var(--size);
+    padding-block: 0.65rem;
+    line-height: 1.25;
+    white-space: normal;
+  }
+  /* Text links: a hairline that thickens on hover. */
+  .ink-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+  .ink-link:hover,
+  .ink-link:focus-visible,
+  .ink-link[aria-current="page"] {
+    text-decoration-thickness: 2px;
+  }
+  /* A hairline rule in the wall's ink. */
+  .rule {
+    border-color: color-mix(in oklab, currentColor 22%, transparent);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* A button for a painted wall (data-wall): the wall's own ink, outlined. Unlayered, so that
+   daisyUI's button colors give way. */
+.btn.btn-wall {
+  border-color: var(--on-wall, var(--color-base-content));
+  background-color: transparent;
+  color: var(--on-wall, var(--color-base-content));
+  box-shadow: none;
+}
+.btn.btn-wall:hover {
+  background-color: color-mix(in oklab, var(--on-wall, var(--color-base-content)) 12%, transparent);
+}
+
+/* ---- The header: sticky, its top line scrolls away; a hairline appears under the bar
+   once the page scrolls (its own state, here, is the line drawn). */
+.site-header {
+  top: -2.25rem;
+}
+.site-bar {
+  border-bottom: 1px solid var(--color-base-300);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .site-bar {
+      animation: plinth-hairline linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 6rem;
+    }
+  }
+}
+@keyframes plinth-hairline {
+  from {
+    border-bottom-color: transparent;
+  }
+}
+.nav-link {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+}
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link[aria-current="page"] {
+  text-decoration-color: currentColor;
+}
+/* The open today dot: lamp yellow when open, a ring when closed. */
+.today-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-accent-content) 25%, transparent);
+}
+[data-today][data-state="closed"] .today-dot {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+/* The phone's menu: full screen, white. */
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu:not([open]) .menu-close,
+.site-menu[open] .menu-open {
+  display: none;
+}
+
+/* ---- Painted rooms (data-wall): a band takes the pair of colors of its wall, one of the
+   theme's five names, so the Theme tab repaints every room. */
+[data-wall] {
+  background-color: var(--wall);
+  color: var(--on-wall);
+  --wall: var(--color-base-100);
+  --on-wall: var(--color-base-content);
+}
+[data-wall="alt"] {
+  --wall: var(--color-base-200);
+  --on-wall: var(--color-base-content);
+}
+[data-wall="primary"] {
+  --wall: var(--color-primary);
+  --on-wall: var(--color-primary-content);
+}
+[data-wall="secondary"] {
+  --wall: var(--color-secondary);
+  --on-wall: var(--color-secondary-content);
+}
+[data-wall="neutral"] {
+  --wall: var(--color-neutral);
+  --on-wall: var(--color-neutral-content);
+}
+
+/* ---- The hang (.hang): works on one center line, each frame sized from the work's real
+   height and width in centimeters (--h, --w on its .bay-cell), at --cm pixels a centimeter.
+   Every bay is as tall as the tallest work on the wall (--tallest), its frame centered. */
+.hang {
+  container-type: inline-size;
+}
+.hang-wall {
+  --cm: clamp(0.9px, 0.16cqi, 2.05px);
+  --gap: clamp(1.75rem, 3.2cqi, 3.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: var(--gap);
+  row-gap: 3.5rem;
+}
+.bay-cell {
+  display: flex;
+  width: max(calc(var(--w) * var(--cm)), 9.5rem);
+  max-width: 100%;
+  flex-direction: column;
+}
+.bay {
+  position: relative;
+  display: flex;
+  height: calc(var(--tallest, 200) * var(--cm));
+  align-items: center;
+  justify-content: center;
+}
+/* The center line, through every bay of a row and the gaps between them. */
+.bay::before {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--gap) / -2);
+  left: calc(var(--gap) / -2);
+  z-index: 0;
+  border-top: 1px solid color-mix(in oklab, currentColor 24%, transparent);
+  content: "";
+}
+.frame {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(var(--w) * var(--cm));
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: var(--w) / var(--h);
+  object-fit: contain;
+}
+.frame-blank {
+  background-color: var(--color-base-200);
+}
+a.bay .frame {
+  transition: translate 0.4s var(--plinth-ease);
+}
+a.bay:hover .frame {
+  translate: 0 -3px;
+}
+.bay-cell .plaque {
+  margin-top: 1.25rem;
+  max-width: 17rem;
+}
+/* The legend at the end of the wall: the center line's height and a meter at the wall's scale. */
+.hang-legend {
+  --cm: clamp(0.9px, 0.16cqi, 2.05px);
+}
+.scale-bar {
+  display: block;
+  width: calc(100 * var(--cm));
+  height: 0.5rem;
+  border: 1px solid currentColor;
+  border-top: 0;
+}
+.line-mark {
+  display: inline-block;
+  width: 1.5rem;
+  border-top: 2px solid var(--color-accent);
+  vertical-align: middle;
+}
+
+/* ---- The wall or the checklist (data-view): two radio buttons switch the works between the
+   hang and the rows, in CSS. scripts/view.js wraps the switch in a View Transition. */
+[data-view]:has(input[value="list"]:checked) .hang-wall,
+[data-view]:not(:has(input[value="list"]:checked)) .checklist {
+  display: none;
+}
+[data-view] .bay-cell[hidden],
+[data-view] .check-row[hidden],
+[data-filter] [hidden] {
+  display: none;
+}
+.switch {
+  display: inline-flex;
+  border: 1px solid currentColor;
+}
+.switch label {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  padding-inline: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.switch label:has(:checked) {
+  background-color: var(--color-base-content);
+  color: var(--color-base-100);
+}
+.switch label:has(:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* A filter's chips (data-filter): the one chosen in ink. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chips label {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  border: 1px solid var(--color-base-300);
+  padding-inline: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chips label:has(:checked) {
+  border-color: var(--color-base-content);
+  background-color: var(--color-base-content);
+  color: var(--color-base-100);
+}
+.chips label:has(:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.chips input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* Each work's frame and row share a view-transition-name (--vt); only the one shown is drawn. */
+[data-view] [data-vt] {
+  view-transition-name: var(--vt);
+}
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-group(*) {
+    animation-duration: 0.55s;
+    animation-timing-function: var(--plinth-ease);
+  }
+}
+/* The checklist's rows. */
+.check-row {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 0.25rem 1.25rem;
+  align-items: start;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--color-base-300);
+}
+.check-row:hover {
+  background-color: var(--color-base-200);
+}
+.check-thumb {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  object-position: left top;
+}
+.check-thumb-link {
+  order: -1;
+  grid-row: span 5;
+}
+@media (min-width: 64rem) {
+  .check-thumb-link {
+    order: 0;
+    grid-row: auto;
+  }
+  .check-row {
+    grid-template-columns: 3.5rem 5.5rem minmax(0, 1.1fr) minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+    padding-inline: 0.5rem;
+  }
+  .check-thumb {
+    width: 5.5rem;
+    height: 4.5rem;
+  }
+}
+
+/* ---- Step back (data-step-back): scripts/step-back.js makes the hero about 220svh tall
+   (data-step-back-on), its stage sticky, and scales the picture back from its detail. */
+.step-stage {
+  position: relative;
+}
+[data-step-back-on] {
+  height: 220svh;
+}
+[data-step-back-on] .step-stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 100svh;
+  flex-direction: column;
+  justify-content: center;
+  overflow: clip;
+  padding-top: var(--plinth-bar);
+}
+[data-step-back-on] .step-picture {
+  position: relative;
+  z-index: 5;
+  will-change: transform;
+}
+.step-caption {
+  position: absolute;
+  top: calc(var(--plinth-bar) + 1rem);
+  left: 1.25rem;
+  z-index: 6;
+}
+
+/* ---- Look closer: the image at its full size on night, panned by dragging or scrolling. */
+.look-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: var(--color-neutral);
+  color: var(--color-neutral-content);
+}
+.look-dialog::backdrop {
+  background-color: var(--color-neutral);
+}
+.look-pan {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  cursor: grab;
+  overscroll-behavior: contain;
+}
+.look-pan.is-dragging {
+  cursor: grabbing;
+}
+.look-pan img {
+  display: block;
+  max-width: none;
+  margin: auto;
+}
+
+/* ---- Rises (data-rise): headings and paragraphs rise into view, in CSS. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    :root:is([data-up-moving], :not(:has(#up-still))) [data-rise] {
+      animation: plinth-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+@keyframes plinth-rise {
+  from {
+    opacity: 0.2;
+    translate: 0 1rem;
+  }
+}
+
+/* ---- The rooms as paint chips (.chip): bands stacked, each in its wall's colors. */
+.chip {
+  transition: padding 0.45s var(--plinth-ease);
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
+  .chip:hover {
+    padding-block: 3.25rem;
+  }
+}
+
+/* ---- Upstart's credits link at the foot of the footer, lined up with its content. */
+footer [data-up-credits] {
+  padding: 0 calc(max(0px, (100% - 84rem) / 2) + 1.25rem) 2.5rem;
+  font-family: var(--theme-font-heading);
+  font-size: 0.8125rem;
+}
+@media (min-width: 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 84rem) / 2) + 2rem);
+  }
+}

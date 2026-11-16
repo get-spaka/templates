@@ -1,0 +1,53 @@
+{%- assign theirs = data.works | where: "artist", record.id -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Long Light at the Hallgren</title>
+<meta name="description" content="{{ record.name }} ({{ record.born }}–{{ record.died }}): {{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Long Light at the Hallgren">
+<meta property="og:description" content="{{ record.name }} ({{ record.born }}–{{ record.died }}): {{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[84rem] px-5 pt-16 md:px-8 md:pt-24">
+    <p class="ui text-base-content/70"><a href="/artists" class="ink-link">The artists</a></p>
+    <h1 class="mt-6 poster-title !text-[clamp(3.25rem,10vw,9rem)] !text-wrap">{{ record.name }}</h1>
+    <p class="mt-6 border-t border-base-content pt-6 font-heading text-xl md:text-2xl">{{ record.country }}, {{ record.born }}–{{ record.died }} · {{ record.places }}</p>
+  </section>
+  <section class="mx-auto grid max-w-[84rem] gap-12 px-5 py-16 md:px-8 md:py-24 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-20">
+    <figure>
+      {%- if record.portrait %}
+      <img src="{{ record.portrait }}" class="block h-auto max-h-[34rem] w-auto max-w-full object-contain">
+      {%- if record.portrait_label != blank %}<figcaption class="mt-4 plaque muted">{{ record.portrait_label }}</figcaption>{% endif %}
+      {%- else %}
+      <div class="flex aspect-[4/5] w-full max-w-[22rem] items-center justify-center bg-base-200" aria-hidden="true"><span class="font-heading text-7xl font-medium tracking-[-0.04em]">{{ record.initials }}</span></div>
+      {%- endif %}
+    </figure>
+    <div>
+      <p class="statement !text-[clamp(1.75rem,2.6vw,2.25rem)] measure">{{ record.summary }}</p>
+      <div class="copy measure mt-10 text-lg leading-relaxed">{{ record.body }}</div>
+    </div>
+  </section>
+  {%- if theirs.size > 0 %}
+  <section class="border-t border-base-300">
+    <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-28">
+      <h2 class="display">In the exhibition</h2>
+      {% render 'hang', works: theirs, artists: data.artists, legend: true, class: "mt-14" %}
+    </div>
+  </section>
+  {%- endif %}
+  <section class="border-t border-base-300 bg-base-200">
+    <div class="mx-auto max-w-[84rem] px-5 py-16 md:px-8 md:py-20">
+      <h2 class="ui text-base-content/70">The other artists</h2>
+      <ul class="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+        {%- for a in data.artists %}{% if a.id != record.id %}
+        <li><a href="/artists/{{ a.id }}" class="ink-link font-heading text-2xl font-medium tracking-[-0.02em] md:text-3xl">{{ a.name }}</a></li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

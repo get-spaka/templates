@@ -1,0 +1,2 @@
+{%- comment -%} A time of the 24-hour clock ("17:00") as the museum says it ("5"). {%- endcomment -%}
+{%- assign hm = time | split: ":" -%}{%- assign h = hm[0] | plus: 0 -%}{%- if h > 12 -%}{%- assign h = h | minus: 12 -%}{%- endif -%}{%- if h == 0 -%}{%- assign h = 12 -%}{%- endif -%}{{ h }}{%- if hm[1] and hm[1] != "00" -%}:{{ hm[1] }}{%- endif -%}

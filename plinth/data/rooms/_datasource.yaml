@@ -1,0 +1,21 @@
+label: Rooms
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: number
+    label: Number
+    kind: number
+  - name: wall
+    label: Wall color (from the theme)
+    kind: choice
+    choices: [base, alt, primary, secondary, neutral]
+  - name: summary
+    label: One line
+    kind: text
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+order: [room-1, room-2, room-3, room-4, room-5]

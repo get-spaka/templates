@@ -1,0 +1,73 @@
+{%- comment -%}
+  Works hung to scale on one center line (styles/site.css, .hang). Each bay is as tall as the
+  tallest work on this wall, its frame sized from the work's height and width in centimeters.
+  switch: the "On the wall" / "As a list" switch and the checklist; rooms: the room filter;
+  links: each work opens its page; legend: the center line's height and a meter at scale;
+  skip: the id of a work to leave out (the page's own).
+{%- endcomment -%}
+{%- assign tallest = 0 -%}
+{%- for w in works -%}{%- if w.id != skip and w.height > tallest -%}{%- assign tallest = w.height -%}{%- endif -%}{%- endfor -%}
+<div class="hang {{ class }}" {% if switch %}data-view{% endif %} {% if rooms %}data-filter="room"{% endif %}>
+  {%- if switch or rooms %}
+  <div class="mb-14 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 ui">
+    {%- if rooms %}
+    <fieldset class="chips">
+      <legend class="sr-only">Show the works of one room</legend>
+      <label><input type="radio" name="room" value="all" checked>All rooms</label>
+      {%- for room in rooms %}
+      <label><input type="radio" name="room" value="{{ room.id }}">Room {{ room.number }}</label>
+      {%- endfor %}
+    </fieldset>
+    {%- endif %}
+    {%- if switch %}
+    <fieldset class="switch">
+      <legend class="sr-only">Show the works</legend>
+      <label><input type="radio" name="view" value="wall" checked>On the wall</label>
+      <label><input type="radio" name="view" value="list">As a list</label>
+    </fieldset>
+    {%- endif %}
+  </div>
+  {%- endif %}
+  <ul class="hang-wall" data-hang-wall style="--tallest: {{ tallest }}">
+    {%- for work in works %}{% if work.id == skip %}{% continue %}{% endif %}
+    {%- assign artist = artists | where: "id", work.artist | first %}
+    <li class="bay-cell" data-keys="{{ work.room }}" style="--h: {{ work.height }}; --w: {{ work.width }}">
+      {%- if links != false %}
+      <a href="/works/{{ work.id }}" class="bay" data-hang>
+      {%- else %}
+      <div class="bay" data-hang>
+      {%- endif %}
+        {%- if work.image %}
+        <img src="{{ work.image }}" class="frame" data-vt style="--vt: work-{{ work.id }}" loading="lazy">
+        {%- else %}
+        <span class="frame frame-blank" data-vt style="--vt: work-{{ work.id }}" aria-hidden="true"></span>
+        {%- endif %}
+      {%- if links != false %}</a>{% else %}</div>{% endif %}
+      <div data-hang-label>{% render 'plaque', work: work, artist: artist %}</div>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- if switch %}
+  <ol class="checklist border-b border-base-300">
+    {%- for work in works %}
+    {%- assign artist = artists | where: "id", work.artist | first %}
+    <li class="check-row" data-keys="{{ work.room }}">
+      <span class="ui lg:font-heading lg:text-3xl lg:leading-none lg:tracking-[-0.04em]">{% if work.number < 10 %}0{% endif %}{{ work.number }}</span>
+      <a href="/works/{{ work.id }}" class="check-thumb-link" tabindex="-1" aria-hidden="true">
+        {%- if work.image %}<img src="{{ work.image }}" class="check-thumb" data-vt style="--vt: work-{{ work.id }}" loading="lazy">{% else %}<span class="check-thumb frame-blank block" data-vt style="--vt: work-{{ work.id }}"></span>{% endif -%}
+      </a>
+      <p class="ui-lg"><span class="font-semibold">{{ artist.name }}</span><span class="block ui muted">{{ artist.country }}, {{ artist.born }}–{{ artist.died }}</span></p>
+      <p class="leading-snug"><a href="/works/{{ work.id }}" class="ink-link text-lg"><i>{{ work.title }}</i></a>, {{ work.year }}</p>
+      <p class="ui">{{ work.medium }}<span class="block">{{ work.height }} × {{ work.width }} cm</span></p>
+      <p class="ui muted">{{ work.collection }}</p>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- endif %}
+  {%- if legend %}
+  <div class="hang-legend mt-16 flex flex-wrap items-end justify-between gap-6 ui muted">
+    <p class="flex items-center gap-3"><span class="line-mark" aria-hidden="true"></span>Hung on a center line at 145 cm (57 in.) from the floor, each work at its real size relative to the others.</p>
+    <p class="flex flex-col items-end gap-1"><span class="scale-bar" aria-hidden="true"></span>1 m</p>
+  </div>
+  {%- endif %}
+</div>

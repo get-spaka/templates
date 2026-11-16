@@ -1,0 +1,24 @@
+{%- comment -%} Reserve a seat for an event: name, email and seats, 1 to 4; the event's title goes with it. {%- endcomment -%}
+<form hx-post="/_data/reservations" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#reserve-problems swap:innerHTML" class="flex flex-col gap-4" id="reserve">
+  <input type="hidden" name="event" value="{{ event.title }}, {% if event.repeats != blank %}{{ event.repeats }}{% else %}{{ event.date | date: "%B %-d" }}{% endif %} at {{ event.time }}">
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Your name</legend>
+    <input name="name" type="text" required maxlength="200" autocomplete="name" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Your email</legend>
+    <input name="email" type="email" required maxlength="200" autocomplete="email" class="input w-full border-base-content">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend ui">Seats</legend>
+    <select name="seats" required class="select w-full border-base-content">
+      <option value="1">1 seat</option>
+      <option value="2" selected>2 seats</option>
+      <option value="3">3 seats</option>
+      <option value="4">4 seats</option>
+    </select>
+  </fieldset>
+  <div id="reserve-problems" class="empty:hidden"></div>
+  <button class="btn btn-primary btn-lg mt-2 self-start">Reserve</button>
+  <p class="ui text-base-content/70">Seats are held until ten minutes before the start. Can't come after all? Reply to the confirmation, and we'll give your seats to someone at the door.</p>
+</form>

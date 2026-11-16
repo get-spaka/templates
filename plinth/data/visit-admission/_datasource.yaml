@@ -1,0 +1,13 @@
+label: Admission
+fields:
+  - name: label
+    label: Who
+    kind: text
+    required: true
+  - name: price
+    label: Price
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [adults, seniors, students, under-18, members, long-thursdays]

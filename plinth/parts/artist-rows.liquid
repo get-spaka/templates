@@ -1,0 +1,23 @@
+{%- comment -%} The artists as rows: the name in large type, dates and places, a line and how many works are in the show; portraits: true adds each portrait (or initials on putty). {%- endcomment -%}
+<ul class="border-b border-base-300">
+  {%- for artist in artists %}
+  {%- assign theirs = works | where: "artist", artist.id %}
+  <li>
+    <a href="/artists/{{ artist.id }}" class="group grid gap-x-8 gap-y-3 border-t border-base-300 py-8 {% if portraits %}md:grid-cols-[6rem_minmax(0,1.4fr)_minmax(0,1fr)_auto]{% else %}md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_auto]{% endif %} md:items-center md:py-10">
+      {%- if portraits %}
+      {%- if artist.portrait %}
+      <img src="{{ artist.portrait }}" class="h-28 w-24 object-cover object-top">
+      {%- else %}
+      <span class="flex h-28 w-24 items-center justify-center bg-base-200 font-heading text-2xl font-medium tracking-[-0.02em]" aria-hidden="true">{{ artist.initials }}</span>
+      {%- endif %}
+      {%- endif %}
+      <div>
+        <h3 class="name-xl transition-transform duration-500 group-hover:translate-x-2">{{ artist.name }}</h3>
+        <p class="mt-2 ui text-base-content/70">{{ artist.country }}, {{ artist.born }}–{{ artist.died }} · {{ artist.places }}</p>
+      </div>
+      <p class="max-w-[28em] text-base-content/80">{{ artist.summary }}</p>
+      <p class="ui whitespace-nowrap">{{ theirs.size }} {% if theirs.size == 1 %}work{% else %}works{% endif %} in the show <span aria-hidden="true">→</span></p>
+    </a>
+  </li>
+  {%- endfor %}
+</ul>

@@ -1,0 +1,20 @@
+label: Opening hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: weekday
+    label: Day of the week
+    kind: choice
+    choices: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+  - name: opens
+    label: Opens (24-hour clock, empty when closed)
+    kind: text
+  - name: closes
+    label: Closes (24-hour clock)
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

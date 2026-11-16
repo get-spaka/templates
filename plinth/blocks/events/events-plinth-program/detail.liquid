@@ -1,0 +1,14 @@
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-16 md:px-8 md:py-24">
+    <p class="ui text-base-content/70"><a href="/program" class="ink-link">The program</a> · {% case record.kind %}{% when "talk" %}Talk{% when "tour" %}Tour{% when "family" %}Families{% when "evening" %}Evening{% endcase %}</p>
+    <h1 class="mt-6 page-title max-w-[14em]">{{ record.title }}</h1>
+    <dl class="mt-10 grid gap-6 border-t border-base-content pt-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div><dt class="ui text-base-content/70">When</dt><dd class="mt-1 font-heading text-xl">{% if record.repeats != blank %}{{ record.repeats }}, from {{ record.date | date: "%B %-d" }}{% else %}{{ record.date | date: "%A, %B %-d, %Y" }}{% endif %}</dd></div>
+      <div><dt class="ui text-base-content/70">Time</dt><dd class="mt-1 font-heading text-xl tabular-nums">{{ record.time }}{% if record.ends != blank %} – {{ record.ends }}{% endif %}</dd></div>
+      <div><dt class="ui text-base-content/70">Where</dt><dd class="mt-1 font-heading text-xl">{{ record.place }}</dd></div>
+      <div><dt class="ui text-base-content/70">Price</dt><dd class="mt-1 font-heading text-xl">{% if record.price != blank %}{{ record.price }}{% else %}Free with admission{% endif %}</dd></div>
+    </dl>
+    {%- if record.speaker != blank %}<p class="mt-12 ui-lg"><span class="text-base-content/70">With</span> {{ record.speaker }}</p>{% endif %}
+    <div class="copy measure mt-8 text-lg leading-relaxed">{{ record.body }}</div>
+  </div>
+</article>

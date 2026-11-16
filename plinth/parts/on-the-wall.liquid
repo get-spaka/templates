@@ -1,0 +1,16 @@
+{%- assign featured = data.works | where: "featured", true -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-24 md:px-8 md:py-36">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-rise>
+      <div>
+        <p class="ui text-base-content/70">On the wall</p>
+        <h2 class="mt-4 display">Hung to scale</h2>
+      </div>
+      <p class="max-w-[26em] text-base-content/80">Six of the twelve works, at their real sizes relative to each other: the Sohlberg is nearly four times the height of the little Hammershøi.</p>
+    </div>
+    {% render 'hang', works: featured, artists: data.artists, legend: true, class: "mt-20" %}
+    <div class="mt-14 flex justify-center">
+      <a href="/works" class="btn btn-outline border-base-content">All twelve works</a>
+    </div>
+  </div>
+</section>
