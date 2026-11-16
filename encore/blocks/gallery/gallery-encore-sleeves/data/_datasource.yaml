@@ -1,0 +1,51 @@
+label: Records
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: type
+    label: Kind
+    kind: choice
+    choices: [Album, EP, Single, Live]
+  - name: date
+    label: Release date
+    kind: date
+  - name: label
+    label: Label
+    kind: text
+  - name: catalog
+    label: Catalog number
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: formats
+    label: Formats
+    kind: list
+  - name: side_a
+    label: "Side A (one track a line: title · 4:12)"
+    kind: list
+  - name: side_b
+    label: "Side B (empty for a record with one side)"
+    kind: list
+  - name: credits
+    label: "Credits (one a line: role · name)"
+    kind: list
+  - name: listen
+    label: Listen on
+    kind: links
+  - name: buy
+    label: Buy link
+    kind: link
+  - name: summary
+    label: Summary
+    kind: text
+  - name: featured
+    label: Featured on the home page
+    kind: boolean
+  - name: notes
+    label: Liner notes
+    kind: markdown
+body: notes
+sort: -date

@@ -1,0 +1,11 @@
+<ul class="grid gap-5 sm:grid-cols-2 {% if wide %}lg:grid-cols-3{% endif %}">
+  {% for c in contacts %}
+  <li class="flex flex-col rounded-box border border-base-300 bg-base-200 p-6 md:p-8" data-reveal>
+    <p class="mono text-primary">{{ c.purpose }}</p>
+    <p class="display mt-4 text-[2rem] leading-none">{{ c.name }}</p>
+    {% if c.company %}<p class="mt-2 text-base-content/75">{{ c.company }}</p>{% endif %}
+    {% if c.note %}<p class="copy mt-4 text-pretty">{{ c.note }}</p>{% endif %}
+    {% if c.email %}<a href="mailto:{{ c.email }}" class="mt-auto pt-6 font-semibold break-all text-primary underline-offset-4 hover:underline">{{ c.email }}</a>{% endif %}
+  </li>
+  {% endfor %}
+</ul>

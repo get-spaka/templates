@@ -1,0 +1,17 @@
+<section class="border-t border-base-300 bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="max-w-2xl">
+      <p class="mono text-base-content/70" data-reveal>Quotes</p>
+      <h2 class="mt-4 text-[clamp(2.75rem,5.5vw,5rem)]" data-reveal>What they wrote</h2>
+    </div>
+    <div class="mt-12 columns-1 gap-6 sm:columns-2 lg:columns-3">
+      {% for item in data.quotes %}
+      <figure class="mb-6 break-inside-avoid rounded-box border border-base-300 bg-base-100 p-6 md:p-8" data-reveal>
+        <p class="display text-[1.75rem] leading-none">{{ item.publication }}</p>
+        <blockquote class="mt-5"><p class="text-[1.125rem] leading-snug text-pretty">“{{ item.quote }}”</p></blockquote>
+        <figcaption class="mono mt-6 text-[0.75rem] text-base-content/65">{{ item.writer }} · {{ item.date | date: "%b %Y" }}{% if item.link %} · <a href="{{ item.link }}" target="_blank" rel="noopener" class="text-primary hover:underline">Read <span aria-hidden="true">↗</span></a>{% endif %}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

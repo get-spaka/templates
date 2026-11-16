@@ -1,0 +1,28 @@
+{% assign today = "now" | date: "%Y-%m-%d" %}
+{% assign past = data.events | reverse %}
+<section class="border-t border-base-300 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-14 md:px-10 md:py-20">
+    <h2 class="text-[clamp(2.5rem,5vw,4rem)]" data-reveal>Past shows</h2>
+    <p class="copy mt-4 max-w-xl" data-reveal>Every room we have played since the record came out. Thank you for coming.</p>
+    <div class="mt-10 border-t border-base-300">
+    {% assign year = "" %}
+    {% for show in past %}{% if show.date < today %}
+    {% assign y = show.date | date: "%Y" %}
+    {% if y != year %}{% if year != "" %}</ol></details>{% endif %}
+    <details class="group border-b border-base-300" {% if year == "" %}open{% endif %}>
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5">
+        <span class="display text-[2rem] leading-none">{{ y }}</span>
+        <span class="mono text-base-content/60 group-open:hidden">Show</span><span class="mono hidden text-base-content/60 group-open:inline">Hide</span>
+      </summary>
+      <ol class="pb-6">
+    {% assign year = y %}{% endif %}
+        <li class="grid grid-cols-[5.5rem_1fr] gap-x-4 gap-y-1 border-t border-base-300/70 py-3 md:grid-cols-[7rem_14rem_1fr]">
+          <span class="mono text-base-content/60">{{ show.date | date: "%b %d" }}</span>
+          <span class="font-semibold">{{ show.title }}{% if show.region %}<span class="text-base-content/60">, {{ show.region }}</span>{% endif %}</span>
+          <span class="col-start-2 text-base-content/75 md:col-start-auto">{{ show.place }}</span>
+        </li>
+    {% endif %}{% endfor %}
+    {% if year != "" %}</ol></details>{% endif %}
+    </div>
+  </div>
+</section>

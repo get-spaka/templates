@@ -1,0 +1,24 @@
+<section class="records border-t border-base-300 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-12 md:px-10 md:py-16">
+    <div role="radiogroup" aria-label="Show" class="records-filter tabs tabs-box w-fit max-w-full flex-nowrap overflow-x-auto bg-base-200">
+      <input type="radio" name="records-kind" value="all" class="tab" aria-label="All" checked>
+      <input type="radio" name="records-kind" value="Album" class="tab" aria-label="Albums">
+      <input type="radio" name="records-kind" value="EP" class="tab" aria-label="EPs">
+      <input type="radio" name="records-kind" value="Single" class="tab" aria-label="Singles">
+      <input type="radio" name="records-kind" value="Live" class="tab" aria-label="Live">
+    </div>
+    <ul class="mt-12 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" aria-label="Records">
+      {% for release in data.releases %}
+      <li data-kind="{{ release.type }}" data-reveal>
+        <a href="/music/{{ release.id }}" class="group block">
+          {% render 'sleeve', release: release, flight: true %}
+          <h2 class="sleeve-title mt-6 text-[clamp(2.25rem,3.5vw,3rem)]">{{ release.title }}</h2>
+          <p class="mono mt-3 text-[0.75rem] text-base-content/70">{{ release.type }} · {{ release.date | date: "%Y" }} · {{ release.catalog }}</p>
+          {% if release.formats.size > 0 %}<p class="mono mt-1 text-[0.75rem] text-base-content/55">{{ release.formats | join: " · " }}</p>{% endif %}
+          {% if release.summary %}<p class="copy mt-4 max-w-md text-pretty">{{ release.summary }}</p>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

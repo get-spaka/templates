@@ -1,0 +1,16 @@
+<section class="border-t border-base-300 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="mono text-base-content/70" data-reveal>Videos</p>
+        <h2 class="mt-4 text-[clamp(3rem,7vw,6rem)]" data-reveal>Seen and heard</h2>
+      </div>
+      <a href="/videos" class="btn btn-outline whitespace-nowrap" data-reveal>All videos <span aria-hidden="true">→</span></a>
+    </div>
+    <ul class="mt-12 grid gap-x-8 gap-y-12 md:grid-cols-3">
+      {% for video in data.videos limit: 3 %}
+      <li data-reveal>{% render 'video-card', video: video %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

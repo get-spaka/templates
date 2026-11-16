@@ -1,0 +1,35 @@
+{
+  "name": "Encore departure board",
+  "kind": "events",
+  "source": "upstart",
+  "description": "The next six shows on a departure board: date, city, venue, status and tickets in mono capitals on tiles whose letters flip into place as the board comes into view; a row with a ticket link turns aqua under the pointer, a sold-out show has none. Past shows leave the board by themselves.",
+  "tags": [
+    "events",
+    "shows",
+    "tour",
+    "concerts",
+    "dates",
+    "tickets",
+    "board"
+  ],
+  "mood": [
+    "bold",
+    "dark"
+  ],
+  "synonyms": [
+    "shows",
+    "tour dates",
+    "concerts",
+    "gigs",
+    "upcoming shows",
+    "concerts à venir",
+    "dates de tournée",
+    "tournée",
+    "billets",
+    "agenda"
+  ],
+  "data": {
+    "name": "events",
+    "family": "collection"
+  }
+}

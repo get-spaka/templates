@@ -1,0 +1,19 @@
+{% assign video = data.videos | where: "featured", true | first %}{% unless video %}{% assign video = data.videos | first %}{% endunless %}
+{% if video %}
+<section class="text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 pb-16 md:px-10 md:pb-24">
+    <a href="{{ video.url }}" target="_blank" rel="noopener" class="video-card group grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-12">
+      <span class="relative block overflow-hidden rounded-box bg-base-200 lg:col-span-8" data-bw>
+        {% if video.poster %}<img src="{{ video.poster }}" class="aspect-video w-full object-cover">{% else %}<span class="block aspect-video w-full bg-linear-to-br from-base-300 to-base-200"></span>{% endif %}
+        <span class="absolute top-1/2 left-1/2 z-[2] flex size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-primary-content transition-transform group-hover:scale-110 md:size-24" aria-hidden="true"><svg class="ml-1 size-8" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg></span>
+      </span>
+      <span class="block lg:col-span-4">
+        <span class="mono flex items-center gap-3 text-base-content/70"><span class="dot" aria-hidden="true"></span>{{ video.kind }} · {{ video.runtime }}</span>
+        <span class="display mt-4 block text-[clamp(3rem,5vw,4.5rem)] leading-[0.9] transition-colors group-hover:text-primary">{{ video.title }}</span>
+        <span class="mono mt-6 block border-t border-base-300 pt-4 text-[0.75rem] text-base-content/65">{{ video.date | date: "%B %-d, %Y" }}{% if video.director %} · Directed by {{ video.director }}{% endif %}</span>
+        <span class="btn btn-primary mt-8 whitespace-nowrap">Watch on YouTube <span aria-hidden="true">↗</span></span>
+      </span>
+    </a>
+  </div>
+</section>
+{% endif %}

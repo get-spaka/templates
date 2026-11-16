@@ -1,0 +1,8 @@
+label: For promoters
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+order: [four-on-stage, sets, we-bring, we-need]

@@ -1,0 +1,22 @@
+<section class="overflow-hidden border-t border-base-300 bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="mono text-base-content/70" data-reveal>The records</p>
+        <h2 class="mt-4 text-[clamp(3rem,7vw,6rem)]" data-reveal>Five since 2021</h2>
+      </div>
+      <a href="/releases" class="btn btn-outline whitespace-nowrap" data-reveal>Every record <span aria-hidden="true">→</span></a>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 md:gap-x-8 lg:grid-cols-5" aria-label="Records">
+      {% for release in data.releases %}
+      <li data-reveal>
+        <a href="/releases/{{ release.id }}" class="group block">
+          {% render 'sleeve', release: release, flight: true %}
+          <h3 class="sleeve-title mt-5 text-[1.75rem] md:text-[2rem]">{{ release.title }}</h3>
+          <p class="mono mt-2 text-[0.75rem] text-base-content/65">{{ release.type }} · {{ release.date | date: "%Y" }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

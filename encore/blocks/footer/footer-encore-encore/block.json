@@ -1,0 +1,31 @@
+{
+  "name": "Encore footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A footer on the record's black: \"Encore\" as a small label over a call to bring the band to your town with a booking button, the site's links, the band's profile on each service and its social pages, a contact column, and the name set across the whole width.",
+  "tags": [
+    "footer",
+    "band",
+    "booking",
+    "streaming links",
+    "social"
+  ],
+  "mood": [
+    "bold",
+    "dark"
+  ],
+  "synonyms": [
+    "footer",
+    "site footer",
+    "bottom",
+    "booking call",
+    "pied de page",
+    "bas de page",
+    "réserver le groupe",
+    "liens d'écoute"
+  ],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

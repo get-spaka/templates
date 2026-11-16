@@ -1,0 +1,6 @@
+<span class="sleeve sleeve-{{ place | default: 'list' }}" data-sleeve="{% if place == 'hero' %}hero{% elsif place == 'page' %}scroll{% else %}list{% endif %}" data-rpm="{% if release.type == 'Single' %}45{% else %}33{% endif %}">
+  <span class="sleeve-body"{% if flight %} style="view-transition-name: sleeve-{{ release.id }}"{% endif %}>
+    <span class="disc" aria-hidden="true"><span class="disc-face"><span class="disc-label">{% if release.cover %}<img src="{{ release.cover }}" alt="">{% endif %}</span></span></span>
+    {% if release.cover %}<img src="{{ release.cover }}" class="sleeve-cover">{% else %}<span class="sleeve-cover bg-linear-to-br from-primary/30 to-base-200"></span>{% endif %}
+  </span>
+</span>

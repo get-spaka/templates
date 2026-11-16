@@ -1,0 +1,39 @@
+label: Shows
+fields:
+  - name: title
+    label: City
+    kind: text
+    required: true
+  - name: region
+    label: State or country
+    kind: text
+  - name: date
+    label: Date
+    kind: date
+  - name: time
+    label: Doors
+    kind: text
+  - name: place
+    label: Venue
+    kind: text
+  - name: summary
+    label: "Who opens, ages"
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: status
+    label: Tickets
+    kind: choice
+    choices: [On sale, Few left, Sold out, Free]
+  - name: booking
+    label: Ticket link
+    kind: link
+  - name: cover
+    label: Picture
+    kind: image
+  - name: body
+    label: Description
+    kind: markdown
+body: body
+sort: date

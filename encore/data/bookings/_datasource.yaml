@@ -1,0 +1,39 @@
+label: Booking requests
+collected: true
+answer: booking-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: date
+    label: Date of the show
+    kind: date
+    required: true
+  - name: city
+    label: City and venue or event
+    kind: text
+    required: true
+  - name: kind
+    label: Kind of show
+    kind: choice
+    choices: [Club show, Festival, Private event, Something else]
+  - name: capacity
+    label: Expected capacity
+    kind: number
+  - name: message
+    label: Message
+    kind: markdown

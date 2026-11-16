@@ -1,0 +1,16 @@
+label: Mailing list
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many sign-ups from here. Please try again in a few minutes."
+  sent: "You're on the list."
+fields:
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: city
+    label: Your city
+    kind: text

@@ -1,0 +1,19 @@
+label: Press quotes
+fields:
+  - name: quote
+    label: Quote
+    kind: text
+    required: true
+  - name: publication
+    label: Publication
+    kind: text
+  - name: writer
+    label: Writer
+    kind: text
+  - name: link
+    label: Link to the article
+    kind: link
+  - name: date
+    label: Date
+    kind: date
+sort: -date

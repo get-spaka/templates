@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Press — Velvet Freight</title>
+<meta name="description" content="The Velvet Freight press kit: short and long bios, the facts, quotes, press photos to download and the contacts for press and management.">
+<meta property="og:title" content="Press — Velvet Freight">
+<meta property="og:description" content="Bios, facts, quotes, press photos and contacts.">
+</head>
+<body>
+{% render 'header', page: page %}
+{% assign publicist = data.contacts | where: "purpose", "Press" | first %}
+<main>
+<section class="stage-light text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 pt-12 pb-12 md:px-10 md:pt-20 md:pb-16">
+    <p class="mono text-base-content/70">Press kit</p>
+    <h1 class="poster mt-5 text-[clamp(4.5rem,13vw,12rem)] leading-[0.82] tracking-tight">Press</h1>
+    <p class="mt-8 max-w-2xl text-[clamp(1.25rem,2vw,1.625rem)] leading-snug text-pretty">Everything you need to write about us. Questions go to our publicist.</p>
+    {% if publicist %}<p class="mono mt-6 text-base-content/75">{{ publicist.name }}{% if publicist.company %}, {{ publicist.company }}{% endif %} · <a href="mailto:{{ publicist.email }}" class="text-primary normal-case hover:underline">{{ publicist.email }}</a></p>{% endif %}
+  </div>
+</section>
+{% render 'bios' %}
+{% render 'facts' %}
+{% render 'quotes' %}
+{% render 'press-photos' %}
+<section class="border-t border-base-300 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <p class="mono text-base-content/70" data-reveal>Contacts</p>
+    <h2 class="mt-4 text-[clamp(2.75rem,5.5vw,5rem)]" data-reveal>Press and management</h2>
+    <div class="mt-12">
+      {% assign press = data.contacts | where: "purpose", "Press" %}{% assign management = data.contacts | where: "purpose", "Management" %}{% assign both = press | concat: management %}
+      {% render 'contact-cards', contacts: both %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

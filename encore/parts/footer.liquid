@@ -1,0 +1,55 @@
+<footer class="overflow-hidden bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[90rem] px-4 pt-16 md:px-10 md:pt-24">
+    <div class="grid gap-10 border-b border-neutral-content/15 pb-14 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-8">
+        <p class="mono inline-flex items-center gap-3 rounded-field border border-primary/60 px-4 py-1.5 text-primary">Encore</p>
+        <p class="display mt-6 text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.9]">Bring Velvet Freight to your town</p>
+      </div>
+      <div class="flex flex-col gap-4 lg:col-span-4 lg:items-end">
+        <p class="copy max-w-sm lg:text-right">Clubs, theaters, festivals and the odd wedding: tell us the date and the room.</p>
+        <a href="/contact#booking" class="btn btn-primary btn-lg whitespace-nowrap">Book the band <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <nav aria-label="Pages">
+        <p class="mono text-neutral-content/55">The site</p>
+        <ul class="mt-4 space-y-2">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "footer" %}
+          <li><a href="{{ item.href }}" class="transition-colors hover:text-primary">{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <nav aria-label="Listen">
+        <p class="mono text-neutral-content/55">Listen</p>
+        <ul class="mt-4 space-y-2">
+          {% for item in data.navigation %}{% if item.place == "listen" %}
+          <li><a href="{{ item.href }}" target="_blank" rel="noopener" class="transition-colors hover:text-primary">{{ item.label }} <span aria-hidden="true" class="text-neutral-content/45">↗</span></a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <nav aria-label="Follow">
+        <p class="mono text-neutral-content/55">Follow</p>
+        <ul class="mt-4 space-y-2">
+          {% for item in data.navigation %}{% if item.place == "social" %}
+          <li><a href="{{ item.href }}" target="_blank" rel="noopener" class="transition-colors hover:text-primary">{{ item.label }} <span aria-hidden="true" class="text-neutral-content/45">↗</span></a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <div>
+        <p class="mono text-neutral-content/55">Write</p>
+        <ul class="mt-4 space-y-2">
+          <li><a href="/press" class="transition-colors hover:text-primary">Press kit</a></li>
+          <li><a href="/contact" class="transition-colors hover:text-primary">Booking and contacts</a></li>
+          <li><a href="mailto:hello@velvetfreight.example" class="break-all transition-colors hover:text-primary">hello@velvetfreight.example</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="across mx-auto max-w-[90rem] px-4 md:px-10" aria-hidden="true">
+    <p class="poster display text-neutral-content/90">Velvet Freight</p>
+  </div>
+  <div class="mx-auto flex max-w-[90rem] flex-wrap justify-between gap-4 px-4 pt-8 pb-4 md:px-10">
+    <p class="mono text-[0.6875rem] text-neutral-content/55">© 2026 Velvet Freight · Duluth, Minnesota</p>
+    <p class="mono text-[0.6875rem] text-neutral-content/55">Records self-released since 2021</p>
+  </div>
+</footer>

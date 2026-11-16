@@ -1,0 +1,27 @@
+<section class="border-t border-base-300 text-base-content">
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-4 py-16 md:px-10 md:py-24 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-7" data-reveal>
+      <figure class="overflow-hidden rounded-box" data-bw>
+        <img src="/media/band-on-stage.jpg" class="aspect-[4/3] w-full object-cover">
+      </figure>
+    </div>
+    <div class="lg:col-span-5 lg:pt-4">
+      <p class="mono text-base-content/70" data-reveal>The band</p>
+      <h2 class="mt-4 text-[clamp(3rem,6vw,5.5rem)]" data-reveal>Four people, one room above the harbor</h2>
+      <div class="copy mt-8 max-w-xl text-pretty" data-reveal>
+        <p>We started in 2019 in a rehearsal room above a marine supply store, with the ore boats moving past the window and the heaters turned all the way up.</p>
+        <p>We play soul songs slowly and loudly: a voice and an electric piano up front, a hollow-body guitar, a bass that takes its time, and drums that never hurry.</p>
+        <p>We still rehearse in the same room, and we still end every show with the song we wrote there first.</p>
+      </div>
+      <ul class="mt-10 border-t border-base-300" aria-label="The band">
+        {% for member in data.team %}
+        <li class="flex items-center justify-between gap-4 border-b border-base-300 py-3" data-reveal>
+          <span class="flex min-w-0 items-center gap-4">{% if member.photo %}<span class="size-12 shrink-0 overflow-hidden rounded-box" data-bw><img src="{{ member.photo }}" class="size-full object-cover"></span>{% endif %}<span class="display text-[1.75rem] leading-none">{{ member.name }}</span></span>
+          <span class="mono text-right text-[0.75rem] text-base-content/70">{{ member.role }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="/press#bios" class="btn btn-outline mt-10 whitespace-nowrap" data-reveal>Read the full story <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

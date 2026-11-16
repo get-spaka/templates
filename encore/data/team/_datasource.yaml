@@ -1,0 +1,16 @@
+label: The band
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Plays
+    kind: text
+  - name: bio
+    label: A line
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+order: [nora-halvorsen, marcus-reyes, tom-wierzbicki, june-abernathy]

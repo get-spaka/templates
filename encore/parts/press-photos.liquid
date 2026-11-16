@@ -1,0 +1,23 @@
+<section class="text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="max-w-2xl">
+      <p class="mono text-base-content/70" data-reveal>Press photos</p>
+      <h2 class="mt-4 text-[clamp(2.75rem,5.5vw,5rem)]" data-reveal>Photos to print</h2>
+      <p class="copy mt-5 text-pretty" data-reveal>Full size, free to use with a story about the band. Please credit the photographer.</p>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-4 md:gap-8 lg:grid-cols-4">
+      {% for item in data["press-photos"] %}
+      <li data-reveal>
+        <figure>
+          {% if item.image %}<div class="overflow-hidden rounded-box" data-bw><img src="{{ item.image }}" class="aspect-square w-full object-cover"></div>{% else %}<div class="aspect-square w-full rounded-box bg-linear-to-br from-base-300 to-base-200"></div>{% endif %}
+          <figcaption class="mt-4">
+            <p class="font-semibold">{{ item.caption }}</p>
+            {% if item.credit %}<p class="mono mt-1 text-[0.6875rem] text-base-content/60">{{ item.credit }}</p>{% endif %}
+            {% if item.image %}<a href="{{ item.image }}" download class="mono mt-3 inline-flex items-center gap-2 text-[0.75rem] text-primary hover:underline">Download <span aria-hidden="true">↓</span></a>{% endif %}
+          </figcaption>
+        </figure>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+{% capture cells %}
+  <span class="flex flex-wrap items-center gap-1.5 [grid-area:date]"><span class="flap" data-flap>{{ show.date | date: "%b %d" }}</span><span class="mono hidden text-base-content/55 xl:inline">{{ show.date | date: "%a" }}</span></span>
+  <span class="min-w-0 [grid-area:city]"><span class="flap max-w-full" data-flap>{{ show.title }}</span>{% if show.region %}<span class="mono ml-2 hidden text-base-content/55 md:inline">{{ show.region }}</span>{% endif %}</span>
+  <span class="min-w-0 [grid-area:venue]"><span class="flap max-w-full" data-flap>{{ show.place }}</span></span>
+  {% if details %}<span class="board-more mono text-[0.75rem] text-base-content/60">{% if show.time %}Doors {{ show.time }} · {% endif %}{{ show.summary }}{% if show.price %} · {{ show.price }}{% endif %}</span>{% endif %}
+  <span class="board-status mono flex items-center gap-2 text-[0.75rem] whitespace-nowrap [grid-area:status] {% if show.status == 'Sold out' or show.status == 'Few left' %}text-accent{% else %}text-base-content/70{% endif %}">{% if show.status == 'Sold out' or show.status == 'Few left' %}<span class="dot dot-accent" aria-hidden="true"></span>{% endif %}{{ show.status }}</span>
+  <span class="board-tickets mono text-[0.75rem] whitespace-nowrap [grid-area:tickets] md:text-right {% if show.booking and show.status != 'Sold out' %}text-primary{% else %}text-base-content/50{% endif %}">{% if show.status == 'Sold out' %}No tickets left{% elsif show.booking %}Tickets <span aria-hidden="true">↗</span>{% elsif show.status == 'Free' %}Free entry{% else %}At the door{% endif %}</span>
+{% endcapture %}
+{% if show.booking and show.status != 'Sold out' %}
+<a href="{{ show.booking }}" target="_blank" rel="noopener" class="board-row board-grid" data-board-row>{{ cells }}</a>
+{% else %}
+<div class="board-row board-grid" data-board-row>{{ cells }}</div>
+{% endif %}

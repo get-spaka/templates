@@ -1,0 +1,19 @@
+label: Contacts
+fields:
+  - name: purpose
+    label: For
+    kind: text
+    required: true
+  - name: name
+    label: Name
+    kind: text
+  - name: company
+    label: Company
+    kind: text
+  - name: email
+    label: Email
+    kind: email
+  - name: note
+    label: Note
+    kind: text
+order: [booking-north-america, booking-europe, press, management, general]

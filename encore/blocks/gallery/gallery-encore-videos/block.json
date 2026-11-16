@@ -1,0 +1,30 @@
+{
+  "name": "Encore videos",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "The three newest videos as posters in black and white with their kind and running time, which take their color back under the pointer; each opens on YouTube or Vimeo in a new tab, as nothing is embedded.",
+  "tags": [
+    "videos",
+    "music videos",
+    "live sessions",
+    "youtube"
+  ],
+  "mood": [
+    "dark",
+    "bold"
+  ],
+  "synonyms": [
+    "videos",
+    "music videos",
+    "clips",
+    "live sessions",
+    "vidéos",
+    "clips vidéo",
+    "sessions live",
+    "films"
+  ],
+  "data": {
+    "name": "videos",
+    "family": "collection"
+  }
+}

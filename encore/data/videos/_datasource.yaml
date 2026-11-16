@@ -1,0 +1,32 @@
+label: Videos
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [Official video, Live session, Visualizer, Documentary]
+  - name: date
+    label: Date
+    kind: date
+  - name: runtime
+    label: Running time
+    kind: text
+  - name: poster
+    label: Poster
+    kind: image
+  - name: url
+    label: Link to the video
+    kind: link
+  - name: release
+    label: "From the record (its id, or empty)"
+    kind: text
+  - name: director
+    label: Directed by
+    kind: text
+  - name: featured
+    label: Featured on the videos page
+    kind: boolean
+sort: -date

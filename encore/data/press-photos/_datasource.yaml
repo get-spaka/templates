@@ -1,0 +1,13 @@
+label: Press photos
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: image
+    label: Photo
+    kind: image
+  - name: credit
+    label: Photo credit
+    kind: text
+order: [on-stage, the-van, guitar, the-room]

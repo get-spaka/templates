@@ -1,0 +1,14 @@
+{% assign secs = 0 %}
+<ol class="mt-5 border-t border-secondary-content/20">
+  {% for track in tracks %}
+  {% assign bits = track | split: " · " %}{% assign time = bits | last %}{% assign mmss = time | split: ":" %}
+  {% assign m = mmss[0] | times: 60 %}{% assign s = mmss[1] | plus: 0 %}{% assign secs = secs | plus: m | plus: s | round %}
+  <li class="grid grid-cols-[2.75rem_1fr_auto] items-baseline gap-3 border-b border-secondary-content/20 py-3">
+    <span class="mono text-secondary-content/60">{{ letter }}{{ forloop.index }}</span>
+    <span class="text-[1.0625rem] font-semibold">{% if bits.size > 1 %}{{ bits | first }}{% else %}{{ track }}{% endif %}</span>
+    <span class="mono text-secondary-content/70">{% if bits.size > 1 %}{{ time }}{% endif %}</span>
+  </li>
+  {% endfor %}
+</ol>
+{% assign mins = secs | divided_by: 60 | floor %}{% assign rest = secs | modulo: 60 | prepend: "0" | slice: -2, 2 %}
+<p class="mono mt-3 text-right text-[0.75rem] text-secondary-content/60">{{ tracks.size }} {% if tracks.size == 1 %}track{% else %}tracks{% endif %} · {{ mins }}:{{ rest }}</p>

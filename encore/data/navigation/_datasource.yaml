@@ -1,0 +1,13 @@
+label: Navigation
+fields:
+  - name: label
+    kind: text
+    required: true
+  - name: href
+    kind: link
+  - name: place
+    kind: choice
+    choices: [both, header, footer, social, listen]
+  - name: links
+    kind: links
+order: [music, shows, videos, press, contact, bandcamp, spotify, apple-music, youtube-music, tidal, instagram, youtube, tiktok]

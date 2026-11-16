@@ -1,0 +1,16 @@
+<section class="border-t border-base-300 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <p class="mono text-base-content/70" data-reveal>Said of us</p>
+    <ul class="mt-10 grid gap-12 md:grid-cols-3 md:gap-10">
+      {% for item in data.quotes limit: 3 %}
+      <li class="flex flex-col border-t-2 border-primary pt-6" data-reveal>
+        <p class="display text-[2rem] leading-none tracking-[0.01em]">{{ item.publication }}</p>
+        <blockquote class="mt-6 grow">
+          <p class="text-[1.25rem] leading-snug text-pretty">“{{ item.quote }}”</p>
+        </blockquote>
+        <p class="mono mt-6 text-[0.75rem] text-base-content/65">{{ item.writer }}{% if item.link %} · <a href="{{ item.link }}" target="_blank" rel="noopener" class="text-primary hover:underline">Read <span aria-hidden="true">↗</span></a>{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

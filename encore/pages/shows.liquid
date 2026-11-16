@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Shows — Velvet Freight</title>
+<meta name="description" content="Velvet Freight on tour: the Breakwater tour plays the Midwest and Ontario in February 2027 and Glasgow, Hamburg and Amsterdam in April. Dates, venues and tickets.">
+<meta property="og:title" content="Shows — Velvet Freight">
+<meta property="og:description" content="The Breakwater tour: the Midwest and Ontario in February, Europe in April. Dates, venues and tickets.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="stage-light text-base-content">
+  <div class="mx-auto max-w-[90rem] px-4 pt-12 pb-12 md:px-10 md:pt-20 md:pb-16">
+    <p class="mono flex items-center gap-3 text-base-content/70"><span class="dot dot-accent" aria-hidden="true"></span>On tour</p>
+    <h1 class="poster mt-5 text-[clamp(4.5rem,13vw,12rem)] leading-[0.82] tracking-tight">Shows</h1>
+    <p class="mt-8 max-w-2xl text-[clamp(1.25rem,2vw,1.625rem)] leading-snug text-pretty">The Breakwater tour: the Midwest and Ontario in February, Europe in April.</p>
+  </div>
+</section>
+{% render 'tour-board' %}
+{% render 'past-shows' %}
+{% render 'bring-us' %}
+{% render 'mailing-list' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

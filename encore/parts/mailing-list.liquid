@@ -1,0 +1,20 @@
+<section class="bg-neutral text-neutral-content">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 py-16 md:px-10 md:py-20 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-6">
+      <p class="mono flex items-center gap-3 text-neutral-content/70"><span class="dot" aria-hidden="true"></span>The mailing list</p>
+      <h2 class="mt-4 text-[clamp(2.75rem,5.5vw,5rem)]">Hear first when we come to your town</h2>
+      <p class="copy mt-5 max-w-lg">One letter when a tour is announced, one when a record comes out. Tell us your city and we will write when we play near it.</p>
+    </div>
+    <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#mailing-list-problems swap:innerHTML" class="flex flex-col gap-3 lg:col-span-6">
+      <div class="grid gap-3 sm:grid-cols-[1.4fr_1fr_auto]">
+        <label class="sr-only" for="mailing-list-email">Your email</label>
+        <input id="mailing-list-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="Your email" class="input input-lg w-full border-neutral-content/25 bg-neutral text-neutral-content placeholder:text-neutral-content/50">
+        <label class="sr-only" for="mailing-list-city">Your city</label>
+        <input id="mailing-list-city" name="city" type="text" maxlength="120" autocomplete="address-level2" placeholder="Your city" class="input input-lg w-full border-neutral-content/25 bg-neutral text-neutral-content placeholder:text-neutral-content/50">
+        <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Join the list</button>
+      </div>
+      <div id="mailing-list-problems" class="empty:hidden"></div>
+      <p class="mono text-[0.6875rem] text-neutral-content/60">Two or three letters a year. Leave whenever you like.</p>
+    </form>
+  </div>
+</section>

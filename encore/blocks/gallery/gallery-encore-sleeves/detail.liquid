@@ -1,0 +1,77 @@
+<section class="text-base-content">
+<section class="stage-light overflow-hidden text-base-content" data-sleeve-stage>
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-4 pt-8 pb-16 md:px-10 md:pt-12 md:pb-24 lg:grid-cols-12 lg:gap-12">
+    <div class="flex items-start justify-between gap-4 lg:col-span-12">
+      <a href="/releases" class="mono inline-flex items-center gap-2 text-base-content/75 transition-colors hover:text-primary"><span aria-hidden="true">←</span> All records</a>
+      <p class="mono text-base-content/60">{{ record.catalog }}</p>
+    </div>
+    <div class="w-[78%] max-w-[40rem] sm:w-full lg:col-span-6">
+      {% render 'sleeve', release: record, place: 'page', flight: true %}
+    </div>
+    <div class="lg:col-span-6 lg:pt-6">
+      <p class="mono text-base-content/70">{{ record.type }} · {{ record.date | date: "%Y" }}</p>
+      <h1 class="poster mt-4 text-[clamp(4.5rem,11vw,10rem)] leading-[0.82] tracking-tight text-balance">{{ record.title }}</h1>
+      <p class="mono mt-6 text-base-content/70">{{ record.type }} · {{ record.date | date: "%B %-d, %Y" }}{% if record.label %} · {{ record.label }}{% endif %}{% if record.catalog %} · {{ record.catalog }}{% endif %}</p>
+      {% if record.summary %}<p class="mt-6 max-w-xl text-[1.25rem] leading-snug text-pretty">{{ record.summary }}</p>{% endif %}
+      <div id="listen" class="mt-10 scroll-mt-28 border-t border-base-300 pt-6">
+        <h2><span class="mono flex items-center gap-3 text-base-content/70"><span class="dot" aria-hidden="true"></span>Listen</span></h2>
+        {% if record.listen.size > 0 %}
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {% for link in record.listen %}<li><a href="{{ link.href }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm whitespace-nowrap md:btn-md">{{ link.label }} <span aria-hidden="true">↗</span></a></li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if record.buy %}
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a href="{{ record.buy }}" target="_blank" rel="noopener" class="btn btn-primary btn-lg whitespace-nowrap">{% if record.formats contains "LP" %}Buy the LP{% else %}Buy the record{% endif %} <span aria-hidden="true">↗</span></a>
+          {% if record.formats.size > 0 %}<p class="mono text-base-content/70">{{ record.formats | join: " · " }}</p>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="paper">
+  <div class="mx-auto max-w-[90rem] px-4 py-16 md:px-10 md:py-24">
+    <div class="flex flex-wrap items-baseline justify-between gap-4 border-b-2 border-secondary-content pb-5">
+      <h2 class="text-[clamp(2.5rem,5vw,4.5rem)]">{{ record.title }}</h2>
+      <p class="mono text-secondary-content/70">{{ record.catalog }} · {{ record.date | date: "%Y" }}</p>
+    </div>
+    <div class="mt-12 grid gap-14 lg:grid-cols-12">
+      <div class="grid gap-12 lg:col-span-7 {% if record.side_b.size > 0 %}md:grid-cols-2 md:gap-10{% endif %}">
+        {% if record.side_b.size > 0 %}
+        <div>
+          <h3><span class="mono text-secondary-content">Side A</span></h3>
+          {% render 'side', tracks: record.side_a, letter: 'A' %}
+        </div>
+        <div>
+          <h3><span class="mono text-secondary-content">Side B</span></h3>
+          {% render 'side', tracks: record.side_b, letter: 'B' %}
+        </div>
+        {% else %}
+        <div class="max-w-xl">
+          <h3><span class="mono text-secondary-content">Tracks</span></h3>
+          {% render 'side', tracks: record.side_a, letter: '' %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="lg:col-span-5">
+        <h3><span class="mono text-secondary-content">Credits</span></h3>
+        <dl class="mt-5 border-t border-secondary-content/20">
+          {% for credit in record.credits %}{% assign bits = credit | split: " · " %}
+          <div class="grid grid-cols-[minmax(0,10rem)_1fr] gap-4 border-b border-secondary-content/20 py-3">
+            <dt class="mono text-[0.75rem] text-secondary-content/65">{% if bits.size > 1 %}{{ bits | first }}{% endif %}</dt>
+            <dd>{% if bits.size > 1 %}{{ bits | last }}{% else %}{{ credit }}{% endif %}</dd>
+          </div>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+    {% if record.notes != blank %}
+    <div class="mt-16 grid gap-6 border-t-2 border-secondary-content pt-10 lg:grid-cols-12">
+      <h3 class="lg:col-span-4"><span class="mono text-secondary-content">Liner notes</span></h3>
+      <div class="max-w-2xl text-[1.125rem] leading-relaxed text-pretty lg:col-span-8 [&_em]:italic [&_p+p]:mt-5 [&_a]:underline">{{ record.notes }}</div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+</section>
