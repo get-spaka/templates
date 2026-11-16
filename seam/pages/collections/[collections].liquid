@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }}, Collection {{ record.number }} — Ourlet</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }}, Collection {{ record.number }} — Ourlet">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+{%- assign looks = data.looks | where: "collection", record.id -%}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[90rem] px-5 pt-16 pb-20 md:px-8 lg:pt-24 lg:pb-28">
+    <div data-reveal>
+      <p class="type text-base-content/70"><a href="/collections" class="ink-link">Collections</a> · No. {{ record.number }} · {{ record.season }}</p>
+      <h1 class="poster mt-6">{{ record.title }}</h1>
+    </div>
+    <div class="mt-12 grid gap-8 lg:grid-cols-12">
+      <p class="statement text-[clamp(1.75rem,2.6vw,2.25rem)] lg:col-span-5" data-reveal>{{ record.summary }}</p>
+      <div class="record-text body-text max-w-xl lg:col-span-5 lg:col-start-8" data-reveal>{{ record.body }}</div>
+    </div>
+  </section>
+  {% if looks.size > 0 %}
+  {% render 'contact-sheet', looks: looks, limit: 24, here: true, title: "Every look, the picks circled", note: "Open a frame to go to its look below.", link: "" %}
+  <section class="bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 md:px-8">
+      {%- for look in looks %}
+      <article id="look-{{ look.number }}" class="look grid items-center gap-8 py-16 md:grid-cols-12 md:gap-10 lg:py-20">
+        <figure data-pleat class="mx-auto aspect-[2/3] w-full bg-neutral max-w-full md:col-span-7 lg:h-[min(86svh,48rem)] lg:w-auto{% cycle '', ' md:col-start-6 md:row-start-1' %}"><img src="{{ look.image }}" class="size-full object-cover" data-print></figure>
+        <div class="md:col-span-4{% cycle ' md:col-start-9', ' md:col-start-1 md:row-start-1' %}" data-reveal>
+          <p class="type text-base-content/70">Look {{ look.number }}</p>
+          <p class="statement mt-3 text-[clamp(1.75rem,2.4vw,2.25rem)]">{{ look.caption }}</p>
+          <ul class="mt-12 flex flex-wrap gap-x-5 gap-y-10 pl-2">
+            {%- for id in look.pieces %}{% assign worn = data.pieces | where: "id", id | first %}{% if worn %}
+            <li><a href="/pieces/{{ worn.id }}" class="tag tag-sm" style="--tilt: {% cycle 'tilts': '-3deg', '2deg', '-1deg' %}"><span class="tag-card"><span class="tag-name">{{ worn.name }}</span><span class="block">{{ worn.price }}</span></span></a></li>
+            {%- endif %}{% endfor %}
+          </ul>
+        </div>
+      </article>
+      {%- unless forloop.last %}<div class="notch-rule" aria-hidden="true"></div>{% endunless %}
+      {%- endfor %}
+    </div>
+  </section>
+  {% endif %}
+  {%- assign made = data.pieces | where: "collection", record.id -%}
+  {% if made.size > 0 %}
+  <section class="border-t border-base-300 bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-28">
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <h2 class="heading">The pieces of {{ record.title }}</h2>
+        <a href="/pieces" class="btn btn-outline border-base-content">All pieces</a>
+      </div>
+      <ul class="mt-12 grid grid-cols-2 gap-x-4 gap-y-14 md:gap-x-6 lg:grid-cols-4">
+        {%- for piece in made %}
+        <li data-reveal>{% render 'piece-card', piece: piece, index: forloop.index %}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+  {%- assign next = nil -%}
+  {%- for item in data.collections -%}{%- if item.id == record.id -%}{%- assign at = forloop.index -%}{%- endif -%}{%- endfor -%}
+  {%- assign next = data.collections | slice: at | first -%}
+  {%- unless next -%}{%- assign next = data.collections | first -%}{%- endunless %}
+  <a href="/collections/{{ next.id }}" class="group block bg-neutral text-neutral-content">
+    <div class="mx-auto flex max-w-[90rem] flex-col gap-4 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-8 lg:py-20">
+      <div>
+        <p class="type text-neutral-content/70">Next · Collection {{ next.number }} · {{ next.season }}</p>
+        <p class="mt-3 font-heading text-[clamp(3rem,8vw,7rem)] leading-[0.9] group-hover:underline group-hover:decoration-1 group-hover:underline-offset-8">{{ next.title }}</p>
+      </div>
+      <span class="ui" aria-hidden="true">Open →</span>
+    </div>
+  </a>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="type text-base-content/70">On the table</p>
+        <h2 class="heading mt-3">Cut when you ask for them</h2>
+      </div>
+      <a href="/pieces" class="btn btn-outline border-base-content">All pieces</a>
+    </div>
+    <ul class="mt-16 grid grid-cols-2 gap-x-4 gap-y-14 md:gap-x-6 lg:grid-cols-3 lg:gap-y-20">
+      {%- for piece in data.pieces limit: 6 %}
+      {%- assign turn = forloop.index | modulo: 2 %}
+      <li data-reveal>
+        <article class="piece-card relative">
+          <a href="/pieces/{{ piece.id }}" class="block">
+            <div class="relative aspect-[3/4] overflow-hidden bg-base-200">
+              {% if piece.image %}<img src="{{ piece.image }}" class="absolute inset-0 size-full object-cover" data-print>{% endif %}
+              {% if piece.detail %}<img src="{{ piece.detail }}" class="piece-detail absolute inset-0 size-full object-cover" data-print aria-hidden="true">{% endif %}
+            </div>
+            <span class="tag absolute top-2 right-2 sm:top-4 sm:right-3 md:right-5" style="--tilt: {% if turn == 0 %}3deg{% else %}-4deg{% endif %}">
+              <span class="tag-card">
+                <span class="tag-name">{{ piece.name }}</span>
+                <span class="tag-line">{{ piece.kind }}</span>
+                <span class="tag-rule"></span>
+                <span class="flex flex-wrap justify-between gap-x-3"><span>{{ piece.price }}</span><span>{% case piece.made %}{% when "made to order" %}<span class="made-dot">To order</span>{% when "in stock" %}In stock{% when "last few" %}Last few{% when "sold out" %}Sold out{% when "one of a kind" %}1 of 1{% else %}{{ piece.made }}{% endcase %}</span></span>
+              </span>
+            </span>
+          </a>
+          <p class="type mt-3 text-base-content/70">{{ piece.colors | join: ", " }}</p>
+        </article>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

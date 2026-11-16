@@ -1,0 +1,47 @@
+<footer class="site-footer mt-[calc(var(--pink)*-1)] bg-neutral text-neutral-content" data-pinked="top">
+  <div class="mx-auto max-w-[90rem] px-5 pt-20 pb-8 md:px-8 md:pt-24">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-6">
+        <p class="type text-neutral-content/70">The letter</p>
+        <p class="statement mt-4 max-w-[22ch]">A letter when a collection is ready, four times a year.</p>
+        <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#newsletter-problems swap:innerHTML" class="mt-8 flex max-w-lg flex-col gap-3 sm:flex-row sm:items-end">
+          <label class="flex flex-1 flex-col gap-1.5">
+            <span class="type text-neutral-content/80">Email</span>
+            <input name="email" type="email" required autocomplete="email" maxlength="200" class="input w-full border-neutral-content/40 bg-neutral text-neutral-content">
+          </label>
+          <button class="btn btn-outline border-neutral-content text-neutral-content hover:bg-neutral-content hover:text-neutral">Sign up</button>
+        </form>
+        <div id="newsletter-problems" class="mt-3 empty:hidden"></div>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-2 lg:col-span-6">
+        <div>
+          <p class="type text-neutral-content/70">The studio</p>
+          <address class="mt-4 not-italic leading-relaxed">Studio 405<br>5590 Avenue de Gaspé<br>Mile End, Montreal</address>
+          <dl class="type mt-5 grid grid-cols-[auto_1fr] gap-x-5 gap-y-1">
+            {% for item in data.hours %}{% if item.hours != "Closed" %}<dt>{{ item.day }}</dt><dd>{{ item.hours }}</dd>{% endif %}{% endfor %}
+          </dl>
+          <p class="mt-5"><a href="mailto:studio@ourlet.ca" class="ink-link">studio@ourlet.ca</a></p>
+        </div>
+        <div>
+          <p class="type text-neutral-content/70">The label</p>
+          <nav aria-label="Footer" class="mt-4">
+            <ul class="space-y-1.5">
+              {% for item in data.navigation %}{% if item.place != "social" %}
+              <li><a href="{{ item.href }}" class="ink-link decoration-neutral-content/30">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+              <li><a href="/pieces#how-to-buy" class="ink-link decoration-neutral-content/30">How to buy</a></li>
+              {% for item in data.navigation %}{% if item.place == "social" %}
+              <li><a href="{{ item.href }}" class="ink-link decoration-neutral-content/30" rel="noopener" target="_blank">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="notch-rule on-ink mt-16" aria-hidden="true"></div>
+    <div class="wordmark-fill mt-8 overflow-hidden">
+      <p class="wordmark leading-[0.8] font-medium" aria-hidden="true">Ourlet</p>
+    </div>
+    <p class="type mt-6 text-neutral-content/60">Ourlet · Cut and sewn to order in Montreal since 2019 · © 2026</p>
+  </div>
+</footer>

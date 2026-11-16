@@ -1,0 +1,24 @@
+label: Journal
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: category
+    label: Category
+    kind: choice
+    choices: [Studio, Cloth, People, Mending]
+  - name: cover
+    label: Cover
+    kind: image
+  - name: summary
+    label: Summary
+    kind: text
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: -date

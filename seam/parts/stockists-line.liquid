@@ -1,0 +1,10 @@
+<section class="bg-base-100 pb-24 text-base-content lg:pb-32">
+  <div class="mx-auto max-w-[90rem] px-5 md:px-8" data-reveal>
+    <div class="notch-rule" aria-hidden="true"></div>
+    <div class="flex flex-col gap-6 py-8 lg:flex-row lg:items-center lg:justify-between">
+      <p class="font-heading text-[clamp(1.6rem,2.6vw,2.25rem)] leading-tight"><span class="type mr-3 align-middle text-base-content/70">Try them on</span> The studio, Saturdays 11 to 5{% for shop in data.stockists %} · {{ shop.city }}{% endfor %}</p>
+      <a href="/stockists" class="btn btn-outline shrink-0 self-start border-base-content lg:self-auto">All stockists</a>
+    </div>
+    <div class="h-px bg-base-300" aria-hidden="true"></div>
+  </div>
+</section>

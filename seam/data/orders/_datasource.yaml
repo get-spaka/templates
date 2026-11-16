@@ -1,0 +1,38 @@
+label: Requests
+collected: true
+answer: order-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request is with us."
+fields:
+  - name: piece
+    label: Piece
+    kind: text
+    required: true
+  - name: size
+    label: Size
+    kind: text
+  - name: color
+    label: Color
+    kind: text
+  - name: delivery
+    label: Delivery
+    kind: choice
+    choices: [Shipping, Pick-up at the studio]
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: email
+    label: Email
+    kind: email
+    required: true
+  - name: city
+    label: City
+    kind: text
+  - name: note
+    label: Note
+    kind: markdown

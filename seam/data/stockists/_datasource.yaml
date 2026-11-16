@@ -1,0 +1,26 @@
+label: Stockists
+fields:
+  - name: name
+    label: Shop
+    kind: text
+    required: true
+  - name: city
+    label: City
+    kind: text
+  - name: region
+    label: Region
+    kind: choice
+    choices: [Montreal, Elsewhere in Canada, United States, Europe]
+  - name: address
+    label: Address
+    kind: text
+  - name: link
+    label: Its website
+    kind: link
+  - name: carries
+    label: What it carries
+    kind: text
+  - name: note
+    label: A note
+    kind: text
+order: [comptoir-lenteur, magasin-tisserin, selvage-room, coldframe-goods, lintel-dry-goods, butik-krave]

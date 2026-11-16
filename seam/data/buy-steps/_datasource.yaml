@@ -1,0 +1,13 @@
+label: How to buy
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: step
+    label: Number
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [ask, confirm, make]

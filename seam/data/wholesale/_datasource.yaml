@@ -1,0 +1,32 @@
+label: Stockist requests
+collected: true
+answer: wholesale-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many messages were sent from here. Please try again in a few minutes."
+  sent: "Thank you, we will write back."
+fields:
+  - name: shop
+    label: Shop
+    kind: text
+    required: true
+  - name: city
+    label: City
+    kind: text
+    required: true
+  - name: website
+    label: Website
+    kind: link
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Email
+    kind: email
+    required: true
+  - name: message
+    label: Message
+    kind: markdown

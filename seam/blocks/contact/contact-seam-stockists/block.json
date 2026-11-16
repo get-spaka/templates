@@ -1,0 +1,22 @@
+{
+  "name": "Seam stockists by region",
+  "kind": "contact",
+  "source": "upstart",
+  "description": "Stockists grouped by region in ruled rows: the city in typewriter type, the shop's name in the serif linking to its site, its address and what it carries.",
+  "tags": ["contact", "stockists", "stores", "where to buy", "retailers"],
+  "mood": ["minimal", "elegant", "professional"],
+  "synonyms": [
+    "stockists",
+    "stores",
+    "where to buy",
+    "retailers",
+    "revendeurs",
+    "points de vente",
+    "où acheter",
+    "boutiques"
+  ],
+  "data": {
+    "name": "stockists",
+    "family": "collection"
+  }
+}

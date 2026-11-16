@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Ourlet — Clothes cut and sewn to order in Mile End, Montreal</title>
+<meta name="description" content="Ourlet is a small clothing label in Mile End, Montreal: seasonless overshirts, chore jackets, wide trousers and smock dresses, cut when you ask for them and sewn by one of four people.">
+<meta property="og:title" content="Ourlet — Clothes cut and sewn to order in Mile End, Montreal">
+<meta property="og:description" content="Ourlet is a small clothing label in Mile End, Montreal: seasonless overshirts, chore jackets, wide trousers and smock dresses, cut when you ask for them and sewn by one of four people.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'hero-diptych' %}
+{% render 'statement' %}
+{% render 'on-the-table' %}
+{% render 'contact-sheet', looks: data.looks, limit: 12, title: "Fieldwork, frame by frame", note: "Our photographer still circles the picks in grease pencil. Open a frame to see the look and the pieces in it.", link: "/collections/fieldwork" %}
+{% render 'making-steps' %}
+{% render 'journal-latest' %}
+{% render 'stockists-line' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

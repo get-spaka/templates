@@ -1,0 +1,66 @@
+label: Pieces
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: collection
+    label: Collection (its id, as in Collections)
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [Jackets, Shirts, Trousers, Dresses, Knits, Accessories]
+  - name: price
+    label: Price
+    kind: text
+  - name: fabric
+    label: Cloth (its id, as in Cloth)
+    kind: text
+  - name: colors
+    label: Colors
+    kind: list
+  - name: sizes
+    label: Sizes
+    kind: list
+  - name: made
+    label: How it is made
+    kind: choice
+    choices: [made to order, in stock, last few, sold out, one of a kind]
+  - name: image
+    label: Worn
+    kind: image
+  - name: flat
+    label: Laid flat
+    kind: image
+  - name: detail
+    label: The cloth, close up
+    kind: image
+  - name: summary
+    label: Summary
+    kind: text
+  - name: shop_link
+    label: Link to the piece on an online shop
+    kind: link
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: body
+    label: Fit, care and who sews it
+    kind: markdown
+body: body
+order:
+  [
+    fieldwork-overshirt,
+    de-gaspe-chore-jacket,
+    wide-pleat-trouser,
+    smock-dress,
+    rib-vest,
+    offcut-tote,
+    studio-shirt,
+    painter-trouser,
+    work-coat,
+    belted-cape,
+    shift-dress,
+    day-dress,
+  ]

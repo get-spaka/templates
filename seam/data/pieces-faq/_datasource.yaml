@@ -1,0 +1,10 @@
+label: Ordering, fit and care
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: text
+order: [timing, payment, exchanges, shipping, alterations, washing-linen]

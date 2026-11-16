@@ -1,0 +1,26 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div data-reveal>
+      <p class="type text-base-content/70">The stockists</p>
+      <h2 class="heading mt-3">Shops that carry us</h2>
+    </div>
+    {%- assign regions = "Montreal,Elsewhere in Canada,United States,Europe" | split: "," %}
+    {%- for region in regions %}{% assign shops = data.stockists | where: "region", region %}{% if shops.size > 0 %}
+    <div class="mt-14">
+      <h3 class="ui text-base-content/70" data-reveal>{{ region }}</h3>
+      <ul class="mt-4 border-t border-base-300">
+        {%- for shop in shops %}
+        <li class="grid gap-x-8 gap-y-2 border-b border-base-300 py-6 md:grid-cols-12 md:items-baseline" data-reveal>
+          <p class="type md:col-span-2">{{ shop.city }}</p>
+          <p class="font-heading text-[2rem] leading-tight md:col-span-4">{% if shop.link %}<a href="{{ shop.link }}" class="hover:underline hover:decoration-1 hover:underline-offset-4" rel="noopener" target="_blank">{{ shop.name }}</a>{% else %}{{ shop.name }}{% endif %}</p>
+          <div class="md:col-span-6">
+            <p>{{ shop.address }}</p>
+            <p class="type mt-1 text-base-content/70">{{ shop.carries }}{% if shop.note %} · {{ shop.note }}{% endif %}</p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}{% endfor %}
+  </div>
+</section>

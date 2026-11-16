@@ -1,0 +1,19 @@
+{%- assign cloth = data.fabrics | where: "id", piece.fabric | first -%}
+{%- assign turn = index | modulo: 2 -%}
+<article class="piece-card relative">
+  <a href="/pieces/{{ piece.id }}" class="block">
+    <div class="relative aspect-[3/4] overflow-hidden bg-base-200">
+      {% if piece.image %}<img src="{{ piece.image }}" class="absolute inset-0 size-full object-cover" data-print>{% endif %}
+      {% if piece.detail %}<img src="{{ piece.detail }}" class="piece-detail absolute inset-0 size-full object-cover" data-print aria-hidden="true">{% endif %}
+    </div>
+    <span class="tag absolute top-2 right-2 sm:top-4 sm:right-3 md:right-5" style="--tilt: {% if turn == 0 %}3deg{% else %}-4deg{% endif %}">
+      <span class="tag-card">
+        <span class="tag-name">{{ piece.name }}</span>
+        <span class="tag-line">{% if cloth %}{{ cloth.name }}{% else %}{{ piece.fabric }}{% endif %}</span>
+        <span class="tag-rule"></span>
+        <span class="flex flex-wrap justify-between gap-x-3"><span>{{ piece.price }}</span><span>{% render 'made-label', made: piece.made %}</span></span>
+      </span>
+    </span>
+  </a>
+  <p class="type mt-3 text-base-content/70">{{ piece.kind }} · {{ piece.colors | join: ", " }}</p>
+</article>

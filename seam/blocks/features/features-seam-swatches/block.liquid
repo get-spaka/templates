@@ -1,0 +1,24 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-6">
+        <p class="type text-base-content/70">The cloth</p>
+        <h2 class="heading mt-3">Where our cloth comes from</h2>
+      </div>
+      <p class="body-text max-w-md lg:col-span-4 lg:col-start-9">We buy from mills we have visited, and from the jobbers of Chabanel when a good roll turns up.</p>
+    </div>
+    <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
+      {%- for cloth in data.fabrics %}
+      <li data-reveal>
+        <div class="bg-base-200 p-4 pb-5">
+          {% if cloth.swatch %}<img src="{{ cloth.swatch }}" class="aspect-square w-full object-cover" data-pinked="all" data-print>{% else %}<div class="aspect-square w-full bg-linear-to-br from-primary/20 to-secondary/40" data-pinked="all"></div>{% endif %}
+          <p class="type mt-4 font-bold">{{ cloth.name }}</p>
+          <p class="type">{{ cloth.origin }}</p>
+          <p class="type text-base-content/70">{{ cloth.weight }}</p>
+        </div>
+        <p class="body-text mt-4 text-[0.9375rem]">{{ cloth.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

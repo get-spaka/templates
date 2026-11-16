@@ -1,0 +1,16 @@
+label: The studio's people
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+  - name: text
+    label: Two sentences
+    kind: text
+order: [margaux-tessier, daniel-osei, lucia-paredes, huong-tran]

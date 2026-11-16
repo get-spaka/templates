@@ -1,0 +1,54 @@
+{%- comment -%} The request for a piece, on manila. piece: the piece's record. {%- endcomment -%}
+<section id="request" class="scroll-mt-20 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-24">
+    <div class="grid gap-10 bg-base-200 px-6 py-10 md:px-10 md:py-14 lg:grid-cols-12 lg:gap-12" data-reveal>
+      <div class="lg:col-span-4">
+        <p class="type text-base-content/70">The request</p>
+        <h2 class="heading mt-3">Ask for the {{ piece.name }}</h2>
+        <p class="body-text mt-5">We reply within two working days with the timing and a payment link. Nothing is charged before you agree.</p>
+      </div>
+      <form hx-post="/_data/orders" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#order-problems swap:innerHTML" class="grid gap-x-6 gap-y-5 sm:grid-cols-2 lg:col-span-8">
+        <input type="hidden" name="piece" value="{{ piece.name }}">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Size</legend>
+          <select name="size" class="select w-full border-base-content/30 bg-base-100">
+            {%- for size in piece.sizes %}<option>{{ size }}</option>{% endfor %}
+          </select>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Color</legend>
+          <select name="color" class="select w-full border-base-content/30 bg-base-100">
+            {%- for color in piece.colors %}<option>{{ color }}</option>{% endfor %}
+          </select>
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Delivery</legend>
+          <div class="flex flex-wrap gap-x-8 gap-y-2">
+            <label class="flex items-center gap-2"><input type="radio" name="delivery" value="Shipping" class="radio radio-sm" checked> Shipping</label>
+            <label class="flex items-center gap-2"><input type="radio" name="delivery" value="Pick-up at the studio" class="radio radio-sm"> Pick-up at the studio</label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Name</legend>
+          <input name="name" required maxlength="120" autocomplete="name" class="input w-full border-base-content/30 bg-base-100">
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Email</legend>
+          <input name="email" type="email" required maxlength="200" autocomplete="email" class="input w-full border-base-content/30 bg-base-100">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">City</legend>
+          <input name="city" maxlength="120" autocomplete="address-level2" class="input w-full border-base-content/30 bg-base-100">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend type text-[0.8125rem] font-normal">Note: your height, an inseam or sleeve length, a question</legend>
+          <textarea name="note" rows="3" maxlength="2000" class="textarea w-full border-base-content/30 bg-base-100"></textarea>
+        </fieldset>
+        <div id="order-problems" class="empty:hidden sm:col-span-2"></div>
+        <div class="sm:col-span-2">
+          <button class="btn btn-primary">Request this piece</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

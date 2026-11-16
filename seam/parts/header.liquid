@@ -1,0 +1,38 @@
+<header class="site-header sticky top-0 z-40 text-base-content">
+  <div class="mx-auto grid h-[4.5rem] max-w-[90rem] grid-cols-[1fr_auto] items-center gap-6 px-5 md:px-8 xl:grid-cols-[1fr_auto_1fr]">
+    <nav aria-label="Main" class="hidden xl:block">
+      <ul class="ui flex items-center gap-8 whitespace-nowrap">
+        {% for item in data.navigation %}{% if item.place == "left" %}
+        <li><a href="{{ item.href }}" class="nav-link py-2" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <a href="/" class="wordmark justify-self-start text-[1.375rem] whitespace-nowrap xl:justify-self-center xl:text-[1.625rem]" aria-label="Ourlet, home">Ourlet</a>
+    <div class="flex items-center justify-end gap-8">
+      <nav aria-label="More" class="hidden xl:block">
+        <ul class="ui flex items-center gap-8 whitespace-nowrap">
+          {% for item in data.navigation %}{% if item.place == "right" %}
+          <li><a href="{{ item.href }}" class="nav-link py-2" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <a href="/pieces#how-to-buy" class="btn btn-outline btn-sm hidden border-base-content sm:inline-flex">How to buy</a>
+      <details class="site-menu xl:hidden">
+        <summary class="btn btn-ghost btn-sm relative z-[60] gap-2 px-2" aria-label="Menu">
+          <span class="menu-open">Menu</span><span class="menu-close">Close</span>
+        </summary>
+        <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-base-100 px-6 pt-28 pb-10 text-base-content">
+          <ul class="space-y-2">
+            {% for item in data.navigation %}{% if item.place == "left" or item.place == "right" %}
+            <li><a href="{{ item.href }}" class="nav-link block font-heading text-5xl leading-[1.1]" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+          </ul>
+          <div class="mt-12 flex flex-col gap-4">
+            <a href="/pieces#how-to-buy" class="btn btn-primary btn-lg">How to buy</a>
+            <p class="type text-base-content/70">Studio 405 · 5590 Avenue de Gaspé · Montreal</p>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

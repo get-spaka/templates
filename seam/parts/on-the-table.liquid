@@ -1,0 +1,17 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="type text-base-content/70">On the table</p>
+        <h2 class="heading mt-3">Cut when you ask for them</h2>
+      </div>
+      <a href="/pieces" class="btn btn-outline border-base-content">All pieces</a>
+    </div>
+    <ul class="mt-16 grid grid-cols-2 gap-x-4 gap-y-14 md:gap-x-6 lg:grid-cols-3 lg:gap-y-20">
+      {%- assign shown = 0 -%}
+      {%- for piece in data.pieces -%}{%- if piece.featured and shown < 6 -%}{%- assign shown = shown | plus: 1 %}
+      <li data-reveal>{% render 'piece-card', piece: piece, index: shown %}</li>
+      {%- endif -%}{%- endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+label: Looks
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: number
+    label: Number
+    kind: text
+  - name: collection
+    label: Collection (its id, as in Collections)
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: pieces
+    label: Pieces worn (their ids, as in Pieces)
+    kind: list
+  - name: pick
+    label: Circled on the contact sheet
+    kind: boolean
+order:
+  [
+    fieldwork-01,
+    fieldwork-02,
+    fieldwork-03,
+    fieldwork-04,
+    fieldwork-05,
+    fieldwork-06,
+    fieldwork-07,
+    fieldwork-08,
+    low-water-01,
+    low-water-02,
+    low-water-03,
+    low-water-04,
+    night-shift-01,
+    night-shift-02,
+    night-shift-03,
+    night-shift-04,
+    the-uniform-01,
+    the-uniform-02,
+    the-uniform-03,
+  ]

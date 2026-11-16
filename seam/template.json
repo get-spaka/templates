@@ -1,0 +1,11 @@
+{
+  "id": "seam",
+  "version": "1.0.0",
+  "name": "Seam",
+  "description": "An independent fashion label's site made from its cutting table: photographs that open from their pleats, manila hang tags in typewriter type, swatches cut with pinking shears, pattern paper, and the lookbook as a dark contact sheet with the picks circled in grease pencil.",
+  "category": "business",
+  "original": true,
+  "tags": ["fashion", "clothing", "label", "apparel", "lookbook", "made to order", "studio", "stockists"],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

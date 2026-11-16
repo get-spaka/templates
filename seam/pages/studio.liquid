@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Studio — Ourlet</title>
+<meta name="description" content="Ourlet's studio is one room on the fourth floor of a 1920s shirt factory in Mile End, Montreal, where four people cut, sew and mend every piece.">
+<meta property="og:title" content="Studio — Ourlet">
+<meta property="og:description" content="Ourlet's studio is one room on the fourth floor of a 1920s shirt factory in Mile End, Montreal, where four people cut, sew and mend every piece.">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[90rem] px-5 pt-16 pb-16 md:px-8 lg:pt-24 lg:pb-20">
+    <div data-reveal>
+      <p class="type text-base-content/70">Studio 405 · 5590 Avenue de Gaspé · Mile End</p>
+      <h1 class="page-title mt-5 max-w-[14ch]">One room, four people, a long table</h1>
+    </div>
+    <figure data-pleat class="mt-12 aspect-[4/3] bg-neutral md:aspect-[16/8]"><img src="/media/studio-table.jpg" class="size-full object-cover" data-print></figure>
+  </section>
+  <section class="mx-auto grid max-w-[90rem] gap-12 px-5 pb-24 md:px-8 lg:grid-cols-12 lg:pb-32">
+    <div class="space-y-5 lg:col-span-6" data-reveal>
+      <p class="type text-base-content/70">The story</p>
+      <h2 class="heading">From Chabanel Street to the fourth floor</h2>
+      <p class="body-text">Margaux Tessier spent nine years cutting coats and shirts for the garment factories of Chabanel Street, forty at a time, for labels she never met. In 2019 she rented one room on the fourth floor of a shirt factory built in 1920, set up a long table under its tall windows, and started Ourlet.</p>
+      <p class="body-text">The building still has its freight elevator and the marks of the old cutting tables in the floor. We cut on the same spot, one piece at a time, when someone asks for it: nothing is made to sit in a stockroom, and nothing we make goes unsold.</p>
+      <p class="body-text">Four of us work here now. We make two collections a year, keep three pieces in the Uniform, and mend everything we have ever made.</p>
+    </div>
+    <blockquote class="self-center border-l border-primary pl-8 lg:col-span-5 lg:col-start-8" data-reveal>
+      <p class="statement text-[clamp(2rem,3.2vw,2.75rem)]">“I spent nine years cutting clothes nobody had asked for. Now I only cut the ones somebody has.”</p>
+      <footer class="type mt-6 text-base-content/70">Margaux Tessier, founder</footer>
+    </blockquote>
+  </section>
+  <section class="pattern-paper bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+      <div data-reveal>
+        <p class="type text-base-content/70">How a piece is made</p>
+        <h2 class="heading mt-3">From paper to parcel</h2>
+      </div>
+      <ol class="mt-14">
+        {%- for step in data.making %}
+        <li class="grid items-center gap-8 border-t border-base-300 py-12 md:grid-cols-12 md:gap-10" data-reveal>
+          <div class="md:col-span-3">{% render 'pattern-piece', shape: step.pattern, class: "block h-52 w-auto" %}</div>
+          {% if step.image %}<img src="{{ step.image }}" class="aspect-[4/3] w-full object-cover md:col-span-4" data-print>{% endif %}
+          <div class="md:col-span-4 md:col-start-9">
+            <p class="type text-base-content/70">{{ step.step }}</p>
+            <h3 class="mt-2 text-[2.25rem]">{{ step.title }}</h3>
+            <p class="body-text mt-3">{{ step.text }}</p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </section>
+  <section class="bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+      <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+        <div class="lg:col-span-6">
+          <p class="type text-base-content/70">The cloth</p>
+          <h2 class="heading mt-3">Five cloths, and where they come from</h2>
+        </div>
+        <p class="body-text max-w-md lg:col-span-4 lg:col-start-9">We buy from mills we have visited, and from the jobbers of Chabanel when a good roll turns up.</p>
+      </div>
+      <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
+        {%- for cloth in data.fabrics %}
+        <li data-reveal>
+          <div class="bg-base-200 p-4 pb-5">
+            {% if cloth.swatch %}<img src="{{ cloth.swatch }}" class="aspect-square w-full object-cover" data-pinked="all" data-print>{% endif %}
+            <p class="type mt-4 font-bold">{{ cloth.name }}</p>
+            <p class="type">{{ cloth.origin }}</p>
+            <p class="type text-base-content/70">{{ cloth.weight }}</p>
+          </div>
+          <p class="body-text mt-4 text-[0.9375rem]">{{ cloth.text }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+  <section class="border-t border-base-300 bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+      <div data-reveal>
+        <p class="type text-base-content/70">The people</p>
+        <h2 class="heading mt-3">Who sews your piece</h2>
+      </div>
+      <ul class="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 md:gap-x-6 lg:grid-cols-4">
+        {%- for person in data.team %}
+        <li data-reveal>
+          {% if person.photo %}<img src="{{ person.photo }}" class="aspect-[3/4] w-full object-cover" data-print>
+          {% else %}<div class="flex aspect-[4/3] w-full items-center justify-center bg-base-200" aria-hidden="true"><span class="font-heading text-[clamp(3.5rem,8vw,6rem)] leading-none text-primary">{% assign words = person.name | split: " " %}{% for w in words %}{{ w | slice: 0 }}{% endfor %}</span></div>{% endif %}
+          <h3 class="mt-4 text-[1.75rem]">{{ person.name }}</h3>
+          <p class="type mt-1 text-base-content/70">{{ person.role }}</p>
+          <p class="body-text mt-3 text-[0.9375rem]">{{ person.text }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+  <section class="pattern-paper bg-secondary text-secondary-content">
+    <div class="mx-auto grid max-w-[90rem] items-center gap-12 px-5 py-20 md:px-8 lg:grid-cols-12 lg:py-28">
+      <img src="/media/mending.jpg" class="aspect-[4/3] w-full object-cover lg:col-span-6" data-print>
+      <div class="lg:col-span-5 lg:col-start-8" data-reveal>
+        <p class="type">Mended for life</p>
+        <h2 class="heading mt-3">We mend what we make</h2>
+        <p class="body-text mt-5">Send back anything we made, from any year: a split seam, a worn elbow, a lost button. Repairs are free for two years and at cost after that, and the piece comes back within a month.</p>
+        <p class="body-text mt-4">Write to us first with a photo; we send a prepaid label within Canada.</p>
+        <a href="mailto:studio@ourlet.ca?subject=A%20repair" class="btn btn-outline mt-8 border-secondary-content">Ask for a repair</a>
+      </div>
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Ourlet</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Ourlet">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+{%- assign cloth = data.fabrics | where: "id", record.fabric | first -%}
+{%- assign season = data.collections | where: "id", record.collection | first -%}
+<main class="bg-base-100 text-base-content">
+  <article class="mx-auto grid max-w-[90rem] gap-10 px-5 pt-10 pb-12 md:px-8 lg:grid-cols-12 lg:gap-12 lg:pt-14">
+    <div class="grid grid-cols-2 gap-3 lg:col-span-7 lg:grid-cols-1 lg:gap-4">
+      {% if record.image %}<img src="{{ record.image }}" class="col-span-2 aspect-[3/4] w-full object-cover lg:col-span-1" data-print>{% endif %}
+      {% if record.flat %}<img src="{{ record.flat }}" class="aspect-[3/4] w-full object-cover lg:aspect-[4/3]" data-print>{% endif %}
+      {% if record.detail %}<img src="{{ record.detail }}" class="aspect-[3/4] w-full object-cover lg:aspect-[4/3]" data-print>{% endif %}
+    </div>
+    <div class="lg:col-span-5">
+      <div class="lg:sticky lg:top-28">
+        <p class="type text-base-content/70">{{ record.kind }}{% if season %} · <a href="/collections/{{ season.id }}" class="ink-link">Collection {{ season.number }}, {{ season.title }}</a>{% endif %}</p>
+        <h1 class="mt-3 text-[clamp(3rem,5.5vw,5rem)] leading-[0.92]">{{ record.name }}</h1>
+        <div class="mt-10 pl-6">
+          <span class="tag" style="--tilt: -3deg; --string: 2.25rem">
+            <span class="tag-card">
+              <span class="tag-name">{{ record.price }} CAD</span>
+              <span class="block">{% render 'made-label', made: record.made %}</span>
+            </span>
+          </span>
+        </div>
+        <p class="body-text mt-8 text-lg">{{ record.summary }}</p>
+        {% if cloth %}
+        <div class="mt-8 flex items-center gap-5">
+          {% if cloth.swatch %}<img src="{{ cloth.swatch }}" class="size-24 shrink-0 object-cover" data-pinked="all" data-print aria-hidden="true">{% endif %}
+          <div class="type">
+            <p class="font-bold">{{ cloth.name }}</p>
+            <p>{{ cloth.origin }}</p>
+            <p class="text-base-content/70">{{ cloth.weight }}</p>
+          </div>
+        </div>
+        {% endif %}
+        <dl class="type mt-8 grid grid-cols-[6rem_1fr] gap-y-3 border-t border-base-300 pt-6">
+          <dt class="text-base-content/70">Colors</dt><dd>{{ record.colors | join: " · " }}</dd>
+          <dt class="text-base-content/70">Sizes</dt><dd>{{ record.sizes | join: " · " }} <a href="/pieces#sizes" class="ink-link ml-2">Size table</a></dd>
+        </dl>
+        <div class="mt-10 flex flex-wrap gap-3">
+          {% if record.made == "sold out" %}
+          <a href="mailto:studio@ourlet.ca?subject={{ record.name | url_encode }}" class="btn btn-outline border-base-content">Ask when it's back</a>
+          {% elsif record.shop_link != blank %}
+          <a href="{{ record.shop_link }}" class="btn btn-primary">Buy at the shop</a>
+          {% else %}
+          <a href="#request" class="btn btn-primary">Request this piece</a>
+          {% endif %}
+          <a href="/stockists" class="btn btn-ghost">Try it on</a>
+        </div>
+      </div>
+    </div>
+  </article>
+  {% if record.made != "sold out" %}{% render 'order-form', piece: record %}{% endif %}
+  <section class="bg-base-100">
+    <div class="mx-auto grid max-w-[90rem] gap-10 px-5 py-16 md:px-8 lg:grid-cols-12 lg:py-20">
+      <h2 class="heading lg:col-span-4" data-reveal>Fit, care, and who sews it</h2>
+      <div class="record-text body-text max-w-2xl lg:col-span-7 lg:col-start-6" data-reveal>{{ record.body }}</div>
+    </div>
+  </section>
+  {%- assign worn = "" | split: "" -%}
+  {%- for look in data.looks -%}{%- if look.pieces contains record.id -%}{%- assign worn = worn | push: look -%}{%- endif -%}{%- endfor -%}
+  {% if worn.size > 0 %}
+  <section class="bg-neutral text-neutral-content">
+    <div class="mx-auto max-w-[90rem] px-5 py-16 md:px-8 lg:py-20">
+      <p class="type text-neutral-content/70" data-reveal>Worn in</p>
+      <ul class="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-8 lg:gap-5">
+        {%- for look in worn limit: 8 %}{% assign roll = data.collections | where: "id", look.collection | first %}
+        <li>
+          <a href="/collections/{{ look.collection }}#look-{{ look.number }}" class="frame relative block" aria-label="Look {{ look.number }}, {{ roll.title }}"><img src="{{ look.image }}" class="frame-print aspect-[3/4] w-full object-cover" data-print></a>
+          <p class="type mt-2 text-neutral-content/70">{{ roll.number }}—{{ look.number }}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
+  <section class="bg-base-100">
+    <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-28">
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <h2 class="heading">More pieces</h2>
+        <a href="/pieces" class="btn btn-outline border-base-content">All pieces</a>
+      </div>
+      <ul class="mt-12 grid grid-cols-2 gap-x-4 gap-y-14 md:gap-x-6 lg:grid-cols-4">
+        {%- assign shown = 0 %}
+        {%- for piece in data.pieces %}{% if piece.id != record.id and shown < 4 %}{% assign shown = shown | plus: 1 %}
+        <li data-reveal>{% render 'piece-card', piece: piece, index: shown %}</li>
+        {%- endif %}{% endfor %}
+      </ul>
+    </div>
+  </section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

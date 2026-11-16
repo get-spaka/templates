@@ -1,0 +1,33 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="type text-base-content/70">From the journal</p>
+        <h2 class="heading mt-3">Notes from the long table</h2>
+      </div>
+      <a href="/journal" class="btn btn-outline border-base-content">The journal</a>
+    </div>
+    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
+      {%- assign latest = data.journal | first %}
+      <article class="lg:col-span-7" data-reveal>
+        <a href="/journal/{{ latest.id }}" class="group block">
+          {% if latest.cover %}<figure data-pleat class="aspect-[4/3] bg-neutral"><img src="{{ latest.cover }}" class="size-full object-cover" data-print></figure>{% endif %}
+          <p class="type mt-5 text-base-content/70">{{ latest.category }} · {{ latest.date | date: "%B %-d, %Y" }}</p>
+          <h3 class="mt-2 text-[clamp(2rem,3.4vw,3rem)] group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ latest.title }}</h3>
+          <p class="body-text mt-3 max-w-xl">{{ latest.summary }}</p>
+        </a>
+      </article>
+      <ul class="lg:col-span-5">
+        {%- for post in data.journal offset: 1 limit: 2 %}
+        <li class="border-t border-base-300 py-8 first:border-t-0 first:pt-0 lg:first:border-t lg:first:pt-8" data-reveal>
+          <a href="/journal/{{ post.id }}" class="group block">
+            <p class="type text-base-content/70">{{ post.category }} · {{ post.date | date: "%B %-d, %Y" }}</p>
+            <h3 class="mt-2 text-[1.875rem] group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ post.title }}</h3>
+            <p class="body-text mt-2">{{ post.summary }}</p>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

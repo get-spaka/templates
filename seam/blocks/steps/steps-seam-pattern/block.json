@@ -1,0 +1,22 @@
+{
+  "name": "Seam steps on pattern paper",
+  "kind": "steps",
+  "source": "upstart",
+  "description": "Numbered steps on powder blue with the pattern paper's grid, each with a printed pattern piece in claret (a shirt front, a cutting layout, a sleeve or a hem), its title in the serif and two sentences, between notched rules.",
+  "tags": ["steps", "process", "how it works", "making", "sewing pattern"],
+  "mood": ["elegant", "warm", "professional"],
+  "synonyms": [
+    "steps",
+    "process",
+    "how it works",
+    "how it's made",
+    "étapes",
+    "processus",
+    "comment ça marche",
+    "fabrication"
+  ],
+  "data": {
+    "name": "steps",
+    "family": "section"
+  }
+}

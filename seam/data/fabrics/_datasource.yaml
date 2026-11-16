@@ -1,0 +1,22 @@
+label: Cloth
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: origin
+    label: Where it is made
+    kind: text
+  - name: maker
+    label: Who makes it
+    kind: text
+  - name: weight
+    label: Weight
+    kind: text
+  - name: swatch
+    label: Swatch
+    kind: image
+  - name: text
+    label: A sentence about it
+    kind: text
+order: [washed-linen, wool-flannel, cotton-canvas, merino-rib, deadstock]

@@ -1,0 +1,20 @@
+label: How a piece is made
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: step
+    label: Number
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: pattern
+    label: Pattern piece printed beside it
+    kind: choice
+    choices: [shirt-front, cutting-layout, sleeve, hem]
+order: [pattern, cut, sew, finish]

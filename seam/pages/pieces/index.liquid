@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Pieces — Ourlet</title>
+<meta name="description" content="Every piece Ourlet makes, cut to order in Montreal in sizes 1 to 5: jackets, shirts, trousers, dresses, knits and a tote cut from offcuts.">
+<meta property="og:title" content="Pieces — Ourlet">
+<meta property="og:description" content="Every piece Ourlet makes, cut to order in Montreal in sizes 1 to 5: jackets, shirts, trousers, dresses, knits and a tote cut from offcuts.">
+</head>
+<body>
+{% render 'header' %}
+<main class="bg-base-100 text-base-content">
+  <section class="mx-auto max-w-[90rem] px-5 pt-16 pb-16 md:px-8 lg:pt-24 lg:pb-20">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <h1 class="page-title lg:col-span-7">Pieces</h1>
+      <p class="body-text max-w-md text-lg lg:col-span-4 lg:col-start-9">Twelve pieces in sizes 1 to 5. Most are cut when you ask for one and ready in about three weeks; a few are in stock.</p>
+    </div>
+  </section>
+  {% render 'buy-steps' %}
+  <section class="mx-auto max-w-[90rem] px-5 pt-16 pb-24 md:px-8 lg:pt-20">
+    {%- assign kinds = "Jackets,Shirts,Trousers,Dresses,Knits,Accessories" | split: "," %}
+    <nav aria-label="Kinds of piece" class="sticky top-[4.5rem] z-30 -mx-5 border-b border-base-300 bg-base-100 px-5 md:-mx-8 md:px-8">
+      <ul class="ui flex gap-7 overflow-x-auto py-4 whitespace-nowrap">
+        {%- for kind in kinds %}{% assign group = data.pieces | where: "kind", kind %}{% if group.size > 0 %}
+        <li><a href="#{{ kind | downcase }}" class="nav-link">{{ kind }}</a></li>
+        {%- endif %}{% endfor %}
+        <li><a href="#sizes" class="nav-link">Sizes</a></li>
+      </ul>
+    </nav>
+    {%- for kind in kinds %}{% assign group = data.pieces | where: "kind", kind %}{% if group.size > 0 %}
+    <div id="{{ kind | downcase }}" class="scroll-mt-36 pt-16">
+      <div class="flex items-baseline justify-between gap-4" data-reveal>
+        <h2 class="heading">{{ kind }}</h2>
+        <p class="type text-base-content/70">{{ group.size }} {% if group.size == 1 %}piece{% else %}pieces{% endif %}</p>
+      </div>
+      <div class="notch-rule mt-5" aria-hidden="true"></div>
+      <ul class="mt-12 grid grid-cols-2 gap-x-4 gap-y-14 md:gap-x-6 lg:grid-cols-4">
+        {%- for piece in group %}
+        <li data-reveal>{% render 'piece-card', piece: piece, index: forloop.index %}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    {%- endif %}{% endfor %}
+  </section>
+  {% render 'size-table' %}
+  {% render 'pieces-faq' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<section class="pattern-paper bg-secondary text-secondary-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-32">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-6">
+        <p class="type">How it's made</p>
+        <h2 class="heading mt-3">Four steps, one pair of hands</h2>
+      </div>
+      <p class="body-text max-w-md lg:col-span-4 lg:col-start-9">From the paper pattern to the parcel, each piece stays with one of us, about three weeks in all.</p>
+    </div>
+    <ol class="mt-16 grid gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-4">
+      {%- for step in data.making %}
+      <li data-reveal>
+        <div class="notch-rule" aria-hidden="true"></div>
+        {% render 'pattern-piece', shape: step.pattern, class: "mt-8 block h-44 w-auto" %}
+        <p class="type mt-6">{{ step.step }}</p>
+        <h3 class="mt-1 text-[2rem]">{{ step.title }}</h3>
+        <p class="body-text mt-3">{{ step.text }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+    <a href="/studio" class="btn btn-outline mt-16 border-secondary-content">Visit the studio</a>
+  </div>
+</section>

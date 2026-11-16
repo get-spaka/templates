@@ -1,0 +1,16 @@
+<section id="questions" class="scroll-mt-20 border-t border-base-300 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-28">
+    <div data-reveal>
+      <p class="type text-base-content/70">Ordering, fit and care</p>
+      <h2 class="heading mt-3">Questions we are asked</h2>
+    </div>
+    <div class="mt-12 grid gap-x-10 md:grid-cols-2">
+      {%- for item in data["pieces-faq"] %}
+      <details class="collapse collapse-plus rounded-none border-b border-base-300" data-reveal>
+        <summary class="collapse-title pl-0 pr-10 font-heading text-[1.6rem] leading-tight">{{ item.question }}</summary>
+        <div class="collapse-content pl-0"><p class="body-text max-w-prose">{{ item.answer }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

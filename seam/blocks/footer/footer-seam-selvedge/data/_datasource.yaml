@@ -1,0 +1,14 @@
+label: Navigation
+fields:
+  - name: label
+    label: Label
+    kind: text
+    required: true
+  - name: href
+    label: Address
+    kind: link
+  - name: place
+    label: Where it shows
+    kind: choice
+    choices: [left, right, footer, social]
+order: [collections, pieces, studio, journal, stockists, instagram]

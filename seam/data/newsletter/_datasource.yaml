@@ -1,0 +1,13 @@
+label: The letter
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right. Please check it."
+  too_many: "Too many were sent from here. Please try again in a few minutes."
+  sent: "Thank you, the next letter will find you."
+fields:
+  - name: email
+    label: Email
+    kind: email
+    required: true

@@ -1,0 +1,8 @@
+{%- case made -%}
+{%- when "made to order" -%}<span class="made-dot">To order</span>
+{%- when "in stock" -%}In stock
+{%- when "last few" -%}Last few
+{%- when "sold out" -%}Sold out
+{%- when "one of a kind" -%}1 of 1
+{%- else -%}{{ made }}
+{%- endcase -%}

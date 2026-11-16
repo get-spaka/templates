@@ -1,0 +1,29 @@
+<section class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-24 md:px-8 lg:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="type text-neutral-content/70">The contact sheet</p>
+        <h2 class="heading mt-3">The lookbook, frame by frame</h2>
+      </div>
+      <p class="body-text max-w-md lg:col-span-4 lg:col-start-9">Our photographer still circles the picks in grease pencil. Open a frame to see the look.</p>
+    </div>
+    <div class="mt-12" data-mark>
+      <div class="sheet-edge" aria-hidden="true"></div>
+      <p class="type mt-2 flex justify-between gap-4 text-neutral-content/50" aria-hidden="true"><span>OURLET</span><span>LOOKBOOK</span><span class="hidden sm:inline">400 TX</span></p>
+      <ol class="grid grid-cols-3 gap-x-3 gap-y-7 py-7 md:grid-cols-4 lg:grid-cols-6 lg:gap-x-5">
+        {%- for look in data.looks limit: 12 %}
+        <li>
+          <a href="/collections/{{ look.collection }}#look-{{ look.number }}" class="frame relative block" aria-label="Look {{ look.number }}">
+            <img src="{{ look.image }}" class="frame-print aspect-[3/4] w-full object-cover" data-print>
+            {%- if look.pick %}
+            <svg class="frame-mark" viewBox="0 0 128 118" preserveAspectRatio="none" fill="none" aria-hidden="true"><path data-mark-path pathLength="1" d="M20 30 C40 6 100 2 117 33 C130 60 121 99 81 111 C44 120 9 103 8 67 C7 44 22 22 54 13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+            {%- endif %}
+          </a>
+          <p class="type mt-2 text-neutral-content/70">{{ look.number }}</p>
+        </li>
+        {%- endfor %}
+      </ol>
+      <div class="sheet-edge" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

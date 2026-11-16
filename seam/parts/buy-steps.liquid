@@ -1,0 +1,21 @@
+<section id="how-to-buy" class="pattern-paper scroll-mt-20 bg-secondary text-secondary-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 lg:py-24">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-6">
+        <p class="type">How to buy</p>
+        <h2 class="heading mt-3">Ask, and we cut it for you</h2>
+      </div>
+      <p class="body-text max-w-md lg:col-span-4 lg:col-start-9">Nothing is charged on this site. A few pieces are in stock and leave within two working days.</p>
+    </div>
+    <ol class="mt-14 grid gap-x-8 gap-y-12 md:grid-cols-3">
+      {%- for item in data["buy-steps"] %}
+      <li data-reveal>
+        <div class="notch-rule" aria-hidden="true"></div>
+        <p class="type mt-6">{{ item.step }}</p>
+        <h3 class="mt-2 text-[1.75rem] leading-[1.08]">{{ item.title }}</h3>
+        <p class="body-text mt-3">{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>

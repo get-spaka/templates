@@ -1,0 +1,22 @@
+label: Looks
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: number
+    label: Number
+    kind: text
+  - name: collection
+    label: Collection (its id, as in Collections)
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: pieces
+    label: Pieces worn (their ids, as in Pieces)
+    kind: list
+  - name: pick
+    label: Circled on the contact sheet
+    kind: boolean
+order: [fieldwork-01, fieldwork-02, fieldwork-03, fieldwork-04, fieldwork-05, fieldwork-06]
