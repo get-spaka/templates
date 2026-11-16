@@ -1,0 +1,39 @@
+label: Classes
+body: body
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: level
+    label: Level
+    kind: text
+  - name: tone
+    label: Level color
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: length
+    label: Length
+    kind: text
+  - name: size
+    label: Group size
+    kind: number
+  - name: price
+    label: Price
+    kind: number
+  - name: coach
+    label: Coach
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Photo
+    kind: image
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: body
+    label: About the class
+    kind: markdown
+order: [intro-to-bouldering, technique-1, technique-2, strength-for-climbers, yoga-for-climbers, private-coaching]

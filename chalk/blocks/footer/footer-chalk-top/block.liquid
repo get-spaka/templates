@@ -1,0 +1,70 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="wrap pt-20 pb-10 lg:pt-28">
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+      <span data-hold class="hold hold-top" data-tone="primary" data-shape="1" style="--turn: 10" aria-hidden="true"></span>
+      <div>
+        <span class="tape">Top</span>
+        <h2 class="mt-3 text-[clamp(2.5rem,7vw,5rem)] uppercase">Topped out?</h2>
+      </div>
+    </div>
+    <div class="mt-14 grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <h3 class="text-xl">The set list</h3>
+        <p class="mt-3 text-pretty text-neutral-content/80">The new problems in your inbox every Friday, with the next reset and what's on at the wall.</p>
+        <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#newsletter-problems swap:innerHTML" class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <label class="sr-only" for="set-list-email">Your email</label>
+          <input id="set-list-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com" class="input w-full min-w-0 border-neutral-content/30 bg-neutral text-neutral-content placeholder:text-neutral-content/50">
+          <button type="submit" class="btn btn-primary whitespace-nowrap">Sign up</button>
+          <div id="newsletter-problems" class="empty:hidden"></div>
+        </form>
+      </div>
+      <div class="on-dark lg:col-span-5">
+        <h3 class="text-xl">Hours</h3>
+        <dl class="mt-4 grid grid-cols-[5.5rem_1fr] items-center gap-x-4 gap-y-2.5 sm:grid-cols-[6rem_8.5rem_1fr]">
+          <dt class="mono">Mon</dt>
+          <dd class="tabular-nums">6 am – 10 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 06; --from-m: 00; --to-h: 22; --to-m: 00"></span><span class="day-busy" style="--from-h: 17; --from-m: 00; --to-h: 20; --to-m: 30"></span></dd>
+          <dt class="mono">Tue</dt>
+          <dd class="tabular-nums">6 am – 10 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 06; --from-m: 00; --to-h: 22; --to-m: 00"></span><span class="day-busy" style="--from-h: 17; --from-m: 00; --to-h: 20; --to-m: 30"></span></dd>
+          <dt class="mono">Wed</dt>
+          <dd class="tabular-nums">6 am – 10 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 06; --from-m: 00; --to-h: 22; --to-m: 00"></span><span class="day-busy" style="--from-h: 17; --from-m: 00; --to-h: 21; --to-m: 00"></span></dd>
+          <dt class="mono">Thu</dt>
+          <dd class="tabular-nums">6 am – 10 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 06; --from-m: 00; --to-h: 22; --to-m: 00"></span><span class="day-busy" style="--from-h: 17; --from-m: 00; --to-h: 20; --to-m: 30"></span></dd>
+          <dt class="mono">Fri</dt>
+          <dd class="tabular-nums">6 am – 10 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 06; --from-m: 00; --to-h: 22; --to-m: 00"></span><span class="day-busy" style="--from-h: 16; --from-m: 30; --to-h: 19; --to-m: 30"></span></dd>
+          <dt class="mono">Sat</dt>
+          <dd class="tabular-nums">8 am – 9 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 08; --from-m: 00; --to-h: 21; --to-m: 00"></span><span class="day-busy" style="--from-h: 10; --from-m: 00; --to-h: 14; --to-m: 30"></span></dd>
+          <dt class="mono">Sun</dt>
+          <dd class="tabular-nums">8 am – 9 pm</dd>
+          <dd class="day-bar col-span-2 h-2.5 sm:col-span-1" aria-hidden="true"><span class="day-open" style="--from-h: 08; --from-m: 00; --to-h: 21; --to-m: 00"></span><span class="day-busy" style="--from-h: 10; --from-m: 30; --to-h: 15; --to-m: 00"></span></dd>
+        </dl>
+        <p class="mono mt-4 flex flex-wrap gap-x-5 gap-y-1 text-neutral-content/70"><span><span class="mr-2 inline-block h-2.5 w-5 rounded-full bg-accent align-middle"></span>Quiet</span><span><span class="mr-2 inline-block h-2.5 w-5 rounded-full bg-neutral-content/55 align-middle"></span>Busy</span></p>
+      </div>
+      <div class="flex flex-col gap-8 md:col-span-2 md:flex-row md:gap-16 lg:col-span-3 lg:flex-col lg:gap-8">
+        <div>
+          <h3 class="text-xl">Holdfast Bouldering</h3>
+          <address class="mt-3 not-italic text-neutral-content/80">1450 Ironside Street<br>Chattanooga, TN 37408</address>
+          <p class="mt-3"><a href="tel:+14235550148" class="link-hover">(423) 555-0148</a><br><a href="mailto:hello@holdfastbouldering.com" class="link-hover break-all">hello@holdfastbouldering.com</a></p>
+          <a href="https://www.openstreetmap.org/search?query=1450%20Ironside%20Street%2C%20Chattanooga" class="mono mt-3 inline-block text-accent link-hover">Get directions</a>
+        </div>
+        <nav aria-label="Footer" class="grid grid-cols-2 gap-x-8 gap-y-1.5">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "footer" %}
+          <a href="{{ item.href }}" class="link-hover whitespace-nowrap">{{ item.label }}</a>
+          {% endif %}{% endfor %}
+          {% for item in data.navigation %}{% if item.place == "social" %}
+          <a href="{{ item.href }}" class="link-hover whitespace-nowrap text-neutral-content/70">{{ item.label }}</a>
+          {% endif %}{% endfor %}
+        </nav>
+      </div>
+    </div>
+    <div class="mono mt-16 flex flex-col gap-2 border-t-2 border-neutral-content/20 pt-6 text-neutral-content/60 sm:flex-row sm:justify-between">
+      <p>© 2026 Holdfast Bouldering</p>
+      <p>Climb up, climb down, climb again</p>
+    </div>
+  </div>
+</footer>

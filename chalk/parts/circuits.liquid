@@ -1,0 +1,24 @@
+<section id="circuits" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="{{ side | default: 'left' }}" data-tone="primary" data-shape="2" style="--turn: 15" aria-hidden="true"></span>
+      <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+        <div class="lg:col-span-7">
+          <p class="mono text-base-content/70">The circuits</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">One color, one level</h2>
+        </div>
+        <p class="text-lg text-pretty text-base-content/80 lg:col-span-5">Every problem is set in holds of one color, and the color tells you how hard it is. The classes and the timetable use the same colors, so you learn one code.</p>
+      </div>
+    </div>
+    <ol class="circuits-rise mt-14 grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:mt-20 lg:grid-cols-6 lg:pb-[7.5rem]" data-bolt>
+      {% for circuit in data.circuits %}
+      <li data-tone="{{ circuit.tone }}" style="--i: {{ forloop.index0 }}" class="flex flex-col items-start">
+        <span class="hold" data-shape="{% cycle 'shape': '1', '3', '2', '4', '1', '2' %}" style="--hold-size: 4.5rem; --turn: {% cycle 'turn': '-15', '20', '40', '-25', '10', '-40' %}" aria-hidden="true"></span>
+        <h3 class="mt-4 text-lg">{{ circuit.name }}</h3>
+        <p class="numeral mt-2 text-xl">{{ circuit.grades }}</p>
+        <p class="mono mt-2 text-base-content/70">{{ circuit.line }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

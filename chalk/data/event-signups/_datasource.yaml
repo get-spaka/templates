@@ -1,0 +1,33 @@
+label: Event sign-ups
+collected: true
+answer: signup-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, it's sent."
+fields:
+  - name: event
+    label: Event
+    kind: text
+    required: true
+  - name: people
+    label: How many
+    kind: number
+    required: true
+  - name: category
+    label: Comp category
+    kind: choice
+    choices: [Recreational, Intermediate, Open, Not a comp]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: message
+    label: Anything we should know
+    kind: markdown

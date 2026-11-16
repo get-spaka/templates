@@ -1,0 +1,23 @@
+label: Prices
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [membership, pass]
+  - name: price
+    label: Price in dollars
+    kind: number
+  - name: per
+    label: Per
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+order: [monthly, annual, student, youth, family-add-on, first-visit, day-pass, off-peak-day-pass, ten-visit-card, youth-day-pass, shoe-rental]

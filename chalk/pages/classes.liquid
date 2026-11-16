@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Classes and timetable — Holdfast Bouldering</title>
+<meta name="description" content="Intro to Bouldering, Technique 1 and 2, Strength for Climbers, Yoga for Climbers and private coaching, with the whole week's timetable colored by level.">
+<meta property="og:title" content="Classes and timetable — Holdfast Bouldering">
+<meta property="og:description" content="Intro to Bouldering, Technique 1 and 2, Strength for Climbers, Yoga for Climbers and private coaching, with the whole week's timetable colored by level.">
+</head>
+<body data-line>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="wrap pt-14 pb-4 lg:pt-20">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="warning" data-shape="1" style="--turn: 15" aria-hidden="true"></span>
+      <span class="tape">Start</span>
+      <h1 class="mt-6 max-w-5xl text-[clamp(2.5rem,7vw,6rem)] uppercase">Learn to move, then move better</h1>
+    </div>
+    <p class="mt-8 max-w-2xl text-lg text-pretty md:text-xl" data-reveal>Small groups, the same coaches every week, and a level for each circuit on the wall. Technique and yoga are included for members.</p>
+  </div>
+</section>
+
+{% render 'week', side: 'right' %}
+
+<section id="classes" class="scroll-mt-24 bg-base-200 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="primary" data-shape="2" style="--turn: -25" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/75">The classes</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Six ways in</h2>
+      </div>
+    </div>
+    <ul class="mt-12 flex flex-col gap-6 lg:mt-16">
+      {% for class in data.classes %}
+      <li data-tone="{{ class.tone }}" data-reveal>
+        <a href="/classes/{{ class.id }}" class="group grid gap-6 rounded-box bg-base-100 p-5 sm:p-6 md:grid-cols-12 md:items-center lg:gap-8 lg:p-8">
+          <div class="md:col-span-4">
+            {% if class.cover %}<img src="{{ class.cover }}" data-grade class="volume-{% cycle '1', '3', '2', '4' %} aspect-[4/3] w-full object-cover">{% else %}<div class="volume-1 aspect-[4/3] w-full bg-base-200"></div>{% endif %}
+          </div>
+          <div class="md:col-span-8 lg:col-span-7 lg:col-start-6">
+            <p class="flex items-center gap-3"><span class="hold" data-shape="{% cycle 'shape': '2', '4', '1', '3' %}" style="--hold-size: 1.75rem; --turn: 20" aria-hidden="true"></span><span class="mono">{{ class.level }}</span></p>
+            <h3 class="mt-4 text-2xl underline-offset-4 group-hover:underline lg:text-3xl">{{ class.name }}</h3>
+            <p class="mt-3 max-w-2xl text-pretty text-base-content/80">{{ class.summary }}</p>
+            <p class="mono mt-5 flex flex-wrap gap-x-5 gap-y-1"><span>{{ class.length }}</span><span>Up to {{ class.size }}</span><span>${{ class.price }}</span><span class="text-base-content/70">{{ class.coach }}</span></p>
+            <span class="btn btn-outline btn-sm mt-6 border-base-content whitespace-nowrap">See the class</span>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% render 'coaches' %}
+
+<section id="questions" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="success" data-shape="3" style="--turn: 10" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/70">Questions</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Before you sign up</h2>
+      </div>
+    </div>
+    <dl class="mt-12 grid gap-x-10 gap-y-10 lg:mt-16 lg:grid-cols-2">
+      {% for item in data["classes-faq"] %}
+      <div class="border-t-2 border-base-300 pt-5" data-reveal>
+        <dt class="display text-lg font-bold">{{ item.question }}</dt>
+        <dd class="mt-3 text-pretty text-base-content/80 [&_p]:mt-2">{{ item.answer }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

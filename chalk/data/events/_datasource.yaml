@@ -1,0 +1,30 @@
+label: Events
+body: body
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: time
+    label: Time
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [comp, trip, night, workshop, film]
+  - name: cover
+    label: Photo
+    kind: image
+  - name: summary
+    label: Summary
+    kind: text
+  - name: body
+    label: About the event
+    kind: markdown
+sort: date

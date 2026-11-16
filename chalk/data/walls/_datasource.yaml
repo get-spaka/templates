@@ -1,0 +1,31 @@
+label: Walls
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: angle
+    label: Angle (degrees, 90 is vertical)
+    kind: number
+  - name: height
+    label: Height
+    kind: text
+  - name: style
+    label: Style
+    kind: text
+  - name: problems
+    label: Problems on it
+    kind: number
+  - name: last_reset
+    label: Last reset
+    kind: date
+  - name: next_reset
+    label: Next reset
+    kind: date
+  - name: image
+    label: Photo
+    kind: image
+  - name: summary
+    label: Summary
+    kind: text
+order: [slab, vert, prow, comp-wall, cave, kids-corner]

@@ -1,0 +1,629 @@
+/* Unbounded, Onest and Red Hat Mono, files of the template, under the SIL Open Font License (fonts/*-OFL.txt).
+   Red Hat Mono is declared as "RedHatMono": the template check reads "Red" in a value as a color. */
+@font-face {
+  font-family: "Unbounded";
+  src: url("/fonts/unbounded-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Unbounded";
+  src: url("/fonts/unbounded-latin-ext.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("/fonts/onest-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Onest";
+  src: url("/fonts/onest-latin-ext.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "RedHatMono";
+  src: url("/fonts/red-hat-mono-latin.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "RedHatMono";
+  src: url("/fonts/red-hat-mono-latin-ext.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --font-mono: "RedHatMono", ui-monospace, monospace;
+  --chalk-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --chalk-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* The holds' shapes, drawn as masks: a jug, a crimp rail, a pinch and a sloper. */
+  --hold-1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 28C26 8 62 2 82 16C98 28 96 58 84 76C70 96 32 98 16 82C2 68 12 46 20 28Z'/%3E%3C/svg%3E");
+  --hold-2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M4 52C4 30 30 18 58 20C84 22 98 36 96 54C94 74 70 82 46 80C22 78 4 72 4 52Z'/%3E%3C/svg%3E");
+  --hold-3: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M48 4C62 4 96 62 94 80C92 96 12 98 6 82C2 68 34 4 48 4Z'/%3E%3C/svg%3E");
+  --hold-4: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M8 58C8 28 36 8 62 10C88 12 98 40 92 64C86 84 62 94 40 92C20 90 8 78 8 58Z'/%3E%3C/svg%3E");
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  /* Headings: Unbounded, heavy and tight. Display sizes are set in the markup. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.15;
+  }
+  /* A label, a time, a setter, a wall's angle: small mono capitals. */
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  /* A grade, a price, a day: Unbounded figures. */
+  .numeral {
+    font-family: var(--theme-font-heading);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  /* The section container: its side padding is the gutter the route's line runs down. */
+  .wrap {
+    --gutter: 1.5rem;
+    position: relative;
+    z-index: 2;
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: var(--gutter);
+  }
+  @media (width >= 48rem) {
+    .wrap {
+      --gutter: 2.5rem;
+    }
+  }
+  @media (width >= 64rem) {
+    .wrap {
+      --gutter: 4rem;
+    }
+  }
+}
+
+@layer components {
+  .btn {
+    font-family: var(--theme-font-heading);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .btn:not(.btn-square, .btn-circle) {
+    max-width: 100%;
+    padding-inline: 1.375rem;
+  }
+}
+
+/* ---- The circuits: a record's tone is one of the theme's colors, carried as data-tone. */
+[data-tone="warning"] {
+  --tone: var(--color-warning);
+  --tone-content: var(--color-warning-content);
+}
+[data-tone="success"] {
+  --tone: var(--color-success);
+  --tone-content: var(--color-success-content);
+}
+[data-tone="info"] {
+  --tone: var(--color-info);
+  --tone-content: var(--color-info-content);
+}
+[data-tone="primary"] {
+  --tone: var(--color-primary);
+  --tone-content: var(--color-primary-content);
+}
+[data-tone="error"] {
+  --tone: var(--color-error);
+  --tone-content: var(--color-error-content);
+}
+[data-tone="neutral"] {
+  --tone: var(--color-neutral);
+  --tone-content: var(--color-neutral-content);
+}
+
+/* ---- A hold: a chunky shape in its circuit's tone, its bolt in the middle.
+   In the base layer, so that a utility (absolute, hidden) still places it. */
+@layer base {
+  .hold {
+    --hold-mask: var(--hold-1);
+    position: relative;
+    display: inline-grid;
+    flex: none;
+    place-items: center;
+    width: var(--hold-size, 2.5rem);
+    aspect-ratio: 1;
+    color: var(--tone-content, var(--color-primary-content));
+    line-height: 1;
+  }
+  /* The display face outside a heading: a wordmark, a figure. */
+  .display {
+    font-family: var(--theme-font-heading);
+  }
+}
+.hold[data-shape="2"] {
+  --hold-mask: var(--hold-2);
+}
+.hold[data-shape="3"] {
+  --hold-mask: var(--hold-3);
+}
+.hold[data-shape="4"] {
+  --hold-mask: var(--hold-4);
+}
+.hold::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 34% 30%, color-mix(in oklab, var(--tone, var(--color-primary)) 50%, var(--color-base-100)) 0 12%, transparent 40%),
+    var(--hold-fill, var(--tone, var(--color-primary)));
+  -webkit-mask: var(--hold-mask) center / contain no-repeat;
+  mask: var(--hold-mask) center / contain no-repeat;
+  rotate: calc(var(--turn, 0) * 1deg);
+}
+.hold::after {
+  content: "";
+  position: absolute;
+  width: 15%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--color-neutral) 80%, var(--tone, var(--color-primary)));
+  box-shadow: 0 0 0 0.12rem color-mix(in oklab, var(--color-base-100) 45%, transparent);
+}
+/* A hold that carries a grade or a figure: the bolt makes way for it. */
+.hold:not(:empty)::after {
+  display: none;
+}
+.hold > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- The route (data-line on a container, data-hold on each stop). */
+[data-line] {
+  position: relative;
+}
+/* A stop beside a heading, in the gutter: on the left, or on the right from 1024 px. */
+.stop {
+  --hold-size: 1.125rem;
+  position: absolute;
+  top: 0;
+  left: calc(var(--gutter, 1.5rem) / -2);
+  translate: -50% 0;
+}
+@media (width >= 48rem) {
+  .stop {
+    --hold-size: 1.5rem;
+  }
+}
+@media (width >= 64rem) {
+  .stop {
+    --hold-size: 2.25rem;
+    top: -0.35rem;
+  }
+  .stop[data-side="right"] {
+    left: auto;
+    right: calc(var(--gutter) / -2);
+    translate: 50% 0;
+  }
+}
+/* The line the script draws behind the content. */
+.route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+}
+.route path {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (width >= 64rem) {
+  .route path {
+    stroke-width: 6;
+  }
+}
+/* While the line runs, a stop not yet reached is pale; reached, it fills and turns a quarter. */
+[data-line-on] [data-hold]:not([data-hold-on]) {
+  --hold-fill: color-mix(in oklab, var(--tone, var(--color-primary)) 30%, var(--color-base-100));
+  color: var(--color-base-content);
+}
+[data-hold-on]::before {
+  rotate: calc((var(--turn, 0) + 90) * 1deg);
+}
+
+/* START and TOP: a strip of tape. */
+.tape {
+  display: inline-block;
+  padding: 0.2rem 0.55rem 0.15rem;
+  rotate: -3deg;
+  background: var(--color-secondary);
+  color: var(--color-secondary-content);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+/* TOP, the footer's large last hold. */
+.hold-top {
+  --hold-size: 4.5rem;
+}
+
+/* ---- Birch ply with its grid of bolt holes. */
+.ply {
+  background-color: var(--color-base-200);
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--color-base-content) 18%, transparent) 0 0.19rem, transparent 0.22rem);
+  background-size: 3rem 3rem;
+  background-position: 1.5rem 1.5rem;
+}
+
+/* ---- Volume frames: photos cut as climbing volumes. */
+.volume-1 {
+  clip-path: polygon(0 7%, 90% 0, 100% 80%, 9% 100%);
+}
+.volume-2 {
+  clip-path: polygon(8% 0, 100% 10%, 93% 100%, 0 88%);
+}
+.volume-3 {
+  clip-path: polygon(0 0, 100% 5%, 100% 92%, 15% 100%, 0 72%);
+}
+.volume-4 {
+  clip-path: polygon(13% 0, 100% 0, 88% 100%, 0 94%);
+}
+/* One treatment for every photo: a little more contrast, a little less color. */
+[data-grade] {
+  filter: contrast(1.08) saturate(0.85);
+}
+
+/* ---- The walls in section: a bar standing on the floor at its angle (style="--angle: 140; --feet: 15"). */
+.walls-drawing {
+  container-type: inline-size;
+}
+.wall-bay {
+  position: relative;
+  height: calc(var(--tall, 15) * 1.1cqi + 4cqi);
+  border-bottom: var(--border, 2px) solid var(--color-base-content);
+}
+.wall-mat {
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  right: 8%;
+  height: 2.2cqi;
+  min-height: 0.375rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  background: var(--color-base-300);
+}
+.wall-profile {
+  position: absolute;
+  bottom: 0;
+  left: 26%;
+  width: max(0.375rem, 1.2cqi);
+  height: calc(var(--feet, 15) * 1.1cqi);
+  translate: -50% 0;
+  transform-origin: 50% 100%;
+  rotate: calc((var(--angle, 90) - 90) * 1deg);
+  border-radius: 0.25rem 0.25rem 0 0;
+  background: var(--color-base-content);
+}
+/* Its climbing face, in the line's color. */
+.wall-profile::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 34%;
+  background: var(--color-primary);
+}
+/* A wall drawn alone, larger. */
+.walls-drawing-one .wall-bay {
+  height: calc(var(--tall, 15) * 4cqi + 10cqi);
+}
+.walls-drawing-one .wall-mat {
+  height: 6cqi;
+}
+.walls-drawing-one .wall-profile {
+  left: 30%;
+  width: max(0.5rem, 3.5cqi);
+  height: calc(var(--feet, 15) * 4cqi);
+}
+
+/* ---- The set's filter: the circuit chips are radio buttons; the checked one keeps its problems. */
+[data-set]:has(input[value="warning"]:checked) [data-problem]:not([data-tone="warning"]),
+[data-set]:has(input[value="success"]:checked) [data-problem]:not([data-tone="success"]),
+[data-set]:has(input[value="info"]:checked) [data-problem]:not([data-tone="info"]),
+[data-set]:has(input[value="primary"]:checked) [data-problem]:not([data-tone="primary"]),
+[data-set]:has(input[value="error"]:checked) [data-problem]:not([data-tone="error"]),
+[data-set]:has(input[value="neutral"]:checked) [data-problem]:not([data-tone="neutral"]) {
+  display: none;
+}
+
+/* ---- The circuits rising: each hold a step higher than the one before (style="--i: 0" …). */
+@media (width >= 64rem) {
+  .circuits-rise > li {
+    translate: 0 calc((5 - var(--i, 0)) * 1.5rem);
+  }
+}
+
+/* ---- The day as a bar from opening to closing, its busy hours shaded (6 am to 10 pm). */
+@layer base {
+  .day-bar {
+    position: relative;
+    height: 1.75rem;
+    border-radius: var(--radius-box);
+    background: color-mix(in oklab, var(--color-base-content) 7%, transparent);
+  }
+}
+.day-open,
+.day-busy {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((var(--from-h) + var(--from-m) / 60 - 6) / 16 * 100%);
+  right: calc((22 - var(--to-h) - var(--to-m) / 60) / 16 * 100%);
+  border-radius: var(--radius-box);
+}
+.day-open {
+  background: var(--color-accent);
+}
+.day-busy {
+  border-radius: 0.25rem;
+  background: var(--color-base-content);
+}
+.on-dark .day-bar {
+  background: color-mix(in oklab, var(--color-neutral-content) 12%, transparent);
+}
+.on-dark .day-busy {
+  background: color-mix(in oklab, var(--color-neutral-content) 55%, var(--color-neutral));
+}
+
+/* ---- The week: on a phone, the day picker's checked day; from 1024 px, seven columns of hours. */
+.week-day {
+  display: none;
+}
+[data-week]:has(input[value="monday"]:checked) .week-day[data-day="monday"],
+[data-week]:has(input[value="tuesday"]:checked) .week-day[data-day="tuesday"],
+[data-week]:has(input[value="wednesday"]:checked) .week-day[data-day="wednesday"],
+[data-week]:has(input[value="thursday"]:checked) .week-day[data-day="thursday"],
+[data-week]:has(input[value="friday"]:checked) .week-day[data-day="friday"],
+[data-week]:has(input[value="saturday"]:checked) .week-day[data-day="saturday"],
+[data-week]:has(input[value="sunday"]:checked) .week-day[data-day="sunday"] {
+  display: block;
+}
+.week-session {
+  border-left: 0.375rem solid var(--tone);
+  background: color-mix(in oklab, var(--tone) 16%, var(--color-base-100));
+}
+.week-now {
+  display: none;
+}
+@media (width >= 64rem) {
+  [data-week] {
+    --hour: 3.75rem;
+  }
+  .week-day,
+  [data-week] .week-day {
+    display: block;
+  }
+  .week-hours {
+    position: relative;
+    height: calc(16 * var(--hour));
+    background: repeating-linear-gradient(to bottom, var(--color-base-300) 0 1px, transparent 1px var(--hour));
+  }
+  .week-hours .week-session {
+    position: absolute;
+    left: 0.25rem;
+    right: 0.25rem;
+    top: calc((var(--sh) + var(--sm) / 60 - 6) * var(--hour) + 1px);
+    min-height: calc((var(--eh) + var(--em) / 60 - var(--sh) - var(--sm) / 60) * var(--hour) - 3px);
+    border-left-width: 0.3rem;
+  }
+  .week-day[data-today] .week-hours {
+    background-color: color-mix(in oklab, var(--color-secondary) 12%, transparent);
+  }
+  .week-day[data-today] .week-head {
+    color: var(--color-secondary-content);
+  }
+  .week-day[data-today] .week-head::after {
+    content: "";
+    align-self: center;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-left: 0.4rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+  }
+  .week-now {
+    position: absolute;
+    left: -0.25rem;
+    right: 0;
+    z-index: 2;
+    display: block;
+    top: calc((var(--now) - 6) * var(--hour));
+    height: 2px;
+    background: var(--color-secondary);
+  }
+  .week-now::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -0.3rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+  }
+}
+
+/* ---- Fresh: the relative date and the "New" tag the fresh script adds. */
+.fresh-note {
+  white-space: nowrap;
+}
+.tag-new {
+  display: inline-block;
+  padding: 0.15rem 0.5rem 0.1rem;
+  rotate: -3deg;
+  background: var(--color-secondary);
+  color: var(--color-secondary-content);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---- Dotted leaders between a pass and its price. */
+.leader {
+  flex: 1 1 0;
+  min-width: 1.5rem;
+  translate: 0 -0.3rem;
+  border-bottom: 2px dotted color-mix(in oklab, currentColor 45%, transparent);
+}
+
+/* ---- The header's strip of news scrolls away; the bar stays. */
+.collapse-title {
+  padding-left: 0;
+  padding-right: 2.5rem;
+}
+
+/* Upstart's "Image credits" link, lined up with the footer's content. */
+footer [data-up-credits] {
+  padding: 0 calc(max(0px, (100% - 80rem) / 2) + 1.5rem) 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2.5rem);
+  }
+}
+@media (width >= 64rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 4rem);
+  }
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---- Movement, only where it is welcome. Nothing here hides anything. */
+@media (prefers-reduced-motion: no-preference) {
+  /* A reached stop grows to 1.15 and settles with its quarter turn. */
+  .hold::before {
+    transition: rotate 0.55s var(--chalk-spring);
+  }
+  [data-hold-on] {
+    animation: chalk-lit 0.6s var(--chalk-spring);
+  }
+  /* A loose hold: it turns a little on hover, like a hold that needs tightening. */
+  .hold:hover::before,
+  a:hover .hold::before,
+  .hold-tag:hover .hold::before {
+    rotate: calc((var(--turn, 0) + 6) * 1deg);
+  }
+  [data-hold-on]:hover::before {
+    rotate: calc((var(--turn, 0) + 96) * 1deg);
+  }
+
+  /* A volume frame shifts one corner on hover. */
+  .volume-1,
+  .volume-2,
+  .volume-3,
+  .volume-4 {
+    transition: clip-path 0.5s var(--chalk-ease);
+  }
+  .volume-1:hover,
+  a:hover .volume-1 {
+    clip-path: polygon(0 7%, 94% 3%, 100% 80%, 9% 100%);
+  }
+  .volume-2:hover,
+  a:hover .volume-2 {
+    clip-path: polygon(8% 0, 100% 10%, 96% 96%, 0 88%);
+  }
+  .volume-3:hover,
+  a:hover .volume-3 {
+    clip-path: polygon(0 0, 100% 5%, 100% 92%, 10% 96%, 0 72%);
+  }
+  .volume-4:hover,
+  a:hover .volume-4 {
+    clip-path: polygon(9% 3%, 100% 0, 88% 100%, 0 94%);
+  }
+
+  /* The page transition: the new page rises from 6% below while the old one lifts away. */
+  @view-transition {
+    navigation: auto;
+  }
+  ::view-transition-old(root) {
+    animation: chalk-lift 0.45s var(--chalk-ease) both;
+  }
+  ::view-transition-new(root) {
+    animation: chalk-rise 0.45s var(--chalk-ease) both;
+  }
+}
+
+@keyframes chalk-lit {
+  45% {
+    scale: 1.15;
+  }
+}
+@keyframes chalk-rise {
+  from {
+    translate: 0 6%;
+    opacity: 0;
+  }
+}
+@keyframes chalk-lift {
+  to {
+    translate: 0 -3%;
+    opacity: 0;
+  }
+}

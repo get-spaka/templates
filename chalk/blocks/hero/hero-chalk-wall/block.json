@@ -1,0 +1,29 @@
+{
+  "name": "Chalk wall hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A full-width birch-ply panel dotted with bolt holes: a poster headline one short word a line, a sentence, two pill buttons, a START hold with its tape where the page's route begins, and a photo cut as a climbing volume with chunky holds in the circuit colors bolted around it, which screw in on load.",
+  "tags": [
+    "hero",
+    "headline",
+    "climbing",
+    "gym",
+    "holds",
+    "poster type"
+  ],
+  "mood": [
+    "bold",
+    "playful",
+    "colorful"
+  ],
+  "synonyms": [
+    "hero",
+    "headline",
+    "top of page",
+    "climbing wall",
+    "en-tête",
+    "accroche",
+    "haut de page",
+    "mur d'escalade"
+  ]
+}

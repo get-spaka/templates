@@ -1,0 +1,36 @@
+<header class="sticky top-[-2.5rem] z-30 bg-base-100 text-base-content">
+  <a href="/walls" class="flex h-10 items-center justify-center gap-2 overflow-hidden bg-secondary px-5 text-secondary-content">
+    <span class="mono truncate">New on Friday: 24 problems on the Prow</span><span aria-hidden="true">→</span>
+  </a>
+  <div class="border-b-2 border-base-300">
+    <div class="navbar mx-auto min-h-[4.5rem] max-w-7xl gap-4 px-5 md:px-10 lg:px-16">
+      <div class="navbar-start w-auto min-w-0 flex-1 xl:w-1/2 xl:flex-initial">
+        <a href="/" class="flex items-center gap-2.5 whitespace-nowrap">
+          <span class="hold" data-tone="primary" data-shape="1" style="--hold-size: 1.75rem; --turn: -20" aria-hidden="true"></span>
+          <span class="font-[family-name:var(--theme-font-heading)] text-lg font-black sm:text-xl tracking-[0.02em]">HOLDFAST</span>
+        </a>
+      </div>
+      <nav aria-label="Main" class="navbar-center hidden xl:flex">
+        <ul class="flex gap-8 whitespace-nowrap">
+          {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+          <li><a href="{{ item.href }}" class="font-medium underline-offset-[0.5em] hover:underline {% if page.url == item.href %}underline decoration-primary decoration-[3px]{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+      <div class="navbar-end w-auto shrink-0 gap-2 xl:w-1/2 xl:shrink">
+        <a href="/first-visit#book" class="btn btn-primary btn-sm whitespace-nowrap sm:btn-md">First visit</a>
+        <div class="dropdown dropdown-end xl:hidden">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-square btn-sm sm:btn-md" aria-label="Open menu">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h10"/></svg>
+          </div>
+          <ul tabindex="0" class="menu dropdown-content z-40 mt-3 w-64 rounded-box border-2 border-base-300 bg-base-100 p-2 text-base">
+            {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+            <li><a href="{{ item.href }}" class="font-medium" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+            <li class="mt-2 border-t-2 border-base-300 pt-2"><a href="/first-visit" class="font-medium">Your first visit</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

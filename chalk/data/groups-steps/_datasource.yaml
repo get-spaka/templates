@@ -1,0 +1,10 @@
+label: Steps
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [shoes-and-a-safety-talk, forty-five-minutes-on-the-wall, the-long-table, everybody-tops-out]

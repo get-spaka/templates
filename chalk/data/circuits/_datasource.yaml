@@ -1,0 +1,17 @@
+label: Circuits
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: grades
+    label: Grades
+    kind: text
+  - name: line
+    label: In a few words
+    kind: text
+order: [yellow, green, blue, purple, red, black]

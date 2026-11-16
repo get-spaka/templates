@@ -1,0 +1,11 @@
+label: Questions
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: markdown
+body: answer
+order: [what-to-bring, coming-alone, age-limits, injuries, lockers]

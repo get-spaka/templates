@@ -1,0 +1,36 @@
+label: Membership requests
+collected: true
+answer: membership-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, it's sent."
+fields:
+  - name: plan
+    label: Membership
+    kind: choice
+    choices: [Monthly, Annual, Student, Youth, Family add-on]
+    required: true
+  - name: start
+    label: Start date
+    kind: date
+  - name: climbed_here
+    label: Climbed here before
+    kind: choice
+    choices: ["Yes", Not yet]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: note
+    label: Anything we should know
+    kind: markdown

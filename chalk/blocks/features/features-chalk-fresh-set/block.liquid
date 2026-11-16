@@ -1,0 +1,27 @@
+<section id="fresh" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="right" data-tone="info" data-shape="2" style="--turn: -10" aria-hidden="true"></span>
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+          <p class="mono text-base-content/70">Fresh on the walls</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">New this week</h2>
+        </div>
+        <a href="/walls#set" class="link font-medium whitespace-nowrap underline-offset-4">All the walls <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-5" data-bolt>
+      {% for problem in data.problems limit: 6 %}
+      <li data-problem data-tone="{{ problem.tone }}" class="hold-tag flex flex-col gap-4 rounded-box border-2 border-base-300 bg-base-100 p-4 sm:flex-row sm:items-start lg:p-5">
+        <span class="hold" data-shape="{% cycle 'shape': '1', '3', '2', '4', '1', '2' %}" style="--hold-size: 4rem; --turn: {% cycle 'turn': '-20', '15', '35', '-5', '25', '-35' %}"><span class="numeral text-lg">{{ problem.grade }}</span></span>
+        <div class="min-w-0">
+          <span data-new-slot></span>
+          <h3 class="mt-1 text-lg leading-tight text-balance lg:text-xl">{{ problem.name }}</h3>
+          <p class="mono mt-2 text-base-content/70">{{ problem.wall }} · {{ problem.setter }}</p>
+          <p class="mono mt-1 text-base-content/70"><time datetime="{{ problem.set_on }}" data-since data-new="New">Set {{ problem.set_on | date: "%b %-d" }}</time></p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+<section id="book" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="right" data-tone="error" data-shape="3" style="--turn: 25" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/70">Book a first visit</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Pick a day</h2>
+      </div>
+    </div>
+    <div class="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
+      <form hx-post="/_data/first-visits" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#first-visit-problems swap:innerHTML" class="flex flex-col gap-8 rounded-box border-2 border-base-300 p-5 sm:p-8 lg:col-span-8 lg:p-10">
+        <div class="grid gap-x-4 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Day</legend>
+            <input name="day" type="date" class="input w-full" required>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Climbers</legend>
+            <input name="climbers" type="number" min="1" max="12" value="1" class="input w-full" required>
+          </fieldset>
+        </div>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">Intro time</legend>
+          <div class="flex flex-wrap gap-2">
+            <label class="mono inline-flex cursor-pointer items-center rounded-field border-2 border-base-300 px-4 py-2.5 has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="time" value="10 am" class="sr-only" checked>10 am</label>
+            <label class="mono inline-flex cursor-pointer items-center rounded-field border-2 border-base-300 px-4 py-2.5 has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="time" value="1 pm" class="sr-only">1 pm</label>
+            <label class="mono inline-flex cursor-pointer items-center rounded-field border-2 border-base-300 px-4 py-2.5 has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="time" value="4 pm" class="sr-only">4 pm</label>
+            <label class="mono inline-flex cursor-pointer items-center rounded-field border-2 border-base-300 px-4 py-2.5 has-checked:border-primary has-checked:bg-primary has-checked:text-primary-content has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-primary"><input type="radio" name="time" value="6 pm" class="sr-only">6 pm</label>
+          </div>
+        </fieldset>
+        <div class="grid gap-x-4 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Anyone under 14?</legend>
+            <select name="under_14" class="select w-full">
+              <option selected>No</option>
+              <option>Yes</option>
+            </select>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Climbed before?</legend>
+            <select name="experience" class="select w-full">
+              <option selected>Never</option>
+              <option>A few times</option>
+              <option>Outdoors</option>
+            </select>
+          </fieldset>
+        </div>
+        <div class="grid gap-x-4 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Your name</legend>
+            <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your email</legend>
+            <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+            <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Anything we should know <span class="font-normal text-base-content/70">(optional)</span></legend>
+            <textarea name="note" class="textarea w-full rounded-box" rows="4" maxlength="2000" placeholder="An old injury, a birthday, a friend who's nervous about heights."></textarea>
+          </fieldset>
+        </div>
+        <div id="first-visit-problems" class="empty:hidden"></div>
+        <div class="flex flex-col gap-4 border-t-2 border-base-300 pt-8 sm:flex-row sm:items-center">
+          <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Book the visit</button>
+          <p class="text-sm text-pretty text-base-content/70">Nothing to pay now. We confirm by email, and you pay $29 at the desk.</p>
+        </div>
+      </form>
+      <aside class="lg:col-span-4" data-reveal>
+        <h3 class="text-xl">What happens next</h3>
+        <ol class="mt-5 border-t-2 border-base-300">
+          <li class="border-b-2 border-base-300 py-5"><p class="mono text-base-content/70">The same day</p><p class="mt-2 text-pretty">We confirm your intro by email, with the link to the waiver.</p></li>
+          <li class="border-b-2 border-base-300 py-5"><p class="mono text-base-content/70">On the day</p><p class="mt-2 text-pretty">Come ten minutes early. Shoes, chalk and the coach are waiting at the desk.</p></li>
+          <li class="border-b-2 border-base-300 py-5"><p class="mono text-base-content/70">After the intro</p><p class="mt-2 text-pretty">Climb as long as you like. If you join that week, the $29 comes off your first month.</p></li>
+        </ol>
+        <p class="mt-8 text-pretty text-base-content/80">Rather just ask? Call the desk on <a href="tel:+14235550148" class="link whitespace-nowrap">(423) 555-0148</a>.</p>
+      </aside>
+    </div>
+  </div>
+</section>

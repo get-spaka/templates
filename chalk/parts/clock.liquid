@@ -1,0 +1,1 @@
+{%- assign t = time | split: ":" -%}{%- assign h = t[0] | plus: 0 -%}{%- if h > 12 -%}{{ h | minus: 12 }}{%- elsif h == 0 -%}12{%- else -%}{{ h }}{%- endif -%}{%- if t[1] and t[1] != "00" -%}:{{ t[1] }}{%- endif %} {% if h >= 12 -%}pm{%- else -%}am{%- endif -%}

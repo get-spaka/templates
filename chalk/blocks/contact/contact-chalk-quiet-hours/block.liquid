@@ -1,0 +1,41 @@
+<section id="hours" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="success" data-shape="4" style="--turn: -20" aria-hidden="true"></span>
+      <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+        <div class="lg:col-span-7">
+          <p class="mono text-base-content/70">When it's quiet</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Pick your hour</h2>
+        </div>
+        <p class="text-lg text-pretty text-base-content/80 lg:col-span-5">Busiest after work and on weekend mornings, quietest early and in the middle of the afternoon. Written by the desk from a year of check-ins, not live.</p>
+      </div>
+    </div>
+    <div class="mt-12 lg:mt-16" data-reveal>
+      <div class="grid grid-cols-[3.5rem_1fr] gap-x-4 sm:grid-cols-[7rem_1fr]" aria-hidden="true">
+        <span></span>
+        <div class="mono relative h-6 text-base-content/70">
+          <span class="absolute left-0">6 am</span>
+          <span class="absolute left-1/4 -translate-x-1/2">10 am</span>
+          <span class="absolute left-1/2 -translate-x-1/2">2 pm</span>
+          <span class="absolute left-3/4 -translate-x-1/2">6 pm</span>
+          <span class="absolute right-0">10 pm</span>
+        </div>
+      </div>
+      <ul class="mt-2">
+        {% for day in data.hours %}{% assign o = day.opens | split: ":" %}{% assign c = day.closes | split: ":" %}{% assign bf = day.busy_from | split: ":" %}{% assign bt = day.busy_to | split: ":" %}
+        <li class="grid grid-cols-[3.5rem_1fr] items-center gap-x-4 border-b-2 border-base-300 py-3 sm:grid-cols-[7rem_1fr]">
+          <p class="mono"><span class="sm:hidden">{{ day.day | slice: 0, 3 }}</span><span class="hidden sm:inline">{{ day.day }}</span></p>
+          <div>
+            <div class="day-bar" aria-hidden="true">
+              <span class="day-open" style="--from-h: {{ o[0] }}; --from-m: {{ o[1] }}; --to-h: {{ c[0] }}; --to-m: {{ c[1] }}"></span>
+              {% if day.busy_from %}<span class="day-busy" style="--from-h: {{ bf[0] }}; --from-m: {{ bf[1] }}; --to-h: {{ bt[0] }}; --to-m: {{ bt[1] }}"></span>{% endif %}
+            </div>
+            <p class="mt-1.5 text-sm text-base-content/75">Open {% render 'clock', time: day.opens %} to {% render 'clock', time: day.closes %}{% if day.busy_from %}, busy {% render 'clock', time: day.busy_from %} to {% render 'clock', time: day.busy_to %}{% endif %}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="mono mt-5 flex flex-wrap gap-x-6 gap-y-2 text-base-content/75"><span><span class="mr-2 inline-block h-3 w-6 rounded-full bg-accent align-middle"></span>Quiet</span><span><span class="mr-2 inline-block h-3 w-6 rounded-full bg-base-content align-middle"></span>Busy</span></p>
+    </div>
+  </div>
+</section>

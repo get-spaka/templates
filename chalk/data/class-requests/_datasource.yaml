@@ -1,0 +1,39 @@
+label: Class requests
+collected: true
+answer: spot-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, it's sent."
+fields:
+  - name: class
+    label: Class
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+    required: true
+  - name: climbers
+    label: Climbers
+    kind: number
+  - name: level
+    label: Level
+    kind: choice
+    choices: [New to climbing, VB to V2, V3 to V5, V6 and up]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: note
+    label: Anything we should know
+    kind: markdown

@@ -1,0 +1,44 @@
+label: First visits
+collected: true
+answer: first-visit-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, it's sent."
+fields:
+  - name: day
+    label: Day
+    kind: date
+    required: true
+  - name: time
+    label: Intro time
+    kind: choice
+    choices: [10 am, 1 pm, 4 pm, 6 pm]
+  - name: climbers
+    label: Climbers
+    kind: number
+    required: true
+  - name: under_14
+    label: Any under 14
+    kind: choice
+    choices: ["No", "Yes"]
+  - name: experience
+    label: Climbed before
+    kind: choice
+    choices: [Never, A few times, Outdoors]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: note
+    label: Anything we should know
+    kind: markdown

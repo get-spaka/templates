@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Holdfast Bouldering</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Holdfast Bouldering">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.cover %}<meta property="og:image" content="{{ record.cover }}">{% endif %}
+</head>
+<body data-line>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content" data-tone="{{ record.tone }}">
+  <div class="wrap grid gap-12 pt-10 pb-16 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-14 lg:pb-24">
+    <div class="relative lg:col-span-7">
+      <a href="/classes" class="mono link-hover text-base-content/70"><span aria-hidden="true">←</span> All classes</a>
+      <div class="relative mt-10">
+        <span data-hold class="stop hold" data-side="left" data-shape="1" style="--turn: 15" aria-hidden="true"></span>
+        <p class="flex items-center gap-3"><span class="tape">Start</span><span class="mono">{{ record.level }}</span></p>
+        <h1 class="mt-6 text-[clamp(2.25rem,5vw,4.5rem)] uppercase hyphens-auto">{{ record.name }}</h1>
+      </div>
+      <p class="mt-6 max-w-xl text-lg text-pretty md:text-xl" data-reveal>{{ record.summary }}</p>
+      <dl class="mono mt-8 grid max-w-md grid-cols-2 gap-px overflow-hidden rounded-box border-2 border-base-300 bg-base-300" data-reveal>
+        <div class="bg-base-100 p-4"><dt class="text-base-content/70">Length</dt><dd class="mt-1 text-base-content">{{ record.length }}</dd></div>
+        <div class="bg-base-100 p-4"><dt class="text-base-content/70">Group</dt><dd class="mt-1 text-base-content">Up to {{ record.size }}</dd></div>
+        <div class="bg-base-100 p-4"><dt class="text-base-content/70">Price</dt><dd class="mt-1 text-base-content">${{ record.price }}</dd></div>
+        <div class="bg-base-100 p-4"><dt class="text-base-content/70">Coach</dt><dd class="mt-1 text-base-content">{{ record.coach }}</dd></div>
+      </dl>
+    </div>
+    <div class="lg:col-span-5">
+      {% if record.cover %}<img src="{{ record.cover }}" data-grade class="volume-4 aspect-[4/3] w-full object-cover" data-reveal>{% else %}<div class="volume-4 aspect-[4/3] w-full bg-base-200"></div>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="ply text-base-content">
+  <div class="wrap grid gap-12 py-20 lg:grid-cols-12 lg:gap-8 lg:py-28">
+    <div class="relative lg:col-span-7">
+      <span data-hold class="stop hold" data-side="left" data-tone="info" data-shape="2" style="--turn: -20" aria-hidden="true"></span>
+      <div class="text-lg text-pretty [&_a]:link [&_h2]:mt-12 [&_h2]:font-[family-name:var(--theme-font-heading)] [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:uppercase [&_h2:first-child]:mt-0 [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6" data-reveal>{{ record.body }}</div>
+    </div>
+    <div class="lg:col-span-4 lg:col-start-9" data-reveal>
+      <h2 class="text-2xl uppercase">When</h2>
+      <ul class="mt-5 flex flex-col gap-2">
+        {% assign found = false %}
+        {% for session in data.sessions %}{% if session.class == record.id %}{% assign found = true %}
+        <li class="week-session rounded-box px-4 py-3" data-tone="{{ session.tone }}">
+          <p class="display font-bold">{{ session.day }}</p>
+          <p class="mono mt-1">{% render 'clock', time: session.start %} – {% render 'clock', time: session.end %} · {{ session.coach }}</p>
+        </li>
+        {% endif %}{% endfor %}
+        {% unless found %}<li class="rounded-box bg-base-100 px-4 py-3">By appointment: tell us when suits you in the form.</li>{% endunless %}
+      </ul>
+      <a href="/classes#week" class="link mt-5 inline-block font-medium">The whole timetable <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="request" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="right" data-tone="primary" data-shape="3" style="--turn: 30" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/70">Request a spot</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Save me a place</h2>
+      </div>
+    </div>
+    <div class="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-10">
+      <form hx-post="/_data/class-requests" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#class-request-problems swap:innerHTML" class="flex flex-col gap-6 rounded-box border-2 border-base-300 p-5 sm:p-8 lg:col-span-8 lg:p-10">
+        <input type="hidden" name="class" value="{{ record.id }}">
+        <div class="grid gap-x-4 gap-y-2 sm:grid-cols-3">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Date</legend>
+            <input name="date" type="date" class="input w-full" required>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Climbers</legend>
+            <input name="climbers" type="number" min="1" max="12" value="1" class="input w-full">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your level</legend>
+            <select name="level" class="select w-full">
+              <option>New to climbing</option>
+              <option selected>VB to V2</option>
+              <option>V3 to V5</option>
+              <option>V6 and up</option>
+            </select>
+          </fieldset>
+        </div>
+        <div class="grid gap-x-4 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Your name</legend>
+            <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your email</legend>
+            <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+            <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Anything we should know <span class="font-normal text-base-content/70">(optional)</span></legend>
+            <textarea name="note" class="textarea w-full rounded-box" rows="3" maxlength="2000"></textarea>
+          </fieldset>
+        </div>
+        <div id="class-request-problems" class="empty:hidden"></div>
+        <div class="flex flex-col gap-4 border-t-2 border-base-300 pt-6 sm:flex-row sm:items-center">
+          <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Request a spot</button>
+          <p class="text-sm text-pretty text-base-content/70">We confirm by email. The class is paid at the desk on the day.</p>
+        </div>
+      </form>
+      <aside class="lg:col-span-4" data-reveal>
+        <h3 class="text-xl">Good to know</h3>
+        <ul class="mt-5 flex flex-col gap-4 text-pretty">
+          <li class="border-t-2 border-base-300 pt-4">Come ten minutes early to warm up; the class starts on the hour.</li>
+          <li class="border-t-2 border-base-300 pt-4">Shoes are free for members and $5 otherwise.</li>
+          <li class="border-t-2 border-base-300 pt-4">Can't make it? Write to us 24 hours before and your spot moves to the next session.</li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="bg-base-200 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="error" data-shape="4" style="--turn: -35" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/75">The other classes</p>
+        <h2 class="mt-4 text-[clamp(2rem,5vw,3.5rem)] uppercase">Keep climbing</h2>
+      </div>
+    </div>
+    <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+      {% for class in data.classes %}{% if class.id != record.id %}
+      <li data-tone="{{ class.tone }}" data-reveal>
+        <a href="/classes/{{ class.id }}" class="group flex h-full items-start gap-4 rounded-box bg-base-100 p-5">
+          <span class="hold" data-shape="{% cycle '1', '3', '2', '4', '1' %}" style="--hold-size: 2.25rem; --turn: 25" aria-hidden="true"></span>
+          <span>
+            <span class="display block text-lg font-bold underline-offset-4 group-hover:underline">{{ class.name }}</span>
+            <span class="mono mt-1 block text-base-content/70">{{ class.level }} · ${{ class.price }}</span>
+          </span>
+        </a>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<section class="bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="error" data-shape="1" style="--turn: 35" aria-hidden="true"></span>
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+          <p class="mono text-base-content/70">Every week</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Learn to move</h2>
+        </div>
+        <a href="/classes" class="link font-medium whitespace-nowrap underline-offset-4">The whole timetable <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <ul class="mt-12 border-t-2 border-base-300">
+      {% for class in data.classes %}{% if class.featured %}
+      <li data-tone="{{ class.tone }}" class="grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 border-b-2 border-base-300 py-6 lg:grid-cols-12 lg:gap-6" data-reveal>
+        <span class="hold lg:col-span-1" data-shape="{% cycle '2', '4', '1', '3' %}" style="--hold-size: 3rem; --turn: {% cycle 'turn': '10', '-30', '45', '-5' %}" aria-hidden="true"></span>
+        <div class="lg:col-span-4">
+          <h3 class="text-xl leading-tight lg:text-2xl">{{ class.name }}</h3>
+          <p class="mono mt-1 text-base-content/70">{{ class.level }}</p>
+        </div>
+        <p class="col-span-2 text-base-content/80 lg:col-span-3">{% assign first = true %}{% for session in data.sessions %}{% if session.class == class.id %}{% unless first %}<span aria-hidden="true"> · </span>{% endunless %}<span class="whitespace-nowrap">{{ session.day | slice: 0, 3 }} {% render 'clock', time: session.start %}</span>{% assign first = false %}{% endif %}{% endfor %}</p>
+        <p class="mono col-span-2 lg:col-span-2">{{ class.length }} · ${{ class.price }}</p>
+        <a href="/classes/{{ class.id }}" class="btn btn-outline btn-sm col-span-2 justify-self-start border-base-content whitespace-nowrap lg:col-span-2 lg:justify-self-end">See the class</a>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>

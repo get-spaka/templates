@@ -1,0 +1,10 @@
+label: Steps
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [book-a-first-visit, sign-the-waiver, thirty-minutes-with-a-coach, climb-the-yellows]

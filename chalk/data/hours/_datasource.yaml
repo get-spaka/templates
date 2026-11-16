@@ -1,0 +1,19 @@
+label: Hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: opens
+    label: "Opens (24-hour, 06:00)"
+    kind: text
+  - name: closes
+    label: "Closes (24-hour, 22:00)"
+    kind: text
+  - name: busy_from
+    label: Busy from
+    kind: text
+  - name: busy_to
+    label: Busy until
+    kind: text
+order: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

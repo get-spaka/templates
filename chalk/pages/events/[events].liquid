@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Holdfast Bouldering</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Holdfast Bouldering">
+<meta property="og:description" content="{{ record.summary }}">
+{% if record.cover %}<meta property="og:image" content="{{ record.cover }}">{% endif %}
+</head>
+<body data-line>
+{% render 'header' %}
+<main>
+{% case record.kind %}{% when "comp" %}{% assign tone = "error" %}{% assign kind = "Comp" %}{% when "trip" %}{% assign tone = "success" %}{% assign kind = "Trip" %}{% when "night" %}{% assign tone = "primary" %}{% assign kind = "Night at the wall" %}{% when "film" %}{% assign tone = "info" %}{% assign kind = "Film night" %}{% else %}{% assign tone = "warning" %}{% assign kind = "Workshop" %}{% endcase %}
+<section class="bg-base-100 text-base-content">
+  <div class="wrap grid gap-12 pt-10 pb-16 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-14 lg:pb-24">
+    <div class="lg:col-span-7">
+      <a href="/events" class="mono link-hover text-base-content/70"><span aria-hidden="true">←</span> All events</a>
+      <div class="relative mt-10">
+        <span data-hold class="stop hold" data-side="left" data-tone="{{ tone }}" data-shape="1" style="--turn: 15" aria-hidden="true"></span>
+        <p class="flex items-center gap-3"><span class="tape">Start</span><span class="mono">{{ kind }}</span></p>
+        <h1 class="mt-6 text-[clamp(2.25rem,5vw,4.5rem)] uppercase hyphens-auto">{{ record.title }}</h1>
+      </div>
+      <div class="mt-8 flex items-center gap-5" data-reveal>
+        <span class="hold" data-tone="{{ tone }}" data-shape="4" style="--hold-size: 5rem; --turn: -10"><span class="numeral text-3xl">{{ record.date | date: "%-d" }}</span></span>
+        <p class="mono">{{ record.date | date: "%A, %B %-d, %Y" }}<br>{{ record.time }}<br>{{ record.price }}</p>
+      </div>
+      <a href="#sign-up" class="btn btn-primary btn-lg mt-9 whitespace-nowrap" data-reveal>Sign up</a>
+    </div>
+    <div class="lg:col-span-5">
+      {% if record.cover %}<img src="{{ record.cover }}" data-grade class="volume-2 aspect-[4/3] w-full object-cover" data-reveal>{% else %}<div class="volume-2 aspect-[4/3] w-full bg-base-200"></div>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="ply text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative max-w-3xl">
+      <span data-hold class="stop hold" data-side="left" data-tone="info" data-shape="2" style="--turn: -20" aria-hidden="true"></span>
+      <p class="text-xl text-pretty font-medium md:text-2xl" data-reveal>{{ record.summary }}</p>
+      <div class="mt-10 text-lg text-pretty [&_a]:link [&_h2]:mt-12 [&_h2]:font-[family-name:var(--theme-font-heading)] [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:uppercase [&_h2:first-child]:mt-0 [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:pl-6" data-reveal>{{ record.body }}</div>
+    </div>
+  </div>
+</section>
+
+<section id="sign-up" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="right" data-tone="primary" data-shape="3" style="--turn: 30" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/70">Sign up</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Count me in</h2>
+      </div>
+    </div>
+    <form hx-post="/_data/event-signups" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#signup-problems swap:innerHTML" class="mt-12 flex max-w-3xl flex-col gap-6 rounded-box border-2 border-base-300 p-5 sm:p-8 lg:mt-16 lg:p-10">
+      <input type="hidden" name="event" value="{{ record.id }}">
+      <div class="grid gap-x-4 gap-y-2 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">How many</legend>
+          <input name="people" type="number" min="1" max="20" value="1" class="input w-full" required>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend">Comp category</legend>
+          <select name="category" class="select w-full">
+            <option {% if record.kind == "comp" %}selected{% endif %}>Recreational</option>
+            <option>Intermediate</option>
+            <option>Open</option>
+            <option {% unless record.kind == "comp" %}selected{% endunless %}>Not a comp</option>
+          </select>
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend">Your name</legend>
+          <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend">Your email</legend>
+          <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+        </fieldset>
+        <fieldset class="fieldset sm:col-span-2">
+          <legend class="fieldset-legend">Anything we should know <span class="font-normal text-base-content/70">(optional)</span></legend>
+          <textarea name="message" class="textarea w-full rounded-box" rows="3" maxlength="2000"></textarea>
+        </fieldset>
+      </div>
+      <div id="signup-problems" class="empty:hidden"></div>
+      <div class="flex flex-col gap-4 border-t-2 border-base-300 pt-6 sm:flex-row sm:items-center">
+        <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Sign me up</button>
+        <p class="text-sm text-pretty text-base-content/70">Nothing to pay online. We confirm by email, and you pay at the desk.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="bg-base-200 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="error" data-shape="4" style="--turn: -35" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/75">Also coming up</p>
+        <h2 class="mt-4 text-[clamp(2rem,5vw,3.5rem)] uppercase">More at the wall</h2>
+      </div>
+    </div>
+    <ul class="mt-12 border-t-2 border-base-content/20">
+      {% for event in data.events %}{% if event.id != record.id %}
+      <li class="border-b-2 border-base-content/20" data-reveal>
+        <a href="/events/{{ event.id }}" class="group grid grid-cols-[6rem_1fr] items-baseline gap-4 py-5 sm:grid-cols-[9rem_1fr_auto]">
+          <span class="mono">{{ event.date | date: "%a %b %-d" }}</span>
+          <span class="display text-xl font-bold underline-offset-4 group-hover:underline">{{ event.title }}</span>
+          <span class="mono col-start-2 text-base-content/70 sm:col-start-auto">{{ event.time }}</span>
+        </a>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

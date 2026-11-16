@@ -1,0 +1,27 @@
+label: Timetable
+fields:
+  - name: title
+    label: Session
+    kind: text
+    required: true
+  - name: class
+    label: The class (its id, or empty)
+    kind: text
+  - name: day
+    label: Day
+    kind: choice
+    choices: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+  - name: start
+    label: "Starts (24-hour, 18:30)"
+    kind: text
+  - name: end
+    label: "Ends (24-hour, 19:45)"
+    kind: text
+  - name: tone
+    label: Level color
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: coach
+    label: Coach
+    kind: text
+sort: start

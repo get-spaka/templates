@@ -1,0 +1,31 @@
+{
+  "name": "Chalk price board",
+  "kind": "pricing",
+  "source": "upstart",
+  "description": "On a graphite band, the memberships as giant numerals with what each covers, then the passes and extras as a list with dotted leaders between each name and its price.",
+  "tags": [
+    "pricing",
+    "prices",
+    "memberships",
+    "passes",
+    "rates"
+  ],
+  "mood": [
+    "bold",
+    "dark"
+  ],
+  "synonyms": [
+    "prices",
+    "pricing",
+    "memberships",
+    "rates",
+    "tarifs",
+    "prix",
+    "abonnements",
+    "entrées"
+  ],
+  "data": {
+    "name": "plans",
+    "family": "collection"
+  }
+}

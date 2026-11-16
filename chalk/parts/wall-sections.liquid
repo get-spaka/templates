@@ -1,0 +1,46 @@
+<section class="ply text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="success" data-shape="3" style="--turn: 20" aria-hidden="true"></span>
+      <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+        <div class="lg:col-span-8">
+          <p class="mono text-base-content/75">The walls in section</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">From slab to cave</h2>
+        </div>
+        <p class="text-lg text-pretty lg:col-span-4">Five walls on one floor, each at its real angle, and one of them stripped and reset every Friday.</p>
+      </div>
+    </div>
+    <div class="walls-drawing mt-14 lg:mt-20" data-walls>
+      <ol class="grid grid-cols-5 gap-2 md:gap-4 lg:gap-6">
+        {% for wall in data.walls limit: 5 %}{% assign feet = wall.height | split: " " | first %}
+        <li>
+          <div class="wall-bay" aria-hidden="true">
+            <span class="wall-mat"></span>
+            <span class="wall-profile" data-angle="{{ wall.angle }}" style="--angle: {{ wall.angle }}; --feet: {{ feet }}"></span>
+          </div>
+          <p class="numeral mt-3 text-center text-lg md:hidden" aria-hidden="true">{{ forloop.index }}</p>
+          <div class="mt-5 hidden md:block">
+            <h3 class="text-base lg:text-xl">{{ wall.name }}</h3>
+            <p class="mono mt-2">{{ wall.angle }}° · {{ wall.height }}</p>
+            <p class="mono text-base-content/75">{{ wall.problems }} problems</p>
+            <p class="mono text-base-content/75">Comes down <time datetime="{{ wall.next_reset }}" data-until>{{ wall.next_reset | date: "%b %-d" }}</time></p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      <ol class="mt-8 grid gap-px overflow-hidden rounded-box border-2 border-base-content/15 bg-base-content/15 md:hidden">
+        {% for wall in data.walls limit: 5 %}
+        <li class="flex items-baseline gap-4 bg-base-200 px-4 py-3">
+          <span class="numeral w-5 shrink-0 text-lg">{{ forloop.index }}</span>
+          <span class="min-w-0">
+            <span class="block font-semibold">{{ wall.name }}</span>
+            <span class="mono block">{{ wall.angle }}° · {{ wall.height }} · {{ wall.problems }} problems</span>
+            <span class="mono block text-base-content/75">Comes down <time datetime="{{ wall.next_reset }}" data-until>{{ wall.next_reset | date: "%b %-d" }}</time></span>
+          </span>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    <a href="/walls" class="btn btn-outline mt-12 border-base-content whitespace-nowrap" data-reveal>See every wall</a>
+  </div>
+</section>

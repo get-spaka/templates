@@ -1,0 +1,6 @@
+<div class="flex max-w-3xl flex-col gap-5 rounded-box bg-base-200 p-6 sm:p-8 lg:p-10" role="status">
+  <span class="tape self-start">You're in</span>
+  <p class="display text-3xl leading-tight font-extrabold uppercase md:text-4xl">Thanks, {{ record.name }}.</p>
+  <p class="text-lg text-pretty">We've saved {% if record.people > 1 %}{{ record.people }} places{% else %}your place{% endif %}, and we'll confirm by email with everything you need to know.</p>
+  <p class="text-pretty text-base-content/80">Nothing is paid online: pay at the desk on the day.</p>
+</div>

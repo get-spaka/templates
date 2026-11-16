@@ -1,0 +1,26 @@
+label: Programs
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: ages
+    label: Ages
+    kind: text
+  - name: when
+    label: When
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: summary
+    label: Summary
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [kids-club, youth-team, birthday-parties, schools-and-scouts, team-events]

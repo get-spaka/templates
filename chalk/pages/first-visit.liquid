@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Your first visit — Holdfast Bouldering</title>
+<meta name="description" content="Never climbed? Good. $29 for a 30-minute intro with a coach, the day pass, shoes and chalk. Book a time, sign the waiver online, and climb the yellows.">
+<meta property="og:title" content="Your first visit — Holdfast Bouldering">
+<meta property="og:description" content="Never climbed? Good. $29 for a 30-minute intro with a coach, the day pass, shoes and chalk. Book a time, sign the waiver online, and climb the yellows.">
+</head>
+<body data-line>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="wrap grid gap-12 pt-14 pb-16 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-20 lg:pb-24">
+    <div class="relative lg:col-span-7">
+      <span data-hold class="stop hold" data-side="left" data-tone="warning" data-shape="1" style="--turn: 15" aria-hidden="true"></span>
+      <span class="tape">Start</span>
+      <h1 class="mt-6 text-[clamp(2.75rem,8vw,6.5rem)] uppercase">Never climbed? Good.</h1>
+      <p class="mt-8 max-w-xl text-lg text-pretty md:text-xl" data-reveal>Most people who come through our door have never touched a climbing hold. Thirty minutes with a coach, and you'll be on the yellows with everyone else.</p>
+      <div class="mt-9 flex flex-wrap gap-3" data-reveal>
+        <a href="#book" class="btn btn-primary btn-lg whitespace-nowrap">Book a first visit</a>
+        <a href="#steps" class="btn btn-lg btn-outline border-base-content whitespace-nowrap">How it goes</a>
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <img src="/media/first-visit-shoes.jpg" data-grade class="volume-3 aspect-[4/3] w-full object-cover lg:aspect-[4/5]" data-reveal>
+    </div>
+  </div>
+</section>
+
+<section class="ply text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-8">
+      <div class="relative lg:col-span-6">
+        <span data-hold class="stop hold" data-side="left" data-tone="success" data-shape="2" style="--turn: -20" aria-hidden="true"></span>
+        <p class="mono text-base-content/75">The intro offer</p>
+        <p class="numeral mt-6 text-[clamp(5rem,16vw,11rem)]" data-reveal><span class="mr-1 align-[0.4em] text-[0.4em]">$</span>29</p>
+        <h2 class="mt-4 text-[clamp(1.75rem,4vw,2.75rem)] uppercase" data-reveal>For your first visit</h2>
+      </div>
+      <div class="rounded-box bg-base-100 p-6 sm:p-8 lg:col-span-6" data-reveal>
+        <h3 class="text-xl">What it holds</h3>
+        <ul class="mt-6 flex flex-col gap-4">
+          <li class="flex items-start gap-4"><span class="hold mt-0.5" data-tone="warning" data-shape="1" style="--hold-size: 1.5rem; --turn: 10" aria-hidden="true"></span><span>A 30-minute intro with a coach, in a group of six at most</span></li>
+          <li class="flex items-start gap-4"><span class="hold mt-0.5" data-tone="success" data-shape="3" style="--hold-size: 1.5rem; --turn: -15" aria-hidden="true"></span><span>The day pass: climb until closing, come and go</span></li>
+          <li class="flex items-start gap-4"><span class="hold mt-0.5" data-tone="info" data-shape="2" style="--hold-size: 1.5rem; --turn: 30" aria-hidden="true"></span><span>Climbing shoes and a chalk bag for the day</span></li>
+          <li class="flex items-start gap-4"><span class="hold mt-0.5" data-tone="primary" data-shape="4" style="--hold-size: 1.5rem; --turn: -40" aria-hidden="true"></span><span>$29 off your first month if you join within the week</span></li>
+        </ul>
+        <a href="#book" class="btn btn-primary mt-8 w-full whitespace-nowrap sm:w-auto">Book a first visit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'first-visit-route' %}
+{% render 'first-visit-form' %}
+{% render 'circuits', side: 'left' %}
+{% render 'quiet-hours', side: 'right' %}
+
+<section id="find-us" class="scroll-mt-24 bg-base-200 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="left" data-tone="primary" data-shape="3" style="--turn: 40" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/75">Finding us</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">The old foundry</h2>
+      </div>
+    </div>
+    <div class="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-4" data-reveal>
+        <address class="display text-2xl leading-snug font-bold not-italic">1450 Ironside Street<br>Chattanooga, TN 37408</address>
+        <p class="mt-4 text-pretty">On the Southside, two blocks from Main Street, in the brick stove foundry with the tall chimney.</p>
+        <a href="https://www.openstreetmap.org/search?query=1450%20Ironside%20Street%2C%20Chattanooga" class="btn btn-neutral mt-6 whitespace-nowrap">Get directions</a>
+      </div>
+      <dl class="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:col-span-7 lg:col-start-6" data-reveal>
+        <div class="border-t-2 border-base-content/20 pt-4"><dt class="mono">Parking</dt><dd class="mt-2 text-pretty">Free in the foundry's yard, entrance on Ironside Street. Fifty spaces, rarely full before 6 pm.</dd></div>
+        <div class="border-t-2 border-base-content/20 pt-4"><dt class="mono">By bus</dt><dd class="mt-2 text-pretty">The Main Street stop is a four-minute walk; the free downtown shuttle stops at the corner.</dd></div>
+        <div class="border-t-2 border-base-content/20 pt-4"><dt class="mono">By bike</dt><dd class="mt-2 text-pretty">Covered racks for twenty bikes by the café door, and a pump at the desk.</dd></div>
+        <div class="border-t-2 border-base-content/20 pt-4"><dt class="mono">Getting in</dt><dd class="mt-2 text-pretty">Step-free from the yard. The changing rooms and the café are on the ground floor.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="questions" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="wrap grid gap-12 py-20 lg:grid-cols-12 lg:gap-8 lg:py-28">
+    <div class="relative lg:col-span-4">
+      <span data-hold class="stop hold" data-side="left" data-tone="error" data-shape="2" style="--turn: -5" aria-hidden="true"></span>
+      <div data-reveal>
+        <p class="mono text-base-content/70">Questions</p>
+        <h2 class="mt-4 text-[clamp(2.25rem,6vw,3.5rem)] uppercase">Before you come</h2>
+        <p class="mt-6 text-pretty text-base-content/80">Anything else? Call the desk on <a href="tel:+14235550148" class="link whitespace-nowrap">(423) 555-0148</a>.</p>
+      </div>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6" data-reveal>
+      {% for item in data["first-visit-faq"] %}
+      <details class="collapse collapse-plus rounded-none border-b-2 border-base-300" {% if forloop.first %}open{% endif %}>
+        <summary class="collapse-title text-lg font-semibold">{{ item.question }}</summary>
+        <div class="collapse-content px-0 text-pretty text-base-content/80 [&_p]:mt-2">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

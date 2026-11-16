@@ -1,0 +1,30 @@
+<section class="bg-base-100 text-base-content">
+  <div class="wrap py-20 lg:py-28">
+    <div class="relative">
+      <span data-hold class="stop hold" data-side="right" data-tone="info" data-shape="1" style="--turn: -15" aria-hidden="true"></span>
+      <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+        <div>
+          <p class="mono text-base-content/70">Coming up</p>
+          <h2 class="mt-4 text-[clamp(2.25rem,6vw,4.5rem)] uppercase">Nights at the wall</h2>
+        </div>
+        <a href="/events" class="link font-medium whitespace-nowrap underline-offset-4">All events <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <ul class="mt-12 border-t-2 border-base-300">
+      {% for event in data.events limit: 3 %}
+      {% case event.kind %}{% when "comp" %}{% assign tone = "error" %}{% when "trip" %}{% assign tone = "success" %}{% when "night" %}{% assign tone = "primary" %}{% when "film" %}{% assign tone = "info" %}{% else %}{% assign tone = "warning" %}{% endcase %}
+      <li class="border-b-2 border-base-300" data-reveal>
+        <a href="/events/{{ event.id }}" class="group grid grid-cols-[auto_1fr] items-center gap-x-5 gap-y-3 py-6 lg:grid-cols-[auto_1fr_auto_auto] lg:gap-x-10">
+          <span class="hold" data-tone="{{ tone }}" data-shape="{% cycle '4', '2', '1' %}" style="--hold-size: 4.5rem; --turn: {% cycle 'turn': '-10', '20', '-30' %}"><span class="numeral text-2xl">{{ event.date | date: "%-d" }}</span></span>
+          <span class="min-w-0">
+            <span class="mono block text-base-content/70">{{ event.date | date: "%a %b %-d" }} · {{ event.time }}</span>
+            <span class="display mt-2 block text-xl leading-tight font-bold text-balance underline-offset-4 group-hover:underline lg:text-2xl">{{ event.title }}</span>
+          </span>
+          <span class="mono col-start-2 text-base-content/70 lg:col-start-auto lg:max-w-56 lg:text-right">{{ event.price }}</span>
+          <span class="btn btn-outline btn-sm hidden border-base-content whitespace-nowrap lg:inline-flex">Details</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

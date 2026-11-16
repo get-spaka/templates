@@ -1,0 +1,10 @@
+label: What members get
+fields:
+  - name: title
+    label: Perk
+    kind: text
+    required: true
+  - name: text
+    label: Text
+    kind: text
+order: [classes-included, a-guest-pass-a-month, ten-percent-at-the-chalkboard, freeze-for-up-to-two-months]

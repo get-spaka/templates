@@ -1,0 +1,24 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: choice
+    choices: [setter, coach]
+  - name: title
+    label: Title
+    kind: text
+  - name: style
+    label: In a line
+    kind: text
+  - name: tone
+    label: Color
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: photo
+    label: Photo
+    kind: image
+order: [rosa-delgado, jamie-pruitt, theo-marsh, kenji-ward, alana-brooks, sam-ortiz, priya-raman, will-tidwell]

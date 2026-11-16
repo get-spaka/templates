@@ -1,0 +1,32 @@
+{
+  "name": "Chalk steps along a route",
+  "kind": "steps",
+  "source": "upstart",
+  "description": "Numbered steps on a birch-ply panel, each on a hold in the next circuit color, joined by a line of their own that draws itself from hold to hold as the page scrolls: down the side on a phone, stepping down across the panel on a large screen; then a price line and a button.",
+  "tags": [
+    "steps",
+    "process",
+    "how it works",
+    "first visit",
+    "route"
+  ],
+  "mood": [
+    "bold",
+    "playful",
+    "colorful"
+  ],
+  "synonyms": [
+    "steps",
+    "process",
+    "how it works",
+    "first visit",
+    "étapes",
+    "déroulement",
+    "comment ça marche",
+    "première visite"
+  ],
+  "data": {
+    "name": "steps",
+    "family": "section"
+  }
+}

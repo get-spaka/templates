@@ -1,0 +1,38 @@
+label: Group requests
+collected: true
+answer: group-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, it's sent."
+fields:
+  - name: kind
+    label: What it's for
+    kind: choice
+    choices: [Birthday party, School or scouts, Team event, Other]
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: size
+    label: How many
+    kind: number
+  - name: ages
+    label: Ages
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: message
+    label: Tell us more
+    kind: markdown

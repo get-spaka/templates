@@ -1,0 +1,29 @@
+label: Problems
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: tone
+    label: Circuit
+    kind: choice
+    choices: [warning, success, info, primary, error, neutral]
+  - name: grade
+    label: Grade
+    kind: text
+  - name: wall
+    label: Wall
+    kind: text
+  - name: setter
+    label: Set by
+    kind: text
+  - name: set_on
+    label: Set on
+    kind: date
+  - name: note
+    label: "The setter's line"
+    kind: text
+  - name: featured
+    label: A favorite
+    kind: boolean
+sort: -set_on
