@@ -7,5 +7,6 @@
   "original": false,
   "tags": ["café", "breakfast", "brunch", "lunch", "coffee", "restaurant", "opening hours", "menu", "catering"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "shoot": { "clock": "2027-04-14T09:30:00-05:00" }
 }
