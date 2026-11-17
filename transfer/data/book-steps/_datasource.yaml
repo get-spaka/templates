@@ -1,0 +1,11 @@
+label: Steps
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: icon
+    label: Drawing
+    kind: image
+order: [tell-us-the-idea, quote-and-deposit, the-drawing, tattoo-day, heal-it-well]

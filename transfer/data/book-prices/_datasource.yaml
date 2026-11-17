@@ -1,0 +1,10 @@
+label: Prices
+fields:
+  - name: name
+    kind: text
+    required: true
+  - name: price
+    kind: text
+  - name: note
+    kind: text
+order: [shop-minimum, by-the-hour, full-day, flash, apprentice-flash]

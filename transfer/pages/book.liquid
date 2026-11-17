@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Request a tattoo — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="Tell us the idea: Lost Wax Tattoo replies within five working days with a quote, dates and a deposit link. Prices, deposits and answers to the questions people ask first.">
+<meta property="og:title" content="Request a tattoo — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="Tell us the idea; we reply within five working days with a quote, dates and a deposit link.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+<main>
+{% render 'page-title', eyebrow: "Request a tattoo", title: "Tell us the idea", text: "Custom work starts here. Describe it as well as you can; your artist draws it new, for you, and you'll see the drawing on the day." %}
+{% render 'ruled-steps', steps: data.book-steps, eyebrow: "How it goes", title: "Five steps, and the deposit said plainly", photo: "/media/stencil-on-arm.jpg", cta: false %}
+{% render 'request-form', artists: data.artists, guests: data.guests %}
+{% render 'prices', prices: data.book-prices %}
+{% render 'faq', faq: data.book-faq, title: "Before you ask" %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

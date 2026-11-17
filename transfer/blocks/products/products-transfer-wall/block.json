@@ -1,0 +1,13 @@
+{
+  "name": "Transfer flash wall",
+  "kind": "products",
+  "source": "upstart",
+  "description": "The flash wall: chips to filter by artist and style and to show only what's available, then every design as a numbered vellum card with its drawing (which lands as a stencil and lifts on hover), its price, size and kind, and Claimed set across the designs taken; each design's page has the drawing large, its facts, try it on and the claim form.",
+  "tags": ["products", "flash", "tattoo", "designs", "catalogue", "filters"],
+  "mood": ["playful", "bold"],
+  "synonyms": ["flash", "designs", "catalogue", "products", "flash à prendre", "motifs", "catalogue", "dessins"],
+  "data": {
+    "name": "flash",
+    "family": "collection"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Transfer flash sheet hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "The shop's name in blackletter at poster size beside a sentence, two buttons and a line of labels, over a ruled flash sheet of six numbered, priced designs that land as violet stencils and are inked over one after another as the page loads.",
+  "tags": ["hero", "tattoo", "flash", "blackletter", "wordmark", "stencil"],
+  "mood": ["bold", "playful"],
+  "synonyms": [
+    "hero",
+    "top of page",
+    "flash sheet",
+    "tattoo hero",
+    "en-tête",
+    "haut de page",
+    "planche de flash",
+    "accroche"
+  ]
+}

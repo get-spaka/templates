@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Aftercare — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="How to heal a new tattoo, day by day: what you'll see from fresh to settled, what to do every day, film wraps, when to call a doctor and free touch-ups within three months.">
+<meta property="og:title" content="Aftercare — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="Heal it well, day by day: from fresh to settled, with what to do at each stage.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+<main>
+{% render 'page-title', eyebrow: "Aftercare", title: "Heal it well", text: "The first two weeks decide how your tattoo will look for years. Slide through the days to see what's normal, and what to do." %}
+{% render 'heal', heal: data.heal %}
+{% render 'every-day', items: data.aftercare-dos %}
+{% render 'film' %}
+{% render 'doctor' %}
+{% render 'touch-ups' %}
+{% render 'faq', faq: data.aftercare-faq, title: "What people ask after", numbered: true %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

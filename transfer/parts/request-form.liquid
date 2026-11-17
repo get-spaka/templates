@@ -1,0 +1,75 @@
+{% comment %}The tattoo request: render 'request-form', artists: data.artists, guests: data.guests{% endcomment %}
+{% assign today = "now" | date: "%Y-%m-%d" %}
+<section class="bg-base-100" id="request">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-14">
+    <form hx-post="/_data/requests" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#request-problems swap:innerHTML" class="grid gap-4 rounded-box border border-base-300 bg-base-100 p-6 sm:grid-cols-2 md:p-8 lg:col-span-8">
+      <h2 class="sans text-xl font-semibold sm:col-span-2">The request</h2>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Artist</legend>
+        <select name="artist" class="select w-full" data-prefill>
+          <option value="first-available">First available</option>
+          <optgroup label="At the shop">{% for a in artists %}{% unless a.books == "closed" %}<option value="{{ a.id }}">{{ a.name }}</option>{% endunless %}{% endfor %}</optgroup>
+          <optgroup label="Guests">{% for g in guests %}{% assign leaves = g.leaves | date: "%Y-%m-%d" %}{% if leaves >= today %}<option value="{{ g.id }}">{{ g.name }}, {{ g.arrives | date: "%b %-d" }}–{{ g.leaves | date: "%-d" }}</option>{% endif %}{% endfor %}</optgroup>
+        </select>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">The idea</legend>
+        <textarea name="idea" class="textarea rounded-box min-h-36 w-full" required maxlength="4000" placeholder="A swallow with my grandmother's initials in the banner, in black and grey."></textarea>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Placement</legend>
+        <input name="placement" class="input w-full" required maxlength="200" placeholder="Outer forearm">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Rough size in inches</legend>
+        <input name="size" class="input w-full" maxlength="40" placeholder="About 4 in.">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Black and grey or color</legend>
+        <div class="flex flex-wrap gap-2">
+          <input type="radio" name="color" value="black and grey" id="color-bg" class="chip-input sr-only" checked><label for="color-bg" class="chip">Black and grey</label>
+          <input type="radio" name="color" value="color" id="color-color" class="chip-input sr-only"><label for="color-color" class="chip">Color</label>
+          <input type="radio" name="color" value="not sure" id="color-unsure" class="chip-input sr-only"><label for="color-unsure" class="chip">Not sure</label>
+        </div>
+      </fieldset>
+      <label class="flex items-center gap-3"><input type="checkbox" name="first_tattoo" value="true" class="checkbox checkbox-sm"><span class="text-[0.9375rem]">It's my first tattoo</span></label>
+      <label class="flex items-center gap-3"><input type="checkbox" name="cover_up" value="true" class="checkbox checkbox-sm"><span class="text-[0.9375rem]">It covers an old tattoo</span></label>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Link to your references</legend>
+        <input name="references" type="url" class="input w-full" maxlength="500" placeholder="A board, a post or a shared folder">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">When you can come</legend>
+        <div class="flex flex-wrap gap-2">
+          <input type="checkbox" name="when" value="weekdays" id="when-weekdays" class="chip-input sr-only"><label for="when-weekdays" class="chip">Weekdays</label>
+          <input type="checkbox" name="when" value="evenings" id="when-evenings" class="chip-input sr-only"><label for="when-evenings" class="chip">Evenings</label>
+          <input type="checkbox" name="when" value="saturdays" id="when-saturdays" class="chip-input sr-only"><label for="when-saturdays" class="chip">Saturdays</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone</legend>
+        <input name="phone" type="tel" class="input w-full" maxlength="40" autocomplete="tel">
+      </fieldset>
+      <label class="flex items-start gap-3 sm:col-span-2"><input type="checkbox" name="adult" value="true" class="checkbox checkbox-sm mt-0.5" required><span class="text-[0.9375rem]">I'm 18 or older and will bring a photo ID</span></label>
+      <div id="request-problems" class="sm:col-span-2"></div>
+      <button class="btn btn-primary btn-lg whitespace-nowrap sm:col-span-2 sm:justify-self-start">Send the request</button>
+    </form>
+    <aside class="self-start rounded-box bg-base-200 p-6 md:p-8 lg:sticky lg:top-32 lg:col-span-4">
+      <h2 class="sans text-lg font-semibold">What makes a good request</h2>
+      <ul class="mt-4 space-y-3 leading-relaxed text-base-content/80">
+        <li class="flex gap-3"><span class="gothic text-xl leading-none text-secondary">1</span>The idea in a few sentences: what it is and what it means to you, if you like.</li>
+        <li class="flex gap-3"><span class="gothic text-xl leading-none text-secondary">2</span>Where it goes and how big, roughly. A photo of the spot helps.</li>
+        <li class="flex gap-3"><span class="gothic text-xl leading-none text-secondary">3</span>Three to five references for the feel, not to copy. We draw it new.</li>
+      </ul>
+      <p class="caps mt-6 border-t border-base-300 pt-5 text-base-content/70">We reply within five working days</p>
+    </aside>
+  </div>
+</section>

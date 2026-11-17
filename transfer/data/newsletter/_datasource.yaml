@@ -1,0 +1,13 @@
+label: Fresh flash
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required"
+  invalid: "{field} doesn't look right"
+  too_many: "Too many sends: try again in a few minutes"
+  sent: "Thanks, it's sent"
+fields:
+  - name: email
+    label: Your email
+    kind: email
+    required: true

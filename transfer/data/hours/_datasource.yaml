@@ -1,0 +1,10 @@
+label: Hours
+fields:
+  - name: day
+    kind: text
+    required: true
+  - name: hours
+    kind: text
+  - name: note
+    kind: text
+order: [tuesday, wednesday, thursday, friday, saturday, sunday-and-monday]

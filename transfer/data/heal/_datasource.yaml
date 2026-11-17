@@ -1,0 +1,18 @@
+label: Healing stages
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: stage
+    kind: choice
+    choices: [fresh, film, flaking, cloudy, settled]
+  - name: day
+    label: Day on the dial
+    kind: text
+  - name: see
+    label: What you'll see
+    kind: text
+  - name: todo
+    label: What to do
+    kind: text
+order: [fresh, under-film, flaking, cloudy, settled]

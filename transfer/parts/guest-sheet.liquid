@@ -1,0 +1,40 @@
+{% comment %}The guest sheet: six months from the next guest's, one panel each: render 'guest-sheet', guests: data.guests{% endcomment %}
+{% assign today = "now" | date: "%Y-%m-%d" %}{% assign start = "" %}
+{% for g in guests %}{% assign leaves = g.leaves | date: "%Y-%m-%d" %}{% if start == "" and leaves >= today %}{% assign start = g.arrives | date: "%Y-%m" %}{% endif %}{% endfor %}
+{% if start == "" %}{% assign start = "now" | date: "%Y-%m" %}{% endif %}
+{% assign ym = start | split: "-" %}{% assign y0 = ym[0] | plus: 0 %}{% assign m0 = ym[1] | plus: 0 | minus: 1 %}
+{% assign month_names = "January,February,March,April,May,June,July,August,September,October,November,December" | split: "," %}
+<ol class="grid border-t border-l border-secondary/45 sm:grid-cols-2 lg:grid-cols-3" data-guests>
+  {% for k in (0..5) %}
+  {% assign idx = m0 | plus: k %}{% assign yy = idx | divided_by: 12 | floor | plus: y0 %}{% assign mi = idx | modulo: 12 %}{% assign mm = mi | plus: 1 %}
+  {% if mm < 10 %}{% assign key = yy | append: "-0" | append: mm %}{% else %}{% assign key = yy | append: "-" | append: mm %}{% endif %}
+  {% assign guest = nil %}{% for g in guests %}{% assign ga = g.arrives | date: "%Y-%m" %}{% if ga == key %}{% assign guest = g %}{% endif %}{% endfor %}
+  {% if guest %}
+  <li class="guest-panel -mt-px -ml-px border-r border-b p-5 md:p-6" data-from="{{ guest.arrives | date: '%Y-%m-%d' }}" data-to="{{ guest.leaves | date: '%Y-%m-%d' }}">
+    <div class="flex items-start justify-between gap-3">
+      <p class="caps text-secondary">{{ month_names[mi] }} {{ yy }}</p>
+      <p class="caps flex items-center gap-1.5">
+        <span data-when="now"><span class="dot mr-1.5 align-[-1px]" aria-hidden="true"></span>In the chair now</span>
+        <span data-when="next">Arrives in <span data-slot="days"></span> days</span>
+        <span data-when="tomorrow">Arrives tomorrow</span>
+        <span data-when="past">Been and gone</span>
+      </p>
+    </div>
+    <div class="mt-4 flex items-end justify-between gap-4">
+      <div>
+        <p class="gothic text-[clamp(3.5rem,6vw,5rem)] leading-[0.85]">{{ guest.arrives | date: "%-d" }}–{{ guest.leaves | date: "%-d" }}</p>
+        <h3 class="sans mt-4 text-lg font-semibold leading-snug">{{ guest.name }}</h3>
+        <p class="text-[0.9375rem] text-base-content/75">from {{ guest.from }}</p>
+      </div>
+      {% if guest.mark %}<figure class="w-20 shrink-0 md:w-24" data-transfer{% if guest.mark_outline %} data-stencil="{{ guest.mark_outline }}"{% endif %}><img src="{{ guest.mark }}" class="aspect-square w-full object-contain" width="400" height="400"></figure>{% endif %}
+    </div>
+  </li>
+  {% else %}
+  <li class="guest-panel -mt-px -ml-px border-r border-b p-5 md:p-6">
+    <p class="caps text-secondary">{{ month_names[mi] }} {{ yy }}</p>
+    <p class="gothic mt-4 text-[clamp(2.5rem,4vw,3.25rem)] leading-[0.9] text-base-content/35">Chair open</p>
+    <p class="mt-4 text-[0.9375rem] text-base-content/75">Residents' flash, and a guest still to be announced.</p>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ol>

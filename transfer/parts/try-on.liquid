@@ -1,0 +1,27 @@
+{% comment %}A design on skin at its size: render 'try-on', design: record, placements: data.placements{% endcomment %}
+<section class="bg-base-100" data-try>
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:items-center lg:gap-14">
+    <div class="lg:col-span-4">
+      <p class="caps text-secondary">Try it on</p>
+      <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]">On skin, at its size</h2>
+      <p class="mt-5 leading-relaxed text-base-content/80">{{ design.name }} is {{ design.size }} across. Choose a placement, then move it into place with your finger, your mouse or the arrow keys.</p>
+      <fieldset class="mt-8 flex flex-wrap gap-2">
+        <legend class="caps mb-3 text-base-content/60">Placement</legend>
+        {% for p in placements %}<input type="radio" name="placement-{{ design.id }}" id="try-{{ p.id }}" data-n="{{ forloop.index }}" class="chip-input sr-only" {% if forloop.first %}checked{% endif %}><label for="try-{{ p.id }}" class="chip">{{ p.name }}</label>{% endfor %}
+      </fieldset>
+      <div class="mt-6" data-try-turn-field hidden>
+        <label for="turn-{{ design.id }}" class="caps text-base-content/60">Turn it</label>
+        <input id="turn-{{ design.id }}" type="range" min="-15" max="15" step="1" value="0" class="range range-secondary range-sm mt-2 w-full max-w-xs" data-try-turn>
+      </div>
+    </div>
+    <div class="lg:col-span-8">
+      <div class="try-stage" style="--size-in: {{ design.size_in | default: 4 }};{% for p in placements %} --skin-in-{{ forloop.index }}: {{ p.skin_in | default: 10 }}; --cx-{{ forloop.index }}: {{ p.center_x | default: 50 }}; --cy-{{ forloop.index }}: {{ p.center_y | default: 50 }};{% endfor %}">
+        {% for p in placements %}{% if p.image %}<img src="{{ p.image }}" class="try-skin" data-n="{{ forloop.index }}" width="1600" height="1200">{% endif %}{% endfor %}
+        <div class="try-design" aria-label="{{ design.name }}, {{ design.size }}">
+          <figure data-transfer data-stencil="{{ design.outline }}"><img src="{{ design.image }}" class="try-ink" width="400" height="400"></figure>
+        </div>
+      </div>
+      <p class="caps mt-3 text-base-content/60">A preview on photographs. Your artist places the stencil with you on the day.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Flash — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="The flash wall at Lost Wax Tattoo: numbered, priced designs by our artists, to claim one by one with a $50 deposit or to get on a walk-in Saturday.">
+<meta property="og:title" content="Flash — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="Numbered, priced designs to claim with a $50 deposit, or to get on a walk-in Saturday.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+{% assign total = data.flash.size %}{% assign available = 0 %}{% for d in data.flash %}{% if d.status == "available" %}{% assign available = available | plus: 1 %}{% endif %}{% endfor %}{% assign claimed = total | minus: available %}
+<main>
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 pt-14 pb-10 md:px-8 md:pt-20 md:pb-12">
+    <p class="caps text-secondary">Flash</p>
+    <h1 class="mt-4 text-[clamp(3.5rem,11vw,9rem)] leading-[0.85] tracking-[-0.01em]">The wall</h1>
+    <p class="gothic mt-6 text-[clamp(1.75rem,3vw,2.5rem)] leading-tight"><span class="whitespace-nowrap">{{ total }} designs</span> · <span class="whitespace-nowrap">{{ available }} available</span><span class="max-sm:hidden"> · </span><br class="sm:hidden"><span class="whitespace-nowrap">{{ claimed }} claimed</span></p>
+  </div>
+</section>
+{% render 'flash-rules' %}
+{% render 'flash-wall', flash: data.flash, artists: data.artists %}
+{% render 'flash-day' %}
+{% render 'fresh-flash' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

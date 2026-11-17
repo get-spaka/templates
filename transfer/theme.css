@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.52 0.19 27);
+  --theme-color-primary-content: oklch(0.97 0.012 88);
+  --theme-color-secondary: oklch(0.46 0.16 282);
+  --theme-color-secondary-content: oklch(0.97 0.012 88);
+  --theme-color-accent: oklch(0.86 0.15 92);
+  --theme-color-accent-content: oklch(0.17 0.012 270);
+  --theme-color-neutral: oklch(0.16 0.01 270);
+  --theme-color-neutral-content: oklch(0.958 0.018 88);
+  --theme-color-surface: oklch(0.958 0.018 88);
+  --theme-color-surface-alt: oklch(0.925 0.014 290);
+  --theme-color-border: oklch(0.84 0.014 85);
+  --theme-color-text: oklch(0.17 0.012 270);
+  --theme-font-heading: "Grenze Gotisch", Georgia, serif;
+  --theme-font-body: "Encode Sans", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0.25rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+  --theme-size: 0.25rem;
+  --theme-border: 1px;
+}

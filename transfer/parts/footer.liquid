@@ -1,0 +1,46 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto grid max-w-[90rem] gap-14 px-5 pt-20 pb-12 md:px-8 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-5">
+      <p class="gothic text-[clamp(2.75rem,6vw,4.5rem)] leading-[0.9]">Lost Wax</p>
+      <h2 class="sans mt-8 text-balance text-xl font-semibold">Fresh flash, when a new sheet goes up</h2>
+      <p class="mt-2 max-w-md text-neutral-content/75">One email per new sheet, a few times a year, with first pick before it goes on the wall.</p>
+      <form id="fresh-flash" hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#newsletter-problems swap:innerHTML" class="mt-6 flex max-w-md flex-col gap-3 sm:flex-row">
+        <label class="sr-only" for="newsletter-email">Your email</label>
+        <input id="newsletter-email" name="email" type="email" required maxlength="200" placeholder="you@example.com" class="input w-full border-neutral-content/30 bg-neutral text-neutral-content placeholder:text-neutral-content/50">
+        <button class="btn btn-primary whitespace-nowrap">Send me the flash</button>
+        <div id="newsletter-problems"></div>
+      </form>
+    </div>
+    <div class="grid gap-10 sm:grid-cols-2 lg:col-span-5">
+      <div>
+        <p class="caps text-neutral-content/60">Hours</p>
+        <ul class="mt-3 space-y-1.5 text-[0.9375rem]">
+          {% for h in data.hours %}
+          <li class="flex justify-between gap-4"><span>{{ h.day }}</span><span class="tabular-nums text-neutral-content/80">{{ h.hours }}</span></li>
+          {% endfor %}
+        </ul>
+        <p class="mt-4 flex items-center gap-2 text-[0.9375rem]"><span class="dot" aria-hidden="true"></span>Walk-ins Saturdays 12–6</p>
+      </div>
+      <div>
+        <p class="caps text-neutral-content/60">Find us</p>
+        <address class="mt-3 not-italic leading-relaxed text-[0.9375rem]">17 Tanyard Alley, second floor<br>Butchertown, Louisville, KY 40206</address>
+        <p class="mt-3 text-[0.9375rem]"><a href="tel:+15025550117" class="underline underline-offset-4">(502) 555-0117</a><br><a href="mailto:hello@lostwax.example" class="underline underline-offset-4">hello@lostwax.example</a></p>
+        <p class="caps mt-4 text-accent">18+ with a photo ID</p>
+      </div>
+    </div>
+    <figure class="flex flex-col items-center gap-2 lg:col-span-2 lg:items-end" data-transfer data-stencil="/media/thank-you-stencil.svg">
+      <img src="/media/thank-you.svg" class="w-28 lg:w-32" width="128" height="128">
+    </figure>
+  </div>
+  <div class="mx-auto flex max-w-[90rem] flex-col gap-6 border-t border-neutral-content/15 px-5 py-8 md:flex-row md:items-center md:justify-between md:px-8">
+    <nav aria-label="Footer">
+      <ul class="flex flex-wrap gap-x-7 gap-y-3 text-[0.9375rem] font-semibold">
+        {% for item in data.navigation %}
+        <li><a href="{{ item.href }}" class="whitespace-nowrap hover:underline hover:underline-offset-4">{{ item.label }}</a></li>
+        {% endfor %}
+        <li><a href="https://instagram.com/" class="whitespace-nowrap hover:underline hover:underline-offset-4">Instagram</a></li>
+      </ul>
+    </nav>
+    <p class="caps text-neutral-content/60"><span class="gothic text-base normal-case tracking-normal text-neutral-content">No. 00</span> · Thank you · © Lost Wax Tattoo</p>
+  </div>
+</footer>

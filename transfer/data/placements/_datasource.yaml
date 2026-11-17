@@ -1,0 +1,18 @@
+label: Placements
+fields:
+  - name: name
+    kind: text
+    required: true
+  - name: image
+    label: Skin photo
+    kind: image
+  - name: skin_in
+    label: Inches of skin across the photo
+    kind: number
+  - name: center_x
+    label: Center, % from the left
+    kind: number
+  - name: center_y
+    label: Center, % from the top
+    kind: number
+order: [forearm, shoulder, shoulder-blade]

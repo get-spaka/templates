@@ -1,0 +1,54 @@
+{% comment %}Claim a design: render 'claim-form', design: record, artist: the artist's record{% endcomment %}
+{% assign number = design.number %}{% if design.number < 10 %}{% assign number = "0" | append: design.number %}{% endif %}
+{% assign first = artist.name | split: " " | first %}
+<section class="bg-base-200" id="claim">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5">
+      <p class="caps text-secondary">Claim this design</p>
+      <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]">{% if design.status == "claimed" %}Claimed{% else %}No. {{ number }} is yours to claim{% endif %}</h2>
+      {% if design.status == "claimed" %}
+      <p class="mt-5 max-w-[32rem] leading-relaxed text-base-content/80">This one has been tattooed and stays on the wall as a record. {{ first }} draws something like it on request.</p>
+      <a href="/book?artist={{ artist.id }}" class="btn btn-primary mt-8 whitespace-nowrap">Ask {{ first }} for something like it</a>
+      {% else %}
+      <p class="mt-5 max-w-[32rem] leading-relaxed text-base-content/80">We'll write within two working days with dates and a $50 deposit link. The design is held for you for seven days.</p>
+      <p class="caps mt-6 text-base-content/60">{% if design.kind == "one-and-done" %}One and done: tattooed once, then marked Claimed{% else %}Repeatable: it stays on the wall{% endif %}</p>
+      {% endif %}
+    </div>
+    {% unless design.status == "claimed" %}
+    <form hx-post="/_data/claims" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#claim-problems swap:innerHTML" class="grid gap-4 rounded-box border border-base-300 bg-base-100 p-6 sm:grid-cols-2 md:p-8 lg:col-span-7">
+      <input type="hidden" name="design" value="{{ design.id }}">
+      <input type="hidden" name="design_label" value="No. {{ number }}, {{ design.name }}">
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Placement</legend>
+        <select name="placement" class="select w-full">{% for p in design.placements %}<option value="{{ p }}">{{ p | capitalize }}</option>{% endfor %}<option>Somewhere else</option></select>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Size</legend>
+        <select name="size" class="select w-full"><option value="this size">This size ({{ design.size }})</option><option value="a little bigger">A little bigger</option></select>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">When you can come</legend>
+        <div class="flex flex-wrap gap-2">
+          <input type="radio" name="when" value="weekdays" id="claim-weekdays" class="chip-input sr-only" checked><label for="claim-weekdays" class="chip">Weekdays</label>
+          <input type="radio" name="when" value="saturdays" id="claim-saturdays" class="chip-input sr-only"><label for="claim-saturdays" class="chip">Saturdays</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone</legend>
+        <input name="phone" type="tel" class="input w-full" maxlength="40" autocomplete="tel">
+      </fieldset>
+      <label class="flex items-start gap-3 sm:col-span-2"><input type="checkbox" name="adult" value="true" class="checkbox checkbox-sm mt-0.5" required><span class="text-[0.9375rem]">I'm 18 or older and will bring a photo ID</span></label>
+      <div id="claim-problems" class="sm:col-span-2"></div>
+      <button class="btn btn-primary btn-lg whitespace-nowrap sm:col-span-2 sm:justify-self-start">Claim No. {{ number }}</button>
+    </form>
+    {% endunless %}
+  </div>
+</section>

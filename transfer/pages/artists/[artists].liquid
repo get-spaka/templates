@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+{% assign first = record.name | split: " " | first %}
+<main>
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <p class="caps text-secondary"><a href="/artists" class="hover:underline">Artists</a> · {% if record.role == "apprentice" %}Apprentice{% else %}Resident{% endif %}{% if record.since %} since {{ record.since }}{% endif %}</p>
+    <h1 class="mt-4 text-[clamp(3.5rem,11vw,9rem)] leading-[0.85] tracking-[-0.01em]">{{ record.name }}</h1>
+    <div class="mt-7 flex flex-wrap items-center gap-2 md:mt-10">{% for s in record.styles %}<span class="pill text-base-content/75">{{ s }}</span>{% endfor %}</div>
+    <div class="mt-8 flex flex-col gap-5 border-t border-base-300 pt-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="caps flex items-center gap-2">{% if record.books == "open" %}<span class="dot" aria-hidden="true"></span>Books open{% elsif record.books == "waitlist" %}Waitlist{% elsif record.books == "closed" %}Books closed{% else %}Flash only{% endif %}</p>
+        {% if record.books_note %}<p class="mt-1 text-base-content/75">{{ record.books_note }}</p>{% endif %}
+      </div>
+      {% if record.books == "waitlist" or record.books == "closed" %}
+      <a href="/book?artist={{ record.id }}" class="btn btn-primary btn-lg whitespace-nowrap">Join the waitlist</a>
+      {% else %}
+      <a href="/book?artist={{ record.id }}" class="btn btn-primary btn-lg whitespace-nowrap">Request a tattoo with {{ first }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<section class="bg-base-100">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 pb-20 md:px-8 md:pb-24 lg:grid-cols-12 lg:gap-14">
+    {% if record.portrait %}<img src="{{ record.portrait }}" class="aspect-[4/5] w-full rounded-box object-cover lg:col-span-5" width="1200" height="1500">{% endif %}
+    <div class="lg:col-span-6 lg:col-start-7">
+      <p class="text-[1.3125rem] leading-relaxed">{{ record.summary }}</p>
+      <div class="prose-ink mt-6 max-w-[38rem] leading-relaxed text-base-content/80">{{ record.bio }}</div>
+      {% if record.instagram %}<a href="{{ record.instagram }}" class="mt-6 inline-block font-semibold underline underline-offset-4">{{ first }} on Instagram</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% assign mine = data.flash | where: "artist", record.id %}
+{% if mine.size > 0 %}
+{% assign free = 0 %}{% for d in mine %}{% if d.status == "available" %}{% assign free = free | plus: 1 %}{% endif %}{% endfor %}
+<section class="bg-base-200">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="caps text-secondary">Their flash</p>
+        <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]" data-rise>On the wall by {{ first }}</h2>
+      </div>
+      <p class="gothic text-[1.75rem] leading-none">{{ mine.size }} designs · {{ free }} available</p>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
+      {% for design in mine %}<li>{% render 'flash-card', design: design, artists: data.artists %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+{% render 'work-wall', artist: record %}
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] border-t border-base-300 px-5 py-12 md:px-8">
+    <p class="caps text-base-content/60">The other artists</p>
+    <ul class="mt-4 flex flex-wrap gap-x-8 gap-y-2">
+      {% for a in data.artists %}{% if a.id != record.id %}<li><a href="/artists/{{ a.id }}" class="gothic text-[clamp(2rem,4vw,3rem)] leading-tight hover:text-primary">{{ a.name }}</a></li>{% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Artists — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="Four artists and an apprentice at Lost Wax Tattoo in Butchertown, Louisville: fine line and botanicals, American traditional, Japanese large-scale work, blackwork and dotwork, and small flash on Saturdays.">
+<meta property="og:title" content="Artists — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="Four artists and an apprentice: fine line, American traditional, Japanese large-scale work, blackwork and small flash.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+<main>
+{% render 'page-title', eyebrow: "Artists", title: "Four artists and an apprentice", text: "Each of us draws our own work and tattoos it ourselves. Choose by style, by the books that are open, or ask for the first available chair." %}
+{% render 'roster', artists: data.artists, flash: data.flash, full: true %}
+<section class="bg-base-100">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:items-center lg:gap-14">
+    <div class="lg:col-span-6">
+      <p class="caps text-secondary">The guest chair</p>
+      <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]" data-rise>Guests every month</h2>
+      <p class="mt-5 max-w-[34rem] leading-relaxed text-base-content/80">A fifth chair is kept for artists from other cities, four or five days at a time. Here's who comes next.</p>
+      <a href="/guests" class="btn btn-outline mt-8 whitespace-nowrap">All guest spots</a>
+    </div>
+    <div class="lg:col-span-5 lg:col-start-8">
+      {% assign today = "now" | date: "%Y-%m-%d" %}{% assign shown = false %}
+      {% for guest in data.guests %}{% assign leaves = guest.leaves | date: "%Y-%m-%d" %}{% if shown == false and leaves >= today %}{% assign shown = true %}{% render 'guest-card', guest: guest %}{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

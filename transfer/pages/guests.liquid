@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Guest spots — Lost Wax Tattoo, Louisville</title>
+<meta name="description" content="The guest chair at Lost Wax Tattoo: visiting artists from Gothenburg, Mexico City, Leeds, Lafayette and Osaka, four or five days each. See who's coming and request a spot.">
+<meta property="og:title" content="Guest spots — Lost Wax Tattoo, Louisville">
+<meta property="og:description" content="Visiting artists four or five days each, month by month. See who's coming and request a spot.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+{% assign today = "now" | date: "%Y-%m-%d" %}
+<main>
+{% render 'page-title', eyebrow: "Guest spots", title: "The guest chair", text: "We keep one chair for artists from other cities, because the best way to keep learning is to watch someone else work. They stay four or five days; you book them through us." %}
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 pb-20 md:px-8 md:pb-24">{% render 'guest-sheet', guests: data.guests %}</div>
+</section>
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 pb-20 md:px-8 md:pb-24">
+    <h2 class="text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]" data-rise>Now and coming up</h2>
+    <ul class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {% for guest in data.guests %}{% assign leaves = guest.leaves | date: "%Y-%m-%d" %}{% if leaves >= today %}<li>{% render 'guest-card', guest: guest %}</li>{% endif %}{% endfor %}
+    </ul>
+    <div class="mt-14 border-t border-base-300 pt-6">
+      <p class="caps text-base-content/60">Been and gone</p>
+      <p class="mt-3 leading-relaxed text-base-content/80">
+        {% assign past = 0 %}{% for guest in data.guests %}{% assign leaves = guest.leaves | date: "%Y-%m-%d" %}{% if leaves < today %}{% if past > 0 %} · {% endif %}{% assign past = past | plus: 1 %}<span class="whitespace-nowrap"><strong class="font-semibold">{{ guest.name }}</strong>, {{ guest.from }}, {{ guest.arrives | date: "%B %Y" }}</span>{% endif %}{% endfor %}
+        {% if past == 0 %}Our first guests are on the sheet above.{% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+{% render 'guest-apply' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

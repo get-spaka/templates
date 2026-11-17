@@ -1,0 +1,35 @@
+label: Guest applications
+collected: true
+answer: guest-thanks
+body: note
+messages:
+  required: "{field} is required"
+  invalid: "{field} doesn't look right"
+  too_many: "Too many sends: try again in a few minutes"
+  sent: "Thanks, it's sent"
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: studio
+    label: Home studio
+    kind: text
+  - name: city
+    label: City
+    kind: text
+    required: true
+  - name: portfolio
+    label: Portfolio link
+    kind: link
+    required: true
+  - name: dates
+    label: Dates you'd like
+    kind: text
+  - name: note
+    label: A short note
+    kind: markdown

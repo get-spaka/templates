@@ -1,0 +1,47 @@
+{% assign today = "now" | date: "%Y-%m-%d" %}{% assign strip_guest = "" %}{% for g in data.guests %}{% assign leaves = g.leaves | date: "%Y-%m-%d" %}{% if strip_guest == "" and leaves >= today %}{% assign strip_guest = g.id %}{% endif %}{% endfor %}
+<header class="site-header text-base-content">
+  {% if data.guests.size > 0 %}
+  <div class="border-b border-base-300 bg-base-200" data-guests-strip>
+    <div class="mx-auto max-w-[90rem] px-5 py-2 text-center text-[0.8125rem] md:px-8">
+      {% for g in data.guests %}
+      <p data-from="{{ g.arrives | date: '%Y-%m-%d' }}" data-to="{{ g.leaves | date: '%Y-%m-%d' }}" {% if g.id != strip_guest %}hidden{% endif %} class="truncate">
+        <span class="caps mr-1 text-secondary">Guest chair</span>
+        <span data-when="now" aria-hidden="true"><span class="dot mr-1 align-[-1px]"></span></span>
+        <span>{{ g.name }}<span class="hidden sm:inline"> from {{ g.from }}</span>, <span class="whitespace-nowrap">{{ g.arrives | date: "%b %-d" }}–{{ g.leaves | date: "%-d" }}</span></span>
+        <span aria-hidden="true">·</span>
+        <a href="/book?guest={{ g.id }}" class="font-semibold whitespace-nowrap underline underline-offset-4">Request a spot →</a>
+      </p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  <div class="mx-auto flex h-[4.5rem] max-w-[90rem] items-center justify-between gap-6 px-5 md:px-8">
+    <a href="/" class="gothic shrink-0 whitespace-nowrap text-[2.125rem] leading-none tracking-[-0.01em]" aria-label="Lost Wax Tattoo, home">Lost Wax</a>
+    <nav aria-label="Main" class="hidden xl:block">
+      <ul class="flex items-center gap-1 whitespace-nowrap">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="navlink rounded-full px-4 py-2 hover:bg-base-200 aria-[current=page]:underline aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="/book" class="btn btn-primary hidden whitespace-nowrap sm:inline-flex">Request a tattoo</a>
+      <details class="site-menu xl:hidden">
+        <summary class="btn btn-ghost relative z-[60] whitespace-nowrap px-3" aria-label="Menu">
+          <span class="menu-open inline-flex items-center gap-2"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>Menu</span><span class="menu-close text-neutral-content">Close</span>
+        </summary>
+        <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-neutral px-6 pt-28 pb-10 text-neutral-content">
+          <ul class="space-y-3">
+            {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+            <li><a href="{{ item.href }}" class="gothic text-[3rem] leading-[1.05]" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+          </ul>
+          <div class="mt-12 flex flex-col gap-5">
+            <a href="/book" class="btn btn-primary btn-lg whitespace-nowrap">Request a tattoo</a>
+            <p class="caps text-neutral-content/75">Tue–Sat by appointment · Walk-ins Saturdays 12–6 · 18+</p>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

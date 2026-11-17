@@ -1,0 +1,687 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt):
+   variable Grenze Gotisch (weight) and Encode Sans (weight and width), Latin and Latin Extended. */
+@font-face {
+  font-family: "Grenze Gotisch";
+  src: url("/fonts/grenze-gotisch-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Grenze Gotisch";
+  src: url("/fonts/grenze-gotisch-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Encode Sans";
+  src: url("/fonts/encode-sans-latin-standard-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Encode Sans";
+  src: url("/fonts/encode-sans-latin-ext-standard-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Lenis (MIT), smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Upstart's own heading rule comes after the layers: a heading set in Encode Sans says so here. */
+:is(h1, h2, h3, h4).sans {
+  font-family: var(--theme-font-body);
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    font-stretch: 100%;
+  }
+  h1,
+  h2 {
+    font-weight: 700;
+    font-synthesis: none;
+  }
+  h3,
+  h4 {
+    font-weight: 600;
+    font-synthesis: none;
+  }
+  [id] {
+    scroll-margin-top: 7.5rem;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  /* ---- Type ------------------------------------------------------------------ */
+  /* Grenze Gotisch outside a heading: the wordmark, numbers and prices, the guests' dates. */
+  .gothic {
+    font-family: var(--theme-font-heading);
+    font-weight: 700;
+    font-synthesis: none;
+    font-variant-numeric: lining-nums;
+  }
+  /* Labels: Encode Sans condensed, uppercase, spaced, tabular figures. */
+  .caps {
+    font-family: var(--theme-font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-stretch: 75%;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+  /* Buttons and the header's links: Encode Sans at 87.5% width. */
+  .btn,
+  .navlink {
+    font-family: var(--theme-font-body);
+    font-weight: 600;
+    font-stretch: 87.5%;
+  }
+  .navlink {
+    font-size: 0.9375rem;
+  }
+
+  /* Pills for styles and books. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-stretch: 75%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  /* The yellow dot of "Books open", "In the chair now" and "New". */
+  .dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 1px color-mix(in oklch, var(--color-base-content) 35%, transparent);
+    flex: none;
+  }
+
+  /* ---- The sheet: bristol board ruled in pencil ------------------------------ */
+  .ruled {
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--color-base-300) 70%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--color-base-300) 70%, transparent) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    background-position: -1px -1px;
+  }
+  .rule-b {
+    border-bottom: 1px solid var(--color-base-300);
+  }
+  .rule-t {
+    border-top: 1px solid var(--color-base-300);
+  }
+  /* A ruled line of facts: hairlines between items. */
+  .facts > * + * {
+    border-top: 1px solid var(--color-base-300);
+  }
+
+  /* Dotted leaders between a name and its price. */
+  .leader {
+    flex: 1;
+    min-width: 1.5rem;
+    border-bottom: 2px dotted color-mix(in oklch, var(--color-base-content) 35%, transparent);
+    transform: translateY(-0.3em);
+  }
+
+  /* ---- The header -------------------------------------------------------------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in oklch, var(--color-base-100) 0%, transparent);
+    border-bottom: 1px solid transparent;
+  }
+  /* Once scrolled: bristol behind it and a hairline under it (the stylesheet's state for edit mode). */
+  .site-header {
+    background: var(--color-base-100);
+    border-bottom-color: var(--color-base-300);
+  }
+  .site-menu[open] > summary .menu-open,
+  .site-menu:not([open]) > summary .menu-close {
+    display: none;
+  }
+
+  /* ---- The transfer: a design and the stencil the script puts beneath it ------- */
+  [data-transfer] {
+    display: grid;
+    place-items: center;
+  }
+  [data-transfer] > * {
+    grid-area: 1 / 1;
+  }
+  [data-transfer] > img {
+    position: relative;
+    z-index: 1;
+  }
+  /* The stencil layer, which only scripts/transfer.js makes: violet lines, as a
+     thermal print, resting under the ink until a hover lifts it. */
+  .stencil {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0%;
+  }
+  .stencil[data-from="lines"] {
+    background: var(--color-secondary);
+    mask-image: var(--stencil);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+  }
+  .stencil[data-from="picture"] {
+    background: var(--color-secondary);
+    overflow: hidden;
+  }
+  .stencil[data-from="picture"] > img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1) contrast(3);
+    mix-blend-mode: lighten;
+  }
+
+  /* ---- Flash cards ------------------------------------------------------------- */
+  .flash-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-base-200);
+    border: 1px solid var(--color-base-300);
+    border-radius: var(--radius-box);
+  }
+  .flash-card .claimed-mark {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+  }
+  .flash-card[data-status="claimed"] [data-transfer] {
+    opacity: 0.45;
+  }
+  .flash-card[data-status="claimed"] [data-transfer] > img {
+    filter: grayscale(0.6);
+  }
+
+  /* ---- The artists' roster ---------------------------------------------------- */
+  .roster-row {
+    border-top: 1px solid color-mix(in oklch, var(--color-neutral-content) 18%, transparent);
+  }
+
+  /* ---- The flash wall's filters (CSS only) -------------------------------------
+     Radios .chip-input (sr-only) each followed by its label.chip; artists carry
+     data-n (their place in data.artists), styles data-n (their place in the
+     wall's list of styles). Each card carries data-a="n" and data-s="|n|n|". */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    border: 1px solid var(--color-base-300);
+    border-radius: 9999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-stretch: 87.5%;
+    white-space: nowrap;
+    cursor: pointer;
+    background: var(--color-base-100);
+  }
+  .chip-input:checked + .chip {
+    background: var(--color-base-content);
+    border-color: var(--color-base-content);
+    color: var(--color-base-100);
+  }
+  .chip-input:focus-visible + .chip {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+  [data-filter]:has(input[name="artist"][data-n="1"]:checked) [data-card]:not([data-a="1"]),
+  [data-filter]:has(input[name="artist"][data-n="2"]:checked) [data-card]:not([data-a="2"]),
+  [data-filter]:has(input[name="artist"][data-n="3"]:checked) [data-card]:not([data-a="3"]),
+  [data-filter]:has(input[name="artist"][data-n="4"]:checked) [data-card]:not([data-a="4"]),
+  [data-filter]:has(input[name="artist"][data-n="5"]:checked) [data-card]:not([data-a="5"]),
+  [data-filter]:has(input[name="artist"][data-n="6"]:checked) [data-card]:not([data-a="6"]),
+  [data-filter]:has(input[name="artist"][data-n="7"]:checked) [data-card]:not([data-a="7"]),
+  [data-filter]:has(input[name="artist"][data-n="8"]:checked) [data-card]:not([data-a="8"]),
+  [data-filter]:has(input[name="style"][data-n="1"]:checked) [data-card]:not([data-s*="|1|"]),
+  [data-filter]:has(input[name="style"][data-n="2"]:checked) [data-card]:not([data-s*="|2|"]),
+  [data-filter]:has(input[name="style"][data-n="3"]:checked) [data-card]:not([data-s*="|3|"]),
+  [data-filter]:has(input[name="style"][data-n="4"]:checked) [data-card]:not([data-s*="|4|"]),
+  [data-filter]:has(input[name="style"][data-n="5"]:checked) [data-card]:not([data-s*="|5|"]),
+  [data-filter]:has(input[name="style"][data-n="6"]:checked) [data-card]:not([data-s*="|6|"]),
+  [data-filter]:has(input[name="style"][data-n="7"]:checked) [data-card]:not([data-s*="|7|"]),
+  [data-filter]:has(input[name="style"][data-n="8"]:checked) [data-card]:not([data-s*="|8|"]),
+  [data-filter]:has(input[name="style"][data-n="9"]:checked) [data-card]:not([data-s*="|9|"]),
+  [data-filter]:has(input[name="style"][data-n="10"]:checked) [data-card]:not([data-s*="|10|"]),
+  [data-filter]:has(input[name="style"][data-n="11"]:checked) [data-card]:not([data-s*="|11|"]),
+  [data-filter]:has(input[name="style"][data-n="12"]:checked) [data-card]:not([data-s*="|12|"]) {
+    display: none;
+  }
+  [data-filter]:has(.avail-input:checked) [data-card][data-status="claimed"] {
+    display: none;
+  }
+
+  /* ---- Try it on ------------------------------------------------------------------ */
+  .try-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-box);
+    background: var(--color-base-200);
+    aspect-ratio: 4 / 3;
+  }
+  .try-skin {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .try-design {
+    position: absolute;
+    z-index: 1;
+    left: calc(var(--cx, 50) * 1%);
+    top: calc(var(--cy, 50) * 1%);
+    width: calc(var(--size-in, 4) / var(--skin-in, 10) * 100%);
+    translate: calc(-50% + var(--dx, 0px)) calc(-50% + var(--dy, 0px));
+    rotate: calc(var(--turn, 0) * 1deg);
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+    touch-action: none;
+  }
+  .try-ink {
+    width: 100%;
+    height: auto;
+  }
+  .try-design .stencil {
+    mix-blend-mode: normal;
+  }
+  [data-try].dragging .try-design,
+  [data-try] .try-design[data-draggable] {
+    cursor: grab;
+  }
+
+  [data-try]:has(input[data-n="1"]:checked) .try-skin[data-n="1"] {
+    display: block;
+  }
+  [data-try]:has(input[data-n="1"]:checked) .try-stage {
+    --skin-in: var(--skin-in-1);
+    --cx: var(--cx-1);
+    --cy: var(--cy-1);
+  }
+  [data-try]:has(input[data-n="2"]:checked) .try-skin[data-n="2"] {
+    display: block;
+  }
+  [data-try]:has(input[data-n="2"]:checked) .try-stage {
+    --skin-in: var(--skin-in-2);
+    --cx: var(--cx-2);
+    --cy: var(--cy-2);
+  }
+  [data-try]:has(input[data-n="3"]:checked) .try-skin[data-n="3"] {
+    display: block;
+  }
+  [data-try]:has(input[data-n="3"]:checked) .try-stage {
+    --skin-in: var(--skin-in-3);
+    --cx: var(--cx-3);
+    --cy: var(--cy-3);
+  }
+  [data-try]:has(input[data-n="4"]:checked) .try-skin[data-n="4"] {
+    display: block;
+  }
+  [data-try]:has(input[data-n="4"]:checked) .try-stage {
+    --skin-in: var(--skin-in-4);
+    --cx: var(--cx-4);
+    --cy: var(--cy-4);
+  }
+
+  /* ---- The heal --------------------------------------------------------------------- */
+  .heal-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-box);
+    aspect-ratio: 4 / 3;
+    background: var(--color-base-200);
+  }
+  .heal-stage > .heal-skin {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .heal-tattoo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 38%;
+    translate: -50% -50%;
+  }
+  .heal-ink {
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+  }
+  .heal-layer {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0%;
+  }
+  /* fresh: a red halo and a glossy streak */
+  .heal-halo {
+    inset: -24%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, color-mix(in oklch, var(--color-primary) 45%, transparent), transparent);
+    filter: blur(14px);
+    mix-blend-mode: multiply;
+  }
+  /* The gloss lies on the ink only: masked by the design (--ink on .heal-tattoo). */
+  .heal-gloss {
+    inset: 0;
+    mask-image: var(--ink);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      color-mix(in oklch, var(--color-base-100) 55%, transparent) 42%,
+      transparent 52%,
+      transparent 62%,
+      color-mix(in oklch, var(--color-base-100) 30%, transparent) 68%,
+      transparent 74%
+    );
+  }
+  /* under film: a rounded, slightly wrinkled sheet */
+  .heal-film {
+    inset: -12%;
+    border-radius: 1.25rem;
+    border: 1px solid color-mix(in oklch, var(--color-base-100) 80%, transparent);
+    background:
+      repeating-linear-gradient(
+        160deg,
+        transparent 0 22px,
+        color-mix(in oklch, var(--color-base-100) 28%, transparent) 22px 25px,
+        transparent 25px 41px
+      ),
+      color-mix(in oklch, var(--color-base-100) 22%, transparent);
+  }
+  /* flaking: small flakes lifting from the ink */
+  .heal-tattoo .heal-ink {
+    mask-image: none;
+  }
+  /* cloudy: a pale veil over the ink */
+  .heal-veil {
+    inset: -4%;
+    background: color-mix(in oklch, var(--color-base-100) 40%, transparent);
+    border-radius: 50%;
+    filter: blur(14px);
+  }
+  .heal-panel {
+    display: none;
+  }
+  /* The checked tick shows its stage. */
+  [data-heal]:has(input[value="fresh"]:checked) :is(.heal-halo, .heal-gloss),
+  [data-heal]:has(input[value="film"]:checked) :is(.heal-halo, .heal-film),
+  [data-heal]:has(input[value="cloudy"]:checked) .heal-veil {
+    opacity: 1;
+  }
+  [data-heal]:has(input[value="fresh"]:checked) .heal-halo {
+    opacity: 1;
+  }
+  [data-heal]:has(input[value="film"]:checked) .heal-halo {
+    opacity: 0.6;
+  }
+  [data-heal]:has(input[value="flaking"]:checked) .heal-ink {
+    mask-image:
+      radial-gradient(circle at 30% 40%, transparent 0 1.8px, var(--color-neutral) 2.4px),
+      radial-gradient(circle at 70% 20%, transparent 0 1.2px, var(--color-neutral) 1.8px);
+    mask-size:
+      11px 13px,
+      7px 9px;
+    mask-composite: intersect;
+    opacity: 0.85;
+  }
+  [data-heal]:has(input[value="cloudy"]:checked) .heal-ink {
+    opacity: 0.6;
+  }
+  [data-heal]:has(input[value="fresh"]:checked) [data-panel="fresh"],
+  [data-heal]:has(input[value="film"]:checked) [data-panel="film"],
+  [data-heal]:has(input[value="flaking"]:checked) [data-panel="flaking"],
+  [data-heal]:has(input[value="cloudy"]:checked) [data-panel="cloudy"],
+  [data-heal]:has(input[value="settled"]:checked) [data-panel="settled"] {
+    display: block;
+  }
+  /* The dial: a ruler of ticks in stencil violet. */
+  .dial {
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    background-image: repeating-linear-gradient(
+      to right,
+      color-mix(in oklch, var(--color-secondary) 55%, transparent) 0 1px,
+      transparent 1px 3.333%
+    );
+    background-size: 100% 0.6rem;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    border-top: 2px solid var(--color-secondary);
+    padding-top: 0.25rem;
+  }
+  .dial label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding-top: 1.1rem;
+    cursor: pointer;
+    color: color-mix(in oklch, var(--color-base-content) 70%, transparent);
+  }
+  .dial label::before {
+    content: "";
+    position: absolute;
+    top: -0.3rem;
+    width: 2px;
+    height: 1.2rem;
+    background: var(--color-secondary);
+  }
+  .dial input:checked + label {
+    color: var(--color-base-content);
+  }
+  .dial input:checked + label::after {
+    content: "";
+    position: absolute;
+    top: -0.55rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 9999px;
+    background: var(--color-secondary);
+    box-shadow: 0 0 0 3px var(--color-base-100);
+  }
+  .dial input:focus-visible + label {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* ---- The guest sheet ----------------------------------------------------------- */
+  .guest-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid color-mix(in oklch, var(--color-secondary) 45%, transparent);
+    background: var(--color-base-100);
+  }
+  .guest-panel[data-state="past"] {
+    opacity: 0.55;
+  }
+  [data-when] {
+    display: none;
+  }
+  [data-state="now"] [data-when~="now"],
+  [data-state="next"] [data-when~="next"],
+  [data-state="past"] [data-when~="past"],
+  [data-state="tomorrow"] [data-when~="tomorrow"] {
+    display: inline;
+  }
+  .guest-panel[data-state="now"] {
+    background: color-mix(in oklch, var(--color-accent) 22%, var(--color-base-100));
+  }
+
+  /* ---- Steps on a ruled line --------------------------------------------------------- */
+  .ruled-steps {
+    counter-reset: step;
+  }
+  .ruled-steps > li {
+    position: relative;
+    border-top: 2px solid var(--color-base-content);
+  }
+
+  /* ---- The aftercare's do and don't ---------------------------------------------- */
+  .check-do::before,
+  .check-dont::before {
+    content: "";
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.15rem;
+    border-radius: 9999px;
+    border: 2px solid currentColor;
+  }
+  .check-do::before {
+    background: radial-gradient(circle, currentColor 0 35%, transparent 38%);
+  }
+  .check-dont::before {
+    background: linear-gradient(45deg, transparent 44%, currentColor 44% 56%, transparent 56%);
+  }
+
+  /* Text written in Markdown: a bio, a guest's note. */
+  .prose-ink > * + * {
+    margin-top: 1em;
+  }
+  .prose-ink a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    color: var(--color-primary);
+  }
+  .prose-ink ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
+  /* A textarea with pill fields would be an oval: give it the box's corners. */
+  .textarea {
+    border-radius: var(--radius-box);
+  }
+}
+
+/* ---- Movement (none under reduced motion, none while editing) -------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* The header gains bristol and a hairline once the page is scrolled. */
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-in linear both;
+      animation-timeline: scroll();
+      animation-range: 0 6rem;
+    }
+    @keyframes header-in {
+      from {
+        background: color-mix(in oklch, var(--color-base-100) 0%, transparent);
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  /* Headings and paragraphs rise into view. */
+  [data-rise] {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 2rem;
+    }
+  }
+
+  /* The lift: on hover and focus, the ink fades to show the stencil under it. */
+  [data-transfer] > img,
+  [data-transfer] > .stencil {
+    transition: opacity 0.25s ease;
+  }
+  .heal-layer,
+  .heal-ink {
+    transition:
+      opacity 0.4s ease,
+      mask-image 0.4s ease;
+  }
+}
+
+:where(a, [data-lift]):is(:hover, :focus-visible) [data-transfer] > .stencil {
+  opacity: 1;
+}
+:where(a, [data-lift]):is(:hover, :focus-visible) [data-transfer]:has(> .stencil) > img {
+  opacity: 0.1;
+}
+
+/* ---- Printed: the aftercare's every-day list and doctor panel as a card to keep ------ */
+@media print {
+  .site-header,
+  footer,
+  main > :not([data-print-card]),
+  [data-print-hide] {
+    display: none;
+  }
+  [data-print-card] {
+    break-inside: avoid;
+    border: 1px solid var(--color-base-content);
+    padding: 1rem;
+    margin: 0 0 1rem;
+  }
+  body {
+    background: var(--color-base-100);
+  }
+}

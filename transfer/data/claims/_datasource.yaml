@@ -1,0 +1,42 @@
+label: Flash claims
+collected: true
+answer: claim-thanks
+messages:
+  required: "{field} is required"
+  invalid: "{field} doesn't look right"
+  too_many: "Too many sends: try again in a few minutes"
+  sent: "Thanks, it's sent"
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: design
+    label: Design
+    kind: text
+    required: true
+  - name: design_label
+    label: Design's number and name
+    kind: text
+  - name: placement
+    label: Placement
+    kind: text
+  - name: size
+    label: Size
+    kind: choice
+    choices: [this size, a little bigger]
+  - name: when
+    label: When you can come
+    kind: choice
+    choices: [weekdays, saturdays]
+  - name: adult
+    label: I'm 18 or older and will bring a photo ID
+    kind: boolean
+    required: true

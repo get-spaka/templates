@@ -1,0 +1,19 @@
+{% comment %}render 'faq', faq: data.book-faq, title: …, numbered: true{% endcomment %}
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 md:py-24">
+    <p class="caps text-secondary">Questions</p>
+    <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]" data-rise>{{ title }}</h2>
+    <div class="mt-12 grid gap-x-12 {% unless numbered %}md:grid-cols-2{% endunless %}">
+      {% for q in faq %}
+      <details class="group border-t border-base-300 py-5" {% if forloop.first %}open{% endif %}>
+        <summary class="flex cursor-pointer items-baseline gap-4">
+          {% if numbered %}<span class="gothic w-10 shrink-0 text-[1.75rem] leading-none text-secondary">{{ forloop.index }}</span>{% endif %}
+          <span class="flex-1 text-lg font-semibold">{{ q.question }}</span>
+          <span class="text-xl leading-none text-base-content/60 group-open:rotate-45" aria-hidden="true">+</span>
+        </summary>
+        <div class="prose-ink mt-3 max-w-[44rem] leading-relaxed text-base-content/80 {% if numbered %}pl-14{% endif %}">{{ q.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

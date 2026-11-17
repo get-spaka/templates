@@ -1,0 +1,22 @@
+{% comment %}A guest: render 'guest-card', guest: …{% endcomment %}
+<article class="flex h-full flex-col overflow-hidden rounded-box border border-base-300 bg-base-200" data-lift>
+  <div class="relative">
+    {% if guest.image %}<img src="{{ guest.image }}" class="aspect-[4/3] w-full object-cover" width="800" height="600">{% else %}<div class="aspect-[4/3] w-full bg-gradient-to-br from-secondary/25 to-primary/15"></div>{% endif %}
+  </div>
+  <div class="flex flex-1 flex-col p-5 md:p-6">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <p class="caps text-secondary">{{ guest.arrives | date: "%b %-d" }}–{{ guest.leaves | date: "%-d, %Y" }}</p>
+        <h3 class="sans mt-2 text-xl font-semibold leading-snug">{{ guest.name }}</h3>
+        <p class="text-[0.9375rem] text-base-content/75">from {{ guest.from }}{% if guest.studio %}<span class="max-sm:hidden"> · </span><br class="sm:hidden">{{ guest.studio }}{% endif %}</p>
+      </div>
+      {% if guest.mark %}<figure class="w-16 shrink-0" data-transfer{% if guest.mark_outline %} data-stencil="{{ guest.mark_outline }}"{% endif %}><img src="{{ guest.mark }}" class="aspect-square w-full object-contain" width="400" height="400"></figure>{% endif %}
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2">{% for s in guest.styles %}<span class="pill text-base-content/70">{{ s }}</span>{% endfor %}</div>
+    <p class="mt-4 leading-relaxed text-base-content/80">{{ guest.summary }}</p>
+    <div class="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+      <p class="caps flex items-center gap-2">{% if guest.status == "booking" %}<span class="dot" aria-hidden="true"></span>Booking now{% elsif guest.status == "waitlist" %}Full, waitlist open{% else %}By consult{% endif %}</p>
+      <a href="/book?guest={{ guest.id }}" class="btn btn-sm btn-primary whitespace-nowrap">Request a spot</a>
+    </div>
+  </div>
+</article>

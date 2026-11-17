@@ -1,0 +1,43 @@
+label: Flash
+fields:
+  - name: name
+    kind: text
+    required: true
+  - name: number
+    kind: number
+    required: true
+  - name: artist
+    label: Artist (an artist's id)
+    kind: text
+  - name: styles
+    kind: list
+  - name: size
+    kind: text
+  - name: size_in
+    label: Size in inches
+    kind: number
+  - name: price
+    label: Price in dollars
+    kind: number
+  - name: kind
+    kind: choice
+    choices: [one-and-done, repeatable]
+  - name: status
+    kind: choice
+    choices: [available, claimed]
+  - name: image
+    kind: image
+  - name: outline
+    label: Stencil (its lines only)
+    kind: image
+  - name: placements
+    label: Where it sits best
+    kind: list
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: new
+    kind: boolean
+  - name: summary
+    kind: text
+sort: -number

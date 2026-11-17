@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Lost Wax Tattoo — Custom tattoos, flash and guest artists in Louisville</title>
+<meta name="description" content="Lost Wax Tattoo is a shop of four artists and an apprentice on the second floor of an old tannery in Butchertown, Louisville, Kentucky: custom work, flash off the wall, walk-in Saturdays and a guest chair.">
+<meta property="og:title" content="Lost Wax Tattoo — Custom tattoos, flash and guest artists in Louisville">
+<meta property="og:description" content="Custom tattoos, flash off the wall, walk-in Saturdays and a guest chair, on the second floor of an old tannery in Butchertown, Louisville.">
+</head>
+<body>
+{% render 'header', data: data, page: page %}
+<main>
+{% render 'sheet' %}
+{% render 'shop' %}
+{% render 'roster', artists: data.artists, flash: data.flash %}
+{% render 'on-the-wall', data: data %}
+{% render 'ruled-steps', steps: data.home-steps, eyebrow: "How it goes", title: "From an idea to a healed tattoo", photo: "/media/stencil-applied.jpg", cta: true %}
+{% render 'guest-chair', data: data %}
+{% render 'heal-cta' %}
+{% render 'find-us' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% assign today = "now" | date: "%Y-%m-%d" %}
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="caps text-secondary">The guest chair</p>
+        <h2 class="mt-3 text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]" data-rise>Who's in the chair, and when</h2>
+      </div>
+      <p class="max-w-[28rem] leading-relaxed text-base-content/80">One chair is kept for artists from other cities, four or five days each. Book them through us, like a resident.</p>
+    </div>
+    <div class="mt-12">{% render 'guest-sheet', guests: data.guests %}</div>
+    <ul class="mt-12 grid gap-5 md:grid-cols-3">
+      {% assign shown = 0 %}
+      {% for guest in data.guests %}{% assign leaves = guest.leaves | date: "%Y-%m-%d" %}{% if leaves >= today and shown < 3 %}{% assign shown = shown | plus: 1 %}
+      <li>{% render 'guest-card', guest: guest %}</li>
+      {% endif %}{% endfor %}
+    </ul>
+    <a href="/guests" class="btn btn-outline mt-10 whitespace-nowrap">All guest spots</a>
+  </div>
+</section>

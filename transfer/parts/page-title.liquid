@@ -1,0 +1,8 @@
+{% comment %}render 'page-title', eyebrow: …, title: …, text: …{% endcomment %}
+<section class="bg-base-100">
+  <div class="mx-auto max-w-[90rem] px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <p class="caps text-secondary">{{ eyebrow }}</p>
+    <h1 class="mt-4 max-w-[64rem] text-[clamp(3.5rem,11vw,9rem)] leading-[0.85] tracking-[-0.01em]">{{ title }}</h1>
+    {% if text %}<p class="mt-8 max-w-[40rem] text-[1.1875rem] leading-relaxed text-base-content/85">{{ text }}</p>{% endif %}
+  </div>
+</section>

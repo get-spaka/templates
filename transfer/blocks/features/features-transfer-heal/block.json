@@ -1,0 +1,22 @@
+{
+  "name": "Transfer heal dial",
+  "kind": "features",
+  "source": "upstart",
+  "description": "A dial of days, 1 to 30, under one tattoo on one skin photo that heals stage by stage (fresh and red, under film, flaking, cloudy, settled), with what you'll see and what to do at each stage; CSS only, usable with the keyboard.",
+  "tags": ["features", "aftercare", "healing", "tattoo", "timeline", "care"],
+  "mood": ["playful", "minimal"],
+  "synonyms": [
+    "aftercare",
+    "healing",
+    "care",
+    "day by day",
+    "soins",
+    "cicatrisation",
+    "après le tatouage",
+    "jour par jour"
+  ],
+  "data": {
+    "name": "heal",
+    "family": "section"
+  }
+}

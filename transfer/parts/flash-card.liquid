@@ -1,0 +1,21 @@
+{% comment %}A design on vellum: render 'flash-card', design: …, artists: data.artists{% endcomment %}
+{% assign artist_name = "" %}{% for a in artists %}{% if a.id == design.artist %}{% assign artist_name = a.name %}{% endif %}{% endfor %}
+<a href="/flash/{{ design.id }}" class="flash-card group" data-status="{{ design.status }}" aria-label="No. {% if design.number < 10 %}0{% endif %}{{ design.number }}, {{ design.name }}{% if design.status == 'claimed' %}, claimed{% endif %}">
+  <div class="flex items-baseline justify-between gap-2 px-4 pt-4">
+    <span class="gothic text-[1.75rem] leading-none">No. {% if design.number < 10 %}0{% endif %}{{ design.number }}</span>
+    {% if design.status == "claimed" %}<span class="caps text-base-content/60">Claimed</span>{% else %}<span class="gothic text-[1.75rem] leading-none text-primary">${{ design.price }}</span>{% endif %}
+  </div>
+  <figure class="mx-4 mt-3 aspect-square" data-transfer data-stencil="{{ design.outline }}">
+    {% if design.image %}<img src="{{ design.image }}" class="h-full w-full object-contain" width="400" height="400">{% else %}<div class="h-full w-full rounded-box bg-gradient-to-br from-secondary/20 to-primary/15"></div>{% endif %}
+  </figure>
+  {% if design.status == "claimed" %}<span class="claimed-mark" aria-hidden="true"><span class="gothic text-[clamp(2.5rem,5vw,3.5rem)] text-primary">Claimed</span></span>{% endif %}
+  <div class="mt-auto px-4 pt-3 pb-4">
+    <p class="font-semibold leading-snug">{{ design.name }}</p>
+    <p class="mt-0.5 text-[0.875rem] text-base-content/70">{{ artist_name }}</p>
+    <p class="caps mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-base-content/70 max-sm:flex-col max-sm:items-start">
+      <span>{{ design.size }}</span><span class="max-sm:hidden" aria-hidden="true">·</span>
+      <span>{% if design.kind == "one-and-done" %}One and done{% else %}Repeatable{% endif %}</span>
+      {% if design.new %}<span class="inline-flex items-center gap-1.5 text-base-content sm:ml-auto"><span class="dot" aria-hidden="true"></span>New</span>{% endif %}
+    </p>
+  </div>
+</a>

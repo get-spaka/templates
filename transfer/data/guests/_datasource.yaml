@@ -1,0 +1,37 @@
+label: Guest artists
+fields:
+  - name: name
+    kind: text
+    required: true
+  - name: from
+    label: From (city and country)
+    kind: text
+  - name: studio
+    label: Home studio
+    kind: text
+  - name: styles
+    kind: list
+  - name: arrives
+    kind: date
+  - name: leaves
+    kind: date
+  - name: status
+    kind: choice
+    choices: [booking, waitlist, consult]
+  - name: image
+    label: Photo (of their city or a tool)
+    kind: image
+  - name: mark
+    label: Their mark
+    kind: image
+  - name: mark_outline
+    label: Their mark's stencil (lines only)
+    kind: image
+  - name: summary
+    kind: text
+  - name: instagram
+    kind: link
+  - name: booking_link
+    label: Booking link
+    kind: link
+sort: arrives

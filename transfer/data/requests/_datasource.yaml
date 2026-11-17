@@ -1,0 +1,56 @@
+label: Tattoo requests
+collected: true
+answer: request-thanks
+body: idea
+messages:
+  required: "{field} is required"
+  invalid: "{field} doesn't look right"
+  too_many: "Too many sends: try again in a few minutes"
+  sent: "Thanks, it's sent"
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: artist
+    label: Artist
+    kind: text
+  - name: placement
+    label: Placement
+    kind: text
+    required: true
+  - name: size
+    label: Rough size in inches
+    kind: text
+  - name: color
+    label: Black and grey or color
+    kind: choice
+    choices: [black and grey, color, not sure]
+  - name: first_tattoo
+    label: It's my first tattoo
+    kind: boolean
+  - name: cover_up
+    label: It covers an old tattoo
+    kind: boolean
+  - name: references
+    label: Link to your references
+    kind: link
+  - name: when
+    label: When you can come
+    kind: list
+    choices: [weekdays, evenings, saturdays]
+  - name: adult
+    label: I'm 18 or older and will bring a photo ID
+    kind: boolean
+    required: true
+  - name: idea
+    label: The idea
+    kind: markdown
+    required: true

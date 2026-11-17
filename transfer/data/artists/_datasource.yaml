@@ -1,0 +1,59 @@
+label: Artists
+fields:
+  - name: name
+    kind: text
+    required: true
+  - name: role
+    kind: choice
+    choices: [resident, apprentice]
+  - name: styles
+    kind: list
+  - name: since
+    label: At the shop since
+    kind: number
+  - name: books
+    kind: choice
+    choices: [open, waitlist, closed, flash-only]
+  - name: books_note
+    label: Books note
+    kind: text
+  - name: mark
+    label: Mark (a flash design's id)
+    kind: text
+  - name: portrait
+    kind: image
+  - name: instagram
+    kind: link
+  - name: booking_link
+    label: Booking link
+    kind: link
+  - name: summary
+    kind: text
+  - name: work_1
+    label: Work 1
+    kind: image
+  - name: work_1_caption
+    label: Work 1 caption
+    kind: text
+  - name: work_2
+    label: Work 2
+    kind: image
+  - name: work_2_caption
+    label: Work 2 caption
+    kind: text
+  - name: work_3
+    label: Work 3
+    kind: image
+  - name: work_3_caption
+    label: Work 3 caption
+    kind: text
+  - name: work_4
+    label: Work 4
+    kind: image
+  - name: work_4_caption
+    label: Work 4 caption
+    kind: text
+  - name: bio
+    kind: markdown
+body: bio
+order: [june-castellano, teo-marsh, hana-kobori, dez-whitlock, rory-pham]

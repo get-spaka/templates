@@ -1,0 +1,9 @@
+label: Every day
+fields:
+  - name: text
+    kind: text
+    required: true
+  - name: kind
+    kind: choice
+    choices: [do, dont]
+order: [wash, pat-dry, ointment, loose-clothes, no-soaking, no-sun, no-picking]
