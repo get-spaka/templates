@@ -14,9 +14,10 @@ kind: "Craftsman bungalow"
 door: "primary"
 quote: "The porch is deep enough for a table and four chairs, and the light comes in low through the front windows all afternoon."
 cover: "/media/wren-street.jpg"
-photo_1: "/media/wren-living.jpg"
-photo_2: "/media/wren-kitchen.jpg"
-photo_3: "/media/wren-bedroom.jpg"
+photos:
+  - "/media/wren-living.jpg"
+  - "/media/wren-kitchen.jpg"
+  - "/media/wren-bedroom.jpg"
 plan: "/media/wren-plan.jpg"
 tour: "https://example.com/tours/1418-wren-street"
 details: ["Property type: Single-family house", "Heating: Gas forced air, wood stove", "Parking: Detached garage off the alley", "Taxes a year: $5,420", "HOA: None", "MLS number: 2291804"]

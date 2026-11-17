@@ -13,8 +13,9 @@ kind: "Victorian cottage"
 door: "secondary"
 quote: "A small house with tall ceilings, which is the best kind."
 cover: "/media/ivy-street.jpg"
-photo_1: "/media/ivy-kitchen.jpg"
-photo_2: "/media/ivy-garden.jpg"
+photos:
+  - "/media/ivy-kitchen.jpg"
+  - "/media/ivy-garden.jpg"
 details: ["Property type: Single-family house", "Heating: Gas furnace", "Parking: On the street", "Taxes a year: $4,680", "HOA: None", "MLS number: 2286120"]
 agent: "Mateo Ruiz"
 ---

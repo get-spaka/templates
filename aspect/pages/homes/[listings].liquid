@@ -47,21 +47,20 @@
       {% render 'door', number: record.number, paint: record.door %}
     </div>
 
-    {% assign total = 0 %}{% if record.cover %}{% assign total = 1 %}{% endif %}
-    {% for n in (1..5) %}{% assign key = "photo_" | append: n %}{% if record[key] %}{% assign total = total | plus: 1 %}{% endif %}{% endfor %}
+    {% assign total = record.photos.size %}{% if record.cover %}{% assign total = total | plus: 1 %}{% endif %}
     {% if total > 1 %}
     <div class="strip mt-3 pb-3">
-      {% for n in (1..5) %}{% assign key = "photo_" | append: n %}{% if record[key] %}
-      <img src="{{ record[key] }}" class="aspect-[4/3] w-full rounded-box object-cover">
-      {% endif %}{% endfor %}
+      {% for photo in record.photos %}
+      <img src="{{ photo }}" class="aspect-[4/3] w-full rounded-box object-cover">
+      {% endfor %}
     </div>
     <details class="group mt-2">
       <summary class="more cursor-pointer">See all {{ total }} photos<svg class="size-4 transition-transform group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary>
       <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {% if record.cover %}<img src="{{ record.cover }}" class="aspect-[4/3] w-full rounded-box object-cover">{% endif %}
-        {% for n in (1..5) %}{% assign key = "photo_" | append: n %}{% if record[key] %}
-        <img src="{{ record[key] }}" class="aspect-[4/3] w-full rounded-box object-cover">
-        {% endif %}{% endfor %}
+        {% for photo in record.photos %}
+        <img src="{{ photo }}" class="aspect-[4/3] w-full rounded-box object-cover">
+        {% endfor %}
       </div>
     </details>
     {% endif %}

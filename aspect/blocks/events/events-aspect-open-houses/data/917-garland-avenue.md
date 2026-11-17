@@ -14,10 +14,11 @@ kind: "Foursquare"
 door: "neutral"
 quote: "From the upstairs landing you look straight down the hill to the bay, and on a clear day across to the islands."
 cover: "/media/garland-avenue.jpg"
-photo_1: "/media/garland-living.jpg"
-photo_2: "/media/garland-dining.jpg"
-photo_3: "/media/garland-bedroom.jpg"
-photo_4: "/media/garland-bath.jpg"
+photos:
+  - "/media/garland-living.jpg"
+  - "/media/garland-dining.jpg"
+  - "/media/garland-bedroom.jpg"
+  - "/media/garland-bath.jpg"
 details: ["Property type: Single-family house", "Heating: Hot-water radiators, gas boiler (2018)", "Parking: Off-street, two cars", "Taxes a year: $8,960", "HOA: None", "MLS number: 2288417"]
 agent: "June Takahashi"
 featured: true

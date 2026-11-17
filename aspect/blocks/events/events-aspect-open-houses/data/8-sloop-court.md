@@ -12,8 +12,9 @@ kind: "Townhome"
 door: "secondary"
 quote: "Three floors, two bedrooms, and a roof deck where you can hear the ferry's horn."
 cover: "/media/sloop-court.jpg"
-photo_1: "/media/sloop-living.jpg"
-photo_2: "/media/sloop-kitchen.jpg"
+photos:
+  - "/media/sloop-living.jpg"
+  - "/media/sloop-kitchen.jpg"
 details: ["Property type: Townhome", "Heating: Ductless heat pumps", "Parking: Attached one-car garage", "Taxes a year: $6,110", "HOA: $240 a month", "MLS number: 2290033"]
 agent: "Mateo Ruiz"
 featured: true

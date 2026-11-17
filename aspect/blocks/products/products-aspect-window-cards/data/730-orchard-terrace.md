@@ -15,8 +15,9 @@ kind: "Cottage"
 door: "neutral"
 quote: "A cottage that has been looked after by the same gardener for forty years."
 cover: "/media/orchard-terrace.jpg"
-photo_1: "/media/orchard-kitchen.jpg"
-photo_2: "/media/orchard-garden.jpg"
+photos:
+  - "/media/orchard-kitchen.jpg"
+  - "/media/orchard-garden.jpg"
 details: ["Property type: Single-family house", "Heating: Gas furnace", "Parking: Driveway", "Taxes a year: $4,210", "HOA: None", "MLS number: 2284711"]
 agent: "Dana Pike"
 ---

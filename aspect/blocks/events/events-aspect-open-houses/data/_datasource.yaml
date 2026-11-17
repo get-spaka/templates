@@ -55,21 +55,9 @@ fields:
   - name: cover
     label: Front photo
     kind: image
-  - name: photo_1
-    label: Photo 2
-    kind: image
-  - name: photo_2
-    label: Photo 3
-    kind: image
-  - name: photo_3
-    label: Photo 4
-    kind: image
-  - name: photo_4
-    label: Photo 5
-    kind: image
-  - name: photo_5
-    label: Photo 6
-    kind: image
+  - name: photos
+    label: More photos, after the front one
+    kind: images
   - name: plan
     label: Floor plan
     kind: image

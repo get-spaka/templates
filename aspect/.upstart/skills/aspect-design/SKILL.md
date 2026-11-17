@@ -37,7 +37,7 @@ Nothing moves while editing or under reduced motion: no door, every photo plain,
 
 ## Lists
 
-- `listings`: a home per record, `status` new, for-sale, under-contract or sold; prices as written ("$689,000"); `photo_1` to `photo_5` beside `cover`; `details` as "Label: value" lines; `agent` and `neighborhood` by name; the walk-through as the record's text, in `##` chapters. `featured` puts it on the home page (three for sale at most, the first in the hero).
+- `listings`: a home per record, `status` new, for-sale, under-contract or sold; prices as written ("$689,000"); `cover` the front photo and `photos` the others, in order (an images field: give use_image all of a home's photos at once); `details` as "Label: value" lines; `agent` and `neighborhood` by name; the walk-through as the record's text, in `##` chapters. `featured` puts it on the home page (three for sale at most, the first in the hero).
 - `neighborhoods`: its id is its anchor on `/neighborhoods` and its key in `?hood=`; `agent` by name.
 - `team`: its id is its page and its key in `?with=`; `knows` lists neighborhoods by name.
 - `sales` and `sales-figures` are shared by the home and sell pages.

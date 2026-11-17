@@ -13,9 +13,10 @@ kind: "Mid-century rambler"
 door: "primary"
 quote: "Every room is on one floor, and every room at the back looks over the water."
 cover: "/media/bluffside-drive.jpg"
-photo_1: "/media/bluffside-living.jpg"
-photo_2: "/media/bluffside-view.jpg"
-photo_3: "/media/bluffside-bedroom.jpg"
+photos:
+  - "/media/bluffside-living.jpg"
+  - "/media/bluffside-view.jpg"
+  - "/media/bluffside-bedroom.jpg"
 plan: "/media/bluffside-plan.jpg"
 details: ["Property type: Single-family house", "Heating: Radiant floor, gas", "Parking: Attached two-car garage", "Taxes a year: $11,240", "HOA: None", "MLS number: 2287952", "Sewer: Public"]
 agent: "Kari Halvorsen"
