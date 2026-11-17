@@ -1,0 +1,7 @@
+<div class="stamp {{ class }}">
+  <div class="stamp-frame">
+    <div class="aspect-[4/5] overflow-hidden" data-print>{% if step.image != blank %}<img src="{{ step.image }}" class="h-full w-full object-cover" loading="lazy">{% else %}<span class="diecut-empty flex h-full w-full" aria-hidden="true"></span>{% endif %}</div>
+    <p class="stamp-value absolute top-3 left-3 rounded-sm bg-base-100/90 px-1.5 py-0.5">{{ step.value }}</p>
+    <p class="engraved mt-2 text-center text-[0.625rem]">{{ step.title }}</p>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+{
+  "kind": "footer",
+  "source": "upstart",
+  "name": "Kindly seal footer",
+  "description": "A night-colored footer centered on the couple's monogram seal, their names with a script ampersand, the date and place in engraved capitals, the links, an email line and a closing line.",
+  "tags": ["footer", "wedding", "monogram", "links", "contact"],
+  "mood": ["elegant", "dark"],
+  "synonyms": ["footer", "site footer", "bottom", "contact", "pied de page", "bas de page", "coordonnées", "liens"],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

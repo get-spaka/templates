@@ -1,0 +1,28 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-24 md:px-8 md:py-32">
+    <div class="grid gap-6 md:grid-cols-12 md:items-end">
+      <div class="md:col-span-7" data-reveal>
+        <p class="engraved text-base-content/75">Planes, the drive, a boat</p>
+        <h2 class="section-title mt-5 max-w-[18ch]">The way here</h2>
+        <p class="body-copy mt-5 max-w-[34rem]">The last leg is a ferry, and the last mile is on foot, by bike or behind a horse. It's easier than it sounds, and we've written it all down.</p>
+      </div>
+      <div class="md:col-span-5 md:text-right" data-reveal>
+        <a href="/travel" class="btn btn-outline btn-primary whitespace-nowrap">Travel &amp; stay</a>
+      </div>
+    </div>
+    <div class="relative mt-16">
+      <div class="route-line absolute inset-x-[8%] top-[42%] hidden sm:block" aria-hidden="true"></div>
+      <ul class="relative grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+        {% for step in data.steps limit: 4 %}
+        <li class="{% cycle 'rotate-[-2deg]', 'rotate-[1.5deg] sm:translate-y-6', 'rotate-[-1deg]', 'rotate-[2deg] sm:translate-y-4' %}" data-reveal>{%- assign step = step -%}<div class="stamp {{ class }}">
+  <div class="stamp-frame">
+    <div class="aspect-[4/5] overflow-hidden" data-print>{% if step.image != blank %}<img src="{{ step.image }}" class="h-full w-full object-cover" loading="lazy">{% else %}<span class="diecut-empty flex h-full w-full" aria-hidden="true"></span>{% endif %}</div>
+    <p class="stamp-value absolute top-3 left-3 rounded-sm bg-base-100/90 px-1.5 py-0.5">{{ step.value }}</p>
+    <p class="engraved mt-2 text-center text-[0.625rem]">{{ step.title }}</p>
+  </div>
+</div></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

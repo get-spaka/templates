@@ -1,0 +1,19 @@
+{%- assign first_name = record.name | split: " " | first -%}
+<div class="sealed-reply px-2 pt-6 pb-4 text-center" role="status" data-seal>
+  <div class="sealed">
+    <div class="sealed-stage">
+      <div class="sealed-back" aria-hidden="true"></div>
+      <div class="sealed-flap" aria-hidden="true"><span class="flap-in liner"></span><span class="flap-out"></span></div>
+      <div class="sealed-body" data-seal-lines>
+        <p class="engraved text-base-content/70">From {{ record.name }}</p>
+        <p class="serif text-[clamp(1.25rem,5.5cqw,1.75rem)] leading-tight">{% if record.attending == "declines" %}Regretfully declines{% else %}Joyfully accepts{% if record.party > 1 %} · a party of {{ record.party }}{% endif %}{% if record.friday == "yes" and record.sunday == "yes" %} · Friday and Sunday too{% elsif record.friday == "yes" %} · Friday too{% elsif record.sunday == "yes" %} · Sunday too{% endif %}{% endif %}</p>
+        <p class="engraved text-base-content/70">To Iris &amp; Callum, Mackinac Island</p>
+      </div>
+      <span class="sealed-seal seal" aria-hidden="true"><span class="wax"><span class="monogram">I&thinsp;C</span></span></span>
+    </div>
+  </div>
+  <div class="mt-12" data-seal-thanks>
+    <p class="serif text-[clamp(2rem,4vw,2.75rem)] leading-tight">{% if record.attending == "declines" %}We'll miss you, {{ first_name }}{% else %}See you on the island, {{ first_name }}{% endif %}</p>
+    <p class="body-copy mx-auto mt-4 max-w-[30rem]">Your reply is sealed and on its way to us. If your plans change, just send a new one from this page.</p>
+  </div>
+</div>

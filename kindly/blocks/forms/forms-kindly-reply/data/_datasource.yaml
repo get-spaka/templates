@@ -1,0 +1,50 @@
+label: Replies
+collected: true
+answer: rsvp-sealed
+body: note
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many replies were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your reply is on its way to us."
+fields:
+  - name: attending
+    label: Will you be there?
+    kind: choice
+    required: true
+    choices: [accepts, declines]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: party
+    label: How many of you
+    kind: number
+  - name: guests
+    label: The names of those with you
+    kind: text
+  - name: dinner
+    label: Your dinner
+    kind: choice
+    choices: [lake whitefish, braised short rib, spring pea risotto, children's plate]
+  - name: diet
+    label: Allergies or diets
+    kind: text
+  - name: friday
+    label: The Friday fish fry
+    kind: choice
+    choices: ["yes", "no"]
+  - name: sunday
+    label: The Sunday pancakes
+    kind: choice
+    choices: ["yes", "no"]
+  - name: song
+    label: A song that will get you on the dance floor
+    kind: text
+  - name: note
+    label: A note for the two of us
+    kind: markdown

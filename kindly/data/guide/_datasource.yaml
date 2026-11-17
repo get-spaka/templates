@@ -1,0 +1,21 @@
+label: On the island
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: category
+    label: Tab
+    kind: choice
+    required: true
+    choices: [eat, see, do]
+  - name: label
+    label: Label
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: text
+    label: Our advice
+    kind: text
+order: [bluebell-fudge, two-fathoms, arch-rock, fort-mackinac, the-shore-road, cedar-lane-stables]

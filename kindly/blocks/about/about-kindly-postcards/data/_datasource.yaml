@@ -1,0 +1,33 @@
+label: Our story
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: month
+    label: Month (on the postmark)
+    kind: text
+  - name: place
+    label: Place (on the postmark)
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: shape
+    label: Shape of the photo
+    kind: choice
+    choices: [arch, pebble, scallop, wave, circle]
+  - name: home
+    label: On the home page
+    kind: boolean
+  - name: summary
+    label: Two sentences (the home page)
+    kind: text
+  - name: text
+    label: The chapter
+    kind: markdown
+body: text
+order: [the-bike-with-the-bent-basket, arch-rock-at-dawn, back-on-the-island]

@@ -1,0 +1,28 @@
+{%- assign topics = data["rsvp-faq"] | map: "topic" | compact | uniq -%}
+<section id="questions" class="bg-secondary text-secondary-content">
+  <div class="mx-auto grid max-w-[84rem] gap-12 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="engraved text-secondary-content/80">Before you reply</p>
+      <h2 class="section-title mt-5">Questions</h2>
+      <p class="mt-6 max-w-[24rem] text-secondary-content/85">Something not here? Write to us at <a href="mailto:hello@irisandcallum.wedding" class="text-link">hello@irisandcallum.wedding</a>.</p>
+    </div>
+    <div class="space-y-12 lg:col-span-7 lg:col-start-6">
+      {% for topic in topics %}{% assign questions = data["rsvp-faq"] | where: "topic", topic %}
+      <div data-reveal>
+        <p class="engraved text-secondary-content/80" role="heading" aria-level="3">{{ topic }}</p>
+        <div class="mt-4 divide-y divide-secondary-content/20 border-y border-secondary-content/20">
+          {% for item in questions %}
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-5 [&::-webkit-details-marker]:hidden">
+              <span class="serif text-[1.375rem] leading-snug">{{ item.question }}</span>
+              <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-secondary-content/40" aria-hidden="true"><svg class="size-4 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            </summary>
+            <div class="max-w-[38rem] space-y-2 pb-6 leading-relaxed text-secondary-content/90 [&_a]:underline">{{ item.answer }}</div>
+          </details>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

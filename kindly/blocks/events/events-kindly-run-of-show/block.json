@@ -1,0 +1,24 @@
+{
+  "kind": "events",
+  "source": "upstart",
+  "name": "Kindly run-of-show",
+  "description": "The days of a weekend, each opening with its number set huge, its weekday and month in engraved capitals, its name and a die-cut photo, then ruled rows: the time, the title, the place with directions, a sentence, what to wear and who it is for.",
+  "tags": ["schedule", "program", "timeline", "weekend", "times", "agenda"],
+  "mood": ["elegant", "editorial"],
+  "synonyms": [
+    "schedule",
+    "program",
+    "order of the day",
+    "agenda",
+    "timeline",
+    "programme",
+    "déroulé",
+    "planning",
+    "horaires",
+    "emploi du temps"
+  ],
+  "data": {
+    "name": "events",
+    "family": "collection"
+  }
+}

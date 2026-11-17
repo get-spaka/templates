@@ -1,0 +1,24 @@
+<section class="liner-band bg-secondary text-secondary-content">
+  <div class="mx-auto grid max-w-[84rem] gap-14 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="engraved text-secondary-content/80">Mackinac Island, Michigan</p>
+      <h2 class="section-title mt-5">Why Mackinac</h2>
+      <ul class="mt-10 space-y-6 border-t border-secondary-content/20 pt-6">
+        <li class="border-b border-secondary-content/20 pb-6"><p class="serif text-[1.875rem] leading-tight">No cars since 1898</p><p class="mt-2 text-[0.9375rem] text-secondary-content/85">Only bikes, feet and horses. The island sounds like hooves.</p></li>
+        <li class="border-b border-secondary-content/20 pb-6"><p class="serif text-[1.875rem] leading-tight">The lilacs' last week</p><p class="mt-2 text-[0.9375rem] text-secondary-content/85">The Lilac Festival runs June 4 to 13; some of the trees are older than the fort.</p></li>
+        <li><p class="serif text-[1.875rem] leading-tight">Eight miles around by bike</p><p class="mt-2 text-[0.9375rem] text-secondary-content/85">Flat, along the water, and the way it all started.</p></li>
+      </ul>
+    </div>
+    <ul class="grid grid-cols-2 gap-4 sm:gap-6 lg:col-span-7 lg:col-start-6 lg:grid-cols-6">
+      {% for picture in data.gallery limit: 5 %}
+      <li class="{% case forloop.index %}{% when 1 %}lg:col-span-3 lg:row-span-2{% when 2 %}lg:col-span-3{% when 3 %}lg:col-span-3{% when 4 %}lg:col-span-2{% else %}col-span-2 lg:col-span-4{% endcase %}">
+        <figure class="flex h-full flex-col">
+          {% case forloop.index %}{% when 1 %}{% assign ratio = "aspect-[3/4] lg:aspect-auto lg:flex-1 lg:min-h-[26rem]" %}{% when 4 %}{% assign ratio = "aspect-square" %}{% when 5 %}{% assign ratio = "aspect-[2/1] lg:aspect-[5/2]" %}{% else %}{% assign ratio = "aspect-[4/3]" %}{% endcase %}
+          {%- assign src = picture.image -%}{%- assign shape = picture.shape -%}{%- assign class = ratio -%}<figure class="diecut diecut-{{ shape | default: 'arch' }} {{ class }}" data-diecut data-print>{% if src != blank %}<img src="{{ src }}" loading="lazy">{% else %}<span class="diecut-empty h-full w-full" aria-hidden="true"><svg class="size-10 opacity-60" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="24" cy="17" r="6"/><circle cx="18" cy="23" r="5"/><circle cx="30" cy="23" r="5"/><path d="M24 26v16"/></svg></span>{% endif %}</figure>
+          <figcaption class="engraved mt-3 text-[0.625rem] text-secondary-content/80">{{ picture.caption }}</figcaption>
+        </figure>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

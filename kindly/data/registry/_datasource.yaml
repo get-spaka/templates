@@ -1,0 +1,20 @@
+label: Gifts
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: text
+    label: A sentence
+    kind: text
+  - name: link
+    label: Link
+    kind: link
+  - name: label
+    label: Button
+    kind: text
+  - name: shape
+    label: Top of the card
+    kind: choice
+    choices: [scallop, wave, arch]
+order: [a-month-in-the-azores, the-registry, the-land-conservancy]

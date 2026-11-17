@@ -1,0 +1,31 @@
+<header class="site-header text-base-content">
+  <div class="mx-auto flex h-[4.5rem] max-w-[84rem] items-center justify-between gap-6 px-5 md:px-8">
+    <a href="/" class="serif shrink-0 whitespace-nowrap text-[1.625rem] leading-none" aria-label="Iris and Callum, home">Iris <span class="script text-[2rem] text-accent">&amp;</span> Callum</a>
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-1 whitespace-nowrap text-[0.875rem] font-semibold">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="rounded-full px-4 py-2 hover:bg-base-200 aria-[current=page]:underline aria-[current=page]:underline-offset-8" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="/rsvp" class="btn btn-primary hidden whitespace-nowrap sm:inline-flex">Kindly reply</a>
+      <details class="site-menu lg:hidden">
+        <summary class="btn btn-ghost relative z-[60] whitespace-nowrap px-3" aria-label="Menu">
+          <span class="menu-open inline-flex items-center gap-2"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg>Menu</span><span class="menu-close">Close</span>
+        </summary>
+        <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-base-100 px-6 pt-28 pb-10 text-base-content">
+          <ul class="space-y-4">
+            {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+            <li><a href="{{ item.href }}" class="serif text-[2.5rem] leading-[1.1]" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+          </ul>
+          <div class="mt-12 flex flex-col gap-5">
+            <a href="/rsvp" class="btn btn-primary btn-lg whitespace-nowrap">Kindly reply</a>
+            <p class="engraved text-base-content/75">June 12, 2027 · Mackinac Island, Michigan</p>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

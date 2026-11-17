@@ -1,0 +1,38 @@
+label: Where to stay
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [inn, hotel, cottages, motor lodge]
+  - name: where
+    label: Where
+    kind: text
+  - name: distance
+    label: From the cottage
+    kind: text
+  - name: rate
+    label: Rate from
+    kind: text
+  - name: code
+    label: Block code
+    kind: text
+  - name: cutoff
+    label: Book by
+    kind: date
+  - name: link
+    label: Booking link
+    kind: link
+  - name: phone
+    label: Phone
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: note
+    label: Our note
+    kind: text
+order: [starling-house, teal-harbor-inn, bluffside-cottages, tern-motor-lodge]

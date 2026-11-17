@@ -1,0 +1,14 @@
+label: The island
+fields:
+  - name: caption
+    label: Caption
+    kind: text
+    required: true
+  - name: image
+    label: Photo
+    kind: image
+  - name: shape
+    label: Shape
+    kind: choice
+    choices: [arch, pebble, circle, scallop, wave]
+order: [lilacs, east-bluff, harbor, shore, carriages]

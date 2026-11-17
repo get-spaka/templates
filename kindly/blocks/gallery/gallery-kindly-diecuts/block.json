@@ -1,0 +1,24 @@
+{
+  "kind": "gallery",
+  "source": "upstart",
+  "name": "Kindly die-cut mosaic",
+  "description": "A mosaic of five photographs cut as an arch, a pebble, a circle, a scallop and a wide wave, opening as they arrive, beside a title and three short facts set large, on the lilac band.",
+  "tags": ["gallery", "photos", "mosaic", "place", "facts"],
+  "mood": ["colorful", "elegant"],
+  "synonyms": [
+    "gallery",
+    "photos",
+    "the place",
+    "pictures",
+    "mosaic",
+    "galerie",
+    "photos",
+    "le lieu",
+    "images",
+    "mosaïque"
+  ],
+  "data": {
+    "name": "gallery",
+    "family": "collection"
+  }
+}

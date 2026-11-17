@@ -1,0 +1,20 @@
+label: Getting here
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: step
+    label: Step
+    kind: number
+  - name: value
+    label: On the stamp (a time, a distance)
+    kind: text
+  - name: image
+    label: Photo on the stamp
+    kind: image
+  - name: text
+    label: How
+    kind: markdown
+body: text
+sort: step

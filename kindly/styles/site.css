@@ -1,0 +1,924 @@
+/* Kindly: the couple's invitation suite. Cotton paper, letterpress ink, a lilac liner and a
+   vermilion seal, all from the theme's colors; the shapes are die-cuts, the paper is CSS. */
+
+:root {
+  --font-script: "Ballet", "Snell Roundhand", cursive;
+  /* Paper casts a faint shadow made from the ink; nothing else does. */
+  --shadow-paper:
+    0 1px 1px oklch(from var(--color-base-content) l c h / 0.08),
+    0 18px 34px -18px oklch(from var(--color-base-content) l c h / 0.12);
+  --shadow-lifted:
+    0 2px 3px oklch(from var(--color-base-content) l c h / 0.1),
+    0 26px 44px -20px oklch(from var(--color-base-content) l c h / 0.16);
+  --wax-dark: oklch(from var(--color-accent) calc(l - 0.12) c h);
+  --wax-rim: oklch(from var(--color-accent) calc(l + 0.08) c h);
+  --liner-ink: oklch(from var(--color-secondary) calc(l - 0.13) calc(c + 0.02) h);
+}
+
+/* Lenis (MIT) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: -0.012em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+}
+
+@layer components {
+  /* ---- Type ------------------------------------------------------------------------ */
+  /* Spaced capitals, as engraved: labels, places, times spelled out, postmarks. */
+  .engraved {
+    font-family: var(--theme-font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  /* The ballet script: single words and the ampersand only. */
+  .script {
+    font-family: var(--font-script);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1;
+    text-transform: none;
+  }
+  .serif {
+    font-family: var(--theme-font-heading);
+    font-weight: 400;
+    font-synthesis: none;
+  }
+  .serif-italic {
+    font-family: var(--theme-font-heading);
+    font-style: italic;
+    font-weight: 400;
+  }
+  /* Pressed into the paper: a highlight below, a shade above. Works on any paper. */
+  .pressed {
+    text-shadow:
+      0 1px 0 oklch(from var(--color-base-100) calc(l + 0.03) c h),
+      0 -1px 0 oklch(from var(--color-base-content) l c h / 0.18);
+  }
+  .body-copy {
+    color: color-mix(in oklab, currentColor 80%, transparent);
+    line-height: 1.7;
+  }
+  .page-title {
+    font-weight: 300;
+    font-size: clamp(3.25rem, 7vw, 6.5rem);
+    line-height: 1;
+  }
+  .section-title {
+    font-size: clamp(2.125rem, 3.4vw, 3.25rem);
+    line-height: 1.05;
+  }
+  .text-link {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+  }
+  .text-link:hover {
+    text-decoration-thickness: 2px;
+  }
+  /* A hairline with a diamond in its middle, as on a printed card. */
+  .rule-diamond {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-base-300);
+  }
+  .rule-diamond::before,
+  .rule-diamond::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid currentColor;
+  }
+
+  /* ---- Paper stocks: a choice of the records, mapped to the theme ------------------- */
+  .stock-paper {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+  .stock-oat {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+  }
+  .stock-lilac {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+  .stock-green {
+    background-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .stock-vermilion {
+    background-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+  .paper {
+    box-shadow: var(--shadow-paper);
+  }
+
+  /* ---- The liner: the secondary color with sprigs and bicycles printed through a mask -- */
+  .liner {
+    position: relative;
+    background-color: var(--color-secondary);
+    overflow: hidden;
+  }
+  .liner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--liner-ink);
+    mask: url("/styles/liner.svg") 0 0 / 5.5rem 5.5rem repeat;
+  }
+
+  /* ---- The wax seal: a radial gradient of the accent, its wavy edge a mask ----------- */
+  .seal {
+    --seal: 4.75rem;
+    display: inline-grid;
+    width: var(--seal);
+    height: var(--seal);
+    filter: drop-shadow(0 3px 3px oklch(from var(--color-base-content) l c h / 0.22));
+  }
+  .seal > .wax {
+    display: grid;
+    place-content: center;
+    gap: 0.1em;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 0 56%, var(--wax-rim) 62%, transparent 72%),
+      radial-gradient(circle at 38% 32%, var(--wax-rim) 0%, var(--color-accent) 46%, var(--wax-dark) 100%);
+    mask: url("/styles/seal.svg") center / 100% 100% no-repeat;
+    color: var(--wax-dark);
+    text-align: center;
+  }
+  .seal .monogram {
+    font-family: var(--theme-font-heading);
+    font-size: calc(var(--seal) * 0.34);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-shadow:
+      0 1px 0 var(--wax-rim),
+      0 -1px 0 oklch(from var(--color-base-content) l c h / 0.35);
+  }
+
+  /* ---- Die-cut windows: the shape by class; data-diecut opens it on arrival --------- */
+  .diecut {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .diecut > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .diecut-arch {
+    border-radius: 999px 999px var(--radius-box) var(--radius-box);
+  }
+  .diecut-pebble {
+    border-radius: 62% 38% 46% 54% / 48% 44% 56% 52%;
+  }
+  .diecut-circle {
+    border-radius: 50%;
+  }
+  .diecut-scallop {
+    --edge: 1.125rem;
+    mask:
+      url("/styles/edges/scallop.svg") 0 0 / calc(var(--edge) * 2) var(--edge) round no-repeat,
+      linear-gradient(currentColor 0 0) 0 calc(var(--edge) - 1px) / 100% 100% no-repeat;
+  }
+  .diecut-wave {
+    --edge: 1.5rem;
+    mask:
+      url("/styles/edges/wave.svg") 0 0 / 100% var(--edge) no-repeat,
+      linear-gradient(currentColor 0 0) 0 calc(var(--edge) - 1px) / 100% 100% no-repeat;
+  }
+  .diecut-square {
+    border-radius: var(--radius-box);
+  }
+  /* A placeholder in the theme's colors when a record has no picture. */
+  .diecut-empty {
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 30% 25%, oklch(from var(--color-secondary) calc(l + 0.06) c h), transparent 60%),
+      var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+  /* The couple's and the island's photographs, pulled together: a touch less color, a little more light. */
+  [data-print] img,
+  img[data-print] {
+    filter: saturate(0.86) brightness(1.04) contrast(0.97);
+  }
+
+  /* ---- The header ------------------------------------------------------------------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background-color: oklch(from var(--color-base-100) l c h / 0.92);
+    border-bottom: 1px solid var(--color-base-300);
+  }
+  .site-menu > summary {
+    list-style: none;
+  }
+  .site-menu > summary::-webkit-details-marker {
+    display: none;
+  }
+  .site-menu .menu-close {
+    display: none;
+  }
+  .site-menu[open] .menu-open {
+    display: none;
+  }
+  .site-menu[open] .menu-close {
+    display: inline-flex;
+  }
+  .site-menu:not([open]) > nav {
+    display: none;
+  }
+
+  /* ---- The envelope (data-envelope): drawn in CSS, standing open with the card out ---- */
+  .envelope {
+    container-type: inline-size;
+    position: relative;
+    width: min(100%, 31rem, calc((min(100svh, 58rem) - 12rem) * 0.66));
+    min-width: min(100%, 19rem);
+    margin-inline: auto;
+  }
+  .env-stage {
+    position: relative;
+    display: grid;
+    min-height: 128cqw;
+    padding-top: 9cqw;
+  }
+  /* A soft shadow on the table under the envelope. */
+  .env-stage::after {
+    content: "";
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    bottom: -2.5cqw;
+    height: 6cqw;
+    border-radius: 50%;
+    background: oklch(from var(--color-base-content) l c h / 0.35);
+    filter: blur(10px);
+    z-index: 0;
+  }
+  .env-back,
+  .env-pocket,
+  .env-flap {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .env-back {
+    bottom: 0;
+    height: 76cqw;
+    z-index: 1;
+    background-color: var(--color-base-200);
+    border-radius: 0.375rem;
+  }
+  .env-back > .liner {
+    position: absolute;
+    inset: 3cqw 3cqw 30% 3cqw;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  .env-flap {
+    bottom: calc(76cqw - 56cqw);
+    height: 56cqw;
+    z-index: 2;
+    transform-origin: 50% 0;
+    transform: rotateX(180deg);
+    transform-style: preserve-3d;
+  }
+  .env-flap > span {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+  }
+  .env-flap-out {
+    background:
+      linear-gradient(to bottom, oklch(from var(--color-base-content) l c h / 0.05), transparent 40%),
+      var(--color-base-200);
+    clip-path: polygon(0 0, 100% 0, 54% 95%, 50% 100%, 46% 95%);
+  }
+  .env-flap-in {
+    transform: rotateX(180deg);
+    clip-path: polygon(0 100%, 100% 100%, 54% 5%, 50% 0, 46% 5%);
+  }
+  .env-flap-in.liner::before {
+    mask-size: 4.5rem 4.5rem;
+  }
+  .env-pocket {
+    bottom: 0;
+    height: 76cqw;
+    z-index: 4;
+    pointer-events: none;
+    filter: drop-shadow(0 -1px 1.5px oklch(from var(--color-base-content) l c h / 0.14));
+  }
+  .env-pocket > span {
+    position: absolute;
+    inset: 0;
+    border-radius: 0 0 0.375rem 0.375rem;
+    background:
+      linear-gradient(to top right, oklch(from var(--color-base-content) l c h / 0.05), transparent 52%),
+      linear-gradient(to top left, oklch(from var(--color-base-content) l c h / 0.04), transparent 52%),
+      var(--color-base-200);
+    clip-path: polygon(0 50%, 50% 70%, 100% 50%, 100% 100%, 0 100%);
+  }
+  .env-card {
+    position: relative;
+    z-index: 3;
+    grid-area: 1 / 1;
+    align-self: end;
+    margin: 0 5cqw 4cqw;
+    padding: 12cqw 6cqw 34cqw;
+    text-align: center;
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow-paper);
+  }
+  /* The card's engraved frame. */
+  .env-card::before {
+    content: "";
+    position: absolute;
+    inset: 2.2cqw;
+    border: 1px solid var(--color-base-300);
+    border-radius: 0.125rem;
+    pointer-events: none;
+  }
+  .env-card .engraved {
+    font-size: clamp(0.5625rem, 2.15cqw, 0.75rem);
+    letter-spacing: 0.22em;
+  }
+  .env-names {
+    font-size: clamp(2.25rem, 12.5cqw, 4.5rem);
+    font-stretch: 90%;
+    line-height: 0.95;
+  }
+  .env-names .amp {
+    display: block;
+    margin: 0.2em 0 0.04em;
+    font-size: 1.4em;
+    line-height: 0.8;
+    color: var(--color-accent);
+  }
+  .env-invite {
+    font-size: clamp(1rem, 4.4cqw, 1.5rem);
+  }
+  .env-date {
+    font-size: clamp(1.625rem, 7.6cqw, 2.75rem);
+    font-stretch: 90%;
+    line-height: 1;
+  }
+  /* The seal rests on the open flap's tip, at the card's top edge. */
+  .env-seal {
+    position: absolute;
+    left: 50%;
+    top: calc(9cqw - var(--seal) / 2);
+    margin-left: calc(var(--seal) / -2);
+    z-index: 6;
+    --seal: 17cqw;
+    rotate: -6deg;
+  }
+
+  /* ---- The suite (data-suite): cards of different stocks dealt into a fan ----------- */
+  .suite {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .suite-card {
+    --tilt: 0deg;
+    --drop: 0rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: min(100%, 22rem);
+    min-height: 17rem;
+    padding: 4.5rem 1.75rem 1.75rem;
+    rotate: calc(var(--tilt) * 0.35);
+    box-shadow: var(--shadow-paper);
+    border-radius: var(--radius-box);
+  }
+  .suite-card + .suite-card {
+    margin-top: -1rem;
+  }
+  .suite-card:not(:last-child) {
+    padding-bottom: 2.75rem;
+  }
+  .suite-card.diecut-pebble {
+    border-radius: 50% 50% var(--radius-box) var(--radius-box) / 6rem 6rem var(--radius-box) var(--radius-box);
+  }
+  .suite-card.stock-paper {
+    outline: 1px solid var(--color-base-300);
+    outline-offset: -1px;
+  }
+  .suite-card:focus-visible {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 4px;
+  }
+  .suite-mark {
+    font-family: var(--theme-font-heading);
+    font-size: 4.5rem;
+    line-height: 0.8;
+    font-weight: 300;
+  }
+  @media (min-width: 64rem) {
+    .suite {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .suite-card {
+      flex: 0 0 17rem;
+      width: 17rem;
+      min-height: 24rem;
+      padding: 5rem 1.5rem 1.75rem;
+      rotate: var(--tilt);
+      translate: 0 var(--drop);
+    }
+    .suite-card + .suite-card {
+      margin-top: 0;
+      margin-left: -2.5rem;
+    }
+    .suite-card:not(:last-child) {
+      padding-bottom: 1.75rem;
+      padding-right: 4rem;
+    }
+  }
+
+  /* ---- Postcards and postmarks ---------------------------------------------------- */
+  .postcard {
+    --tilt: 0deg;
+    rotate: var(--tilt);
+    box-shadow: var(--shadow-paper);
+    background-color: var(--color-base-200);
+  }
+  .postcard-back {
+    position: relative;
+  }
+  /* The line down the middle of a postcard's back. */
+  .postcard-divide {
+    border-left: 1px solid var(--color-base-300);
+  }
+  .postmark {
+    display: inline-grid;
+    place-items: center;
+    width: 6.25rem;
+    height: 6.25rem;
+    padding: 0.75rem;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    outline: 1px solid currentColor;
+    outline-offset: -6px;
+    color: var(--color-primary);
+    text-align: center;
+    rotate: -9deg;
+    opacity: 0.88;
+  }
+  .postmark .engraved {
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    line-height: 1.35;
+  }
+  .postmark-lines {
+    color: var(--color-primary);
+    opacity: 0.6;
+  }
+  .address-line {
+    height: 1.75rem;
+    border-bottom: 1px solid var(--color-base-300);
+  }
+
+  /* ---- Postage stamps: perforated edges by a radial-gradient mask ---------------- */
+  .stamp {
+    --hole: 5px;
+    --pitch: 13px;
+    position: relative;
+    padding: calc(var(--hole) + 0.5rem);
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+    mask:
+      linear-gradient(currentColor 0 0) center / calc(100% - var(--pitch)) calc(100% - var(--pitch)) no-repeat,
+      radial-gradient(circle, transparent 0 var(--hole), currentColor calc(var(--hole) + 0.5px)) calc(var(--pitch) / -2)
+      calc(var(--pitch) / -2) / var(--pitch) var(--pitch) round;
+    filter: drop-shadow(0 6px 10px oklch(from var(--color-base-content) l c h / 0.12));
+  }
+  .stamp-frame {
+    position: relative;
+    border: 1px solid var(--color-base-300);
+    padding: 0.5rem;
+  }
+  .stamp-value {
+    font-family: var(--theme-font-heading);
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  /* The route between the stamps: a still dotted line. */
+  .route-line {
+    border-top: 2px dotted oklch(from var(--color-primary) l c h / 0.55);
+  }
+  .route-line-v {
+    border-left: 2px dotted oklch(from var(--color-primary) l c h / 0.55);
+  }
+
+  /* ---- The run-of-show ------------------------------------------------------------- */
+  .day-number {
+    font-family: var(--theme-font-heading);
+    font-weight: 300;
+    font-size: clamp(6rem, 11vw, 9rem);
+    line-height: 0.8;
+    font-stretch: 90%;
+  }
+  .show-time {
+    font-family: var(--theme-font-heading);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* ---- The reply card -------------------------------------------------------------- */
+  .reply-card {
+    background-color: var(--color-base-200);
+    color: var(--color-base-content);
+    border-radius: 50% 50% 0.375rem 0.375rem / 8rem 8rem 0.375rem 0.375rem;
+    box-shadow: var(--shadow-paper);
+  }
+  @media (min-width: 48rem) {
+    .reply-card {
+      border-radius: 50% 50% 0.375rem 0.375rem / 13rem 13rem 0.375rem 0.375rem;
+    }
+  }
+  .step-number {
+    font-family: var(--theme-font-heading);
+    font-size: 2.5rem;
+    line-height: 1;
+    font-weight: 300;
+    color: var(--color-primary);
+  }
+  /* Radios and checkboxes drawn as selectable cards: the input stays in the label, out of sight. */
+  .choice-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .choice {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    cursor: pointer;
+    padding: 1.25rem 3.25rem 1.25rem 1.5rem;
+    border: 1px solid var(--color-base-300);
+    border-radius: 1.25rem;
+    background-color: var(--color-base-100);
+    box-shadow: var(--shadow-paper);
+  }
+  .choice:has(:focus-visible) {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 3px;
+  }
+  .choice-yes:has(:checked) {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-content);
+  }
+  .choice-no:has(:checked) {
+    border-color: var(--color-base-content);
+    box-shadow: inset 0 0 0 1px var(--color-base-content);
+  }
+  .choice-tick {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+  .choice-tick > svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    scale: 0;
+  }
+  .choice:has(:checked) .choice-tick > svg {
+    scale: 1;
+  }
+  .pill-choice {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-base-300);
+    border-radius: 999px;
+    background-color: var(--color-base-100);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .pill-choice:has(:checked) {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .pill-choice:has(:focus-visible) {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 2px;
+  }
+
+  /* ---- The sealed reply (data-seal) ----------------------------------------------- */
+  .sealed {
+    container-type: inline-size;
+    position: relative;
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+  .sealed-stage {
+    position: relative;
+    aspect-ratio: 1.45;
+  }
+  .sealed-body,
+  .sealed-back,
+  .sealed-flap {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .sealed-back {
+    inset: 0;
+    z-index: 1;
+    border-radius: 0.375rem;
+    background-color: var(--color-base-200);
+  }
+  .sealed-body {
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0 8cqw 7cqw;
+    text-align: center;
+    border-radius: 0.375rem;
+    background:
+      linear-gradient(to top right, oklch(from var(--color-base-content) l c h / 0.04), transparent 50%),
+      var(--color-base-200);
+    box-shadow: var(--shadow-lifted);
+  }
+  .sealed-body .engraved {
+    font-size: clamp(0.5625rem, 2.3cqw, 0.75rem);
+  }
+  .sealed-flap {
+    top: 0;
+    height: 52%;
+    z-index: 5;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+  }
+  .sealed-flap > span {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+  }
+  .sealed-flap .flap-out {
+    background:
+      linear-gradient(to bottom, oklch(from var(--color-base-content) l c h / 0.06), transparent 60%),
+      var(--color-base-200);
+    clip-path: polygon(0 0, 100% 0, 54% 94%, 50% 100%, 46% 94%);
+  }
+  .sealed-flap .flap-in {
+    transform: rotateX(180deg);
+    clip-path: polygon(0 100%, 100% 100%, 54% 6%, 50% 0, 46% 6%);
+  }
+  .sealed-seal {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    z-index: 6;
+    --seal: 16cqw;
+    margin: calc(var(--seal) / -2) 0 0 calc(var(--seal) / -2);
+    rotate: 8deg;
+  }
+  .sealed-card {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 6%;
+    bottom: 6%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--color-base-100);
+    border-radius: 0.25rem;
+    box-shadow: var(--shadow-paper);
+  }
+
+  /* ---- The floating seal: links to the reply, from the end of the hero onward ------ */
+  .float-seal {
+    --seal: 4rem;
+    position: fixed;
+    right: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+    z-index: 30;
+    color: var(--color-accent-content);
+  }
+  .float-seal > .wax {
+    color: var(--color-accent-content);
+  }
+  .float-seal .float-word {
+    font-family: var(--theme-font-heading);
+    font-size: calc(var(--seal) * 0.24);
+    line-height: 1;
+  }
+  .float-seal .float-date {
+    display: none;
+    font-size: 0.5625rem;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+  }
+  .float-seal:focus-visible {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 4px;
+    border-radius: 50%;
+  }
+  @media (min-width: 48rem) {
+    .float-seal {
+      --seal: 6.25rem;
+      right: 1.75rem;
+      bottom: 1.75rem;
+    }
+    .float-seal .float-date {
+      display: block;
+    }
+  }
+
+  /* ---- Tabs of the guide (Eat, See, Do): radios, labels and panels as siblings ----- */
+  .guide-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .guide-tabs > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .guide-tab {
+    cursor: pointer;
+    padding: 0.625rem 1.5rem;
+    border: 1px solid var(--color-base-300);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+  }
+  .guide-tabs > input:checked + .guide-tab {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .guide-tabs > input:focus-visible + .guide-tab {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 2px;
+  }
+  .guide-panel {
+    display: none;
+    order: 99;
+    width: 100%;
+    padding-top: 2rem;
+  }
+  .guide-tabs > input:checked + .guide-tab + .guide-panel {
+    display: block;
+  }
+
+  /* ---- Swatches: colors to wear, made from the theme ------------------------------- */
+  .swatch-lilac {
+    background-color: var(--color-secondary);
+  }
+  .swatch-sage {
+    background-color: oklch(from var(--color-primary) calc(l + 0.33) calc(c * 0.6) h);
+  }
+  .swatch-butter {
+    background-color: oklch(from var(--color-base-200) calc(l - 0.02) calc(c + 0.07) calc(h + 15));
+  }
+  .swatch-sky {
+    background-color: oklch(from var(--color-secondary) calc(l + 0.04) c calc(h - 70));
+  }
+  .swatch-cream {
+    background-color: var(--color-base-100);
+  }
+}
+
+/* ---- Movement in CSS: the header, the floating seal, the suite under the hand ------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .site-header {
+      animation: header-paper linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 5rem;
+    }
+    .float-seal {
+      animation: seal-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 55svh 90svh;
+    }
+  }
+  .suite-card {
+    transition:
+      rotate 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease;
+  }
+  .suite-card:hover,
+  .suite-card:focus-within,
+  .suite-card:focus-visible {
+    z-index: 10;
+    rotate: 0deg;
+    translate: 0 -10px;
+    box-shadow: var(--shadow-lifted);
+  }
+  @media (min-width: 64rem) {
+    .suite-card:hover,
+    .suite-card:focus-within,
+    .suite-card:focus-visible {
+      translate: 0 calc(var(--drop) - 10px);
+    }
+  }
+  .float-seal {
+    transition:
+      scale 0.2s ease,
+      filter 0.2s ease;
+  }
+  .float-seal:hover,
+  .float-seal:focus-visible {
+    scale: 0.94;
+    filter: drop-shadow(0 1px 1px oklch(from var(--color-base-content) l c h / 0.3));
+  }
+  .choice-tick > svg {
+    transition: scale 0.2s ease;
+  }
+}
+@keyframes header-paper {
+  from {
+    background-color: oklch(from var(--color-base-100) l c h / 0);
+    border-bottom-color: transparent;
+  }
+}
+@keyframes seal-in {
+  /* Risen from below the screen's edge: hidden, it is off the screen. */
+  from {
+    opacity: 0;
+    scale: 0.6;
+    translate: 0 calc(100% + 4rem);
+    visibility: hidden;
+  }
+}

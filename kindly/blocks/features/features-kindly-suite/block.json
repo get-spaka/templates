@@ -1,0 +1,24 @@
+{
+  "kind": "features",
+  "source": "upstart",
+  "name": "Kindly suite of cards",
+  "description": "A fan of tall cards in different paper stocks and die-cut tops (arch, scallop, wave, pebble), each with a big mark, a label, a title and a line, dealt from a stack into the fan as it arrives; the card under the hand lifts and straightens.",
+  "tags": ["cards", "fan", "schedule", "weekend", "links", "stationery"],
+  "mood": ["elegant", "playful", "colorful"],
+  "synonyms": [
+    "cards",
+    "highlights",
+    "the weekend",
+    "overview",
+    "what's on",
+    "cartes",
+    "temps forts",
+    "le week-end",
+    "aperçu",
+    "programme"
+  ],
+  "data": {
+    "name": "suite",
+    "family": "section"
+  }
+}

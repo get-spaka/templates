@@ -1,0 +1,24 @@
+{
+  "kind": "forms",
+  "source": "upstart",
+  "name": "Kindly reply card",
+  "description": "A reply card of oat stock with an arch top and a wax seal, in three numbered steps (whether you'll be there as two large choices, your party and dinner, the weekend), answered by the reply sealed in its envelope with the couple's monogram.",
+  "tags": ["RSVP", "reply", "form", "wedding", "guests", "dinner choice"],
+  "mood": ["elegant", "warm"],
+  "synonyms": [
+    "RSVP",
+    "reply form",
+    "respond",
+    "guest reply",
+    "attendance",
+    "RSVP",
+    "répondre",
+    "formulaire de réponse",
+    "confirmer sa présence",
+    "réponse des invités"
+  ],
+  "data": {
+    "name": "rsvps",
+    "family": "collection"
+  }
+}

@@ -1,0 +1,105 @@
+<section id="reply" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[58rem] px-4 pb-24 md:px-8 md:pb-32">
+    <form hx-post="/_data/rsvps" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#reply-form-problems swap:innerHTML" class="reply-card px-5 pt-28 pb-10 sm:px-10 md:px-16 md:pt-40 md:pb-14">
+      <div class="text-center">
+        <span class="seal [--seal:4rem]" aria-hidden="true"><span class="wax"><span class="monogram">I&thinsp;C</span></span></span>
+        <p class="serif mt-5 text-[clamp(2rem,4vw,3rem)] leading-none">The favor of a reply</p>
+        <p class="engraved mt-4 text-base-content/75">is requested by May 1, 2027</p>
+      </div>
+
+      <fieldset class="mt-14 border-t border-base-content/15 pt-8">
+        <legend class="sr-only">Will you be there?</legend>
+        <div class="flex items-baseline gap-4"><span class="step-number" aria-hidden="true">01</span><p class="serif text-[1.75rem] leading-tight">Will you be there?</p></div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <label class="choice choice-yes">
+            <input type="radio" name="attending" value="accepts" class="choice-input" required>
+            <span class="choice-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>
+            <span class="serif text-[1.75rem] leading-tight">Joyfully accepts</span>
+            <span class="text-[0.9375rem] opacity-85">See you on the island.</span>
+          </label>
+          <label class="choice choice-no">
+            <input type="radio" name="attending" value="declines" class="choice-input">
+            <span class="choice-tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span>
+            <span class="serif text-[1.75rem] leading-tight">Regretfully declines</span>
+            <span class="text-[0.9375rem] opacity-85">We'll miss you, and raise a glass.</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="mt-12 border-t border-base-content/15 pt-8">
+        <div class="flex items-baseline gap-4"><span class="step-number" aria-hidden="true">02</span><p class="serif text-[1.75rem] leading-tight">Your party</p></div>
+        <div class="mt-4 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your name</legend>
+            <input name="name" type="text" class="input w-full bg-base-100" required maxlength="200" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your email</legend>
+            <input name="email" type="email" class="input w-full bg-base-100" required maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">How many of you, with you</legend>
+            <select name="party" class="select w-full bg-base-100">
+              <option value="1">Just me</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">The names of those with you</legend>
+            <input name="guests" type="text" class="input w-full bg-base-100" maxlength="300" placeholder="As on your invitation">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Your dinner</legend>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <label class="pill-choice"><input type="radio" name="dinner" value="lake whitefish" class="choice-input">Lake whitefish</label>
+              <label class="pill-choice"><input type="radio" name="dinner" value="braised short rib" class="choice-input">Braised short rib</label>
+              <label class="pill-choice"><input type="radio" name="dinner" value="spring pea risotto" class="choice-input">Spring pea risotto</label>
+              <label class="pill-choice"><input type="radio" name="dinner" value="children's plate" class="choice-input">A children's plate</label>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Allergies or diets</legend>
+            <input name="diet" type="text" class="input w-full bg-base-100" maxlength="300">
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-base-content/15 pt-8">
+        <div class="flex items-baseline gap-4"><span class="step-number" aria-hidden="true">03</span><p class="serif text-[1.75rem] leading-tight">The weekend</p></div>
+        <div class="mt-4 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">The Friday fish fry</legend>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <label class="pill-choice"><input type="radio" name="friday" value="yes" class="choice-input">We'll be there</label>
+              <label class="pill-choice"><input type="radio" name="friday" value="no" class="choice-input">Not this time</label>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">The Sunday pancakes</legend>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <label class="pill-choice"><input type="radio" name="sunday" value="yes" class="choice-input">We'll be there</label>
+              <label class="pill-choice"><input type="radio" name="sunday" value="no" class="choice-input">Not this time</label>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">A song that will get you on the dance floor</legend>
+            <input name="song" type="text" class="input w-full bg-base-100" maxlength="200">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">A note for the two of us</legend>
+            <textarea name="note" class="textarea w-full rounded-box bg-base-100" rows="4" maxlength="3000"></textarea>
+          </fieldset>
+        </div>
+      </div>
+
+      <div id="reply-form-problems" class="empty:hidden mt-6"></div>
+      <div class="mt-10 text-center">
+        <button type="submit" class="btn btn-primary btn-lg px-10 whitespace-nowrap">Seal and send</button>
+      </div>
+    </form>
+  </div>
+</section>

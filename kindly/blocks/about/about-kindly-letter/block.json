@@ -1,0 +1,20 @@
+{
+  "kind": "about",
+  "source": "upstart",
+  "name": "Kindly letter",
+  "description": "A letter to the guests in a narrow column, opening on \"Dear friends,\" and signed in a ballet script, beside a photograph cut as an arch that opens as it arrives.",
+  "tags": ["letter", "welcome", "wedding", "signature", "arch photo"],
+  "mood": ["elegant", "warm"],
+  "synonyms": [
+    "letter",
+    "welcome note",
+    "about us",
+    "message to guests",
+    "our words",
+    "lettre",
+    "mot d'accueil",
+    "à propos",
+    "message aux invités",
+    "notre mot"
+  ]
+}

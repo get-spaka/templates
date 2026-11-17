@@ -1,0 +1,27 @@
+label: The weekend in cards
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: kicker
+    label: Above the title
+    kind: text
+  - name: text
+    label: Line
+    kind: text
+  - name: link
+    label: Link
+    kind: link
+  - name: mark
+    label: Big mark (a day's number, a word)
+    kind: text
+  - name: stock
+    label: Paper
+    kind: choice
+    choices: [paper, oat, lilac, green, vermilion]
+  - name: shape
+    label: Top of the card
+    kind: choice
+    choices: [arch, scallop, wave, pebble, square]
+order: [friday, saturday, sunday, getting-here, kindly-reply]

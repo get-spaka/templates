@@ -1,0 +1,11 @@
+{
+  "id": "kindly",
+  "version": "1.0.0",
+  "name": "Kindly",
+  "description": "A wedding website that is the couple's invitation suite: the envelope opens on the names and the date, photos open into die-cut arches and scallops, the weekend is a fan of cards dealt as it arrives, and the reply is sealed in its envelope.",
+  "category": "event",
+  "original": true,
+  "tags": ["wedding", "invitation", "RSVP", "weekend", "travel", "guests", "party", "celebration", "stationery"],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

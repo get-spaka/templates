@@ -1,0 +1,47 @@
+{%- comment -%} The days in order, each with its number, its name and one die-cut photo (the first of its events that has one). Sunset is marked on Saturday at the time below. {%- endcomment -%}
+{%- assign days = "friday,saturday,sunday" | split: "," -%}
+{%- assign sunset = "21:25" -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] space-y-24 px-5 pb-24 md:space-y-32 md:px-8 md:pb-32">
+    {% for day in days %}{% assign items = data.events | where: "day", day %}{% if items.size > 0 %}{% assign first = items.first %}{% assign photo = items | where_exp: "e", "e.image != blank" | first %}
+    <article id="{{ day }}" class="grid scroll-mt-28 gap-10 lg:grid-cols-12 lg:gap-10">
+      <header class="lg:col-span-4">
+        <div class="lg:sticky lg:top-28">
+          <div class="flex items-end gap-5" data-reveal>
+            <p class="day-number pressed">{{ first.date | date: "%-d" }}</p>
+            <div class="pb-2">
+              <p class="engraved text-base-content/75">{{ first.date | date: "%A" }}</p>
+              <p class="engraved text-base-content/75">{{ first.date | date: "%B %Y" }}</p>
+            </div>
+          </div>
+          <h2 class="serif mt-6 text-[clamp(2.25rem,3.2vw,3rem)] leading-none" data-reveal>{% case day %}{% when "friday" %}Welcome{% when "saturday" %}The wedding{% when "sunday" %}Goodbyes{% endcase %}</h2>
+          {% if photo %}{% case day %}{% when "friday" %}{% assign shape = "scallop" %}{% when "saturday" %}{% assign shape = "arch" %}{% else %}{% assign shape = "wave" %}{% endcase %}{% render 'diecut', src: photo.image, shape: shape, class: "mt-8 aspect-[4/3] w-full max-w-[26rem] lg:aspect-[4/5]" %}{% endif %}
+        </div>
+      </header>
+      <ol class="border-t border-base-300 lg:col-span-8">
+        {% assign marked = false %}
+        {% for event in items %}
+        {% if day == "saturday" and marked == false and event.start > sunset %}{% assign marked = true %}
+        <li class="flex items-center gap-4 border-b border-base-300 py-5 text-base-content/80" data-reveal>
+          <svg class="size-8 shrink-0 text-accent" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 22h20M9 22a7 7 0 0 1 14 0M16 8v4M7 13l2.5 2.5M25 13l-2.5 2.5M3 27h26"/></svg>
+          <p class="serif-italic text-[1.25rem]">Sunset, around 9:25, over the Straits</p>
+        </li>
+        {% endif %}
+        <li class="grid gap-x-8 gap-y-3 border-b border-base-300 py-8 sm:grid-cols-[9rem_1fr]" data-reveal>
+          <p class="show-time">{% render 'time', t: event.start %}</p>
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+              <h3 class="serif text-[1.75rem] leading-tight">{{ event.title }}</h3>
+              <p class="engraved rounded-full border border-base-300 px-3 py-0.5 text-[0.625rem] whitespace-nowrap text-base-content/75">{% case event.for %}{% when "wedding party" %}The wedding party{% when "family" %}Family{% when "anyone" %}Anyone who wants to{% else %}Everyone{% endcase %}</p>
+            </div>
+            <p class="mt-2 font-semibold">{{ event.place }}{% if event.address != blank %}<span class="font-normal text-base-content/70"> · {{ event.address }}</span>{% endif %}{% if event.map != blank %} · <a href="{{ event.map }}" class="text-link text-primary" rel="noopener" target="_blank">Directions</a>{% endif %}</p>
+            <div class="body-copy mt-3 max-w-[40rem]">{{ event.text }}</div>
+            {% if event.dress != blank %}<p class="mt-3 text-[0.9375rem]"><span class="engraved mr-2 text-[0.625rem] text-base-content/70">Wear</span>{{ event.dress }}</p>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </article>
+    {% endif %}{% endfor %}
+  </div>
+</section>

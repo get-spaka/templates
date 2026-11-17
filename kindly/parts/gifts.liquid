@@ -1,0 +1,18 @@
+<section id="gifts" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-24 md:px-8 md:py-32">
+    <div class="mx-auto max-w-[40rem] text-center" data-reveal>
+      <p class="engraved text-base-content/75">Gifts</p>
+      <h2 class="section-title mt-5">Your being there is plenty</h2>
+      <p class="body-copy mt-5 text-[1.125rem]">If you'd like to give something:</p>
+    </div>
+    <ul class="mt-14 grid gap-8 md:grid-cols-3">
+      {% for gift in data.registry %}
+      <li class="stock-oat diecut-{{ gift.shape | default: 'scallop' }} paper flex flex-col px-7 pt-14 pb-8 {% cycle 'md:rotate-[-1.5deg]', 'md:rotate-[1deg] md:translate-y-4', 'md:rotate-[-0.5deg]' %}" data-reveal>
+        <h3 class="serif text-[1.875rem] leading-[1.05]">{{ gift.name }}</h3>
+        <p class="body-copy mt-3 flex-1">{{ gift.text }}</p>
+        <a href="{{ gift.link }}" class="btn btn-outline btn-primary mt-7 self-start whitespace-nowrap" rel="noopener" target="_blank">{{ gift.label | default: "Visit" }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+{
+  "kind": "about",
+  "source": "upstart",
+  "name": "Kindly postcards",
+  "description": "The story as three postcards overlapping at their tilts, each with a die-cut photo, a postmark with the place and the month, the year, a title and two sentences, and a link to the whole story.",
+  "tags": ["story", "timeline", "postcards", "how we met", "milestones"],
+  "mood": ["warm", "playful"],
+  "synonyms": [
+    "our story",
+    "how we met",
+    "timeline",
+    "milestones",
+    "postcards",
+    "notre histoire",
+    "notre rencontre",
+    "chronologie",
+    "étapes",
+    "cartes postales"
+  ],
+  "data": {
+    "name": "story",
+    "family": "collection"
+  }
+}

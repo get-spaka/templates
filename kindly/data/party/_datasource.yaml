@@ -1,0 +1,19 @@
+label: The people standing with us
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Their place in the day
+    kind: text
+  - name: relation
+    label: Who they are to us
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+  - name: text
+    label: A sentence
+    kind: text
+order: [nora-novak, theo-shaw, priya-desai, marcus-hale, june-mwangi, danny-brennan, aunt-ruth]

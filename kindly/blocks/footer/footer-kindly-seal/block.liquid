@@ -1,0 +1,17 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto flex max-w-[84rem] flex-col items-center px-5 pt-20 pb-28 text-center md:px-8 md:pt-24 md:pb-12">
+    <span class="seal [--seal:5.5rem]" aria-hidden="true"><span class="wax"><span class="monogram">I&thinsp;C</span></span></span>
+    <p class="serif mt-8 text-[clamp(2.25rem,4vw,3.25rem)] leading-none">Iris <span class="script text-[1.4em] text-secondary">&amp;</span> Callum</p>
+    <p class="engraved mt-6 text-neutral-content/80">June 12, 2027 · Mackinac Island, Michigan</p>
+    <nav aria-label="Footer" class="mt-10">
+      <ul class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[0.9375rem] font-semibold">
+        {% for item in data.navigation %}
+        <li><a href="{{ item.href }}" class="text-link whitespace-nowrap">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <p class="mt-10 text-neutral-content/80">Questions? Write to us at <a href="mailto:hello@irisandcallum.wedding" class="text-link">hello@irisandcallum.wedding</a></p>
+    <div class="rule-diamond mt-12 w-full max-w-[28rem] !text-neutral-content/25" aria-hidden="true"><span class="size-1.5 rotate-45 bg-secondary"></span></div>
+    <p class="mt-6 text-[0.9375rem] text-neutral-content/70">Made with love, and a lot of lilac</p>
+  </div>
+</footer>

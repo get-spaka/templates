@@ -1,0 +1,44 @@
+label: The weekend
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: day
+    label: Day
+    kind: choice
+    required: true
+    choices: [friday, saturday, sunday]
+  - name: date
+    label: Date
+    kind: date
+  - name: start
+    label: Starts (24 h, e.g. 16:30)
+    kind: text
+  - name: end
+    label: Ends (24 h)
+    kind: text
+  - name: place
+    label: Place
+    kind: text
+  - name: address
+    label: Address
+    kind: text
+  - name: map
+    label: Directions (a link to a map)
+    kind: link
+  - name: dress
+    label: What to wear
+    kind: text
+  - name: for
+    label: For
+    kind: choice
+    choices: [everyone, wedding party, family, anyone]
+  - name: image
+    label: Photo
+    kind: image
+  - name: text
+    label: A sentence
+    kind: markdown
+body: text
+sort: start

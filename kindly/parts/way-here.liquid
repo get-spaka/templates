@@ -1,0 +1,17 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[72rem] px-5 pb-24 md:px-8 md:pb-32">
+    <ol class="relative">
+      <span class="route-line-v absolute top-8 bottom-8 left-[4.25rem] sm:left-[5.75rem]" aria-hidden="true"></span>
+      {% for step in data["getting-here"] %}
+      <li class="relative grid grid-cols-[8.5rem_1fr] items-start gap-6 py-8 sm:grid-cols-[11.5rem_1fr] sm:gap-12" data-reveal>
+        <div class="{% cycle 'rotate-[-2deg]', 'rotate-[1.5deg]', 'rotate-[-1deg]', 'rotate-[2deg]' %}">{% render 'stamp', step: step %}</div>
+        <div class="pt-2 sm:pt-6">
+          <p class="engraved text-base-content/70">Step {{ step.step }}</p>
+          <h2 class="serif mt-2 text-[clamp(2rem,3vw,2.75rem)] leading-none">{{ step.title }}</h2>
+          <div class="body-copy mt-4 max-w-[36rem] text-[1.0625rem] [&_strong]:font-semibold [&_strong]:text-base-content">{{ step.text }}</div>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

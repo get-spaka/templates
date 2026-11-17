@@ -1,0 +1,18 @@
+<section id="weekend" class="overflow-hidden bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-24 md:px-8 md:py-32">
+    <div class="text-center" data-reveal>
+      <p class="engraved text-base-content/75">June 11 to 13, 2027</p>
+      <h2 class="section-title mx-auto mt-5 max-w-[18ch]">The weekend, in five cards</h2>
+    </div>
+    <div class="suite mt-16 lg:mt-20 lg:pb-12" data-suite>
+      {% for card in data["home-suite"] %}{% assign t = forloop.index | minus: 3 | times: 3.5 %}{% assign d = forloop.index | minus: 3 | abs | times: 0.9 %}
+      <a href="{{ card.link }}" class="suite-card stock-{{ card.stock | default: 'paper' }} diecut-{{ card.shape | default: 'square' }}" style="--tilt: {{ t }}deg; --drop: {{ d }}rem">
+        <span class="suite-mark" aria-hidden="true">{{ card.mark }}</span>
+        <span class="engraved mt-auto pt-8 opacity-80">{{ card.kicker }}</span>
+        <span class="serif mt-3 block text-[1.75rem] leading-[1.06]">{{ card.title }}</span>
+        <span class="mt-3 block text-[0.9375rem] leading-relaxed opacity-85">{{ card.text }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

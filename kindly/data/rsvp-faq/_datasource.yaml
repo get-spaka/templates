@@ -1,0 +1,24 @@
+label: Questions
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: topic
+    label: Topic
+    kind: text
+  - name: answer
+    label: Answer
+    kind: markdown
+body: answer
+order:
+  [
+    can-we-bring-the-kids,
+    can-i-bring-a-plus-one,
+    can-we-take-photos,
+    do-i-need-a-car,
+    is-it-accessible,
+    can-we-bring-our-dog,
+    gifts,
+    is-there-an-after-party,
+  ]
