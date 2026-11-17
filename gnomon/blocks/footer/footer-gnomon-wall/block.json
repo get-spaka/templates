@@ -1,0 +1,19 @@
+{
+  "name": "Gnomon wall footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A footer in monsoon blue under a band of rammed-earth strata: the name on a faint shadow, the address, visits by appointment, today's sunset worked out for the studio's place, the links and the registration line.",
+  "tags": ["footer", "address", "links", "strata", "sunset", "dark"],
+  "mood": ["dark", "warm", "minimal"],
+  "synonyms": [
+    "footer",
+    "bottom of page",
+    "contact details",
+    "site map",
+    "pied de page",
+    "bas de page",
+    "coordonnées",
+    "plan du site"
+  ],
+  "data": { "name": "navigation", "family": "collection" }
+}

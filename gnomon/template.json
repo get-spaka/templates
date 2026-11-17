@@ -1,0 +1,21 @@
+{
+  "id": "gnomon",
+  "version": "1.0.0",
+  "name": "Gnomon",
+  "description": "An architecture practice lit by the desert sun: the name, headings, buttons and photographs cast hard earth-brown shadows that swing as you scroll past, projects sit in deep openings punched through a thick wall, and the approach is one summer day.",
+  "category": "portfolio",
+  "original": true,
+  "tags": [
+    "architecture",
+    "architect",
+    "architecture firm",
+    "residential architect",
+    "landscape architect",
+    "design-build",
+    "projects",
+    "portfolio"
+  ],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT",
+  "shoot": { "clock": "2027-06-21T10:00:00-07:00" }
+}

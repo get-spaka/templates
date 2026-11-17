@@ -1,0 +1,14 @@
+label: Key figures
+fields:
+  - name: value
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+    required: true
+  - name: note
+    label: Note
+    kind: text
+order: [founded, buildings-finished, people, windows-facing-west]

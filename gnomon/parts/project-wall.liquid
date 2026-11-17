@@ -1,0 +1,27 @@
+<section id="projects" class="bg-base-200 text-base-content" data-filter>
+  <div class="mx-auto max-w-[90rem] px-5 py-14 md:px-10 md:py-20">
+    <fieldset class="flex flex-wrap gap-2">
+      <legend class="sr-only">Show the projects of one kind</legend>
+      <input type="radio" name="kind" id="kind-all" class="chip-input sr-only" data-n="0" checked>
+      <label for="kind-all" class="chip spec">All <span class="figure text-[1.125rem]">{{ data.projects.size }}</span></label>
+      {% for service in data.services %}
+      {% assign count = 0 %}
+      {% for project in data.projects %}{% if service.types contains project.type %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+      <input type="radio" name="kind" id="kind-{{ service.id }}" class="chip-input sr-only" data-n="{{ forloop.index }}">
+      <label for="kind-{{ service.id }}" class="chip spec">{{ service.name }} <span class="figure text-[1.125rem]">{{ count }}</span></label>
+      {% endfor %}
+    </fieldset>
+    <ul class="mt-12 grid gap-x-8 gap-y-16 md:grid-cols-6 md:items-start">
+      {% for project in data.projects %}
+      {% capture kinds %}{% for service in data.services %}{% if service.types contains project.type %}{{ forloop.index }} {% endif %}{% endfor %}{% endcapture %}
+      <li class="{% if forloop.index <= 2 %}md:col-span-3{% else %}md:col-span-2{% endif %}" data-n="{{ kinds | strip }}">
+        <a href="/projects/{{ project.id }}" class="group block">
+          {% case project.opening %}{% when "tall" %}{% assign shape = "aspect-[4/5] w-full" %}{% when "wide" %}{% assign shape = "aspect-[4/3] w-full" %}{% else %}{% assign shape = "aspect-square w-full" %}{% endcase %}
+          {% render 'opening', src: project.cover, class: shape %}
+          {% render 'plaque', project: project, thesis: true %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

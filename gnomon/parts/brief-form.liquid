@@ -1,0 +1,86 @@
+<section id="brief" class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-16 md:px-10 md:py-24">
+    <form hx-post="/_data/enquiries" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#brief-problems swap:innerHTML" class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <nav aria-label="The brief's parts" class="brief-index spec lg:sticky lg:top-28 lg:col-span-3 lg:self-start">
+        <a href="#brief-site"><span class="figure text-[1.5rem]">1</span> The site</a>
+        <a href="#brief-project"><span class="figure text-[1.5rem]">2</span> The project</a>
+        <a href="#brief-you" class="border-b border-base-300"><span class="figure text-[1.5rem]">3</span> You</a>
+      </nav>
+      <div class="flex flex-col gap-14 lg:col-span-8 lg:col-start-5">
+        <fieldset id="brief-site">
+          <legend class="flex items-baseline gap-4 font-heading text-[2.25rem] font-bold leading-none"><span class="figure text-[3rem]">1</span>The site</legend>
+          <p class="mt-3 max-w-[36em] text-base-content/75">We design from the site, so tell us about it first.</p>
+          <div class="mt-4 grid gap-x-5 sm:grid-cols-2">
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend text-[0.9375rem]">Where it is</legend>
+              <input name="site" class="input w-full bg-base-100" required maxlength="300" placeholder="A street, a neighborhood or a town">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">What is on it</legend>
+              <select name="building" class="select w-full bg-base-100">
+                <option>Nothing yet</option>
+                <option>A building to keep</option>
+                <option>A building to replace</option>
+              </select>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">How large the lot is <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <input name="lot" class="input w-full bg-base-100" maxlength="100" placeholder="In acres or square feet">
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset id="brief-project">
+          <legend class="flex items-baseline gap-4 font-heading text-[2.25rem] font-bold leading-none"><span class="figure text-[3rem]">2</span>The project</legend>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            <label class="kind-card flex cursor-pointer items-start gap-3 border border-base-300 bg-base-100/60 p-4"><input type="radio" name="kind" value="A new house" class="radio radio-primary radio-sm mt-1" checked><span><span class="block font-semibold">A new house</span><span class="block text-[0.9375rem] text-base-content/70">For you, or for several generations</span></span></label>
+            <label class="kind-card flex cursor-pointer items-start gap-3 border border-base-300 bg-base-100/60 p-4"><input type="radio" name="kind" value="An addition or a restoration" class="radio radio-primary radio-sm mt-1"><span><span class="block font-semibold">An addition or a restoration</span><span class="block text-[0.9375rem] text-base-content/70">An old house to repair, or a room to add</span></span></label>
+            <label class="kind-card flex cursor-pointer items-start gap-3 border border-base-300 bg-base-100/60 p-4"><input type="radio" name="kind" value="A public building" class="radio radio-primary radio-sm mt-1"><span><span class="block font-semibold">A public building</span><span class="block text-[0.9375rem] text-base-content/70">For a town, a school or a trust</span></span></label>
+            <label class="kind-card flex cursor-pointer items-start gap-3 border border-base-300 bg-base-100/60 p-4"><input type="radio" name="kind" value="Shade or a courtyard" class="radio radio-primary radio-sm mt-1"><span><span class="block font-semibold">Shade or a courtyard</span><span class="block text-[0.9375rem] text-base-content/70">A ramada, a shaded walk, an outdoor room</span></span></label>
+          </div>
+          <div class="mt-4 grid gap-x-5 sm:grid-cols-2">
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">Budget for building</legend>
+              <select name="budget" class="select w-full bg-base-100">
+                <option>Not sure yet</option>
+                <option>Under $250,000</option>
+                <option>$250,000 to $750,000</option>
+                <option>$750,000 to $1.5 million</option>
+                <option>Over $1.5 million</option>
+              </select>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">When you hope to start <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <input name="start" class="input w-full bg-base-100" maxlength="100" placeholder="This spring, next year…">
+            </fieldset>
+          </div>
+        </fieldset>
+        <fieldset id="brief-you">
+          <legend class="flex items-baseline gap-4 font-heading text-[2.25rem] font-bold leading-none"><span class="figure text-[3rem]">3</span>You</legend>
+          <div class="mt-4 grid gap-x-5 sm:grid-cols-2">
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+              <input name="name" class="input w-full bg-base-100" required maxlength="200" autocomplete="name">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+              <input name="email" type="email" class="input w-full bg-base-100" required maxlength="200" autocomplete="email">
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend class="fieldset-legend text-[0.9375rem]">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <input name="phone" type="tel" class="input w-full bg-base-100" maxlength="30" autocomplete="tel">
+            </fieldset>
+            <fieldset class="fieldset sm:col-span-2">
+              <legend class="fieldset-legend text-[0.9375rem]">Anything else we should know <span class="font-normal text-base-content/70">(optional)</span></legend>
+              <textarea name="message" class="textarea w-full bg-base-100" rows="5" maxlength="4000"></textarea>
+            </fieldset>
+          </div>
+        </fieldset>
+        <div id="brief-problems" class="empty:hidden"></div>
+        <div class="flex flex-wrap items-center gap-6 border-t border-base-content/25 pt-8">
+          <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap" data-cast>Send the brief</button>
+          <p class="max-w-[28em] text-[0.9375rem] text-base-content/70">We answer every brief within three working days. Photos of the site can follow by email.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Start a project — Ocampo Hale Architects, Tucson</title>
+<meta name="description" content="Tell Ocampo Hale Architects about your site and your project. We answer every brief within three working days, and the site study comes first.">
+<meta property="og:title" content="Start a project — Ocampo Hale Architects">
+<meta property="og:description" content="Tell us about the site first. We answer every brief within three working days.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pt-14 pb-16 md:px-10 md:pt-20">
+    <h1 class="max-w-[8em] font-heading text-[clamp(3.5rem,11vw,10rem)] font-extrabold leading-[0.86] tracking-[-0.01em]" data-cast style="--cast: 0.14em">Start a project</h1>
+    <p class="mt-8 max-w-[30em] text-[1.375rem] leading-snug text-base-content/80 md:text-[1.625rem]">Tell us about the site first. We answer every brief within three working days.</p>
+  </div>
+</section>
+{% render 'strata' %}
+{% render 'brief-form' %}
+<section id="studio" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-5 py-20 md:px-10 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-6">
+      <p class="spec text-base-content/70">The studio</p>
+      <address class="mt-4 font-heading text-[clamp(2.5rem,5vw,4.25rem)] font-bold leading-[0.92] not-italic" data-cast style="--cast: 0.1em">418 South Meyer Avenue, Tucson</address>
+      <p class="mt-5 text-[1.125rem] leading-relaxed text-base-content/80">A 1928 adobe ice house on the edge of Barrio Viejo, AZ 85701. Visits by appointment.</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href="https://www.openstreetmap.org/search?query=418%20South%20Meyer%20Avenue%2C%20Tucson%2C%20AZ" class="btn btn-primary whitespace-nowrap" data-cast>Get directions</a>
+        <a href="tel:+15205550173" class="btn btn-outline whitespace-nowrap border-base-content/40">(520) 555-0173</a>
+      </div>
+      <p class="mt-6"><a href="mailto:studio@ocampohale.com" class="break-all underline underline-offset-4">studio@ocampohale.com</a></p>
+    </div>
+    <div class="lg:col-span-5 lg:col-start-8">
+      <h2 class="spec text-base-content/70">Hours</h2>
+      <dl class="mt-4 border-b border-base-content/25">
+        {% for row in data.hours %}
+        <div class="grid grid-cols-[1fr_auto] gap-4 border-t border-base-content/25 py-4">
+          <dt class="font-medium">{{ row.day }}{% if row.note %}<span class="block text-[0.9375rem] font-normal text-base-content/65">{{ row.note }}</span>{% endif %}</dt>
+          <dd class="text-right tabular-nums text-base-content/80">{{ row.hours }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+      <p class="mt-5 flex items-center gap-3 text-base-content/80"><span class="inline-block size-3 rounded-full bg-accent" aria-hidden="true"></span>{% render 'sunset-line' %}</p>
+    </div>
+  </div>
+</section>
+<section id="questions" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pb-20 md:px-10 md:pb-28">
+    <h2 class="font-heading text-[clamp(2.75rem,5vw,4rem)] font-bold leading-[0.9]" data-cast>Questions we're often asked</h2>
+    <div class="mt-10 grid gap-x-12 md:grid-cols-2">
+      {% for item in data["contact-faq"] %}
+      <details class="group border-t border-base-content/25 py-5">
+        <summary class="flex cursor-pointer items-start justify-between gap-6 font-heading text-[1.625rem] font-bold leading-[1.05]">{{ item.question }}<span class="mt-1 text-[1.5rem] leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <div class="story mt-4 max-w-[36em] leading-relaxed text-base-content/80">{{ item.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

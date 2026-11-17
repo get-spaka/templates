@@ -1,0 +1,35 @@
+<section class="bg-base-200 text-base-content" data-filter>
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-10 md:py-28">
+    <p class="spec text-base-content/70">Work</p>
+    <h2 class="mt-3 font-heading text-[clamp(2.75rem,6vw,5rem)] font-bold leading-[0.9]" data-cast>Built, on site and on the table</h2>
+    {% assign kinds = "house,addition,restoration,public,shade" | split: "," %}
+    {% assign names = "Houses,Additions,Restorations,Public,Shade" | split: "," %}
+    <fieldset class="mt-10 flex flex-wrap gap-2">
+      <legend class="sr-only">Show the projects of one kind</legend>
+      <input type="radio" name="opening-kind" id="opening-kind-all" class="chip-input sr-only" data-n="0" checked>
+      <label for="opening-kind-all" class="chip spec">All <span class="figure text-[1.125rem]">{{ data.projects.size }}</span></label>
+      {% for kind in kinds %}
+      {% assign count = data.projects | where: "type", kind | size %}
+      {% if count > 0 %}
+      <input type="radio" name="opening-kind" id="opening-kind-{{ kind }}" class="chip-input sr-only" data-n="{{ forloop.index }}">
+      <label for="opening-kind-{{ kind }}" class="chip spec">{{ names[forloop.index0] }} <span class="figure text-[1.125rem]">{{ count }}</span></label>
+      {% endif %}
+      {% endfor %}
+    </fieldset>
+    <ul class="mt-12 grid gap-x-8 gap-y-16 md:grid-cols-6 md:items-start">
+      {% for project in data.projects %}
+      {% assign n = 0 %}{% for kind in kinds %}{% if kind == project.type %}{% assign n = forloop.index %}{% endif %}{% endfor %}
+      <li class="{% if forloop.index <= 2 %}md:col-span-3{% else %}md:col-span-2{% endif %}" data-n="{{ n }}">
+        <a href="/projects/{{ project.id }}" class="group block">
+          <div data-opening class="{% if project.opening == 'tall' %}aspect-[4/5]{% elsif project.opening == 'wide' %}aspect-[4/3]{% else %}aspect-square{% endif %} w-full">{% if project.cover %}<img src="{{ project.cover }}">{% else %}<div class="opening-empty" aria-hidden="true"></div>{% endif %}</div>
+          <div class="mt-4 border-t border-base-content/25 pt-3">
+            <p class="spec flex flex-wrap gap-x-3 gap-y-1 text-base-content/70"><span class="text-base-content">{{ project.number }}</span><span>{{ project.place }}</span><span class="whitespace-nowrap"><span class="status-dot" data-status="{{ project.status }}"></span>{% case project.status %}{% when "built" %}Built{% when "on-site" %}On site,{% when "in-design" %}In design,{% endcase %} {{ project.year }}</span></p>
+            <h3 class="mt-2 font-heading text-[1.875rem] font-bold leading-[0.95] md:text-[2.25rem]">{{ project.title }}</h3>
+            <p class="mt-2 text-base-content/75">{{ project.thesis }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+label: People
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: credentials
+    label: Credentials
+    kind: text
+  - name: portrait
+    label: Portrait
+    kind: image
+  - name: bio
+    label: One line about them
+    kind: text
+order: [lucia-ocampo, peter-hale, dana-whitfield, tomas-aguilar, kiri-nakamura, beth-lowry]

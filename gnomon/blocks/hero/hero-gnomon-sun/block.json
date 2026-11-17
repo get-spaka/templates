@@ -1,0 +1,18 @@
+{
+  "name": "Gnomon sun hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A statement at poster size in a heavy grotesk, standing off the plaster on a hard earth-brown shadow that swings as the page scrolls, with a sentence, two buttons and a tall photo in a deep opening with its plaque.",
+  "tags": ["hero", "architecture", "statement", "shadow", "photo", "opening"],
+  "mood": ["bold", "warm", "minimal"],
+  "synonyms": [
+    "hero",
+    "top of page",
+    "headline",
+    "statement",
+    "en-tête",
+    "haut de page",
+    "accroche",
+    "bandeau d'accueil"
+  ]
+}

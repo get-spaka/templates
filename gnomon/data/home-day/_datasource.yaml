@@ -1,0 +1,16 @@
+label: A day in one of our houses
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: hour
+    label: Hour, as written
+    kind: text
+  - name: sun
+    label: The sun's place, from 0 (sunrise) to 1 (sunset); empty at night
+    kind: number
+  - name: text
+    label: Text
+    kind: text
+order: [6-am, 11-am, 3-pm, 7-pm, midnight]

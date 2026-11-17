@@ -1,0 +1,100 @@
+label: Projects
+fields:
+  - name: title
+    label: Name
+    kind: text
+    required: true
+  - name: number
+    label: Number on its plaque
+    kind: text
+  - name: thesis
+    label: Its idea in one line
+    kind: text
+  - name: place
+    label: Neighborhood or place
+    kind: text
+  - name: town
+    label: Town
+    kind: text
+  - name: type
+    label: Kind of work
+    kind: choice
+    choices: [house, addition, restoration, public, shade]
+  - name: status
+    label: Status
+    kind: choice
+    choices: [built, on-site, in-design]
+  - name: year
+    label: Year (built, expected or won)
+    kind: number
+  - name: area
+    label: Area
+    kind: text
+  - name: client
+    label: Client
+    kind: text
+  - name: team
+    label: Team
+    kind: text
+  - name: engineer
+    label: Structural engineer
+    kind: text
+  - name: builder
+    label: Builder
+    kind: text
+  - name: photographer
+    label: Photographs
+    kind: text
+  - name: faces
+    label: Faces
+    kind: text
+  - name: shade
+    label: Shade
+    kind: text
+  - name: energy
+    label: Energy
+    kind: text
+  - name: walls
+    label: Walls
+    kind: text
+  - name: opening
+    label: Shape of its opening on the projects page
+    kind: choice
+    choices: [tall, square, wide]
+  - name: cover
+    label: Cover photograph
+    kind: image
+  - name: photo_1
+    label: Photograph 1 (wide)
+    kind: image
+  - name: photo_2
+    label: Photograph 2 (narrow)
+    kind: image
+  - name: photo_3
+    label: Photograph 3 (wide)
+    kind: image
+  - name: photo_4
+    label: Photograph 4 (narrow)
+    kind: image
+  - name: quote
+    label: The client's words
+    kind: text
+  - name: quote_by
+    label: Who said them
+    kind: text
+  - name: featured
+    label: On the home page's wall
+    kind: boolean
+  - name: body
+    label: The story
+    kind: markdown
+body: body
+order:
+  [
+    sixth-street-courtyard-house,
+    ramada-house,
+    meyer-avenue-row-house,
+    arivaca-library,
+    wash-house,
+    santa-cruz-shade-walk,
+  ]

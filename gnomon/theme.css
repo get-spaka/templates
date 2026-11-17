@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.43 0.075 48);
+  --theme-color-primary-content: oklch(0.958 0.012 78);
+  --theme-color-secondary: oklch(0.74 0.075 120);
+  --theme-color-secondary-content: oklch(0.255 0.02 45);
+  --theme-color-accent: oklch(0.74 0.15 55);
+  --theme-color-accent-content: oklch(0.255 0.02 45);
+  --theme-color-neutral: oklch(0.24 0.04 250);
+  --theme-color-neutral-content: oklch(0.958 0.012 78);
+  --theme-color-surface: oklch(0.958 0.012 78);
+  --theme-color-surface-alt: oklch(0.885 0.03 55);
+  --theme-color-border: oklch(0.86 0.02 70);
+  --theme-color-text: oklch(0.255 0.02 45);
+  --theme-font-heading: "Darker Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --theme-font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0rem;
+  --theme-radius-field: 0rem;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

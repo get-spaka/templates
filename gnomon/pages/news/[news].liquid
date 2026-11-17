@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Ocampo Hale Architects</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Ocampo Hale Architects">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pt-12 pb-20 md:px-10 md:pt-16">
+    <p class="spec flex flex-wrap gap-x-3 text-base-content/70"><a href="/news" class="text-base-content underline underline-offset-4">News</a><span>{{ record.kind }}</span><span>{{ record.date | date: "%B %-d, %Y" }}</span></p>
+    <h1 class="mt-6 max-w-[14em] font-heading text-[clamp(3rem,7vw,6rem)] font-extrabold leading-[0.88] tracking-[-0.01em] text-balance" data-cast style="--cast: 0.14em">{{ record.title }}</h1>
+    <p class="mt-6 max-w-[32em] text-[1.375rem] leading-snug text-base-content/80">{{ record.summary }}</p>
+    {% if record.cover %}<div class="mt-12">{% render 'opening', src: record.cover, class: "aspect-[16/9] w-full md:aspect-[16/7]", cast: true %}</div>{% endif %}
+    <div class="story mx-auto mt-14 max-w-[36em] text-[1.125rem] leading-relaxed text-base-content/85">{{ record.body }}</div>
+    {% assign about = data.projects | where: "id", record.project | first %}
+    {% if about %}
+    <a href="/projects/{{ about.id }}" class="mx-auto mt-14 grid max-w-[36em] grid-cols-[7rem_1fr] items-start gap-5 border-t border-base-content/25 pt-6">
+      {% render 'opening', src: about.cover, class: "aspect-square w-full" %}
+      <div>
+        <p class="spec text-base-content/70">The project · {{ about.number }}</p>
+        <p class="mt-2 font-heading text-[1.875rem] font-bold leading-[0.95] underline-offset-4 hover:underline">{{ about.title }}</p>
+        <p class="mt-1 text-base-content/75">{{ about.thesis }}</p>
+      </div>
+    </a>
+    {% endif %}
+  </div>
+</article>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pb-20 md:px-10 md:pb-28">
+    <h2 class="font-heading text-[2.5rem] font-bold leading-[0.9]" data-cast>Other news</h2>
+    <ul class="mt-8 border-b border-base-content/25">
+      {% for note in data.news %}{% if note.id != record.id %}
+      <li class="border-t border-base-content/25"><a href="/news/{{ note.id }}" class="group grid gap-x-8 gap-y-1 py-5 md:grid-cols-[10rem_7rem_1fr] md:items-baseline"><span class="spec text-base-content/70">{{ note.date | date: "%B %-d, %Y" }}</span><span class="spec">{{ note.kind }}</span><span class="font-heading text-[1.625rem] font-bold leading-[1] underline-offset-4 group-hover:underline">{{ note.title }}</span></a></li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

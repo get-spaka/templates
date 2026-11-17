@@ -1,0 +1,5 @@
+<div class="mt-4 border-t border-base-content/25 pt-3">
+  <p class="spec flex flex-wrap gap-x-3 gap-y-1 text-base-content/70"><span class="text-base-content">{{ project.number }}</span><span>{{ project.place }}{% if project.town and project.town != project.place %}, {{ project.town }}{% endif %}</span><span>{% case project.type %}{% when "house" %}House{% when "addition" %}Addition{% when "restoration" %}Restoration{% when "public" %}Public building{% when "shade" %}Shade{% endcase %}</span><span class="whitespace-nowrap"><span class="status-dot" data-status="{{ project.status }}"></span>{% case project.status %}{% when "built" %}Built{% when "on-site" %}On site,{% when "in-design" %}In design,{% endcase %} {{ project.year }}</span></p>
+  <h3 class="mt-2 font-heading text-[1.875rem] font-bold leading-[0.95] md:text-[2.25rem]">{{ project.title }}</h3>
+  {% if thesis %}<p class="mt-2 text-base-content/75">{{ project.thesis }}</p>{% endif %}
+</div>

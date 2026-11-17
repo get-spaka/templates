@@ -1,0 +1,46 @@
+label: Briefs
+collected: true
+answer: enquiries-thanks
+body: message
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many briefs were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your brief was sent."
+fields:
+  - name: site
+    label: Where the site is
+    kind: text
+    required: true
+  - name: building
+    label: What is on it
+    kind: choice
+    choices: [Nothing yet, A building to keep, A building to replace]
+  - name: lot
+    label: How large the lot is
+    kind: text
+  - name: kind
+    label: The kind of work
+    kind: choice
+    choices: [A new house, An addition or a restoration, A public building, Shade or a courtyard, Something else]
+  - name: budget
+    label: Budget for building
+    kind: choice
+    choices: ["Under $250,000", "$250,000 to $750,000", "$750,000 to $1.5 million", "Over $1.5 million", "Not sure yet"]
+  - name: start
+    label: When you hope to start
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: message
+    label: Anything else we should know
+    kind: markdown

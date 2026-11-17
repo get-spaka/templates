@@ -1,0 +1,693 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt):
+   variable Darker Grotesque (300 to 900) and Instrument Sans (400 to 700, widths 75 to 100%),
+   Latin and Latin Extended, for names such as Lucía, Tomás or Zaguán. */
+@font-face {
+  font-family: "Darker Grotesque";
+  src: url("/fonts/darker-grotesque-latin.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Darker Grotesque";
+  src: url("/fonts/darker-grotesque-latin-ext.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Lenis (MIT), smooth scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   The sun. --sun is the sun's angle for one element, from 0 (low on one side)
+   to 1 (low on the other); 0.35, the stylesheet's own value, is the resting
+   angle: every shadow a little to the lower right. --light (0 to 1) grows the
+   shadows out of their letters on load (scripts/cast-in.js); it stays at 1
+   with no script. Neither ever changes the light or the colors of the page.
+   --------------------------------------------------------------------------- */
+@property --sun {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.35;
+}
+@property --light {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+:root {
+  /* The shade: adobe brown mixed transparent, so the Theme tab repaints every shadow. */
+  --shade-mix: 30%;
+  --shade: color-mix(in oklch, var(--color-primary) calc(var(--shade-mix) * var(--light)), transparent);
+}
+
+/* Each shadow's offset, from its element's own --sun and stand-off (--cast). */
+[data-cast],
+[data-opening],
+[data-model] {
+  --sun-bearing: calc((var(--sun) - 0.5) * 160deg);
+  --sun-height: max(sin(calc(var(--sun) * 180deg)), 0.3);
+  --cast-length: calc(var(--cast, 1rem) * (0.36 + 1.15 * (1 - var(--sun-height))) * var(--light));
+  --cast-x: calc(-1.15 * sin(var(--sun-bearing)) * var(--cast-length));
+  --cast-y: calc((0.15 + 0.45 * cos(var(--sun-bearing))) * var(--cast-length) + 0.1 * var(--cast, 1rem) * var(--light));
+}
+
+/* What stands off the wall casts a hard shadow, with no blur: the statement,
+   headings, project names, the main buttons, the models. Never running text. */
+[data-cast] {
+  filter: drop-shadow(var(--cast-x) var(--cast-y) 0 var(--shade));
+}
+[data-opening][data-cast] {
+  filter: drop-shadow(calc(var(--cast-x) * 0.4) calc(var(--cast-y) * 0.4) 0 var(--shade));
+}
+.btn[data-cast] {
+  --cast: 0.5rem;
+}
+h2[data-cast],
+h3[data-cast] {
+  --cast: 0.1em;
+}
+h1[data-cast] {
+  --cast: 0.12em;
+}
+
+/* On the dark wall (the footer, the brief band) a faint shadow that does not turn. */
+.on-dark [data-cast],
+[data-cast].on-dark {
+  --sun: 0.35;
+  --shade: oklch(from var(--color-neutral) calc(l * 0.55) c h);
+}
+
+/* ---------------------------------------------------------------------------
+   Type
+   --------------------------------------------------------------------------- */
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    font-stretch: 100%;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+    font-synthesis: none;
+    letter-spacing: -0.005em;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* Specs, labels, status, plaques: Instrument Sans at width 85, uppercase. Unlayered,
+   so it also holds on a heading (Upstart's heading rule comes after the layers). */
+.spec {
+  font-family: var(--font-body, "Instrument Sans"), ui-sans-serif, system-ui, sans-serif;
+  font-stretch: 85%;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The large figures and the hours: Darker Grotesque 600, even figures. */
+.figure {
+  font-family: var(--font-heading, "Darker Grotesque"), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  line-height: 0.9;
+}
+
+/* Buttons: Instrument Sans 500, sentence case, square. */
+.btn {
+  --radius-field: 0rem;
+  font-weight: 500;
+  font-stretch: 100%;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Text written in Markdown (a project's story, a note): ## heads become small spec heads. */
+.story > * + * {
+  margin-top: 1.1em;
+}
+.story h2,
+.story h3 {
+  font-family: var(--font-body, "Instrument Sans"), ui-sans-serif, system-ui, sans-serif;
+  font-stretch: 85%;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-base-300);
+}
+.story a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--color-primary);
+}
+.story ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Deep openings: data-opening on a <figure> around one <img>. The wall's
+   thickness is drawn inside the edge (its faces in rammed earth), and the
+   reveal's own shadow falls across one or two edges, from the side the sun
+   stands on, following the opening's --sun.
+   --------------------------------------------------------------------------- */
+[data-opening] {
+  --cast: 3.25rem;
+  position: relative;
+  overflow: clip;
+  background: var(--color-base-200);
+  view-timeline: --opening;
+}
+[data-opening] > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+[data-opening]::before,
+[data-opening]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+/* The wall's thickness: the head and one jamb in shade, the sill and the other jamb in light. */
+[data-opening]::before {
+  box-shadow:
+    inset 0.3rem 0.35rem 0 0 color-mix(in oklch, var(--color-base-200), var(--color-primary) 14%),
+    inset -0.2rem -0.2rem 0 0 color-mix(in oklch, var(--color-base-200), var(--color-base-100) 45%);
+}
+/* The sun's shadow inside the reveal, multiplied so the picture stays readable. */
+[data-opening]::after {
+  box-shadow: inset var(--cast-x) var(--cast-y) 0 0 color-mix(in oklch, var(--color-primary) 42%, transparent);
+  mix-blend-mode: multiply;
+}
+/* An empty opening, until the maker gives a photograph: rammed earth with a mark. */
+.opening-empty {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0 calc(100% - 1px),
+      color-mix(in oklch, var(--color-base-200), var(--color-primary) 10%) 0
+    )
+    0 0 / 100% 0.9rem,
+    var(--color-base-200);
+}
+
+/* ---------------------------------------------------------------------------
+   The sundial (data-sundial in the header): a disc in rammed earth with its
+   gnomon; only the pin's shadow turns as the page scrolls. No hour, no figure.
+   --------------------------------------------------------------------------- */
+[data-sundial] {
+  --sun: 0.35;
+  position: relative;
+  display: inline-block;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  background: var(--color-base-200);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--color-base-200), var(--color-primary) 22%);
+}
+[data-sundial] .dial-shadow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  height: 0.1875rem;
+  margin-top: -0.09375rem;
+  transform-origin: 0 50%;
+  background: color-mix(in oklch, var(--color-primary) 70%, transparent);
+  rotate: calc(90deg - (0.5 - var(--sun)) * 233deg);
+  scale: calc(1.45 - max(sin(calc(var(--sun) * 180deg)), 0.3) * 0.75) 1;
+  border-radius: 9999px;
+}
+[data-sundial] .dial-pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin: -0.1875rem 0 0 -0.1875rem;
+  border-radius: 9999px;
+  background: var(--color-base-content);
+}
+[data-sundial] .dial-sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: -0.25rem 0 0 -0.25rem;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  transform: rotate(calc(270deg - (0.5 - var(--sun)) * 233deg)) translateX(1.3rem);
+}
+
+/* ---------------------------------------------------------------------------
+   The models (data-model): a small solid house in isometric view, a flat roof
+   with an overhang in three tints of rammed earth, and its shadow on the
+   ground plane from the card's hour (--hour, 0 to 1). data-night: no sun, the
+   ground in monsoon blue and one window lit.
+   --------------------------------------------------------------------------- */
+[data-model] {
+  --sun: var(--hour, 0.35);
+  --cast: 1rem;
+  --face-top: color-mix(in oklch, var(--color-base-200), var(--color-base-100) 45%);
+  --face-front: var(--color-base-200);
+  --face-side: color-mix(in oklch, var(--color-base-200), var(--color-primary) 30%);
+  position: relative;
+  height: 9.5rem;
+  perspective: 60rem;
+  overflow: clip;
+}
+[data-model] .ground {
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  width: 7rem;
+  height: 7rem;
+  margin: -3.5rem 0 0 -3.5rem;
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(40deg);
+}
+[data-model] .model-shadow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(2.2rem + 5.5rem * (1 - max(sin(calc(var(--sun) * 180deg)), 0.15)));
+  height: 3rem;
+  margin-top: -1.5rem;
+  transform-origin: 0 50%;
+  rotate: calc(-40deg + 180deg * var(--sun));
+  background: color-mix(in oklch, var(--color-primary) 34%, transparent);
+  clip-path: polygon(0 0, 100% 18%, 100% 82%, 0 100%);
+}
+[data-model] .block {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem 0 0 -1.5rem;
+  transform-style: preserve-3d;
+}
+[data-model] .face {
+  position: absolute;
+  backface-visibility: visible;
+}
+[data-model] .roof {
+  left: -0.6rem;
+  top: -0.6rem;
+  width: 4.2rem;
+  height: 4.2rem;
+  background: var(--face-top);
+  transform: translateZ(2.4rem);
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--color-base-200), var(--color-primary) 12%);
+}
+[data-model] .roof-edge {
+  left: -0.6rem;
+  top: 3.6rem;
+  width: 4.2rem;
+  height: 0.35rem;
+  background: var(--face-side);
+  transform-origin: top;
+  transform: translateZ(2.4rem) rotateX(-90deg);
+}
+[data-model] .wall-front {
+  left: 0;
+  top: 3rem;
+  width: 3rem;
+  height: 2.4rem;
+  background: var(--face-front);
+  transform-origin: top;
+  transform: rotateX(90deg);
+}
+[data-model] .wall-side {
+  left: 3rem;
+  top: 0;
+  width: 2.4rem;
+  height: 3rem;
+  background: var(--face-side);
+  transform-origin: left;
+  transform: rotateY(-90deg);
+}
+[data-model] .window {
+  position: absolute;
+  left: 1.1rem;
+  top: 0.9rem;
+  width: 0.8rem;
+  height: 0.9rem;
+  background: color-mix(in oklch, var(--color-base-200), var(--color-primary) 50%);
+}
+[data-model] .model-sun {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  left: calc(8% + var(--sun) * 84%);
+  top: calc(70% - max(sin(calc(var(--sun) * 180deg)), 0) * 58%);
+  margin: -0.375rem 0 0 -0.375rem;
+}
+[data-model][data-night] {
+  --face-top: color-mix(in oklch, var(--color-neutral), var(--color-base-200) 30%);
+  --face-front: color-mix(in oklch, var(--color-neutral), var(--color-base-200) 20%);
+  --face-side: color-mix(in oklch, var(--color-neutral), var(--color-base-200) 10%);
+  background: var(--color-neutral);
+}
+[data-model][data-night] .model-shadow,
+[data-model][data-night] .model-sun {
+  display: none;
+}
+[data-model][data-night] .window {
+  background: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------------------
+   Rammed-earth strata (data-strata): a band of layered earth tints, mixed from
+   rammed earth, palo verde and monsoon blue. It settles as it comes into view.
+   --------------------------------------------------------------------------- */
+[data-strata] {
+  --e1: var(--color-base-200);
+  --e2: color-mix(in oklch, var(--color-base-200), var(--color-primary) 22%);
+  --e3: color-mix(in oklch, var(--color-base-200), var(--color-secondary) 35%);
+  --e4: color-mix(in oklch, var(--color-base-200), var(--color-primary) 40%);
+  --e5: color-mix(in oklch, var(--color-base-200), var(--color-base-100) 50%);
+  --e6: color-mix(in oklch, var(--color-neutral), var(--color-base-200) 35%);
+  display: block;
+  height: clamp(3.5rem, 8vw, 7.5rem);
+  transform-origin: bottom;
+  background: linear-gradient(
+    to bottom,
+    var(--e5) 0 7%,
+    var(--e1) 7% 16%,
+    var(--e2) 16% 23%,
+    var(--e1) 23% 35%,
+    var(--e3) 35% 41%,
+    var(--e5) 41% 50%,
+    var(--e4) 50% 58%,
+    var(--e1) 58% 69%,
+    var(--e2) 69% 77%,
+    var(--e3) 77% 84%,
+    var(--e4) 84% 92%,
+    var(--e6) 92% 100%
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   The wall of openings and the project filter (CSS only: data-n on each radio
+   and each project; "All" is checked, so every project shows with no script).
+   --------------------------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--color-base-300);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip-input:checked + .chip {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-content);
+}
+.chip-input:focus-visible + .chip {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+[data-filter]:has(.chip-input[data-n="1"]:checked) [data-n]:not(.chip-input):not([data-n~="1"]),
+[data-filter]:has(.chip-input[data-n="2"]:checked) [data-n]:not(.chip-input):not([data-n~="2"]),
+[data-filter]:has(.chip-input[data-n="3"]:checked) [data-n]:not(.chip-input):not([data-n~="3"]),
+[data-filter]:has(.chip-input[data-n="4"]:checked) [data-n]:not(.chip-input):not([data-n~="4"]),
+[data-filter]:has(.chip-input[data-n="5"]:checked) [data-n]:not(.chip-input):not([data-n~="5"]),
+[data-filter]:has(.chip-input[data-n="6"]:checked) [data-n]:not(.chip-input):not([data-n~="6"]) {
+  display: none;
+}
+
+/* The status dot: palo verde for built, the low sun for on site, an outline for in design. */
+.status-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  vertical-align: 0.05em;
+  margin-right: 0.4rem;
+}
+.status-dot[data-status="built"] {
+  background: color-mix(in oklch, var(--color-secondary), var(--color-base-content) 25%);
+}
+.status-dot[data-status="on-site"] {
+  background: var(--color-accent);
+}
+.status-dot[data-status="in-design"] {
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+/* The home page's wall: openings of three sizes placed as windows are in a wall. */
+@media (width >= 64rem) {
+  .wall > :nth-child(5n + 1) {
+    grid-column: 1 / span 5;
+  }
+  .wall > :nth-child(5n + 2) {
+    grid-column: 7 / span 3;
+    margin-top: 7rem;
+  }
+  .wall > :nth-child(5n + 3) {
+    grid-column: 10 / span 3;
+  }
+  .wall > :nth-child(5n + 4) {
+    grid-column: 2 / span 6;
+    margin-top: 2rem;
+  }
+  .wall > :nth-child(5n + 5) {
+    grid-column: 9 / span 3;
+    margin-top: 9rem;
+  }
+}
+@media (width < 64rem) {
+  .wall > :nth-child(odd) {
+    width: 86%;
+  }
+  .wall > :nth-child(even) {
+    width: 72%;
+    margin-left: auto;
+  }
+}
+
+/* The brief: the part in use is marked in the index. */
+.brief-index a {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--color-base-300);
+  color: color-mix(in oklch, var(--color-base-content) 65%, transparent);
+}
+form:has(#brief-site:focus-within) .brief-index a[href="#brief-site"],
+form:has(#brief-project:focus-within) .brief-index a[href="#brief-project"],
+form:has(#brief-you:focus-within) .brief-index a[href="#brief-you"] {
+  color: var(--color-base-content);
+  font-weight: 600;
+}
+.kind-card:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-base-100);
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+}
+
+/* The header's hairline, there once the page scrolls (below), always there with no timeline. */
+.site-header {
+  border-bottom: 1px solid var(--color-base-300);
+}
+
+/* The phone's menu: full screen on plaster. */
+.menu-sheet {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  background: var(--color-base-100);
+  color: var(--color-base-content);
+}
+.menu-sheet::backdrop {
+  background: color-mix(in oklch, var(--color-base-content) 30%, transparent);
+}
+
+/* Upstart's "Image credits" link, at the end of the footer, lined up with its container. */
+footer [data-up-credits] {
+  padding: 0 calc(max(0px, (100% - 90rem) / 2) + 1.25rem) 2rem;
+  font-size: 0.8125rem;
+  opacity: 0.7;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 90rem) / 2) + 2.5rem);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Movement, only for those who have not asked for less, and only where the
+   browser has scroll-driven animations. In edit mode nothing runs: every
+   shadow rests at 0.35, every photo still, every stratum settled.
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Each shadow turns while its element crosses the screen. */
+    [data-cast],
+    [data-opening] {
+      animation: sun-across linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes sun-across {
+      from {
+        --sun: 0.15;
+      }
+      to {
+        --sun: 0.85;
+      }
+    }
+    .on-dark [data-cast],
+    [data-cast].on-dark {
+      animation: none;
+    }
+
+    /* A view through a thick wall shifts as you walk past it. */
+    [data-opening] > img {
+      scale: 1.12;
+      animation: through-the-wall linear both;
+      animation-timeline: --opening;
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes through-the-wall {
+      from {
+        translate: 0 -5%;
+      }
+      to {
+        translate: 0 5%;
+      }
+    }
+
+    /* The sundial's shadow turns with the page. */
+    [data-sundial] {
+      animation: sun-across linear both;
+      animation-timeline: scroll(root);
+    }
+
+    /* The header's hairline comes once the page scrolls. */
+    .site-header {
+      animation: header-line linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 3rem;
+    }
+    @keyframes header-line {
+      from {
+        border-bottom-color: transparent;
+      }
+    }
+
+    /* The strata settle from the bottom, like a wall being tamped. */
+    [data-strata] {
+      animation: tamp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    @keyframes tamp {
+      from {
+        scale: 1 1.14;
+      }
+    }
+
+    /* Headings and paragraphs rise into view. */
+    [data-rise] {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 12rem;
+    }
+    @keyframes rise {
+      from {
+        opacity: 0;
+        translate: 0 1.75rem;
+      }
+    }
+  }
+
+  /* A model's sun runs through the day on hover or keyboard focus, on that card only. */
+  [data-day-card]:hover [data-model],
+  [data-day-card]:focus-within [data-model] {
+    animation: through-the-day 2.4s cubic-bezier(0.45, 0, 0.3, 1);
+  }
+  @keyframes through-the-day {
+    0% {
+      --sun: var(--hour, 0.35);
+    }
+    12% {
+      --sun: 0.02;
+    }
+    88% {
+      --sun: 0.98;
+    }
+    100% {
+      --sun: var(--hour, 0.35);
+    }
+  }
+}

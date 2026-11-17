@@ -1,0 +1,20 @@
+label: Recognition
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [award, publication, exhibition]
+  - name: project
+    label: Project
+    kind: text
+  - name: link
+    label: Link
+    kind: link
+sort: -year

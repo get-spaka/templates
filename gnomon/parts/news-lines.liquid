@@ -1,0 +1,15 @@
+<ul class="border-b border-base-content/25">
+  {% for note in notes limit: limit %}
+  <li class="border-t border-base-content/25">
+    <a href="/news/{{ note.id }}" class="group grid gap-x-8 gap-y-2 py-6 md:grid-cols-[10rem_7rem_1fr_auto] md:items-baseline">
+      <p class="spec text-base-content/70">{{ note.date | date: "%B %-d, %Y" }}</p>
+      <p class="spec text-base-content">{{ note.kind }}</p>
+      <div>
+        <h3 class="font-heading text-[1.75rem] font-bold leading-[1] underline-offset-4 group-hover:underline md:text-[2rem]">{{ note.title }}</h3>
+        {% if summaries %}<p class="mt-2 max-w-[40em] leading-relaxed text-base-content/75">{{ note.summary }}</p>{% endif %}
+      </div>
+      {% if covers and note.cover %}{% render 'opening', src: note.cover, class: "aspect-[4/3] w-36 hidden md:block" %}{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>

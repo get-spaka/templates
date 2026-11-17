@@ -1,0 +1,21 @@
+label: How a project goes
+fields:
+  - name: title
+    label: Stage
+    kind: text
+    required: true
+  - name: text
+    label: What it covers
+    kind: text
+  - name: duration
+    label: How long it usually takes
+    kind: text
+order:
+  [
+    the-site-study,
+    schematic-design,
+    design-development-and-permit,
+    construction-drawings-and-bidding,
+    on-site,
+    handover,
+  ]

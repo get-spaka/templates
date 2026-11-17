@@ -1,0 +1,13 @@
+label: Milestones
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: year
+    label: Year
+    kind: text
+  - name: text
+    label: Text
+    kind: text
+order: [a-spare-room, the-ice-house, a-first-public-building, six-people]

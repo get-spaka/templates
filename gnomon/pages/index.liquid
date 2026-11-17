@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Ocampo Hale Architects — Houses that keep their shade, Tucson</title>
+<meta name="description" content="Ocampo Hale is an architecture practice of six in Tucson, Arizona. We design houses, additions and small public buildings for the Sonoran Desert: thick walls, deep shade and courtyards.">
+<meta property="og:title" content="Ocampo Hale Architects — Houses that keep their shade">
+<meta property="og:description" content="Houses, additions and small public buildings for the Sonoran Desert, designed around the sun from a 1928 adobe ice house in Barrio Viejo.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+{% render 'hero', data: data %}
+{% render 'practice-in-brief', data: data %}
+{% render 'strata' %}
+{% render 'wall', data: data %}
+{% render 'day', days: data["home-day"], intro: "Five hours of a June day in the Sixth Street Courtyard House, and what the house does at each." %}
+{% render 'what-we-design', data: data %}
+{% render 'client-words', data: data %}
+{% render 'latest-news', data: data %}
+{% render 'brief-band' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

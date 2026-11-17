@@ -1,0 +1,10 @@
+{
+  "name": "Gnomon wall of openings",
+  "kind": "gallery",
+  "source": "upstart",
+  "description": "Projects set like windows punched through a rammed-earth wall, in openings of three shapes whose reveals catch the sun's shadow, each with its plaque (number, place, status dot, year, name and idea) and chips to show one kind of project.",
+  "tags": ["projects", "portfolio", "work", "gallery", "filter", "architecture"],
+  "mood": ["warm", "editorial", "minimal"],
+  "synonyms": ["projects", "portfolio", "our work", "gallery", "projets", "réalisations", "portfolio", "nos travaux"],
+  "data": { "name": "projects", "family": "collection" }
+}

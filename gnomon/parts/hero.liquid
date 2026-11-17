@@ -1,0 +1,19 @@
+{% assign lead = data.projects | where: "featured", true | first %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-5 pt-10 pb-20 md:px-10 md:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-28">
+    <div class="lg:col-span-8 lg:pt-6">
+      <h1 class="font-heading text-[clamp(3.5rem,11vw,10rem)] font-extrabold leading-[0.86] tracking-[-0.01em] text-balance" data-cast style="--cast: 0.14em">Houses that keep their shade.</h1>
+      <p class="mt-10 max-w-[36em] text-[1.375rem] leading-snug text-base-content/80 md:text-[1.625rem]">We design houses, additions and small public buildings for the Sonoran Desert: thick walls, deep shade, and courtyards that hold the evening.</p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/projects" class="btn btn-primary btn-lg whitespace-nowrap" data-cast>See the projects</a>
+        <a href="/contact#brief" class="btn btn-outline btn-lg whitespace-nowrap border-base-content/40 bg-base-100" data-cast>Start a project</a>
+      </div>
+    </div>
+    {% if lead %}
+    <a href="/projects/{{ lead.id }}" class="group block w-[88%] justify-self-end sm:w-[70%] lg:col-span-4 lg:w-full">
+      {% render 'opening', src: lead.cover, class: "aspect-[3/4] w-full", cast: true %}
+      <p class="spec mt-4 flex flex-wrap gap-x-2 border-t border-base-content/25 pt-3 text-base-content/70"><span class="text-base-content">{{ lead.title }}</span><span aria-hidden="true">·</span><span>{{ lead.place }}, {{ lead.town }}</span><span aria-hidden="true">·</span><span>{{ lead.year }}</span></p>
+    </a>
+    {% endif %}
+  </div>
+</section>

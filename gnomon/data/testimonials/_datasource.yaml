@@ -1,0 +1,14 @@
+label: In their words
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: quote
+    label: Their words
+    kind: text
+    required: true
+  - name: project
+    label: Project
+    kind: text
+order: [ferreira, arivaca, meyer-avenue]

@@ -1,0 +1,27 @@
+label: News
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [Project, Award, Talk, Studio]
+  - name: summary
+    label: One line
+    kind: text
+  - name: cover
+    label: Cover picture
+    kind: image
+  - name: project
+    label: The project it is about (its address in Projects)
+    kind: text
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: -date

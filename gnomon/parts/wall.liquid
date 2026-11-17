@@ -1,0 +1,23 @@
+{% assign featured = data.projects | where: "featured", true %}
+<section id="work" class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-10 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <div>
+        <p class="spec text-base-content/70">Work</p>
+        <h2 class="mt-3 font-heading text-[clamp(2.75rem,6vw,5rem)] font-bold leading-[0.9]" data-cast>Built, on site and on the table</h2>
+      </div>
+      <a href="/projects" class="btn btn-primary whitespace-nowrap" data-cast>All projects ({{ data.projects.size }})</a>
+    </div>
+    <ul class="wall mt-16 flex flex-col gap-y-14 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8 lg:gap-y-20">
+      {% for project in featured %}
+      <li>
+        <a href="/projects/{{ project.id }}" class="group block">
+          {% capture shape %}{% cycle 'aspect-[3/4]', 'aspect-square', 'aspect-square', 'aspect-[16/10]', 'aspect-square' %} w-full{% endcapture %}
+          {% render 'opening', src: project.cover, class: shape, cast: false %}
+          {% render 'plaque', project: project %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

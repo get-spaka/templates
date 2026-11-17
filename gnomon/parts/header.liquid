@@ -1,0 +1,39 @@
+<header class="site-header sticky top-0 z-40 bg-base-100/95 text-base-content backdrop-blur">
+  <div class="mx-auto flex h-[4.5rem] max-w-[90rem] items-center gap-6 px-5 md:h-20 md:px-10">
+    <a href="/" class="shrink-0 font-heading text-[2rem] font-extrabold leading-none tracking-[-0.01em] whitespace-nowrap md:text-[2.25rem]" data-cast style="--cast: 0.35rem" aria-label="Ocampo Hale Architects, home">Ocampo Hale</a>
+    <nav aria-label="Main" class="ml-auto hidden lg:block">
+      <ul class="flex items-center gap-7 text-[0.9375rem] font-medium whitespace-nowrap xl:gap-9">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="py-2 underline-offset-[0.45em] decoration-2 hover:underline {% if page.url contains item.href %}underline decoration-primary{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="ml-auto flex items-center gap-4 lg:ml-3">
+      <a href="/contact#brief" class="btn btn-primary hidden whitespace-nowrap sm:inline-flex" data-cast>Start a project</a>
+      {% render 'sundial' %}
+      <button type="button" class="btn btn-ghost btn-square lg:hidden" commandfor="site-menu" command="show-modal" aria-label="Open the menu">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M3 8h18"/><path d="M3 16h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <dialog id="site-menu" class="menu-sheet" aria-label="Menu">
+    <div class="flex h-full flex-col px-5 pb-10">
+      <div class="flex h-[4.5rem] items-center justify-between gap-4">
+        <span class="font-heading text-[2rem] font-extrabold leading-none whitespace-nowrap">Ocampo Hale</span>
+        <div class="flex items-center gap-4">
+          {% render 'sundial' %}
+          <button type="button" class="btn btn-ghost btn-square" commandfor="site-menu" command="close" aria-label="Close the menu">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="m5 5 14 14"/><path d="M19 5 5 19"/></svg>
+          </button>
+        </div>
+      </div>
+      <ul class="mt-10 flex flex-col">
+        <li class="border-t border-base-300"><a href="/" class="block py-4 font-heading text-[2.75rem] font-bold leading-none">Home</a></li>
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li class="border-t border-base-300"><a href="{{ item.href }}" class="block py-4 font-heading text-[2.75rem] font-bold leading-none" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+      <a href="/contact#brief" class="btn btn-primary btn-lg mt-auto w-full" data-cast>Start a project</a>
+    </div>
+  </dialog>
+</header>

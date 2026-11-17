@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The practice — Ocampo Hale Architects, Tucson</title>
+<meta name="description" content="Six people in a 1928 adobe ice house in Barrio Viejo, designing for the Sonoran sun since 2014: who we are, how a project goes, what it costs and what it has won.">
+<meta property="og:title" content="The practice — Ocampo Hale Architects">
+<meta property="og:description" content="We design for the sun we have: six people in an adobe ice house in Tucson, since 2014.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pt-14 pb-16 md:px-10 md:pt-20 md:pb-24">
+    <h1 class="max-w-[9em] font-heading text-[clamp(3.5rem,11vw,10rem)] font-extrabold leading-[0.86] tracking-[-0.01em] text-balance" data-cast style="--cast: 0.14em">We design for the sun we have.</h1>
+    <p class="mt-10 max-w-[34em] text-[1.375rem] leading-snug text-base-content/80 md:text-[1.75rem]">Ocampo Hale is Lucía Ocampo, Peter Hale and four colleagues, working since 2014 from an adobe ice house in Barrio Viejo. We take on six to eight projects a year within two hours of Tucson: houses, additions and restorations, small public buildings and shade.</p>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[90rem] gap-12 px-5 pb-20 md:px-10 md:pb-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7">
+      {% render 'opening', src: "/media/ice-house.jpg", class: "aspect-[16/10] w-full", cast: true %}
+      <p class="spec mt-4 border-t border-base-content/25 pt-3 text-base-content/70">The ice house, 418 South Meyer Avenue, built in 1928</p>
+    </div>
+    <div class="lg:col-span-4 lg:col-start-9">
+      <h2 class="font-heading text-[2.75rem] font-bold leading-[0.9]" data-cast>The ice house</h2>
+      <ol class="mt-8 border-b border-base-content/25">
+        {% for milestone in data["practice-milestones"] %}
+        <li class="grid grid-cols-[4.5rem_1fr] gap-4 border-t border-base-content/25 py-5">
+          <p class="figure text-[2rem]">{{ milestone.year }}</p>
+          <div>
+            <h3 class="font-heading text-[1.5rem] font-bold leading-[1]">{{ milestone.title }}</h3>
+            <p class="mt-2 text-[0.9375rem] leading-relaxed text-base-content/75">{{ milestone.text }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% render 'day', days: data["practice-day"], intro: "Every house we design is drawn hour by hour through a day in June. These five hours decide most of it." %}
+<section id="people" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-10 md:py-28">
+    <p class="spec text-base-content/70">The people</p>
+    <h2 class="mt-3 font-heading text-[clamp(2.75rem,6vw,5rem)] font-bold leading-[0.9]" data-cast>Six of us, one table</h2>
+    <ul class="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+      {% for person in data.people %}
+      <li class="grid grid-cols-[7rem_1fr] gap-5 md:grid-cols-[8.5rem_1fr]">
+        {% if person.portrait %}{% render 'opening', src: person.portrait, class: "aspect-[4/5] w-full" %}{% else %}
+        <figure data-opening class="aspect-[4/5] w-full"><div class="opening-empty" aria-hidden="true"><span class="figure text-[2.75rem] text-base-content/70">{{ person.name | split: " " | first | slice: 0 }}{{ person.name | split: " " | last | slice: 0 }}</span></div></figure>
+        {% endif %}
+        <div class="border-t border-base-content/25 pt-3">
+          <h3 class="font-heading text-[1.75rem] font-bold leading-[0.95]">{{ person.name }}</h3>
+          <p class="spec mt-2 text-base-content/70">{{ person.role }}{% if person.credentials %} · {{ person.credentials }}{% endif %}</p>
+          <p class="mt-3 text-[0.9375rem] leading-relaxed text-base-content/75">{{ person.bio }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'strata' %}
+<section id="stages" class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 py-20 md:px-10 md:py-28">
+    <p class="spec text-base-content/70">How a project goes</p>
+    <h2 class="mt-3 max-w-[14em] font-heading text-[clamp(2.75rem,6vw,5rem)] font-bold leading-[0.9]" data-cast>From the first visit to the house's manual</h2>
+    <ol class="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+      {% for stage in data["practice-stages"] %}
+      <li class="border-t-2 border-base-content pt-5">
+        <p class="figure text-[3.5rem]">{{ forloop.index | prepend: "0" }}</p>
+        <h3 class="mt-3 font-heading text-[1.75rem] font-bold leading-[0.95]">{{ stage.title }}</h3>
+        <p class="mt-3 leading-relaxed text-base-content/75">{{ stage.text }}</p>
+        <p class="spec mt-4 text-base-content/70">{{ stage.duration }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section id="fees" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[90rem] gap-10 px-5 py-20 md:px-10 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-4">
+      <p class="spec text-base-content/70">Fees</p>
+      <h2 class="mt-3 font-heading text-[clamp(2.75rem,5vw,4rem)] font-bold leading-[0.9]" data-cast>What it costs to work with us</h2>
+    </div>
+    <div class="max-w-[36em] space-y-5 text-[1.1875rem] leading-relaxed text-base-content/85 lg:col-span-7 lg:col-start-6" data-rise>
+      <p>Our fees for a new house are usually between 12 and 15 percent of the cost of building it, and a little more for a restoration, where the old walls take time to understand. Until the design is agreed we work by the hour, against an estimate we give you after the site study. Once you have chosen a design, the fee for the rest of the work becomes a fixed sum, so it no longer moves with the cost of the building.</p>
+      <p>The site study costs $850 and is credited to the fees if we go on together. We invoice monthly, for the work done, and never ask for a retainer.</p>
+    </div>
+  </div>
+</section>
+<section id="recognition" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[90rem] px-5 pb-20 md:px-10 md:pb-28">
+    <h2 class="font-heading text-[2.75rem] font-bold leading-[0.9]" data-cast>Recognition</h2>
+    <ul class="mt-8 border-b border-base-content/25">
+      {% for item in data.recognition %}
+      <li class="grid gap-x-8 gap-y-1 border-t border-base-content/25 py-5 md:grid-cols-[6rem_8rem_1fr_1fr] md:items-baseline">
+        <p class="figure text-[1.75rem]">{{ item.year }}</p>
+        <p class="spec text-base-content/70">{% case item.kind %}{% when "award" %}Award{% when "publication" %}Publication{% when "exhibition" %}Exhibition{% endcase %}</p>
+        <p class="font-heading text-[1.5rem] font-bold leading-[1]">{% if item.link %}<a href="{{ item.link }}" class="underline underline-offset-4">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</p>
+        <p class="text-base-content/75">{{ item.project }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'brief-band' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

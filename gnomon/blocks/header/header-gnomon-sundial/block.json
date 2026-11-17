@@ -1,0 +1,19 @@
+{
+  "name": "Gnomon sundial header",
+  "kind": "header",
+  "source": "upstart",
+  "description": "A sticky header on plaster: the name in a heavy grotesk casting its shadow, the links, a square button and a small sundial whose shadow turns as the page scrolls; a full-screen menu on a phone.",
+  "tags": ["header", "navigation", "menu", "sundial", "sticky"],
+  "mood": ["minimal", "warm", "bold"],
+  "synonyms": [
+    "header",
+    "navigation",
+    "menu",
+    "top bar",
+    "en-tête",
+    "menu",
+    "barre de navigation",
+    "navigation principale"
+  ],
+  "data": { "name": "navigation", "family": "collection" }
+}
