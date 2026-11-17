@@ -3,18 +3,8 @@
   "kind": "steps",
   "source": "upstart",
   "description": "Steps set as the numbered clauses of a contract (1.1 to 1.4) in a ruled list on manila, beside a heading that says what happens and what it costs.",
-  "tags": [
-    "steps",
-    "process",
-    "how it works",
-    "clauses",
-    "numbered"
-  ],
-  "mood": [
-    "professional",
-    "minimal",
-    "warm"
-  ],
+  "tags": ["steps", "process", "how it works", "clauses", "numbered"],
+  "mood": ["professional", "minimal", "warm"],
   "synonyms": [
     "steps",
     "process",

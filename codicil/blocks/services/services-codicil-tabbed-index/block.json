@@ -3,19 +3,8 @@
   "kind": "services",
   "source": "upstart",
   "description": "Practice areas or services as a file of manila dividers: tabs staggered along the top, each bringing its sheet to the front with what it covers, situations in the client's words, who leads it and its fee. Works with no script.",
-  "tags": [
-    "services",
-    "practice areas",
-    "tabs",
-    "index",
-    "law firm",
-    "folders"
-  ],
-  "mood": [
-    "professional",
-    "elegant",
-    "editorial"
-  ],
+  "tags": ["services", "practice areas", "tabs", "index", "law firm", "folders"],
+  "mood": ["professional", "elegant", "editorial"],
   "synonyms": [
     "services",
     "practice areas",

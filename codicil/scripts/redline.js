@@ -44,8 +44,14 @@ export function start(root) {
         { duration: 0.6, ease: EASE, delay: 0.6 },
       );
       animations = [strike, write];
-      Promise.resolve(strike).then(() => (del.style.backgroundSize = ""), () => {});
-      Promise.resolve(write).then(() => unmask(ins), () => {});
+      Promise.resolve(strike).then(
+        () => (del.style.backgroundSize = ""),
+        () => {},
+      );
+      Promise.resolve(write).then(
+        () => unmask(ins),
+        () => {},
+      );
     };
     if (line.dataset.redline === "load") {
       timer = setTimeout(go, 300);

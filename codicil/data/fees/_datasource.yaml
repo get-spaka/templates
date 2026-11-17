@@ -20,4 +20,14 @@ fields:
   - name: featured
     label: On the home page
     kind: boolean
-order: [will-package, revocable-trust, probate-administration, residential-closing, forming-an-llc, employment-agreement-review, powers-of-attorney, disputes]
+order:
+  [
+    will-package,
+    revocable-trust,
+    probate-administration,
+    residential-closing,
+    forming-an-llc,
+    employment-agreement-review,
+    powers-of-attorney,
+    disputes,
+  ]

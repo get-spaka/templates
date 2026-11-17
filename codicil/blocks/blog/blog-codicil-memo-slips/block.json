@@ -3,18 +3,8 @@
   "kind": "blog",
   "source": "upstart",
   "description": "The latest three articles as memos on pale manila (Re, From, Date and a summary), overlapping and tilted a little like papers on a desk on wide screens, stacked on a phone.",
-  "tags": [
-    "blog",
-    "articles",
-    "news",
-    "memo",
-    "latest posts"
-  ],
-  "mood": [
-    "editorial",
-    "professional",
-    "warm"
-  ],
+  "tags": ["blog", "articles", "news", "memo", "latest posts"],
+  "mood": ["editorial", "professional", "warm"],
   "synonyms": [
     "blog",
     "articles",
