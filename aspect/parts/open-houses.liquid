@@ -1,0 +1,25 @@
+{% assign any = false %}{% for listing in data.listings %}{% if listing.open_house != blank and listing.status != "sold" and listing.status != "under-contract" %}{% assign any = true %}{% endif %}{% endfor %}
+{% if any %}
+<section id="open-houses" class="bg-secondary text-secondary-content">
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="eyebrow opacity-75">This weekend</p>
+        <h2 class="mt-4 text-[clamp(1.75rem,2vw+1rem,2.75rem)] leading-[1.08] tracking-[-0.015em] text-balance">Open this weekend: no need to book.</h2>
+      </div>
+      <ul class="lg:col-span-8" data-reveal="stagger">
+        {% for listing in data.listings %}{% if listing.open_house != blank and listing.status != "sold" and listing.status != "under-contract" %}
+        <li class="grid gap-x-6 gap-y-1 border-t border-current/20 py-5 last:border-b sm:grid-cols-[10rem_1fr_auto] sm:items-baseline">
+          <p class="price text-[1.25rem]">{{ listing.open_house }}</p>
+          <div>
+            <p class="font-heading text-[1.25rem] leading-snug">{{ listing.address }}</p>
+            <p class="facts mt-1 opacity-75">{{ listing.neighborhood }}{% if listing.agent != blank %} · {{ listing.agent }} will be there{% endif %}</p>
+          </div>
+          <a href="/homes/{{ listing.id }}" class="mt-2 inline-flex items-center gap-2 font-semibold whitespace-nowrap underline underline-offset-4 sm:mt-0">See the house<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}

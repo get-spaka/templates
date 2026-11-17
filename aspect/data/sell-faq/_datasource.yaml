@@ -1,0 +1,10 @@
+label: Selling questions
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: text
+order: [valuation-cost, appraisal, commission, how-long, sell-and-buy, staging]

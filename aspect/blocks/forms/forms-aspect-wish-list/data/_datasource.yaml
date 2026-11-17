@@ -1,0 +1,33 @@
+label: What buyers are looking for
+collected: true
+answer: home-searches-thanks
+body: must_haves
+messages:
+  required: "{field} is needed so a broker can write to you."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, a broker will write to you."
+fields:
+  - name: neighborhoods
+    label: Neighborhoods
+    kind: list
+    choices: [Fairhaven, South Hill, Lettered Streets, Columbia, Edgemoor, Sunnyland, Anywhere]
+  - name: beds
+    label: Bedrooms
+    kind: choice
+    choices: [Any, 1+, 2+, 3+, 4+]
+  - name: price_range
+    label: Price range
+    kind: choice
+    choices: [Under $500k, $500k–$700k, $700k–$1m, Over $1m]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: must_haves
+    label: Must haves
+    kind: markdown

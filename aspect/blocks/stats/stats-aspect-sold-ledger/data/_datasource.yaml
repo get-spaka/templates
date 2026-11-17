@@ -1,0 +1,28 @@
+label: Sold this year
+fields:
+  - name: street
+    label: Street
+    kind: text
+    required: true
+  - name: number
+    label: House number
+    kind: text
+  - name: neighborhood
+    label: Neighborhood
+    kind: text
+  - name: asking
+    label: Asking price
+    kind: text
+  - name: sold
+    label: Sold price
+    kind: text
+  - name: days
+    label: Days on the market
+    kind: number
+  - name: broker
+    label: Broker
+    kind: text
+  - name: listing
+    label: Its page, if it has one
+    kind: link
+order: [orchard-terrace, hawthorn-way, laurel-court, elmira-street, pier-view-lane, spruce-hollow]

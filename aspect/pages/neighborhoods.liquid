@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Where we sell — Bellingham's neighborhoods, by Halvorsen Pike Real Estate</title>
+<meta name="description" content="Fairhaven, South Hill, the Lettered Streets, Columbia, Edgemoor and Sunnyland: their houses, their streets, what they sell for, and the homes for sale there now.">
+<meta property="og:title" content="Where we sell — Bellingham's neighborhoods">
+<meta property="og:description" content="Six neighborhoods described by the brokers who sell there: the houses, the streets, the prices and what's near.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16" data-reveal>
+    <p class="eyebrow text-base-content/70">Bellingham, Washington</p>
+    <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.015em] text-balance">Where we sell</h1>
+    <p class="mt-6 max-w-[56ch] text-[1.1875rem] leading-relaxed text-base-content/80">Six neighborhoods, mostly, and the shore of Lake Whatcom when asked. Here is what their houses are like, what they sell for, and what's for sale there now.</p>
+  </div>
+</section>
+<nav aria-label="Neighborhoods" class="bg-secondary text-secondary-content">
+  <ul class="mx-auto flex max-w-7xl flex-wrap gap-2 px-5 py-5 md:px-8">
+    {% for hood in data.neighborhoods %}<li><a href="#{{ hood.id }}" class="inline-flex min-h-10 items-center rounded-full border border-current/25 px-4 font-medium whitespace-nowrap hover:bg-base-100/40">{{ hood.name }}</a></li>{% endfor %}
+  </ul>
+</nav>
+{% for hood in data.neighborhoods %}
+{% assign expert = data.team | where: "name", hood.agent | first %}
+<section id="{{ hood.id }}" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 {% unless forloop.first %}border-t border-base-300{% endunless %}">
+    {% if hood.image %}<div class="aspect-[16/9] overflow-hidden rounded-box bg-base-200 md:aspect-[21/9]" data-reveal><img src="{{ hood.image }}" class="h-full w-full object-cover"></div>{% endif %}
+    <div class="mt-10 grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7" data-reveal>
+        <h2 class="text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em]">{{ hood.name }}</h2>
+        <p class="mt-3 font-heading text-[1.25rem] leading-snug text-base-content/75">{{ hood.summary }}</p>
+        <div class="prose-aspect mt-6 max-w-[64ch]">{{ hood.body }}</div>
+      </div>
+      <div class="lg:col-span-5" data-reveal>
+        <dl class="grid grid-cols-3 gap-4 border-y border-base-300 py-5 lg:grid-cols-1 lg:gap-0 lg:py-0">
+          <div class="lg:flex lg:justify-between lg:gap-4 lg:border-b lg:border-base-300 lg:py-4"><dt class="facts text-base-content/60">Typical prices</dt><dd class="price mt-1 text-[1.25rem] lg:mt-0">{{ hood.price_range }}</dd></div>
+          <div class="lg:flex lg:justify-between lg:gap-4 lg:border-b lg:border-base-300 lg:py-4"><dt class="facts text-base-content/60">Houses built</dt><dd class="price mt-1 text-[1.25rem] lg:mt-0">{{ hood.built }}</dd></div>
+          <div class="lg:flex lg:justify-between lg:gap-4 lg:py-4"><dt class="facts text-base-content/60">The walk</dt><dd class="mt-1 text-base lg:mt-0 lg:text-right">{{ hood.walk }}</dd></div>
+        </dl>
+        {% if expert %}
+        <div class="mt-6 rounded-box bg-base-200 p-5">
+          <p class="facts text-base-content/65">Knows it best</p>
+          <p class="mt-1 font-heading text-[1.375rem]"><a href="/brokers/{{ expert.id }}" class="hover:underline hover:underline-offset-4">{{ expert.name }}</a></p>
+          <a href="/sell?hood={{ hood.id }}#valuation" class="more mt-3">What's my home worth here?<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% assign here = data.listings | where: "neighborhood", hood.name %}
+    {% assign onsale = 0 %}{% for listing in here %}{% if listing.status == "new" or listing.status == "for-sale" %}{% assign onsale = onsale | plus: 1 %}{% endif %}{% endfor %}
+    <div class="mt-12">
+      <p class="eyebrow text-base-content/70">For sale here</p>
+      {% if onsale > 0 %}
+      <ul class="mt-6 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4" data-door-stagger>
+        {% for listing in here %}{% if listing.status == "new" or listing.status == "for-sale" %}{% render 'listing-card', listing: listing, small: true %}{% endif %}{% endfor %}
+      </ul>
+      {% else %}
+      <p class="mt-4 text-[1.0625rem] text-base-content/75">Nothing on the market here right now. <a href="/homes#wish-list" class="font-semibold text-primary underline underline-offset-4">Tell us what you're looking for.</a></p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% render 'valuation-band' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

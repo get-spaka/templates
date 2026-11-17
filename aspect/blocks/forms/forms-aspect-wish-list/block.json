@@ -1,0 +1,22 @@
+{
+  "name": "Aspect wish list",
+  "kind": "forms",
+  "source": "upstart",
+  "description": "\"Not seeing it?\" beside a card form for what a buyer is looking for: neighborhoods to tick, bedrooms, a price range, must haves, name and email; a broker writes when a home like it comes up.",
+  "tags": ["form", "buyers", "wish list", "real estate", "alerts", "search"],
+  "mood": ["friendly", "minimal"],
+  "synonyms": [
+    "wish list",
+    "buyer request",
+    "what you're looking for",
+    "home search",
+    "recherche de bien",
+    "votre recherche",
+    "alerte",
+    "liste de souhaits"
+  ],
+  "data": {
+    "name": "home-searches",
+    "family": "collection"
+  }
+}

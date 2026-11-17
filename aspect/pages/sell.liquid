@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Selling your home — Halvorsen Pike Real Estate, Bellingham</title>
+<meta name="description" content="Ask for a free valuation: a broker visits, then sends a written opinion of price within three working days, with the sales it rests on.">
+<meta property="og:title" content="Selling your home — Halvorsen Pike Real Estate, Bellingham">
+<meta property="og:description" content="It starts with what it's worth, and a conversation about when.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16" data-reveal>
+    <p class="eyebrow text-base-content/70">Free valuation · No obligation</p>
+    <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.015em] text-balance">Selling your home</h1>
+    <p class="mt-6 max-w-[48ch] text-[1.1875rem] leading-relaxed text-base-content/80">It starts with what it's worth, and a conversation about when.</p>
+  </div>
+</section>
+{% render 'valuation-form', data: data %}
+<section id="how-we-sell" class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div data-reveal>
+      <p class="eyebrow text-base-content/70">How we sell</p>
+      <h2 class="mt-4 max-w-[20ch] text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">Five steps, one broker all the way</h2>
+    </div>
+    <ol class="mt-14 grid gap-10 md:grid-cols-5 md:gap-6" data-reveal="stagger">
+      {% for step in data["selling-steps"] %}
+      <li class="border-t-2 border-primary pt-5">
+        <p class="price text-[2.5rem] leading-none text-primary">{{ forloop.index }}</p>
+        <h3 class="mt-4 text-[1.375rem] leading-snug">{{ step.title }}</h3>
+        <p class="mt-3 text-base leading-relaxed text-base-content/75">{{ step.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% render 'sold-ledger', data: data %}
+<section id="sellers" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <p class="eyebrow text-base-content/70" data-reveal>Sellers' words</p>
+    <div class="mt-10 grid gap-12 md:grid-cols-2" data-reveal="stagger">
+      {% for item in data.testimonials %}{% if item.side == "sold" %}
+      <figure class="border-t border-base-300 pt-8">
+        <p class="font-heading text-[1.375rem] leading-snug">{{ item.headline }}</p>
+        <blockquote class="mt-4 font-heading text-[clamp(1.375rem,1vw+1rem,1.75rem)] leading-[1.35] font-light italic">“{{ item.quote }}”</blockquote>
+        <figcaption class="facts mt-5 text-base-content/70">{{ item.name }} · {{ item.neighborhood }} · Sold with us</figcaption>
+      </figure>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+<section id="questions" class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="eyebrow text-base-content/70">Questions</p>
+      <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">What sellers ask us first</h2>
+      <p class="mt-6 max-w-[36ch] leading-relaxed text-base-content/75">For what you can borrow on your next home, ask a lender; we'll gladly name a few.</p>
+    </div>
+    <div class="grid gap-x-10 md:grid-cols-2 lg:col-span-8" data-reveal="stagger">
+      {% for item in data["sell-faq"] %}
+      <details class="group border-t border-base-300 py-5">
+        <summary class="flex cursor-pointer items-start justify-between gap-4 font-heading text-[1.25rem] leading-snug">{{ item.question }}<svg class="mt-1 size-5 shrink-0 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p class="mt-3 leading-relaxed text-base-content/80">{{ item.answer }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

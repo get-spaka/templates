@@ -1,0 +1,18 @@
+{
+  "name": "Aspect front door hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A warm serif headline with two buttons beside a tall photo of a house behind its painted front door, which swings open on its hinge as the page loads, with the address and the price on a ruled caption line.",
+  "tags": ["hero", "real estate", "front door", "photo", "house", "listing"],
+  "mood": ["elegant", "warm", "editorial"],
+  "synonyms": [
+    "hero",
+    "top of page",
+    "headline",
+    "real estate hero",
+    "en-tête",
+    "haut de page",
+    "accroche",
+    "bandeau d'accueil"
+  ]
+}

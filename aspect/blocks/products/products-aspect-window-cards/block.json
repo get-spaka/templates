@@ -1,0 +1,22 @@
+{
+  "name": "Aspect window cards",
+  "kind": "products",
+  "source": "upstart",
+  "description": "Homes as window cards: a band across the top edge says where each stands (new, open Sunday, under contract, sold in 6 days), the photo arrives behind its painted front door, which swings open as the card comes into view, then the price, the address and the facts; each home's page has its band, its price, its door and the broker's walk-through.",
+  "tags": ["listings", "homes", "real estate", "cards", "front door", "status"],
+  "mood": ["elegant", "warm", "editorial"],
+  "synonyms": [
+    "listings",
+    "homes for sale",
+    "properties",
+    "houses",
+    "biens à vendre",
+    "annonces",
+    "maisons",
+    "nos biens"
+  ],
+  "data": {
+    "name": "listings",
+    "family": "collection"
+  }
+}

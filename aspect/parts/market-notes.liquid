@@ -1,0 +1,23 @@
+<section id="notes" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="eyebrow text-base-content/70">From the office</p>
+      <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">Notes on the market</h2>
+      <a href="/notes" class="more mt-6">All the notes<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <ul class="lg:col-span-8" data-reveal="stagger">
+      {% for post in data.blog limit: 3 %}
+      <li class="border-t border-base-300 last:border-b">
+        <a href="/notes/{{ post.id }}" class="group grid gap-x-8 gap-y-1 py-6 sm:grid-cols-[9rem_1fr]">
+          <p class="facts text-base-content/65">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <div>
+            <h3 class="text-[1.375rem] leading-snug group-hover:underline group-hover:underline-offset-4">{{ post.title }}</h3>
+            <p class="mt-2 text-base leading-relaxed text-base-content/75">{{ post.summary }}</p>
+            <p class="facts mt-2 text-base-content/60">{{ post.author }}{% if post.minutes %} · {{ post.minutes }} minutes{% endif %}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

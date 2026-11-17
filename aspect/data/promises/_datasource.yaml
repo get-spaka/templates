@@ -1,0 +1,10 @@
+label: How we work
+fields:
+  - name: title
+    label: Promise
+    kind: text
+    required: true
+  - name: text
+    label: What it means
+    kind: text
+order: [one-broker, we-walk-through-every-home, what-it-is-worth, one-working-day]

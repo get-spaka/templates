@@ -1,0 +1,52 @@
+<section id="wish-list" class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="eyebrow text-base-content/70">Tell us what you're looking for</p>
+      <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3rem)] leading-[1.06] tracking-[-0.015em] text-balance">Not seeing it? Many homes sell before they're listed.</h2>
+      <p class="mt-6 max-w-[48ch] text-[1.0625rem] leading-relaxed text-base-content/80">A broker emails you when one comes up: often a few days before it's on the market, sometimes before it has a price.</p>
+    </div>
+    <form hx-post="/_data/home-searches" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#home-searches-problems swap:innerHTML" class="flex flex-col gap-6 rounded-box border border-base-300 bg-base-100 p-6 md:p-8 lg:col-span-7" data-reveal>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Neighborhoods</legend>
+        <div class="flex flex-wrap gap-2">
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Fairhaven" class="checkbox checkbox-sm checkbox-primary">Fairhaven</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="South Hill" class="checkbox checkbox-sm checkbox-primary">South Hill</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Lettered Streets" class="checkbox checkbox-sm checkbox-primary">Lettered Streets</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Columbia" class="checkbox checkbox-sm checkbox-primary">Columbia</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Edgemoor" class="checkbox checkbox-sm checkbox-primary">Edgemoor</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Sunnyland" class="checkbox checkbox-sm checkbox-primary">Sunnyland</label>
+          <label class="pick"><input type="checkbox" name="neighborhoods" value="Anywhere" class="checkbox checkbox-sm checkbox-primary">Anywhere</label>
+        </div>
+      </fieldset>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">Bedrooms</legend>
+          <select name="beds" class="select w-full"><option>Any</option><option>1+</option><option>2+</option><option selected>3+</option><option>4+</option></select>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">Price range</legend>
+          <select name="price_range" class="select w-full"><option>Under $500k</option><option selected>$500k–$700k</option><option>$700k–$1m</option><option>Over $1m</option></select>
+        </fieldset>
+      </div>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Must haves</legend>
+        <input name="must_haves" class="input w-full" maxlength="300" placeholder="A garden, a garage, a short walk to the water">
+      </fieldset>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+          <input name="name" class="input w-full" required maxlength="120" autocomplete="name">
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+          <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+        </fieldset>
+      </div>
+      <div id="home-searches-problems"></div>
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <button class="btn btn-primary whitespace-nowrap">Send my wish list</button>
+        <p class="text-[0.9375rem] text-base-content/70">A broker emails you when one comes up.</p>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,6 @@
+{% assign first = record.name | default: "" | split: " " | first %}
+<div class="flex flex-col gap-4 rounded-box border border-base-300 bg-base-100 p-8 md:p-10" role="status">
+  <p class="eyebrow text-base-content/70">Request received</p>
+  <p class="font-heading text-[clamp(1.5rem,2vw+1rem,2.25rem)] leading-tight font-light text-balance">Thank you{% if first != blank %}, {{ first }}{% endif %}. We'll reply within one working day to set a time.</p>
+  <p class="max-w-[56ch] text-base leading-relaxed text-base-content/80">If it's sooner than that, call the office on <a href="tel:+13605550140" class="font-semibold text-primary underline underline-offset-4">(360) 555-0140</a>.</p>
+</div>

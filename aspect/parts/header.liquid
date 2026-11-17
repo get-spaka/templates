@@ -1,0 +1,35 @@
+<header class="sticky top-0 z-40 border-b border-base-300 bg-base-100/95 text-base-content backdrop-blur">
+  <div class="mx-auto flex h-[4.25rem] max-w-7xl items-center gap-6 px-5 md:h-[4.75rem] md:px-8">
+    <a href="/" class="flex shrink-0 items-baseline gap-3" aria-label="Halvorsen Pike Real Estate, home">
+      <span class="font-heading text-[1.5rem] leading-none whitespace-nowrap md:text-[1.75rem]">Halvorsen Pike</span>
+      <span class="eyebrow hidden whitespace-nowrap text-base-content/60 xl:inline">Real Estate</span>
+    </a>
+    <nav aria-label="Main" class="ml-auto hidden lg:block">
+      <ul class="flex items-center gap-6 text-[0.9375rem] font-medium whitespace-nowrap xl:gap-8">
+        {% for item in data.navigation %}{% unless item.place == "footer" %}
+        <li><a href="{{ item.href }}" class="py-2 underline-offset-[0.5em] hover:underline {% if page.url contains item.href %}underline decoration-primary decoration-2{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endunless %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="ml-auto flex items-center gap-3 lg:ml-2">
+      <a href="tel:+13605550140" class="hidden text-[0.9375rem] font-medium whitespace-nowrap tabular-nums text-base-content/75 hover:text-base-content xl:inline">(360) 555-0140</a>
+      <a href="/sell#valuation" class="btn btn-primary hidden whitespace-nowrap sm:inline-flex">Free valuation</a>
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-square" aria-label="Open the menu">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        </div>
+        <div tabindex="0" class="dropdown-content z-50 mt-3 w-72 rounded-box border border-base-300 bg-base-100 p-3">
+          <ul class="menu w-full p-0 text-base">
+            {% for item in data.navigation %}{% unless item.place == "footer" %}
+            <li><a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endunless %}{% endfor %}
+          </ul>
+          <div class="mt-2 flex flex-col gap-2 border-t border-base-300 px-1 pt-3">
+            <a href="/sell#valuation" class="btn btn-primary">Free valuation</a>
+            <a href="tel:+13605550140" class="btn btn-ghost">Call (360) 555-0140</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

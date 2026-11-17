@@ -1,0 +1,38 @@
+<section id="sold" class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-7xl border-b border-neutral-content/15 px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-10 lg:grid-cols-12" data-reveal>
+      <div class="lg:col-span-5">
+        <p class="eyebrow text-neutral-content/70">Sold this year</p>
+        <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">What our homes sold for, in a ledger</h2>
+      </div>
+      <dl class="grid gap-6 sm:grid-cols-3 lg:col-span-7">
+        {% for item in data["sales-figures"] %}
+        <div class="flex flex-col border-t border-neutral-content/30 pt-4">
+          <dt class="text-[0.9375rem] leading-snug text-neutral-content/80">{{ item.label }}</dt>
+          <dd class="price order-first -mt-1 mb-2 text-[clamp(2.5rem,3vw+1rem,3.5rem)] leading-none text-accent">{{ item.figure }}</dd>
+          {% if item.note != blank %}<dd class="facts mt-2 text-neutral-content/60">{{ item.note }}</dd>{% endif %}
+        </div>
+        {% endfor %}
+      </dl>
+    </div>
+    <div class="mt-14 overflow-x-auto">
+      <table class="ledger text-[1rem]">
+        <thead><tr><th>No.</th><th>Street</th><th>Neighborhood</th><th class="num">Asking</th><th class="num">Sold</th><th class="num">Days</th><th>Broker</th></tr></thead>
+        <tbody data-reveal="stagger">
+          {% for sale in data.sales %}
+          <tr>
+            <td class="cell-no price text-[1.375rem] md:text-[1.5rem]">{{ sale.number }}</td>
+            <td class="cell-street font-heading text-[1.125rem]">{% if sale.listing != blank %}<a href="{{ sale.listing }}" class="underline decoration-neutral-content/40 underline-offset-4 hover:decoration-accent">{{ sale.street }}</a>{% else %}{{ sale.street }}{% endif %}</td>
+            <td class="cell-rest text-neutral-content/75">{{ sale.neighborhood }}</td>
+            <td class="cell-rest num text-neutral-content/75" data-label="Asking">{{ sale.asking }}</td>
+            <td class="cell-sold num sold price text-[1.375rem] md:text-[1.5rem]">{{ sale.sold }}</td>
+            <td class="cell-rest num text-neutral-content/75" data-label="Days">{{ sale.days }}</td>
+            <td class="cell-rest text-neutral-content/75">{{ sale.broker }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if more %}<a href="/sell#how-we-sell" class="mt-10 inline-flex items-center gap-2 font-semibold text-neutral-content underline decoration-accent underline-offset-[0.3em]">How we sell<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>{% endif %}
+  </div>
+</section>

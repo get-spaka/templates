@@ -1,0 +1,104 @@
+<section id="valuation" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-14">
+    <form hx-post="/_data/valuations" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#valuations-problems swap:innerHTML" class="flex flex-col gap-10 lg:col-span-8" data-prefill>
+      <fieldset class="flex flex-col gap-5 border-t border-base-300 pt-8">
+        <legend class="contents"><span class="flex items-center gap-4"><span class="step-no">1</span><span class="font-heading text-[1.75rem] leading-none">Your home</span></span></legend>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">The address</legend>
+          <input name="address" class="input w-full" required maxlength="200" autocomplete="street-address" placeholder="Street and number">
+        </fieldset>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <fieldset class="fieldset" data-prefill-from="hood">
+            <legend class="fieldset-legend text-[0.9375rem]">Neighborhood</legend>
+            <select name="neighborhood" class="select w-full">
+              <option data-key="fairhaven">Fairhaven</option><option data-key="south-hill">South Hill</option><option data-key="lettered-streets">Lettered Streets</option><option data-key="columbia">Columbia</option><option data-key="edgemoor">Edgemoor</option><option data-key="sunnyland">Sunnyland</option>
+              <option data-key="elsewhere">Elsewhere in Whatcom County</option>
+            </select>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Kind of home</legend>
+            <select name="kind" class="select w-full"><option>House</option><option>Townhome</option><option>Condo</option><option>Land</option></select>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Bedrooms</legend>
+            <input name="beds" type="number" min="0" max="20" class="input w-full" value="3">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Roughly when it was built <span class="font-normal text-base-content/60">(optional)</span></legend>
+            <input name="built" class="input w-full" maxlength="40" placeholder="1920s, 1960s, 2005…">
+          </fieldset>
+        </div>
+      </fieldset>
+
+      <fieldset class="flex flex-col gap-5 border-t border-base-300 pt-8">
+        <legend class="contents"><span class="flex items-center gap-4"><span class="step-no">2</span><span class="font-heading text-[1.75rem] leading-none">Your plans</span></span></legend>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">When you might sell</legend>
+          <div class="flex flex-wrap gap-2">
+            <label class="pick"><input type="radio" name="when" value="Within three months" class="radio radio-sm radio-primary">Within three months</label>
+            <label class="pick"><input type="radio" name="when" value="Three to twelve months" class="radio radio-sm radio-primary" checked>Three to twelve months</label>
+            <label class="pick"><input type="radio" name="when" value="Just curious" class="radio radio-sm radio-primary">Just curious</label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">Are you buying too?</legend>
+          <div class="flex flex-wrap gap-2">
+            <label class="pick"><input type="radio" name="buying" value="Yes" class="radio radio-sm radio-primary">Yes</label>
+            <label class="pick"><input type="radio" name="buying" value="No" class="radio radio-sm radio-primary">No</label>
+            <label class="pick"><input type="radio" name="buying" value="Not sure" class="radio radio-sm radio-primary" checked>Not sure</label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset" data-prefill-from="with">
+          <legend class="fieldset-legend text-[0.9375rem]">A broker you'd like</legend>
+          <div class="flex flex-wrap gap-2">
+            <label class="pick"><input type="radio" name="broker" value="No preference" data-key="none" class="radio radio-sm radio-primary" checked>No preference</label>
+            <label class="pick"><input type="radio" name="broker" value="Kari Halvorsen" data-key="kari-halvorsen" class="radio radio-sm radio-primary">Kari Halvorsen</label><label class="pick"><input type="radio" name="broker" value="Dana Pike" data-key="dana-pike" class="radio radio-sm radio-primary">Dana Pike</label><label class="pick"><input type="radio" name="broker" value="Mateo Ruiz" data-key="mateo-ruiz" class="radio radio-sm radio-primary">Mateo Ruiz</label><label class="pick"><input type="radio" name="broker" value="June Takahashi" data-key="june-takahashi" class="radio radio-sm radio-primary">June Takahashi</label><label class="pick"><input type="radio" name="broker" value="Elliot Marsh" data-key="elliot-marsh" class="radio radio-sm radio-primary">Elliot Marsh</label>
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <fieldset class="flex flex-col gap-5 border-t border-base-300 pt-8">
+        <legend class="contents"><span class="flex items-center gap-4"><span class="step-no">3</span><span class="font-heading text-[1.75rem] leading-none">You</span></span></legend>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+            <input name="name" class="input w-full" required maxlength="120" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+            <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">Your phone</legend>
+            <input name="phone" type="tel" class="input w-full" maxlength="40" autocomplete="tel">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-[0.9375rem]">How to reach you</legend>
+            <select name="contact" class="select w-full"><option>Call</option><option>Email</option><option>Text</option></select>
+          </fieldset>
+        </div>
+        <fieldset class="fieldset">
+          <legend class="fieldset-legend text-[0.9375rem]">A note <span class="font-normal text-base-content/60">(optional)</span></legend>
+          <textarea name="note" class="textarea w-full" rows="4" maxlength="600" placeholder="Anything we should know before we visit"></textarea>
+        </fieldset>
+      </fieldset>
+      <div id="valuations-problems"></div>
+      <button class="btn btn-primary self-start whitespace-nowrap">Ask for a valuation</button>
+    </form>
+    <aside class="lg:col-span-4">
+      <div class="rounded-box bg-base-200 p-6 md:p-8 lg:sticky lg:top-28">
+        <p class="eyebrow text-base-content/70">What happens next</p>
+        <ol class="mt-5 space-y-4">
+          <li class="flex gap-3"><span class="brass-mark mt-2 shrink-0" aria-hidden="true"></span><span class="leading-relaxed">We call within one working day to set a time.</span></li>
+          <li class="flex gap-3"><span class="brass-mark mt-2 shrink-0" aria-hidden="true"></span><span class="leading-relaxed">The visit takes about 45 minutes.</span></li>
+          <li class="flex gap-3"><span class="brass-mark mt-2 shrink-0" aria-hidden="true"></span><span class="leading-relaxed">Your written valuation arrives within three working days, with the sales behind it.</span></li>
+        </ol>
+        <div class="mt-8 border-t border-base-300 pt-6">
+          <p class="font-heading text-[1.375rem]">Prefer to call?</p>
+          <a href="tel:+13605550140" class="price mt-1 block text-[1.75rem] text-primary hover:underline">(360) 555-0140</a>
+          <p class="facts mt-1 text-base-content/65">Monday to Friday 9 to 5:30, Saturday 10 to 3</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

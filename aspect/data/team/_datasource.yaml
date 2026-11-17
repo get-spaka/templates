@@ -1,0 +1,38 @@
+label: Brokers
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: license
+    label: License number
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+  - name: knows
+    label: Neighborhoods they know best
+    kind: list
+  - name: languages
+    label: Languages
+    kind: text
+  - name: since
+    label: In Bellingham since
+    kind: number
+  - name: phone
+    label: Phone
+    kind: text
+  - name: email
+    label: Email
+    kind: text
+  - name: short
+    label: One line about them
+    kind: text
+  - name: body
+    label: In their words
+    kind: markdown
+body: body
+order: [kari-halvorsen, dana-pike, mateo-ruiz, june-takahashi, elliot-marsh]

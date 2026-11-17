@@ -1,0 +1,17 @@
+{% assign count = 0 %}{% for listing in data.listings %}{% if listing.status == "new" or listing.status == "for-sale" %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+<section id="on-the-market" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6 border-t border-base-300 pt-8" data-reveal>
+      <div>
+        <p class="eyebrow text-base-content/70">{{ count }} homes for sale</p>
+        <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">On the market now</h2>
+      </div>
+      <a href="/homes" class="more">All homes for sale<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <ul class="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" data-door-stagger>
+      {% for listing in data.listings %}{% if listing.featured and listing.status != "sold" and listing.status != "under-contract" %}
+      {% render 'listing-card', listing: listing %}
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+{
+  "name": "Aspect valuation request",
+  "kind": "forms",
+  "source": "upstart",
+  "description": "A valuation request in three numbered steps (your home, your plans, you) with choices to tap, beside a sticky panel on what happens next and the number to call.",
+  "tags": ["form", "valuation", "appraisal", "real estate", "sellers", "request"],
+  "mood": ["professional", "minimal"],
+  "synonyms": [
+    "valuation",
+    "appraisal request",
+    "home value",
+    "what's my home worth",
+    "estimation",
+    "demande d'estimation",
+    "avis de valeur",
+    "estimer mon bien"
+  ],
+  "data": {
+    "name": "valuations",
+    "family": "collection"
+  }
+}

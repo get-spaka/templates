@@ -1,0 +1,6 @@
+{% assign first = record.name | default: "" | split: " " | first %}
+<div class="flex flex-col gap-4 rounded-box border border-base-300 bg-base-100 p-8 md:p-12" role="status">
+  <p class="eyebrow text-base-content/70">Request received</p>
+  <p class="font-heading text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight font-light text-balance">Thank you{% if first != blank %}, {{ first }}{% endif %}. One of us will call you by the end of tomorrow to find a time to see your home.</p>
+  <p class="max-w-[56ch] text-[1.0625rem] leading-relaxed text-base-content/80">The visit takes about 45 minutes. Your written valuation follows within three working days, with the sales it's based on.</p>
+</div>

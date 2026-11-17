@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Halvorsen Pike Real Estate</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }}">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+{% assign author = data.team | where: "name", record.author | first %}
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-8 md:px-8 md:pt-12">
+    <a href="/notes" class="inline-flex items-center gap-1.5 text-[0.9375rem] text-base-content/70 hover:text-base-content"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All the notes</a>
+    <div class="mx-auto mt-8 max-w-[48rem]">
+      <p class="facts text-base-content/65">{{ record.date | date: "%B %-d, %Y" }} · {{ record.author }}{% if record.minutes %} · {{ record.minutes }} minutes{% endif %}</p>
+      <h1 class="mt-4 text-[clamp(2.25rem,3.5vw+1rem,4rem)] leading-[1.06] tracking-[-0.015em] text-balance">{{ record.title }}</h1>
+      <p class="mt-6 font-heading text-[1.375rem] leading-snug font-light text-base-content/80">{{ record.summary }}</p>
+    </div>
+    {% if record.cover %}<div class="mt-10 aspect-[16/9] overflow-hidden rounded-box bg-base-200"><img src="{{ record.cover }}" class="h-full w-full object-cover"></div>{% endif %}
+  </div>
+  <div class="mx-auto max-w-[48rem] px-5 py-14 md:px-0 md:py-20">
+    <div class="prose-aspect prose-lead">{{ record.body }}</div>
+    {% if author %}
+    <div class="mt-14 flex items-center gap-5 rounded-box bg-base-200 p-5">
+      {% if author.photo %}<img src="{{ author.photo }}" class="aspect-square w-16 rounded-box object-cover">{% else %}{% assign words = author.name | split: " " %}<div class="flex size-16 shrink-0 items-center justify-center rounded-box bg-base-100" aria-hidden="true"><span class="font-heading text-[1.5rem] text-base-content/70">{{ words.first | slice: 0 }}{{ words.last | slice: 0 }}</span></div>{% endif %}
+      <div>
+        <p class="font-heading text-[1.25rem]"><a href="/brokers/{{ author.id }}" class="hover:underline hover:underline-offset-4">{{ author.name }}</a></p>
+        <p class="facts mt-0.5 text-base-content/70">{{ author.role }} · <a href="tel:+1{{ author.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}" class="hover:underline">{{ author.phone }}</a></p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <section class="mx-auto max-w-7xl border-t border-base-300 px-5 py-16 md:px-8 md:py-20">
+    <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight tracking-[-0.015em]">More notes</h2>
+    <ul class="mt-8 grid gap-8 md:grid-cols-2">
+      {% assign shown = 0 %}
+      {% for post in data.blog %}{% if post.id != record.id and shown < 2 %}{% assign shown = shown | plus: 1 %}
+      <li><a href="/notes/{{ post.id }}" class="group block border-t border-base-300 pt-5"><p class="facts text-base-content/65">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author }}</p><h3 class="mt-2 text-[1.5rem] leading-snug group-hover:underline group-hover:underline-offset-4">{{ post.title }}</h3><p class="mt-2 leading-relaxed text-base-content/75">{{ post.summary }}</p></a></li>
+      {% endif %}{% endfor %}
+    </ul>
+  </section>
+</article>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

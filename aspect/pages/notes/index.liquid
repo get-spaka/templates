@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Notes on the market — Halvorsen Pike Real Estate, Bellingham</title>
+<meta name="description" content="Short notes from the office: what's selling in Bellingham, what it's selling for, and what to look for in a house here.">
+<meta property="og:title" content="Notes on the market — Halvorsen Pike Real Estate">
+<meta property="og:description" content="Short notes from the office: what's selling, what it's selling for, and what to look for in a house here.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16" data-reveal>
+    <p class="eyebrow text-base-content/70">From the office</p>
+    <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.015em] text-balance">Notes on the market</h1>
+    <p class="mt-6 max-w-[56ch] text-[1.1875rem] leading-relaxed text-base-content/80">Short notes from the office: what's selling, what it's selling for, and what to look for in a house here.</p>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12">
+    {% for post in data.blog limit: 1 %}
+    <a href="/notes/{{ post.id }}" class="group block lg:col-span-7" data-reveal>
+      {% if post.cover %}<div class="aspect-[4/3] overflow-hidden rounded-box bg-base-200"><img src="{{ post.cover }}" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"></div>{% endif %}
+      <p class="facts mt-6 text-base-content/65">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author }}{% if post.minutes %} · {{ post.minutes }} minutes{% endif %}</p>
+      <h2 class="mt-3 text-[clamp(1.875rem,2vw+1rem,2.75rem)] leading-[1.1] tracking-[-0.015em] text-balance group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ post.title }}</h2>
+      <p class="mt-4 max-w-[56ch] text-[1.0625rem] leading-relaxed text-base-content/80">{{ post.summary }}</p>
+    </a>
+    {% endfor %}
+    <ul class="lg:col-span-5" data-reveal="stagger">
+      {% for post in data.blog offset: 1 %}
+      <li class="border-t border-base-300 last:border-b">
+        <a href="/notes/{{ post.id }}" class="group grid grid-cols-[1fr_6rem] gap-5 py-6">
+          <div>
+            <p class="facts text-base-content/65">{{ post.date | date: "%B %-d, %Y" }} · {{ post.author }}</p>
+            <h2 class="mt-2 text-[1.375rem] leading-snug font-normal group-hover:underline group-hover:underline-offset-4">{{ post.title }}</h2>
+            <p class="mt-2 text-[0.9375rem] leading-relaxed text-base-content/75">{{ post.summary }}</p>
+          </div>
+          {% if post.cover %}<img src="{{ post.cover }}" class="aspect-square w-full rounded-box object-cover">{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'valuation-band' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

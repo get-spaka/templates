@@ -1,0 +1,33 @@
+<section id="on-the-market" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6 border-t border-base-300 pt-8" data-reveal>
+      <div>
+        <p class="eyebrow text-base-content/70">Homes for sale</p>
+        <h2 class="mt-4 text-[clamp(1.875rem,2.5vw+1rem,3.25rem)] leading-[1.06] tracking-[-0.015em] text-balance">On the market now</h2>
+      </div>
+      <a href="/homes" class="more">All homes for sale<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <ul class="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" data-door-stagger>
+      {% for listing in data.listings %}
+      <li data-status="{{ listing.status }}">
+        <a href="/homes/{{ listing.id }}" class="group block">
+          <div class="overflow-hidden rounded-box border border-base-300 bg-base-100">
+          {% if listing.status == "sold" %}{% assign state = "sold" %}{% elsif listing.status == "under-contract" %}{% assign state = "under-contract" %}{% elsif listing.open_house != blank %}{% assign state = "open" %}{% else %}{% assign state = listing.status %}{% endif %}
+          <p class="window-band eyebrow" data-state="{{ state }}">{% case state %}{% when "sold" %}Sold{% if listing.days_on_market %} in {{ listing.days_on_market }} days{% endif %}{% when "under-contract" %}Under contract{% when "open" %}Open {{ listing.open_house }}{% when "new" %}New this week{% else %}For sale{% endcase %}</p>
+            <div class="aspect-[4/3] bg-base-200" data-door>
+              {% if listing.cover %}<img src="{{ listing.cover }}" class="h-full w-full object-cover">{% endif %}
+              <span class="door" data-paint="{{ listing.door | default: 'primary' }}" aria-hidden="true"><span class="door-panels"><span></span><span></span></span><span class="door-plate">{{ listing.number }}</span><span class="door-knob"></span><span class="door-shade"></span></span>
+            </div>
+          </div>
+          <div class="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <p class="price text-[1.5rem] leading-tight text-primary">{% if listing.status == "sold" and listing.sold_price != blank %}{{ listing.sold_price }}{% else %}{{ listing.price }}{% endif %}</p>
+            {% if listing.neighborhood != blank %}<p class="facts text-base-content/65">{{ listing.neighborhood }}</p>{% endif %}
+          </div>
+          <h3 class="mt-1 text-[1.3125rem] leading-snug group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ listing.address }}</h3>
+          <p class="facts mt-2 text-base-content/70">{% if listing.beds %}{{ listing.beds }} beds · {% endif %}{% if listing.baths %}{{ listing.baths }} baths{% endif %}{% if listing.sqft != blank %} · {{ listing.sqft }} sq ft{% endif %}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

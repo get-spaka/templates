@@ -1,0 +1,10 @@
+label: How we sell
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: text
+    label: What happens
+    kind: text
+order: [the-valuation, getting-ready, photographs-and-the-write-up, on-the-market, offers-to-closing]

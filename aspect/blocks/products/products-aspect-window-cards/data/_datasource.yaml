@@ -1,0 +1,92 @@
+label: Homes
+fields:
+  - name: address
+    label: Address
+    kind: text
+    required: true
+  - name: number
+    label: House number, on its door and in the ledger
+    kind: text
+  - name: neighborhood
+    label: Neighborhood (the name of a neighborhood)
+    kind: text
+  - name: status
+    label: Status
+    kind: choice
+    choices: [new, for-sale, under-contract, sold]
+    required: true
+  - name: open_house
+    label: Open house (for example Sunday 1–3)
+    kind: text
+  - name: price
+    label: Asking price
+    kind: text
+  - name: sold_price
+    label: Sold price
+    kind: text
+  - name: days_on_market
+    label: Days on the market
+    kind: number
+  - name: beds
+    label: Bedrooms
+    kind: number
+  - name: baths
+    label: Bathrooms
+    kind: number
+  - name: sqft
+    label: Square feet
+    kind: text
+  - name: lot
+    label: Lot
+    kind: text
+  - name: built
+    label: Year built
+    kind: number
+  - name: kind
+    label: Kind of home
+    kind: text
+  - name: door
+    label: Door paint
+    kind: choice
+    choices: [primary, secondary, neutral]
+  - name: quote
+    label: Opening line
+    kind: text
+  - name: cover
+    label: Front photo
+    kind: image
+  - name: photo_1
+    label: Photo 2
+    kind: image
+  - name: photo_2
+    label: Photo 3
+    kind: image
+  - name: photo_3
+    label: Photo 4
+    kind: image
+  - name: photo_4
+    label: Photo 5
+    kind: image
+  - name: photo_5
+    label: Photo 6
+    kind: image
+  - name: plan
+    label: Floor plan
+    kind: image
+  - name: tour
+    label: 3D tour (a link)
+    kind: link
+  - name: details
+    label: "Details (label: value)"
+    kind: list
+  - name: agent
+    label: Listing broker (the name of a broker)
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: body
+    label: The walk-through
+    kind: markdown
+body: body
+order: [1418-wren-street, 917-garland-avenue, 8-sloop-court, 512-bluffside-drive, 2306-ivy-street, 730-orchard-terrace]

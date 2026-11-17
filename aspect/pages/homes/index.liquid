@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Homes for sale — Halvorsen Pike Real Estate, Bellingham</title>
+<meta name="description" content="Homes for sale in Bellingham, Washington, each written up room by room by the broker who walked through it, with open houses on Sundays.">
+<meta property="og:title" content="Homes for sale — Halvorsen Pike Real Estate, Bellingham">
+<meta property="og:description" content="Craftsman bungalows, foursquares, cottages and townhomes in Fairhaven, South Hill, Columbia and beyond.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+{% assign count = 0 %}{% for listing in data.listings %}{% if listing.status == "new" or listing.status == "for-sale" %}{% assign count = count | plus: 1 %}{% endif %}{% endfor %}
+<section class="bg-base-100 text-base-content" data-filter>
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-20 md:px-8 md:pt-20 md:pb-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="eyebrow text-base-content/70">{{ count }} on the market</p>
+        <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.015em] text-balance">Homes for sale</h1>
+      </div>
+      <p class="max-w-[48ch] text-[1.0625rem] leading-relaxed text-base-content/80 lg:col-span-5">Sold and under contract homes stay here for a few months, marked, so you can see what sold and for how much.</p>
+    </div>
+    <div class="mt-10 flex flex-wrap gap-2" role="radiogroup" aria-label="Show">
+      <input type="radio" name="show" value="all" id="show-all" class="chip-input sr-only" checked><label for="show-all" class="chip">All</label>
+      <input type="radio" name="show" value="for-sale" id="show-for-sale" class="chip-input sr-only"><label for="show-for-sale" class="chip">For sale</label>
+      <input type="radio" name="show" value="open" id="show-open" class="chip-input sr-only"><label for="show-open" class="chip">Open this weekend</label>
+      <input type="radio" name="show" value="under-contract" id="show-under-contract" class="chip-input sr-only"><label for="show-under-contract" class="chip">Under contract</label>
+      <input type="radio" name="show" value="sold" id="show-sold" class="chip-input sr-only"><label for="show-sold" class="chip">Sold</label>
+    </div>
+    <ul class="mt-12 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" data-door-stagger>
+      {% for listing in data.listings %}
+      {% render 'listing-card', listing: listing %}
+      {% endfor %}
+    </ul>
+    <p class="filter-empty mt-4 max-w-[52ch] text-[1.0625rem] text-base-content/75">None right now. <a href="#wish-list" class="font-semibold text-primary underline underline-offset-4">Tell us what you're looking for</a>, and a broker will write when one comes up.</p>
+  </div>
+</section>
+{% render 'wish-list', data: data %}
+{% render 'valuation-band' %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

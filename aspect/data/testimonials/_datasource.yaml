@@ -1,0 +1,20 @@
+label: Clients' words
+fields:
+  - name: headline
+    label: Headline
+    kind: text
+    required: true
+  - name: quote
+    label: Their words
+    kind: text
+  - name: name
+    label: First name
+    kind: text
+  - name: neighborhood
+    label: Neighborhood
+    kind: text
+  - name: side
+    label: Bought or sold
+    kind: choice
+    choices: [bought, sold]
+order: [sold-in-six-days, our-first-condo, told-us-the-truth, sold-and-bought]

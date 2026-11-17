@@ -1,0 +1,26 @@
+label: Market notes
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: author
+    label: Author (a broker's name)
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: summary
+    label: Summary
+    kind: text
+  - name: minutes
+    label: Minutes to read
+    kind: number
+  - name: body
+    label: Text
+    kind: markdown
+body: body
+sort: -date

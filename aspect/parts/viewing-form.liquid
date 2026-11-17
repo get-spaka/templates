@@ -1,0 +1,43 @@
+<form hx-post="/_data/viewings" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#viewings-problems swap:innerHTML" class="flex flex-col gap-5 rounded-box border border-base-300 bg-base-100 p-6 md:p-8">
+  <div>
+    <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight tracking-[-0.015em]">Ask to see it</h2>
+    <p class="mt-2 text-base leading-relaxed text-base-content/75">We'll reply within one working day to set a time.</p>
+  </div>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">The home</legend>
+    <select name="listing" class="select w-full" required>
+      {% for home in data.listings %}{% if home.status != "sold" and home.status != "under-contract" %}
+      <option{% if home.id == current %} selected{% endif %}>{{ home.address }}</option>
+      {% endif %}{% endfor %}
+    </select>
+  </fieldset>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+      <input name="name" class="input w-full" required maxlength="120" autocomplete="name">
+    </fieldset>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend text-[0.9375rem]">Your phone</legend>
+      <input name="phone" type="tel" class="input w-full" maxlength="40" autocomplete="tel">
+    </fieldset>
+  </div>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+    <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">When suits you</legend>
+    <div class="flex flex-wrap gap-2">
+      <label class="pick"><input type="radio" name="when" value="Weekday daytime" class="radio radio-sm radio-primary" checked>Weekday daytime</label>
+      <label class="pick"><input type="radio" name="when" value="Weekday evening" class="radio radio-sm radio-primary">Weekday evening</label>
+      <label class="pick"><input type="radio" name="when" value="The weekend" class="radio radio-sm radio-primary">The weekend</label>
+      {% if open != blank %}<label class="pick"><input type="radio" name="when" value="The open house" class="radio radio-sm radio-primary">The open house</label>{% endif %}
+    </div>
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">A short message</legend>
+    <textarea name="message" class="textarea w-full" rows="3" maxlength="600"></textarea>
+  </fieldset>
+  <div id="viewings-problems"></div>
+  <button class="btn btn-primary self-start whitespace-nowrap">Ask to see it</button>
+</form>

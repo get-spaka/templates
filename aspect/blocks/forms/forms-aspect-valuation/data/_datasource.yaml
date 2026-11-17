@@ -1,0 +1,56 @@
+label: Valuation requests
+collected: true
+answer: valuations-thanks
+body: note
+messages:
+  required: "{field} is needed so we can come and see your home."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us."
+  sent: "Thank you, your request is with us."
+fields:
+  - name: address
+    label: The address
+    kind: text
+    required: true
+  - name: neighborhood
+    label: Neighborhood
+    kind: text
+  - name: kind
+    label: Kind of home
+    kind: choice
+    choices: [House, Townhome, Condo, Land]
+  - name: beds
+    label: Bedrooms
+    kind: number
+  - name: built
+    label: Roughly when it was built
+    kind: text
+  - name: when
+    label: When you might sell
+    kind: choice
+    choices: [Within three months, Three to twelve months, Just curious]
+  - name: buying
+    label: Buying too
+    kind: choice
+    choices: ["Yes", "No", Not sure]
+  - name: broker
+    label: A broker you'd like
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: contact
+    label: How to reach you
+    kind: choice
+    choices: [Call, Email, Text]
+  - name: note
+    label: A note
+    kind: markdown

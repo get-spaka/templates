@@ -1,0 +1,18 @@
+{% assign open = false %}{% if listing.open_house != blank and listing.status != "sold" and listing.status != "under-contract" %}{% assign open = true %}{% endif %}
+<li data-status="{{ listing.status }}"{% if open %} data-open{% endif %}>
+  <a href="/homes/{{ listing.id }}" class="group block">
+    <div class="overflow-hidden rounded-box border border-base-300 bg-base-100">
+      {% render 'window-band', listing: listing %}
+      <div class="aspect-[4/3] bg-base-200" data-door>
+        {% if listing.cover %}<img src="{{ listing.cover }}" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]">{% endif %}
+        {% render 'door', number: listing.number, paint: listing.door %}
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+      <p class="price {% if small %}text-[1.25rem]{% else %}text-[1.5rem]{% endif %} leading-tight {% if listing.status == 'sold' %}text-base-content{% else %}text-primary{% endif %}">{% if listing.status == "sold" and listing.sold_price != blank %}{{ listing.sold_price }}{% else %}{{ listing.price }}{% endif %}</p>
+      {% if listing.neighborhood != blank %}<p class="facts text-base-content/65">{{ listing.neighborhood }}</p>{% endif %}
+    </div>
+    <h3 class="mt-1 {% if small %}text-[1.125rem]{% else %}text-[1.3125rem]{% endif %} leading-snug group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ listing.address }}</h3>
+    <p class="facts mt-2 flex flex-wrap gap-x-2 text-base-content/70">{% if listing.beds %}<span>{{ listing.beds }} {% if listing.beds == 1 %}bed{% else %}beds{% endif %}</span><span aria-hidden="true">·</span>{% endif %}{% if listing.baths %}<span>{{ listing.baths }} {% if listing.baths == 1 %}bath{% else %}baths{% endif %}</span>{% endif %}{% if listing.sqft != blank %}<span aria-hidden="true">·</span><span>{{ listing.sqft }} sq ft</span>{% endif %}</p>
+  </a>
+</li>

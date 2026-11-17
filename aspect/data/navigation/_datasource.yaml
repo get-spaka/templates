@@ -1,0 +1,14 @@
+label: Navigation
+fields:
+  - name: label
+    label: Label
+    kind: text
+    required: true
+  - name: href
+    label: Address
+    kind: link
+  - name: place
+    label: Where it shows
+    kind: choice
+    choices: [both, header, footer]
+order: [homes, neighborhoods, sell, brokers, notes]

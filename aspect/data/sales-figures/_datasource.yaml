@@ -1,0 +1,13 @@
+label: Our figures
+fields:
+  - name: figure
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [homes-sold, asking-price, days-on-market]

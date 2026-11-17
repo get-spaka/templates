@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Halvorsen Pike Real Estate — Homes for sale in Bellingham, Washington</title>
+<meta name="description" content="An independent real estate agency of five brokers in Fairhaven, Bellingham. Homes for sale, written up room by room, open houses on Sundays and a free valuation for sellers.">
+<meta property="og:title" content="Halvorsen Pike Real Estate — Homes for sale in Bellingham, Washington">
+<meta property="og:description" content="Five brokers in Fairhaven, selling homes across Bellingham since 2011. Every listing is written by the broker who knows it.">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+{% render 'hero', data: data %}
+{% render 'on-market', data: data %}
+{% render 'open-houses', data: data %}
+{% render 'hood-tiles', data: data %}
+{% render 'sold-ledger', data: data, more: true %}
+{% render 'valuation-band' %}
+{% render 'brokers-grid', data: data %}
+{% render 'client-words', data: data %}
+{% render 'market-notes', data: data %}
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

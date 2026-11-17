@@ -1,0 +1,29 @@
+label: Neighborhoods
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: summary
+    label: One line on its houses and streets
+    kind: text
+  - name: price_range
+    label: Typical prices
+    kind: text
+  - name: built
+    label: When its houses were built
+    kind: text
+  - name: walk
+    label: The walk to the water or downtown
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+  - name: agent
+    label: The broker who knows it best (a broker's name)
+    kind: text
+  - name: body
+    label: Its character
+    kind: markdown
+body: body
+order: [fairhaven, south-hill, lettered-streets, columbia, edgemoor, sunnyland]

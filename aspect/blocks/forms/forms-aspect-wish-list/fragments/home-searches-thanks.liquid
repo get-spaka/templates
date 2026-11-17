@@ -1,0 +1,6 @@
+{% assign first = record.name | default: "" | split: " " | first %}
+<div class="flex flex-col gap-4 rounded-box border border-base-300 bg-base-100 p-8 md:p-10 lg:col-span-7" role="status">
+  <p class="eyebrow text-base-content/70">Wish list received</p>
+  <p class="font-heading text-[clamp(1.5rem,2vw+1rem,2.25rem)] leading-tight font-light text-balance">Thank you{% if first != blank %}, {{ first }}{% endif %}. A broker will write to you when a home like it comes up.</p>
+  <p class="max-w-[56ch] text-base leading-relaxed text-base-content/80">Usually within a few weeks; sometimes before it's on the market. You can reply to that email to change what you're looking for.</p>
+</div>

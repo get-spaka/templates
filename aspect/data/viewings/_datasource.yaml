@@ -1,0 +1,32 @@
+label: Viewing requests
+collected: true
+answer: viewings-thanks
+body: message
+messages:
+  required: "{field} is needed so we can set a time."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us."
+  sent: "Thank you, your request is with us."
+fields:
+  - name: listing
+    label: The home
+    kind: text
+    required: true
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: when
+    label: When suits you
+    kind: choice
+    choices: [Weekday daytime, Weekday evening, The weekend, The open house]
+  - name: message
+    label: A message
+    kind: markdown

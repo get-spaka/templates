@@ -1,0 +1,29 @@
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-8 pb-16 md:px-8 md:pt-12 md:pb-24">
+    <a href="/homes" class="inline-flex items-center gap-1.5 text-[0.9375rem] text-base-content/70 hover:text-base-content"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All homes</a>
+    {% assign listing = record %}
+    <div class="mt-6 overflow-hidden rounded-box border border-base-300">
+      {% if listing.status == "sold" %}{% assign state = "sold" %}{% elsif listing.status == "under-contract" %}{% assign state = "under-contract" %}{% elsif listing.open_house != blank %}{% assign state = "open" %}{% else %}{% assign state = listing.status %}{% endif %}
+          <p class="window-band eyebrow" data-state="{{ state }}">{% case state %}{% when "sold" %}Sold{% if listing.days_on_market %} in {{ listing.days_on_market }} days{% endif %}{% when "under-contract" %}Under contract{% when "open" %}Open {{ listing.open_house }}{% when "new" %}New this week{% else %}For sale{% endcase %}</p>
+      <div class="grid gap-6 p-6 md:p-8 lg:grid-cols-12 lg:items-end">
+        <div class="lg:col-span-7">
+          <h1 class="text-[clamp(2.25rem,3.5vw+1rem,4rem)] leading-[1.04] tracking-[-0.015em] text-balance">{{ record.address }}</h1>
+          <p class="mt-3 text-[1.0625rem] text-base-content/75">{{ record.neighborhood }}{% if record.kind != blank %} · {{ record.kind }}{% endif %}</p>
+        </div>
+        <div class="lg:col-span-5 lg:text-right">
+          {% if record.status == "sold" and record.sold_price != blank %}<p class="price text-[clamp(2.25rem,2vw+1.5rem,3rem)] leading-none">Sold for {{ record.sold_price }}</p><p class="facts mt-3 text-base-content/70">Listed at {{ record.price }}</p>{% else %}<p class="facts text-base-content/70">Listed at</p><p class="price mt-1 text-[clamp(2.25rem,2vw+1.5rem,3rem)] leading-none text-primary">{{ record.price }}</p>{% endif %}
+        </div>
+      </div>
+      <p class="facts flex flex-wrap gap-x-6 gap-y-2 border-t border-base-300 bg-base-200 px-6 py-4 text-[0.9375rem] md:px-8">{% if record.beds %}<span>{{ record.beds }} beds</span>{% endif %}{% if record.baths %}<span>{{ record.baths }} baths</span>{% endif %}{% if record.sqft != blank %}<span>{{ record.sqft }} sq ft</span>{% endif %}{% if record.built %}<span>Built {{ record.built }}</span>{% endif %}{% if record.open_house != blank %}<span>Open {{ record.open_house }}</span>{% endif %}</p>
+    </div>
+    <div class="mt-8 aspect-[4/3] overflow-hidden rounded-box bg-base-200 md:aspect-[16/9]" data-door="load">
+      {% if record.cover %}<img src="{{ record.cover }}" class="h-full w-full object-cover">{% endif %}
+      <span class="door" data-paint="{{ record.door | default: 'primary' }}" aria-hidden="true"><span class="door-panels"><span></span><span></span></span><span class="door-plate">{{ record.number }}</span><span class="door-knob"></span><span class="door-shade"></span></span>
+    </div>
+    <div class="mx-auto mt-16 max-w-[44rem]">
+      {% if record.quote != blank %}<blockquote class="font-heading text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-[1.25] font-light italic text-balance">“{{ record.quote }}”</blockquote>{% endif %}
+      <div class="prose-aspect prose-lead mt-8">{{ record.body }}</div>
+      {% if record.agent != blank %}<p class="mt-10 border-t border-base-300 pt-6 text-[0.9375rem] text-base-content/75">Written by {{ record.agent }}, who walked through it.</p>{% endif %}
+    </div>
+  </div>
+</article>

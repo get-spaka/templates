@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }}, {{ record.role }} — Halvorsen Pike Real Estate</title>
+<meta name="description" content="{{ record.short }}">
+<meta property="og:title" content="{{ record.name }} — Halvorsen Pike Real Estate">
+<meta property="og:description" content="{{ record.short }}">
+</head>
+<body>
+{% render 'header', page: page, data: data %}
+<main>
+{% assign first = record.name | split: " " | first %}
+{% assign tel = record.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' %}
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-8 pb-16 md:px-8 md:pt-12 md:pb-24">
+    <a href="/brokers" class="inline-flex items-center gap-1.5 text-[0.9375rem] text-base-content/70 hover:text-base-content"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All the brokers</a>
+    <div class="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4">
+        {% if record.photo %}<img src="{{ record.photo }}" class="aspect-[3/4] w-full max-w-sm rounded-box object-cover">{% else %}{% assign words = record.name | split: " " %}<div class="flex aspect-[3/4] w-full max-w-sm items-center justify-center rounded-box bg-base-200" aria-hidden="true"><span class="font-heading text-[5rem] font-light text-base-content/70">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>{% endif %}
+        <dl class="facts mt-8 max-w-sm space-y-3">
+          {% if record.knows.size > 0 %}<div class="flex justify-between gap-4 border-t border-base-300 pt-3"><dt class="text-base-content/60">Knows best</dt><dd class="text-right text-[0.9375rem]">{{ record.knows | join: ", " }}</dd></div>{% endif %}
+          {% if record.languages != blank %}<div class="flex justify-between gap-4 border-t border-base-300 pt-3"><dt class="text-base-content/60">Languages</dt><dd class="text-right text-[0.9375rem]">{{ record.languages }}</dd></div>{% endif %}
+          {% if record.since %}<div class="flex justify-between gap-4 border-t border-base-300 pt-3"><dt class="text-base-content/60">In Bellingham since</dt><dd class="text-right text-[0.9375rem]">{{ record.since }}</dd></div>{% endif %}
+          {% if record.license != blank %}<div class="flex justify-between gap-4 border-t border-base-300 pt-3"><dt class="text-base-content/60">License</dt><dd class="text-right text-[0.9375rem]">{{ record.license }}</dd></div>{% endif %}
+        </dl>
+      </div>
+      <div class="lg:col-span-8">
+        <p class="eyebrow text-base-content/70">{{ record.role }}</p>
+        <h1 class="mt-4 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.015em]">{{ record.name }}</h1>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {% if record.phone != blank %}<a href="tel:+1{{ tel }}" class="btn btn-primary whitespace-nowrap">Call {{ first }}</a>{% endif %}
+          {% if record.email != blank %}<a href="mailto:{{ record.email }}" class="btn btn-outline whitespace-nowrap">Email {{ first }}</a>{% endif %}
+          <a href="/sell?with={{ record.id }}#valuation" class="btn btn-ghost whitespace-nowrap">Ask {{ first }} for a valuation</a>
+        </div>
+        <h2 class="eyebrow mt-14 text-base-content/70">In their words</h2>
+        <div class="prose-aspect prose-lead mt-4 max-w-[64ch]">{{ record.body }}</div>
+      </div>
+    </div>
+  </div>
+  {% assign theirs = data.listings | where: "agent", record.name %}
+  {% if theirs.size > 0 %}
+  <section class="mx-auto max-w-7xl border-t border-base-300 px-5 py-16 md:px-8 md:py-24">
+    <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight tracking-[-0.015em]">{{ first }}'s homes, for sale and sold</h2>
+    <ul class="mt-10 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3" data-door-stagger>
+      {% for listing in theirs %}{% render 'listing-card', listing: listing, small: true %}{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  {% assign notes = data.blog | where: "author", record.name %}
+  {% if notes.size > 0 %}
+  <section class="mx-auto max-w-7xl border-t border-base-300 px-5 py-16 md:px-8 md:py-24">
+    <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight tracking-[-0.015em]">{{ first }}'s notes</h2>
+    <ul class="mt-8">
+      {% for post in notes %}
+      <li class="border-t border-base-300 last:border-b"><a href="/notes/{{ post.id }}" class="group grid gap-x-8 gap-y-1 py-5 sm:grid-cols-[9rem_1fr]"><p class="facts text-base-content/65">{{ post.date | date: "%B %-d, %Y" }}</p><h3 class="text-[1.375rem] leading-snug group-hover:underline group-hover:underline-offset-4">{{ post.title }}</h3></a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+</main>
+{% render 'footer', data: data %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "Aspect open houses",
+  "kind": "events",
+  "source": "upstart",
+  "description": "This weekend's open houses as ruled rows on a soft gray-blue band: the day and hours in a serif, the address, the neighborhood and the broker who'll be there, and a link to the house.",
+  "tags": ["open house", "events", "real estate", "viewings", "weekend", "rows"],
+  "mood": ["minimal", "professional"],
+  "synonyms": [
+    "open houses",
+    "viewings",
+    "this weekend",
+    "open days",
+    "portes ouvertes",
+    "visites libres",
+    "ce week-end",
+    "visites"
+  ],
+  "data": {
+    "name": "listings",
+    "family": "collection"
+  }
+}
