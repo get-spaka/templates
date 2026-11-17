@@ -1,0 +1,25 @@
+<section id="platforms" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">Wherever you listen</span></h2>
+    <ul class="mt-12 grid gap-4 md:grid-cols-2" data-reveal="stagger">
+      {%- for platform in data.platforms %}
+      <li>
+        <a href="{{ platform.url }}" class="group flex h-full items-center justify-between gap-6 rounded-box border border-base-300 p-6 hover:border-base-content md:p-8">
+          <span>
+            <span class="block font-heading text-[clamp(1.75rem,3vw,2.5rem)] leading-tight font-bold tracking-[-0.02em]">{{ platform.name }}</span>
+            <span class="mt-2 block max-w-[40ch] text-base-content/80">{{ platform.line }}</span>
+          </span>
+          <span class="btn btn-primary btn-sm shrink-0 whitespace-nowrap">Open</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- assign rss = data.platforms | where: "id", "rss" | first %}
+    {%- if rss %}
+    <div class="mt-10 grid gap-3 rounded-box bg-base-200 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-center md:gap-8 md:p-8" data-reveal>
+      <label for="rss-address" class="text-[1.125rem] font-bold">Paste this into any podcast app</label>
+      <input id="rss-address" type="text" readonly value="{{ rss.url }}" class="input mono w-full normal-case">
+    </div>
+    {%- endif %}
+  </div>
+</section>

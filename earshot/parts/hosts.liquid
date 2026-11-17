@@ -1,0 +1,20 @@
+<section id="hosts" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">Two voices,</span><br><span class="caption-box">one question a week</span></h2>
+    <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-7" data-reveal>
+        {% render 'conversation', lines: data["home-conversation"], team: data.team %}
+      </div>
+      <div class="flex flex-col gap-8 lg:col-span-5" data-reveal>
+        {%- for person in data.team %}{% if person.role == "host" %}
+        <div class="border-t border-base-300 pt-6">
+          <h3 class="text-[1.75rem] leading-tight">{{ person.name }}</h3>
+          <p class="mono mt-1.5 text-base-content/65">{{ person.job }}</p>
+          <p class="mt-3 max-w-[60ch] leading-relaxed text-base-content/80">{{ person.bio }}</p>
+        </div>
+        {%- endif %}{% endfor %}
+        <a href="/about" class="btn btn-outline self-start whitespace-nowrap">About the show</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+label: "Listen: questions"
+fields:
+  - name: question
+    label: "Question"
+    kind: text
+    required: true
+  - name: answer
+    label: "Answer"
+    kind: text
+order: [what-it-pays-for, how-to-cancel, ad-free-feed-in-my-app]

@@ -1,0 +1,16 @@
+label: "Reviews"
+fields:
+  - name: text
+    label: "What they wrote"
+    kind: text
+    required: true
+  - name: name
+    label: "Their name or nickname"
+    kind: text
+  - name: where
+    label: "Where it was posted"
+    kind: text
+  - name: stars
+    label: "Stars (out of 5)"
+    kind: number
+order: [mkbrown, linguist-in-ohio, dana-from-erie, yinzer-abroad, tess-k, slow-listener]

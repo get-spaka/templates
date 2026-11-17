@@ -1,0 +1,26 @@
+label: "The people"
+fields:
+  - name: name
+    label: "Name"
+    kind: text
+    required: true
+  - name: role
+    label: "Role"
+    kind: choice
+    choices: ["host", "producer"]
+  - name: job
+    label: "What they do"
+    kind: text
+  - name: bio
+    label: "Bio"
+    kind: text
+  - name: line
+    label: "One line"
+    kind: text
+  - name: photo
+    label: "Portrait"
+    kind: image
+  - name: voice
+    label: "Name in the conversations"
+    kind: text
+order: [marisol-ibarra, teddy-kowal, hana-sato]

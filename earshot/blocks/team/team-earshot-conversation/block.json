@@ -1,0 +1,13 @@
+{
+  "name": "Earshot conversation",
+  "kind": "team",
+  "source": "upstart",
+  "description": "Round portraits like a video call's tiles above a short exchange that plays line by line as captions: the ring of whoever is speaking pulses in blue while the other dims.",
+  "tags": ["team", "hosts", "conversation", "podcast", "captions", "dialogue"],
+  "mood": ["playful", "friendly", "bold"],
+  "synonyms": ["hosts", "conversation", "dialogue", "team", "animateurs", "conversation", "dialogue", "équipe"],
+  "data": {
+    "name": "conversation",
+    "family": "section"
+  }
+}

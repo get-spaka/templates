@@ -1,0 +1,16 @@
+label: "Ask us: answered on air"
+fields:
+  - name: question
+    label: "The question"
+    kind: text
+    required: true
+  - name: name
+    label: "Who asked (first name)"
+    kind: text
+  - name: town
+    label: "Where they're from"
+    kind: text
+  - name: episode
+    label: "Episode (its id, from its address)"
+    kind: text
+order: [why-yinz, boss-banned-literally, angry-period, too-many-ums, nobody-says-my-name]

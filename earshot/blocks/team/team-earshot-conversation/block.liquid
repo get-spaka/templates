@@ -1,0 +1,24 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-5xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">Two voices,</span><br><span class="caption-box">one question a week</span></h2>
+    <div data-conversation class="mt-12 rounded-box border border-base-300 bg-base-200 p-6 sm:p-8" data-reveal>
+      <div class="flex flex-wrap items-start justify-center gap-8 sm:gap-12">
+        {%- assign voices = data.conversation | map: "speaker" | uniq %}
+        {%- for voice in voices %}
+        <figure data-voice="{{ voice }}" class="flex flex-col items-center gap-3" data-tone="{% cycle 'secondary', 'primary', 'accent' %}">
+          <div class="ring size-24 sm:size-32"><span class="poster text-[2.25rem] sm:text-[2.75rem]" aria-hidden="true">{{ voice | slice: 0 }}</span></div>
+          <figcaption class="mono flex items-center gap-2 text-[0.75rem]">{{ voice }}<span data-level aria-hidden="true"><i></i><i></i><i></i></span></figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+      <div class="mt-8 space-y-4">
+        {%- for line in data.conversation %}
+        <p data-turn="{{ line.speaker }}" class="grid gap-1 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4">
+          <span class="mono pt-1.5 text-[0.75rem] text-base-content/65">{{ line.speaker }}:</span>
+          <span data-readalong class="caption-text text-[clamp(1.1875rem,1.8vw,1.5rem)]">{{ line.line }}</span>
+        </p>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>

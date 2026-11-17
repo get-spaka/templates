@@ -1,0 +1,48 @@
+{%- comment -%}
+  The episode's sound print cut into its chapters, each segment as wide as the chapter is long,
+  then the chapter list. A chapter is "04:12 · Where yinz came from" (the timecode, " · ", the title).
+  Pointing at a chapter lights its segment, and back, with :has() (up to eight chapters).
+{%- endcomment -%}
+{%- assign total = ep.minutes | default: 40 | times: 60 -%}
+{%- assign starts = "" -%}
+{%- for chapter in ep.chapters -%}
+{%- assign tc = chapter | split: " · " | first | split: ":" -%}
+{%- if tc.size > 2 -%}{%- assign s = tc[0] | times: 3600 | plus: 0 -%}{%- assign m = tc[1] | times: 60 -%}{%- assign s = s | plus: m | plus: tc[2] -%}
+{%- else -%}{%- assign s = tc[0] | times: 60 | plus: tc[1] -%}{%- endif -%}
+{%- assign starts = starts | append: s | append: "," -%}
+{%- endfor -%}
+{%- assign starts = starts | split: "," -%}
+<section id="chapters" class="chapters bg-base-100 text-base-content" data-tone="{{ ep.tone }}">
+  <div class="mx-auto max-w-7xl px-4 pb-16 md:px-8 md:pb-24">
+    <h2 class="sr-only">Chapters</h2>
+    {%- if ep.chapters.size > 0 %}
+    <div class="chapter-print" data-reveal-bars>
+      {%- for chapter in ep.chapters %}
+      {%- assign i = forloop.index0 -%}
+      {%- assign j = forloop.index -%}
+      {%- assign s = starts[i] | plus: 0 -%}
+      {%- if forloop.last %}{% assign e = total %}{% else %}{% assign e = starts[j] | plus: 0 %}{% endif -%}
+      {%- assign w = e | minus: s | at_least: 1 -%}
+      {%- assign b0 = s | times: 64 | divided_by: total | floor -%}
+      {%- assign b1 = e | times: 64 | divided_by: total | floor | minus: 1 | at_least: b0 -%}
+      <div class="chapter-seg" data-ch="{{ forloop.index }}" style="--w: {{ w }}">
+        {% render 'soundprint', n: ep.number, from: b0, to: b1, class: "tone-text" %}
+      </div>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    {% render 'soundprint', n: ep.number, reveal: true, class: "print-large h-28 md:h-40 tone-text" %}
+    {%- endif %}
+    {%- if ep.chapters.size > 0 %}
+    <ol class="chapter-list mt-8 grid gap-x-6 divide-y divide-base-300 border-t border-base-300 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-[repeat(var(--n),minmax(0,1fr))]" style="--n: {{ ep.chapters.size | at_most: 5 }}">
+      {%- for chapter in ep.chapters %}
+      {%- assign bits = chapter | split: " · " %}
+      <li data-ch="{{ forloop.index }}" class="flex gap-3 px-2 py-3.5 sm:rounded-field sm:py-4">
+        <span class="mono pt-0.5 text-[0.75rem] text-base-content/65">{{ bits.first }}</span>
+        <span class="font-bold leading-snug">{{ bits.last }}</span>
+      </li>
+      {%- endfor %}
+    </ol>
+    {%- endif %}
+  </div>
+</section>

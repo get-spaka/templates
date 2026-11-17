@@ -1,0 +1,27 @@
+{%- comment -%}
+  An exchange that plays line by line (data-conversation): the round portraits of the people
+  speaking (data-voice, from team) above their lines (data-turn, from a conversation list).
+  A line's speaker is the voice of a team record. Pass lines and team.
+{%- endcomment -%}
+<div data-conversation class="rounded-box border border-base-300 bg-base-200 p-6 sm:p-8">
+  <div class="flex flex-wrap items-start justify-center gap-8 sm:gap-12">
+    {%- assign voices = lines | map: "speaker" | uniq %}
+    {%- for voice in voices %}
+    {%- assign person = team | where: "voice", voice | first %}
+    <figure data-voice="{{ voice }}" class="flex flex-col items-center gap-3" data-tone="{% cycle 'secondary', 'primary', 'accent' %}">
+      <div class="ring size-24 sm:size-32">
+        {%- if person.photo %}<img src="{{ person.photo }}">{% else %}{% assign clean = person.name | default: voice | remove: "Dr. " | split: " " %}<span class="poster text-[2.25rem] sm:text-[2.75rem]" aria-hidden="true">{{ clean.first | slice: 0 }}{% if clean.size > 1 %}{{ clean.last | slice: 0 }}{% endif %}</span>{% endif %}
+      </div>
+      <figcaption class="mono flex items-center gap-2 text-[0.75rem]">{{ voice }}<span data-level aria-hidden="true"><i></i><i></i><i></i></span></figcaption>
+    </figure>
+    {%- endfor %}
+  </div>
+  <div class="mt-8 space-y-4">
+    {%- for line in lines %}
+    <p data-turn="{{ line.speaker }}" class="grid gap-1 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-4">
+      <span class="mono pt-1.5 text-[0.75rem] text-base-content/65">{{ line.speaker }}:</span>
+      <span data-readalong class="caption-text text-[clamp(1.1875rem,1.8vw,1.5rem)]">{{ line.line }}</span>
+    </p>
+    {%- endfor %}
+  </div>
+</div>

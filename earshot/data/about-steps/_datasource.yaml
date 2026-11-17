@@ -1,0 +1,10 @@
+label: "About: how an episode gets made"
+fields:
+  - name: title
+    label: "Step"
+    kind: text
+    required: true
+  - name: text
+    label: "What happens"
+    kind: text
+order: [a-question-comes-in, we-find-who-studies-it, we-record-on-thursday, hana-cuts-it, out-on-tuesday]

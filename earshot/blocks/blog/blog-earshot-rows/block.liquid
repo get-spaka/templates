@@ -1,0 +1,23 @@
+{%- comment -%}
+  Every episode as a row, newest first, filtered by topic with chips (radios and :has(), no script).
+  The chips are the topics of data/episodes/_datasource.yaml, in the same order: keep them in step.
+{%- endcomment -%}
+{%- assign topics = "Accents & dialects|Words & origins|Kids & learning|Texting & tech|Names|Mailbag" | split: "|" -%}
+<section id="archive" class="archive bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">Every episode</span></h2>
+    <fieldset class="mt-10 flex flex-wrap gap-2" data-reveal>
+      <legend class="mono mb-4 text-base-content/65">Filter by topic</legend>
+      <input type="radio" name="archive-topic" id="archive-topic-all" class="chip-input" data-n="0" checked><label for="archive-topic-all" class="chip">All</label>
+      {%- for topic in topics %}
+      <input type="radio" name="archive-topic" id="archive-topic-{{ forloop.index }}" class="chip-input" data-n="{{ forloop.index }}"><label for="archive-topic-{{ forloop.index }}" class="chip">{% if topic == "Mailbag" %}<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></svg>{% endif %}{{ topic }}</label>
+      {%- endfor %}
+    </fieldset>
+    <div class="mt-8 border-b border-base-300">
+      {%- for ep in data.episodes %}
+      {%- assign n = 0 %}{% for topic in topics %}{% if topic == ep.topic %}{% assign n = forloop.index %}{% endif %}{% endfor %}
+      {% render 'episode-row', ep: ep, topic_n: n %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>

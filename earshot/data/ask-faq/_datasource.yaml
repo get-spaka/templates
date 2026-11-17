@@ -1,0 +1,10 @@
+label: "Ask us: questions"
+fields:
+  - name: question
+    label: "Question"
+    kind: text
+    required: true
+  - name: answer
+    label: "Answer"
+    kind: text
+order: [how-are-questions-chosen, full-name-on-air, can-i-be-a-guest, how-long-until-i-hear]

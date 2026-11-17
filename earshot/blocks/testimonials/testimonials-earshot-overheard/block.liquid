@@ -1,0 +1,32 @@
+{%- comment -%} Quotes played as captions on studio night: one large, then two smaller, each linking to its episode. {%- endcomment -%}
+<section id="overheard" class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]"><span class="caption-box">Overheard</span></h2>
+      <p class="mono text-neutral-content/65">Said on the show</p>
+    </div>
+    {%- for quote in data.quotes limit: 3 %}
+    {%- if forloop.first %}
+    <figure class="mt-12 max-w-5xl" data-reveal>
+      <figcaption class="mono flex flex-wrap items-center gap-x-3 gap-y-1 text-neutral-content/75"><span class="rounded-[0.2rem] border border-neutral-content/40 px-1.5 text-[0.6875rem]">CC</span><span class="flex items-center gap-2">{{ quote.speaker }}<span data-level aria-hidden="true"><i></i><i></i><i></i></span></span></figcaption>
+      <blockquote class="mt-5"><p data-readalong class="caption-text text-[clamp(1.625rem,3.6vw,2.75rem)] text-balance">{{ quote.text }}</p></blockquote>
+      {%- if quote.episode != blank %}
+      <a href="/episodes/{{ quote.episode }}" class="mono mt-6 inline-flex items-center gap-2 text-secondary hover:underline">Hear it at {{ quote.at }}<svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      {%- endif %}
+    </figure>
+    <div class="mt-16 grid gap-6 md:grid-cols-2">
+    {%- else %}
+      <figure class="flex flex-col rounded-box border border-neutral-content/15 p-6 md:p-8" data-reveal>
+        <figcaption class="mono flex items-center gap-2 text-[0.75rem] text-neutral-content/75">{{ quote.speaker }}<span data-level aria-hidden="true"><i></i><i></i><i></i></span></figcaption>
+        <blockquote class="mt-4 flex-1"><p data-readalong class="caption-text text-[clamp(1.25rem,2vw,1.625rem)]">{{ quote.text }}</p></blockquote>
+        {%- if quote.episode != blank %}
+        <a href="/episodes/{{ quote.episode }}" class="mono mt-6 inline-flex items-center gap-2 text-[0.75rem] text-secondary hover:underline">Hear it at {{ quote.at }}</a>
+        {%- endif %}
+      </figure>
+    {%- endif %}
+    {%- if forloop.last %}
+    </div>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</section>

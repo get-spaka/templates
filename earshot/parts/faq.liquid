@@ -1,0 +1,14 @@
+{%- comment -%} Questions as an accordion. Pass items (a list), title and columns (true for two columns). {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">{{ title }}</span></h2>
+    <div class="mt-12 grid gap-x-10 {% if columns %}lg:grid-cols-2{% else %}max-w-4xl{% endif %}" data-reveal>
+      {%- for item in items %}
+      <details class="group border-t border-base-300 py-1 {% if columns %}lg:[&:nth-last-child(-n+2)]:border-b{% else %}last:border-b{% endif %}">
+        <summary class="flex cursor-pointer items-start justify-between gap-6 py-5 text-[1.25rem] leading-snug font-bold">{{ item.question }}<svg class="mt-1 size-5 shrink-0 transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p class="max-w-[62ch] pb-6 text-[1.0625rem] leading-relaxed text-base-content/80">{{ item.answer }}</p>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

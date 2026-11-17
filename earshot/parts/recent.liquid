@@ -1,0 +1,14 @@
+<section id="recent" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]"><span class="caption-box">Recent episodes</span></h2>
+      <p class="mono text-base-content/65">Every Tuesday at 6 am</p>
+    </div>
+    <div class="mt-10 border-b border-base-300" data-reveal>
+      {%- for ep in data.episodes offset: 1 limit: 5 %}
+      {% render 'episode-row', ep: ep %}
+      {%- endfor %}
+    </div>
+    <a href="/episodes" class="btn btn-outline mt-10 whitespace-nowrap">All {{ data.episodes.first.number }} episodes<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+  </div>
+</section>

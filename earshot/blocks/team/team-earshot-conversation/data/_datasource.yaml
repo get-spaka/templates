@@ -1,0 +1,10 @@
+label: "Conversation"
+fields:
+  - name: speaker
+    label: "Who speaks"
+    kind: text
+    required: true
+  - name: line
+    label: "What they say"
+    kind: text
+order: [honest-question, not-rude-just-loud, my-mom-writes-fine, she-is-not-fine]

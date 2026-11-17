@@ -1,0 +1,22 @@
+label: "Live tapings"
+fields:
+  - name: title
+    label: "Title"
+    kind: text
+    required: true
+  - name: date
+    label: "Date"
+    kind: date
+  - name: time
+    label: "Time"
+    kind: text
+  - name: venue
+    label: "Where"
+    kind: text
+  - name: note
+    label: "One line"
+    kind: text
+  - name: link
+    label: "Tickets"
+    kind: link
+sort: date

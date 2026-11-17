@@ -1,0 +1,10 @@
+label: "About: how they met"
+fields:
+  - name: speaker
+    label: "Who speaks"
+    kind: text
+    required: true
+  - name: line
+    label: "What they say"
+    kind: text
+order: [the-car-needs-washed, forty-minutes, forty-five, same-room]

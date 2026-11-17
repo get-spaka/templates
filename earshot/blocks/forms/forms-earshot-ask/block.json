@@ -1,0 +1,22 @@
+{
+  "name": "Earshot ask band",
+  "kind": "forms",
+  "source": "upstart",
+  "description": "A pale band inviting listeners' questions: a caption-box title, the voicemail number set large as a call link, and a short question form beside it (the question, a first name, where they're from, an email and permission to read it on air).",
+  "tags": ["form", "questions", "voicemail", "listeners", "podcast", "mailbag"],
+  "mood": ["friendly", "bold"],
+  "synonyms": [
+    "ask us",
+    "listener questions",
+    "voicemail",
+    "mailbag",
+    "posez vos questions",
+    "questions des auditeurs",
+    "messagerie",
+    "courrier"
+  ],
+  "data": {
+    "name": "questions",
+    "family": "collection"
+  }
+}

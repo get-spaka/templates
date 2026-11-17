@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Every episode — Say Again?</title>
+<meta name="description" content="Every episode of Say Again?, the podcast about how people talk, newest first: accents and dialects, words and their origins, kids, texting, names and the Mailbag.">
+<meta property="og:title" content="Every episode — Say Again?">
+<meta property="og:description" content="The whole archive of Say Again?, filtered by topic, with a few to start with if you're new.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 pt-14 pb-14 md:px-8 md:pt-20 md:pb-20">
+    <p class="mono text-base-content/65" data-reveal>{{ data.episodes.first.number }} episodes since March 2021</p>
+    <h1 class="caption-title mt-5 text-[clamp(3rem,8vw,6.5rem)] leading-[1.15]" data-reveal><span class="caption-box">Every episode</span></h1>
+    <p class="mt-8 max-w-[56ch] text-[1.1875rem] leading-relaxed text-base-content/80" data-reveal>One thing people say without thinking, every Tuesday since March 2021, and the Mailbag every fourth week. Point at an episode to hear it ripple; each has a sound print of its own.</p>
+  </div>
+</section>
+{% render 'start-here' %}
+{% render 'archive' %}
+{% render 'party-strip' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

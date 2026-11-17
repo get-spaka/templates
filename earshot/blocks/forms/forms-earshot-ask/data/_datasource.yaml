@@ -1,0 +1,28 @@
+label: "Listener questions"
+collected: true
+answer: question-thanks
+body: question
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Lots of questions from here already. Please try again in a few minutes."
+  sent: "Thank you, your question is in the mailbag."
+fields:
+  - name: question
+    label: "Your question"
+    kind: markdown
+    required: true
+  - name: name
+    label: "Your first name"
+    kind: text
+    required: true
+  - name: town
+    label: "Where you're from"
+    kind: text
+  - name: email
+    label: "Your email"
+    kind: email
+    required: true
+  - name: on_air
+    label: "You can read my question on the show"
+    kind: boolean

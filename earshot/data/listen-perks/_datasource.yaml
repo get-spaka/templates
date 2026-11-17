@@ -1,0 +1,10 @@
+label: "Listen: what members get"
+fields:
+  - name: title
+    label: "Perk"
+    kind: text
+    required: true
+  - name: text
+    label: "What it means"
+    kind: text
+order: [no-ads, a-bonus-episode, first-tickets, your-name-in-the-credits]

@@ -1,0 +1,29 @@
+{%- comment -%}
+  An episode's sound print: bars computed from its number (n), so no two episodes look alike and
+  a new one has its print as soon as it has a number. from/to pick a stretch of its 64 bars
+  (0 to 63; a row shows 0 to 39). Quiet stretches every ten to fourteen bars, like speech.
+  Never drawn by hand.
+{%- endcomment -%}
+{%- assign seed = n | default: 1 | plus: 0 -%}
+{%- assign first = from | default: 0 -%}
+{%- assign last = to | default: 63 -%}
+{%- assign period = seed | modulo: 5 | plus: 10 -%}
+<div class="{{ class }}" data-soundprint{% if tone %} data-tone="{{ tone }}"{% endif %}{% if reveal %} data-reveal-bars{% endif %} aria-hidden="true">
+{%- for i in (first..last) -%}
+{%- assign k = i | plus: seed | modulo: period -%}
+{%- assign a = seed | times: 131 -%}
+{%- assign b = i | times: 71 -%}
+{%- assign c = i | times: i | modulo: 53 | times: 17 -%}
+{%- assign d = seed | times: i | modulo: 29 | times: 13 -%}
+{%- assign r = a | plus: b | plus: c | plus: d | modulo: 89 -%}
+{%- if k < 2 -%}
+{%- assign h = r | modulo: 9 | plus: 6 -%}
+{%- else -%}
+{%- assign up = k | minus: 1 -%}
+{%- assign down = period | minus: k -%}
+{%- assign edge = up | at_most: down | times: 6 -%}
+{%- assign h = r | modulo: 50 | plus: 22 | plus: edge | at_most: 100 -%}
+{%- endif -%}
+<i style="--h: {{ h }}; --i: {{ i }}"></i>
+{%- endfor -%}
+</div>

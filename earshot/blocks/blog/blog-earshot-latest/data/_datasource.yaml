@@ -1,0 +1,56 @@
+label: "Episodes"
+body: notes
+fields:
+  - name: title
+    label: "Title"
+    kind: text
+    required: true
+  - name: number
+    label: "Episode number"
+    kind: number
+    required: true
+  - name: date
+    label: "Release date"
+    kind: date
+  - name: minutes
+    label: "Running time (minutes)"
+    kind: number
+  - name: topic
+    label: "Topic"
+    kind: choice
+    choices: ["Accents & dialects", "Words & origins", "Kids & learning", "Texting & tech", "Names", "Mailbag"]
+  - name: guest
+    label: "Guest"
+    kind: text
+  - name: guest_role
+    label: "What the guest does"
+    kind: text
+  - name: tone
+    label: "Color (its sound print and number)"
+    kind: choice
+    choices: ["primary", "secondary", "accent", "neutral"]
+  - name: summary
+    label: "Summary"
+    kind: text
+  - name: cover
+    label: "Cover picture (optional)"
+    kind: image
+  - name: chapters
+    label: "Chapters (timecode · title)"
+    kind: list
+  - name: listen
+    label: "Links to this episode (first is the main one)"
+    kind: links
+  - name: starter
+    label: "A good first episode"
+    kind: boolean
+  - name: starter_note
+    label: "Why start with it"
+    kind: text
+  - name: transcript
+    label: "Transcript"
+    kind: markdown
+  - name: notes
+    label: "Show notes"
+    kind: markdown
+sort: -number

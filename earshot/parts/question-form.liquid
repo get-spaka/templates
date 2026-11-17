@@ -1,0 +1,27 @@
+{%- comment -%} The question form, posting to questions. id names its problems' element; full shows every field side by side on wide screens. {%- endcomment -%}
+<form hx-post="/_data/questions" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#{{ id }}-problems swap:innerHTML" class="grid grid-cols-1 gap-x-4 gap-y-1 rounded-box border border-base-300 bg-base-100 p-5 sm:grid-cols-2 sm:p-7">
+  <fieldset class="fieldset sm:col-span-2">
+    <legend class="fieldset-legend text-[0.9375rem]">Your question</legend>
+    <textarea name="question" class="textarea w-full rounded-box text-base" rows="{% if full %}5{% else %}3{% endif %}" required maxlength="2000" placeholder="Why does my grandmother say 'warsh'?"></textarea>
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">Your first name</legend>
+    <input name="name" type="text" class="input w-full" required maxlength="100" autocomplete="given-name">
+  </fieldset>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend text-[0.9375rem]">Where you're from</legend>
+    <input name="town" type="text" class="input w-full" maxlength="100" placeholder="Bloomfield, Pittsburgh">
+  </fieldset>
+  <fieldset class="fieldset sm:col-span-2">
+    <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+    <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+  </fieldset>
+  <label class="mt-3 flex cursor-pointer items-start gap-3 text-[0.9375rem] sm:col-span-2">
+    <input name="on_air" type="checkbox" value="true" class="checkbox checkbox-primary mt-0.5" checked>
+    <span>You can read my question on the show, with my first name and town.</span>
+  </label>
+  <div id="{{ id }}-problems" class="sm:col-span-2"></div>
+  <div class="mt-4 sm:col-span-2">
+    <button type="submit" class="btn btn-primary w-full whitespace-nowrap sm:w-auto">Send your question</button>
+  </div>
+</form>

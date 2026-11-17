@@ -1,0 +1,24 @@
+<section id="people" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]" data-reveal><span class="caption-box">The people</span></h2>
+    <ul class="mt-12 border-b border-base-300">
+      {%- for person in data.team %}
+      <li class="grid gap-6 border-t border-base-300 py-10 sm:grid-cols-[9rem_minmax(0,1fr)] md:gap-10 lg:grid-cols-[11rem_minmax(0,1fr)_minmax(0,18rem)]" data-reveal>
+        <div data-voice="{{ person.voice }}" data-tone="{% cycle 'secondary', 'primary', 'accent' %}" class="w-28 sm:w-36 lg:w-40">
+          <div class="ring w-full">
+            {%- if person.photo %}<img src="{{ person.photo }}">{% else %}{% assign clean = person.name | remove: "Dr. " | split: " " %}<span class="poster text-[2.75rem] lg:text-[3.25rem]" aria-hidden="true">{{ clean.first | slice: 0 }}{% if clean.size > 1 %}{{ clean.last | slice: 0 }}{% endif %}</span>{% endif %}
+          </div>
+        </div>
+        <div>
+          <h3 class="text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">{{ person.name }}</h3>
+          <p class="mono mt-2 text-base-content/65">{{ person.job }}</p>
+          <p class="mt-4 max-w-[62ch] text-[1.0625rem] leading-relaxed text-base-content/80">{{ person.bio }}</p>
+        </div>
+        {%- if person.line != blank %}
+        <p class="caption-text self-start text-[1.25rem] sm:col-start-2 lg:col-start-3"><span class="rounded-[0.2em] bg-secondary px-[0.3em] py-[0.05em] text-secondary-content [box-decoration-break:clone]">{{ person.line }}</span></p>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

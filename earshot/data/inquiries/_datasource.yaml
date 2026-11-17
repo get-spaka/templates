@@ -1,0 +1,30 @@
+label: "Work with us"
+collected: true
+answer: inquiry-thanks
+body: message
+messages:
+  required: "{field} is needed."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many messages from here. Please try again in a few minutes."
+  sent: "Thank you, Hana will write back within a week."
+fields:
+  - name: reason
+    label: "What it's about"
+    kind: choice
+    required: true
+    choices: ["Suggest a guest", "Sponsor the show", "Press", "Something else"]
+  - name: name
+    label: "Your name"
+    kind: text
+    required: true
+  - name: email
+    label: "Your email"
+    kind: email
+    required: true
+  - name: organization
+    label: "Your organization"
+    kind: text
+  - name: message
+    label: "Your message"
+    kind: markdown
+    required: true

@@ -1,0 +1,39 @@
+{%- for ep in data.episodes limit: 1 -%}
+{%- assign main = ep.listen.first.href | default: data.platforms.first.url -%}
+<section id="latest" class="bg-base-100 text-base-content" data-tone="{{ ep.tone }}">
+  <div class="mx-auto max-w-7xl px-4 pb-20 md:px-8 md:pb-28">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]"><span class="caption-box">The latest episode</span></h2>
+      <p class="mono text-base-content/65">Out <time datetime="{{ ep.date }}">{{ ep.date | date: "%A, %B %-d" }}</time></p>
+    </div>
+    <a href="/episodes/{{ ep.id }}" class="mt-10 block" data-ripple aria-label="Episode {{ ep.number }}: {{ ep.title }}">
+      {% render 'soundprint', n: ep.number, tone: ep.tone, reveal: true, class: "print-large h-24 md:h-36 lg:h-44" %}
+    </a>
+    <div class="mt-10 grid gap-8 md:grid-cols-12 md:gap-10" data-reveal>
+      <p class="poster tone-number text-[clamp(6rem,17vw,12rem)] leading-[0.8] md:col-span-4" data-tone="{{ ep.tone }}"><span class="sr-only">Episode </span>{{ ep.number }}</p>
+      <div class="md:col-span-8">
+        <p class="mono text-base-content/65"><time datetime="{{ ep.date }}">{{ ep.date | date: "%b %-d, %Y" }}</time> · {{ ep.minutes }} min{% if ep.topic != blank %} · {{ ep.topic }}{% endif %}</p>
+        <h3 class="mt-3 text-[clamp(2rem,4vw,3.5rem)] leading-[1.02] text-balance"><a href="/episodes/{{ ep.id }}" class="hover:underline hover:decoration-4 hover:underline-offset-8">{{ ep.title }}</a></h3>
+        {%- if ep.guest != blank %}
+        <p class="mt-3 text-[1.1875rem] font-bold">with {{ ep.guest }}{% if ep.guest_role != blank %}, {{ ep.guest_role }}{% endif %}</p>
+        {%- endif %}
+        <p class="mt-5 max-w-[62ch] text-[1.0625rem] leading-relaxed text-base-content/80">{{ ep.summary }}</p>
+        <div class="mt-8 flex flex-wrap items-center gap-2.5">
+          <a href="{{ main }}" class="btn btn-primary whitespace-nowrap"><svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Play episode {{ ep.number }}</a>
+          {%- if ep.listen.size > 1 %}
+          {%- for link in ep.listen offset: 1 %}
+          <a href="{{ link.href }}" class="btn btn-outline whitespace-nowrap">{{ link.label }}</a>
+          {%- endfor %}
+          {%- else %}
+          {%- for platform in data.platforms offset: 1 limit: 2 %}
+          <a href="{{ platform.url }}" class="btn btn-outline whitespace-nowrap">{{ platform.name }}</a>
+          {%- endfor %}
+          {%- endif %}
+          <a href="/listen" class="btn btn-ghost whitespace-nowrap">More apps</a>
+        </div>
+        <a href="/episodes/{{ ep.id }}" class="mt-7 inline-flex items-center gap-2 font-bold text-primary underline decoration-2 underline-offset-[0.3em]">Episode notes<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endfor -%}

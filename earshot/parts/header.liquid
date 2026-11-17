@@ -1,0 +1,44 @@
+<header class="sticky top-0 z-50 border-b border-base-300 bg-base-100/95 text-base-content backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 md:h-[4.5rem] md:gap-6 md:px-8">
+    <a href="/" class="flex shrink-0 items-center gap-3" aria-label="Say Again?, home">
+      <span class="poster text-[1.5rem] leading-none whitespace-nowrap md:text-[1.75rem]">Say Again<span class="text-primary">?</span></span>
+    </a>
+    <p data-on-air="tuesday" class="mono flex items-center gap-2 text-[0.75rem] whitespace-nowrap text-base-content/75">
+      <span class="lamp" aria-hidden="true"></span>
+      <span class="hidden xl:inline"><span data-air="usual">New episodes every Tuesday</span><span data-air="live">On air today: episode {{ data.episodes.first.number }}</span></span>
+    </p>
+    <nav aria-label="Main" class="ml-auto hidden lg:block">
+      <ul class="flex items-center gap-1 text-[0.9375rem] font-bold whitespace-nowrap">
+        {%- for item in data.navigation -%}{%- if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="rounded-full px-3 py-2 hover:bg-base-200 {% if page.url contains item.href %}underline decoration-primary decoration-2 underline-offset-[0.4em]{% endif %}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endif -%}{%- endfor %}
+      </ul>
+    </nav>
+    <div class="ml-auto flex items-center gap-1.5 lg:ml-2">
+      <details class="listen-menu">
+        <summary class="btn btn-primary whitespace-nowrap">Listen<svg class="chev size-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="listen-panel">
+          <ul class="menu w-full p-0 text-[0.9375rem] font-bold">
+            {%- for platform in data.platforms %}
+            <li><a href="{{ platform.url }}">{{ platform.name }}</a></li>
+            {%- endfor %}
+          </ul>
+          <a href="/listen" class="mt-1 flex items-center justify-between rounded-field border-t border-base-300 px-3 pt-3 pb-1.5 text-[0.9375rem] font-bold text-primary">All the ways to listen<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+      </details>
+      <div class="dropdown dropdown-end lg:hidden">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle" aria-label="Open the menu">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+        </div>
+        <div tabindex="0" class="dropdown-content z-50 mt-3 w-72 rounded-box border border-base-300 bg-base-100 p-3 shadow-lg">
+          <ul class="menu w-full p-0 text-base font-bold">
+            {%- for item in data.navigation -%}{%- if item.place == "both" or item.place == "header" %}
+            <li><a href="{{ item.href }}" {% if page.url == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {%- endif -%}{%- endfor %}
+          </ul>
+          <p class="mono mt-2 border-t border-base-300 px-3 pt-3 text-[0.75rem] text-base-content/70">New episodes every Tuesday at 6 am</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

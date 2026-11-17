@@ -1,0 +1,14 @@
+{%- comment -%} One episode as a ruled row: its number, title, guest, topic, date and a small sound print that ripples under the pointer. topic_n is its topic's place among the archive's chips. {%- endcomment -%}
+<a href="/episodes/{{ ep.id }}" class="group grid grid-cols-[4.75rem_minmax(0,1fr)] items-center gap-x-4 gap-y-4 border-t border-base-300 py-6 md:grid-cols-[8.5rem_minmax(0,1fr)_15rem] md:gap-x-8 md:py-8" data-ripple data-tone="{{ ep.tone }}"{% if topic_n %} data-topic="{{ topic_n }}"{% endif %}>
+  <span class="poster tone-number text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.9]">{{ ep.number }}</span>
+  <span class="block min-w-0">
+    <span class="block font-heading text-[1.3125rem] leading-[1.15] font-bold tracking-[-0.015em] text-balance group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4 md:text-[1.75rem]">{{ ep.title }}</span>
+    {%- if ep.guest != blank %}
+    <span class="mt-1.5 block text-[1rem] text-base-content/80">with {{ ep.guest }}{% if ep.guest_role != blank %}, {{ ep.guest_role }}{% endif %}</span>
+    {%- else %}
+    <span class="mt-1.5 flex items-center gap-2 text-[1rem] text-base-content/80"><svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Your questions and voicemails</span>
+    {%- endif %}
+    <span class="mono mt-2.5 block text-[0.75rem] text-base-content/65">{% if ep.topic != blank %}{{ ep.topic }} · {% endif %}<time datetime="{{ ep.date }}" class="whitespace-nowrap">{{ ep.date | date: "%b %-d, %Y" }}</time>{% if ep.minutes %} · <span class="whitespace-nowrap">{{ ep.minutes }} min</span>{% endif %}</span>
+  </span>
+  {% render 'soundprint', n: ep.number, to: 39, class: "col-span-2 h-10 md:col-span-1 md:h-14 tone-text", tone: ep.tone %}
+</a>

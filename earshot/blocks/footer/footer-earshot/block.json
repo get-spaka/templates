@@ -1,0 +1,13 @@
+{
+  "name": "Earshot footer",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A footer on studio night: a caption-box title, every app the show is on as large links, the newsletter with its field, the voicemail number, the pages and the social links, and the studio's line beside an outlined on-air lamp.",
+  "tags": ["footer", "podcast", "listen", "newsletter", "voicemail"],
+  "mood": ["dark", "bold"],
+  "synonyms": ["footer", "site footer", "listen links", "pied de page", "bas de page", "liens d'écoute", "newsletter"],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

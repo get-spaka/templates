@@ -1,0 +1,23 @@
+label: "Quotes"
+fields:
+  - name: text
+    label: "What was said"
+    kind: text
+    required: true
+  - name: speaker
+    label: "Who said it"
+    kind: text
+  - name: episode
+    label: "Episode (its id, from its address)"
+    kind: text
+  - name: at
+    label: "When in the episode (18:42)"
+    kind: text
+order:
+  [
+    a-period-means-we-need-to-talk,
+    yinz-fixes-a-hole,
+    um-is-a-signal,
+    babies-hear-one-long-sound,
+    spell-every-name-twice,
+  ]

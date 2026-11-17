@@ -1,0 +1,23 @@
+{
+  "id": "earshot",
+  "version": "1.0.0",
+  "name": "Earshot",
+  "description": "A podcast's site you can almost hear: quotes play as captions, word by word at the pace of the voice, each episode has a sound print of its own cut into its chapters, section titles sit on subtitle boxes, and an on-air lamp lights on release day.",
+  "category": "blog",
+  "original": true,
+  "tags": [
+    "podcast",
+    "episodes",
+    "show notes",
+    "interview show",
+    "radio show",
+    "sermons",
+    "audio drama",
+    "listen links",
+    "membership",
+    "listener questions"
+  ],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT",
+  "shoot": { "clock": "2026-11-10T09:30:00-05:00" }
+}

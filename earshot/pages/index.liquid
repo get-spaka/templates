@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Say Again? — A podcast about how people talk</title>
+<meta name="description" content="Every Tuesday, a linguist and a radio producer take one thing you say without thinking and find out where it came from. A weekly podcast from Pittsburgh.">
+<meta property="og:title" content="Say Again? — A podcast about how people talk">
+<meta property="og:description" content="A sociolinguist and a former public radio producer on yinz, um, the angry period and everything else you say without thinking. New episodes every Tuesday.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'hero' %}
+{% render 'latest' %}
+{% render 'recent' %}
+{% render 'start-here' %}
+{% render 'overheard' %}
+{% render 'hosts' %}
+{% render 'ask-band' %}
+{% render 'reviews', limit: 3 %}
+{% render 'party-line' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

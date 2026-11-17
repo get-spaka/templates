@@ -1,0 +1,13 @@
+label: "Where to listen"
+fields:
+  - name: name
+    label: "Name"
+    kind: text
+    required: true
+  - name: url
+    label: "Address of the show there"
+    kind: link
+  - name: line
+    label: "One line"
+    kind: text
+order: [apple-podcasts, spotify, youtube, pocket-casts, overcast, rss]

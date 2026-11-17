@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.number }}: {{ record.title }} — Say Again?</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="Episode {{ record.number }}: {{ record.title }} — Say Again?">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+{%- assign main = record.listen.first -%}
+{%- assign fallback = data.platforms.first -%}
+<main>
+<section class="bg-base-100 text-base-content" data-tone="{{ record.tone }}">
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 pt-12 pb-12 md:px-8 md:pt-16 md:pb-16 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-8" data-reveal>
+      <p class="mono text-base-content/65"><a href="/episodes" class="hover:underline">Episodes</a> · Ep. {{ record.number }} · <time datetime="{{ record.date }}" class="whitespace-nowrap">{{ record.date | date: "%b %-d, %Y" }}</time> · <span class="whitespace-nowrap">{{ record.minutes }} min</span>{% if record.topic != blank %} · <span class="whitespace-nowrap">{{ record.topic }}</span>{% endif %}</p>
+      <h1 class="mt-5 text-[clamp(2.75rem,6.5vw,6rem)] leading-[0.98] tracking-[-0.03em] text-balance">{{ record.title }}</h1>
+      {%- if record.guest != blank %}
+      <p class="mt-5 text-[1.25rem] font-bold">with {{ record.guest }}{% if record.guest_role != blank %}, {{ record.guest_role }}{% endif %}</p>
+      {%- endif %}
+      <p class="mt-5 max-w-[60ch] text-[1.125rem] leading-relaxed text-base-content/80">{{ record.summary }}</p>
+      <div class="mt-8 flex flex-wrap items-center gap-2.5">
+        {%- if main %}
+        <a href="{{ main.href }}" class="btn btn-primary whitespace-nowrap"><svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Play on {{ main.label }}</a>
+        {%- for link in record.listen offset: 1 %}
+        <a href="{{ link.href }}" class="btn btn-outline whitespace-nowrap">{{ link.label }}</a>
+        {%- endfor %}
+        {%- else %}
+        <a href="{{ fallback.url }}" class="btn btn-primary whitespace-nowrap"><svg class="size-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Play on {{ fallback.name }}</a>
+        {%- for platform in data.platforms offset: 1 limit: 2 %}
+        <a href="{{ platform.url }}" class="btn btn-outline whitespace-nowrap">{{ platform.name }}</a>
+        {%- endfor %}
+        {%- endif %}
+        <a href="/listen" class="btn btn-ghost whitespace-nowrap">More apps</a>
+      </div>
+    </div>
+    <div class="lg:col-span-4 lg:justify-self-end" data-reveal>
+      {%- if record.cover %}
+      <img src="{{ record.cover }}" class="aspect-square w-full max-w-sm rounded-box object-cover" data-studio>
+      {%- else %}
+      <p class="poster tone-number text-[clamp(7rem,20vw,12rem)] leading-[0.8]" data-tone="{{ record.tone }}"><span class="sr-only">Episode </span>{{ record.number }}</p>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+{% render 'chapters', ep: record %}
+<section class="bg-base-100 text-base-content" data-tone="{{ record.tone }}">
+  <div class="mx-auto grid max-w-7xl gap-6 px-4 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-10">
+    <p class="mono text-base-content/65 lg:col-span-3">Show notes</p>
+    <div class="notes max-w-[65ch] text-[1.0625rem] leading-relaxed text-base-content/80 lg:col-span-8" data-reveal>{{ record.notes }}</div>
+  </div>
+</section>
+{%- assign quotes = data.quotes | where: "episode", record.id %}
+{%- if quotes.size > 0 %}
+<section class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-24">
+    <h2 class="caption-title text-[clamp(2rem,3.6vw,3rem)]" data-reveal><span class="caption-box">Overheard in this episode</span></h2>
+    {%- for quote in quotes %}
+    <figure class="mt-10 max-w-5xl" data-reveal>
+      <figcaption class="mono flex flex-wrap items-center gap-x-3 gap-y-1 text-neutral-content/75"><span class="rounded-[0.2rem] border border-neutral-content/40 px-1.5 text-[0.6875rem]">CC</span><span class="flex items-center gap-2">{{ quote.speaker }}<span data-level aria-hidden="true"><i></i><i></i><i></i></span></span><span class="text-secondary">{{ quote.at }}</span></figcaption>
+      <blockquote class="mt-5"><p data-readalong class="caption-text text-[clamp(1.5rem,3.2vw,2.5rem)] text-balance">{{ quote.text }}</p></blockquote>
+    </figure>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+{%- if record.transcript != blank %}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-16">
+    <details class="group mx-auto max-w-3xl rounded-box border border-base-300 bg-base-100">
+      <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 text-[1.25rem] font-bold md:p-6">Read the transcript<svg class="size-5 shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+      <div class="notes transcript border-t border-base-300 p-5 text-[1.0625rem] leading-relaxed text-base-content/80 md:p-8">{{ record.transcript }}</div>
+    </details>
+  </div>
+</section>
+{%- endif %}
+{%- assign newer = nil %}{% assign older = nil %}{% assign previous = nil %}{% assign hit = false %}
+{%- for ep in data.episodes %}
+{%- if hit %}{% assign older = ep %}{% break %}{% endif %}
+{%- if ep.id == record.id %}{% assign hit = true %}{% assign newer = previous %}{% endif %}
+{%- assign previous = ep %}
+{%- endfor %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+    <div class="grid gap-4 sm:grid-cols-2" data-reveal>
+      {%- if older %}
+      <a href="/episodes/{{ older.id }}" class="flex flex-col gap-2 rounded-box border border-base-300 p-6 hover:border-base-content" data-tone="{{ older.tone }}">
+        <span class="mono text-base-content/65">← Previous · Ep. {{ older.number }}</span>
+        <span class="font-heading text-[1.5rem] leading-tight font-bold">{{ older.title }}</span>
+      </a>
+      {%- else %}<span></span>{% endif %}
+      {%- if newer %}
+      <a href="/episodes/{{ newer.id }}" class="flex flex-col gap-2 rounded-box border border-base-300 p-6 hover:border-base-content sm:items-end sm:text-right" data-tone="{{ newer.tone }}">
+        <span class="mono text-base-content/65">Next · Ep. {{ newer.number }} →</span>
+        <span class="font-heading text-[1.5rem] leading-tight font-bold">{{ newer.title }}</span>
+      </a>
+      {%- endif %}
+    </div>
+    {%- assign same = data.episodes | where: "topic", record.topic %}
+    {%- assign shown = 0 %}
+    <h2 class="caption-title mt-20 text-[clamp(2rem,3.6vw,3rem)]" data-reveal><span class="caption-box">More episodes</span></h2>
+    <div class="mt-8 border-b border-base-300" data-reveal>
+      {%- for ep in same %}{% if ep.id != record.id and shown < 3 %}{% assign shown = shown | plus: 1 %}
+      {% render 'episode-row', ep: ep %}
+      {%- endif %}{% endfor %}
+      {%- for ep in data.episodes %}{% if ep.id != record.id and ep.topic != record.topic and shown < 3 %}{% assign shown = shown | plus: 1 %}
+      {% render 'episode-row', ep: ep %}
+      {%- endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "Earshot episode rows",
+  "kind": "blog",
+  "source": "upstart",
+  "description": "Episodes as ruled, numbered rows, newest first: the number large in the episode's color, the title, the guest, topic, date and minutes, and a small sound print that ripples under the pointer, with topic chips that filter the list without a script.",
+  "tags": ["podcast", "episodes", "archive", "list", "filter", "topics"],
+  "mood": ["bold", "editorial", "colorful"],
+  "synonyms": [
+    "episode list",
+    "archive",
+    "all episodes",
+    "podcast",
+    "liste des épisodes",
+    "archives",
+    "tous les épisodes",
+    "balado"
+  ],
+  "data": {
+    "name": "episodes",
+    "family": "collection"
+  }
+}

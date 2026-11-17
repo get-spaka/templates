@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>About the show — Say Again?</title>
+<meta name="description" content="Say Again? is made by a sociolinguist, a former public radio producer and an editor, in the old switchboard room of a 1914 telephone exchange in Lawrenceville, Pittsburgh.">
+<meta property="og:title" content="About the show — Say Again?">
+<meta property="og:description" content="Two people, two microphones, one old switchboard room: how Say Again? started and how an episode gets made.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-4 pt-14 pb-16 md:px-8 md:pt-20 md:pb-24">
+    <p class="mono text-base-content/65" data-reveal>About the show</p>
+    <h1 class="caption-title mt-5 max-w-5xl text-[clamp(2.5rem,6vw,5.25rem)] leading-[1.2]" data-reveal><span class="caption-box">Two people, two microphones, one old switchboard room</span></h1>
+    <div class="frame mt-12 aspect-[4/3] sm:aspect-[21/9]" data-reveal>
+      <img src="/media/studio-round-table.jpg" class="absolute inset-0 -z-10 size-full object-cover" data-studio>
+      <div class="flex h-full items-end justify-between gap-4 p-4 sm:p-6">
+        <p class="mono rounded-full bg-neutral/75 px-3 py-1.5 text-[0.6875rem] whitespace-nowrap backdrop-blur sm:text-[0.75rem]">The studio · Lawrenceville, Pittsburgh</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="how-it-started" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5" data-reveal>
+      <h2 class="text-[clamp(2rem,3.6vw,3rem)] leading-[1.05]">How it started</h2>
+      <div class="mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-base-content/80">
+        <p>In the winter of 2021, Teddy Kowal called a university switchboard and asked to speak to whoever knew why Pittsburghers say "the car needs washed". He was put through to Marisol Ibarra, who had a whole chapter on it.</p>
+        <p>They recorded their first conversation that March in a borrowed room: the old switchboard room of a 1914 telephone exchange on Butler Street, where operators once connected half of Lawrenceville. The room has a high ceiling, a wall of cork and very good sound. They never left.</p>
+        <p>A hundred and forty episodes later, Hana Sato edits, the voicemail line rings every day, and the show is still about one thing: the words people use without thinking, and the people who study them.</p>
+      </div>
+      <figure class="mt-10">
+        <img src="/media/switchboard-operator.jpg" class="aspect-[4/5] w-full max-w-sm rounded-box object-cover" data-studio>
+        <figcaption class="mono mt-3 text-[0.75rem] text-base-content/65">A switchboard like the one that filled our room</figcaption>
+      </figure>
+    </div>
+    <div class="lg:col-span-7 lg:pt-16" data-reveal>
+      {% render 'conversation', lines: data["about-conversation"], team: data.team %}
+    </div>
+  </div>
+</section>
+{% render 'people' %}
+{% render 'making-steps' %}
+{% render 'reviews', limit: 6 %}
+{% render 'work-with-us' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

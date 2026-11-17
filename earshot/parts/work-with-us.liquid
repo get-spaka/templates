@@ -1,0 +1,40 @@
+<section id="work-with-us" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:px-8 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-5" data-reveal>
+      <h2 class="caption-title text-[clamp(2.25rem,4.5vw,3.75rem)]"><span class="caption-box">Work with us</span></h2>
+      <p class="mt-6 max-w-[44ch] text-[1.0625rem] leading-relaxed text-base-content/80">Suggest a guest, sponsor a season, write about the show, or something we haven't thought of. Hana reads every message and writes back within a week.</p>
+      <img src="/media/condenser-microphone.jpg" class="mt-10 aspect-[3/2] w-full rounded-box object-cover" data-studio>
+    </div>
+    <form hx-post="/_data/inquiries" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#work-with-us-problems swap:innerHTML" class="grid grid-cols-1 gap-x-4 gap-y-1 self-start rounded-box border border-base-300 bg-base-200 p-5 sm:grid-cols-2 sm:p-8 lg:col-span-7" data-reveal>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend text-[0.9375rem]">What it's about</legend>
+        <div class="flex flex-wrap gap-2">
+          {%- assign reasons = "Suggest a guest|Sponsor the show|Press|Something else" | split: "|" %}
+          {%- for reason in reasons %}
+          <input type="radio" name="reason" value="{{ reason }}" id="reason-{{ forloop.index }}" class="chip-input" required{% if forloop.first %} checked{% endif %}><label for="reason-{{ forloop.index }}" class="chip">{{ reason }}</label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-[0.9375rem]">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend text-[0.9375rem]">Your organization</legend>
+        <input name="organization" type="text" class="input w-full" maxlength="200" autocomplete="organization">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend text-[0.9375rem]">Your message</legend>
+        <textarea name="message" class="textarea w-full rounded-box text-base" rows="5" required maxlength="4000"></textarea>
+      </fieldset>
+      <div id="work-with-us-problems" class="sm:col-span-2"></div>
+      <div class="mt-4 sm:col-span-2">
+        <button type="submit" class="btn btn-primary w-full whitespace-nowrap sm:w-auto">Send to Hana</button>
+      </div>
+    </form>
+  </div>
+</section>
