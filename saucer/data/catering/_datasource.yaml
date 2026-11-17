@@ -1,0 +1,22 @@
+label: Catering boxes
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: contents
+    label: What is in it
+    kind: text
+  - name: serves
+    label: Serves
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: notice
+    label: Notice
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [pastry-box, breakfast-sandwich-tray, yogurt-and-granola-jars, boxed-lunch, coffee-traveler]

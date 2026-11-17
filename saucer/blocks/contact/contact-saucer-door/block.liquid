@@ -1,0 +1,59 @@
+<section id="hours" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:items-center lg:gap-10">
+    <div class="lg:col-span-6 lg:col-start-1">
+      <div class="door mx-auto w-full max-w-[34rem] px-5 pb-8 sm:px-9 sm:pb-10" style="--hole: var(--color-secondary)">
+  <div class="flex justify-center">
+    <div class="door-card-hang" style="--string: 2.25rem; --card-width: 15.5rem;">
+  <button type="button" class="door-card" data-door-card aria-label="Come in, we're open">
+    <span class="door-card-inner" data-door-card-inner>
+      <span class="door-face door-front">
+        <span class="door-big">Come in, we&rsquo;re open</span>
+        <span class="typed"><span data-when="plain before after closed">Open Wednesday to Monday</span><span data-when="breakfast">Breakfast till <span data-slot="until"></span></span><span data-when="lunch">Lunch till <span data-slot="until"></span></span><span data-when="coffee">Coffee till <span data-slot="until"></span></span></span>
+      </span>
+      <span class="door-face door-back" aria-hidden="true">
+        <span class="door-big">Sorry, we&rsquo;re closed</span>
+        <span class="typed"><span data-when="plain">Closed on Tuesdays</span><span data-when="before">Opening today at <span data-slot="opens"></span></span><span data-when="breakfast lunch coffee">We close today at <span data-slot="closes"></span></span><span data-when="after closed">Back <span data-slot="next_day"></span> at <span data-slot="next_opens"></span></span></span>
+      </span>
+    </span>
+  </button>
+</div>
+  </div>
+  <p class="mt-7 text-center font-heading text-[2.5rem] leading-none">Oriel</p>
+  <p class="typed mt-2 text-center">Breakfast · Lunch · Coffee</p>
+  <ul class="typed-md mt-6">
+    {% for day in data.hours %}{%- if day.opens != blank and day.closes != blank -%}{%- assign hm = day.opens | split: ":" -%}{%- assign h = hm[0] | plus: 0 -%}{%- assign m = hm[1] | default: "00" -%}{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}{%- assign h12 = h | modulo: 12 -%}{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}{%- capture t_opens -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endcapture -%}{%- assign hm = day.closes | split: ":" -%}{%- assign h = hm[0] | plus: 0 -%}{%- assign m = hm[1] | default: "00" -%}{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}{%- assign h12 = h | modulo: 12 -%}{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}{%- capture t_closes -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endcapture -%}{%- if day.lunch_from != blank -%}{%- assign hm = day.lunch_from | split: ":" -%}{%- assign h = hm[0] | plus: 0 -%}{%- assign m = hm[1] | default: "00" -%}{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}{%- assign h12 = h | modulo: 12 -%}{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}{%- capture t_lunch -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endcapture -%}{%- endif -%}{%- if day.kitchen_closes != blank -%}{%- assign hm = day.kitchen_closes | split: ":" -%}{%- assign h = hm[0] | plus: 0 -%}{%- assign m = hm[1] | default: "00" -%}{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}{%- assign h12 = h | modulo: 12 -%}{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}{%- capture t_kitchen -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endcapture -%}{%- endif -%}{%- endif -%}
+    <li class="door-day" data-weekday="{{ day.weekday }}" {% if day.opens == blank %}data-closed{% endif %}>
+      <span class="dot self-center" aria-hidden="true"></span>
+      <span class="door-name whitespace-nowrap">{{ day.day }}</span>
+      {% if day.opens != blank and day.closes != blank %}<span class="door-times">{{ t_opens }} – {{ t_closes }}</span>
+      <span class="typed col-span-2 col-start-2 opacity-80">{% if day.lunch_from != blank %}breakfast till {{ t_lunch }} · lunch till {{ t_kitchen }}{% else %}breakfast all day till {{ t_kitchen }}{% endif %}</span>{% else %}<span class="door-times">Closed</span>{% if day.note != blank %}
+      <span class="typed col-span-2 col-start-2 opacity-80">{{ day.note }}</span>{% endif %}{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="typed mt-5 border-t border-dashed border-secondary-content/30 pt-4 text-center">Walk in: no reservations</p>
+</div>
+    </div>
+    <div class="lg:col-span-5 lg:col-start-8" data-reveal>
+      <p class="typed text-base-content/75">The door</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">Come by</h2>
+      <p class="body-copy mt-5 max-w-[46ch]">On the corner of Larkspur Row, a block from Williamson Street and two from the lake path. Look for the bay window upstairs.</p>
+      <dl class="mt-9 space-y-6">
+        <div>
+          <dt class="typed text-base-content/70">Address</dt>
+          <dd class="mt-1 text-[1.125rem]">2 Larkspur Row, Marquette<br>Madison, WI&nbsp;53703</dd>
+          <dd class="mt-2"><a href="https://www.openstreetmap.org/search?query=2%20Larkspur%20Row%2C%20Madison%2C%20WI" class="text-link" rel="noopener" target="_blank">Get directions</a></dd>
+        </div>
+        <div>
+          <dt class="typed text-base-content/70">Phone</dt>
+          <dd class="mt-1 text-[1.125rem]"><a href="tel:+16085550147" class="text-link whitespace-nowrap">(608) 555-0147</a></dd>
+        </div>
+        <div>
+          <dt class="typed text-base-content/70">How it works</dt>
+          <dd class="mt-1 text-[1.125rem]">Walk in: no reservations. Order at the counter and take a number to your table.</dd>
+        </div>
+      </dl>
+      <a href="/visit" class="btn btn-primary mt-10">Plan your visit</a>
+    </div>
+  </div>
+</section>

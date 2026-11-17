@@ -1,0 +1,37 @@
+<header class="sticky top-0 z-40 border-b border-base-300 bg-base-100/95 text-base-content">
+  <div class="bg-base-200">
+    <div class="typed mx-auto flex max-w-[80rem] items-center justify-between gap-4 px-5 py-1.5 md:px-8">
+      <p class="flex min-w-0 items-center gap-2"><span class="dot now-dot" aria-hidden="true"></span><span>{% render 'now-line' %}</span></p>
+      <p class="hidden whitespace-nowrap sm:block">2 Larkspur Row, Madison</p>
+    </div>
+  </div>
+  <div class="mx-auto flex h-[4.5rem] max-w-[80rem] items-center justify-between gap-6 px-5 md:px-8">
+    {% render 'logo' %}
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-1 whitespace-nowrap">
+        {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+        <li><a href="{{ item.href }}" class="rounded-full px-4 py-2 font-medium hover:bg-base-200 aria-[current=page]:bg-base-200" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="/visit" class="btn btn-primary hidden sm:inline-flex">Find us</a>
+      <details class="site-menu lg:hidden">
+        <summary class="btn btn-ghost relative z-[60] px-3" aria-label="Menu">
+          <span class="menu-open inline-flex items-center gap-2"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>Menu</span><span class="menu-close">Close</span>
+        </summary>
+        <nav aria-label="Main" class="fixed inset-0 z-50 flex flex-col justify-between overflow-y-auto bg-base-100 px-6 pt-28 pb-10 text-base-content">
+          <ul class="space-y-3">
+            {% for item in data.navigation %}{% if item.place == "both" or item.place == "header" %}
+            <li><a href="{{ item.href }}" class="font-heading text-[2.75rem] leading-[1.1]" {% if page.url contains item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+          </ul>
+          <div class="mt-12 flex flex-col gap-4">
+            <a href="/visit" class="btn btn-primary btn-lg">Find us</a>
+            <p class="typed text-base-content/75">2 Larkspur Row · Marquette · Madison, WI</p>
+          </div>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

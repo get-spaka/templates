@@ -1,0 +1,94 @@
+<section id="menu" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[56rem] px-5 py-16 md:px-8 md:py-24">
+    <div class="text-center">
+      <p class="typed text-base-content/75">Order at the counter</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">The menu</h2>
+    </div>
+    <div class="menu-tabs mt-10 justify-center rounded-[calc(var(--radius-box)+0.5rem)] bg-base-200 p-2 sm:p-3" data-served-now>
+      <input type="radio" name="menu-tab" id="menu-tab-breakfast" data-service="breakfast" checked>
+      <label for="menu-tab-breakfast" class="menu-tab" data-service="breakfast">Breakfast <span class="now-mark"><span class="dot"></span>Now</span></label>
+      <div class="menu-panel rounded-box bg-base-100 px-5 py-4 sm:px-8 sm:py-6" role="region" aria-label="Breakfast">
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "breakfast" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endfor %}
+        </ul>
+        <p class="typed mt-8 text-base-content/75">On the side</p>
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "sides" %}{% if dish.served_with == "breakfast" or dish.served_with == "both" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endif %}{% endfor %}
+        </ul>
+        <p class="marks mt-6 border-t border-base-300 pt-4 text-base-content/75">Add a fried egg 2 · bacon 4 · avocado 3 · gluten-free toast 1.5</p>
+      </div>
+      <input type="radio" name="menu-tab" id="menu-tab-lunch" data-service="lunch">
+      <label for="menu-tab-lunch" class="menu-tab" data-service="lunch">Lunch <span class="now-mark"><span class="dot"></span>Now</span></label>
+      <div class="menu-panel rounded-box bg-base-100 px-5 py-4 sm:px-8 sm:py-6" role="region" aria-label="Lunch">
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "lunch" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endfor %}
+        </ul>
+        <p class="typed mt-8 text-base-content/75">On the side</p>
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "sides" %}{% if dish.served_with == "lunch" or dish.served_with == "both" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endif %}{% endfor %}
+        </ul>
+        <p class="marks mt-6 border-t border-base-300 pt-4 text-base-content/75">Add a cup of soup 5 · a side salad 4 · avocado 3 · gluten-free bread 1.5</p>
+      </div>
+      <input type="radio" name="menu-tab" id="menu-tab-drinks" data-service="drinks">
+      <label for="menu-tab-drinks" class="menu-tab" data-service="drinks">Coffee &amp; drinks <span class="now-mark"><span class="dot"></span>Now</span></label>
+      <div class="menu-panel rounded-box bg-base-100 px-5 py-4 sm:px-8 sm:py-6" role="region" aria-label="Coffee and drinks">
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "drinks" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endfor %}
+        </ul>
+        <p class="marks mt-6 border-t border-base-300 pt-4 text-base-content/75">Oat or whole milk at no extra cost · an extra shot 1 · iced at no extra cost</p>
+      </div>
+      <input type="radio" name="menu-tab" id="menu-tab-pastries" data-service="pastries">
+      <label for="menu-tab-pastries" class="menu-tab" data-service="pastries">The bakery case <span class="now-mark"><span class="dot"></span>Now</span></label>
+      <div class="menu-panel rounded-box bg-base-100 px-5 py-4 sm:px-8 sm:py-6" role="region" aria-label="The bakery case">
+        <ul class="divide-y divide-dashed divide-base-300">
+          {% for dish in data.menu %}{% if dish.course == "pastries" %}<li class="flex gap-4 py-4 sm:gap-5">
+  {% if dish.image %}<span class="w-16 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>{% endif %}{% endfor %}
+        </ul>
+        <p class="marks mt-6 border-t border-base-300 pt-4 text-base-content/75">Baked by June from five every morning, until the case is empty · a dozen to take away, see catering</p>
+      </div>
+    </div>
+    <p class="mt-8 border-t border-base-300 pt-5 text-center text-base-content/80">Our kitchen handles wheat, eggs, dairy and nuts. Ask at the counter; we&rsquo;ll tell you what&rsquo;s in everything.</p>
+    <p class="marks mt-3 text-center text-base-content/70"><span class="text-accent">V</span> vegetarian · <span class="text-accent">VG</span> vegan · GF gluten-free · hot: spicy</p>
+  </div>
+</section>

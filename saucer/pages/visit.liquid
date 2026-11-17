@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Visit — Oriel, Madison</title>
+<meta name="description" content="Oriel is at 2 Larkspur Row in Marquette, Madison, open Wednesday to Monday from 7 am, 8 am at weekends. Walk in, order at the counter and take a number.">
+<meta property="og:title" content="Visit — Oriel, Madison">
+<meta property="og:description" content="Oriel is at 2 Larkspur Row in Marquette, Madison, open Wednesday to Monday from 7 am, 8 am at weekends. Walk in, order at the counter and take a number.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "2 Larkspur Row · Marquette · Madison", title: "Visit", text: "Walk in, order at the counter, take a number. We'll bring it to you." %}
+{% render 'visit-door' %}
+{% render 'finding-us' %}
+{% render 'visit-notes' %}
+{% render 'gift-cards' %}
+{% render 'faq', items: data["visit-faq"], label: "Questions", title: "Before you come" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

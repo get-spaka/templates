@@ -1,0 +1,567 @@
+/* Caprasimo, Spline Sans and Spline Sans Mono, files of the template,
+   under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Caprasimo";
+  src: url("/fonts/caprasimo-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Caprasimo";
+  src: url("/fonts/caprasimo-latin-ext-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Spline Sans";
+  src: url("/fonts/spline-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Spline Sans";
+  src: url("/fonts/spline-sans-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Spline Sans Mono";
+  src: url("/fonts/spline-sans-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Spline Sans Mono";
+  src: url("/fonts/spline-sans-mono-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Spline Sans Mono";
+  src: url("/fonts/spline-sans-mono-latin-wght-italic.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Spline Sans Mono";
+  src: url("/fonts/spline-sans-mono-latin-ext-wght-italic.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --font-mono: "Spline Sans Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* The plates' rim, as a share of the plate. */
+  --rim: 6%;
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  /* Headings: Caprasimo has one weight and no italic, so never bold, never synthesized. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+    font-synthesis: none;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  /* The typed face: labels above headings, prices, the hours, the menu's slips. */
+  .typed {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+  .typed-md {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+  }
+  /* A dish on the menu: its name, its line, its price after a dotted leader. */
+  .dish-name {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .dish-line {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+  .price {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .leader {
+    flex: 1 1 1.5rem;
+    min-width: 1.5rem;
+    align-self: end;
+    margin-bottom: 0.4em;
+    border-bottom: 2px dotted var(--color-base-300);
+  }
+  /* The add-ons and the diet marks, in the mono's italic. */
+  .marks {
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-size: 0.8125rem;
+  }
+  /* Body copy. */
+  .body-copy {
+    color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
+    line-height: 1.7;
+  }
+  /* Links in text: espresso with a marmalade underline. */
+  .text-link {
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.22em;
+  }
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* The chive dot beside the now line, today's day and the "Now" tab. */
+  .dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    flex: none;
+    border-radius: 9999px;
+    background: var(--color-accent);
+  }
+
+  /* ---- The plates: a round photo seen from above, on a rim like a saucer. ---- */
+  .plate {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    padding: var(--rim);
+    background: var(--color-base-200);
+    box-shadow: 0 0 0 1px var(--color-base-300);
+  }
+  /* On the oat tabletop, a plate's rim is milk, so it reads as a plate on the table. */
+  .tabletop .plate {
+    background: var(--color-base-100);
+  }
+  .plate > img {
+    display: block;
+  }
+  .plate > img,
+  .plate > .plate-empty {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  .plate-empty {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(140deg, var(--color-secondary), var(--color-base-200));
+    color: var(--color-base-content);
+  }
+  .plate-empty svg {
+    width: 34%;
+    height: auto;
+  }
+
+  /* ---- The door card: two faces on a string, the front marmalade, the back coffee. ---- */
+  .door-card-hang {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: max-content;
+    max-width: 100%;
+  }
+  /* The string it hangs from, above the hole in its top. */
+  .door-card-hang::before {
+    content: "";
+    display: block;
+    width: 2px;
+    height: var(--string, 2.75rem);
+    background: var(--color-base-content);
+    border-radius: 2px;
+  }
+  .door-card {
+    position: relative;
+    display: block;
+    width: var(--card-width, 17rem);
+    max-width: 100%;
+    perspective: 900px;
+    cursor: pointer;
+    border-radius: 1rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .door-card:focus-visible {
+    outline: 3px solid var(--color-base-content);
+    outline-offset: 6px;
+  }
+  .door-card-inner {
+    display: grid;
+    transform-style: preserve-3d;
+  }
+  .door-face {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 9.5rem;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 1rem;
+    text-align: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  /* The hole the string goes through. */
+  .door-face::before {
+    content: "";
+    position: absolute;
+    top: 0.7rem;
+    left: 50%;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-left: -0.3rem;
+    border-radius: 9999px;
+    background: var(--hole, var(--color-base-100));
+    box-shadow: inset 0 0 0 2px color-mix(in oklab, var(--color-base-content) 35%, transparent);
+  }
+  .door-front {
+    position: relative;
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .door-back {
+    position: relative;
+    background: var(--color-neutral);
+    color: var(--color-neutral-content);
+    transform: rotateY(180deg);
+  }
+  .door-big {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 1.5rem + 0.8vw, 2.25rem);
+    line-height: 1;
+    text-wrap: balance;
+  }
+
+  /* ---- The door's glass: a pale blue pane in a narrow coffee frame. ---- */
+  .door {
+    position: relative;
+    border: 0.75rem solid var(--color-neutral);
+    border-radius: calc(var(--radius-box) + 0.75rem);
+    background: var(--color-secondary);
+    color: var(--color-secondary-content);
+  }
+  /* The door's brass knob, on the frame's edge. */
+  .door::after {
+    content: "";
+    position: absolute;
+    right: -0.75rem;
+    top: 58%;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-top: -0.375rem;
+    border-radius: 9999px;
+    background: var(--color-primary);
+  }
+  .door-day {
+    display: grid;
+    grid-template-columns: 0.75rem 6.5rem 1fr;
+    column-gap: 0.75rem;
+    align-items: baseline;
+    padding-block: 0.55rem;
+    border-top: 1px dashed color-mix(in oklab, var(--color-secondary-content) 30%, transparent);
+  }
+  .door-day:first-child {
+    border-top: 0;
+  }
+  .door-day .dot {
+    background: transparent;
+  }
+  .door-day[data-closed] .door-name {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+  }
+
+  /* ---- The menu: tabs on an oat slip, opened on what is served now. ---- */
+  .menu-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.375rem;
+  }
+  /* The radio inputs are read by screen readers and the keyboard, not seen. */
+  .menu-tabs > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .menu-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    color: color-mix(in oklab, var(--color-base-content) 78%, transparent);
+  }
+  .menu-tab:hover {
+    color: var(--color-base-content);
+  }
+  .menu-tabs > input:checked + .menu-tab {
+    background: var(--color-base-content);
+    color: var(--color-base-100);
+  }
+  .menu-tabs > input:focus-visible + .menu-tab {
+    outline: 2px solid var(--color-base-content);
+    outline-offset: 2px;
+  }
+  .menu-panel {
+    display: none;
+    order: 99;
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+  .menu-tabs > input:checked + .menu-tab + .menu-panel {
+    display: block;
+  }
+  @media (width >= 40rem) {
+    .menu-tab {
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.9375rem;
+    }
+  }
+  .now-mark {
+    display: none;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+
+  /* ---- Slips: notes typed on oat paper with a torn-off top. ---- */
+  .slip {
+    position: relative;
+    background: var(--color-base-200);
+    border-radius: 0 0 var(--radius-box) var(--radius-box);
+    padding: 1.75rem 1.5rem 1.5rem;
+  }
+  .slip::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 0.5rem;
+    background: radial-gradient(circle at 0.5rem 0, var(--color-base-100) 0.3rem, transparent 0.32rem) 0 0 / 1rem 0.5rem repeat-x;
+  }
+
+  /* The cup in the logo. */
+  .logo-cup {
+    overflow: visible;
+  }
+}
+
+/* ---- What is served now: the lines of each state, shown by the stylesheet. ---- */
+/* Each line says which states it is for (data-when="breakfast lunch"); "plain" is the
+   line shown with no script, in edit mode and on a page whose script has not run. */
+[data-when] {
+  display: none;
+}
+:root:not([data-now]) [data-when~="plain"],
+:root[data-now="before"] [data-when~="before"],
+:root[data-now="breakfast"] [data-when~="breakfast"],
+:root[data-now="lunch"] [data-when~="lunch"],
+:root[data-now="coffee"] [data-when~="coffee"],
+:root[data-now="after"] [data-when~="after"],
+:root[data-now="closed"] [data-when~="closed"] {
+  display: inline;
+}
+/* The now line's dot is chive while the café is open, faded while it is closed. */
+:root:not([data-now="breakfast"], [data-now="lunch"], [data-now="coffee"]) .now-dot {
+  background: color-mix(in oklab, currentColor 35%, transparent);
+}
+:root:not([data-now]) .now-dot {
+  background: var(--color-accent);
+}
+/* The "Now" mark on the menu's tab of the hour. */
+:root[data-now="breakfast"] [data-service="breakfast"] .now-mark,
+:root[data-now="lunch"] [data-service="lunch"] .now-mark,
+:root[data-now="coffee"] [data-service="drinks"] .now-mark {
+  display: inline-flex;
+}
+/* Today's line on the door's glass gets a chive dot. */
+:root[data-today="monday"] .door-day[data-weekday="monday"] .dot,
+:root[data-today="tuesday"] .door-day[data-weekday="tuesday"] .dot,
+:root[data-today="wednesday"] .door-day[data-weekday="wednesday"] .dot,
+:root[data-today="thursday"] .door-day[data-weekday="thursday"] .dot,
+:root[data-today="friday"] .door-day[data-weekday="friday"] .dot,
+:root[data-today="saturday"] .door-day[data-weekday="saturday"] .dot,
+:root[data-today="sunday"] .door-day[data-weekday="sunday"] .dot {
+  background: var(--color-accent);
+}
+:root[data-today="monday"] .door-day[data-weekday="monday"],
+:root[data-today="tuesday"] .door-day[data-weekday="tuesday"],
+:root[data-today="wednesday"] .door-day[data-weekday="wednesday"],
+:root[data-today="thursday"] .door-day[data-weekday="thursday"],
+:root[data-today="friday"] .door-day[data-weekday="friday"],
+:root[data-today="saturday"] .door-day[data-weekday="saturday"],
+:root[data-today="sunday"] .door-day[data-weekday="sunday"] {
+  font-weight: 600;
+}
+
+/* The phone menu: a <details> whose panel covers the screen. */
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu .menu-close {
+  display: none;
+}
+.site-menu[open] .menu-open {
+  display: none;
+}
+.site-menu[open] .menu-close {
+  display: inline;
+}
+
+/* Buttons: their labels on one line, a little more air. */
+.btn {
+  white-space: nowrap;
+}
+.btn:not(.btn-square, .btn-circle, .btn-sm) {
+  padding-inline: 1.5rem;
+}
+
+/* Upstart's "Image credits" link, lined up with the footer's container. */
+footer [data-up-credits] {
+  padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
+  padding-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* The steam over the logo's cup: three soft ovals rise and fade, twice on load,
+     again while the logo is hovered or focused. Only once the page moves. */
+  .logo-cup .puff {
+    display: none;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff {
+    display: inline;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: steam 2.4s ease-out 2 both;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff:nth-child(2) {
+    animation-delay: 0.35s;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) :is(a:hover, a:focus-visible) > .logo-cup .puff {
+    animation-name: steam-again;
+    animation-iteration-count: infinite;
+  }
+  @keyframes steam {
+    0% {
+      opacity: 0;
+      translate: 0 2px;
+      scale: 0.8;
+    }
+    40% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 0;
+      translate: 0 -6px;
+      scale: 1.15;
+    }
+  }
+  @keyframes steam-again {
+    0% {
+      opacity: 0;
+      translate: 0 2px;
+      scale: 0.8;
+    }
+    40% {
+      opacity: 0.75;
+    }
+    100% {
+      opacity: 0;
+      translate: 0 -6px;
+      scale: 1.15;
+    }
+  }
+
+  /* A plate turns a little under the hand, as a plate nudged on the table. */
+  @media (hover: hover) {
+    .plate > img,
+    .plate > .plate-empty {
+      transition: rotate 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .plate:hover > img,
+    .plate:hover > .plate-empty,
+    a:hover .plate > img {
+      rotate: 10deg;
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-cup .puff {
+    display: none;
+  }
+}
+
+/* Checkboxes keep small soft corners, so they never read as radio buttons. */
+.checkbox {
+  border-radius: 0.375rem;
+}

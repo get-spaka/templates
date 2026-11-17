@@ -1,0 +1,24 @@
+<section class="tabletop bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="typed text-base-content/75">The boxes</p>
+        <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">Made the morning you need them</h2>
+      </div>
+      <p class="body-copy max-w-[44ch]">Every box is baked or cooked that morning and packed to travel. Prices include napkins, cups and cutlery.</p>
+    </div>
+    <ul class="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-plates>
+      {% for box in data.catering %}
+      <li class="flex flex-col">
+        <div class="w-[72%] max-w-[17rem]">{% render 'dish-plate', dish: box %}</div>
+        <h3 class="mt-6 text-[1.5rem] leading-[1.1]">{{ box.name }}</h3>
+        <p class="dish-line mt-2 mb-5 text-base-content/80">{{ box.contents }}</p>
+        <div class="mt-auto flex items-end justify-between gap-4 border-t border-dashed border-base-content/25 pt-4">
+          <p class="flex items-baseline gap-2"><span class="typed">serves</span><span class="font-heading text-[2.25rem] leading-none">{{ box.serves }}</span></p>
+          <p class="text-right"><span class="price dish-name block">{{ box.price }}</span><span class="typed block text-base-content/70">{{ box.notice }}</span></p>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

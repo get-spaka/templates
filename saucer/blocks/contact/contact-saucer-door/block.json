@@ -1,0 +1,34 @@
+{
+  "name": "Saucer door with the hours",
+  "kind": "contact",
+  "source": "upstart",
+  "description": "The opening hours typed on a café door's pale blue glass in a coffee frame, day by day with each day's services and today's line marked, under a two-sided card on a string that turns to open or closed; beside it the address with directions, the phone and how to come in.",
+  "tags": [
+    "contact",
+    "opening hours",
+    "hours",
+    "door sign",
+    "open now",
+    "address",
+    "directions"
+  ],
+  "mood": [
+    "warm",
+    "friendly"
+  ],
+  "synonyms": [
+    "opening hours",
+    "hours",
+    "find us",
+    "visit",
+    "horaires",
+    "heures d'ouverture",
+    "nous trouver",
+    "adresse",
+    "venir"
+  ],
+  "data": {
+    "name": "hours",
+    "family": "collection"
+  }
+}

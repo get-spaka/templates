@@ -1,0 +1,38 @@
+label: Menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: course
+    label: Course
+    kind: choice
+    required: true
+    choices: [breakfast, lunch, sides, pastries, drinks]
+  - name: tags
+    label: Marks
+    kind: list
+    choices: [vegetarian, vegan, gluten-free, spicy]
+  - name: image
+    label: Photo
+    kind: image
+  - name: featured
+    label: On the pass (the home page's plates)
+    kind: boolean
+  - name: special
+    label: This week's special
+    kind: boolean
+  - name: note
+    label: Its label (This week, Fridays only)
+    kind: text
+  - name: served_with
+    label: Served with (for the sides)
+    kind: choice
+    choices: [breakfast, lunch, both]
+order: [squash-hash, buckwheat-pancakes, baked-eggs, smoked-trout-toast, cheddar-grilled-cheese, lemongrass-sausage-bowl]

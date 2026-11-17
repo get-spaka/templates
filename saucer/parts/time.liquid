@@ -1,0 +1,8 @@
+{%- comment -%} A time of the hours ("07:00", "14:30") as the café's visitors read it: 7 am, 2:30 pm. For a site in French, German or most of Europe, write {{ t }} as it is (7:00, 14:30). {%- endcomment -%}
+{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}

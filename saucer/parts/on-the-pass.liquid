@@ -1,0 +1,37 @@
+<section id="on-the-pass" class="tabletop bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="typed text-base-content/75">From the kitchen</p>
+        <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">On the pass today</h2>
+      </div>
+      <p class="body-copy max-w-[44ch]">What Tessa and Dario are plating this week, with a special that changes every Wednesday.</p>
+    </div>
+    <ul class="mt-12 grid gap-y-10 md:mt-14 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12" data-plates>
+      {% for dish in data.menu %}{% if dish.featured and dish.special %}
+      <li class="grid grid-cols-[minmax(0,9.5rem)_1fr] items-center gap-x-5 md:block md:[&:nth-child(3n+2)]:translate-y-14">
+        {% render 'dish-plate', dish: dish %}
+        <div>
+          <p class="typed md:mt-5"><span class="rounded-full bg-primary px-2.5 py-1 text-primary-content">This week</span></p>
+          <p class="dish-name mt-3">{{ dish.name }}</p>
+          <p class="dish-line mt-1 text-base-content/75">{{ dish.description }}</p>
+          <p class="price mt-2 font-medium">{{ dish.price }}</p>
+        </div>
+      </li>
+      {% endif %}{% endfor %}
+      {% for dish in data.menu %}{% if dish.featured %}{% unless dish.special %}
+      <li class="grid grid-cols-[minmax(0,9.5rem)_1fr] items-center gap-x-5 md:block md:[&:nth-child(3n+2)]:translate-y-14">
+        {% render 'dish-plate', dish: dish %}
+        <div>
+          <p class="dish-name md:mt-5">{{ dish.name }}</p>
+          <p class="dish-line mt-1 text-base-content/75">{{ dish.description }}</p>
+          <p class="price mt-2 font-medium">{{ dish.price }}</p>
+        </div>
+      </li>
+      {% endunless %}{% endif %}{% endfor %}
+    </ul>
+    <div class="mt-16 md:mt-20">
+      <a href="/menu" class="btn btn-outline border-base-content text-base-content hover:bg-base-content hover:text-base-100">The whole menu</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,4 @@
+{%- comment -%} A dish as a plate on the table: its round photo on a rim, then its name, its line and its price, typed. Pass `dish`. {%- endcomment -%}
+<figure class="plate" data-plate>
+  {% if dish.image %}<img src="{{ dish.image }}" class="object-cover">{% else %}<span class="plate-empty" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 15h22v6.5a9.5 9.5 0 0 1-9.5 9.5h-3A9.5 9.5 0 0 1 8 21.5V15Z" fill="currentColor"/><path d="M30 17.5h1.8a3.7 3.7 0 0 1 0 7.4H29" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>{% endif %}
+</figure>

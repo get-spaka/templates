@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The menu — Oriel, Madison</title>
+<meta name="description" content="Oriel's menu: breakfast until 11:30 on weekdays and all day at weekends, lunch from 11:30, coffee from Ledgerock and June's bakery case until three.">
+<meta property="og:title" content="The menu — Oriel, Madison">
+<meta property="og:description" content="Oriel's menu: breakfast until 11:30 on weekdays and all day at weekends, lunch from 11:30, coffee from Ledgerock and June's bakery case until three.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "Breakfast · Lunch · Coffee", title: "The menu", text: "Breakfast until 11:30 on weekdays and all day at weekends; lunch from 11:30; coffee and the bakery case until we close. Tell us about allergies when you order." %}
+{% render 'this-week' %}
+{% render 'served-now-menu' %}
+{% render 'crowd-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

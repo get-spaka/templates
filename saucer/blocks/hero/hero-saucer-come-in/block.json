@@ -1,0 +1,31 @@
+{
+  "name": "Saucer come-in hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A large soft-serif headline, a sentence, two pill buttons and the line of what the kitchen is serving now, beside a big round plate seen from above that is set down on load, with a two-sided door card hanging above it that turns to open or closed.",
+  "tags": [
+    "hero",
+    "café",
+    "breakfast",
+    "open now",
+    "plate",
+    "door sign"
+  ],
+  "mood": [
+    "warm",
+    "friendly",
+    "playful"
+  ],
+  "synonyms": [
+    "hero",
+    "headline",
+    "welcome",
+    "café",
+    "open now",
+    "en-tête",
+    "grand titre",
+    "accroche",
+    "ouvert maintenant",
+    "bienvenue"
+  ]
+}

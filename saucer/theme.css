@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.8 0.155 70);
+  --theme-color-primary-content: oklch(0.26 0.03 50);
+  --theme-color-secondary: oklch(0.89 0.05 235);
+  --theme-color-secondary-content: oklch(0.26 0.03 50);
+  --theme-color-accent: oklch(0.52 0.12 150);
+  --theme-color-accent-content: oklch(0.975 0.012 90);
+  --theme-color-neutral: oklch(0.31 0.04 52);
+  --theme-color-neutral-content: oklch(0.975 0.012 90);
+  --theme-color-surface: oklch(0.975 0.012 90);
+  --theme-color-surface-alt: oklch(0.94 0.03 85);
+  --theme-color-border: oklch(0.88 0.02 80);
+  --theme-color-text: oklch(0.26 0.03 50);
+  --theme-font-heading: "Caprasimo", "Cooper Black", Georgia, serif;
+  --theme-font-body: "Spline Sans", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 1.25rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

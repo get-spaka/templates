@@ -1,0 +1,24 @@
+<section class="relative overflow-hidden bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] items-center gap-y-10 px-5 pt-8 pb-20 md:px-8 lg:grid-cols-12 lg:gap-x-10 lg:pt-6 lg:pb-28">
+    <div class="relative order-1 flex flex-col items-center lg:order-2 lg:col-span-6 lg:block lg:self-start">
+      <div class="relative z-10 -mt-8 lg:absolute lg:-top-6 lg:left-[2%] lg:mt-0" style="--hole: var(--color-base-100)">
+        {% render 'door-card', string: '3rem', width: '15rem' %}
+      </div>
+      <div class="relative -mt-5 w-[80%] sm:w-[62%] lg:mt-0 lg:w-[min(40rem,46vw)] lg:max-w-none lg:translate-x-[12%] lg:pt-32">
+        <figure class="plate" data-plate="load">
+          <img src="/media/oriel-breakfast.jpg" class="aspect-square object-cover">
+        </figure>
+      </div>
+    </div>
+    <div class="order-2 lg:order-1 lg:col-span-6 lg:pt-16" data-reveal>
+      <p class="typed text-base-content/75">Breakfast · Lunch · Coffee · Marquette, Madison</p>
+      <h1 class="mt-5 text-[clamp(3rem,6.5vw+1rem,6.5rem)] leading-[0.98] tracking-[-0.01em]">Come in hungry. We&rsquo;ll take it from there.</h1>
+      <p class="body-copy mt-7 max-w-[52ch] text-[1.125rem]">Breakfast all morning, lunch till half past two, and coffee from the first pour. Eggs from Mount Horeb, bread from our own oven, and a table by the window.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/menu" class="btn btn-primary btn-lg">See the menu</a>
+        <a href="/visit" class="btn btn-outline btn-lg border-base-content text-base-content hover:bg-base-content hover:text-base-100">Find us</a>
+      </div>
+      <p class="mt-10 flex items-center gap-3 font-[family-name:var(--font-mono)] text-[1.0625rem]"><span class="dot now-dot size-2.5" aria-hidden="true"></span><span>{% render 'now-line' %}</span></p>
+    </div>
+  </div>
+</section>

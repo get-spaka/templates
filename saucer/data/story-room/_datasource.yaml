@@ -1,0 +1,13 @@
+label: The room (Our story)
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: image
+    label: Photo
+    kind: image
+  - name: caption
+    label: Caption
+    kind: text
+order: [the-window-bench, the-coffee-bar, the-patio, the-bakery-case, the-bike-racks, the-oriel]

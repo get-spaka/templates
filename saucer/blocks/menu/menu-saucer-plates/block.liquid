@@ -1,0 +1,26 @@
+<section class="tabletop bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="typed text-base-content/75">From the kitchen</p>
+        <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">On the pass today</h2>
+      </div>
+      <p class="body-copy max-w-[44ch]">What the kitchen is plating this week, with a special that changes every Wednesday.</p>
+    </div>
+    <ul class="mt-12 grid gap-y-10 md:mt-14 md:grid-cols-3 md:gap-x-8 md:gap-y-16 lg:gap-x-12" data-plates>
+      {% for dish in data.menu %}{% if dish.featured %}
+      <li class="grid grid-cols-[minmax(0,9.5rem)_1fr] items-center gap-x-5 md:block md:[&:nth-child(3n+2)]:translate-y-14">
+        <figure class="plate" data-plate>
+          {% if dish.image %}<img src="{{ dish.image }}" class="object-cover">{% else %}<span class="plate-empty" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 15h22v6.5a9.5 9.5 0 0 1-9.5 9.5h-3A9.5 9.5 0 0 1 8 21.5V15Z" fill="currentColor"/><path d="M30 17.5h1.8a3.7 3.7 0 0 1 0 7.4H29" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>{% endif %}
+        </figure>
+        <div>
+          {% if dish.note != blank %}<p class="typed md:mt-5"><span class="rounded-full bg-primary px-2.5 py-1 text-primary-content">{{ dish.note }}</span></p>{% endif %}
+          <p class="dish-name {% if dish.note != blank %}mt-3{% else %}md:mt-5{% endif %}">{{ dish.name }}</p>
+          <p class="dish-line mt-1 text-base-content/75">{{ dish.description }}</p>
+          <p class="price mt-2 font-medium">{{ dish.price }}</p>
+        </div>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>

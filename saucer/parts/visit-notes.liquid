@@ -1,0 +1,17 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div data-reveal>
+      <p class="typed text-base-content/75">How it works</p>
+      <h2 class="mt-3 max-w-[18ch] text-[clamp(2rem,3vw+1rem,3.5rem)]">A few things worth knowing</h2>
+    </div>
+    <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal="stagger">
+      {% for note in data["visit-notes"] %}
+      <li class="slip">
+        <p class="typed text-base-content/70">No. {{ forloop.index | prepend: "0" | slice: -2, 2 }}</p>
+        <p class="dish-name mt-3">{{ note.title }}</p>
+        <p class="dish-line mt-2 text-base-content/80">{{ note.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

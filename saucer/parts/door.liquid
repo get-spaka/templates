@@ -1,0 +1,20 @@
+{%- comment -%} The door's glass: the week typed on a pale blue pane in a coffee frame, one line per record of `hours`, with the door card hanging at its top. Pass `hours` (data.hours); `note` adds a line under the week. {%- endcomment -%}
+<div class="door mx-auto w-full max-w-[34rem] px-5 pb-8 sm:px-9 sm:pb-10" style="--hole: var(--color-secondary)">
+  <div class="flex justify-center">
+    {% render 'door-card', string: '2.25rem', width: '15.5rem' %}
+  </div>
+  <p class="mt-7 text-center font-heading text-[2.5rem] leading-none">Oriel</p>
+  <p class="typed mt-2 text-center">Breakfast · Lunch · Coffee</p>
+  <ul class="typed-md mt-6">
+    {% for day in hours %}
+    <li class="door-day" data-weekday="{{ day.weekday }}" {% if day.opens == blank %}data-closed{% endif %}>
+      <span class="dot self-center" aria-hidden="true"></span>
+      <span class="door-name whitespace-nowrap">{{ day.day }}</span>
+      {% if day.opens != blank and day.closes != blank %}<span class="door-times">{% render 'time', t: day.opens %} – {% render 'time', t: day.closes %}</span>
+      <span class="typed col-span-2 col-start-2 opacity-80">{% if day.lunch_from != blank %}breakfast till {% render 'time', t: day.lunch_from %} · lunch till {% render 'time', t: day.kitchen_closes %}{% else %}breakfast all day till {% render 'time', t: day.kitchen_closes %}{% endif %}</span>{% else %}<span class="door-times">Closed</span>{% if day.note != blank %}
+      <span class="typed col-span-2 col-start-2 opacity-80">{{ day.note }}</span>{% endif %}{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% if note %}<p class="typed mt-5 border-t border-dashed border-secondary-content/30 pt-4 text-center">{{ note }}</p>{% endif %}
+</div>

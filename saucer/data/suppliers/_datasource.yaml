@@ -1,0 +1,22 @@
+label: Suppliers
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: what
+    label: What they bring
+    kind: text
+  - name: where
+    label: Where
+    kind: text
+  - name: distance
+    label: How far
+    kind: text
+  - name: text
+    label: A sentence
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [hilltop-hens, lor-family-farm, brookhollow-creamery, ledge-orchard, ledgerock-coffee]

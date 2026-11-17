@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Catering — Oriel, Madison</title>
+<meta name="description" content="Pastry boxes, breakfast trays, boxed lunches and coffee travelers from Oriel in Madison, for offices, showers and long meetings. Order 48 hours ahead; pick up from 6:30 am or we deliver within three miles.">
+<meta property="og:title" content="Catering — Oriel, Madison">
+<meta property="og:description" content="Pastry boxes, breakfast trays, boxed lunches and coffee travelers from Oriel in Madison, for offices, showers and long meetings. Order 48 hours ahead; pick up from 6:30 am or we deliver within three miles.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "For offices, showers and long meetings", title: "Catering", text: "Pastry boxes, breakfast trays and boxed lunches for offices, showers and long meetings, made the morning you need them." %}
+{% render 'catering-boxes' %}
+{% render 'catering-steps' %}
+{% render 'catering-form' %}
+{% render 'faq', items: data["catering-faq"], label: "Questions", title: "Before you order", columns: true %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

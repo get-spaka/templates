@@ -1,0 +1,32 @@
+{
+  "name": "Saucer plates on the table",
+  "kind": "menu",
+  "source": "upstart",
+  "description": "The featured dishes as round photos seen from above on saucer rims, set down one by one on an oat tabletop as they come into view, each with its name, a line and its price in a typed face; a marmalade label for the week's special.",
+  "tags": [
+    "menu",
+    "dishes",
+    "featured",
+    "plates",
+    "photos",
+    "specials"
+  ],
+  "mood": [
+    "warm",
+    "friendly"
+  ],
+  "synonyms": [
+    "featured dishes",
+    "plates",
+    "today's specials",
+    "what's cooking",
+    "plats du jour",
+    "nos assiettes",
+    "à la carte",
+    "suggestions"
+  ],
+  "data": {
+    "name": "menu",
+    "family": "collection"
+  }
+}

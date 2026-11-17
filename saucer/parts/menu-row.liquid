@@ -1,0 +1,9 @@
+{%- comment -%} A dish as a typed row of the menu: a small plate when it has a photo, the name, a dotted leader and the price, its line and its marks. Pass `dish`; `plate: false` leaves the photo out. {%- endcomment -%}
+<li class="flex gap-3 py-4 sm:gap-5">
+  {% if dish.image and plate != false %}<span class="w-12 shrink-0 sm:w-20"><span class="plate" style="--rim: 7%"><img src="{{ dish.image }}" class="object-cover"></span></span>{% endif %}
+  <div class="min-w-0 flex-1">
+    <p class="flex items-baseline gap-3"><span class="dish-name">{{ dish.name }}</span><span class="leader" aria-hidden="true"></span><span class="price dish-name">{{ dish.price }}</span></p>
+    {% if dish.description != blank %}<p class="dish-line mt-1 max-w-[52ch] text-base-content/75">{{ dish.description }}</p>{% endif %}
+    {% if dish.tags.size > 0 %}<p class="marks mt-1.5 flex flex-wrap gap-x-3">{% for tag in dish.tags %}<span class="{% if tag == 'vegetarian' or tag == 'vegan' %}text-accent{% else %}text-base-content/70{% endif %}">{% case tag %}{% when 'vegetarian' %}V{% when 'vegan' %}VG{% when 'gluten-free' %}GF{% when 'spicy' %}hot{% else %}{{ tag }}{% endcase %}<span class="sr-only"> ({{ tag }})</span></span>{% endfor %}</p>{% endif %}
+  </div>
+</li>

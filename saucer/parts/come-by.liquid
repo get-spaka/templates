@@ -1,0 +1,28 @@
+<section id="hours" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-14 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:items-center lg:gap-10">
+    <div class="lg:col-span-6 lg:col-start-1">
+      {% render 'door', hours: data.hours %}
+    </div>
+    <div class="lg:col-span-5 lg:col-start-8" data-reveal>
+      <p class="typed text-base-content/75">The door</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">Come by</h2>
+      <p class="body-copy mt-5 max-w-[46ch]">On the corner of Larkspur Row, a block from Williamson Street and two from the lake path. Look for the bay window upstairs.</p>
+      <dl class="mt-9 space-y-6">
+        <div>
+          <dt class="typed text-base-content/70">Address</dt>
+          <dd class="mt-1 text-[1.125rem]">2 Larkspur Row, Marquette<br>Madison, WI&nbsp;53703</dd>
+          <dd class="mt-2"><a href="https://www.openstreetmap.org/search?query=2%20Larkspur%20Row%2C%20Madison%2C%20WI" class="text-link" rel="noopener" target="_blank">Get directions</a></dd>
+        </div>
+        <div>
+          <dt class="typed text-base-content/70">Phone</dt>
+          <dd class="mt-1 text-[1.125rem]"><a href="tel:+16085550147" class="text-link whitespace-nowrap">(608) 555-0147</a></dd>
+        </div>
+        <div>
+          <dt class="typed text-base-content/70">How it works</dt>
+          <dd class="mt-1 text-[1.125rem]">Walk in: no reservations. Order at the counter and take a number to your table.</dd>
+        </div>
+      </dl>
+      <a href="/visit" class="btn btn-primary mt-10">Plan your visit</a>
+    </div>
+  </div>
+</section>

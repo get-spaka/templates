@@ -1,0 +1,15 @@
+{%- comment -%} The door card: a two-sided card on its string. The front says the café is open, the back that it is closed; the script turns it to the side that is true, and a tap turns it over. Pass `string` (the string's length) and `width` if needed. {%- endcomment -%}
+<div class="door-card-hang" style="--string: {{ string | default: '2.75rem' }}; --card-width: {{ width | default: '17rem' }};">
+  <button type="button" class="door-card" data-door-card aria-label="Come in, we're open">
+    <span class="door-card-inner" data-door-card-inner>
+      <span class="door-face door-front">
+        <span class="door-big">Come in, we&rsquo;re open</span>
+        <span class="typed"><span data-when="plain before after closed">Open Wednesday to Monday</span><span data-when="breakfast">Breakfast till <span data-slot="until"></span></span><span data-when="lunch">Lunch till <span data-slot="until"></span></span><span data-when="coffee">Coffee till <span data-slot="until"></span></span></span>
+      </span>
+      <span class="door-face door-back" aria-hidden="true">
+        <span class="door-big">Sorry, we&rsquo;re closed</span>
+        <span class="typed"><span data-when="plain">Closed on Tuesdays</span><span data-when="before">Opening today at <span data-slot="opens"></span></span><span data-when="breakfast lunch coffee">We close today at <span data-slot="closes"></span></span><span data-when="after closed">Back <span data-slot="next_day"></span> at <span data-slot="next_opens"></span></span></span>
+      </span>
+    </span>
+  </button>
+</div>

@@ -1,0 +1,49 @@
+label: Catering requests
+collected: true
+answer: catering-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent. We'll confirm by email within one working day."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+    required: true
+  - name: date
+    label: The date
+    kind: date
+    required: true
+  - name: how
+    label: Pickup or delivery
+    kind: choice
+    required: true
+    choices: [pickup, delivery]
+  - name: time
+    label: The time
+    kind: text
+    required: true
+  - name: address
+    label: The address, for a delivery
+    kind: text
+  - name: items
+    label: What you would like
+    kind: list
+    choices: [pastry box, breakfast sandwich tray, yogurt and granola jars, boxed lunches, coffee traveler]
+  - name: people
+    label: How many people
+    kind: number
+    required: true
+  - name: note
+    label: A note
+    kind: markdown

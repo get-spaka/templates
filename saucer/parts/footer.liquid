@@ -1,0 +1,45 @@
+<footer class="border-t border-neutral-content/15 bg-neutral text-neutral-content" data-tz="America/Chicago">
+  <div class="mx-auto max-w-[80rem] px-5 pt-20 pb-10 md:px-8 md:pt-24">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        {% render 'logo', size: 'h-11 w-11', text: 'text-[2.5rem]' %}
+        <p class="mt-6 max-w-[30ch] text-neutral-content/80">Breakfast, lunch and coffee in an old corner pharmacy in Marquette, Madison. Walk in, order at the counter.</p>
+        <p class="typed mt-6 flex items-center gap-2"><span class="dot now-dot" aria-hidden="true"></span><span>{% render 'now-line' %}</span></p>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="typed text-neutral-content/70">The hours</p>
+        <ul class="typed-md mt-4 space-y-1.5">
+          {% for day in data.hours %}
+          <li class="grid grid-cols-[7.5rem_1fr] gap-x-3" data-hours-row data-weekday="{{ day.weekday }}" data-day="{{ day.day }}" data-opens="{{ day.opens }}" data-lunch-from="{{ day.lunch_from }}" data-kitchen-closes="{{ day.kitchen_closes }}" data-closes="{{ day.closes }}">
+            <span>{{ day.day }}</span>
+            {% if day.opens != blank and day.closes != blank %}<span><span data-time="opens">{% render 'time', t: day.opens %}</span> – <span data-time="closes">{% render 'time', t: day.closes %}</span>{% if day.lunch_from != blank %}<span hidden data-time="lunch-from">{% render 'time', t: day.lunch_from %}</span>{% endif %}{% if day.kitchen_closes != blank %}<span hidden data-time="kitchen-closes">{% render 'time', t: day.kitchen_closes %}</span>{% endif %}</span>{% else %}<span class="text-neutral-content/70">Closed</span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        <p class="typed mt-5 text-neutral-content/70">Gift cards at the counter.</p>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-2 lg:col-span-4">
+        <div>
+          <p class="typed text-neutral-content/70">Find us</p>
+          <address class="mt-4 not-italic leading-relaxed">2 Larkspur Row<br>Marquette, Madison, WI&nbsp;53703</address>
+          <p class="mt-3"><a href="https://www.openstreetmap.org/search?query=2%20Larkspur%20Row%2C%20Madison%2C%20WI" class="text-link" rel="noopener" target="_blank">Get directions</a></p>
+          <p class="mt-3"><a href="tel:+16085550147" class="text-link whitespace-nowrap">(608) 555-0147</a></p>
+        </div>
+        <div>
+          <p class="typed text-neutral-content/70">Oriel</p>
+          <nav aria-label="Footer" class="mt-4">
+            <ul class="space-y-1.5">
+              {% for item in data.navigation %}{% if item.place != "social" %}
+              <li><a href="{{ item.href }}" class="text-link">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+              {% for item in data.navigation %}{% if item.place == "social" %}
+              <li><a href="{{ item.href }}" class="text-link" rel="noopener" target="_blank">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <p class="typed mt-16 border-t border-neutral-content/20 pt-6 text-neutral-content/70">Oriel · Breakfast and lunch at the old corner pharmacy since 2018 · © 2026</p>
+  </div>
+</footer>
