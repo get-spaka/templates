@@ -1,0 +1,13 @@
+label: Our story
+fields:
+  - name: year
+    label: Year
+    kind: text
+    required: true
+  - name: title
+    label: What happened
+    kind: text
+  - name: text
+    label: In a sentence or two
+    kind: text
+order: [two-rooms-on-main-street, the-townhouse, miriam-carrow-joins, joaquin-ibarra-partner, fixed-fees]

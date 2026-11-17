@@ -1,0 +1,23 @@
+label: Fees
+fields:
+  - name: name
+    label: What it is
+    kind: text
+    required: true
+  - name: area
+    label: Area (as named in Practice areas)
+    kind: text
+  - name: fee
+    label: Fee
+    kind: text
+  - name: kind
+    label: Kind of fee
+    kind: choice
+    choices: [fixed, from, hourly]
+  - name: note
+    label: What it includes
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+order: [will-package, revocable-trust, probate-administration, residential-closing, forming-an-llc, employment-agreement-review, powers-of-attorney, disputes]

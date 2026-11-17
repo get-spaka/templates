@@ -1,0 +1,33 @@
+{
+  "name": "Codicil redline hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A book-serif headline whose lawyer's phrase is struck through in red and the plain words written in after it, beside a tall photo in a hairline frame, over a ruled row of four facts in small capitals.",
+  "tags": [
+    "hero",
+    "law firm",
+    "redline",
+    "photo",
+    "facts",
+    "plain English"
+  ],
+  "mood": [
+    "elegant",
+    "professional",
+    "editorial"
+  ],
+  "synonyms": [
+    "hero",
+    "top of page",
+    "headline",
+    "law firm hero",
+    "en-tête",
+    "haut de page",
+    "accroche",
+    "bandeau d'accueil"
+  ],
+  "data": {
+    "name": "facts",
+    "family": "section"
+  }
+}

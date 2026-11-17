@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The firm — Kesler Lund &amp; Carrow, Richmond</title>
+<meta name="description" content="A small firm, on purpose: how Kesler Lund &amp; Carrow began, how it works, how it charges, and where its partners give their Saturdays.">
+<meta property="og:title" content="The firm — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="A small firm, on purpose: four partners in a townhouse in Church Hill, Richmond, since 2009.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+<section>
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-16 md:px-8 md:pt-20 md:pb-20">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-8">
+        <p class="sc text-base-content/70">The firm · Since 2009</p>
+        <h1 class="mt-5 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.01em] text-balance" data-redline>A <del aria-hidden="true">full-service</del> <ins>small</ins> firm, on purpose.</h1>
+      </div>
+      <p class="max-w-[52ch] text-[1.125rem] leading-relaxed text-base-content/80 lg:col-span-4 lg:pb-2">Four partners, two associates and the people who keep us organized, in a townhouse a few streets from where Richmond began.</p>
+    </div>
+    <figure class="mt-12 border border-base-300 p-2.5 md:mt-16">
+      <img src="/media/church-hill-houses.jpg" class="aspect-[4/3] w-full object-cover md:aspect-[21/9]">
+    </figure>
+  </div>
+</section>
+
+<section id="our-story" class="border-t border-base-300" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="sc clause text-base-content/70">Our story</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">From two rooms to a townhouse</h2>
+      </div>
+      <ol class="border-t border-base-300 lg:col-span-8" data-reveal="stagger">
+        {% for item in data.milestones %}
+        <li class="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-5 border-b border-base-300 py-6 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:gap-x-8">
+          <span class="font-heading text-[1.75rem] leading-none tabular-nums sm:text-[2.25rem]">{{ item.year }}</span>
+          <div>
+            <h3 class="text-[1.375rem] leading-snug">{{ item.title }}</h3>
+            <p class="mt-2 max-w-[60ch] text-[1.0625rem] leading-relaxed text-base-content/80">{{ item.text }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="how-we-work" class="bg-secondary text-secondary-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div data-reveal>
+      <p class="sc clause text-secondary-content/75">How we work</p>
+      <h2 class="mt-4 max-w-[22ch] text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Five promises, in writing</h2>
+    </div>
+    <ol class="mt-12 grid gap-x-10 border-t border-secondary-content/25 md:grid-cols-2 lg:grid-cols-3" data-reveal="stagger">
+      {% for item in data.promises %}
+      <li class="border-b border-secondary-content/25 py-7">
+        <span class="font-heading text-[1.25rem] tabular-nums text-secondary-content/70" aria-hidden="true">{{ forloop.index }}.</span>
+        <h3 class="mt-2 text-[1.5rem] leading-snug text-balance">{{ item.title }}</h3>
+        <p class="mt-3 text-[1.0625rem] leading-relaxed text-secondary-content/80">{{ item.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section id="how-we-charge" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="sc clause text-base-content/70">How we charge</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">You'll know the fee before we begin</h2>
+      </div>
+      <div class="border border-base-300 p-2.5 lg:col-span-5"><img src="/media/law-books.jpg" class="aspect-[16/9] w-full object-cover"></div>
+    </div>
+    <div class="mt-12 grid gap-px border border-base-300 bg-base-300 md:grid-cols-3" data-reveal="stagger">
+      <div class="bg-base-100 p-7 md:p-8">
+        <h3 class="text-[1.5rem] leading-snug">Fixed fees</h3>
+        <p class="mt-3 text-[1.0625rem] leading-relaxed text-base-content/80">For wills and trusts, closings, forming a business, reviewing an agreement and most estates. The fee is in the letter of engagement and doesn't change unless the work does, and then only with your agreement.</p>
+      </div>
+      <div class="bg-base-100 p-7 md:p-8">
+        <h3 class="text-[1.5rem] leading-snug">By the hour, against an estimate</h3>
+        <p class="mt-3 text-[1.0625rem] leading-relaxed text-base-content/80">For disputes, whose length no one controls. Partners at $350 an hour and associates at $240, against a written estimate we revise with you before it's reached.</p>
+      </div>
+      <div class="bg-base-100 p-7 md:p-8">
+        <h3 class="text-[1.5rem] leading-snug">What is paid when</h3>
+        <p class="mt-3 text-[1.0625rem] leading-relaxed text-base-content/80">Nothing before the letter of engagement is signed, except the first meeting's $150. Court, filing and recording fees are passed on at cost; deposits go into our trust account.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="in-the-community" class="border-t border-base-300" data-clause>
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="sc clause text-base-content/70">In the community</p>
+      <h2 class="mt-4 text-[clamp(1.75rem,2vw+1rem,2.75rem)] leading-[1.1] tracking-[-0.01em] text-balance">Where we belong, and where we give a Saturday</h2>
+    </div>
+    <ul class="grid gap-x-10 border-t border-base-300 sm:grid-cols-2 lg:col-span-8" data-reveal="stagger">
+      {% for item in data.memberships %}
+      <li class="border-b border-base-300 py-6">
+        <p class="sc text-[1.25rem] leading-snug tracking-[0.03em]">{{ item.name }}</p>
+        {% if item.note != blank %}<p class="mt-1.5 text-[0.9375rem] leading-relaxed text-base-content/70">{{ item.note }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% render 'request-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Request a consultation — Kesler Lund &amp; Carrow, Richmond</title>
+<meta name="description" content="Ask for a first meeting with a partner: 45 minutes, in person in Church Hill, by video or by phone, for $150 credited to the work. We reply within one business day.">
+<meta property="og:title" content="Request a consultation — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="Tell us briefly what it's about. We check we're free to act for you, then call or email within one business day.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-8">
+        <p class="sc text-base-content/70">A first meeting · 45 minutes · $150</p>
+        <h1 class="mt-5 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.01em] text-balance">Request a consultation</h1>
+      </div>
+      <p class="max-w-[52ch] text-[1.125rem] leading-relaxed text-base-content/80 lg:col-span-4 lg:pb-2">Tell us briefly what it's about. We check we're free to act for you, then call or email within one business day to set a time.</p>
+    </div>
+  </div>
+</section>
+{% render 'request-form' %}
+<section id="finding-the-office" class="bg-base-200 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="sc clause text-base-content/70">Finding the office</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">A brick townhouse in Church Hill</h2>
+        <address class="mt-6 text-[1.1875rem] leading-relaxed not-italic">23 Haverly Street<br>Church Hill, Richmond, <span class="whitespace-nowrap">VA 23223</span></address>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Church+Hill+Richmond+VA" class="mt-4 inline-flex items-center gap-2 font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] hover:decoration-accent">Get directions<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+        <div class="mt-10 border border-base-content/10 bg-base-100 p-2.5"><img src="/media/downtown-from-libby-hill.jpg" class="aspect-[3/2] w-full object-cover"></div>
+        <p class="meta mt-3 text-base-content/60">Downtown and the courts, from Libby Hill: ten minutes by car.</p>
+      </div>
+      <ul class="grid gap-px self-start border border-base-content/10 bg-base-content/10 sm:grid-cols-2 lg:col-span-7" data-reveal="stagger">
+        <li class="bg-base-100 p-7">
+          <h3 class="text-[1.375rem] leading-snug">Parking</h3>
+          <p class="mt-2 text-[1rem] leading-relaxed text-base-content/80">Free on Haverly Street and the streets around it, two hours without a permit. Tell us if you need a space by the gate.</p>
+        </li>
+        <li class="bg-base-100 p-7">
+          <h3 class="text-[1.375rem] leading-snug">By bus</h3>
+          <p class="mt-2 text-[1rem] leading-relaxed text-base-content/80">The Pulse to East Broad Street, then a five-minute walk up the hill. Several routes from downtown stop on 25th Street.</p>
+        </li>
+        <li class="bg-base-100 p-7">
+          <img src="/media/garden-gate.jpg" class="mb-5 aspect-[4/3] w-full object-cover">
+          <h3 class="text-[1.375rem] leading-snug">Step-free, through the garden gate</h3>
+          <p class="mt-2 text-[1rem] leading-relaxed text-base-content/80">The meeting room is on the ground floor, reached from the side gate along a level brick path. The front steps lead to our offices.</p>
+        </li>
+        <li class="bg-base-100 p-7">
+          <h3 class="text-[1.375rem] leading-snug">Elsewhere in Virginia</h3>
+          <p class="mt-2 text-[1rem] leading-relaxed text-base-content/80">Clients from Norfolk to Roanoke meet us by video, and sign at a notary near them. Closings and hearings outside Richmond may carry a travel fee, agreed beforehand.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section id="questions" class="bg-base-100 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="sc clause text-base-content/70">Questions</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Before you write</h2>
+      </div>
+      <ol class="border-t border-base-300 lg:col-span-8">
+        {% for item in data["consultation-faq"] %}
+        <li class="border-b border-base-300">
+          <details class="group" {% if forloop.first %}open{% endif %}>
+            <summary class="flex cursor-pointer items-baseline gap-5 py-5">
+              <span class="font-heading text-[1.25rem] text-base-content/50 tabular-nums" aria-hidden="true">{{ forloop.index }}.</span>
+              <span class="font-heading text-[1.375rem] leading-snug group-open:text-primary">{{ item.question }}</span>
+              <span class="ml-auto text-[1.5rem] leading-none text-accent transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="max-w-[62ch] pb-6 pl-10 text-[1.0625rem] leading-relaxed text-base-content/80">{{ item.answer }}</p>
+          </details>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

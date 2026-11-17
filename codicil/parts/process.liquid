@@ -1,0 +1,22 @@
+<section id="how-a-matter-works" class="bg-secondary text-secondary-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="sc clause text-secondary-content/75">How a matter works</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Four clauses, before any surprise</h2>
+        <p class="mt-6 max-w-[44ch] text-[1.0625rem] leading-relaxed text-secondary-content/80">What happens from your first call to the last letter, and what it costs, agreed in writing before we begin.</p>
+      </div>
+      <ol class="border-t border-secondary-content/25 lg:col-span-8" data-reveal="stagger">
+        {% for step in data.process %}
+        <li class="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-b border-secondary-content/25 py-7 sm:grid-cols-[5rem_minmax(0,1fr)] md:py-8">
+          <span class="font-heading text-[1.5rem] leading-none tabular-nums sm:text-[1.75rem]" aria-hidden="true">1.{{ forloop.index }}</span>
+          <div>
+            <h3 class="text-[1.375rem] leading-snug">{{ step.title }}</h3>
+            <p class="mt-2 max-w-[60ch] text-[1.0625rem] leading-relaxed text-secondary-content/80">{{ step.text }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+label: How a matter works
+fields:
+  - name: title
+    label: Step
+    kind: text
+    required: true
+  - name: text
+    label: What happens
+    kind: text
+order: [you-write-or-call, a-first-meeting, a-letter-of-engagement, the-work]

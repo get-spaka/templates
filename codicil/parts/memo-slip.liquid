@@ -1,0 +1,11 @@
+<a href="/articles/{{ post.id }}" class="slip group p-6 sm:p-7" {% if topic %}data-topic="{{ topic }}"{% endif %}>
+  <dl class="grid grid-cols-[3.25rem_minmax(0,1fr)] items-baseline gap-x-3 gap-y-2">
+    <dt class="sc text-[0.875rem] text-base-content/60">Re</dt>
+    <dd class="font-heading text-[1.375rem] leading-snug text-balance group-hover:text-primary">{{ post.title }}</dd>
+    {% if post.author != blank %}<dt class="sc text-[0.875rem] text-base-content/60">From</dt>
+    <dd class="text-[0.9375rem]">{{ post.author }}</dd>{% endif %}
+    {% if post.date %}<dt class="sc text-[0.875rem] text-base-content/60">Date</dt>
+    <dd class="meta text-[0.875rem]"><time datetime="{{ post.date }}" class="whitespace-nowrap">{{ post.date | date: "%B %-d, %Y" }}</time>{% if post.category != blank %} · <span class="whitespace-nowrap">{{ post.category }}</span>{% endif %}{% if post.minutes %} · <span class="whitespace-nowrap">{{ post.minutes }} min</span>{% endif %}</dd>{% endif %}
+  </dl>
+  {% if summary and post.summary != blank %}<p class="mt-5 border-t border-base-content/15 pt-4 text-[0.9375rem] leading-relaxed text-base-content/80">{{ post.summary }}</p>{% endif %}
+</a>

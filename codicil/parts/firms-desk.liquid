@@ -1,0 +1,14 @@
+<section id="from-the-firms-desk" class="overflow-hidden bg-base-100 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="sc clause text-base-content/70">From the firm's desk</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Short notes on the law, in plain English</h2>
+      </div>
+      <a href="/articles" class="inline-flex items-center gap-2 font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] hover:decoration-accent">All articles<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <div class="slip-pile mt-12 pb-6" data-reveal="stagger">
+      {% for post in data.blog limit: 3 %}{% render 'memo-slip', post: post, summary: true %}{% endfor %}
+    </div>
+  </div>
+</section>

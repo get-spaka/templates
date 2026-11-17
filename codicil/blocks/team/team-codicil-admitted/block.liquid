@@ -1,0 +1,30 @@
+<section id="partners" class="bg-base-100 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="sc clause text-base-content/70">The partners</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">The people who sign your letters</h2>
+      </div>
+      <a href="/people" class="inline-flex items-center gap-2 font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] hover:decoration-accent">Everyone at the firm<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4" data-reveal="stagger">
+      {% for member in data.team %}{% unless member.partner == false %}
+      <li>
+        <a href="/people/{{ member.id }}" class="group block">
+          <div class="border border-base-300 p-1.5 sm:p-2">
+            {% if member.photo %}
+            <img src="{{ member.photo }}" class="aspect-[3/4] w-full object-cover">
+            {% else %}
+            {% assign words = member.name | split: " " %}
+            <div class="flex aspect-[3/4] w-full items-center justify-center bg-secondary text-secondary-content" aria-hidden="true"><span class="font-heading text-[3rem] sm:text-[4.5rem]">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>
+            {% endif %}
+          </div>
+          <h3 class="mt-4 text-[1.25rem] leading-tight group-hover:text-primary sm:text-[1.5rem]">{{ member.name }}</h3>
+          {% if member.role != blank %}<p class="meta mt-1.5 text-base-content/70">{{ member.role }}</p>{% endif %}
+          {% if member.admitted.size > 0 %}<p class="meta mt-0.5 text-base-content/60">Admitted in {{ member.admitted.first }}</p>{% endif %}
+        </a>
+      </li>
+      {% endunless %}{% endfor %}
+    </ul>
+  </div>
+</section>

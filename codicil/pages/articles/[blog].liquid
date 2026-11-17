@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Kesler Lund &amp; Carrow</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+{% assign author = data.team | where: "name", record.author | first %}
+{% assign author_first = record.author | split: " " | first %}
+<main class="bg-base-100 text-base-content">
+<article class="mx-auto max-w-3xl px-5 pt-12 pb-16 md:px-8 md:pt-16 md:pb-20">
+  <a href="/articles" class="meta inline-flex items-center gap-2 text-primary hover:underline"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>From the firm's desk</a>
+  <header class="mt-8" data-reveal>
+    <p class="sc text-[1.0625rem] tracking-[0.12em] text-base-content/70">Memorandum</p>
+    <dl class="memo-head mt-6">
+      {% if record.to != blank %}<dt>To</dt><dd class="text-[1.0625rem] leading-snug">{{ record.to }}</dd>{% endif %}
+      {% if record.author != blank %}<dt>From</dt><dd class="text-[1.0625rem] leading-snug">{% if author %}<a href="/people/{{ author.id }}" class="underline decoration-base-300 underline-offset-4 hover:decoration-accent">{{ record.author }}</a>{% if author.role != blank %}<span class="text-base-content/70">, {{ author.role }}</span>{% endif %}{% else %}{{ record.author }}{% endif %}</dd>{% endif %}
+      <dt>Re</dt><dd><h1 class="text-[clamp(1.875rem,2.5vw+1rem,3rem)] leading-[1.1] tracking-[-0.01em] text-balance">{{ record.title }}</h1></dd>
+      {% if record.date %}<dt>Date</dt><dd class="meta text-[0.9375rem]"><time datetime="{{ record.date }}" class="whitespace-nowrap">{{ record.date | date: "%B %-d, %Y" }}</time>{% if record.category != blank %} · <span class="whitespace-nowrap">{{ record.category }}</span>{% endif %}{% if record.minutes %} · <span class="whitespace-nowrap">{{ record.minutes }} minutes</span>{% endif %}</dd>{% endif %}
+    </dl>
+    {% if record.summary != blank %}<p class="mt-8 font-heading text-[1.5rem] leading-snug text-balance">{{ record.summary }}</p>{% endif %}
+  </header>
+  {% if record.cover %}<div class="mt-10 border border-base-300 p-2.5"><img src="{{ record.cover }}" class="aspect-[16/9] w-full object-cover"></div>{% endif %}
+  <div class="prose-codicil mt-10" data-reveal>{{ record.body }}</div>
+  <p class="mt-12 border-y border-base-300 py-5 text-[0.9375rem] leading-relaxed text-base-content/75"><span class="sc mr-2 text-base-content">Note</span>This is general information, not legal advice. Every situation is different: if this one is yours, talk to us.</p>
+  {% if record.author != blank %}
+  <div class="mt-10 flex flex-col gap-6 bg-base-200 p-6 sm:flex-row sm:items-center sm:p-8">
+    <div class="flex min-w-0 items-center gap-5">
+      {% if author.photo %}
+      <img src="{{ author.photo }}" class="aspect-[3/4] w-16 shrink-0 object-cover">
+      {% else %}
+      {% assign words = record.author | split: " " %}
+      <span class="flex aspect-[3/4] w-16 shrink-0 items-center justify-center bg-secondary font-heading text-[1.5rem] text-secondary-content" aria-hidden="true">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span>
+      {% endif %}
+      <div class="min-w-0">
+        <p class="font-heading text-[1.375rem] leading-tight">{{ record.author }}</p>
+        {% if author.role != blank %}<p class="meta mt-1 text-base-content/70">{{ author.role }}</p>{% endif %}
+      </div>
+    </div>
+    <a href="/consultation{% if author %}?with={{ author.id }}{% endif %}" class="btn btn-primary h-auto min-h-12 py-2.5 sm:ml-auto">Request a consultation with {{ author_first }}</a>
+  </div>
+  {% endif %}
+</article>
+<section class="border-t border-base-300">
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 class="text-[clamp(1.75rem,1.5vw+1rem,2.5rem)] leading-tight">More from the firm's desk</h2>
+      <a href="/articles" class="font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] hover:decoration-accent">All articles</a>
+    </div>
+    <div class="mt-10 grid gap-5 md:grid-cols-2" data-reveal="stagger">
+      {% assign shown = 0 %}
+      {% for post in data.blog %}{% if post.id != record.id and shown < 2 %}{% assign shown = shown | plus: 1 %}{% render 'memo-slip', post: post, summary: true %}{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

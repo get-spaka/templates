@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Kesler Lund &amp; Carrow, Richmond</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+{% assign leader = data.team | where: "name", record.lead | first %}
+{% assign lead_first = record.lead | split: " " | first %}
+<main class="bg-base-100 text-base-content">
+<section>
+  <div class="mx-auto max-w-7xl px-5 pt-12 pb-16 md:px-8 md:pt-16 md:pb-20">
+    <a href="/practice" class="meta inline-flex items-center gap-2 text-primary hover:underline"><svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>Practice areas</a>
+    <div class="mt-8 grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
+      <div class="lg:col-span-7" data-reveal>
+        <p class="sc clause-mark text-base-content/70">Area of practice</p>
+        <h1 class="mt-5 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.01em] text-balance">{{ record.name }}</h1>
+        <p class="mt-6 max-w-[54ch] text-[1.1875rem] leading-relaxed text-base-content/80">{{ record.summary }}</p>
+        {% if record.fee_from != blank %}<p class="meta mt-6 text-[0.9375rem] text-base-content/70">{{ record.fee_from }} · <span class="whitespace-nowrap">First meeting 45 minutes, $150</span></p>{% endif %}
+      </div>
+      {% if record.image %}
+      <figure class="lg:col-span-5">
+        <div class="border border-base-300 p-2.5"><img src="{{ record.image }}" class="aspect-[4/3] w-full object-cover"></div>
+      </figure>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="border-t border-base-300">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-7" data-reveal>
+      <h2 class="sc text-base-content/60">We handle</h2>
+      <ul class="mt-4 grid gap-x-8 border-t border-base-300 sm:grid-cols-2">
+        {% for item in record.handles %}<li class="flex gap-3 border-b border-base-300 py-3 text-[1.0625rem] leading-snug"><span class="mt-[0.55em] size-1.5 shrink-0 bg-accent" aria-hidden="true"></span>{{ item }}</li>{% endfor %}
+      </ul>
+      {% if record.situations.size > 0 %}
+      <h2 class="sc mt-12 text-base-content/60">When to call us</h2>
+      <ul class="mt-4 space-y-3">
+        {% for line in record.situations %}<li class="font-heading text-[1.375rem] leading-snug italic">“{{ line }}”</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <aside class="lg:col-span-5" data-reveal>
+      <div class="border border-base-300 bg-base-200 p-7 md:p-8">
+        <h2 class="sc text-base-content/60">Who leads it</h2>
+        <div class="mt-5 flex items-start gap-5">
+          {% if leader.photo %}
+          <img src="{{ leader.photo }}" class="aspect-[3/4] w-24 shrink-0 object-cover">
+          {% else %}
+          {% assign words = record.lead | split: " " %}
+          <span class="flex aspect-[3/4] w-24 shrink-0 items-center justify-center bg-secondary font-heading text-[2rem] text-secondary-content" aria-hidden="true">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span>
+          {% endif %}
+          <div class="min-w-0">
+            {% if leader %}<a href="/people/{{ leader.id }}" class="font-heading text-[1.5rem] leading-tight hover:text-primary">{{ record.lead }}</a>{% else %}<p class="font-heading text-[1.5rem] leading-tight">{{ record.lead }}</p>{% endif %}
+            {% if record.lead_role != blank %}<p class="meta mt-1 text-base-content/70">{{ record.lead_role }}</p>{% endif %}
+            {% if leader.admitted.size > 0 %}<p class="meta mt-3 text-base-content/70">Admitted in {{ leader.admitted | join: " · " }}</p>{% endif %}
+          </div>
+        </div>
+        <a href="/consultation?area={{ record.id }}{% if leader %}&amp;with={{ leader.id }}{% endif %}" class="btn btn-primary mt-7 h-auto min-h-12 w-full py-2.5 sm:w-auto">Request a consultation with {{ lead_first }}</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% if record.body != blank %}
+<section>
+  <div class="mx-auto max-w-7xl px-5 pb-16 md:px-8 md:pb-20">
+    <div class="prose-codicil max-w-[64ch] lg:ml-[calc(100%/12)]" data-reveal>{{ record.body }}</div>
+  </div>
+</section>
+{% endif %}
+
+{% assign area_fees = data.fees | where: "area", record.name %}
+{% if area_fees.size > 0 %}
+<section class="border-t border-base-300">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-4" data-reveal>
+      <h2 class="text-[clamp(1.75rem,1.5vw+1rem,2.5rem)] leading-tight">Its fees</h2>
+      <p class="mt-4 max-w-[40ch] text-[1.0625rem] leading-relaxed text-base-content/80">Agreed in a letter of engagement before any work begins.</p>
+    </div>
+    <ul class="lg:col-span-8" data-reveal="stagger">
+      {% for fee in area_fees %}
+      <li class="border-b border-base-300 py-5 first:pt-0">
+        <div class="fee-row">
+          <span class="text-[1.125rem] leading-snug">{{ fee.name }}</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="fee font-heading text-[1.375rem]">{% if fee.kind == "from" %}<span class="meta mr-1 text-base-content/60">from</span>{% endif %}{{ fee.fee }}</span>
+        </div>
+        {% if fee.note != blank %}<p class="meta mt-1.5 max-w-[56ch] text-[0.875rem] font-normal text-base-content/70">{{ fee.note }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{% assign area_posts = data.blog | where: "category", record.name %}
+{% if area_posts.size > 0 %}
+<section class="border-t border-base-300">
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+    <h2 class="text-[clamp(1.75rem,1.5vw+1rem,2.5rem)] leading-tight" data-reveal>Articles on {{ record.name | downcase }}</h2>
+    <div class="mt-10 grid gap-5 md:grid-cols-2" data-reveal="stagger">
+      {% for post in area_posts limit: 4 %}{% render 'memo-slip', post: post, summary: true %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="bg-base-200">
+  <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20">
+    <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between" data-reveal>
+      <h2 class="max-w-[24ch] text-[clamp(1.75rem,1.5vw+1rem,2.5rem)] leading-tight text-balance">Is this your situation?</h2>
+      <a href="/consultation?area={{ record.id }}" class="btn btn-primary btn-lg h-auto min-h-14 py-3 text-balance">Request a consultation about {{ record.name | downcase }}</a>
+    </div>
+    <nav aria-label="Other areas" class="mt-12">
+      <h2 class="sc text-base-content/60">Other areas</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {% for area in data["practice-areas"] %}{% if area.id != record.id %}
+        <li><a href="/practice/{{ area.id }}" class="chip sc text-[0.9375rem] hover:border-primary">{% if area.short != blank %}{{ area.short }}{% else %}{{ area.name }}{% endif %}</a></li>
+        {% endif %}{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,47 @@
+label: People
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: partner
+    label: A partner
+    kind: boolean
+  - name: bio
+    label: Short bio
+    kind: text
+  - name: photo
+    label: Portrait
+    kind: image
+  - name: areas
+    label: Areas
+    kind: list
+  - name: admitted
+    label: Admitted
+    kind: list
+  - name: education
+    label: Education
+    kind: list
+  - name: languages
+    label: Languages
+    kind: text
+  - name: before
+    label: Before the firm
+    kind: text
+  - name: email
+    label: E-mail
+    kind: email
+  - name: phone
+    label: Direct phone
+    kind: phone
+  - name: linkedin
+    label: LinkedIn page
+    kind: link
+  - name: body
+    label: In their words
+    kind: markdown
+body: body
+order: [eleanor-kesler, henry-lund, miriam-carrow, joaquin-ibarra, grace-whitlow, simon-hargrove]

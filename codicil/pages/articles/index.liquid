@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>From the firm's desk — Kesler Lund &amp; Carrow, Richmond</title>
+<meta name="description" content="Short notes on the law as it touches Virginians, written by the partners of Kesler Lund &amp; Carrow: wills, probate, closings, small business and employment.">
+<meta property="og:title" content="From the firm's desk — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="Short notes on the law as it touches Virginians, written by the partners.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main class="bg-base-100 text-base-content">
+<section>
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-8">
+        <p class="sc text-base-content/70">Articles</p>
+        <h1 class="mt-5 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.01em] text-balance">From the firm's desk</h1>
+      </div>
+      <p class="max-w-[52ch] text-[1.125rem] leading-relaxed text-base-content/80 lg:col-span-4 lg:pb-2">Short notes on the law as it touches Virginians, written by the partners. General information, not advice on your situation.</p>
+    </div>
+  </div>
+</section>
+<section data-chips>
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <fieldset class="relative flex flex-wrap gap-2 border-y border-base-300 py-5">
+      <legend class="sr-only">Show articles on</legend>
+      <input type="radio" name="article-topic" id="topic-all" class="chip-input sr-only" checked>
+      <label for="topic-all" class="chip sc text-[0.9375rem]">All</label>
+      {% for area in data["practice-areas"] %}
+      <input type="radio" name="article-topic" id="topic-{{ area.id }}" class="chip-input sr-only" data-n="{{ forloop.index }}">
+      <label for="topic-{{ area.id }}" class="chip sc text-[0.9375rem]">{% if area.short != blank %}{{ area.short }}{% else %}{{ area.name }}{% endif %}</label>
+      {% endfor %}
+    </fieldset>
+    <ul class="mx-auto mt-10 max-w-4xl space-y-5" data-reveal="stagger">
+      {% for post in data.blog %}
+      {% assign topic = 0 %}
+      {% for area in data["practice-areas"] %}{% if area.name == post.category %}{% assign topic = forloop.index %}{% endif %}{% endfor %}
+      <li data-topic="{{ topic }}">{% render 'memo-slip', post: post, summary: true %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

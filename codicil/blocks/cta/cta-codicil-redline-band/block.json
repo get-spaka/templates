@@ -1,0 +1,28 @@
+{
+  "name": "Codicil redline band",
+  "kind": "cta",
+  "source": "upstart",
+  "description": "A request band on ink night: a sentence whose stiff phrase is struck through in red and a plainer one written in, a light button and the phone.",
+  "tags": [
+    "cta",
+    "call to action",
+    "contact",
+    "consultation",
+    "redline"
+  ],
+  "mood": [
+    "dark",
+    "professional",
+    "elegant"
+  ],
+  "synonyms": [
+    "call to action",
+    "contact band",
+    "consultation",
+    "get in touch",
+    "appel à l'action",
+    "bandeau contact",
+    "prendre rendez-vous",
+    "contactez-nous"
+  ]
+}

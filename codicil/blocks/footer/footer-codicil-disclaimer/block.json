@@ -1,0 +1,32 @@
+{
+  "name": "Codicil footer with notice",
+  "kind": "footer",
+  "source": "upstart",
+  "description": "A footer on ink night with the firm's name in a book serif, the address and directions, the phone and email, the hours, the pages, and the firm's notice in small type: attorney advertising, and that writing does not make it your lawyer.",
+  "tags": [
+    "footer",
+    "address",
+    "hours",
+    "disclaimer",
+    "law firm",
+    "notice"
+  ],
+  "mood": [
+    "dark",
+    "professional"
+  ],
+  "synonyms": [
+    "footer",
+    "site footer",
+    "contact details",
+    "disclaimer",
+    "pied de page",
+    "mentions légales",
+    "coordonnées",
+    "bas de page"
+  ],
+  "data": {
+    "name": "navigation",
+    "family": "collection"
+  }
+}

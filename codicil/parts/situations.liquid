@@ -1,0 +1,21 @@
+<section id="by-situation" class="bg-base-200 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="sc clause text-base-content/70">By situation</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Not sure which area you need?</h2>
+        <p class="mt-6 max-w-[44ch] text-[1.0625rem] leading-relaxed text-base-content/80">Find the line that sounds most like yours. If none does, tell us in your own words: matching it to an area is our job.</p>
+      </div>
+      <ul class="border-t border-base-content/15 lg:col-span-8">
+        {% for area in data["practice-areas"] %}{% for line in area.situations %}
+        <li class="border-b border-base-content/15">
+          <a href="/practice/{{ area.id }}" class="group grid gap-1 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-6">
+            <span class="font-heading text-[1.25rem] leading-snug italic group-hover:text-primary">“{{ line }}”</span>
+            <span class="meta whitespace-nowrap text-base-content/70 group-hover:text-primary">{{ area.name }} →</span>
+          </a>
+        </li>
+        {% endfor %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

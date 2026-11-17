@@ -1,0 +1,10 @@
+label: Facts
+fields:
+  - name: label
+    label: In small capitals
+    kind: text
+    required: true
+  - name: value
+    label: The fact
+    kind: text
+order: [first-meeting, fixed-fees, a-partner, reply]

@@ -1,0 +1,10 @@
+label: Questions about a first meeting
+fields:
+  - name: question
+    label: Question
+    kind: text
+    required: true
+  - name: answer
+    label: Answer
+    kind: text
+order: [confidential, what-to-bring, payment-plans, outside-richmond, cant-take-your-case]

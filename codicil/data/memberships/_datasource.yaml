@@ -1,0 +1,13 @@
+label: In the community
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: note
+    label: Our part in it
+    kind: text
+  - name: url
+    label: Address
+    kind: link
+order: [virginia-state-bar, richmond-bar-association, elder-law-attorneys, church-hill-legal-clinic]

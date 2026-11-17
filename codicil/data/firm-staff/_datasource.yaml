@@ -1,0 +1,10 @@
+label: Also at the firm
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+order: [tamsin-odell, lorraine-beaudry]

@@ -1,0 +1,125 @@
+<section id="request" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-16">
+    <form data-prefill hx-post="/_data/bookings" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#request-problems swap:innerHTML" class="flex flex-col gap-14 lg:col-span-8">
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="font-heading text-[1.75rem] text-accent tabular-nums" aria-hidden="true">1.</span><span class="font-heading text-[1.75rem] leading-tight">What it's about</span></legend>
+        <div class="mt-6 grid gap-2.5 sm:grid-cols-2">
+          {% for area in data["practice-areas"] %}
+          <label class="choice-card flex items-start gap-3 p-4">
+            <input type="radio" name="area" value="{{ area.name }}" class="radio radio-primary radio-sm mt-0.5" data-key="{{ area.id }}" {% if forloop.first %}required{% endif %}>
+            <span class="min-w-0"><span class="block font-medium">{{ area.name }}</span>{% if area.situations.size > 0 %}<span class="mt-0.5 block text-[0.9375rem] leading-snug text-base-content/70">“{{ area.situations.first }}”</span>{% endif %}</span>
+          </label>
+          {% endfor %}
+          <label class="choice-card flex items-start gap-3 p-4">
+            <input type="radio" name="area" value="Not sure" class="radio radio-primary radio-sm mt-0.5" data-key="not-sure">
+            <span class="min-w-0"><span class="block font-medium">Not sure</span><span class="mt-0.5 block text-[0.9375rem] leading-snug text-base-content/70">Tell us in a line below; we'll find the right partner</span></span>
+          </label>
+        </div>
+        <fieldset class="mt-8">
+          <legend class="text-[1.0625rem] font-medium">Who you'd like to see</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="choice-card flex items-center gap-2.5 px-4 py-2.5">
+              <input type="radio" name="with" value="Whoever is best placed" class="radio radio-primary radio-xs" checked>
+              <span>Whoever is best placed</span>
+            </label>
+            {% for member in data.team %}{% if member.partner %}
+            <label class="choice-card flex items-center gap-2.5 px-4 py-2.5">
+              <input type="radio" name="with" value="{{ member.name }}" class="radio radio-primary radio-xs" data-key="{{ member.id }}">
+              <span>{{ member.name }}</span>
+            </label>
+            {% endif %}{% endfor %}
+          </div>
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="font-heading text-[1.75rem] text-accent tabular-nums" aria-hidden="true">2.</span><span class="font-heading text-[1.75rem] leading-tight">Who else is involved <span class="font-body text-base text-base-content/60">(optional)</span></span></legend>
+        <label class="mt-5 block">
+          <span class="block max-w-[60ch] text-[1.0625rem] leading-relaxed text-base-content/80">The names of the other people or businesses in the matter, so we can check we're free to act for you.</span>
+          <input name="others" type="text" class="input mt-3 w-full text-base" maxlength="300" placeholder="For example: my brother, Daniel; Harbor Street Properties LLC">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="font-heading text-[1.75rem] text-accent tabular-nums" aria-hidden="true">3.</span><span class="font-heading text-[1.75rem] leading-tight">How and when</span></legend>
+        <div class="mt-5 grid gap-2.5 sm:grid-cols-3">
+          <label class="choice-card flex items-start gap-3 p-4">
+            <input type="radio" name="meeting" value="In person" class="radio radio-primary radio-sm mt-0.5" checked>
+            <span><span class="block font-medium">In person</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">In Church Hill, step-free</span></span>
+          </label>
+          <label class="choice-card flex items-start gap-3 p-4">
+            <input type="radio" name="meeting" value="By video" class="radio radio-primary radio-sm mt-0.5">
+            <span><span class="block font-medium">By video</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">We'll send a link</span></span>
+          </label>
+          <label class="choice-card flex items-start gap-3 p-4">
+            <input type="radio" name="meeting" value="By phone" class="radio radio-primary radio-sm mt-0.5">
+            <span><span class="block font-medium">By phone</span><span class="mt-0.5 block text-[0.9375rem] text-base-content/70">We'll call you</span></span>
+          </label>
+        </div>
+        <p class="mt-7 text-[1.0625rem] font-medium">When suits you</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <label class="choice-card flex items-center gap-2.5 px-4 py-2.5"><input type="checkbox" name="when" value="Weekday mornings" class="checkbox checkbox-primary checkbox-xs"><span>Weekday mornings</span></label>
+          <label class="choice-card flex items-center gap-2.5 px-4 py-2.5"><input type="checkbox" name="when" value="Weekday afternoons" class="checkbox checkbox-primary checkbox-xs"><span>Weekday afternoons</span></label>
+          <label class="choice-card flex items-center gap-2.5 px-4 py-2.5"><input type="checkbox" name="when" value="Thursday evening" class="checkbox checkbox-primary checkbox-xs"><span>Thursday evening</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="font-heading text-[1.75rem] text-accent tabular-nums" aria-hidden="true">4.</span><span class="font-heading text-[1.75rem] leading-tight">You</span></legend>
+        <div class="mt-5 grid gap-x-4 gap-y-5 sm:grid-cols-2">
+          <label class="block sm:col-span-2">
+            <span class="text-[0.9375rem] font-medium">Your name</span>
+            <input name="name" type="text" class="input mt-2 w-full text-base" required maxlength="120" autocomplete="name">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-medium">Your email</span>
+            <input name="email" type="email" class="input mt-2 w-full text-base" required maxlength="200" autocomplete="email">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-medium">Your phone <span class="font-normal text-base-content/60">(optional)</span></span>
+            <input name="phone" type="tel" class="input mt-2 w-full text-base" maxlength="30" autocomplete="tel">
+          </label>
+        </div>
+        <fieldset class="mt-6">
+          <legend class="text-[0.9375rem] font-medium">How you'd like us to reply</legend>
+          <div class="mt-2 flex flex-wrap gap-2">
+            <label class="choice-card flex items-center gap-2.5 px-4 py-2.5"><input type="radio" name="reply" value="A call" class="radio radio-primary radio-xs" checked><span>A call</span></label>
+            <label class="choice-card flex items-center gap-2.5 px-4 py-2.5"><input type="radio" name="reply" value="An email" class="radio radio-primary radio-xs"><span>An email</span></label>
+          </div>
+        </fieldset>
+        <label class="mt-6 block">
+          <span class="text-[0.9375rem] font-medium">A short note <span class="font-normal text-base-content/60">(optional)</span></span>
+          <span class="mt-1 block text-[0.9375rem] text-base-content/70">Just the outline for now; no account numbers or documents.</span>
+          <textarea name="note" class="textarea mt-3 w-full text-base" rows="4" maxlength="600"></textarea>
+        </label>
+      </fieldset>
+
+      <div id="request-problems" class="empty:hidden"></div>
+      <div class="flex flex-col gap-5 border-t border-base-300 pt-8 sm:flex-row sm:items-center sm:gap-8">
+        <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Send my request</button>
+        <p class="max-w-[52ch] text-[0.9375rem] leading-relaxed text-base-content/70">Writing to us does not make us your lawyers yet. We check we're free to act for you, then reply within one business day.</p>
+      </div>
+    </form>
+
+    <aside class="lg:col-span-4">
+      <div class="border border-base-content/10 bg-base-200 lg:sticky lg:top-36">
+        <img src="/media/meeting-room.jpg" class="aspect-[16/10] w-full object-cover">
+        <div class="p-7 md:p-8">
+          <h2 class="sc text-base-content/60">Your first meeting</h2>
+          <p class="mt-3 font-heading text-[1.625rem] leading-snug">45 minutes with a partner, for $150</p>
+          <p class="mt-2 text-[0.9375rem] leading-relaxed text-base-content/75">Credited to the work if you go ahead. Paid at the meeting, by card or check.</p>
+          <ul class="mt-6 space-y-2 border-t border-base-content/15 pt-5 text-[0.9375rem] tabular-nums">
+            {% for row in data.hours %}
+            <li class="flex justify-between gap-4"><span>{{ row.day }}</span><span class="text-right text-base-content/75">{% if row.opens != blank %}{{ row.opens }} to {{ row.closes }}{% else %}{{ row.note }}{% endif %}</span></li>
+            {% endfor %}
+          </ul>
+          <div class="mt-6 border-t border-base-content/15 pt-5">
+            <p class="text-[0.9375rem] text-base-content/75">Prefer to call?</p>
+            <a href="tel:+18045550123" class="mt-1 block font-heading text-[1.75rem] text-primary tabular-nums">(804) 555-0123</a>
+          </div>
+          <p class="mt-6 border-l-2 border-accent pl-4 text-[0.9375rem] leading-relaxed"><strong class="font-medium">A court date this week?</strong> Call us now rather than writing: we'll tell you the same day whether we can help.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

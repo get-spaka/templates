@@ -1,0 +1,38 @@
+label: Practice areas
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: short
+    label: Label on its tab
+    kind: text
+  - name: summary
+    label: In a sentence
+    kind: text
+  - name: handles
+    label: We handle
+    kind: list
+  - name: situations
+    label: When to call us (in the client's words)
+    kind: list
+  - name: lead
+    label: Partner who leads it (their name, as in People)
+    kind: text
+  - name: lead_role
+    label: The partner's role
+    kind: text
+  - name: lead_photo
+    label: The partner's portrait
+    kind: image
+  - name: fee_from
+    label: Fees in a line
+    kind: text
+  - name: image
+    label: Picture
+    kind: image
+  - name: body
+    label: How we approach it
+    kind: markdown
+body: body
+order: [wills-trusts, probate-estates, real-estate, small-business, employment, elder-law]

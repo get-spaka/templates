@@ -1,0 +1,26 @@
+<ul class="border-t border-base-300" data-reveal="stagger">
+  {% for member in data.team %}{% if member.partner == partners %}
+  {% assign words = member.name | split: " " %}
+  <li class="border-b border-base-300">
+    <a href="/people/{{ member.id }}" class="group grid grid-cols-[5.5rem_minmax(0,1fr)] gap-x-5 gap-y-4 py-8 sm:gap-x-8 lg:gap-x-12 {% if partners %}sm:grid-cols-[10rem_minmax(0,1fr)] lg:grid-cols-[12rem_minmax(0,1fr)_minmax(0,1fr)]{% else %}sm:grid-cols-[7rem_minmax(0,1fr)] lg:grid-cols-[8rem_minmax(0,1fr)_minmax(0,1fr)]{% endif %}">
+      <div class="border border-base-300 p-1.5 lg:row-span-2">
+        {% if member.photo %}
+        <img src="{{ member.photo }}" class="aspect-[3/4] w-full object-cover">
+        {% else %}
+        <div class="flex aspect-[3/4] w-full items-center justify-center bg-secondary text-secondary-content" aria-hidden="true"><span class="font-heading {% if partners %}text-[2rem] sm:text-[3.5rem]{% else %}text-[2rem] sm:text-[2.5rem]{% endif %}">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>
+        {% endif %}
+      </div>
+      <div class="min-w-0">
+        <h3 class="{% if partners %}text-[clamp(1.5rem,1.5vw+1rem,2.25rem)]{% else %}text-[clamp(1.375rem,1vw+1rem,1.75rem)]{% endif %} leading-tight group-hover:text-primary">{{ member.name }}</h3>
+        {% if member.role != blank %}<p class="meta mt-1.5 text-base-content/70">{{ member.role }}</p>{% endif %}
+        {% if member.admitted.size > 0 %}<p class="meta mt-3 text-base-content/70">Admitted in {{ member.admitted | join: " · " }}</p>{% endif %}
+      </div>
+      <div class="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 lg:col-start-3 lg:row-start-1">
+        {% if member.bio != blank %}<p class="text-[1.0625rem] leading-relaxed text-base-content/80">{{ member.bio }}</p>{% endif %}
+        {% if member.areas.size > 0 %}<p class="sc mt-3 text-base-content/60">{{ member.areas | join: " · " }}</p>{% endif %}
+        <span class="mt-4 inline-flex items-center gap-2 font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] group-hover:decoration-accent">About {{ words.first }}<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </li>
+  {% endif %}{% endfor %}
+</ul>

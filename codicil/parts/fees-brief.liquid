@@ -1,0 +1,24 @@
+<section id="fees" class="bg-base-100 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl border-t border-base-300 px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5" data-reveal>
+        <p class="sc clause text-base-content/70">Fees, in brief</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">Fixed fees, agreed before we start</h2>
+        <p class="mt-6 max-w-[44ch] text-[1.0625rem] leading-relaxed text-base-content/80">Most work has a fixed fee, set out in a letter of engagement before anything is done. Disputes are billed by the hour, against a written estimate.</p>
+        <a href="/firm#how-we-charge" class="mt-6 inline-flex items-center gap-2 font-medium text-primary underline decoration-base-300 underline-offset-[0.3em] hover:decoration-accent">How we charge<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+      <ul class="lg:col-span-7" data-reveal="stagger">
+        {% for fee in data.fees %}{% if fee.featured %}
+        <li class="border-b border-base-300 py-5 first:pt-0">
+          <div class="fee-row">
+            <span class="text-[1.125rem] leading-snug">{{ fee.name }}</span>
+            <span class="leader" aria-hidden="true"></span>
+            <span class="fee font-heading text-[1.375rem]">{% if fee.kind == "from" %}<span class="meta mr-1 text-base-content/60">from</span>{% endif %}{{ fee.fee }}</span>
+          </div>
+          {% if fee.note != blank %}<p class="meta mt-1.5 max-w-[56ch] text-[0.875rem] font-normal text-base-content/70">{{ fee.note }}</p>{% endif %}
+        </li>
+        {% endif %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

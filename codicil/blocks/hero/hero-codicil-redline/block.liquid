@@ -1,0 +1,29 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-12 pb-16 md:px-8 md:pt-20 md:pb-24">
+    <div class="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
+      <div class="lg:col-span-7 lg:pb-6">
+        <p class="sc text-base-content/70">Attorneys at law · Richmond, Virginia · Since&nbsp;2009</p>
+        <h1 class="mt-6 text-[clamp(2.75rem,5vw+1rem,5.25rem)] leading-[1.04] tracking-[-0.01em] text-balance" data-redline="load">Legal advice <del aria-hidden="true">in legalese</del> <ins>you can act on</ins>.</h1>
+        <p class="mt-8 max-w-[52ch] text-[1.1875rem] leading-relaxed text-base-content/80">Four partners in Church Hill for families, homeowners and the businesses they run: wills and estates, property, contracts and work.</p>
+        <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <a href="/consultation" class="btn btn-primary btn-lg whitespace-nowrap">Request a consultation</a>
+          <a href="/practice" class="inline-flex min-h-12 items-center gap-2 px-2 text-[1.0625rem] font-medium whitespace-nowrap text-primary underline decoration-base-300 underline-offset-[0.35em] hover:decoration-accent">See what we do<svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <figure class="lg:col-span-5">
+        <div class="border border-base-300 bg-base-100 p-2.5">
+          <img src="/media/front-door.jpg" class="aspect-[4/5] w-full object-cover lg:aspect-[3/4]">
+        </div>
+        <figcaption class="meta mt-3 text-base-content/60">23 Haverly Street. Ring once; the meeting room is through the garden gate.</figcaption>
+      </figure>
+    </div>
+    <dl class="mt-14 grid grid-cols-2 border-y border-base-300 lg:mt-20 lg:grid-cols-4">
+      {% for fact in data.facts %}
+      <div class="border-base-300 px-0 py-5 odd:pr-4 even:border-l even:pl-4 lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0 {% if forloop.index > 2 %}border-t lg:border-t-0{% endif %}">
+        <dt class="sc text-base-content/60">{{ fact.label }}</dt>
+        <dd class="mt-1.5 text-[1.0625rem] leading-snug tabular-nums">{{ fact.value }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>

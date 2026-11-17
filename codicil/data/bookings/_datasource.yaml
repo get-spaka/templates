@@ -1,0 +1,47 @@
+label: Consultation requests
+collected: true
+answer: bookings-thanks
+body: note
+messages:
+  required: "{field} is needed so we can reach you."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us."
+  sent: "Thank you, your request is with us."
+fields:
+  - name: area
+    label: What it's about
+    kind: choice
+    choices: [Wills & trusts, Probate & estates, Real estate, Small business, Employment, Elder law, Not sure]
+    required: true
+  - name: with
+    label: Who you'd like to see
+    kind: text
+  - name: others
+    label: Other people or businesses involved
+    kind: text
+  - name: meeting
+    label: How you'd like to meet
+    kind: choice
+    choices: [In person, By video, By phone]
+  - name: when
+    label: When suits you
+    kind: list
+    choices: [Weekday mornings, Weekday afternoons, Thursday evening]
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: reply
+    label: How you'd like us to reply
+    kind: choice
+    choices: [A call, An email]
+  - name: note
+    label: A short note
+    kind: markdown

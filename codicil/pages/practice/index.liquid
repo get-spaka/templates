@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>What we do — Kesler Lund &amp; Carrow, Richmond</title>
+<meta name="description" content="Wills and trusts, probate and estates, real estate, small business, employment and elder law: six areas of law, each led by a partner, in Church Hill, Richmond.">
+<meta property="og:title" content="What we do — Kesler Lund &amp; Carrow">
+<meta property="og:description" content="Six areas of law that touch families, homes and small businesses, each led by a partner.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-8">
+        <p class="sc text-base-content/70">Practice areas</p>
+        <h1 class="mt-5 text-[clamp(2.5rem,4vw+1rem,4.5rem)] leading-[1.04] tracking-[-0.01em] text-balance">What we do</h1>
+      </div>
+      <p class="max-w-[52ch] text-[1.125rem] leading-relaxed text-base-content/80 lg:col-span-4 lg:pb-2">Six areas of law that touch families, homes and small businesses, each led by a partner.</p>
+    </div>
+  </div>
+</section>
+{% render 'practice-index', full: true %}
+{% render 'situations' %}
+<section id="what-we-dont-do" class="bg-base-100 text-base-content" data-clause>
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-4" data-reveal>
+        <p class="sc clause text-base-content/70">What we don't do</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.5vw+1rem,3.25rem)] leading-[1.08] tracking-[-0.01em] text-balance">We'll tell you who to call</h2>
+        <p class="mt-6 max-w-[44ch] text-[1.0625rem] leading-relaxed text-base-content/80">A small firm does a few things well. For these, we'll give you the names of two lawyers we trust, at no charge.</p>
+      </div>
+      <ul class="border-t border-base-300 lg:col-span-8" data-reveal="stagger">
+        <li class="grid gap-1 border-b border-base-300 py-5 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-6"><span class="font-heading text-[1.375rem] leading-snug">Criminal defense</span><span class="text-[1.0625rem] leading-relaxed text-base-content/80">Including traffic charges and DUI. If you've been charged, call a criminal lawyer today, not a firm that writes wills.</span></li>
+        <li class="grid gap-1 border-b border-base-300 py-5 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-6"><span class="font-heading text-[1.375rem] leading-snug">Personal injury</span><span class="text-[1.0625rem] leading-relaxed text-base-content/80">Car accidents, falls and medical claims, which need a firm that tries them in court every month.</span></li>
+        <li class="grid gap-1 border-b border-base-300 py-5 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-6"><span class="font-heading text-[1.375rem] leading-snug">Immigration</span><span class="text-[1.0625rem] leading-relaxed text-base-content/80">Visas, green cards and citizenship, a federal practice of its own.</span></li>
+        <li class="grid gap-1 border-b border-base-300 py-5 sm:grid-cols-[14rem_minmax(0,1fr)] sm:gap-6"><span class="font-heading text-[1.375rem] leading-snug">Contested divorce</span><span class="text-[1.0625rem] leading-relaxed text-base-content/80">We'll update your will and your deed after a divorce, but not argue it in court.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% render 'request-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

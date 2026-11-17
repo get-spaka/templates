@@ -1,0 +1,16 @@
+label: Office hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: opens
+    label: Opens
+    kind: text
+  - name: closes
+    label: Closes
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+order: [monday-to-wednesday, thursday, friday, weekend]
