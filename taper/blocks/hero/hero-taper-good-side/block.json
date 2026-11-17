@@ -3,19 +3,8 @@
   "kind": "hero",
   "source": "upstart",
   "description": "A gold-leaf serif headline with two pill buttons and the open sign (a barber pole that turns while the shop is open) beside a tall photo, closed by a four-step fade band and a ruled row of three facts.",
-  "tags": [
-    "hero",
-    "barbershop",
-    "salon",
-    "photo",
-    "open now",
-    "facts"
-  ],
-  "mood": [
-    "minimal",
-    "warm",
-    "editorial"
-  ],
+  "tags": ["hero", "barbershop", "salon", "photo", "open now", "facts"],
+  "mood": ["minimal", "warm", "editorial"],
   "synonyms": [
     "hero",
     "barbershop hero",

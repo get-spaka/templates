@@ -3,19 +3,8 @@
   "kind": "forms",
   "source": "upstart",
   "description": "A chair request in four numbered steps (what, who by level or name, when, you) with cards and chips, the levels in their steps' tones, beside a sticky aside with the open sign, the walk-in hours and the phone; answered by text.",
-  "tags": [
-    "form",
-    "booking",
-    "appointment",
-    "request",
-    "salon",
-    "barbershop"
-  ],
-  "mood": [
-    "minimal",
-    "warm",
-    "professional"
-  ],
+  "tags": ["form", "booking", "appointment", "request", "salon", "barbershop"],
+  "mood": ["minimal", "warm", "professional"],
   "synonyms": [
     "booking form",
     "appointment request",

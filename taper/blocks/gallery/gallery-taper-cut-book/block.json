@@ -3,19 +3,8 @@
   "kind": "gallery",
   "source": "upstart",
   "description": "Portrait cards of cuts, each with its back shown in an oval hand mirror at the corner that grows to fill the card on hover, with who cut it, the chair time and when to come back, over hair type chips that filter them.",
-  "tags": [
-    "gallery",
-    "haircuts",
-    "portfolio",
-    "filter",
-    "before and after",
-    "salon"
-  ],
-  "mood": [
-    "minimal",
-    "warm",
-    "playful"
-  ],
+  "tags": ["gallery", "haircuts", "portfolio", "filter", "before and after", "salon"],
+  "mood": ["minimal", "warm", "playful"],
   "synonyms": [
     "cut book",
     "haircut gallery",

@@ -5,16 +5,8 @@
   "description": "A daylit barbershop and hair studio that prices every head by chair time and level, not gender: a price grid stepping pale to deep like a fade, a barber pole that turns only while the shop is open, the week as bars, and cuts that turn in a hand mirror.",
   "category": "business",
   "original": false,
-  "tags": [
-    "barbershop",
-    "hair salon",
-    "hairdresser",
-    "barber",
-    "hair studio",
-    "stylist",
-    "appointments",
-    "price list"
-  ],
+  "tags": ["barbershop", "hair salon", "hairdresser", "barber", "hair studio", "stylist", "appointments", "price list"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "shoot": { "clock": "2027-04-14T11:00:00-04:00" }
 }

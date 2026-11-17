@@ -38,7 +38,12 @@ function shopNow(tz) {
       hourCycle: "h23",
     }).formatToParts(new Date());
   } catch {
-    parts = new Intl.DateTimeFormat("en-US", { weekday: "long", hour: "numeric", minute: "numeric", hourCycle: "h23" }).formatToParts(new Date());
+    parts = new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      hour: "numeric",
+      minute: "numeric",
+      hourCycle: "h23",
+    }).formatToParts(new Date());
   }
   const get = (type) => parts.find((p) => p.type === type)?.value ?? "";
   return { day: WEEKDAYS.indexOf(get("weekday").toLowerCase()), now: Number(get("hour")) * 60 + Number(get("minute")) };
@@ -83,7 +88,8 @@ function updateSign(sign) {
       break;
     }
   }
-  for (const current of sign.querySelectorAll("[data-current]")) if (current !== line) current.removeAttribute("data-current");
+  for (const current of sign.querySelectorAll("[data-current]"))
+    if (current !== line) current.removeAttribute("data-current");
   if (!line) {
     clearSign(sign);
     return;
