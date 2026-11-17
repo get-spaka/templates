@@ -1,0 +1,3 @@
+{%- comment -%}A level as a chip on its step of the fade, from the levels list. Parameters: level (1 to 4), class.{%- endcomment -%}
+{%- assign lv = data.levels | where: "number", level | first -%}
+<span class="level-chip board {{ class }}" data-step="{{ lv.step | default: level }}"><span class="level-number" aria-hidden="true">{{ level }}</span><span>{% if lv %}{{ lv.name }}{% else %}Level {{ level }}{% endif %}</span></span>

@@ -1,0 +1,666 @@
+/* The template's fonts, files of its own, under the SIL Open Font License (fonts/*-OFL.txt):
+   Latin and Latin Extended, for names such as Inés. */
+@font-face {
+  font-family: "Gloock";
+  src: url("/fonts/gloock-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Gloock";
+  src: url("/fonts/gloock-latin-ext.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("/fonts/funnel-sans-latin.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("/fonts/funnel-sans-latin-ext.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("/fonts/funnel-sans-latin-italic.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Funnel Sans";
+  src: url("/fonts/funnel-sans-latin-ext-italic.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ---- The four steps of the fade, made from the theme's primary and surface, so the Theme tab
+   restyles them. Mixed in oklab: in oklch a blue mixed with warm white drifts green.
+   Steps 1 and 2 carry ink, steps 3 and 4 light text. */
+:root {
+  --fade-1: color-mix(in oklab, var(--color-primary) 14%, var(--color-base-100));
+  --fade-2: color-mix(in oklab, var(--color-primary) 35%, var(--color-base-100));
+  --fade-3: color-mix(in oklab, var(--color-primary) 77%, var(--color-base-100));
+  --fade-4: var(--color-primary);
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+  }
+  /* Gloock has one weight and no italic: never a synthesized bold or slant. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .display {
+    font-family: var(--theme-font-heading);
+    font-weight: 400;
+    font-style: normal;
+    font-synthesis: none;
+  }
+  /* Large figures: chair times, minutes, level numbers. */
+  .display {
+    font-variant-numeric: lining-nums;
+    line-height: 1;
+  }
+
+  /* Labels, like the lettering of a price board: uppercase, spaced, semibold. */
+  .board {
+    font-family: var(--theme-font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+  /* Prices and hours: semibold, tabular figures so columns line up. */
+  .figure {
+    font-family: var(--theme-font-body);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A long text written in Markdown: a cut's story, a barber's words, an answer. */
+  .prose-taper {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose-taper > * + * {
+    margin-top: 1em;
+  }
+  .prose-taper > :first-child {
+    margin-top: 0;
+  }
+  .prose-taper h2 {
+    margin-top: 2em;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    color: var(--color-base-content);
+  }
+  .prose-taper h3 {
+    margin-top: 1.6em;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    color: var(--color-base-content);
+  }
+  .prose-taper ul,
+  .prose-taper ol {
+    padding-left: 1.3em;
+  }
+  .prose-taper ul {
+    list-style: disc;
+  }
+  .prose-taper ol {
+    list-style: decimal;
+  }
+  .prose-taper li::marker {
+    color: var(--color-primary);
+  }
+  .prose-taper a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .prose-taper strong {
+    font-weight: 600;
+    color: var(--color-base-content);
+  }
+
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* A heading set as a label: Upstart's own heading rule comes after the layers, so this one is outside them too. */
+:is(h1, h2, h3, h4).board {
+  font-family: var(--theme-font-body);
+  font-weight: 600;
+}
+
+/* Buttons are full pills, the one round shape besides the pole and the mirror, a little larger than
+   daisyUI's. Set through daisyUI's own variables, outside the layers, so its button rule takes them. */
+.btn {
+  --radius-field: 9999px;
+}
+.btn:not(.btn-sm, .btn-xs, .btn-lg, .btn-square, .btn-circle) {
+  --fontsize: 1rem;
+  --btn-p: 1.375rem;
+}
+
+@layer components {
+
+  /* ---- A step of the fade: data-step="1" to "4" on any element gives it that tone. */
+  [data-step] {
+    --i: 1;
+    background-color: var(--step-bg, var(--fade-1));
+    color: var(--color-base-content);
+  }
+  [data-step="1"] {
+    --i: 1;
+    --step-bg: var(--fade-1);
+  }
+  [data-step="2"] {
+    --i: 2;
+    --step-bg: var(--fade-2);
+  }
+  [data-step="3"] {
+    --i: 3;
+    --step-bg: var(--fade-3);
+    color: var(--color-primary-content);
+  }
+  [data-step="4"] {
+    --i: 4;
+    --step-bg: var(--fade-4);
+    color: var(--color-primary-content);
+  }
+
+  /* A level chip: the number and the name on its step. */
+  .level-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    border-radius: 9999px;
+    padding: 0.3em 0.8em 0.3em 0.35em;
+    white-space: nowrap;
+  }
+  .level-chip .level-number {
+    display: inline-grid;
+    place-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 9999px;
+    background: color-mix(in oklab, currentColor 14%, transparent);
+    font-family: var(--theme-font-heading);
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  /* The four-step band that closes the hero and the price grid. */
+  [data-fade="band"] {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 0.625rem;
+  }
+
+  /* ---- The price grid (data-rates, inside data-fade) ---------------------------- */
+  .rates {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  .rates th,
+  .rates td {
+    vertical-align: middle;
+  }
+  .rates thead [data-step] {
+    border-radius: var(--radius-box) var(--radius-box) 0 0;
+  }
+  .rates tbody tr + tr :is(th, td) {
+    border-top: 1px solid var(--color-base-300);
+  }
+  .rates tbody tr + tr td[data-step] {
+    border-top-color: color-mix(in oklab, currentColor 14%, transparent);
+  }
+  .rates tfoot [data-step] {
+    border-radius: 0 0 var(--radius-box) var(--radius-box);
+  }
+
+  /* The level chips above the grid on a phone: radio inputs whose labels are the chips. */
+  .rate-chip,
+  .hair-chip,
+  .pick {
+    position: relative;
+    cursor: pointer;
+  }
+  .rate-chip > input,
+  .hair-chip > input,
+  .pick > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .rate-chip,
+  .hair-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    border-radius: 9999px;
+    border: 1px solid var(--color-base-300);
+    padding: 0.5em 1em;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    white-space: nowrap;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .hair-chip:has(input:checked) {
+    background: var(--color-base-content);
+    border-color: var(--color-base-content);
+    color: var(--color-base-100);
+  }
+  .rate-chip[data-step] {
+    border-color: transparent;
+  }
+  .rate-chip:has(input:checked) {
+    box-shadow:
+      0 0 0 2px var(--color-base-100),
+      0 0 0 4px var(--color-base-content);
+  }
+  :is(.rate-chip, .hair-chip, .pick):has(input:focus-visible) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  /* ---- The form's picks: cards and chips over radio and checkbox inputs ---------- */
+  .pick {
+    display: flex;
+    border: 1px solid var(--color-base-300);
+    background: var(--color-base-100);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+  .pick:hover {
+    border-color: color-mix(in oklab, var(--color-base-content) 40%, transparent);
+  }
+  .pick:has(input:checked) {
+    border-color: var(--color-primary);
+    box-shadow: inset 0 0 0 1px var(--color-primary);
+    background: color-mix(in oklab, var(--color-primary) 6%, var(--color-base-100));
+  }
+  .pick.pick-chip {
+    border-radius: 9999px;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.55em 1.05em;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .pick.pick-chip[data-step] {
+    border-color: transparent;
+    background-color: var(--step-bg);
+  }
+  .pick.pick-chip[data-step]:has(input:checked) {
+    box-shadow:
+      0 0 0 2px var(--color-base-100),
+      0 0 0 4px var(--color-base-content);
+  }
+  .pick-tick {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 9999px;
+    border: 1.5px solid currentColor;
+  }
+  .pick-tick::after {
+    content: "";
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: inherit;
+    background: currentColor;
+    transform: scale(0);
+    transition: transform 0.15s;
+  }
+  .pick:has(input:checked) .pick-tick::after {
+    transform: scale(1);
+  }
+  .pick-tick.is-box,
+  .pick-tick.is-box::after {
+    border-radius: 0.2em;
+  }
+}
+
+/* The price grid on a phone: the chair times beside the chosen level's column. Level 2 by default. */
+@media (width < 48rem) {
+  [data-rates] .rates [data-col] {
+    display: none;
+  }
+  [data-rates]:has(input[name$="-level"][value="1"]:checked) .rates [data-col="1"],
+  [data-rates]:has(input[name$="-level"][value="2"]:checked) .rates [data-col="2"],
+  [data-rates]:has(input[name$="-level"][value="3"]:checked) .rates [data-col="3"],
+  [data-rates]:has(input[name$="-level"][value="4"]:checked) .rates [data-col="4"] {
+    display: table-cell;
+  }
+}
+
+/* The cut book's filter: the chosen hair type's cuts, all of them under "All". */
+[data-cut-book]:has(input[value="straight"]:checked) [data-hair]:not([data-hair="straight"]),
+[data-cut-book]:has(input[value="wavy"]:checked) [data-hair]:not([data-hair="wavy"]),
+[data-cut-book]:has(input[value="curly"]:checked) [data-hair]:not([data-hair="curly"]),
+[data-cut-book]:has(input[value="coily"]:checked) [data-hair]:not([data-hair="coily"]) {
+  display: none;
+}
+
+/* ---- The barber pole and the open sign (data-open-sign) ----------------------------
+   The pole is a capsule of diagonal stripes in the theme's colors; it turns only while the shop
+   is open. The sign's lines are all written in the page: with no script only the week's line
+   shows; scripts/open-sign.js sets data-state on the sign and data-current on the line that is
+   true now. */
+.pole {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: 0.7rem;
+  height: 1.6rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-base-content);
+  background-color: var(--color-base-100);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-accent) 0 3.5355px,
+    var(--color-base-100) 3.5355px 7.071px,
+    var(--color-primary) 7.071px 10.6066px,
+    var(--color-base-100) 10.6066px 14.1421px
+  );
+}
+.pole-lg {
+  width: 0.95rem;
+  height: 2.25rem;
+}
+.on-night .pole {
+  border-color: var(--color-neutral-content);
+}
+[data-open-sign] [data-line]:not([data-line="week"]) {
+  display: none;
+}
+[data-open-sign][data-state] [data-line="week"] {
+  display: none;
+}
+[data-open-sign][data-state] [data-line][data-current] {
+  display: inline;
+}
+[data-open-sign][data-state="closed"] .pole {
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html[data-up-moving] [data-open-sign][data-state="open"] .pole,
+  html:not(:has(#up-still)) [data-open-sign][data-state="open"] .pole {
+    animation: pole-turn 6s linear infinite;
+  }
+  @keyframes pole-turn {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 -40px;
+    }
+  }
+}
+
+/* ---- The week at the chair (data-week-chart) -----------------------------------------
+   Each row's bar is placed by --opens and --closes (minutes since midnight) on a day from
+   8 am (480) to 9 pm (1260); its walk-in part by --walk-in-from and --walk-in-until. The script
+   marks today's row (data-today) and sets --now on the chart for the now line. */
+[data-week-chart] {
+  --from: 480;
+  --span: 780;
+}
+.week-track {
+  position: relative;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--color-base-content) 6%, transparent);
+}
+.week-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((var(--opens) - var(--from)) / var(--span) * 100%);
+  width: calc((var(--closes) - var(--opens)) / var(--span) * 100%);
+  border-radius: 9999px;
+  background: var(--color-primary);
+  overflow: hidden;
+  transform-origin: left center;
+}
+.week-walk-in {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((var(--walk-in-from) - var(--opens)) / (var(--closes) - var(--opens)) * 100%);
+  width: calc((var(--walk-in-until) - var(--walk-in-from)) / (var(--closes) - var(--opens)) * 100%);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-accent) 0 5px,
+    color-mix(in oklab, var(--color-accent) 55%, var(--color-primary)) 5px 10px
+  );
+}
+.week-row[data-today] .week-day {
+  color: var(--color-primary);
+}
+.week-row[data-today] .week-day-name::after {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  border-radius: 9999px;
+  background: var(--color-accent);
+}
+.week-row[data-today] .week-track {
+  box-shadow: 0 0 0 1.5px var(--color-base-content);
+}
+.week-now {
+  display: none;
+  position: absolute;
+  top: -0.375rem;
+  bottom: -0.375rem;
+  width: 2px;
+  margin-left: -1px;
+  left: calc((var(--now) - var(--from)) / var(--span) * 100%);
+  background: var(--color-accent);
+  pointer-events: none;
+}
+[data-week-chart][data-now] .week-now {
+  display: block;
+}
+.week-legend-walk {
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--color-accent) 0 4px,
+    color-mix(in oklab, var(--color-accent) 55%, var(--color-primary)) 4px 8px
+  );
+}
+
+/* ---- The hand mirror (data-mirror on a cut card, the back photo marked data-back) -------
+   At rest the back photo sits, whole, in an oval at the card's lower right, ringed in vermilion
+   with a short handle: so it shows while editing, with no script and on a phone. Where a pointer
+   can hover, once the page moves, the oval grows until the back fills the card. */
+[data-mirror] {
+  position: relative;
+  isolation: isolate;
+}
+[data-mirror] .mirror-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-box);
+}
+[data-mirror] [data-back] {
+  position: absolute;
+  left: 57%;
+  top: 58%;
+  width: 34%;
+  height: 32%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 50%;
+}
+[data-mirror] .mirror-rim {
+  position: absolute;
+  left: 57%;
+  top: 58%;
+  width: 34%;
+  height: 32%;
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+  pointer-events: none;
+}
+[data-mirror] .mirror-rim::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 0.45rem;
+  height: 1.4rem;
+  margin-left: -0.225rem;
+  border-radius: 0 0 9999px 9999px;
+  background: var(--color-accent);
+  transform-origin: top center;
+  transform: rotate(-35deg);
+}
+[data-mirror] .mirror-label-back {
+  display: none;
+}
+@media (hover: hover) {
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) [data-back] {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim {
+    border-color: transparent;
+    transform: scale(2.6);
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim::after {
+    background: transparent;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-front {
+    display: none;
+  }
+  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-back {
+    display: inline;
+  }
+}
+
+/* ---- Movement: only under no-preference, and never while editing (Upstart stops it there). */
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) {
+    [data-mirror] [data-back] {
+      transition-property: left, top, width, height, border-radius;
+      transition-duration: 0.5s;
+      transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    [data-mirror] .mirror-rim {
+      transition:
+        border-color 0.35s ease,
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    [data-mirror] .mirror-rim::after {
+      transition: background-color 0.2s ease;
+    }
+  }
+
+  /* The fade: once scripts/fade.js sees the grid enter the screen (data-play), its steps darken in
+     turn from the surface's tone to their own, the palest first, each column's figures with them.
+     The waiting state (data-wait) is set by the script alone, so the page is complete without it. */
+  [data-fade]:not([data-fade="band"])[data-wait] [data-step] {
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+  [data-fade]:not([data-fade="band"])[data-play] [data-step] {
+    animation: fade-step 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--i) * 0.16s - 0.1s);
+  }
+  [data-fade]:not([data-fade="band"])[data-play] [data-step] > * {
+    animation: fade-figure 0.6s ease backwards;
+    animation-delay: calc(var(--i) * 0.16s);
+  }
+  @keyframes fade-step {
+    from {
+      background-color: var(--color-base-100);
+      color: var(--color-base-content);
+    }
+  }
+  @keyframes fade-figure {
+    from {
+      opacity: 0.25;
+    }
+  }
+
+  /* The week: once in view, the bars grow from opening to closing time, one row after another. */
+  [data-week-chart][data-wait] .week-bar {
+    scale: 0 1;
+  }
+  [data-week-chart][data-play] .week-bar {
+    animation: week-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--row, 0) * 0.07s);
+  }
+  @keyframes week-grow {
+    from {
+      scale: 0 1;
+    }
+  }
+}
+
+/* The sticky header holds a fixed menu panel: an opaque background, no backdrop filter. */
+.site-header {
+  background: color-mix(in oklab, var(--color-base-100) 95%, transparent);
+}
+
+/* The credits link Upstart adds to the footer, lined up with the footer's columns. */
+footer [data-up-credits] {
+  padding-inline: 1.25rem;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}

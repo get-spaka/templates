@@ -1,0 +1,20 @@
+{%- comment -%}
+The open sign: the barber pole and the line that says whether the shop is open now (scripts/open-sign.js).
+Every line is written here; with no script only the week's line shows. data-tz is the shop's time zone.
+Parameters: short (the header's shorter week line), large (a larger pole), class.
+{%- endcomment -%}
+<p class="flex min-w-0 items-center gap-2.5 {{ class }}" data-open-sign data-tz="America/New_York" data-week="{% for h in data.hours %}{{ h.weekday }} {{ h.opens }} {{ h.closes }}{% unless forloop.last %}, {% endunless %}{% endfor %}">
+  <span class="pole{% if large %} pole-lg{% endif %}" aria-hidden="true"></span>
+  <span class="min-w-0 {% if short %}truncate{% endif %}">
+    {%- if short -%}
+    <span data-line="week">Open Tuesday to Sunday</span>
+    {%- else -%}
+    <span data-line="week">Tuesday to Sunday · walk-ins Tuesday to Friday mornings</span>
+    {%- endif -%}
+    {%- for h in data.hours -%}{%- if h.opens != blank and h.closes != blank -%}
+    <span data-line="open" data-for="{{ h.weekday }}"><b class="font-semibold">Open now</b>, until {% render 'clock', time: h.closes %}</span>
+    <span data-line="later" data-for="{{ h.weekday }}"><b class="font-semibold">Closed now</b>, opens today at {% render 'clock', time: h.opens %}</span>
+    <span data-line="closed" data-for="{{ h.weekday }}"><b class="font-semibold">Closed now</b>, opens {{ h.day }} at {% render 'clock', time: h.opens %}</span>
+    {%- endif -%}{%- endfor -%}
+  </span>
+</p>

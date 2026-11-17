@@ -1,0 +1,29 @@
+label: "Opening hours"
+fields:
+  - name: day
+    label: "Day"
+    kind: text
+    required: true
+  - name: weekday
+    label: "Day of the week, for the open sign"
+    kind: choice
+    choices: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+  - name: hours
+    label: "Hours, as written"
+    kind: text
+  - name: opens
+    label: "Opens (24-hour time, 10:00)"
+    kind: text
+  - name: closes
+    label: "Closes (24-hour time, 20:00)"
+    kind: text
+  - name: walk_in_from
+    label: "Walk-ins from"
+    kind: text
+  - name: walk_in_until
+    label: "Walk-ins until"
+    kind: text
+  - name: note
+    label: "Note"
+    kind: text
+order: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

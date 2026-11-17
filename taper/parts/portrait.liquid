@@ -1,0 +1,7 @@
+{%- comment -%}A barber's or stylist's portrait, or their initials on their level's step. Parameters: member, class (its size and shape).{%- endcomment -%}
+{%- if member.photo -%}
+<img src="{{ member.photo }}" class="w-full object-cover {{ class }}">
+{%- else -%}
+{%- assign words = member.name | split: " " -%}
+<div class="flex w-full items-end p-4 md:p-5 {{ class }}" data-step="{{ member.level | default: 1 }}" aria-hidden="true"><span class="font-heading text-[4rem] leading-none md:text-[4.75rem]">{{ words.first | slice: 0 }}{% if words.size > 1 %}{{ words.last | slice: 0 }}{% endif %}</span></div>
+{%- endif -%}

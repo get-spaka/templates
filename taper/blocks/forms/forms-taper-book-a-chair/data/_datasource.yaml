@@ -1,0 +1,47 @@
+label: "Chair requests"
+collected: true
+answer: bookings-thanks
+body: note
+messages:
+  required: "{field} is needed so we can text you back."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call the shop."
+  sent: "Thanks, your request is in."
+fields:
+  - name: service
+    label: "What you'd like"
+    kind: text
+    required: true
+  - name: with
+    label: "Who you'd like"
+    kind: text
+  - name: days
+    label: "Days that suit you"
+    kind: list
+    choices: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  - name: part_of_day
+    label: "Time of day"
+    kind: list
+    choices: ["Morning", "Afternoon", "Evening"]
+  - name: name
+    label: "Your name"
+    kind: text
+    required: true
+  - name: mobile
+    label: "Your mobile"
+    kind: phone
+    required: true
+  - name: email
+    label: "Your email"
+    kind: email
+  - name: first_visit
+    label: "First visit"
+    kind: choice
+    choices: ["Yes, my first visit", "No, I've been before"]
+  - name: hair_length
+    label: "Your hair now"
+    kind: choice
+    choices: ["Short", "Medium", "Long"]
+  - name: note
+    label: "A note"
+    kind: markdown

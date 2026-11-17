@@ -1,0 +1,51 @@
+label: "Cut book"
+body: body
+fields:
+  - name: title
+    label: "Title"
+    kind: text
+    required: true
+  - name: caption
+    label: "Caption"
+    kind: text
+  - name: category
+    label: "Hair type"
+    kind: choice
+    choices: ["Straight", "Wavy", "Curly", "Coily"]
+  - name: image
+    label: "Front photo"
+    kind: image
+  - name: back
+    label: "Back photo, in the mirror"
+    kind: image
+  - name: length
+    label: "Length"
+    kind: text
+  - name: minutes
+    label: "Chair time (minutes)"
+    kind: number
+  - name: comes_back
+    label: "Comes back"
+    kind: text
+  - name: ask_for
+    label: "What to ask for"
+    kind: text
+  - name: by
+    label: "Cut by (their page)"
+    kind: link
+  - name: service
+    label: "Service (its id in the services)"
+    kind: text
+  - name: product
+    label: "To finish it"
+    kind: text
+  - name: featured
+    label: "On the home page"
+    kind: boolean
+  - name: before
+    label: "Before picture, for a before and after"
+    kind: image
+  - name: body
+    label: "How it was done"
+    kind: markdown
+order: [high-skin-fade, curly-shag, soft-taper, grey-blend, chin-bob, number-two-buzz, coily-taper, brunette-gloss]

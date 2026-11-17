@@ -1,0 +1,3 @@
+{%- comment -%}A time of the hours records ("20:00") said as the shop says it ("8 pm", "10:30 am", "noon").{%- endcomment -%}
+{%- assign p = time | split: ":" -%}{%- assign h = p[0] | plus: 0 -%}{%- assign m = p[1] | default: "00" -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{%- assign suffix = "am" -%}{%- if h >= 12 -%}{%- assign suffix = "pm" -%}{%- endif -%}{%- assign h12 = h | modulo: 12 -%}{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}{{ h12 }}{%- if m != "00" -%}:{{ m }}{%- endif %} {{ suffix }}{%- endif -%}

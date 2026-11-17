@@ -1,0 +1,18 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="board text-primary">How the shop works</p>
+      <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.5rem)] leading-[1.05] text-balance">Four promises at every chair</h2>
+    </div>
+    <ol class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4" data-reveal="stagger">
+      {% for p in data.promises %}
+      {%- assign step = forloop.index | at_most: 4 -%}
+      <li>
+        <span class="block h-2 w-14 rounded-full" data-step="{{ step }}" aria-hidden="true"></span>
+        <h3 class="mt-5 text-[1.375rem] leading-snug">{{ p.title }}</h3>
+        {% if p.text != blank %}<p class="mt-2 text-[0.9375rem] leading-relaxed text-base-content/75">{{ p.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

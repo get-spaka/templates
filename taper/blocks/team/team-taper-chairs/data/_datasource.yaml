@@ -1,0 +1,47 @@
+label: "Barbers and stylists"
+body: body
+fields:
+  - name: name
+    label: "Name"
+    kind: text
+    required: true
+  - name: pronouns
+    label: "Pronouns"
+    kind: text
+  - name: role
+    label: "Role"
+    kind: text
+  - name: level
+    label: "Level (1 to 4)"
+    kind: number
+  - name: bio
+    label: "Short line"
+    kind: text
+  - name: cuts_most
+    label: "Cuts most"
+    kind: list
+  - name: days
+    label: "Days in the shop"
+    kind: text
+  - name: station
+    label: "On my station"
+    kind: text
+  - name: photo
+    label: "Portrait"
+    kind: image
+  - name: instagram
+    label: "Instagram page"
+    kind: link
+  - name: email
+    label: "E-mail"
+    kind: email
+  - name: phone
+    label: "Phone"
+    kind: phone
+  - name: linkedin
+    label: "LinkedIn page"
+    kind: link
+  - name: body
+    label: "In their words"
+    kind: markdown
+order: [tasha-greer, wren-castillo, ines-duarte, mo-bell, sam-ortiz]

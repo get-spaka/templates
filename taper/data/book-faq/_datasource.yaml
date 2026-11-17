@@ -1,0 +1,9 @@
+label: "The shop's rules"
+body: answer
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+order: [cancelling, running-late, kids, deposit, gift-cards]

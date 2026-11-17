@@ -1,0 +1,33 @@
+{
+  "name": "Taper chairs",
+  "kind": "team",
+  "source": "upstart",
+  "description": "Tall portraits, or initials on the person's step of the fade, each with name, pronouns, a level chip, what they cut most and a \"Book with\" link.",
+  "tags": [
+    "team",
+    "barbers",
+    "stylists",
+    "levels",
+    "portraits",
+    "booking"
+  ],
+  "mood": [
+    "minimal",
+    "warm",
+    "friendly"
+  ],
+  "synonyms": [
+    "team",
+    "our barbers",
+    "stylists",
+    "staff",
+    "équipe",
+    "coiffeurs",
+    "barbiers",
+    "l'équipe du salon"
+  ],
+  "data": {
+    "name": "team",
+    "family": "collection"
+  }
+}

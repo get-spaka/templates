@@ -1,0 +1,77 @@
+{%- assign by_id = record.by | split: "/" | last -%}
+{%- assign barber = data.team | where: "id", by_id | first -%}
+{%- assign first_name = barber.name | split: " " | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — The cut book — Good Side</title>
+<meta name="description" content="{{ record.caption }}">
+<meta property="og:title" content="{{ record.title }} — Good Side">
+<meta property="og:description" content="{{ record.caption }}">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-8 pb-20 md:px-8 md:pt-12 md:pb-28">
+    <a href="/cuts" class="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-primary underline-offset-4 hover:underline"><span aria-hidden="true">←</span> The cut book</a>
+    <div class="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
+      <div class="grid grid-cols-2 gap-3 lg:col-span-7" data-reveal>
+        <figure>
+          {% if record.image %}<img src="{{ record.image }}" class="aspect-[4/5] w-full rounded-box object-cover">{% else %}<div class="aspect-[4/5] w-full rounded-box bg-base-200"></div>{% endif %}
+          <figcaption class="board mt-2.5 text-base-content/60">Front</figcaption>
+        </figure>
+        <figure>
+          {% if record.back %}<img src="{{ record.back }}" class="aspect-[4/5] w-full rounded-box object-cover">{% else %}<div class="aspect-[4/5] w-full rounded-box bg-base-200"></div>{% endif %}
+          <figcaption class="board mt-2.5 text-base-content/60">Other side</figcaption>
+        </figure>
+      </div>
+      <div class="lg:col-span-5" data-reveal>
+        <p class="board text-primary">{{ record.category }} hair</p>
+        <h1 class="mt-4 text-[clamp(2.25rem,3vw+1rem,3.75rem)] leading-[1.02] text-balance">{{ record.title }}</h1>
+        <dl class="mt-8 divide-y divide-base-300 border-y border-base-300 text-[1rem]">
+          <div class="flex justify-between gap-6 py-3"><dt class="text-base-content/70">Hair type</dt><dd class="text-right font-semibold">{{ record.category }}</dd></div>
+          {% if record.length != blank %}<div class="flex justify-between gap-6 py-3"><dt class="text-base-content/70">Length</dt><dd class="text-right font-semibold">{{ record.length }}</dd></div>{% endif %}
+          {% if record.minutes %}<div class="flex justify-between gap-6 py-3"><dt class="text-base-content/70">Chair time</dt><dd class="figure text-right">{{ record.minutes }} min</dd></div>{% endif %}
+          {% if record.comes_back != blank %}<div class="flex justify-between gap-6 py-3"><dt class="text-base-content/70">Comes back</dt><dd class="text-right font-semibold first-letter:uppercase">{{ record.comes_back }}</dd></div>{% endif %}
+          {% if barber %}<div class="flex items-center justify-between gap-6 py-3"><dt class="text-base-content/70">By</dt><dd class="flex flex-wrap items-center justify-end gap-3"><a href="/team/{{ barber.id }}" class="font-semibold underline-offset-4 hover:underline">{{ barber.name }}</a>{% if barber.level %}{% render 'level-chip', level: barber.level, data: data %}{% endif %}</dd></div>{% endif %}
+        </dl>
+        {% if record.ask_for != blank %}
+        <div class="mt-8">
+          <p class="board text-base-content/60">What to ask for</p>
+          <p class="mt-3 font-heading text-[1.5rem] leading-snug">“{{ record.ask_for }}”</p>
+        </div>
+        {% endif %}
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/book?service={{ record.service }}{% if barber %}&amp;with={{ barber.id }}{% endif %}" class="btn btn-primary whitespace-nowrap">Book this cut</a>
+          {% if barber %}<a href="/team/{{ barber.id }}#cuts" class="btn btn-outline whitespace-nowrap">See {{ first_name }}'s other cuts</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 grid gap-10 border-t border-base-300 pt-12 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <h2 class="text-[1.75rem] leading-tight">How it was done</h2>
+      </div>
+      <div class="lg:col-span-8">
+        <div class="prose-taper max-w-[62ch] text-base-content/85">{{ record.body }}</div>
+        {% if record.product != blank %}<p class="mt-8 max-w-[62ch] rounded-box bg-base-200 p-5 text-base"><span class="board block text-base-content/60">To finish it</span><span class="mt-1.5 block">{{ record.product }}</span></p>{% endif %}
+      </div>
+    </div>
+  </div>
+</article>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <h2 class="border-t border-base-300 pt-12 text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight">More from the cut book</h2>
+    <div class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8" data-reveal="stagger">
+      {%- assign shown = 0 -%}
+      {%- for cut in data.gallery -%}{%- if cut.id == record.id -%}{%- continue -%}{%- endif -%}{%- if shown >= 3 -%}{%- break -%}{%- endif -%}{%- assign shown = shown | plus: 1 -%}
+      <div class="{% if shown == 3 %}hidden lg:block{% endif %}">{% render 'cut-card', cut: cut, data: data %}</div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% render 'booking-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

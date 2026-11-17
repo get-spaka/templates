@@ -1,0 +1,27 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <ul class="divide-y divide-base-300 border-y border-base-300">
+      {% for member in data.team %}
+      {%- assign first_name = member.name | split: " " | first -%}
+      {%- assign handle = member.instagram | split: "/" | last -%}
+      <li class="grid gap-6 py-10 sm:grid-cols-[11rem_1fr] md:gap-10 lg:grid-cols-[14rem_1fr_16rem]" data-reveal>
+        <a href="/team/{{ member.id }}" class="block max-w-[14rem]" tabindex="-1" aria-hidden="true">{% render 'portrait', member: member, class: "aspect-[4/5] rounded-box" %}</a>
+        <div>
+          <h2 class="text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight"><a href="/team/{{ member.id }}" class="underline-offset-[0.2em] hover:underline">{{ member.name }}</a></h2>
+          <p class="mt-1 text-[0.9375rem] text-base-content/60">{{ member.pronouns }}{% if member.role != blank %}{% if member.pronouns != blank %} · {% endif %}{{ member.role }}{% endif %}</p>
+          {% if member.level %}<div class="mt-4">{% render 'level-chip', level: member.level, data: data %}</div>{% endif %}
+          {% if member.cuts_most.size > 0 %}
+          <p class="board mt-6 text-base-content/60">Cuts most</p>
+          <ul class="mt-2 flex flex-wrap gap-2">{% for c in member.cuts_most %}<li class="rounded-full border border-base-300 px-3 py-1 text-[0.9375rem]">{{ c }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+        <div class="flex flex-col gap-4 text-[0.9375rem] sm:col-start-2 lg:col-start-auto">
+          {% if member.days != blank %}<p><span class="board block text-base-content/60">In the shop</span><span class="mt-1 block font-semibold">{{ member.days }}</span></p>{% endif %}
+          {% if member.instagram != blank %}<p><span class="board block text-base-content/60">Instagram</span><a href="{{ member.instagram }}" class="mt-1 inline-block font-semibold underline-offset-4 hover:underline">@{{ handle }}</a></p>{% endif %}
+          <a href="/book?with={{ member.id }}" class="btn btn-primary mt-2 self-start whitespace-nowrap">Book with {{ first_name }}</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

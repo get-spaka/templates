@@ -1,0 +1,17 @@
+label: "Levels"
+fields:
+  - name: name
+    label: "Name"
+    kind: text
+    required: true
+  - name: number
+    label: "Level number"
+    kind: number
+    required: true
+  - name: step
+    label: "Step of the fade (1 palest to 4 deepest)"
+    kind: number
+  - name: meaning
+    label: "What it means"
+    kind: text
+order: [new-talent, barber-and-stylist, senior, master]

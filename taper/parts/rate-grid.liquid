@@ -1,0 +1,14 @@
+<section id="chair-time" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <div class="grid gap-6 border-t border-base-300 pt-16 md:pt-20 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="board text-primary">The chair-time grid</p>
+        <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.5rem)] leading-[1.05] text-balance">Find your time, then your column</h2>
+      </div>
+      <p class="max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:col-span-5">Each service on the menu below says how much chair time it takes. Read across to the level you'd like: that's the price, before tax, whatever your hair.</p>
+    </div>
+    <div class="mt-12" data-reveal>
+      {% render 'rates', book: true, name: "prices" %}
+    </div>
+  </div>
+</section>

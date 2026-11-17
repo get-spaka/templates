@@ -1,0 +1,10 @@
+label: "Milestones"
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: year
+    kind: text
+  - name: text
+    kind: text
+order: [a-chair-on-the-west-side, good-side-opens, prices-by-time, the-color-bar, sundays]

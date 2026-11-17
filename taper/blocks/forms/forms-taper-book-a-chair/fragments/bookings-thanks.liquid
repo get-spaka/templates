@@ -1,0 +1,7 @@
+{% assign first = record.name | default: "" | split: " " | first %}
+<div class="flex flex-col gap-5 rounded-box bg-base-200 p-8 md:p-12 lg:col-span-8" role="status">
+  <div class="grid h-2.5 w-40 grid-cols-4 overflow-hidden rounded-full" aria-hidden="true"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span></div>
+  <p class="font-heading text-[clamp(1.75rem,2vw+1rem,2.75rem)] leading-tight text-balance">Thanks{% if first != blank %}, {{ first }}{% endif %}. Your request is in.</p>
+  <p class="max-w-[52ch] text-lg leading-relaxed text-base-content/80">We'll text you within two hours while we're open to set a time. Nothing is booked until we confirm it together.</p>
+  <p class="text-base text-base-content/70">Got a photo of the cut you want? Text it to <a href="tel:+14105550136" class="figure text-primary underline underline-offset-4">(410) 555-0136</a>.</p>
+</div>

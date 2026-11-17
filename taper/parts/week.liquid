@@ -1,0 +1,48 @@
+{%- comment -%}
+The week at the chair: a bar per day on a day from 8 am to 9 pm, placed by --opens and --closes (minutes since midnight),
+the walk-in part striped. scripts/open-sign.js marks today's row and draws the now line (data-tz: the shop's time zone).
+Parameters: large (taller bars), class.
+{%- endcomment -%}
+<div class="{{ class }}" data-week-chart data-tz="America/New_York">
+  <div class="grid grid-cols-[6rem_1fr] gap-x-4 sm:grid-cols-[6.5rem_1fr_9.5rem]" aria-hidden="true">
+    <span></span>
+    <div class="relative h-5 text-[0.75rem] text-base-content/60">
+      <span class="absolute left-0">8 am</span>
+      <span class="absolute left-[30.77%] -translate-x-1/2">noon</span>
+      <span class="absolute left-[61.54%] -translate-x-1/2">4 pm</span>
+      <span class="absolute right-0">9 pm</span>
+    </div>
+  </div>
+  <div class="relative mt-2">
+  <ul class="{% if large %}space-y-4{% else %}space-y-3{% endif %}">
+    {% for h in data.hours %}
+    {%- assign has_hours = false -%}
+    {%- if h.opens != blank and h.closes != blank -%}
+      {%- assign has_hours = true -%}
+      {%- assign o = h.opens | split: ":" -%}{%- assign om = o[0] | times: 60 | plus: o[1] -%}
+      {%- assign c = h.closes | split: ":" -%}{%- assign cm = c[0] | times: 60 | plus: c[1] -%}
+    {%- endif -%}
+    <li class="week-row grid grid-cols-[6rem_1fr] items-center gap-x-4 sm:grid-cols-[6.5rem_1fr_9.5rem]" data-weekday="{{ h.weekday }}">
+      <span class="week-day leading-tight font-semibold"><span class="week-day-name whitespace-nowrap">{{ h.day }}</span><span class="figure mt-0.5 block text-[0.8125rem] font-normal text-base-content/70 sm:hidden">{{ h.hours }}</span></span>
+      <span class="week-track{% if large %} h-9{% endif %}">
+        {%- if has_hours -%}
+        <span class="week-bar" style="--opens: {{ om }}; --closes: {{ cm }}; --row: {{ forloop.index0 }}">
+          {%- if h.walk_in_from != blank and h.walk_in_until != blank -%}
+          {%- assign wf = h.walk_in_from | split: ":" -%}{%- assign wfm = wf[0] | times: 60 | plus: wf[1] -%}
+          {%- assign wu = h.walk_in_until | split: ":" -%}{%- assign wum = wu[0] | times: 60 | plus: wu[1] -%}
+          <span class="week-walk-in" style="--walk-in-from: {{ wfm }}; --walk-in-until: {{ wum }}"></span>
+          {%- endif -%}
+        </span>
+        {%- endif -%}
+      </span>
+      <span class="figure hidden text-right text-[0.9375rem] sm:block">{{ h.hours }}{% if h.note != blank %}<span class="block text-[0.8125rem] font-normal text-base-content/60">{{ h.note }}</span>{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <div class="pointer-events-none absolute inset-0 grid grid-cols-[6rem_1fr] gap-x-4 sm:grid-cols-[6.5rem_1fr_9.5rem]" aria-hidden="true"><span></span><span class="relative"><span class="week-now"></span></span></div>
+  </div>
+  <p class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.875rem] text-base-content/70">
+    <span class="inline-flex items-center gap-2"><span class="inline-block h-3 w-5 rounded-full bg-primary" aria-hidden="true"></span>Open</span>
+    <span class="inline-flex items-center gap-2"><span class="week-legend-walk" aria-hidden="true"></span>Walk-ins</span>
+  </p>
+</div>

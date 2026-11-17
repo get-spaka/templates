@@ -1,0 +1,14 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="board text-primary">The cut book</p>
+        <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.5rem)] leading-[1.05] text-balance">Cuts we did this month</h2>
+      </div>
+      <p class="max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:col-span-5">Each one with who cut it, how long it took and when to come back. Point at a cut to turn the mirror.</p>
+    </div>
+    <div class="mt-10">
+      {% render 'cut-book', name: "block" %}
+    </div>
+  </div>
+</section>

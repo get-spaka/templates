@@ -1,0 +1,39 @@
+label: "Services"
+fields:
+  - name: name
+    label: "Name"
+    kind: text
+    required: true
+  - name: summary
+    label: "Summary"
+    kind: text
+  - name: group
+    label: "Group"
+    kind: choice
+    choices: ["Cuts", "Color", "Shaves & beards", "Kids & extras"]
+  - name: minutes
+    label: "Chair time (minutes, a row of the rates)"
+    kind: number
+  - name: from
+    label: "The time varies with the hair"
+    kind: boolean
+  - name: flat_price
+    label: "Flat price (ignores the rates)"
+    kind: text
+  - name: price
+    label: "Price, as other blocks show it"
+    kind: text
+  - name: duration
+    label: "Duration, as other blocks show it"
+    kind: text
+  - name: icon
+    label: "Icon"
+    kind: choice
+    choices: ["spark", "chat", "calendar", "star", "heart", "home", "wrench", "scissors", "brush", "leaf", "camera", "car"]
+  - name: image
+    label: "Image"
+    kind: image
+  - name: href
+    label: "Link to more"
+    kind: link
+order: [classic-cut, skin-fade, taper, buzz-cut, curly-cut, long-cut, full-color, lived-in-blonde, grey-blending, gloss, beard-shape-up, hot-towel-shave, kids-cut, consultation]

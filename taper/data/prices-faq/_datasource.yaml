@@ -1,0 +1,9 @@
+label: "Questions about prices"
+body: answer
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+order: [gender-free, running-over, color-from, consultation, tipping, cancelling]

@@ -1,0 +1,8 @@
+label: "How the shop works"
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+order: [we-ask-first, your-time-is-booked, every-level-checked, another-chair]

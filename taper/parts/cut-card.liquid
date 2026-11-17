@@ -1,0 +1,16 @@
+{%- comment -%}
+A cut in the cut book: its front photo, its back in the hand mirror (data-mirror, the back photo data-back),
+its name and spec. Parameters: cut (a gallery record), link (false for a card that is not a link).
+{%- endcomment -%}
+{%- assign by_id = cut.by | split: "/" | last -%}
+{%- assign barber = data.team | where: "id", by_id | first -%}
+{%- assign first_name = barber.name | split: " " | first -%}
+<article class="group relative" data-hair="{{ cut.category | downcase }}" data-mirror>
+  <div class="mirror-frame aspect-[4/5] bg-base-200">
+    {% if cut.image %}<img src="{{ cut.image }}" class="absolute inset-0 h-full w-full object-cover">{% endif %}
+    {% if cut.back %}<img src="{{ cut.back }}" data-back><span class="mirror-rim" aria-hidden="true"></span>{% endif %}
+    <span class="board absolute top-3 left-3 rounded-full bg-base-100/90 px-2.5 py-1 text-base-content"><span class="mirror-label-front">Front</span><span class="mirror-label-back">Other side</span></span>
+  </div>
+  <h3 class="mt-4 text-[1.5rem] leading-tight">{% if link != false %}<a href="/cuts/{{ cut.id }}" class="after:absolute after:inset-0 group-hover:text-primary focus-visible:outline-none">{{ cut.title }}</a>{% else %}{{ cut.title }}{% endif %}</h3>
+  <p class="mt-1.5 text-[0.9375rem] leading-snug text-base-content/70">{% if barber %}by {{ first_name }}{% endif %}{% if cut.minutes %} · {{ cut.minutes }} min{% endif %}{% if cut.comes_back != blank %} · {{ cut.comes_back }}{% endif %}</p>
+</article>

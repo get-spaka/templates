@@ -1,0 +1,19 @@
+<section class="bg-secondary text-secondary-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="board text-secondary-content/70">What clients say</p>
+      <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.5rem)] leading-[1.05] text-balance">Overheard at the desk</h2>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-3" data-reveal="stagger">
+      {% for t in data.testimonials limit: 3 %}
+      <figure class="flex flex-col rounded-box bg-base-100 p-7 text-base-content">
+        <blockquote class="flex-1 font-heading text-[1.375rem] leading-snug">“{{ t.quote }}”</blockquote>
+        <figcaption class="mt-6 border-t border-base-300 pt-4">
+          <span class="block font-semibold">{{ t.name }}</span>
+          {% if t.role != blank %}<span class="block text-[0.9375rem] text-base-content/70">{{ t.role }}</span>{% endif %}
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

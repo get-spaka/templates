@@ -1,0 +1,22 @@
+label: "Chair time rates"
+fields:
+  - name: minutes
+    label: "Chair time (minutes)"
+    kind: number
+    required: true
+  - name: usually
+    label: "What usually takes it"
+    kind: text
+  - name: price_1
+    label: "Level 1 price"
+    kind: text
+  - name: price_2
+    label: "Level 2 price"
+    kind: text
+  - name: price_3
+    label: "Level 3 price"
+    kind: text
+  - name: price_4
+    label: "Level 4 price"
+    kind: text
+order: [15-minutes, 30-minutes, 45-minutes, 60-minutes, 90-minutes, 120-minutes]

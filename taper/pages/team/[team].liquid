@@ -1,0 +1,56 @@
+{%- assign first_name = record.name | split: " " | first -%}
+{%- assign handle = record.instagram | split: "/" | last -%}
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Good Side, Hampden</title>
+<meta name="description" content="{{ record.name }}, {{ record.role }} at Good Side in Hampden, Baltimore. {{ record.bio }}">
+<meta property="og:title" content="{{ record.name }} — Good Side">
+<meta property="og:description" content="{{ record.bio }}">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pt-8 pb-20 md:px-8 md:pt-12 md:pb-24">
+    <a href="/team" class="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-primary underline-offset-4 hover:underline"><span aria-hidden="true">←</span> The chairs</a>
+    <div class="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5" data-reveal>
+        <div class="max-w-md">{% render 'portrait', member: record, class: "aspect-[4/5] rounded-box" %}</div>
+      </div>
+      <div class="lg:col-span-7" data-reveal>
+        <p class="text-[1rem] text-base-content/60">{{ record.pronouns }}{% if record.role != blank %}{% if record.pronouns != blank %} · {% endif %}{{ record.role }}{% endif %}</p>
+        <h1 class="mt-2 text-[clamp(3rem,5vw+1rem,5rem)] leading-[0.98] tracking-[-0.01em]">{{ record.name }}</h1>
+        {% if record.level %}<div class="mt-5">{% render 'level-chip', level: record.level, data: data %}</div>{% endif %}
+        <dl class="mt-8 grid gap-6 border-y border-base-300 py-6 sm:grid-cols-2">
+          {% if record.cuts_most.size > 0 %}<div><dt class="board text-base-content/60">Cuts most</dt><dd class="mt-2"><ul class="space-y-1">{% for c in record.cuts_most %}<li class="font-semibold">{{ c }}</li>{% endfor %}</ul></dd></div>{% endif %}
+          <div class="flex flex-col gap-5">
+            {% if record.days != blank %}<div><dt class="board text-base-content/60">In the shop</dt><dd class="mt-2 font-semibold">{{ record.days }}</dd></div>{% endif %}
+            {% if record.instagram != blank %}<div><dt class="board text-base-content/60">Instagram</dt><dd class="mt-2"><a href="{{ record.instagram }}" class="font-semibold underline-offset-4 hover:underline">@{{ handle }}</a></dd></div>{% endif %}
+          </div>
+        </dl>
+        {% if record.station != blank %}<p class="mt-6 rounded-box bg-base-200 p-5"><span class="board block text-base-content/60">On my station</span><span class="mt-1.5 block">{{ record.station }}</span></p>{% endif %}
+        <h2 class="mt-10 text-[1.75rem] leading-tight">In their words</h2>
+        <div class="prose-taper mt-4 max-w-[62ch] text-base-content/85">{{ record.body }}</div>
+        <a href="/book?with={{ record.id }}" class="btn btn-primary btn-lg mt-10 whitespace-nowrap">Book with {{ first_name }}</a>
+      </div>
+    </div>
+  </div>
+</article>
+{%- assign mine = "/team/" | append: record.id -%}
+{%- assign cuts = data.gallery | where: "by", mine -%}
+{% if cuts.size > 0 %}
+<section id="cuts" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    <h2 class="border-t border-base-300 pt-12 text-[clamp(1.75rem,2vw+1rem,2.5rem)] leading-tight">{{ first_name }}'s cuts</h2>
+    <div class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8" data-reveal="stagger">
+      {% for cut in cuts %}{% render 'cut-card', cut: cut, data: data %}{% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% render 'booking-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

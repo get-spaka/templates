@@ -1,0 +1,127 @@
+<section id="request" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-14">
+    <form data-prefill hx-post="/_data/bookings" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#request-problems swap:innerHTML" class="flex flex-col gap-14 lg:col-span-8">
+      {%- assign groups = "Cuts,Color,Shaves & beards,Kids & extras" | split: "," -%}
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="display text-[2.5rem] text-primary" aria-hidden="true">1</span><span class="font-heading text-[1.75rem] leading-tight">What you'd like</span></legend>
+        <div class="mt-6 flex flex-col gap-7">
+          {% for group in groups %}
+          {%- assign items = data.services | where: "group", group -%}
+          {% if items.size > 0 %}
+          <div>
+            <p class="board text-base-content/60">{{ group }}</p>
+            <div class="mt-3 grid gap-2.5 sm:grid-cols-2">
+              {% for s in items %}
+              <label class="pick items-start gap-3 rounded-box p-4">
+                <input type="radio" name="service" value="{{ s.name }}" data-key="{{ s.id }}" required>
+                <span class="pick-tick mt-1 text-primary" aria-hidden="true"></span>
+                <span class="min-w-0 flex-1"><span class="flex items-baseline justify-between gap-3"><span class="font-semibold">{{ s.name }}</span>{% if s.minutes %}<span class="board shrink-0 text-base-content/60">{% if s.from %}from {% endif %}{{ s.minutes }} min</span>{% endif %}</span>{% if s.summary != blank %}<span class="mt-0.5 block text-[0.875rem] leading-snug text-base-content/70">{{ s.summary }}</span>{% endif %}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          <label class="pick items-start gap-3 rounded-box p-4 sm:max-w-[calc(50%-0.3125rem)]">
+            <input type="radio" name="service" value="Something else" data-key="something-else">
+            <span class="pick-tick mt-1 text-primary" aria-hidden="true"></span>
+            <span><span class="block font-semibold">Something else</span><span class="mt-0.5 block text-[0.875rem] leading-snug text-base-content/70">Tell us in the note below</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="display text-[2.5rem] text-primary" aria-hidden="true">2</span><span class="font-heading text-[1.75rem] leading-tight">Who you'd like</span></legend>
+        <p class="mt-3 text-base text-base-content/70">A level, a name, or whoever's free first. The level sets the price.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <label class="pick pick-chip"><input type="radio" name="with" value="Whoever's free first" data-key="anyone" checked><span class="pick-tick" aria-hidden="true"></span><span>Whoever's free first</span></label>
+        </div>
+        <p class="board mt-6 text-base-content/60">By level</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {% for lv in data.levels %}
+          <label class="pick pick-chip" data-step="{{ lv.step }}"><input type="radio" name="with" value="Level {{ lv.number }} · {{ lv.name }}" data-key="level-{{ lv.number }}"><span class="pick-tick" aria-hidden="true"></span><span>{{ lv.number }} · {{ lv.name }}</span></label>
+          {% endfor %}
+        </div>
+        <p class="board mt-6 text-base-content/60">By name</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {% for member in data.team %}
+          <label class="pick pick-chip"><input type="radio" name="with" value="{{ member.name }}" data-key="{{ member.id }}"><span class="pick-tick" aria-hidden="true"></span><span>{{ member.name }}</span></label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="display text-[2.5rem] text-primary" aria-hidden="true">3</span><span class="font-heading text-[1.75rem] leading-tight">When suits you</span></legend>
+        <p class="mt-3 text-base text-base-content/70">Choose all that work; we'll offer the nearest times.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          {% assign days = "Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" | split: "," %}
+          {% for d in days %}
+          <label class="pick pick-chip"><input type="checkbox" name="days" value="{{ d }}"><span class="pick-tick is-box" aria-hidden="true"></span><span>{{ d }}</span></label>
+          {% endfor %}
+        </div>
+        <div class="mt-3 flex flex-wrap gap-2">
+          {% assign parts = "Morning,Afternoon,Evening" | split: "," %}
+          {% for p in parts %}
+          <label class="pick pick-chip"><input type="checkbox" name="part_of_day" value="{{ p }}"><span class="pick-tick is-box" aria-hidden="true"></span><span>{{ p }}</span></label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="flex items-baseline gap-4"><span class="display text-[2.5rem] text-primary" aria-hidden="true">4</span><span class="font-heading text-[1.75rem] leading-tight">You</span></legend>
+        <div class="mt-6 grid gap-x-4 gap-y-5 sm:grid-cols-2">
+          <label class="block sm:col-span-2">
+            <span class="text-[0.9375rem] font-semibold">Your name</span>
+            <input name="name" type="text" class="input mt-2 w-full text-base" required maxlength="120" autocomplete="name">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-semibold">Your mobile <span class="font-normal text-base-content/60">(we text you back)</span></span>
+            <input name="mobile" type="tel" class="input mt-2 w-full text-base" required maxlength="30" autocomplete="tel">
+          </label>
+          <label class="block">
+            <span class="text-[0.9375rem] font-semibold">Your email <span class="font-normal text-base-content/60">(optional)</span></span>
+            <input name="email" type="email" class="input mt-2 w-full text-base" maxlength="200" autocomplete="email">
+          </label>
+        </div>
+        <fieldset class="mt-7">
+          <legend class="text-[0.9375rem] font-semibold">Is this your first visit?</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="pick pick-chip"><input type="radio" name="first_visit" value="Yes, my first visit"><span class="pick-tick" aria-hidden="true"></span><span>Yes, my first visit</span></label>
+            <label class="pick pick-chip"><input type="radio" name="first_visit" value="No, I've been before"><span class="pick-tick" aria-hidden="true"></span><span>No, I've been before</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="mt-7">
+          <legend class="text-[0.9375rem] font-semibold">How long is your hair now?</legend>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <label class="pick pick-chip"><input type="radio" name="hair_length" value="Short"><span class="pick-tick" aria-hidden="true"></span><span>Short</span></label>
+            <label class="pick pick-chip"><input type="radio" name="hair_length" value="Medium"><span class="pick-tick" aria-hidden="true"></span><span>Medium</span></label>
+            <label class="pick pick-chip"><input type="radio" name="hair_length" value="Long"><span class="pick-tick" aria-hidden="true"></span><span>Long</span></label>
+          </div>
+        </fieldset>
+        <label class="mt-7 block">
+          <span class="text-[0.9375rem] font-semibold">A note <span class="font-normal text-base-content/60">(optional)</span></span>
+          <span class="mt-1 block text-[0.9375rem] text-base-content/70">Photos help: text them to us after you send this.</span>
+          <textarea name="note" class="textarea mt-3 w-full text-base" rows="4" maxlength="600"></textarea>
+        </label>
+      </fieldset>
+
+      <div id="request-problems" class="empty:hidden"></div>
+      <div class="flex flex-col gap-5 border-t border-base-300 pt-8 sm:flex-row sm:items-center sm:gap-8">
+        <button type="submit" class="btn btn-primary btn-lg whitespace-nowrap">Send my request</button>
+        <p class="text-[0.9375rem] leading-relaxed text-base-content/70">We text you back within two hours while we're open. Nothing is booked until we confirm.</p>
+      </div>
+    </form>
+
+    <aside class="lg:col-span-4">
+      <div class="flex flex-col gap-6 rounded-box bg-base-200 p-7 md:p-8 lg:sticky lg:top-28">
+        {% render 'open-sign', class: "text-base" %}
+        <p class="border-t border-base-content/10 pt-5 text-[0.9375rem] leading-relaxed"><span class="font-semibold">Walk-ins Tuesday to Friday, 10 to noon.</span> No request needed: put your name on the board at the desk.</p>
+        <div class="border-t border-base-content/10 pt-5">
+          <h2 class="text-[1.375rem]">Rather call?</h2>
+          <a href="tel:+14105550136" class="figure mt-2 block text-[1.5rem] whitespace-nowrap text-primary">(410) 555-0136</a>
+        </div>
+        <p class="rounded-box bg-base-100 p-4 text-[0.9375rem] leading-relaxed">We'll never charge you to book. You pay for your chair time, in the chair.</p>
+      </div>
+    </aside>
+  </div>
+</section>

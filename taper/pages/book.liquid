@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Book a chair — Good Side, Hampden</title>
+<meta name="description" content="Tell Good Side what you'd like and when suits you. We text you back within two hours while we're open; nothing is booked until we confirm.">
+<meta property="og:title" content="Book a chair — Good Side, Hampden">
+<meta property="og:description" content="Tell us what you'd like and when suits you. We text you back within two hours while we're open.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-6 px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-6" data-reveal>
+      <p class="board text-primary">Appointments</p>
+      <h1 class="mt-4 text-[clamp(3rem,5vw+1rem,5.5rem)] leading-[0.98] tracking-[-0.01em]">Book a chair</h1>
+    </div>
+    <p class="max-w-[52ch] text-lg leading-relaxed text-base-content/80 md:text-xl lg:col-span-6" data-reveal>Tell us what you'd like and when suits you. We text you back within two hours while we're open; nothing is booked until we confirm.</p>
+  </div>
+</section>
+{% render 'request-form' %}
+{% render 'walk-ins' %}
+{% render 'rules' %}
+{% render 'find-us' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

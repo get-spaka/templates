@@ -1,0 +1,28 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 pt-10 pb-12 md:px-8 md:pt-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pb-16">
+    <div class="lg:col-span-7" data-reveal>
+      <p class="board text-primary">Barbershop &amp; hair studio · <span class="whitespace-nowrap">Hampden, Baltimore</span></p>
+      <h1 class="mt-5 text-[clamp(3rem,6vw+1rem,6.5rem)] leading-[0.98] tracking-[-0.01em] text-balance">Every head has a good side.</h1>
+      <p class="mt-6 max-w-[40ch] text-lg leading-relaxed text-base-content/80 md:text-xl">Cuts, color and shaves a step off the Avenue, priced by the time they take and who's cutting, never by gender.</p>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="/book" class="btn btn-primary btn-lg whitespace-nowrap">Book a chair</a>
+        <a href="/prices" class="btn btn-outline btn-lg whitespace-nowrap">See prices</a>
+      </div>
+      {% render 'open-sign', large: true, class: "mt-9 text-base md:text-lg" %}
+    </div>
+    <figure class="lg:col-span-5" data-reveal>
+      <img src="/media/hero-cut.jpg" class="aspect-[4/5] max-h-[44rem] w-full rounded-box object-cover">
+    </figure>
+  </div>
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="overflow-hidden rounded-full" data-fade="band" aria-hidden="true"><span data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span></div>
+    <ul class="grid border-b border-base-300 sm:grid-cols-3 sm:divide-x sm:divide-base-300" data-reveal="stagger">
+      {% for fact in data.features %}
+      <li class="border-t border-base-300 py-6 first:border-t-0 sm:border-t-0 sm:px-6 sm:first:pl-0 sm:last:pr-0">
+        <p class="text-[1.125rem] leading-snug font-semibold">{{ fact.title }}</p>
+        {% if fact.text != blank %}<p class="mt-1.5 text-[0.9375rem] leading-relaxed text-base-content/70">{{ fact.text }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

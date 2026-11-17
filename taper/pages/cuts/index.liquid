@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The cut book — Good Side, Hampden</title>
+<meta name="description" content="Real cuts from Good Side's chairs in Hampden, Baltimore, with how long they took, who did them and how to ask for them.">
+<meta property="og:title" content="The cut book — Good Side, Hampden">
+<meta property="og:description" content="Real cuts from our chairs, with how long they took and how to ask for them.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-6 px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16 lg:grid-cols-12 lg:items-end">
+    <div class="lg:col-span-6" data-reveal>
+      <p class="board text-primary">From our chairs</p>
+      <h1 class="mt-4 text-[clamp(3rem,5vw+1rem,5.5rem)] leading-[0.98] tracking-[-0.01em]">The cut book</h1>
+    </div>
+    <p class="max-w-[52ch] text-lg leading-relaxed text-base-content/80 md:text-xl lg:col-span-6" data-reveal>Real cuts from our chairs, with how long they took and how to ask for them.</p>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 pb-20 md:px-8 md:pb-28">
+    {% render 'cut-book', name: "cuts" %}
+  </div>
+</section>
+{% render 'booking-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

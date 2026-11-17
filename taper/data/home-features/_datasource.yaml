@@ -1,0 +1,14 @@
+label: "Hero facts"
+fields:
+  - name: title
+    label: "Title"
+    kind: text
+    required: true
+  - name: text
+    label: "Text"
+    kind: text
+  - name: icon
+    label: "Icon"
+    kind: choice
+    choices: ["spark", "bolt", "shield", "heart", "clock", "chat", "leaf", "star", "chart", "team", "plug", "sliders"]
+order: [walk-ins, time-and-level, kids]

@@ -1,0 +1,18 @@
+<section id="prices" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="board text-primary">What a cut costs</p>
+        <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.5rem)] leading-[1.05] text-balance">Pay for the time, not the label.</h2>
+      </div>
+      <p class="max-w-[62ch] text-lg leading-relaxed text-base-content/80 lg:col-span-5">Every service takes a set amount of chair time. You pay for that time at the level of whoever's cutting: the deeper the step, the more years in the chair.</p>
+    </div>
+    <div class="mt-12" data-reveal>
+      {% render 'rates', limit: 4, name: "home" %}
+    </div>
+    <div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <a href="/prices" class="btn btn-outline self-start whitespace-nowrap">The full menu</a>
+      <p class="text-base text-base-content/80">Not sure how long yours takes? <a href="/book?service=consultation" class="font-semibold text-primary underline underline-offset-4">Book a free <span class="whitespace-nowrap">15-minute</span> consultation</a></p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="board text-primary">The years</p>
+      <h2 class="mt-4 text-[clamp(2rem,3vw+1rem,3.25rem)] leading-[1.05] text-balance">From one rented chair to five</h2>
+    </div>
+    <ol class="lg:col-span-8" data-reveal="stagger">
+      {% for m in data.milestones %}
+      <li class="grid grid-cols-[5rem_1fr] gap-6 border-t border-base-content/15 py-6 sm:grid-cols-[7rem_1fr]">
+        <span class="display text-[2rem] text-primary sm:text-[2.5rem]">{{ m.year }}</span>
+        <div>
+          <h3 class="text-[1.375rem] leading-snug">{{ m.title }}</h3>
+          {% if m.text != blank %}<p class="mt-1.5 text-[1rem] leading-relaxed text-base-content/75">{{ m.text }}</p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

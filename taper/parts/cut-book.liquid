@@ -1,0 +1,25 @@
+{%- comment -%}
+The cut book: hair type chips (radio inputs; the stylesheet keeps the chosen type's cuts) over cut cards.
+Parameters: featured (only the featured cuts, six at most), name (the chips' group, unique on the page).
+{%- endcomment -%}
+{%- assign group = name | default: "book" | append: "-hair" -%}
+<div data-cut-book>
+  <fieldset>
+    <legend class="sr-only">Hair type</legend>
+    <div class="flex flex-wrap gap-2">
+      <label class="hair-chip"><input type="radio" name="{{ group }}" value="all" checked><span>All</span></label>
+      <label class="hair-chip"><input type="radio" name="{{ group }}" value="straight"><span>Straight</span></label>
+      <label class="hair-chip"><input type="radio" name="{{ group }}" value="wavy"><span>Wavy</span></label>
+      <label class="hair-chip"><input type="radio" name="{{ group }}" value="curly"><span>Curly</span></label>
+      <label class="hair-chip"><input type="radio" name="{{ group }}" value="coily"><span>Coily</span></label>
+    </div>
+  </fieldset>
+  <div class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14" data-reveal="stagger">
+    {%- assign shown = 0 -%}
+    {%- for cut in data.gallery -%}
+    {%- if featured -%}{%- unless cut.featured -%}{%- continue -%}{%- endunless -%}{%- if shown >= 6 -%}{%- break -%}{%- endif -%}{%- endif -%}
+    {%- assign shown = shown | plus: 1 -%}
+    {% render 'cut-card', cut: cut, data: data %}
+    {%- endfor -%}
+  </div>
+</div>
