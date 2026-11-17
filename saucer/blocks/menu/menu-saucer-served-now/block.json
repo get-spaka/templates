@@ -3,20 +3,8 @@
   "kind": "menu",
   "source": "upstart",
   "description": "The menu typed like order slips, in pill tabs on an oat slip (breakfast, lunch, coffee and drinks, the bakery case) that open on what the kitchen is serving at this hour with a 'Now' mark; each dish a row with a small round plate, a dotted leader to its price, its line and its diet marks, and the add-ons below.",
-  "tags": [
-    "menu",
-    "tabs",
-    "breakfast",
-    "lunch",
-    "coffee",
-    "prices",
-    "served now"
-  ],
-  "mood": [
-    "warm",
-    "minimal",
-    "friendly"
-  ],
+  "tags": ["menu", "tabs", "breakfast", "lunch", "coffee", "prices", "served now"],
+  "mood": ["warm", "minimal", "friendly"],
   "synonyms": [
     "menu",
     "food menu",

@@ -3,17 +3,8 @@
   "kind": "footer",
   "source": "upstart",
   "description": "A coffee-brown footer with the café's name and steaming cup, the line of what is served now, the week's hours as rows (which the now line reads), the address with directions, the phone and the pages.",
-  "tags": [
-    "footer",
-    "opening hours",
-    "address",
-    "links",
-    "café"
-  ],
-  "mood": [
-    "warm",
-    "friendly"
-  ],
+  "tags": ["footer", "opening hours", "address", "links", "café"],
+  "mood": ["warm", "friendly"],
   "synonyms": [
     "footer",
     "site footer",

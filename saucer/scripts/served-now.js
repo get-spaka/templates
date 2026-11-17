@@ -20,7 +20,14 @@ const within = (root, selector) =>
 const WEEK = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 const OPEN = new Set(["breakfast", "lunch", "coffee"]);
 /** Which tab of the menu each state opens on. */
-const TAB = { before: "breakfast", breakfast: "breakfast", lunch: "lunch", coffee: "drinks", after: "breakfast", closed: "breakfast" };
+const TAB = {
+  before: "breakfast",
+  breakfast: "breakfast",
+  lunch: "lunch",
+  coffee: "drinks",
+  after: "breakfast",
+  closed: "breakfast",
+};
 const EASE = [0.65, 0, 0.35, 1];
 
 const minutes = (t) => {
@@ -169,7 +176,11 @@ const checkedAtFirst = new Map();
 function openMenu(now) {
   for (const menu of document.querySelectorAll("[data-served-now]")) {
     const inputs = [...menu.querySelectorAll("input[type=radio]")];
-    if (!checkedAtFirst.has(menu)) checkedAtFirst.set(menu, inputs.find((i) => i.checked));
+    if (!checkedAtFirst.has(menu))
+      checkedAtFirst.set(
+        menu,
+        inputs.find((i) => i.checked),
+      );
     if (menu.dataset.touched) continue;
     const tab = inputs.find((i) => i.dataset.service === TAB[now]);
     if (tab) tab.checked = true;
@@ -197,7 +208,8 @@ function update() {
 }
 
 export function start(root) {
-  for (const card of within(root, "[data-door-card]")) if (!card.dataset.label) card.dataset.label = card.getAttribute("aria-label") || "";
+  for (const card of within(root, "[data-door-card]"))
+    if (!card.dataset.label) card.dataset.label = card.getAttribute("aria-label") || "";
   update();
   document.addEventListener("change", onMenuChange);
   clearInterval(timer);

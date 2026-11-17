@@ -36,7 +36,9 @@ export function start(root) {
       Motion.inView(
         list,
         () => {
-          plates.forEach((plate, i) => Motion.animate(plate, SET_DOWN, { duration: 0.7, delay: i * 0.09, ease: EASE }));
+          plates.forEach((plate, i) => {
+            Motion.animate(plate, SET_DOWN, { duration: 0.7, delay: i * 0.09, ease: EASE });
+          });
         },
         { amount: 0.05 },
       ),

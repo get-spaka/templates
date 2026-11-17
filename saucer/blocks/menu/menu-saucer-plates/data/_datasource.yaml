@@ -35,4 +35,5 @@ fields:
     label: Served with (for the sides)
     kind: choice
     choices: [breakfast, lunch, both]
-order: [squash-hash, buckwheat-pancakes, baked-eggs, smoked-trout-toast, cheddar-grilled-cheese, lemongrass-sausage-bowl]
+order:
+  [squash-hash, buckwheat-pancakes, baked-eggs, smoked-trout-toast, cheddar-grilled-cheese, lemongrass-sausage-bowl]

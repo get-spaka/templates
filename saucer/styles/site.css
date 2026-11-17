@@ -393,7 +393,8 @@
     position: absolute;
     inset: 0 0 auto 0;
     height: 0.5rem;
-    background: radial-gradient(circle at 0.5rem 0, var(--color-base-100) 0.3rem, transparent 0.32rem) 0 0 / 1rem 0.5rem repeat-x;
+    background:
+      radial-gradient(circle at 0.5rem 0, var(--color-base-100) 0.3rem, transparent 0.32rem) 0 0 / 1rem 0.5rem repeat-x;
   }
 
   /* The cup in the logo. */
