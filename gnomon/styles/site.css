@@ -161,9 +161,13 @@ h1[data-cast] {
   line-height: 0.9;
 }
 
-/* Buttons: Instrument Sans 500, sentence case, square. */
+/* Buttons: Instrument Sans 500, sentence case, square (the corners in the layer, so a rounded-* class still wins). */
+@layer components {
+  .btn {
+    border-radius: 0;
+  }
+}
 .btn {
-  --radius-field: 0rem;
   font-weight: 500;
   font-stretch: 100%;
   text-transform: none;

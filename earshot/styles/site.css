@@ -113,18 +113,20 @@ html.lenis body {
   }
 }
 
-/* Buttons: Atkinson bold, sentence case, pills (daisyUI's own variables, which its layered .btn reads). */
-.btn {
-  font-family: var(--theme-font-body);
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.btn:not(.btn-sm, .btn-xs) {
-  --fontsize: 0.9375rem;
-  --btn-p: 1.25rem;
-}
-
 @layer components {
+  /* Buttons: Atkinson bold, sentence case, pills. */
+  .btn {
+    font-family: var(--theme-font-body);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .btn:not(.btn-sm, .btn-xs) {
+    font-size: 0.9375rem;
+  }
+  .btn:not(.btn-sm, .btn-xs, .btn-square, .btn-circle) {
+    padding-inline: 1.25rem;
+  }
+
   /* ---- Type ---------------------------------------------------------------- */
   /* Timecodes, episode numbers, speakers and labels: the mono, uppercase. */
   .mono {

@@ -11,7 +11,7 @@ An exhibition that hangs itself. The site opens nose to the canvas, on a detail 
 
 - Familjen Grotesk for headings, labels, numbers and all small UI; Source Serif 4 for running text, the curator's statement and the titles of works. Both are files of the site (`fonts/`), declared in `styles/site.css`.
 - `poster-title`: the exhibition's title at poster size (Familjen 600, `clamp(4.5rem, 15vw, 14rem)`), one line on a wide screen and two on a phone, each word in a `.line` span. `page-title` is a page's title, `display` a section's (2.5 to 5 rem), `name-xl` an artist's name in a list. Headings are 500 and sentence case.
-- `ui` (13 px) and `ui-lg` (16 px): Familjen 500 with tabular figures, for eyebrows, dates, prices, hours and labels. Buttons are Familjen 500, never uppercase.
+- `ui` (13 px) and `ui-lg` (16 px): Familjen 500 with tabular figures, for eyebrows, dates, prices, hours and labels. Buttons are Familjen, never uppercase.
 - `numeral`: a room's or a catalogue number at poster size.
 - `statement`: Source Serif light at its display optical size, for the curator's words and pull quotes; `pull` is a smaller one. `measure` keeps running text to about 34em; `copy` spaces a record's Markdown.
 - Italics are for the titles of works and books only (`<i>`, `<cite>`), as in all writing about art: never an italic accent word in a heading.

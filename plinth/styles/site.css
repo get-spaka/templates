@@ -240,11 +240,9 @@ html.lenis body {
   .muted {
     color: color-mix(in oklab, currentColor 72%, transparent);
   }
-  /* Buttons: square, flat, Familjen Grotesk 500, never uppercase. */
+  /* Buttons: square, flat, Familjen Grotesk, never uppercase. */
   .btn {
     font-family: var(--theme-font-heading);
-    font-weight: 500;
-    font-size: 0.9375rem;
     letter-spacing: 0.005em;
     white-space: nowrap;
   }

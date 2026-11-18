@@ -148,11 +148,6 @@
 }
 
 @layer components {
-  .btn:not(.btn-sm, .btn-xs) {
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
   /* ---- Clauses: data-clause on a section, class="clause" on its eyebrow ------ */
   [data-clause] {
     counter-increment: clause;

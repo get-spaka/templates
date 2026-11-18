@@ -520,8 +520,10 @@ html.lenis body {
   font-family: var(--theme-font-body);
 }
 
-/* daisyUI's buttons are layered above the site's components: its own variables, set here, win. */
-.btn:not(.btn-sm, .btn-xs, .btn-lg) {
-  --fontsize: 1rem;
-  font-weight: 600;
+@layer components {
+  /* Buttons at the default size: a little larger and bolder than daisyUI's. */
+  .btn:not(.btn-sm, .btn-xs, .btn-lg) {
+    font-size: 1rem;
+    font-weight: 600;
+  }
 }

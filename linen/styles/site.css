@@ -130,24 +130,14 @@
 @layer components {
   .btn {
     font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 0.8125rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     white-space: nowrap;
   }
-  .btn:not(.btn-square, .btn-circle) {
-    padding-inline: 1.5rem;
-  }
-  .btn-sm {
-    font-size: 0.75rem;
-  }
-  .btn-sm:not(.btn-square, .btn-circle) {
-    padding-inline: 1.1rem;
-  }
+  /* A stitched outline, in the button's own color, around it. */
   .btn:not(.btn-ghost, .btn-link) {
-    outline: 1px dashed color-mix(in oklch, currentColor 55%, transparent);
-    outline-offset: -5px;
+    outline-style: dashed;
+    outline-width: 1px;
   }
   .btn:not(.btn-ghost, .btn-link):focus-visible {
     outline: 2px solid var(--color-base-content);

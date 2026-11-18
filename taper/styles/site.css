@@ -165,17 +165,17 @@
   font-weight: 600;
 }
 
-/* Buttons are full pills, the one round shape besides the pole and the mirror, a little larger than
-   daisyUI's. Set through daisyUI's own variables, outside the layers, so its button rule takes them. */
-.btn {
-  --radius-field: 9999px;
-}
-.btn:not(.btn-sm, .btn-xs, .btn-lg, .btn-square, .btn-circle) {
-  --fontsize: 1rem;
-  --btn-p: 1.375rem;
-}
-
 @layer components {
+  /* Buttons are full pills, the one round shape besides the pole and the mirror, a little larger than
+     daisyUI's at the default size. */
+  .btn {
+    border-radius: 9999px;
+  }
+  .btn:not(.btn-sm, .btn-xs, .btn-lg, .btn-square, .btn-circle) {
+    font-size: 1rem;
+    padding-inline: 1.375rem;
+  }
+
   /* ---- A step of the fade: data-step="1" to "4" on any element gives it that tone. */
   [data-step] {
     --i: 1;

@@ -12,7 +12,7 @@ A clothing label's site made from its cutting table: unbleached calico, ink and 
 - Libre Caslon Condensed for headings, statements, the wordmark and names at poster size; Mona Sans for body and interface; Courier Prime for everything a tag or a ticket would carry. All three are files of the site (`fonts/`), declared in `styles/site.css`.
 - `poster`: a collection's name (`clamp(5rem, 17vw, 17rem)`, leading 0.82). `page-title`: a page's title. `heading`: a section's title (2.25 to 4 rem). `statement`: a sentence or three in the serif at 2 to 2.75 rem, at most about 24 characters a line (`max-w-[24ch]`). Headings are sentence case and never bold.
 - `type`: Courier Prime at 0.8125 rem, for labels above headings, numbers ("Look 03", "07—03"), prices, sizes, seasons, dates and the pattern's marks. Put it on a `<p>` or `<span>`, never on a heading (the runtime gives headings the serif).
-- `ui`: Mona Sans 500 in spaced capitals, for the header's links and jump links; buttons have it by themselves.
+- `ui`: Mona Sans 500 in spaced capitals, for the header's links and jump links; buttons have its spaced capitals by themselves.
 - `wordmark`: the serif in spaced capitals (`tracking 0.32em`). The footer's fills its width (`wordmark-fill`).
 - Body text is `body-text` (80 % of the text's color), `leading-relaxed`.
 

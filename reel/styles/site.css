@@ -80,7 +80,6 @@
 /* Buttons: pills with a bold, slightly wide label (after daisyUI's own .btn). */
 @layer components {
   .btn {
-    font-weight: 700;
     font-stretch: 112%;
     text-transform: uppercase;
     letter-spacing: 0.01em;

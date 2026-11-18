@@ -158,12 +158,6 @@
 }
 
 /* Buttons a little larger than daisyUI's, for readers of every age. */
-@layer components {
-  .btn:not(.btn-sm, .btn-xs) {
-    font-size: 1rem;
-  }
-}
-
 /* ---- The breathing dot (data-breath on a .breath-dot) --------------------- */
 .breath-dot {
   position: relative;
