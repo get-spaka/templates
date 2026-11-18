@@ -8421,6 +8421,7 @@ const FIELD_KINDS = [
 	"date",
 	"choice",
 	"image",
+	"images",
 	"link",
 	"list",
 	"links",
@@ -8651,7 +8652,7 @@ function readDefinition(name, value) {
 		const field = f;
 		if (typeof field.name !== "string" || !field.name) continue;
 		const kind = FIELD_KINDS.includes(field.kind) ? field.kind : "text";
-		if (v.collected === true && kind === "image") {
+		if (v.collected === true && (kind === "image" || kind === "images")) {
 			refused.push(field.name);
 			continue;
 		}
@@ -8727,7 +8728,17 @@ function readRecord(name, id, fields, body, definition) {
 }
 /** What a field holds when a record gives it no value: a list is empty, anything else an empty text. */
 function emptyOf(field) {
-	return field.kind === "list" || field.kind === "links" ? [] : "";
+	return field.kind === "list" || field.kind === "links" || field.kind === "images" ? [] : "";
+}
+/** An image's address as a template uses it: `media/x.jpg` is the site's `/media/x.jpg`. */
+function imageAddress(raw) {
+	return raw.startsWith("media/") ? `/${raw}` : raw;
+}
+/** A list of images' addresses, in order; an empty item is left out, anything but an address makes it wrong (Q353). */
+function readImages(raw) {
+	const items = typeof raw === "string" ? [raw] : Array.isArray(raw) ? raw : void 0;
+	if (!items || items.some((x) => x !== null && x !== void 0 && typeof x !== "string")) return void 0;
+	return items.filter((x) => typeof x === "string" && !!x.trim()).map((x) => imageAddress(x.trim()));
 }
 /** Each link with its label and its address; one that lacks either is left out. */
 function readLinks(raw) {
@@ -8764,9 +8775,8 @@ function coerce(field, raw) {
 			return text && !Number.isNaN(Date.parse(text)) ? text : void 0;
 		}
 		case "choice": return typeof raw === "string" && (!field.choices || field.choices.includes(raw)) ? raw : void 0;
-		case "image":
-			if (typeof raw !== "string") return void 0;
-			return raw.startsWith("media/") ? `/${raw}` : raw;
+		case "image": return typeof raw === "string" ? imageAddress(raw) : void 0;
+		case "images": return readImages(raw);
 		case "list":
 			if (Array.isArray(raw)) return raw.every((x) => typeof x !== "object") ? raw.map(String) : void 0;
 			return typeof raw === "string" ? [raw] : void 0;
@@ -8790,6 +8800,7 @@ function kindName(field) {
 		date: "a date",
 		choice: `one of ${(field.choices ?? []).join(", ")}`,
 		image: "an image's address",
+		images: "a list of images' addresses",
 		link: "an address",
 		list: "a list of texts",
 		links: "a list of links, each with a label and an address",
@@ -8845,6 +8856,11 @@ function standInValue(field, i) {
 		case "date": return (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
 		case "choice": return field.choices?.[0] ?? "";
 		case "image": return STAND_IN_IMAGE;
+		case "images": return [
+			STAND_IN_IMAGE,
+			STAND_IN_IMAGE,
+			STAND_IN_IMAGE
+		];
 		case "link": return "#";
 		case "list": return text.split(" ").slice(0, 2);
 		case "links": return [{
@@ -8995,6 +9011,7 @@ function submitted(field, sent) {
 		case "phone": return /^\+?[\d\s()./-]{6,24}$/.test(one) && (one.match(/\d/g) ?? []).length >= 6 ? one : void 0;
 		case "list": return field.choices && sent.some((v) => !field.choices.includes(v)) ? void 0 : sent;
 		case "image":
+		case "images":
 		case "links": return;
 	}
 }
@@ -9580,6 +9597,17 @@ function repairTemplate(src) {
 	};
 }
 /**
+* The Liquid that gives a loop's item its index in the whole list: `offset: 1`
+* starts one further, `reversed` counts from the end. Undefined when the
+* offset is not a number written in the template.
+*/
+function placeIn(args) {
+	const offset = /\boffset\s*:\s*([^\s,]+)/.exec(args)?.[1];
+	if (offset !== void 0 && !/^\d+$/.test(offset)) return void 0;
+	const index = /\sreversed\b/.test(args) ? "forloop.rindex0" : "forloop.index0";
+	return offset && offset !== "0" ? `${index} | plus: ${offset}` : index;
+}
+/**
 * Add the trace attributes. `src` must be complete (run repairTemplate first).
 * Line numbers refer to the file as written, since the repair only cuts the tail.
 */
@@ -9601,7 +9629,11 @@ function injectTrace(src, file) {
 	};
 	const trace = () => {
 		const inner = loops.at(-1);
-		if (inner?.of) return `{{ ${inner.of === "record" ? "record.__ref" : `${inner.of}.__ref`} }}#{{ forloop.index0 }}`;
+		if (inner?.of) {
+			const owner = inner.of === "record" ? "record.__ref" : `${inner.of}.__ref`;
+			if (inner.place === void 0) return `{{ ${owner} }}`;
+			return `{{ ${owner} }}#{{ ${inner.place} }}`;
+		}
 		const rec = record();
 		return rec ? `{{ ${rec} }}` : void 0;
 	};
@@ -9614,7 +9646,10 @@ function injectTrace(src, file) {
 				loops.push({
 					name: t.name,
 					item: m ? m[1] : null,
-					...of ? { of } : {}
+					...of ? {
+						of,
+						place: placeIn(t.args)
+					} : {}
 				});
 			} else if (t.name === "endfor" || t.name === "endtablerow") loops.pop();
 			else if (t.name === "render" || t.name === "include") {
@@ -9713,34 +9748,126 @@ function fillAlts(html, source) {
 		return tag.replace(/^<img\b/i, `<img alt="${escapeHtml(alt)}"`);
 	});
 }
-/** The "Image credits" link, at the end of the page's last footer, or of its body without one. */
+/** The languages Upstart writes the credits in; any other gets English. */
+const ENGLISH = {
+	title: "Image credits",
+	by: "by",
+	via: "via",
+	home: "Home"
+};
+const CREDITS_WORDS = {
+	en: ENGLISH,
+	fr: {
+		title: "Crédits photos",
+		by: "par",
+		via: "via",
+		home: "Accueil"
+	},
+	de: {
+		title: "Bildnachweis",
+		by: "von",
+		via: "über",
+		home: "Startseite"
+	},
+	es: {
+		title: "Créditos de las imágenes",
+		by: "por",
+		via: "vía",
+		home: "Inicio"
+	},
+	it: {
+		title: "Crediti delle immagini",
+		by: "di",
+		via: "tramite",
+		home: "Home"
+	},
+	pt: {
+		title: "Créditos das imagens",
+		by: "por",
+		via: "via",
+		home: "Início"
+	},
+	nl: {
+		title: "Beeldverantwoording",
+		by: "door",
+		via: "via",
+		home: "Home"
+	},
+	ca: {
+		title: "Crèdits de les imatges",
+		by: "per",
+		via: "via",
+		home: "Inici"
+	},
+	sv: {
+		title: "Bildkällor",
+		by: "av",
+		via: "via",
+		home: "Start"
+	},
+	da: {
+		title: "Billedkreditering",
+		by: "af",
+		via: "via",
+		home: "Forside"
+	},
+	nb: {
+		title: "Bildekreditering",
+		by: "av",
+		via: "via",
+		home: "Forside"
+	},
+	pl: {
+		title: "Źródła zdjęć",
+		by: "autor:",
+		via: "źródło:",
+		home: "Strona główna"
+	}
+};
+/** The language a page says it is in (`<html lang="fr-CA">` gives "fr-CA"), if any. */
+function pageLanguage(html) {
+	return /<html\b[^>]*?\slang\s*=\s*["']?([a-z]{2,3}(?:-[a-z0-9]+)*)/i.exec(html)?.[1];
+}
+/** The credits' words for a language: by its first part, Norwegian as one, English otherwise. */
+function creditsWords(language) {
+	const primary = (language ?? "en").toLowerCase().split("-")[0] ?? "en";
+	return CREDITS_WORDS[primary === "no" || primary === "nn" ? "nb" : primary] ?? ENGLISH;
+}
+/**
+* The credits link, at the end of the page's last footer, or of its body
+* without one, in the page's language. None when the page already links to
+* the credits, whoever wrote that link (Q325).
+*/
 function addCreditsLink(html) {
 	if (/<[a-z][^>]*\sdata-up-credits\b/i.test(html)) return html;
-	const link = `<p data-up-credits style="margin:0.75rem 0 0;font-size:0.75rem;opacity:0.7"><a href="${CREDITS_ROUTE}" style="color:inherit">Image credits</a></p>`;
+	if (/<a\b[^>]*\shref\s*=\s*["']?\/credits\/?(?=["'\s>#?])/i.test(html)) return html;
+	const words = creditsWords(pageLanguage(html));
+	const link = `<p data-up-credits style="margin:0.75rem 0 0;font-size:0.75rem;opacity:0.7"><a href="${CREDITS_ROUTE}" style="color:inherit">${escapeHtml(words.title)}</a></p>`;
 	const footer = html.toLowerCase().lastIndexOf("</footer>");
 	if (footer >= 0) return html.slice(0, footer) + link + html.slice(footer);
 	const body = html.toLowerCase().lastIndexOf("</body>");
 	return body >= 0 ? html.slice(0, body) + link + html.slice(body) : html + link;
 }
-/** The /credits page: every credited image of the site, in the site's theme. */
-function creditsPage(credited, title = "Image credits") {
+/** The /credits page: every credited image of the site, in the site's theme and language. */
+function creditsPage(credited, language = "en") {
+	const words = creditsWords(language);
 	const a = (text, url) => url ? `<a class="link" href="${escapeHtml(url)}">${escapeHtml(text)}</a>` : escapeHtml(text);
 	const items = credited.map(({ path, credit }) => {
 		const parts = [
 			credit.title ? `“${a(credit.title, credit.sourceUrl)}”` : "",
-			credit.author ? `by ${a(credit.author, credit.authorUrl)}` : "",
+			credit.author ? `${escapeHtml(words.by)} ${a(credit.author, credit.authorUrl)}` : "",
 			a(credit.license, credit.licenseUrl),
-			credit.source ? `via ${escapeHtml(credit.source)}` : ""
+			credit.source ? `${escapeHtml(words.via)} ${escapeHtml(credit.source)}` : ""
 		].filter(Boolean);
 		return `<li class="flex items-center gap-4"><img src="/${escapeHtml(path)}" alt="" class="h-16 w-24 shrink-0 rounded object-cover"><span>${parts.join(", ")}</span></li>`;
 	}).join("\n");
 	return `<!doctype html>
-<html lang="en">
-<head><title>${escapeHtml(title)}</title><meta name="robots" content="noindex"></head>
+<html lang="${escapeHtml(language)}">
+<head><title>${escapeHtml(words.title)}</title><meta name="robots" content="noindex"></head>
 <body class="bg-base-100 text-base-content">
 <main class="mx-auto max-w-3xl px-6 py-16">
-<p><a class="link" href="/">← Home</a></p>
-<h1 class="mt-6 mb-8 text-3xl font-bold">${escapeHtml(title)}</h1>
+<p><a class="link" href="/">← ${escapeHtml(words.home)}</a></p>
+<h1 class="mt-6 mb-8 text-3xl font-bold">${escapeHtml(words.title)}</h1>
 <ul class="flex flex-col gap-4">
 ${items}
 </ul>
@@ -14592,9 +14719,10 @@ var Runtime = class {
 		if (!route) return this.notFound(pathname);
 		if (route.generated) {
 			const started = performance.now();
+			const language = this.route("/") && pageLanguage(this.renderRoute("/").html) || "en";
 			return {
 				status: 200,
-				html: this.decorate(withSrcset(fillAlts(creditsPage(creditedMedia(this.source)), this.source), this.images)),
+				html: this.decorate(withSrcset(fillAlts(creditsPage(creditedMedia(this.source), language), this.source), this.images)),
 				file: route.file,
 				notes: [],
 				ms: performance.now() - started
@@ -14808,7 +14936,7 @@ var Runtime = class {
 			has: (_target, key) => typeof key === "string" && !LIQUID_PROBES.has(key) && /^[a-z0-9][\w-]*$/i.test(key)
 		});
 	}
-	/** What every page gets once rendered: alt texts kept beside images, and the credits' link (Q155, Q157). */
+	/** What every page gets once rendered: alt texts kept beside images, and the credits' link (Q155, Q157, Q325). */
 	finish(html) {
 		const filled = withSrcset(addTrapFields(fillAlts(html, this.source)), this.images);
 		return creditedMedia(this.source).length ? addCreditsLink(filled) : filled;
@@ -20522,7 +20650,7 @@ function fixedColors(css) {
 		const value = m[2].replace(/url\([^)]*\)/gi, "").replace(/var\(\s*--[\w-]+/g, "var(");
 		const hex = /#[0-9a-f]{3,8}\b/i.exec(value)?.[0];
 		const fn = /\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch)\(\s*(?!from\b)[^)]*\)/i.exec(value)?.[0];
-		const named = COLOR_PROPERTY.test(property) ? NAMED.exec(value)?.[0] : void 0;
+		const named = COLOR_PROPERTY.test(property) ? NAMED.exec(value.replace(/"[^"]*"|'[^']*'/g, "\"\""))?.[0] : void 0;
 		for (const color of [
 			hex,
 			fn,
