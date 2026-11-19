@@ -4,7 +4,6 @@
   "name": "Margin",
   "description": "A weekly letter and blog built for reading: a serif made for long text, notes in the margin, pull quotes, every picture on the lists printed in one green ink, and the newsletter as its plain main call.",
   "category": "blog",
-  "original": false,
   "tags": ["blog", "newsletter", "writer", "magazine", "essays", "letters", "journal"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
   "licence": "MIT"

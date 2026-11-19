@@ -4,7 +4,6 @@
   "name": "Plinth",
   "description": "An exhibition's website that hangs itself: it opens nose to the canvas on a detail of the lead painting and steps back to the whole work on a white wall, then hangs every work to scale on one center line, in rooms painted in the theme's colors, each with its museum label.",
   "category": "event",
-  "original": true,
   "tags": ["exhibition", "museum", "gallery", "art", "paintings", "art center", "tickets", "program", "talks", "tours"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
   "licence": "MIT"

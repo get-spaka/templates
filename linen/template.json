@@ -4,7 +4,6 @@
   "name": "Linen",
   "description": "A guesthouse seen the way you wake in it: a sheer linen curtain that moves in the breeze over the courtyard and draws aside as you scroll, the rooms hanging as dyed keys on the reception's board, each with its own page, and a request for your dates always in reach.",
   "category": "business",
-  "original": true,
   "tags": ["hotel", "guesthouse", "bed and breakfast", "inn", "rooms", "booking request", "travel", "breakfast"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
   "licence": "MIT"

@@ -15072,6 +15072,14 @@ function memorySource(files) {
 		list: (dir) => Object.keys(files).filter((p) => p.startsWith(`${dir.replace(/\/$/, "")}/`)).sort()
 	};
 }
+// apps/desktop/src/shared/system.ts
+/** Whether the app runs on macOS: in the main process from Node, in the interface from its browser. */
+const IS_MAC = typeof process !== "undefined" && typeof process.platform === "string" ? process.platform === "darwin" : !/Windows/.test(globalThis.navigator?.userAgent ?? "");
+/** The system's own name. */
+const SYSTEM_NAME = IS_MAC ? "macOS" : "Windows";
+/** Where the system shows a folder's files. */
+const FILE_MANAGER = IS_MAC ? "Finder" : "File Explorer";
+`${FILE_MANAGER}`, `${FILE_MANAGER}`, `${FILE_MANAGER}`, `${SYSTEM_NAME}`, `${SYSTEM_NAME}`, `${FILE_MANAGER}`;
 "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat duis aute irure in reprehenderit voluptate velit esse cillum fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui officia deserunt mollit anim id est laborum curabitur pretium tincidunt lacus nunc vitae mauris praesent viverra semper augue a eu nam".split(" ");
 new Set("monday tuesday wednesday thursday friday saturday sunday mon tue tues wed thu thur thurs fri sat sun january february march april may june july august september october november december jan feb mar apr jun jul aug sep sept oct nov dec am pm".split(" "));
 // apps/desktop/src/main/editing/data-drop.ts
@@ -16141,7 +16149,6 @@ function datetime(args) {
 	return new RegExp(`^${dateSource}T(?:${timeRegex})$`);
 }
 const anyString = /^[\s\S]{0,}$/;
-const boolean$1 = /^(?:true|false)$/i;
 const lowercase = /^[^A-Z]*$/;
 const uppercase = /^[^a-z]*$/;
 // node_modules/.pnpm/zod@4.6.7/node_modules/zod/v4/core/checks.js
@@ -16799,24 +16806,6 @@ const $ZodJWT = /*@__PURE__*/ $constructor("$ZodJWT", (inst, def) => {
 			inst,
 			continue: !def.abort
 		});
-	};
-});
-const $ZodBoolean = /*@__PURE__*/ $constructor("$ZodBoolean", (inst, def) => {
-	$ZodType.init(inst, def);
-	inst._zod.pattern = boolean$1;
-	inst._zod.parse = (payload, _ctx) => {
-		if (def.coerce) try {
-			payload.value = Boolean(payload.value);
-		} catch (_) {}
-		const input = payload.value;
-		if (typeof input === "boolean") return payload;
-		payload.issues.push({
-			expected: "boolean",
-			code: "invalid_type",
-			input,
-			inst
-		});
-		return payload;
 	};
 });
 const $ZodUnknown = /*@__PURE__*/ $constructor("$ZodUnknown", (inst, def) => {
@@ -18262,13 +18251,6 @@ function _isoDuration(Class, params) {
 	});
 }
 // @__NO_SIDE_EFFECTS__
-function _boolean(Class, params) {
-	return new Class({
-		type: "boolean",
-		...normalizeParams(params)
-	});
-}
-// @__NO_SIDE_EFFECTS__
 function _unknown(Class) {
 	return new Class({ type: "unknown" });
 }
@@ -18973,9 +18955,6 @@ const stringProcessor = (schema, ctx, _json, _params) => {
 		}))];
 	}
 };
-const booleanProcessor = (_schema, _ctx, json, _params) => {
-	json.type = "boolean";
-};
 const neverProcessor = (_schema, _ctx, json, _params) => {
 	json.not = {};
 };
@@ -19647,14 +19626,6 @@ const ZodJWT = /*@__PURE__*/ $constructor("ZodJWT", (inst, def) => {
 	$ZodJWT.init(inst, def);
 	ZodStringFormat.init(inst, def);
 });
-const ZodBoolean = /*@__PURE__*/ $constructor("ZodBoolean", (inst, def) => {
-	$ZodBoolean.init(inst, def);
-	ZodType.init(inst, def);
-	inst._zod.processJSONSchema = (ctx, json, params) => booleanProcessor(inst, ctx, json, params);
-});
-function boolean(params) {
-	return /* @__PURE__ */ _boolean(ZodBoolean, params);
-}
 const ZodUnknown = /*@__PURE__*/ $constructor("ZodUnknown", (inst, def) => {
 	$ZodUnknown.init(inst, def);
 	ZodType.init(inst, def);
@@ -20053,8 +20024,6 @@ const Manifest = object({
 	/** One or two sentences, shown under its name. */
 	description: string().min(20).max(280),
 	category: _enum(TEMPLATE_CATEGORIES),
-	/** One of the original, animated designs (Q230), shown first. */
-	original: boolean().default(false),
 	/** Words the start screen and the agent may match a description with. */
 	tags: array(string().min(1)).default([]),
 	author: object({

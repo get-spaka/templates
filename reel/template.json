@@ -4,7 +4,6 @@
   "name": "Reel",
   "description": "A loud studio site where the work moves sideways: heavy extended capitals on black, tilted chartreuse slabs, a pinned reel of case panels each in its own color, a page per case and a real brief to send.",
   "category": "portfolio",
-  "original": true,
   "tags": ["studio", "agency", "branding", "motion", "film", "design", "portfolio", "case studies"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
   "licence": "MIT"

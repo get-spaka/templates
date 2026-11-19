@@ -4,7 +4,6 @@
   "name": "Beacon",
   "description": "A dark, precise launch page: one promise, the product's own interface drawn in the page and rising out of a violet glow, a launch track lit up to now, pricing, updates and a waitlist at both ends.",
   "category": "launch",
-  "original": false,
   "tags": ["launch", "waitlist", "software", "saas", "app", "product", "changelog", "pre-order"],
   "author": { "name": "Upstart", "url": "https://upstart.gg" },
   "licence": "MIT"

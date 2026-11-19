@@ -15,14 +15,13 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
     "name": "Atelier",
     "description": "A calm studio site whose sections rise into view, with a large type hero.",
     "category": "portfolio",
-    "original": true,
     "tags": ["studio", "ceramics"],
     "author": { "name": "Upstart", "url": "https://upstart.gg" },
     "licence": "MIT"
   }
   ```
 
-  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`; `original` marks one of the original, animated designs (Q230). A template whose look follows the time of day (a café's card that reads open or closed) adds `"shoot": { "clock": "2027-04-14T09:30:00-05:00" }`, the instant its pictures are taken at whatever the day of the shoot; the app reads nothing else of it. A template that uses something an older app reads otherwise adds `"app"`, the oldest app version it needs: `"app": "0.2.0"` for the `images` field kind, which the checks require (Q368). An older app then takes the template's latest version it can open, kept in the catalogue, or does not show it. What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
+  `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`. A template whose look follows the time of day (a café's card that reads open or closed) adds `"shoot": { "clock": "2027-04-14T09:30:00-05:00" }`, the instant its pictures are taken at whatever the day of the shoot; the app reads nothing else of it. A template that uses something an older app reads otherwise adds `"app"`, the oldest app version it needs: `"app": "0.2.0"` for the `images` field kind, which the checks require (Q368). An older app then takes the template's latest version it can open, kept in the catalogue, or does not show it. What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
 - `TEMPLATE.md`, its guide for the agent that adapts it (Q299, Q306): Upstart keeps it beside a website started from the template while the website is adapted, page type by page type, and does not copy it into the website. A page type is the pages that share a first folder of `pages/`, with their records: `pages/index.liquid` is the home page, `/`; `pages/events/[events].liquid` belongs to `/events`. The guide says what matters only while adapting:
 
   ```markdown
@@ -84,7 +83,7 @@ No program, no `package.json`; anything at its root that is not part of a templa
 
 ## Starting a website from one
 
-The start screen lists the templates (originals first) and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the website is adapted page type by page type (Q302-Q313). In the first turn the agent shows the maker the card of pages, asks the home page's choices the message leaves open, then adapts the home page and what every page shares and removes the page types not kept; it stops after each page type with a line on what it invented, and the maker continues to the next from the list under the conversation. The pages still to do keep the template's contents meanwhile. At the end of its turns Upstart names the template's sentences still in what was adapted to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
+The start screen lists the templates by name and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the website is adapted page type by page type (Q302-Q313). In the first turn the agent shows the maker the card of pages, asks the home page's choices the message leaves open, then adapts the home page and what every page shares and removes the page types not kept; it stops after each page type with a line on what it invented, and the maker continues to the next from the list under the conversation. The pages still to do keep the template's contents meanwhile. At the end of its turns Upstart names the template's sentences still in what was adapted to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
 
 ## Commands
 
