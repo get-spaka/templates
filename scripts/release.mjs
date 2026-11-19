@@ -20032,10 +20032,23 @@ const OPEN_LICENCES = [
 	"CC0-1.0"
 ];
 const MANIFEST = "template.json";
+const VERSION = /^\d+\.\d+\.\d+$/;
+/** Whether version `a` comes before `b`, each read as x.y.z (a suffix such as -beta.1 is not read). */
+function olderVersion(a, b) {
+	const parts = (v) => (/^(\d+)\.(\d+)\.(\d+)/.exec(v) ?? [
+		0,
+		0,
+		0,
+		0
+	]).slice(1).map(Number);
+	const [x, y] = [parts(a), parts(b)];
+	for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] < y[i];
+	return false;
+}
 const Manifest = object({
 	/** Its folder's name, and the name of its design notes' skill: `<id>-design`. */
 	id: string().regex(/^[a-z][a-z0-9-]{1,47}$/, "lowercase letters, digits and dashes, starting with a letter"),
-	version: string().regex(/^\d+\.\d+\.\d+$/, "a version such as 1.0.0"),
+	version: string().regex(VERSION, "a version such as 1.0.0"),
 	name: string().min(1).max(40),
 	/** One or two sentences, shown under its name. */
 	description: string().min(20).max(280),
@@ -20049,7 +20062,12 @@ const Manifest = object({
 		url: url().optional()
 	}),
 	/** The template's own licence: what a maker and another author may do with it. */
-	licence: string().min(1)
+	licence: string().min(1),
+	/**
+	* The oldest version of the app that opens it (Q368), when it uses something
+	* an older app reads otherwise, such as the images field kind (0.2.0).
+	*/
+	app: string().regex(VERSION, "the oldest app version it needs, such as 0.2.0").optional()
 });
 // apps/desktop/src/main/templates/pages.ts
 /** Where the guide has a section per page type (Q306). */
@@ -20441,6 +20459,8 @@ function shotPages(files) {
 // apps/desktop/src/main/templates/check.ts
 /** Where libraries may be loaded from: servers that keep every published version. */
 const LIBRARY_HOSTS = /* @__PURE__ */ new Set(["cdn.jsdelivr.net", "unpkg.com"]);
+/** Field kinds an older app reads as text, and the app version that knows them (Q368). */
+const FIELD_KIND_APP = { images: "0.2.0" };
 const MEDIA_LIMIT = 3145728;
 const TOTAL_LIMIT = 52428800;
 /**
@@ -20470,6 +20490,13 @@ function checkTemplate(files, { finished = false } = {}) {
 	if (total > TOTAL_LIMIT) warnings.push(`The template weighs ${Math.round(total / 1024 / 1024)} MB: keep it under 50.`);
 	for (const required of ["pages/index.liquid", "theme.css"]) if (!files.has(required)) errors.push(`${required} is missing.`);
 	if (!OPEN_LICENCES.includes(manifest.licence) && !/^CC/i.test(manifest.licence)) warnings.push(`template.json: licence "${manifest.licence}" is not an open licence Upstart knows (${OPEN_LICENCES.join(", ")}).`);
+	for (const path of paths.filter((p) => p.endsWith(`/${DEFINITION_FILE}`))) {
+		const definition = new Datasources(memorySource({ [`data/d/${DEFINITION_FILE}`]: text(path) })).get("d").definition;
+		for (const kind of new Set(definition?.fields.map((f) => f.kind))) {
+			const needed = FIELD_KIND_APP[kind];
+			if (needed && olderVersion(manifest.app ?? "0.0.0", needed)) errors.push(`${path}: the ${kind} field kind needs Upstart ${needed} or later: add "app": "${needed}" to template.json.`);
+		}
+	}
 	const source = textSource(files);
 	const tests = textSource(files, `${TEST_RECORDS_DIR}/`);
 	const runtime = new Runtime(source, {
@@ -20672,9 +20699,10 @@ function templateFolders(root) {
 }
 /**
 * Builds a release of the templates in `root` into `out`, each checked as a
-* finished one first: a template with an error stops the release.
+* finished one first: a template with an error stops the release. The
+* `previous` release's catalogue gives the earlier versions to keep.
 */
-function buildRelease(root, out, release) {
+function buildRelease(root, out, release, previous) {
 	mkdirSync(out, { recursive: true });
 	const templates = [];
 	const problems = [];
@@ -20713,23 +20741,88 @@ function buildRelease(root, out, release) {
 	const catalogue = {
 		format: 1,
 		release,
-		templates
+		templates,
+		earlier: earlierOf(templates, previous)
 	};
 	writeFileSync(join(out, CATALOGUE_FILE), `${JSON.stringify(catalogue, null, 2)}\n`);
 	return catalogue;
 }
+/**
+* The earlier versions an older app still needs: going back from each
+* template's version, one is kept when it needs an older app than every
+* version after it, so that each app takes the newest version it can open.
+* Those of the previous release, and those it kept, are the ones there are.
+*/
+function earlierOf(templates, previous) {
+	if (!previous) return [];
+	const known = [...previous.templates.map((t) => ({
+		...t,
+		release: previous.release
+	})), ...previous.earlier];
+	const earlier = [];
+	for (const template of templates) {
+		let below = template.app ?? NO_APP;
+		const older = known.filter((e) => e.id === template.id && olderVersion(e.version, template.version)).sort((a, b) => olderVersion(a.version, b.version) ? 1 : olderVersion(b.version, a.version) ? -1 : 0);
+		for (const entry of older) if (olderVersion(entry.app ?? NO_APP, below)) {
+			earlier.push(entry);
+			below = entry.app ?? NO_APP;
+		}
+	}
+	return earlier;
+}
+/** The app version of a template that says none: any app opens it. */
+const NO_APP = "0.0.0";
+/** A catalogue of a format this app knows, its entries' manifests valid; undefined otherwise. */
+function parseCatalogue(text) {
+	const json = JSON.parse(text);
+	if (json.format !== 1 || typeof json.release !== "string" || !Array.isArray(json.templates)) return void 0;
+	const templates = json.templates.flatMap((t) => entryOf(t) ?? []);
+	const earlier = (Array.isArray(json.earlier) ? json.earlier : []).flatMap((t) => {
+		const entry = entryOf(t);
+		const release = t.release;
+		return entry && typeof release === "string" && /^[\w.-]+$/.test(release) ? {
+			...entry,
+			release
+		} : [];
+	});
+	return {
+		format: 1,
+		release: json.release,
+		templates,
+		earlier
+	};
+}
+/** An entry whose manifest is valid and whose file names stay in their release; undefined otherwise. */
+function entryOf(t) {
+	const manifest = Manifest.safeParse(t);
+	const zip = t.zip;
+	if (!manifest.success || !zip || typeof zip.size !== "number" || !/^[a-f0-9]{64}$/.test(zip.sha256) || !/^[\w.-]+\.zip$/.test(zip.file)) return void 0;
+	const pictures = (name) => typeof name === "string" && /^[\w.-]+\.webp$/.test(name) ? name : void 0;
+	const cover = pictures(t.cover);
+	const hover = pictures(t.hover);
+	return {
+		...manifest.data,
+		zip,
+		...cover ? { cover } : {},
+		...hover ? { hover } : {}
+	};
+}
 // apps/desktop/src/main/templates/release-main.ts
-function releaseMain(args) {
-	const [root, out, tag] = args;
+async function releaseMain(args) {
+	const [root, out, tag, from] = args;
 	if (!root || !out || !tag) {
-		console.error("Usage: release <templates folder> <out folder> <tag>");
+		console.error("Usage: release <templates folder> <out folder> <tag> [previous catalogue.json: path or address]");
 		return 2;
 	}
 	try {
-		const catalogue = buildRelease(resolve(root), resolve(out), tag);
+		const previous = from ? await readPrevious(from) : void 0;
+		if (!from) console.warn("! No previous catalogue: no earlier version is kept for older apps.");
+		const catalogue = buildRelease(resolve(root), resolve(out), tag, previous);
 		for (const t of catalogue.templates) console.log(`✓ ${t.name} (${t.id} ${t.version}): ${t.zip.file}, ${(t.zip.size / 1e6).toFixed(1)} MB`);
+		for (const t of catalogue.earlier) console.log(`  kept for apps before ${laterApp(catalogue, t.id, t.version)}: ${t.name} ${t.version}, from ${t.release}`);
 		const notes = catalogue.templates.map((t) => `- **${t.name}** ${t.version}: ${t.description}`).join("\n");
-		writeFileSync(join(resolve(out), "notes.md"), `${catalogue.templates.length} templates.\n\n${notes}\n`);
+		const kept = catalogue.earlier.map((t) => `- ${t.name} ${t.version} (${t.release})`).join("\n");
+		writeFileSync(join(resolve(out), "notes.md"), `${catalogue.templates.length} templates.\n\n${notes}\n${kept ? `\nKept for older versions of the app:\n\n${kept}\n` : ""}`);
 		console.log(`${catalogue.templates.length} templates in release ${tag}, in ${resolve(out)}`);
 		return 0;
 	} catch (error) {
@@ -20737,6 +20830,23 @@ function releaseMain(args) {
 		return 1;
 	}
 }
+/** The previous release's catalogue; a release without it would lose the earlier versions, so none is built. */
+async function readPrevious(from) {
+	let text;
+	if (/^https?:/.test(from)) {
+		const answer = await fetch(from);
+		if (!answer.ok) throw new Error(`The previous catalogue could not be read: ${from}: HTTP ${answer.status}`);
+		text = await answer.text();
+	} else text = readFileSync(from, "utf8");
+	const catalogue = parseCatalogue(text);
+	if (!catalogue) throw new Error(`The previous catalogue is of a format this script does not read: ${from}`);
+	return catalogue;
+}
+/** The app version the version after an earlier one needs. */
+function laterApp(catalogue, id, version) {
+	const all = [...catalogue.templates, ...catalogue.earlier].filter((t) => t.id === id);
+	return all[all.findIndex((t) => t.version === version) - 1]?.app ?? "?";
+}
 // apps/desktop/src/main/templates/release-entry.ts
-process.exit(releaseMain(process.argv.slice(2)));
+process.exit(await releaseMain(process.argv.slice(2)));
 export {};

@@ -16,7 +16,8 @@ jobs:
         with:
           node-version: 24
       - name: Check and build the templates
-        run: node scripts/release.mjs . dist "$GITHUB_REF_NAME"
+        # The latest release's catalogue gives the earlier versions older apps still need.
+        run: node scripts/release.mjs . dist "$GITHUB_REF_NAME" "https://github.com/$GITHUB_REPOSITORY/releases/latest/download/catalogue.json"
       - name: Publish the release
         run: gh release create "$GITHUB_REF_NAME" dist/catalogue.json dist/*.webp dist/*.zip --title "$GITHUB_REF_NAME" --notes-file dist/notes.md --latest
         env:

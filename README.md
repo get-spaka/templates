@@ -6,7 +6,7 @@ The templates a new website starts from in Upstart, one folder each, in the form
 
 Each tag `v*` builds a release from these sources (`.github/workflows/release.yml`): every template is checked as a finished one, then the release gets
 
-- `catalogue.json`: each template's manifest, its `.zip`'s name, sha256 and size, and its pictures;
+- `catalogue.json`: each template's manifest, its `.zip`'s name, sha256 and size, and its pictures; and under `earlier`, the earlier versions an older app still needs (a template that says `"app"`, the oldest app version it needs), each with the release that holds its files, carried forward from the previous release's catalogue;
 - each template's cover and hover sequence;
 - one `.zip` per template, without its pictures.
 
@@ -15,8 +15,10 @@ The Upstart app ships a copy of the catalogue and the pictures, reads the latest
 To build a release locally, with Node 24 or later and nothing installed:
 
 ```sh
-node scripts/release.mjs . dist v0-local
+node scripts/release.mjs . dist v0-local [previous catalogue.json, a path or an address]
 ```
+
+The CI gives it the latest release's catalogue, so that the earlier versions an older app takes are kept.
 
 ## Making one
 
