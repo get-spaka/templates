@@ -16,8 +16,15 @@ jobs:
         with:
           node-version: 24
       - name: Check and build the templates
-        # The latest release's catalogue gives the earlier versions older apps still need.
-        run: node scripts/release.mjs . dist "$GITHUB_REF_NAME" "https://github.com/$GITHUB_REPOSITORY/releases/latest/download/catalogue.json"
+        # The previous release's catalogue gives the earlier versions older apps
+        # still need: the latest release's, except for v10, which starts from
+        # v8's (Q380): v9 lists Aspect 1.1.0 without the app it needs, and
+        # Aspect 1.0.0, which any app opens, is in v8 only.
+        run: |
+          releases="https://github.com/$GITHUB_REPOSITORY/releases"
+          if [ "$GITHUB_REF_NAME" = v10 ]; then previous="$releases/download/v8/catalogue.json"
+          else previous="$releases/latest/download/catalogue.json"; fi
+          node scripts/release.mjs . dist "$GITHUB_REF_NAME" "$previous"
       - name: Publish the release
         run: gh release create "$GITHUB_REF_NAME" dist/catalogue.json dist/*.webp dist/*.zip --title "$GITHUB_REF_NAME" --notes-file dist/notes.md --latest
         env:

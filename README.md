@@ -18,7 +18,7 @@ To build a release locally, with Node 24 or later and nothing installed:
 node scripts/release.mjs . dist v0-local [previous catalogue.json, a path or an address]
 ```
 
-The CI gives it the latest release's catalogue, so that the earlier versions an older app takes are kept.
+The CI gives it the latest release's catalogue, so that the earlier versions an older app takes are kept; v10 alone starts from v8's, the only one with Aspect 1.0.0.
 
 ## Making one
 
