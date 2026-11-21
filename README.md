@@ -26,10 +26,10 @@ Upstart's own repository has this one as a submodule, with the commands that che
 
 ## Lint
 
-Biome checks every file with `biome.json`, as Upstart's repository does when it points to a commit here, and as the CI does on each push (`.github/workflows/lint.yml`). A pre-commit hook in `.githooks` runs it on the staged files: Upstart's `pnpm install` turns it on in the submodule; in a clone of this repository alone, turn it on with
+Biome checks every file with `biome.json`, as Upstart's repository does when it points to a commit here, and as the CI does on each push (`.github/workflows/lint.yml`). Lefthook runs it before each commit on the staged files (`lefthook.yml`), applies its fixes and stages them again; what it cannot fix stops the commit. Upstart's `pnpm install` installs the hook in the submodule; in a clone of this repository alone, run once
 
 ```sh
-git config core.hooksPath .githooks
+npx lefthook install
 ```
 
 The hook and the CI use Biome 2.6.6, the version in Upstart's `package.json`: change them together.
