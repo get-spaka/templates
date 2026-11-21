@@ -1,0 +1,21 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-20" data-reveal>
+<div class="rounded-box bg-secondary text-secondary-content p-6 sm:p-8 lg:p-10">
+  <div class="grid gap-8 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-3">
+      <h2 class="text-[clamp(1.75rem,2.2vw+1rem,2.5rem)] leading-[1.08]">Open to</h2>
+      <p class="mono mt-3 text-secondary-content/75">As of November 2026</p>
+      <a href="/contact" class="btn btn-primary mt-6 whitespace-nowrap">Ask about a role</a>
+    </div>
+    <dl class="divide-y divide-secondary-content/15 border-y border-secondary-content/15 lg:col-span-9">
+      {% for term in data.terms %}
+      <div class="grid gap-1 py-3.5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+        <dt class="mono text-secondary-content/75">{{ term.label }}</dt>
+        <dd class="flex items-start gap-2.5 text-[1.0625rem] leading-snug">{% if term.accepted %}<svg class="terms-check mt-0.5 size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>{% else %}<span class="size-5 shrink-0" aria-hidden="true"></span>{% endif %}<span>{{ term.words }}</span></dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</div>
+  </div>
+</section>

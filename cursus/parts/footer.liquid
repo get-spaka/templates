@@ -1,0 +1,25 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-6xl px-5 pt-14 pb-8 md:px-8 md:pt-16">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-7">
+        <a href="/" class="flex items-center gap-3">
+          <span class="monogram text-[1rem]" aria-hidden="true">HA</span>
+          <span class="font-heading text-[1.75rem] leading-tight">{% render 'contact-line', show: 'name' %}</span>
+        </a>
+        <p class="mono mt-4 text-neutral-content/80">Cincinnati, Ohio · Open to work from February 2027</p>
+        <p class="mt-5 text-[0.9375rem] leading-relaxed text-neutral-content/85 [&_a]:text-secondary">{% render 'contact-line' %}</p>
+      </div>
+      <nav aria-label="Footer" class="md:col-span-5 md:justify-self-end">
+        <ul class="flex flex-wrap gap-x-6 gap-y-2 text-[0.9375rem]">
+          {% for item in data.navigation %}{% unless item.place == "header" %}
+          <li><a href="{{ item.href }}" class="text-secondary underline-offset-4 hover:underline">{{ item.label }}</a></li>
+          {% endunless %}{% endfor %}
+        </ul>
+      </nav>
+    </div>
+    <div class="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-neutral-content/15 pt-6 text-neutral-content/75">
+      {% render 'updated' %}
+      <p class="mono">References on request</p>
+    </div>
+  </div>
+</footer>

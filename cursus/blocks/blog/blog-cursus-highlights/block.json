@@ -1,0 +1,22 @@
+{
+  "name": "Cursus highlights",
+  "kind": "blog",
+  "source": "upstart",
+  "description": "Achievements as rows led by their figure in a large indigo serif, with what it measures, the organization and year, a sentence and a link to the story, and a small square photo when there is one.",
+  "tags": ["highlights", "achievements", "case studies", "figures", "résumé", "portfolio"],
+  "mood": ["professional", "editorial", "elegant"],
+  "synonyms": [
+    "highlights",
+    "achievements",
+    "results",
+    "case studies",
+    "réalisations",
+    "résultats",
+    "faits marquants",
+    "études de cas"
+  ],
+  "data": {
+    "name": "highlights",
+    "family": "collection"
+  }
+}

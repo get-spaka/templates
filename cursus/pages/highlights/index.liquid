@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Highlights — Hollis Amadi, operations lead</title>
+<meta name="description" content="The stories behind the figures on Hollis Amadi's résumé: on-time deliveries, a second warehouse, a cold chain that holds and a night shift people stayed on.">
+<meta property="og:title" content="Highlights — Hollis Amadi, operations lead">
+<meta property="og:description" content="What was wrong, what I did, what changed, and who saw it.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-16 pb-20 md:px-8 md:pt-24 md:pb-28">
+    <div class="max-w-3xl" data-reveal>
+      <p class="mono text-base-content/70">Four stories</p>
+      <h1 class="mt-4 text-[clamp(2.5rem,4.5vw+1rem,5rem)] leading-[1.04] tracking-[-0.015em]">Highlights</h1>
+      <p class="mt-6 max-w-[58ch] text-[1.125rem] leading-relaxed text-base-content/80">The stories behind the figures on my résumé: what was wrong, what I did, what changed, and who saw it.</p>
+    </div>
+    <div class="mt-14">{% render 'highlight-rows' %}</div>
+  </div>
+</section>
+{% render 'quotes', offset: 1, single: true, class: 'bg-base-100 border-t border-base-300' %}
+<section class="bg-secondary text-secondary-content" data-print-hide>
+  <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 md:flex-row md:items-center md:px-8">
+    <p class="font-heading text-[clamp(1.5rem,1.5vw+1rem,2.25rem)] leading-tight text-balance">Want the short version? Save the one-page résumé.</p>
+    <a href="/resume#one-page" class="btn btn-primary btn-lg whitespace-nowrap">The one-page résumé</a>
+  </div>
+</section>
+</main>
+{% render 'footer' %}
+</body>
+</html>

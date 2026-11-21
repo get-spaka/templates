@@ -1,0 +1,53 @@
+{%- assign first_year = data.experience.last.start | date: "%Y" | plus: 0 -%}
+{%- for item in data.experience -%}{%- assign y = item.start | date: "%Y" | plus: 0 -%}{%- if y < first_year -%}{%- assign first_year = y -%}{%- endif -%}{%- endfor -%}
+{%- assign now_year = "now" | date: "%Y" | plus: 0 -%}
+{%- assign now_month = "now" | date: "%m" | plus: 0 -%}
+{%- assign axis_from = first_year | times: 12 | plus: 1 -%}
+{%- assign axis_to = now_year | times: 12 | plus: now_month | plus: 1 -%}
+<section id="career" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="mono text-base-content/70">Career</p>
+        <h2 class="mt-3 text-[clamp(1.75rem,2.2vw+1rem,3rem)] leading-[1.08] tracking-[-0.01em]">Where I've worked</h2>
+      </div>
+      <a href="/resume" class="ink-link text-[1.0625rem] font-medium whitespace-nowrap">The full résumé</a>
+    </div>
+    <div class="mt-10 border-t border-base-content/80" data-ledger style="--axis-from: {{ axis_from }}; --axis-to: {{ axis_to }}">
+      {% assign kinds = "job,other" | split: "," %}
+      {% for pass in kinds %}
+      {% for item in data.experience %}
+        {% if pass == "job" %}{% unless item.kind == "job" or item.kind == blank %}{% continue %}{% endunless %}{% else %}{% if item.kind == "job" or item.kind == blank %}{% continue %}{% endif %}{% endif %}
+        {%- assign sy = item.start | date: "%Y" | plus: 0 -%}{%- assign sm = item.start | date: "%m" | plus: 0 -%}
+        {%- if item.end != blank -%}{%- assign ey = item.end | date: "%Y" | plus: 0 -%}{%- assign em = item.end | date: "%m" | plus: 0 -%}{%- else -%}{%- assign ey = now_year -%}{%- assign em = now_month -%}{%- endif -%}
+        {%- assign span_from = sy | times: 12 | plus: sm -%}{%- assign span_to = ey | times: 12 | plus: em | plus: 1 -%}
+        <a href="/resume#{{ item.id }}" class="group grid gap-x-8 gap-y-2 border-b border-base-300 py-5 transition-colors hover:bg-base-200 md:px-3 lg:grid-cols-[11rem_1fr_18rem] lg:items-center">
+          <p class="mono text-base-content/70 lg:[&_.tenure]:block lg:[&_.tenure]:text-base-content/60 lg:[&_.tenure-sep]:hidden">{%- assign sy = item.start | date: "%Y" | plus: 0 -%}
+{%- assign sm = item.start | date: "%m" | plus: 0 -%}
+{%- if item.end != blank -%}
+  {%- assign ey = item.end | date: "%Y" | plus: 0 -%}{%- assign em = item.end | date: "%m" | plus: 0 -%}
+{%- else -%}
+  {%- assign ey = "now" | date: "%Y" | plus: 0 -%}{%- assign em = "now" | date: "%m" | plus: 0 -%}
+{%- endif -%}
+{%- assign until = ey | times: 12 | plus: em -%}{%- assign since = sy | times: 12 | plus: sm -%}{%- assign months = until | minus: since | plus: 1 -%}
+{%- assign years = months | divided_by: 12 | floor -%}{%- assign rest = months | modulo: 12 -%}
+<span class="whitespace-nowrap">{{ item.start | date: "%b %Y" }} –</span> <span class="whitespace-nowrap">{% if item.end != blank %}{{ item.end | date: "%b %Y" }}{% else %}<span class="font-medium text-accent">now</span>{% endif %}</span>{% if true %}<span class="tenure whitespace-nowrap"><span class="tenure-sep"> · </span>{% if years > 0 %}{{ years }} {% if years == 1 %}yr{% else %}yrs{% endif %}{% endif %}{% if years > 0 and rest > 0 %} {% endif %}{% if rest > 0 %}{{ rest }} {% if rest == 1 %}mo{% else %}mos{% endif %}{% endif %}</span>{% endif %}</p>
+          <div>
+            <h3 class="font-body text-[1.0625rem] leading-snug font-semibold">{{ item.role }}{% if item.kind == "contract" %} <span class="mono ml-1 rounded-field border border-base-300 px-1.5 py-0.5 align-[0.1em] text-[0.6875rem] font-normal text-base-content/70">Contract</span>{% elsif item.kind == "volunteer" %} <span class="mono ml-1 rounded-field border border-base-300 px-1.5 py-0.5 align-[0.1em] text-[0.6875rem] font-normal text-base-content/70">Volunteer</span>{% endif %}</h3>
+            <p class="text-base-content/75">{{ item.organization }}{% if item.place != blank %}, {{ item.place }}{% endif %}</p>
+            {% if item.summary != blank %}<p class="mt-1.5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-base-content/80">{{ item.summary }}</p>{% endif %}
+          </div>
+          <div class="span-track mt-2 lg:mt-0" aria-hidden="true"><span data-span data-kind="{{ item.kind | default: 'job' }}"{% if item.end == blank and item.kind == "job" %} data-now{% endif %} style="--from: {{ span_from }}; --to: {{ span_to }}"></span></div>
+        </a>
+      {% endfor %}
+      {% endfor %}
+      <div class="grid gap-x-8 pt-2 md:px-3 lg:grid-cols-[11rem_1fr_18rem]" aria-hidden="true">
+        <div class="hidden lg:col-span-2 lg:block"></div>
+        <div class="mono relative h-8 text-[0.6875rem] text-base-content/60">
+          {% for year in (first_year..now_year) %}{% assign gap = year | minus: first_year | modulo: 4 %}{% assign left = now_year | minus: year %}{% if gap == 0 and left > 1 %}<span class="axis-year" style="--at: {{ year | times: 12 | plus: 1 }}">{{ year }}</span>{% endif %}{% endfor %}
+          <span class="axis-year" style="--at: {{ axis_to }}; translate: -100% 0">now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

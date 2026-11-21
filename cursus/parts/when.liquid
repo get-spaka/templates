@@ -1,0 +1,11 @@
+{% comment %}A role's dates, "Mar 2022 – now", and with tenure: true its length, "4 yrs 9 mos", counted to today when it has no end.{% endcomment %}
+{%- assign sy = item.start | date: "%Y" | plus: 0 -%}
+{%- assign sm = item.start | date: "%m" | plus: 0 -%}
+{%- if item.end != blank -%}
+  {%- assign ey = item.end | date: "%Y" | plus: 0 -%}{%- assign em = item.end | date: "%m" | plus: 0 -%}
+{%- else -%}
+  {%- assign ey = "now" | date: "%Y" | plus: 0 -%}{%- assign em = "now" | date: "%m" | plus: 0 -%}
+{%- endif -%}
+{%- assign until = ey | times: 12 | plus: em -%}{%- assign since = sy | times: 12 | plus: sm -%}{%- assign months = until | minus: since | plus: 1 -%}
+{%- assign years = months | divided_by: 12 | floor -%}{%- assign rest = months | modulo: 12 -%}
+<span class="whitespace-nowrap">{{ item.start | date: "%b %Y" }} –</span> <span class="whitespace-nowrap">{% if item.end != blank %}{{ item.end | date: "%b %Y" }}{% else %}<span class="{{ now_class }}">now</span>{% endif %}</span>{% if tenure %}<span class="tenure whitespace-nowrap"><span class="tenure-sep"> · </span>{% if years > 0 %}{{ years }} {% if years == 1 %}yr{% else %}yrs{% endif %}{% endif %}{% if years > 0 and rest > 0 %} {% endif %}{% if rest > 0 %}{{ rest }} {% if rest == 1 %}mo{% else %}mos{% endif %}{% endif %}</span>{% endif %}

@@ -1,0 +1,19 @@
+{
+  "name": "Cursus résumé hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A serif sentence about what the person does with two buttons, beside a small one-page résumé that rises from the desk, over the terms they are open to on a mint panel.",
+  "tags": ["hero", "résumé", "CV", "profile", "open to work", "job seeker"],
+  "mood": ["professional", "editorial", "minimal"],
+  "synonyms": [
+    "hero",
+    "top of page",
+    "résumé",
+    "CV",
+    "profile",
+    "en-tête",
+    "haut de page",
+    "curriculum vitae",
+    "profil"
+  ]
+}

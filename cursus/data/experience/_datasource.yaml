@@ -1,0 +1,38 @@
+label: Experience
+fields:
+  - name: role
+    label: Role
+    kind: text
+    required: true
+  - name: organization
+    label: Organization
+    kind: text
+    required: true
+  - name: place
+    label: Town
+    kind: text
+  - name: start
+    label: Started
+    kind: date
+    required: true
+  - name: end
+    label: Ended (empty while it lasts)
+    kind: date
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [job, contract, volunteer]
+  - name: summary
+    label: In one line
+    kind: text
+  - name: points
+    label: What I did (the strongest first)
+    kind: list
+  - name: one_page
+    label: On the one-page résumé
+    kind: choice
+    choices: [full, line, out]
+  - name: highlights
+    label: Its highlights (their ids)
+    kind: list
+sort: -start

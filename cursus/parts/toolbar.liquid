@@ -1,0 +1,19 @@
+<div class="flex flex-wrap items-center gap-x-5 gap-y-3" data-print-hide>
+  <fieldset class="fold-switch" data-fold-switch>
+    <legend class="sr-only">Length of the résumé</legend>
+    <label><input type="radio" name="length" value="full" checked>Full</label>
+    <label><input type="radio" name="length" value="one">One page</label>
+  </fieldset>
+  <button type="button" class="btn btn-primary whitespace-nowrap" data-print>
+    <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="1.5"/><path d="M6 14h12v7H6z"/></svg>
+    Print or save as PDF
+  </button>
+  <div class="flex w-full flex-wrap items-center gap-x-5 gap-y-1 text-base-content/70 sm:w-auto lg:ml-auto">
+    <p class="mono hidden lg:block" aria-live="polite">
+      <span data-count="plain">Letter · lines mark each page's end</span>
+      <span data-count="one" class="items-center gap-1.5"><svg class="terms-check size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Fits on one page</span>
+      <span data-count="more">Runs to <span data-slot="pages">2</span> pages</span>
+    </p>
+    {% render 'updated' %}
+  </div>
+</div>

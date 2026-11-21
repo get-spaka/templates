@@ -1,0 +1,20 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-20 md:px-8 md:pt-28">
+    <div class="max-w-2xl" data-reveal>
+      <p class="mono text-base-content/70">In figures</p>
+      <h2 class="mt-3 text-[clamp(1.75rem,2.2vw+1rem,3rem)] leading-[1.08] tracking-[-0.01em] text-balance">What I run today</h2>
+    </div>
+    <dl class="mt-10 grid border-y border-base-300 sm:grid-cols-2 lg:grid-cols-4" data-reveal="stagger">
+      {% for stat in data["home-figures"] %}
+      <div class="border-base-300 py-7 sm:px-6 sm:first:pl-0 max-sm:not-last:border-b sm:even:border-l lg:border-l lg:first:border-l-0 sm:max-lg:nth-[n+3]:border-t">
+        <dt class="sr-only">{{ stat.label }}</dt>
+        <dd>
+          <p class="font-heading text-[clamp(2.75rem,3.5vw+1rem,4rem)] leading-none text-primary">{{ stat.value }}</p>
+          <p class="mt-3 font-semibold">{{ stat.label }}</p>
+          {% if stat.note != blank %}<p class="mt-1 text-[0.9375rem] text-base-content/70">{{ stat.note }}</p>{% endif %}
+        </dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>

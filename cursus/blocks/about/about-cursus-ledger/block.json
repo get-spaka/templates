@@ -1,0 +1,13 @@
+{
+  "name": "Cursus career ledger",
+  "kind": "about",
+  "source": "upstart",
+  "description": "The career as a ruled ledger: each role's dates and length in a mono, the role, the organization and a line, and a thin bar on one shared line of years that grows as it comes into view, so tenure, overlaps and gaps read at a glance.",
+  "tags": ["career", "experience", "timeline", "résumé", "CV", "work history"],
+  "mood": ["professional", "editorial", "minimal"],
+  "synonyms": ["career", "experience", "work history", "timeline", "parcours", "expérience", "carrière", "chronologie"],
+  "data": {
+    "name": "experience",
+    "family": "collection"
+  }
+}

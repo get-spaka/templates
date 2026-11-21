@@ -1,0 +1,31 @@
+label: Skills
+fields:
+  - name: name
+    label: Skill
+    kind: text
+    required: true
+  - name: group
+    label: Group
+    kind: choice
+    choices: [known-for, tools, languages]
+  - name: evidence
+    label: Where, or how well
+    kind: text
+  - name: one_page
+    label: On the one-page résumé
+    kind: boolean
+order:
+  [
+    routing-and-fleet-scheduling,
+    warehouse-and-cold-chain,
+    volunteer-workforce-planning,
+    budgets-and-grant-reporting,
+    opening-new-sites,
+    excel-and-power-bi,
+    netsuite,
+    samsara,
+    volgistics,
+    english,
+    igbo,
+    spanish,
+  ]

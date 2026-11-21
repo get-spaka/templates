@@ -1,0 +1,81 @@
+{% comment %}
+The résumé, typeset in print units: the same records as the site. mini: true writes the small sheet of the home page (always folded to one page, with no ids).
+What folds on one page is said by the records (one_page) and by data-fold on a section: "out" leaves it out, "line" keeps one line.
+{% endcomment %}
+<article class="sheet" data-sheet{% if mini %}="one"{% endif %}{% unless mini %} aria-label="Résumé"{% endunless %}>
+  {% unless mini %}
+  <span class="page-end" style="--n: 1" aria-hidden="true"><span>End of page 1</span></span>
+  <span class="page-end" style="--n: 2" aria-hidden="true"><span>End of page 2</span></span>
+  <span class="page-end" style="--n: 3" aria-hidden="true"><span>End of page 3</span></span>
+  {% endunless %}
+  <div data-sheet-body>
+    <header>
+      <div class="sheet-head">
+        <div>
+          {% if mini %}<p class="sheet-name">{% render 'contact-line', show: 'name' %}</p>{% else %}<h1 class="sheet-name">{% render 'contact-line', show: 'name' %}</h1>{% endif %}
+          <p class="sheet-headline">Operations lead · logistics, warehousing and food access</p>
+        </div>
+        <span class="monogram" aria-hidden="true">HA</span>
+      </div>
+      <hr class="sheet-rule">
+      <p class="sheet-contact">{% render 'contact-line' %}</p>
+      {% render 'terms', data: data, variant: 'line' %}
+    </header>
+
+    <section class="sheet-section">
+      <h2 class="sheet-label">Summary</h2>
+      <p class="sheet-text">Operations leader with thirteen years in logistics and warehousing, the last eight in food. I run the trucks, warehouses and schedules that get food to 140 pantries in two states, and I make that work steady for the staff and volunteers who do it. Known for routes that run on time, cold chains that hold and night shifts people stay on.</p>
+    </section>
+
+    <section class="sheet-section">
+      <h2 class="sheet-label">Experience</h2>
+      {% for item in data.experience %}{% if item.kind == "job" or item.kind == blank %}{% render 'sheet-entry', item: item, mini: mini %}{% endif %}{% endfor %}
+      {% assign others = 0 %}{% assign others_in = 0 %}
+      {% for item in data.experience %}{% if item.kind == "contract" or item.kind == "volunteer" %}{% assign others = others | plus: 1 %}{% unless item.one_page == "out" %}{% assign others_in = others_in | plus: 1 %}{% endunless %}{% endif %}{% endfor %}
+      {% if others > 0 %}
+      <div{% if others_in == 0 %} data-fold="out"{% endif %}>
+        <h3 class="sheet-sublabel">Contracts and volunteering</h3>
+        {% for item in data.experience %}{% if item.kind == "contract" or item.kind == "volunteer" %}{% render 'sheet-entry', item: item, mini: mini %}{% endif %}{% endfor %}
+      </div>
+      {% endif %}
+    </section>
+
+    <section class="sheet-section">
+      <h2 class="sheet-label">Skills</h2>
+      {% assign groups = "known-for,tools,languages" | split: "," %}
+      {% for group in groups %}
+        {% assign kept = 0 %}{% assign count = 0 %}
+        {% for skill in data.skills %}{% if skill.group == group %}{% assign count = count | plus: 1 %}{% if skill.one_page %}{% assign kept = kept | plus: 1 %}{% endif %}{% endif %}{% endfor %}
+        {% if count > 0 %}
+        <p class="sheet-row"{% if kept == 0 %} data-fold="out"{% endif %}><span class="sheet-k">{% if group == "known-for" %}Known for{% elsif group == "tools" %}Tools{% else %}Languages{% endif %}</span> <span class="dot-list">{% for skill in data.skills %}{% if skill.group == group %}<span{% unless skill.one_page %} data-fold="out"{% endunless %}>{{ skill.name }}{% if group == "languages" and skill.evidence != blank %} <span class="cred-detail">({{ skill.evidence }})</span>{% endif %}</span> {% endif %}{% endfor %}</span></p>
+        {% endif %}
+      {% endfor %}
+    </section>
+
+    <section class="sheet-section">
+      <h2 class="sheet-label">Education and credentials</h2>
+      {% for item in data.education %}{% if item.kind == "degree" %}
+      <div class="entry" data-fold="{{ item.one_page | default: 'full' }}">
+        <p class="entry-dates">{{ item.year }}</p>
+        <div class="entry-main">
+          <h3 class="entry-role">{{ item.title }} <span class="entry-org">· {{ item.school }}{% if item.place != blank %}, {{ item.place }}{% endif %}</span></h3>
+          {% if item.note != blank %}<p class="entry-summary" data-fold-detail>{{ item.note }}</p>{% endif %}
+        </div>
+      </div>
+      {% endif %}{% endfor %}
+      <div class="entry">
+        <p class="entry-dates">Credentials</p>
+        <ul class="cred-list" data-creds>
+          {% for item in data.education %}{% if item.kind == "credential" %}
+          <li data-fold="{{ item.one_page | default: 'full' }}"><span>{{ item.title }}</span><span class="cred-detail" data-fold-detail>{% if item.school != blank %}, {{ item.school }}{% endif %}</span> <span class="cred-detail">{{ item.year }}</span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="sheet-section" data-fold="out">
+      <h2 class="sheet-label">References</h2>
+      <p>From two former managers, on request.</p>
+    </section>
+  </div>
+</article>

@@ -1,0 +1,9 @@
+label: Contact questions
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [why-leaving, relocate, contract-work, how-soon, references]

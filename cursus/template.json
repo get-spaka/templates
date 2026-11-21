@@ -1,0 +1,10 @@
+{
+  "id": "cursus",
+  "version": "1.0.0",
+  "name": "Cursus",
+  "description": "A résumé site that is the résumé: one person's career as a typeset sheet that folds from its full length to a one-page CV and prints as shown, the terms they are open to on mint, and each role drawn as a span of time.",
+  "category": "portfolio",
+  "tags": ["résumé", "CV", "job seeker", "freelancer", "consultant", "professional profile", "career", "printable"],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

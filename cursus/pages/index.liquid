@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Hollis Amadi — Operations lead, Cincinnati, Ohio</title>
+<meta name="description" content="Hollis Amadi, operations lead in Cincinnati: thirteen years in logistics and warehousing, the last eight in food. Open to head of operations or COO roles from February 2027.">
+<meta property="og:title" content="Hollis Amadi — Operations lead, Cincinnati, Ohio">
+<meta property="og:description" content="Trucks, warehouses, schedules and the people who make them work. The résumé, the figures behind it, and how to get in touch.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'hero' %}
+{% render 'figures' %}
+{% render 'ledger' %}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div class="max-w-2xl">
+        <p class="mono text-base-content/70">Highlights</p>
+        <h2 class="mt-3 text-[clamp(1.75rem,2.2vw+1rem,3rem)] leading-[1.08] tracking-[-0.01em] text-balance">Four things I'd tell you about in an interview</h2>
+      </div>
+      <a href="/highlights" class="ink-link text-[1.0625rem] font-medium whitespace-nowrap">All highlights</a>
+    </div>
+    <div class="mt-10">{% render 'highlight-rows', featured: true %}</div>
+  </div>
+</section>
+{% render 'skills' %}
+{% render 'quotes', class: 'bg-base-100 border-t border-base-300' %}
+{% render 'take-away' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+label: Highlights
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: figure
+    label: Its figure
+    kind: text
+  - name: figure_label
+    label: What the figure measures
+    kind: text
+  - name: role
+    label: Role
+    kind: text
+  - name: organization
+    label: Organization
+    kind: text
+  - name: year
+    label: Year
+    kind: text
+  - name: summary
+    label: In a sentence
+    kind: text
+  - name: cover
+    label: Cover picture (optional)
+    kind: image
+  - name: situation
+    label: The situation
+    kind: text
+  - name: changed
+    label: What changed
+    kind: list
+  - name: quote
+    label: Who saw it, in their words
+    kind: text
+  - name: quote_by
+    label: Their name and role
+    kind: text
+  - name: quote_relation
+    label: How they know you
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: body
+    label: What I did
+    kind: markdown
+body: body
+order: [every-pantry-on-time, a-second-warehouse, keeping-it-cold, the-night-shift-stayed]

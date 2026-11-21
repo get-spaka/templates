@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.45 0.15 270);
+  --theme-color-primary-content: oklch(0.985 0.004 270);
+  --theme-color-secondary: oklch(0.92 0.045 170);
+  --theme-color-secondary-content: oklch(0.23 0.035 270);
+  --theme-color-accent: oklch(0.47 0.09 165);
+  --theme-color-accent-content: oklch(0.985 0.004 270);
+  --theme-color-neutral: oklch(0.26 0.07 270);
+  --theme-color-neutral-content: oklch(0.985 0.004 270);
+  --theme-color-surface: oklch(0.985 0.004 270);
+  --theme-color-surface-alt: oklch(0.935 0.014 270);
+  --theme-color-border: oklch(0.87 0.013 270);
+  --theme-color-text: oklch(0.23 0.035 270);
+  --theme-font-heading: "Hedvig Letters Serif", ui-serif, Georgia, serif;
+  --theme-font-body: "Radio Canada Big", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0.5rem;
+  --theme-radius-field: 0.375rem;
+  --theme-depth: 0;
+  --theme-size: 0.25rem;
+  --theme-border: 1px;
+}

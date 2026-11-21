@@ -1,0 +1,17 @@
+label: What I'm open to
+fields:
+  - name: label
+    label: Label
+    kind: text
+    required: true
+  - name: words
+    label: In words
+    kind: text
+    required: true
+  - name: accepted
+    label: A kind of work accepted (a check before it)
+    kind: boolean
+  - name: on_sheet
+    label: Also in the résumé's head
+    kind: boolean
+order: [looking-for, kind-of-work, from, where, also]

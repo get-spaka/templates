@@ -1,0 +1,27 @@
+label: Education and credentials
+fields:
+  - name: title
+    label: Degree or credential
+    kind: text
+    required: true
+  - name: school
+    label: School or body
+    kind: text
+  - name: place
+    label: Town
+    kind: text
+  - name: year
+    label: Year
+    kind: text
+  - name: kind
+    label: Kind
+    kind: choice
+    choices: [degree, credential]
+  - name: note
+    label: Note
+    kind: text
+  - name: one_page
+    label: On the one-page résumé
+    kind: choice
+    choices: [full, line, out]
+order: [ba-geography, food-protection-manager, cpim, lean-six-sigma-green-belt, osha-30]

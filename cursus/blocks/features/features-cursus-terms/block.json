@@ -1,0 +1,22 @@
+{
+  "name": "Cursus terms",
+  "kind": "features",
+  "source": "upstart",
+  "description": "What the person is open to, as a short form filled in on a mint panel: a label and its words on each row, a check before each kind of work accepted, and a button to ask.",
+  "tags": ["availability", "open to work", "terms", "job seeker", "freelance", "résumé"],
+  "mood": ["professional", "minimal", "friendly"],
+  "synonyms": [
+    "availability",
+    "open to work",
+    "what I'm looking for",
+    "terms",
+    "disponibilité",
+    "ouvert aux opportunités",
+    "ce que je recherche",
+    "conditions"
+  ],
+  "data": {
+    "name": "terms",
+    "family": "collection"
+  }
+}

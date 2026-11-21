@@ -1,0 +1,18 @@
+{
+  "name": "Cursus contact band",
+  "kind": "cta",
+  "source": "upstart",
+  "description": "A band on night: a short invitation in the serif, the reply time, the email set large in mint, and two buttons, to get in touch or save the one-page résumé.",
+  "tags": ["cta", "call to action", "contact", "email", "résumé", "hire"],
+  "mood": ["dark", "professional", "elegant"],
+  "synonyms": [
+    "call to action",
+    "contact band",
+    "get in touch",
+    "hire me",
+    "appel à l'action",
+    "bandeau contact",
+    "me contacter",
+    "travaillons ensemble"
+  ]
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.title }} — Hollis Amadi</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.title }} — Hollis Amadi">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<article class="bg-base-100 text-base-content">
+  <header class="bg-base-200">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 pt-14 pb-14 md:px-8 md:pt-20 md:pb-20 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <a href="/highlights" class="mono inline-flex items-center gap-1.5 text-base-content/70 hover:text-base-content" data-print-hide><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg>Highlights</a>
+        <p class="font-heading mt-8 text-[clamp(4.5rem,9vw+1rem,8.5rem)] leading-[0.9] tracking-[-0.025em] text-primary">{{ record.figure }}</p>
+        <p class="mono mt-4 max-w-[34ch] text-[0.9375rem] text-base-content/75">{{ record.figure_label }}</p>
+        <h1 class="mt-8 text-[clamp(2.25rem,3.5vw+1rem,4rem)] leading-[1.05] tracking-[-0.015em] text-balance">{{ record.title }}</h1>
+        <p class="mono mt-5 text-base-content/70">{{ record.role }} · {{ record.organization }} · {{ record.year }}</p>
+      </div>
+      {% if record.cover %}<div class="lg:col-span-5"><img src="{{ record.cover }}" class="aspect-[4/3] w-full rounded-box object-cover" data-photo></div>{% endif %}
+    </div>
+  </header>
+  <div class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+    <div class="divide-y divide-base-300 border-y border-base-300">
+      <section class="grid gap-4 py-10 md:grid-cols-[14rem_1fr] md:gap-10" data-reveal>
+        <h2 class="mono pt-1 text-[0.8125rem] text-base-content/70">The situation</h2>
+        <p class="max-w-[62ch] text-[1.1875rem] leading-relaxed">{{ record.situation }}</p>
+      </section>
+      <section class="grid gap-4 py-10 md:grid-cols-[14rem_1fr] md:gap-10" data-reveal>
+        <h2 class="mono pt-1 text-[0.8125rem] text-base-content/70">What I did</h2>
+        <div class="prose-cursus">{{ record.body }}</div>
+      </section>
+      <section class="grid gap-4 py-10 md:grid-cols-[14rem_1fr] md:gap-10" data-reveal>
+        <h2 class="mono pt-1 text-[0.8125rem] text-base-content/70">What changed</h2>
+        <ul class="grid gap-4 sm:grid-cols-3" data-reveal="stagger">
+          {% for change in record.changed %}
+          <li class="rounded-box bg-secondary p-5 leading-snug text-secondary-content">{{ change }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% if record.quote != blank %}
+      <section class="grid gap-4 py-10 md:grid-cols-[14rem_1fr] md:gap-10" data-reveal>
+        <h2 class="mono pt-1 text-[0.8125rem] text-base-content/70">Who saw it</h2>
+        <figure>
+          <blockquote><p class="max-w-[46ch] text-[clamp(1.375rem,1.4vw+1rem,2rem)] leading-snug italic">“{{ record.quote }}”</p></blockquote>
+          <figcaption class="mt-5"><span class="font-semibold">{{ record.quote_by }}</span>{% if record.quote_relation != blank %}<span class="mono mt-1 block text-base-content/70">{{ record.quote_relation }}</span>{% endif %}</figcaption>
+        </figure>
+      </section>
+      {% endif %}
+    </div>
+    {% for item in data.experience %}{% if item.highlights contains record.id %}
+    <p class="mt-10 flex flex-wrap items-baseline gap-x-2 text-[1.0625rem] text-base-content/80" data-print-hide>This is on my résumé as <a href="/resume#{{ item.id }}" class="ink-link font-medium">{{ item.role }}, {{ item.organization }}, {% render 'when', item: item %}</a></p>
+    {% break %}{% endif %}{% endfor %}
+  </div>
+  <nav class="border-t border-base-300 bg-base-200" aria-label="More highlights" data-print-hide>
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 px-5 py-10 md:px-8">
+      {% assign found = false %}{% assign next = data.highlights.first %}
+      {% for item in data.highlights %}{% if found %}{% assign next = item %}{% break %}{% endif %}{% if item.id == record.id %}{% assign found = true %}{% endif %}{% endfor %}
+      {% if next.id != record.id %}
+      <a href="/highlights/{{ next.id }}" class="group">
+        <span class="mono text-base-content/70">Next</span>
+        <span class="font-heading mt-1 block text-[1.625rem] leading-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">{{ next.title }}</span>
+      </a>
+      {% endif %}
+      <a href="/highlights" class="btn btn-outline whitespace-nowrap">All highlights</a>
+    </div>
+  </nav>
+</article>
+</main>
+{% render 'footer' %}
+</body>
+</html>

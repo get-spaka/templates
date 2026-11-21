@@ -1,0 +1,13 @@
+{% comment %}One role on the résumé: its dates in the left column, then the role, the organization and town, its line and its points. Its one_page field says what folds.{% endcomment %}
+<div class="entry" data-entry data-fold="{{ item.one_page | default: 'full' }}"{% unless mini %} id="{{ item.id }}"{% endunless %}>
+  <p class="entry-dates">{% render 'when', item: item %}</p>
+  <div class="entry-main">
+    <h3 class="entry-role">{{ item.role }} <span class="entry-org">· {{ item.organization }}{% if item.place != blank %}, {{ item.place }}{% endif %}</span></h3>
+    {% if item.summary != blank %}<p class="entry-summary" data-fold-detail>{{ item.summary }}</p>{% endif %}
+    {% if item.points.size > 0 %}
+    <ul class="entry-points" data-points data-fold-detail>
+      {% for point in item.points %}<li>{{ point }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</div>

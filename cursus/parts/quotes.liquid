@@ -1,0 +1,31 @@
+{% comment %}Colleagues' words: one large in the body's italic, then (unless single: true) the next two smaller. offset picks where to start.{% endcomment %}
+{% assign start = offset | default: 0 %}
+<section class="{{ class | default: 'bg-base-100' }} text-base-content">
+  <div class="mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+    <p class="mono text-base-content/70" data-reveal>In their words</p>
+    {% for item in data.testimonials offset: start limit: 1 %}
+    <figure class="mt-8 max-w-4xl" data-reveal>
+      <blockquote>
+        <p class="font-body text-[clamp(1.625rem,2.2vw+1rem,2.75rem)] leading-[1.25] tracking-[-0.01em] text-balance italic">“{{ item.quote }}”</p>
+      </blockquote>
+      <figcaption class="mt-8 flex items-start gap-4">
+        <span class="mt-3 h-px w-10 shrink-0 bg-primary" aria-hidden="true"></span>
+        <p><span class="font-semibold">{{ item.name }}</span>{% if item.role != blank %}<span class="text-base-content/75">, {{ item.role }}</span>{% endif %}{% if item.relation != blank %}<span class="mono mt-1 block text-base-content/70">{{ item.relation }}</span>{% endif %}</p>
+      </figcaption>
+    </figure>
+    {% endfor %}
+    {% unless single %}
+    {% assign next = start | plus: 1 %}
+    {% if data.testimonials.size > next %}
+    <div class="mt-16 grid gap-10 border-t border-base-300 pt-10 md:grid-cols-2" data-reveal="stagger">
+      {% for item in data.testimonials offset: next limit: 2 %}
+      <figure>
+        <blockquote><p class="text-[1.1875rem] leading-relaxed text-base-content/85 italic">“{{ item.quote }}”</p></blockquote>
+        <figcaption class="mt-4 text-[0.9375rem]"><span class="font-semibold">{{ item.name }}</span>{% if item.role != blank %}<span class="text-base-content/75">, {{ item.role }}</span>{% endif %}{% if item.relation != blank %}<span class="mono mt-1 block text-base-content/70">{{ item.relation }}</span>{% endif %}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endunless %}
+  </div>
+</section>

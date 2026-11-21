@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Get in touch — Hollis Amadi, operations lead</title>
+<meta name="description" content="Write to Hollis Amadi about a role, a short project or a question about food logistics. An answer within two working days.">
+<meta property="og:title" content="Get in touch — Hollis Amadi, operations lead">
+<meta property="og:description" content="A role, a short project or a question about food logistics: I read everything and answer within two working days.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-6xl px-5 pt-16 pb-14 md:px-8 md:pt-24 md:pb-20">
+    <div class="max-w-3xl" data-reveal>
+      <p class="mono text-base-content/70">Contact</p>
+      <h1 class="mt-4 text-[clamp(2.5rem,4.5vw+1rem,5rem)] leading-[1.04] tracking-[-0.015em]">Get in touch</h1>
+      <p class="mt-6 max-w-[58ch] text-[1.125rem] leading-relaxed text-base-content/80">Whether it's a role, a short project, or a question about food logistics, I read everything and answer within two working days.</p>
+    </div>
+    <div class="mt-12" data-reveal>{% render 'terms', cta: false %}</div>
+  </div>
+</section>
+{% render 'contact-form' %}
+{% render 'contact-faq' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>
