@@ -20364,11 +20364,12 @@ function readTemplate(files) {
 	const credits = [...files.keys()].filter((p) => p.startsWith("media/") && !isInfoFile(p, files)).map((path) => {
 		const info = files.get(infoFile(path))?.toString("utf8");
 		try {
-			const credit = info ? JSON.parse(info).credit : void 0;
-			return credit ? {
+			const read = info ? JSON.parse(info) : {};
+			return {
 				path,
-				credit
-			} : { path };
+				...read.credit ? { credit: read.credit } : {},
+				...read.generated ? { generated: read.generated } : {}
+			};
 		} catch {
 			return { path };
 		}
@@ -20430,6 +20431,8 @@ function shotPages(files) {
 const LIBRARY_HOSTS = /* @__PURE__ */ new Set(["cdn.jsdelivr.net", "unpkg.com"]);
 /** Field kinds an older app reads as text, and the app version that knows them (Q368). */
 const FIELD_KIND_APP = { images: "0.2.0" };
+/** The app version that keeps a generated image's model and prompt in place of its credits (Q428, Q432). */
+const GENERATED_APP = "0.2.0";
 const MEDIA_LIMIT = 3145728;
 const TOTAL_LIMIT = 52428800;
 /**
@@ -20508,14 +20511,18 @@ function checkTemplate(files, { finished = false } = {}) {
 		const found = remote.exec(text(path))?.[0];
 		if (found) errors.push(`${path}: "${found}…" is taken from another site; put the file in media/ (or fonts/).`);
 	}
-	for (const { path, credit } of template.credits) {
+	for (const { path, credit, generated } of template.credits) {
 		if (!/\.(?:jpe?g|png|webp|gif|avif|svg|mp4|webm)$/i.test(path)) continue;
-		if (!credit?.license) {
+		if (generated && !credit) {
+			if (typeof generated.model !== "string" || !generated.model || typeof generated.prompt !== "string" || !generated.prompt.trim()) errors.push(`${path} is generated: ${infoFile(path)} gives the model and the prompt it was generated with.`);
+			if (olderVersion(manifest.app ?? "0.0.0", "0.2.0")) errors.push(`${path} is generated: it needs Upstart ${GENERATED_APP} or later: add "app": "${GENERATED_APP}" to template.json.`);
+		} else if (!credit?.license) {
 			errors.push(`${path} has no credit: ${infoFile(path)} gives its licence, its author and where it was found.`);
 			continue;
+		} else {
+			if (/\bnc\b|\bnd\b|non-?commercial|no-?deriv/i.test(credit.license)) errors.push(`${path}: ${credit.license} forbids a business site or changes; take an image under CC0, CC BY or CC BY-SA.`);
+			if (needsCredit(credit.license) && !credit.author) errors.push(`${path}: ${credit.license} asks for its author.`);
 		}
-		if (/\bnc\b|\bnd\b|non-?commercial|no-?deriv/i.test(credit.license)) errors.push(`${path}: ${credit.license} forbids a business site or changes; take an image under CC0, CC BY or CC BY-SA.`);
-		if (needsCredit(credit.license) && !credit.author) errors.push(`${path}: ${credit.license} asks for its author.`);
 		const info = text(infoFile(path));
 		if (/\.(?:jpe?g|png|webp|gif|avif|svg)$/i.test(path) && !/"alt"\s*:\s*"[^"]/.test(info)) warnings.push(`${path} has no alternative text in ${infoFile(path)}.`);
 	}
