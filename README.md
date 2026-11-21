@@ -24,4 +24,14 @@ The CI gives it the latest release's catalogue, so that the earlier versions an 
 
 Upstart's own repository has this one as a submodule, with the commands that check a template, photograph its pages and find its images, and the skill its agents follow to make one. `scripts/release.mjs` is the app's own checks, bundled there: it is not edited here.
 
+## Lint
+
+Biome checks every file with `biome.json`, as Upstart's repository does when it points to a commit here, and as the CI does on each push (`.github/workflows/lint.yml`). A pre-commit hook in `.githooks` runs it on the staged files: Upstart's `pnpm install` turns it on in the submodule; in a clone of this repository alone, turn it on with
+
+```sh
+git config core.hooksPath .githooks
+```
+
+The hook and the CI use Biome 2.6.6, the version in Upstart's `package.json`: change them together.
+
 Each template's licence is in its `template.json`; its fonts, libraries and images carry their own licences and credits in its folders.

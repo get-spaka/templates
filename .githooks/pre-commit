@@ -1,0 +1,15 @@
+#!/bin/sh
+# Before each commit, the lint the CI runs: Biome on the staged files, with
+# this repository's biome.json. Inside Upstart's repository, whose
+# `pnpm install` turns it on, it uses that repository's Biome; in a clone of
+# its own, turned on with `git config core.hooksPath .githooks`, the version
+# pinned here through npx. `git commit --no-verify` skips it once.
+super=$(git rev-parse --show-superproject-working-tree)
+biome() {
+  if [ -n "$super" ] && [ -x "$super/node_modules/.bin/biome" ]; then "$super/node_modules/.bin/biome" "$@"
+  else npx --yes @biomejs/biome@2.6.6 "$@"; fi
+}
+if ! biome check --staged --no-errors-on-unmatched --files-ignore-unknown=true; then
+  echo "pre-commit: the lint fails on the files above. biome check --write fixes most of it; stage the fix and commit again." >&2
+  exit 1
+fi

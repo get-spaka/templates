@@ -1,0 +1,18 @@
+# The lint Upstart's repository runs on this one as its submodule, on every
+# push and pull request: Biome with this repository's biome.json, at the
+# version Upstart's repository uses (keep the two the same).
+name: Lint
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npx --yes @biomejs/biome@2.6.6 ci .
