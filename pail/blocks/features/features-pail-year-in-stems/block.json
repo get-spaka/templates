@@ -1,0 +1,22 @@
+{
+  "name": "Pail year in stems",
+  "kind": "features",
+  "source": "upstart",
+  "description": "The twelve months as ruled rows, each with its name in a high-contrast serif, a line on what's in and the stems of that month as small color swatches with their names, grown nearby or brought in; the current month is marked \"Now\" and opened on a phone.",
+  "tags": ["season", "calendar", "flowers", "months", "what's in season"],
+  "mood": ["elegant", "minimal"],
+  "synonyms": [
+    "seasonal calendar",
+    "what's in season",
+    "flower calendar",
+    "months",
+    "calendrier des saisons",
+    "fleurs de saison",
+    "mois par mois",
+    "saisonnalité"
+  ],
+  "data": {
+    "name": "stems",
+    "family": "collection"
+  }
+}

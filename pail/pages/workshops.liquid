@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Workshops — Incline Flowers, Pittsburgh</title>
+<meta name="description" content="Flower workshops once a month in the old meat locker on the South Side: twelve seats, $95 with the stems, the tools and a cup of coffee. Branches in March, peonies in June, dahlias in September, wreaths in December.">
+<meta property="og:title" content="Workshops — Incline Flowers, Pittsburgh">
+<meta property="og:description" content="Flower workshops once a month in the old meat locker on the South Side: twelve seats, $95 with the stems, the tools and a cup of coffee. Branches in March, peonies in June, dahlias in September, wreaths in December.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'page-title', label: "Workshops", title: "Workshops", intro: "Twelve seats around the old butcher's block. We bring the stems, the snips and the coffee." %}
+{% render 'workshop-list' %}
+{% render 'workshop-form' %}
+{% render 'private-workshops' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+label: The day's runs
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: icon
+    kind: choice
+    choices: [spark, chat, phone, calendar, clipboard, cart, package, truck, tool, home, check, smile]
+order: [order-by-the-cutoff, we-build-it-by-two, the-van-leaves, a-photo-at-the-door]

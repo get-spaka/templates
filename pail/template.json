@@ -1,0 +1,27 @@
+{
+  "id": "pail",
+  "version": "1.0.0",
+  "name": "Pail",
+  "description": "A flower shop read like its sidewalk on a market morning: this week's stems standing in zinc pails with their enamel price plates, picked by the visitor for their bunch, a line on every page saying whether an order goes out today, and a ZIP code check.",
+  "category": "business",
+  "tags": [
+    "florist",
+    "flower shop",
+    "flowers",
+    "delivery",
+    "weddings",
+    "events",
+    "subscriptions",
+    "workshops",
+    "seasonal"
+  ],
+  "author": {
+    "name": "Upstart",
+    "url": "https://upstart.gg"
+  },
+  "licence": "MIT",
+  "app": "0.2.0",
+  "shoot": {
+    "clock": "2027-05-12T10:30:00-04:00"
+  }
+}

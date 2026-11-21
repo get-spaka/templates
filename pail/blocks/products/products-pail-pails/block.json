@@ -1,0 +1,22 @@
+{
+  "name": "Pail pails of the week",
+  "kind": "products",
+  "source": "upstart",
+  "description": "This week's stems as a row of galvanized pails on a zinc shelf, each a tall photo with its riveted enamel plate and price, its grower and vase life; every pail is a checkbox, picked stems lift out of their pails, a counter says how many are picked, and the bunch is sent to the order form.",
+  "tags": ["products", "flowers", "stems", "this week", "pick", "bunch", "florist"],
+  "mood": ["elegant", "friendly"],
+  "synonyms": [
+    "stems of the week",
+    "this week's flowers",
+    "pick a bunch",
+    "flower list",
+    "fleurs de la semaine",
+    "les seaux",
+    "composer un bouquet",
+    "arrivage"
+  ],
+  "data": {
+    "name": "stems",
+    "family": "collection"
+  }
+}

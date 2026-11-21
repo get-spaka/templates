@@ -1,0 +1,43 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] items-end gap-12 px-5 pt-14 pb-20 md:px-8 md:pt-20 md:pb-24 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7 lg:pb-10" data-reveal>
+      <p class="mono text-base-content/75">Flower shop &amp; studio · South Side, Pittsburgh</p>
+      <h1 class="mt-5 text-[clamp(3rem,6.5vw+1rem,6.75rem)] leading-[0.98] tracking-[-0.015em]">Picked this morning. On your table by tonight.</h1>
+      <p class="body-copy mt-7 max-w-[54ch] text-[1.125rem]">Flowers from growers within a hundred miles from May to October, chosen by the stem, wrapped by hand, and driven across the rivers in our van.</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/flowers#order" class="btn btn-primary btn-lg whitespace-nowrap">Order flowers</a>
+        <a href="#this-week" class="btn btn-outline btn-lg whitespace-nowrap">See what's in</a>
+      </div>
+      <p class="mono-md mt-9 text-[1.0625rem] font-medium"><span data-when="plain">Same-day delivery when you order by 1&nbsp;pm, Tuesday to Saturday</span><span data-when="today">Order by <span data-slot="cutoff"></span> for delivery today</span><span data-when="tomorrow">Order now for delivery tomorrow, <span data-slot="next_day"></span></span><span data-when="later-pickup">We deliver again on <span data-slot="next_day"></span>; pick up today until <span data-slot="closes"></span></span><span data-when="later">Order now for delivery on <span data-slot="next_day"></span></span></p>
+    </div>
+    {% assign week = data.stems | where: "this_week" %}
+    {% assign tall = week | where: "height", "tall" %}
+    {% assign medium = week | where: "height", "medium" %}
+    <div class="hero-pails lg:col-span-5" data-pails>
+      {% if medium[0] %}<div class="pail" data-pail data-height="{{ medium[0].height }}">
+  <span class="pail-stem-empty" aria-hidden="true"></span></span>
+    <span class="pail-can"><span class="pail-body" aria-hidden="true"></span><span class="pail-handle" aria-hidden="true"></span><span class="pail-rim" aria-hidden="true"></span><span class="pail-plate">${{ medium[0].price }} a stem</span></span>
+  </span>
+  <span class="pail-text">
+    <span class="pail-name">{{ medium[0].name }}</span>
+    <span class="pail-line">{{ medium[0].grower }} · {{ medium[0].distance }} · {{ medium[0].vase_life }} days in the vase</span>
+    </div>{% endif %}
+      {% if tall[0] %}<div class="pail" data-pail data-height="{{ tall[0].height }}">
+  <span class="pail-stem-empty" aria-hidden="true"></span></span>
+    <span class="pail-can"><span class="pail-body" aria-hidden="true"></span><span class="pail-handle" aria-hidden="true"></span><span class="pail-rim" aria-hidden="true"></span><span class="pail-plate">${{ tall[0].price }} a stem</span></span>
+  </span>
+  <span class="pail-text">
+    <span class="pail-name">{{ tall[0].name }}</span>
+    <span class="pail-line">{{ tall[0].grower }} · {{ tall[0].distance }} · {{ tall[0].vase_life }} days in the vase</span>
+    </div>{% endif %}
+      {% if medium[1] %}<div class="pail" data-pail data-height="{{ medium[1].height }}">
+  <span class="pail-stem-empty" aria-hidden="true"></span></span>
+    <span class="pail-can"><span class="pail-body" aria-hidden="true"></span><span class="pail-handle" aria-hidden="true"></span><span class="pail-rim" aria-hidden="true"></span><span class="pail-plate">${{ medium[1].price }} a stem</span></span>
+  </span>
+  <span class="pail-text">
+    <span class="pail-name">{{ medium[1].name }}</span>
+    <span class="pail-line">{{ medium[1].grower }} · {{ medium[1].distance }} · {{ medium[1].vase_life }} days in the vase</span>
+    </div>{% endif %}
+    </div>
+  </div>
+</section>

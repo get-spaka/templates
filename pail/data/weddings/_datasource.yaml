@@ -1,0 +1,36 @@
+label: Weddings
+fields:
+  - name: title
+    label: The couple
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: venue
+    label: Venue
+    kind: text
+  - name: guests
+    label: Guests
+    kind: number
+  - name: service
+    label: Service
+    kind: choice
+    choices: [full service, market pails]
+  - name: cover
+    label: Cover photo
+    kind: image
+  - name: photos
+    label: Photos
+    kind: images
+  - name: stems
+    label: Stems in it (as named on the stems)
+    kind: list
+  - name: summary
+    label: Summary
+    kind: text
+  - name: body
+    label: The story
+    kind: markdown
+body: body
+order: [ana-and-mo, priya-and-sam, carmen-and-joel, kate-and-ruth]

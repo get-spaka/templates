@@ -1,0 +1,60 @@
+label: Orders
+collected: true
+answer: orders-thanks
+body: card
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us at (412) 555-0147."
+  sent: "Thank you, your order was sent. We'll call you within the hour, while the shop is open, to confirm and take payment."
+fields:
+  - name: stems
+    label: The stems you picked
+    kind: list
+  - name: size
+    label: Size
+    kind: choice
+    required: true
+    choices: [handful, armful, bucketful]
+  - name: vase
+    label: In a vase, $18
+    kind: boolean
+  - name: how
+    label: Delivery or pickup
+    kind: choice
+    required: true
+    choices: [delivery, pickup]
+  - name: date
+    label: The date
+    kind: date
+    required: true
+  - name: recipient
+    label: Who they're for
+    kind: text
+  - name: recipient_phone
+    label: Their phone
+    kind: phone
+  - name: address
+    label: Their address
+    kind: text
+  - name: zip
+    label: ZIP code
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+  - name: occasion
+    label: The occasion
+    kind: choice
+    choices: [birthday, thank you, sympathy, new baby, just because, something else]
+  - name: card
+    label: The card's message
+    kind: markdown

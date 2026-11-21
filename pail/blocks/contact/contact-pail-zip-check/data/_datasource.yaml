@@ -1,0 +1,22 @@
+label: Delivery zones
+fields:
+  - name: name
+    label: Zone
+    kind: text
+    required: true
+  - name: neighborhoods
+    label: Neighborhoods
+    kind: text
+  - name: zips
+    label: ZIP codes
+    kind: list
+  - name: fee
+    label: Fee
+    kind: text
+  - name: same_day
+    label: Same day
+    kind: boolean
+  - name: note
+    label: Note
+    kind: text
+order: [zone-1, zone-2, zone-3]

@@ -1,0 +1,6 @@
+{%- comment -%} Stems as small swatches with their names: pass names (a list of stem names, as the stems are named) and stems (data.stems); month (jan to dec) links each to that month on the season page. {%- endcomment -%}
+<ul class="flex flex-wrap gap-2">
+  {% for name in names %}{% assign stem = stems | where: "name", name | first %}
+  <li>{% if month != blank %}<a href="/season#{{ month }}" class="stem-chip">{% else %}<span class="stem-chip">{% endif %}<span class="swatch" data-tone="{{ stem.tone | default: 'white' }}" aria-hidden="true"></span>{{ name }}{% if month != blank %}</a>{% else %}</span>{% endif %}</li>
+  {% endfor %}
+</ul>

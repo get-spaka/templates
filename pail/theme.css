@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.46 0.11 140);
+  --theme-color-primary-content: oklch(0.985 0.005 25);
+  --theme-color-secondary: oklch(0.885 0.045 20);
+  --theme-color-secondary-content: oklch(0.26 0.03 150);
+  --theme-color-accent: oklch(0.68 0.15 32);
+  --theme-color-accent-content: oklch(0.26 0.03 150);
+  --theme-color-neutral: oklch(0.32 0.018 240);
+  --theme-color-neutral-content: oklch(0.96 0.008 25);
+  --theme-color-surface: oklch(0.975 0.008 25);
+  --theme-color-surface-alt: oklch(0.93 0.008 240);
+  --theme-color-border: oklch(0.88 0.01 240);
+  --theme-color-text: oklch(0.26 0.03 150);
+  --theme-font-heading: "Kalnia", "Didot", Georgia, serif;
+  --theme-font-body: "Commissioner", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0.5rem;
+  --theme-radius-field: 9999px;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

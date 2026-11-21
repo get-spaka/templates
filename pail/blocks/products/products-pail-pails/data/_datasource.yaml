@@ -1,0 +1,66 @@
+label: Stems
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: latin
+    label: Latin name
+    kind: text
+  - name: image
+    label: Photo (tall, upright)
+    kind: image
+  - name: price
+    label: Price of a stem, in dollars
+    kind: number
+  - name: months
+    label: Months it is in (jan to dec)
+    kind: list
+  - name: vase_life
+    label: Days in the vase
+    kind: number
+  - name: grower
+    label: Grown by
+    kind: text
+  - name: distance
+    label: How far away
+    kind: text
+  - name: from
+    label: Grown nearby or brought in
+    kind: choice
+    choices: [nearby, further]
+  - name: tone
+    label: Color family (for the season's swatches)
+    kind: choice
+    choices: [white, blush, coral, deep, green, zinc]
+  - name: height
+    label: Height in the pails
+    kind: choice
+    choices: [tall, medium, short]
+  - name: this_week
+    label: In the pails this week
+    kind: boolean
+  - name: care
+    label: How to look after it
+    kind: text
+order:
+  [
+    ranunculus,
+    snapdragons,
+    peonies,
+    anemones,
+    ninebark,
+    sweet-peas,
+    tulips,
+    eucalyptus,
+    hellebores,
+    flowering-quince,
+    garden-roses,
+    delphiniums,
+    cosmos,
+    zinnias,
+    lisianthus,
+    dahlias,
+    chrysanthemums,
+    winterberry,
+  ]

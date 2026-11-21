@@ -1,0 +1,20 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-base-content/75">From the first coffee to the last vase</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">How we plan</h2>
+    </div>
+    <ol class="relative lg:col-span-8" data-reveal="stagger">
+      {% for step in data.wedding-steps %}
+      <li class="relative grid grid-cols-[3rem_1fr] gap-x-5 pb-10 last:pb-0">
+        <span class="figure-serif relative z-10 grid size-12 place-items-center rounded-full border border-base-content bg-base-200 text-[1.375rem]">{{ forloop.index }}</span>
+        {% unless forloop.last %}<span class="absolute top-12 bottom-0 left-6 w-px bg-base-content/40" aria-hidden="true"></span>{% endunless %}
+        <div class="pt-2">
+          <h3 class="text-[1.375rem]">{{ step.title }}</h3>
+          <p class="body-copy mt-2 max-w-[54ch]">{{ step.text }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

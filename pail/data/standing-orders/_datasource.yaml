@@ -1,0 +1,45 @@
+label: Standing order requests
+collected: true
+answer: standing-orders-thanks
+body: notes
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us at (412) 555-0147."
+  sent: "Thank you, your request was sent. We'll call you within a working day to set it up."
+fields:
+  - name: plan
+    label: The plan
+    kind: choice
+    required: true
+    choices: [every-week, every-other-week, once-a-month, the-front-desk]
+  - name: start
+    label: The first Thursday
+    kind: date
+    required: true
+  - name: how
+    label: Delivery or pickup
+    kind: choice
+    required: true
+    choices: [delivery, pickup]
+  - name: address
+    label: The address
+    kind: text
+  - name: zip
+    label: ZIP code
+    kind: text
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: notes
+    label: Anything we should know?
+    kind: markdown

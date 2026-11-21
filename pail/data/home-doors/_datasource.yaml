@@ -1,0 +1,14 @@
+label: Beyond the counter
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: link
+    label: Link text
+    kind: text
+  - name: href
+    label: Link
+    kind: link
+order: [weddings-and-events, standing-orders, workshops, office-flowers]

@@ -1,0 +1,127 @@
+<section id="order" class="scroll-mt-28 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-12 px-5 pb-20 md:px-8 md:pb-28 lg:grid-cols-12 lg:gap-10">
+    <form hx-post="/_data/orders" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#order-problems swap:innerHTML" class="lg:col-span-8" data-prefill>
+      <fieldset class="border-t border-base-content pt-6">
+        <legend class="float-left w-full"><span class="mono text-base-content/75">1.</span> <span class="font-heading text-[1.75rem]">Stems</span></legend>
+        <p class="body-copy clear-both pt-2">Pick any you'd like, or none: we'll choose. We build the bunch around them, within the size you pay for.</p>
+        <div class="mt-10 rounded-box bg-base-200 px-5 pt-10 pb-8 md:px-8">
+          <div class="shelf" data-pails>
+            {% for stem in data.stems %}{% if stem.this_week %}<label class="pail" data-pail data-height="{{ stem.height }}">
+  <input type="checkbox" name="stems" value="{{ stem.name }}" class="sr-only" aria-label="{{ stem.name }}, ${{ stem.price }} a stem">{% endif %}
+  <span class="pail-figure">
+    <span class="pail-stem">{% if stem.image %}<img src="{{ stem.image }}"></span>
+    <span class="pail-can"><span class="pail-body" aria-hidden="true"></span><span class="pail-handle" aria-hidden="true"></span><span class="pail-rim" aria-hidden="true"></span><span class="pail-plate">${{ stem.price }} a stem</span></span>
+  </span>
+  <span class="pail-text">
+    <span class="pail-name">{{ stem.name }}</span>
+    <span class="pail-line">{{ stem.grower }} · {{ stem.distance }} · {{ stem.vase_life }} days in the vase</span>
+    <span class="pail-picked">In your bunch</span>{% endif %}
+  </span>
+{% if pick %}</label>{% endif %}{% endfor %}
+          </div>
+          <p class="mono-md mt-12 flex items-center gap-3 border-t border-base-300 pt-6" aria-live="polite"><span class="count-badge picked-count"></span><span data-count="none">No stems picked: the florist's choice</span><span data-count="some">picked: we'll build it around them</span></p>
+        </div>
+      </fieldset>
+
+      <fieldset class="mt-16 border-t border-base-content pt-6">
+        <legend class="float-left w-full"><span class="mono text-base-content/75">2.</span> <span class="font-heading text-[1.75rem]">Size</span></legend>
+        <div class="clear-both grid gap-4 pt-6 sm:grid-cols-3">
+          {% for size in data.sizes %}
+          <label class="flex cursor-pointer flex-col rounded-box border border-base-300 p-5 has-[:checked]:border-base-content has-[:checked]:bg-secondary has-[:checked]:text-secondary-content has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2">
+            <input type="radio" name="size" value="{{ size.id }}" class="sr-only" required {% if size.featured %}checked{% endif %}>
+            <span class="text-[1.25rem] font-heading">{{ size.name }}</span>
+            <span class="figure-serif mt-3 text-[2.25rem]">{{ size.price }}</span>
+            <span class="mono mt-2">{{ size.stems }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        <label class="mt-5 flex items-center gap-3 text-[1rem]"><input type="checkbox" name="vase" value="true" class="checkbox checkbox-sm"> In a vase, $18</label>
+      </fieldset>
+
+      <fieldset class="mt-16 border-t border-base-content pt-6">
+        <legend class="float-left w-full"><span class="mono text-base-content/75">3.</span> <span class="font-heading text-[1.75rem]">When and where</span></legend>
+        <div class="clear-both grid grid-cols-1 gap-x-5 gap-y-3 pt-4 sm:grid-cols-2">
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Delivery or pickup</legend>
+            <div class="flex flex-wrap gap-x-8 gap-y-2 pt-1">
+              <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="how" value="delivery" class="radio radio-sm" required checked> Delivery, Tuesday to Saturday</label>
+              <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="how" value="pickup" class="radio radio-sm"> Pickup at the shop</label>
+            </div>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">The date</legend>
+            <input name="date" type="date" class="input w-full" required>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Who they're for</legend>
+            <input name="recipient" type="text" class="input w-full" maxlength="200">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Their phone</legend>
+            <input name="recipient_phone" type="tel" class="input w-full" maxlength="30">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">ZIP code <span class="font-normal text-base-content/70">(we'll check it's in our zones)</span></legend>
+            <input name="zip" type="text" inputmode="numeric" class="input w-full" maxlength="10" autocomplete="postal-code">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Their address</legend>
+            <input name="address" type="text" class="input w-full" maxlength="300" autocomplete="street-address">
+          </fieldset>
+        </div>
+      </fieldset>
+
+      <fieldset class="mt-16 border-t border-base-content pt-6">
+        <legend class="float-left w-full"><span class="mono text-base-content/75">4.</span> <span class="font-heading text-[1.75rem]">You and the card</span></legend>
+        <div class="clear-both grid grid-cols-1 gap-x-5 gap-y-3 pt-4 sm:grid-cols-2">
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">Your name</legend>
+            <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(we call to confirm)</span></legend>
+            <input name="phone" type="tel" class="input w-full" required maxlength="30" autocomplete="tel">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your email</legend>
+            <input name="email" type="email" class="input w-full" maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">The occasion</legend>
+            <select name="occasion" class="select w-full">
+              <option value="birthday">A birthday</option>
+              <option value="thank you">A thank you</option>
+              <option value="sympathy">Sympathy</option>
+              <option value="new baby">A new baby</option>
+              <option value="just because" selected>Just because</option>
+              <option value="something else">Something else</option>
+            </select>
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">The card's message <span class="font-normal text-base-content/70">(we'll handwrite it, up to 300 characters)</span></legend>
+            <textarea name="card" class="textarea w-full rounded-box" rows="4" maxlength="300"></textarea>
+          </fieldset>
+        </div>
+      </fieldset>
+      <div id="order-problems" class="mt-6"></div>
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+        <button class="btn btn-primary btn-lg whitespace-nowrap">Send the order</button>
+        <p class="mono text-base-content/75">Nothing is charged until we've spoken.</p>
+      </div>
+    </form>
+    <aside class="lg:col-span-4">
+      <div class="rounded-box bg-base-200 p-7 lg:sticky lg:top-36">
+        <p class="mono text-base-content/75">Today</p>
+        <p class="mt-3 font-heading text-[1.75rem] font-light leading-[1.15]"><span data-when="plain">Same-day delivery when you order by 1&nbsp;pm, Tuesday to Saturday</span><span data-when="today">Order by <span data-slot="cutoff"></span> for delivery today</span><span data-when="tomorrow">Order now for delivery tomorrow, <span data-slot="next_day"></span></span><span data-when="later-pickup">We deliver again on <span data-slot="next_day"></span>; pick up today until <span data-slot="closes"></span></span><span data-when="later">Order now for delivery on <span data-slot="next_day"></span></span></p>
+        <ul class="mono figures mt-6 divide-y divide-base-300 border-y border-base-300">
+          {% for zone in data.zones %}
+          <li class="flex justify-between gap-4 py-2.5"><span>{{ zone.name }}</span><span>{{ zone.fee }}{% unless zone.same_day %} · next day{% endunless %}</span></li>
+          {% endfor %}
+        </ul>
+        <p class="mt-3"><a href="/delivery#zip" class="text-link">Which zone are you in?</a></p>
+        <p class="body-copy mt-6">Rather call? <a href="tel:+14125550147" class="text-link whitespace-nowrap">(412) 555-0147</a>, Tuesday to Sunday.</p>
+        <p class="body-copy mt-3">Nothing is charged until we've spoken: we call you back within the hour, while the shop is open.</p>
+      </div>
+    </aside>
+  </div>
+</section>

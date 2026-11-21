@@ -1,0 +1,19 @@
+label: Growers
+fields:
+  - name: title
+    label: Grower
+    kind: text
+    required: true
+  - name: what
+    label: What they grow for us
+    kind: text
+  - name: place
+    label: Where
+    kind: text
+  - name: distance
+    label: How far away
+    kind: text
+  - name: text
+    label: A line about them
+    kind: text
+order: [hollow-run-farm, two-rivers-flower-collective, babcias-garden, conestoga-bulb-and-branch]

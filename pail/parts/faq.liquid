@@ -1,0 +1,21 @@
+{%- comment -%} Questions as an accordion: pass items (a questions datasource), title and label. {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-base-content/75">{{ label | default: "Questions" }}</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">{{ title }}</h2>
+      <p class="body-copy mt-5">Anything else? Call <a href="tel:+14125550147" class="text-link whitespace-nowrap">(412) 555-0147</a> while the shop is open.</p>
+    </div>
+    <div class="divide-y divide-base-300 border-y border-base-300 lg:col-span-8">
+      {% for q in items %}
+      <details class="group py-1" {% if forloop.first %}open{% endif %}>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-[1.125rem] font-medium [&::-webkit-details-marker]:hidden">
+          <span>{{ q.question }}</span>
+          <svg class="size-5 flex-none transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </summary>
+        <div class="body-copy max-w-[62ch] pb-5 [&_a]:text-link">{{ q.answer }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

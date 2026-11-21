@@ -1,0 +1,9 @@
+label: Questions about weddings
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [how-far-ahead, minimum, own-vases, dried-flowers, travel]

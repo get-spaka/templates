@@ -1,0 +1,35 @@
+label: Workshops
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: date
+    label: Date
+    kind: date
+  - name: time
+    label: Time
+    kind: text
+  - name: place
+    label: Place
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: seats
+    label: Seats
+    kind: number
+  - name: summary
+    label: Summary
+    kind: text
+  - name: cover
+    label: Cover
+    kind: image
+  - name: booking
+    label: Booking link
+    kind: link
+  - name: body
+    label: Description
+    kind: markdown
+body: body
+sort: date

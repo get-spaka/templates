@@ -1,0 +1,23 @@
+<section id="this-week" class="scroll-mt-28 bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="flex flex-wrap items-end justify-between gap-6" data-reveal>
+      <div>
+        <p class="mono text-base-content/75">This week's stems</p>
+        <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">In the pails this week</h2>
+      </div>
+      <p class="body-copy max-w-[44ch]">Pick the ones you like; we'll build your bunch around them.</p>
+    </div>
+    <form action="/flowers#order" method="get" class="mt-14">
+      <div class="shelf" data-pails>
+        {% for stem in data.stems %}{% if stem.this_week %}{% render 'pail', stem: stem, pick: true %}{% endif %}{% endfor %}
+      </div>
+      <div class="mt-14 flex flex-wrap items-center justify-between gap-6 border-t border-base-300 pt-8">
+        <p class="mono-md flex items-center gap-3" aria-live="polite"><span class="count-badge picked-count"></span><span data-count="none">Pick any you like, or none: we'll choose</span><span data-count="some">picked: we'll build your bunch around them</span></p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a href="/season" class="text-link">What's in all year</a>
+          <button class="btn btn-primary btn-lg whitespace-nowrap">Make a bunch of these</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

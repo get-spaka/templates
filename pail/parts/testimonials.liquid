@@ -1,0 +1,19 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <p class="mono text-base-content/75" data-reveal>What people say</p>
+    {% for t in data.testimonials limit: 1 %}
+    <figure class="mt-8 max-w-[56rem]" data-reveal>
+      <blockquote class="font-heading text-[clamp(1.75rem,2.5vw+1rem,3rem)] font-light leading-[1.15]">&ldquo;{{ t.quote }}&rdquo;</blockquote>
+      <figcaption class="mono mt-6"><span class="font-semibold">{{ t.name }}</span> · {{ t.role }}</figcaption>
+    </figure>
+    {% endfor %}
+    <div class="mt-16 grid gap-10 border-t border-base-300 pt-10 md:grid-cols-2" data-reveal="stagger">
+      {% for t in data.testimonials offset: 1 limit: 2 %}
+      <figure>
+        <blockquote class="text-[1.125rem] leading-relaxed">&ldquo;{{ t.quote }}&rdquo;</blockquote>
+        <figcaption class="mono mt-4"><span class="font-semibold">{{ t.name }}</span> · {{ t.role }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

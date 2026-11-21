@@ -1,0 +1,22 @@
+{
+  "name": "Pail picked-this-morning hero",
+  "kind": "hero",
+  "source": "upstart",
+  "description": "A large high-contrast serif headline, a sentence, two pill buttons and the line saying whether an order placed now goes out today, beside three tall stems of the week standing in galvanized pails with their enamel price plates, lowered into them on load.",
+  "tags": ["hero", "florist", "flowers", "same-day delivery", "order by"],
+  "mood": ["elegant", "minimal"],
+  "synonyms": [
+    "hero",
+    "headline",
+    "flower shop",
+    "same-day delivery",
+    "en-tête",
+    "grand titre",
+    "fleuriste",
+    "livraison le jour même"
+  ],
+  "data": {
+    "name": "stems",
+    "family": "collection"
+  }
+}

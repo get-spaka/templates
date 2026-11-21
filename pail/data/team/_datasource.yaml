@@ -1,0 +1,16 @@
+label: Team
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role
+    kind: text
+  - name: bio
+    label: Short bio
+    kind: text
+  - name: photo
+    label: Photo
+    kind: image
+order: [roz-kowalczyk, teo-marchetti, nia-boateng, wes-hadley]

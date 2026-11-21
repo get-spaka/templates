@@ -1,0 +1,13 @@
+label: Holiday notices
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: date
+    kind: date
+  - name: cutoff
+    label: Order by
+    kind: text
+  - name: note
+    kind: text
+sort: date

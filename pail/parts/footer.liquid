@@ -1,0 +1,45 @@
+<footer class="bg-neutral text-neutral-content" data-tz="America/New_York">
+  <div class="mx-auto max-w-[80rem] px-5 pt-20 pb-10 md:px-8 md:pt-24">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        {% render 'logo', size: 'text-[2.75rem]' %}
+        <p class="mt-6 max-w-[32ch] text-neutral-content/80">A flower shop and studio in a 1905 butcher's shop at the foot of the South Side steps. Stems from growers within a hundred miles, May to October.</p>
+        <p class="mono mt-6 text-neutral-content">{% render 'order-by' %}</p>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="mono text-neutral-content/70">The week</p>
+        <ul class="mono-md figures mt-4 space-y-1.5">
+          {% for day in data.hours %}
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="{{ day.weekday }}" data-day="{{ day.day }}" data-opens="{{ day.opens }}" data-closes="{{ day.closes }}" data-delivers="{{ day.delivers }}" data-cutoff="{{ day.cutoff }}">
+            <span>{{ day.day }}</span>
+            {% if day.opens != blank and day.closes != blank %}<span><span data-time="opens">{% render 'time', t: day.opens %}</span> – <span data-time="closes">{% render 'time', t: day.closes %}</span>{% if day.delivers and day.cutoff != blank %}<span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">{% render 'time', t: day.cutoff %}</span> for today</span>{% else %}<span class="block text-[0.8125rem] text-neutral-content/70">{{ day.note }}</span>{% endif %}</span>{% else %}<span><span>Closed</span><span class="block text-[0.8125rem] text-neutral-content/70">{{ day.note }}</span></span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-2 lg:col-span-4">
+        <div>
+          <p class="mono text-neutral-content/70">The shop</p>
+          <address class="mt-4 not-italic leading-relaxed">37 Mercer Steps<br>South Side, Pittsburgh, PA&nbsp;15203</address>
+          <p class="mt-3"><a href="https://www.openstreetmap.org/search?query=37%20Mercer%20Steps%2C%20Pittsburgh%2C%20PA%2015203" class="text-link on-dark" rel="noopener" target="_blank">Get directions</a></p>
+          <p class="mt-3"><a href="tel:+14125550147" class="text-link on-dark whitespace-nowrap">(412) 555-0147</a></p>
+          <p class="mt-1.5"><a href="mailto:hello@inclineflowers.com" class="text-link on-dark">hello@inclineflowers.com</a></p>
+        </div>
+        <div>
+          <p class="mono text-neutral-content/70">Incline</p>
+          <nav aria-label="Footer" class="mt-4">
+            <ul class="space-y-1.5">
+              {% for item in data.navigation %}{% if item.place != "social" %}
+              <li><a href="{{ item.href }}" class="text-link on-dark">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+              {% for item in data.navigation %}{% if item.place == "social" %}
+              <li><a href="{{ item.href }}" class="text-link on-dark" rel="noopener" target="_blank">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <p class="mono mt-16 border-t border-neutral-content/20 pt-6 text-neutral-content/70">Incline Flowers · Flowers by the stem and by the armful on the South Side since 2020</p>
+  </div>
+</footer>

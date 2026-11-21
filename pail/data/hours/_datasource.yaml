@@ -1,0 +1,30 @@
+label: Opening hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: hours
+    label: Hours shown
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+  - name: weekday
+    label: Day of the week
+    kind: choice
+    required: true
+    choices: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]
+  - name: opens
+    label: Opens at (24 h, e.g. 10:00; empty when closed)
+    kind: text
+  - name: closes
+    label: Closes at (24 h)
+    kind: text
+  - name: delivers
+    label: Delivers that day
+    kind: boolean
+  - name: cutoff
+    label: Order by, for delivery the same day (24 h; empty without deliveries)
+    kind: text
+order: [monday, tuesday, wednesday, thursday, friday, saturday, sunday]

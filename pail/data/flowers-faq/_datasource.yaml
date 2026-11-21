@@ -1,0 +1,9 @@
+label: Questions about ordering
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [choose-exactly, sold-out, all-white, how-long, chocolates, weeks-ahead]

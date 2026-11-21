@@ -1,0 +1,5 @@
+<div class="rounded-box bg-secondary p-8 text-secondary-content lg:col-span-8" role="status">
+  <p class="mono">Order received</p>
+  <p class="mt-3 font-heading text-[2rem] font-light leading-[1.1]">Thank you, {{ record.name }}.</p>
+  <p class="mt-4 max-w-[52ch] leading-relaxed">We've got your {{ record.size | capitalize }} for {{ record.date | date: "%A, %B %-d" }} and will call you within the hour, while the shop is open, to confirm and take payment.</p>
+</div>

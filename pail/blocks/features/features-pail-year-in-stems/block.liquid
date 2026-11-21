@@ -1,0 +1,151 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28" data-season>
+    <p class="mono flex flex-wrap items-center gap-x-5 gap-y-1 text-base-content/75"><span class="inline-flex items-center gap-2"><span class="from-mark" data-from="nearby" aria-hidden="true"></span>Grown within 100 miles</span><span class="inline-flex items-center gap-2"><span class="from-mark" data-from="further" aria-hidden="true"></span>Brought in from further away</span></p>
+    <div class="mt-6 border-t border-base-content">
+      <details class="month scroll-mt-28 border-b border-base-300" id="jan" data-month-row="jan" open>
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">January</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Forced tulips and anemones, with eucalyptus and greens from further away</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "jan" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="feb" data-month-row="feb" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">February</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Tulips, the first hellebores and quince branches forced into bloom</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "feb" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="mar" data-month-row="mar" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">March</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Branches in blossom and hellebores: the month of our branches-and-bulbs night</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "mar" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="apr" data-month-row="apr" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">April</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Ranunculus from the hoop houses, the last tulips and branches</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "apr" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="may" data-month-row="may" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">May</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Peonies, ranunculus, sweet peas and the first snapdragons</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "may" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="jun" data-month-row="jun" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">June</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Peonies, sweet peas and the first garden roses</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "jun" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="jul" data-month-row="jul" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">July</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Delphiniums, cosmos, zinnias and lisianthus from Hollow Run</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "jul" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="aug" data-month-row="aug" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">August</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">The first dahlias, with zinnias and garden roses at their fullest</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "aug" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="sep" data-month-row="sep" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">September</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Dahlias at their peak, with lisianthus, snapdragons and the first mums</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "sep" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="oct" data-month-row="oct" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">October</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">The last dahlias, chrysanthemums and ninebark turning red</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "oct" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="nov" data-month-row="nov" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">November</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Chrysanthemums and winterberry; more of the pails come from further away</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "nov" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      <details class="month scroll-mt-28 border-b border-base-300" id="dec" data-month-row="dec" >
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">December</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">Winterberry, eucalyptus and fresh greens for the wreath nights</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains "dec" %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>

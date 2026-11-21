@@ -1,0 +1,18 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="mono text-base-content/75">The busy days</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">Holidays have their own cutoffs</h2>
+    </div>
+    <ul class="mt-10 grid gap-5 md:grid-cols-3" data-reveal="stagger">
+      {% for notice in data.delivery-notices %}
+      <li class="rounded-box border border-base-300 p-6">
+        <p class="mono text-base-content/75">{{ notice.date | date: "%B %-d" }}</p>
+        <h3 class="mt-2 text-[1.5rem]">{{ notice.title }}</h3>
+        <p class="mono-md mt-4 font-semibold">{{ notice.cutoff }}</p>
+        <p class="body-copy mt-3">{{ notice.note }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

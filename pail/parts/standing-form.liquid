@@ -1,0 +1,54 @@
+<section id="start" class="scroll-mt-28 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-base-content/75">Start one</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">Ask for a standing order</h2>
+      <p class="body-copy mt-5">We call you within a working day to set the day and take a card over the phone. No contract: pause or stop it by text.</p>
+    </div>
+    <form hx-post="/_data/standing-orders" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#standing-problems swap:innerHTML" class="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 lg:col-span-8" data-prefill>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The plan</legend>
+        <select name="plan" class="select w-full" required>
+          {% for plan in data.plans %}<option value="{{ plan.id }}">{{ plan.name }}, {{ plan.price }} {{ plan.period }}</option>{% endfor %}
+        </select>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The first Thursday</legend>
+        <input name="start" type="date" class="input w-full" required>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Delivery or pickup</legend>
+        <div class="flex flex-wrap gap-x-8 gap-y-2 pt-1">
+          <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="how" value="delivery" class="radio radio-sm" required checked> Delivery, Zones 1 and 2</label>
+          <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="how" value="pickup" class="radio radio-sm"> Pickup on Thursdays</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The address</legend>
+        <input name="address" type="text" class="input w-full" maxlength="300" autocomplete="street-address">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">ZIP code</legend>
+        <input name="zip" type="text" inputmode="numeric" class="input w-full" maxlength="10" autocomplete="postal-code">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone</legend>
+        <input name="phone" type="tel" class="input w-full" required maxlength="30" autocomplete="tel">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Anything we should know? <span class="font-normal text-base-content/70">(no lilies, the cat)</span></legend>
+        <textarea name="notes" class="textarea w-full rounded-box" rows="3" maxlength="2000"></textarea>
+      </fieldset>
+      <div id="standing-problems" class="sm:col-span-2"></div>
+      <div class="sm:col-span-2"><button class="btn btn-primary btn-lg whitespace-nowrap">Ask for a standing order</button></div>
+    </form>
+  </div>
+</section>

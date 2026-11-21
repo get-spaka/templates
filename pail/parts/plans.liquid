@@ -1,0 +1,21 @@
+<section id="plans" class="scroll-mt-28 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28">
+    <ul class="divide-y divide-base-300 border-y border-base-300" data-reveal="stagger">
+      {% for plan in data.plans %}
+      <li class="grid gap-5 py-8 md:grid-cols-2 md:items-center md:gap-x-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_10rem_auto]">
+        <div>
+          <h2 class="text-[1.75rem] font-normal">{{ plan.name }}</h2>
+          <p class="body-copy mt-2">{{ plan.description }}</p>
+        </div>
+        <ul class="mono space-y-1.5">
+          {% for feature in plan.features %}<li class="flex gap-2"><span class="from-mark mt-[0.45rem] flex-none" aria-hidden="true"></span><span>{{ feature }}</span></li>{% endfor %}
+        </ul>
+        <p><span class="figure-serif text-[2.5rem]">{{ plan.price }}</span> <span class="mono block text-base-content/75">{{ plan.period }}</span></p>
+        <div class="md:text-right">
+          <a href="{{ plan.href }}" class="btn {% if plan.featured %}btn-primary{% else %}btn-outline{% endif %} whitespace-nowrap">{{ plan.cta }}</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

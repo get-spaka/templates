@@ -1,0 +1,70 @@
+<footer class="bg-neutral text-neutral-content" data-tz="America/New_York">
+  <div class="mx-auto max-w-[80rem] px-5 pt-20 pb-10 md:px-8 md:pt-24">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <a href="/" class="inline-flex items-baseline gap-2 whitespace-nowrap" aria-label="Incline Flowers, home">
+  <span class="wordmark text-[2.75rem]">Incline</span>
+  <span class="mono">Flowers</span>
+</a>
+        <p class="mt-6 max-w-[32ch] text-neutral-content/80">A flower shop and studio in a 1905 butcher's shop at the foot of the South Side steps. Stems from growers within a hundred miles, May to October.</p>
+        <p class="mono mt-6 text-neutral-content"><span data-when="plain">Same-day delivery when you order by 1&nbsp;pm, Tuesday to Saturday</span><span data-when="today">Order by <span data-slot="cutoff"></span> for delivery today</span><span data-when="tomorrow">Order now for delivery tomorrow, <span data-slot="next_day"></span></span><span data-when="later-pickup">We deliver again on <span data-slot="next_day"></span>; pick up today until <span data-slot="closes"></span></span><span data-when="later">Order now for delivery on <span data-slot="next_day"></span></span></p>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="mono text-neutral-content/70">The week</p>
+        <ul class="mono-md figures mt-4 space-y-1.5">
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="monday" data-day="Monday" data-opens="" data-closes="" data-delivers="false" data-cutoff="">
+            <span>Monday</span>
+            <span><span>Closed</span><span class="block text-[0.8125rem] text-neutral-content/70">Market and cooler day</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="tuesday" data-day="Tuesday" data-opens="10:00" data-closes="18:00" data-delivers="true" data-cutoff="13:00">
+            <span>Tuesday</span>
+            <span><span data-time="opens">10&nbsp;am</span> – <span data-time="closes">6&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">1&nbsp;pm</span> for today</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="wednesday" data-day="Wednesday" data-opens="10:00" data-closes="18:00" data-delivers="true" data-cutoff="13:00">
+            <span>Wednesday</span>
+            <span><span data-time="opens">10&nbsp;am</span> – <span data-time="closes">6&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">1&nbsp;pm</span> for today</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="thursday" data-day="Thursday" data-opens="10:00" data-closes="18:00" data-delivers="true" data-cutoff="13:00">
+            <span>Thursday</span>
+            <span><span data-time="opens">10&nbsp;am</span> – <span data-time="closes">6&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">1&nbsp;pm</span> for today</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="friday" data-day="Friday" data-opens="10:00" data-closes="18:00" data-delivers="true" data-cutoff="13:00">
+            <span>Friday</span>
+            <span><span data-time="opens">10&nbsp;am</span> – <span data-time="closes">6&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">1&nbsp;pm</span> for today</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="saturday" data-day="Saturday" data-opens="09:00" data-closes="17:00" data-delivers="true" data-cutoff="11:00">
+            <span>Saturday</span>
+            <span><span data-time="opens">9&nbsp;am</span> – <span data-time="closes">5&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Order by <span data-time="cutoff">11&nbsp;am</span> for today</span></span>
+          </li>
+          <li class="grid grid-cols-[6.5rem_1fr] gap-x-3" data-hours-row data-weekday="sunday" data-day="Sunday" data-opens="10:00" data-closes="14:00" data-delivers="false" data-cutoff="">
+            <span>Sunday</span>
+            <span><span data-time="opens">10&nbsp;am</span> – <span data-time="closes">2&nbsp;pm</span><span class="block text-[0.8125rem] text-neutral-content/70">Pickup only</span></span>
+          </li>
+        </ul>
+      </div>
+      <div class="grid gap-10 sm:grid-cols-2 lg:col-span-4">
+        <div>
+          <p class="mono text-neutral-content/70">The shop</p>
+          <address class="mt-4 not-italic leading-relaxed">37 Mercer Steps<br>South Side, Pittsburgh, PA&nbsp;15203</address>
+          <p class="mt-3"><a href="https://www.openstreetmap.org/search?query=37%20Mercer%20Steps%2C%20Pittsburgh%2C%20PA%2015203" class="text-link on-dark" rel="noopener" target="_blank">Get directions</a></p>
+          <p class="mt-3"><a href="tel:+14125550147" class="text-link on-dark whitespace-nowrap">(412) 555-0147</a></p>
+          <p class="mt-1.5"><a href="mailto:hello@inclineflowers.com" class="text-link on-dark">hello@inclineflowers.com</a></p>
+        </div>
+        <div>
+          <p class="mono text-neutral-content/70">Incline</p>
+          <nav aria-label="Footer" class="mt-4">
+            <ul class="space-y-1.5">
+              {% for item in data.navigation %}{% if item.place != "social" %}
+              <li><a href="{{ item.href }}" class="text-link on-dark">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+              {% for item in data.navigation %}{% if item.place == "social" %}
+              <li><a href="{{ item.href }}" class="text-link on-dark" rel="noopener" target="_blank">{{ item.label }}</a></li>
+              {% endif %}{% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <p class="mono mt-16 border-t border-neutral-content/20 pt-6 text-neutral-content/70">Incline Flowers · Flowers by the stem and by the armful on the South Side since 2020</p>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+<section id="zones" class="scroll-mt-28 bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-12 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-5" data-reveal>
+      <p class="mono text-base-content/75">Delivery</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.5rem)]">Today or tomorrow?</h2>
+      <p class="mt-6 font-heading text-[clamp(1.5rem,1.5vw+1rem,2.25rem)] font-light leading-[1.2]">{% render 'order-by' %}</p>
+      <a href="/delivery#zip" class="btn btn-outline mt-8 whitespace-nowrap">Check your ZIP code</a>
+    </div>
+    <ul class="divide-y divide-base-300 border-y border-base-300 lg:col-span-7 lg:self-end" data-reveal="stagger">
+      {% for zone in data.zones %}
+      <li class="grid gap-x-6 gap-y-1 py-5 sm:grid-cols-[6rem_1fr_auto]">
+        <p class="mono font-semibold">{{ zone.name }}</p>
+        <p class="body-copy">{{ zone.neighborhoods }}</p>
+        <p class="mono figures sm:text-right"><span class="font-semibold">{{ zone.fee }}</span>, {% if zone.same_day %}same day{% else %}next day only{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

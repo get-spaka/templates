@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Standing orders — Incline Flowers, Pittsburgh</title>
+<meta name="description" content="Flowers every Thursday, every other week or once a month, and a large arrangement each week for offices and restaurants. Set up by phone, billed monthly, paused by text.">
+<meta property="og:title" content="Standing orders — Incline Flowers, Pittsburgh">
+<meta property="og:description" content="Flowers every Thursday, every other week or once a month, and a large arrangement each week for offices and restaurants. Set up by phone, billed monthly, paused by text.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'page-title', label: "Standing orders", title: "Standing orders", intro: "The same day each week, a Handful of whatever's best in the pails. Pause it by text whenever you're away." %}
+{% render 'plans' %}
+{% render 'steps', items: data.standing-steps, label: "No contract", title: "How it works" %}
+{% render 'standing-form' %}
+{% render 'blush-band', line: "Sending one bunch?", button: "Order flowers", href: "/flowers#order" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

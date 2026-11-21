@@ -1,0 +1,13 @@
+{%- comment -%} One pail: a stem's photo standing in its galvanized pail, the enamel plate with its price, its name and its line. pick: true makes it a checkbox of the bunch (name="stems"); a pail without it is only shown. {%- endcomment -%}
+{%- if pick -%}<label class="pail" data-pail data-height="{{ stem.height }}">{%- else -%}<div class="pail" data-pail data-height="{{ stem.height }}">{%- endif %}
+  {% if pick %}<input type="checkbox" name="stems" value="{{ stem.name }}" class="sr-only" aria-label="{{ stem.name }}, ${{ stem.price }} a stem">{% endif %}
+  <span class="pail-figure">
+    <span class="pail-stem">{% if stem.image %}<img src="{{ stem.image }}">{% else %}<span class="pail-stem-empty" aria-hidden="true"></span>{% endif %}</span>
+    <span class="pail-can"><span class="pail-body" aria-hidden="true"></span><span class="pail-handle" aria-hidden="true"></span><span class="pail-rim" aria-hidden="true"></span><span class="pail-plate">${{ stem.price }} a stem</span></span>
+  </span>
+  <span class="pail-text">
+    <span class="pail-name">{{ stem.name }}</span>
+    <span class="pail-line">{{ stem.grower }} · {{ stem.distance }} · {{ stem.vase_life }} days in the vase</span>
+    {% if pick %}<span class="pail-picked">In your bunch</span>{% endif %}
+  </span>
+{% if pick %}</label>{% else %}</div>{% endif %}

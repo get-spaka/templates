@@ -1,0 +1,18 @@
+{
+  "name": "Pail order-by strip",
+  "kind": "banner",
+  "source": "upstart",
+  "description": "A slim zinc strip with the shop's line for the day, \"Order by 1 pm for delivery today\" or the next delivery day once the van has gone, read from the footer's week, and a link to the delivery check.",
+  "tags": ["banner", "announcement", "delivery", "cutoff", "same day"],
+  "mood": ["minimal", "professional"],
+  "synonyms": [
+    "announcement bar",
+    "order by",
+    "delivery cutoff",
+    "top bar",
+    "bandeau",
+    "annonce",
+    "commander avant",
+    "livraison du jour"
+  ]
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Order flowers — Incline Flowers, Pittsburgh</title>
+<meta name="description" content="Pick the stems you'd like from this week's pails, choose a Handful, an Armful or a Bucketful, and tell us the day: we call to confirm and deliver across Pittsburgh, same day when you order by 1 pm.">
+<meta property="og:title" content="Order flowers — Incline Flowers, Pittsburgh">
+<meta property="og:description" content="Pick the stems you'd like from this week's pails, choose a Handful, an Armful or a Bucketful, and tell us the day: we call to confirm and deliver across Pittsburgh, same day when you order by 1 pm.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'page-title', label: "Order flowers", title: "Flowers", intro: "Every bunch is our choice from what came in this week, built around the stems you'd like. Tell us the size, the day and who they're for; we'll call to confirm and take payment over the phone." %}
+{% render 'order-form' %}
+{% render 'by-the-stem' %}
+{% render 'sympathy' %}
+{% render 'faq', items: data.flowers-faq, title: "Before you order" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

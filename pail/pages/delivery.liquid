@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Delivery — Incline Flowers, Pittsburgh</title>
+<meta name="description" content="Our own van, Tuesday to Saturday, across three zones of Pittsburgh: order by 1 pm (11 am on Saturday) for delivery the same afternoon. Check your ZIP code, the fees and the holiday cutoffs.">
+<meta property="og:title" content="Delivery — Incline Flowers, Pittsburgh">
+<meta property="og:description" content="Our own van, Tuesday to Saturday, across three zones of Pittsburgh: order by 1 pm (11 am on Saturday) for delivery the same afternoon. Check your ZIP code, the fees and the holiday cutoffs.">
+</head>
+<body>
+{% render 'header', page: page %}
+<main>
+{% render 'page-title', label: "Delivery", title: "Delivery", intro: "Our own van, our own driver, Tuesday to Saturday. Order by 1 pm (11 am on Saturday) and it goes out the same afternoon." %}
+{% render 'zip-check' %}
+{% render 'steps', items: data.delivery-steps, label: "How a delivery day runs", title: "The day's runs" %}
+{% render 'pickup' %}
+{% render 'holidays' %}
+{% render 'faq-by-topic', items: data.delivery-faq %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

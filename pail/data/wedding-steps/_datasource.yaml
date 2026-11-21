@@ -1,0 +1,11 @@
+label: How we plan a wedding
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: icon
+    kind: choice
+    choices: [spark, chat, phone, calendar, clipboard, cart, package, truck, tool, home, check, smile]
+order: [a-consultation, a-proposal, a-deposit, a-walk-through, the-day]

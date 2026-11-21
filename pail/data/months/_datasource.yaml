@@ -1,0 +1,15 @@
+label: The year in stems
+fields:
+  - name: name
+    label: Month
+    kind: text
+    required: true
+  - name: key
+    label: Short name (jan to dec, as the stems' months)
+    kind: choice
+    required: true
+    choices: [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+  - name: line
+    label: What's in
+    kind: text
+order: [january, february, march, april, may, june, july, august, september, october, november, december]

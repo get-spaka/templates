@@ -1,0 +1,28 @@
+label: Workshop seats
+collected: true
+answer: workshops-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes, or call us at (412) 555-0147."
+  sent: "Thank you, your seats are saved. You pay at the door."
+fields:
+  - name: workshop
+    label: The workshop
+    kind: text
+    required: true
+  - name: seats
+    label: How many seats
+    kind: number
+    required: true
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone

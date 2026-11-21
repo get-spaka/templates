@@ -1,0 +1,21 @@
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="mono text-base-content/75">For visitors who come in</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">At the counter, by the stem</h2>
+      <p class="body-copy mt-5 max-w-[38ch]">Make your own bunch from the pails: we'll wrap it while you wait.</p>
+    </div>
+    <ul class="lg:col-span-8" data-reveal="stagger">
+      {% for stem in data.stems %}{% if stem.this_week %}
+      <li class="border-b border-base-300 py-4">
+        <div class="flex items-baseline gap-3">
+          <span class="text-[1.125rem] font-medium">{{ stem.name }}</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="mono-md figures whitespace-nowrap font-semibold">${{ stem.price }} a stem</span>
+        </div>
+        <p class="mono mt-1 text-base-content/75">{{ stem.grower }} · {{ stem.distance }} · {{ stem.vase_life }} days in the vase</p>
+      </li>
+      {% endif %}{% endfor %}
+    </ul>
+  </div>
+</section>

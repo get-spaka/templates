@@ -1,0 +1,21 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28" data-season>
+    <p class="mono flex flex-wrap items-center gap-x-5 gap-y-1 text-base-content/75"><span class="inline-flex items-center gap-2"><span class="from-mark" data-from="nearby" aria-hidden="true"></span>Grown within 100 miles</span><span class="inline-flex items-center gap-2"><span class="from-mark" data-from="further" aria-hidden="true"></span>Brought in from further away</span></p>
+    <div class="mt-6 border-t border-base-content">
+      {% for m in data.months %}
+      <details class="month scroll-mt-28 border-b border-base-300" id="{{ m.key }}" data-month-row="{{ m.key }}" {% if forloop.first %}open{% endif %}>
+        <summary class="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 md:grid-cols-[13rem_1fr] md:pb-3">
+          <span class="flex items-baseline gap-3"><span class="figure-serif text-[1.75rem] font-normal">{{ m.name }}</span><span class="month-now mono rounded-full bg-accent px-2.5 py-0.5 text-accent-content">Now</span></span>
+          <svg class="month-toggle size-5 self-center md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="body-copy col-span-2 md:col-span-1">{{ m.line }}</span>
+        </summary>
+        <ul class="flex flex-wrap gap-2 pb-6 md:pl-[13rem] md:ml-6">
+          {% for stem in data.stems %}{% if stem.months contains m.key %}
+          <li><span class="stem-chip" tabindex="0"><span class="swatch" data-tone="{{ stem.tone }}" aria-hidden="true"></span>{{ stem.name }}<span class="from-mark" data-from="{{ stem.from }}" aria-hidden="true"></span><span class="stem-life">{{ stem.vase_life }} days</span></span></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
