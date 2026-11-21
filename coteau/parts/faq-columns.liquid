@@ -1,0 +1,14 @@
+{%- comment -%} Questions in two columns (adapted from faq-two-columns). Pass items, label and title. {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="eyebrow text-base-content/75">{{ label }}</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">{{ title }}</h2>
+    </div>
+    <dl class="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2" data-reveal="stagger">
+      {% for item in items %}
+      <div class="border-t border-base-content/20 pt-5"><dt class="text-[1.1875rem] font-semibold">{{ item.question }}</dt><dd class="body-copy mt-2 max-w-[56ch]">{{ item.answer }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>

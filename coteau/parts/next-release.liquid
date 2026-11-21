@@ -1,0 +1,15 @@
+{%- comment -%} In the next release: the wines marked `next_release`, as small cards with their hills. {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="eyebrow text-base-content/75">In the next release</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">What's coming in April</h2>
+      </div>
+      <p class="body-copy max-w-[48ch] lg:col-span-5">Teo's picks for the spring boxes. Eight-bottle members get all four, and a second bottle of two of them.</p>
+    </div>
+    <div class="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4" data-reveal="stagger">
+      {% for wine in data.products %}{% if wine.next_release %}{% render 'wine-card', wine: wine, size: 'sm' %}{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>

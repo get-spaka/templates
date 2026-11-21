@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The Hill Club — Vossberg Hill</title>
+<meta name="description" content="Four or eight bottles in April and October, picked by our winemaker, 15 to 20% off all our wine, free tastings and first pick of the library. Join by request; we call to set it up.">
+<meta property="og:title" content="The Hill Club — Vossberg Hill">
+<meta property="og:description" content="Four or eight bottles in April and October, picked by our winemaker, 15 to 20% off all our wine, free tastings and first pick of the library. Join by request; we call to set it up.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "Two releases a year", title: "The Hill Club", text: "Two releases a year, picked by Teo from the best of each vintage, and a standing welcome at the barn." %}
+{% render 'club-levels' %}
+{% render 'club-steps' %}
+{% render 'next-release' %}
+{% render 'join-form' %}
+{% render 'faq-columns', items: data["club-faq"], label: "Questions", title: "Before you join" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

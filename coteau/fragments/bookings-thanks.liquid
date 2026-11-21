@@ -1,0 +1,5 @@
+<div class="rounded-box bg-secondary p-8 text-secondary-content lg:col-span-8" role="status">
+  <p class="eyebrow">Request received</p>
+  <p class="mt-3 font-heading text-[2rem] leading-[1.1]">Thank you, {{ record.name }}.</p>
+  <p class="mt-4 max-w-[52ch] leading-relaxed">We've got your request for {% case record.tasting %}{% when "An event" %}{{ record.event | default: "an event" }}{% when "At the bar" %}the bar{% when "On the porch" %}the porch{% when "Up the hill" %}the hill walk{% when "The library" %}the library{% else %}your group{% endcase %} on {{ record.day | date: "%A, %B %-d" }} and will confirm by email within a day.</p>
+</div>

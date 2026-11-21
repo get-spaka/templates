@@ -1,0 +1,31 @@
+{%- comment -%}
+  A wine's hill: its life as a striped vineyard slope from its vintage to its drink-by
+  year, a marker at this year and the line that says what to do. Pass wine (a record of
+  `products`), and size: "lg" on the wine's own page. A wine without its three years
+  shows "Ask us when to open it" instead.
+{%- endcomment -%}
+{%- assign y = "now" | date: "%Y" | plus: 0 -%}
+{%- if wine.ready_from and wine.best_until and wine.drink_by -%}
+{%- if y < wine.ready_from -%}{%- assign stage = "keep" -%}{%- elsif y < wine.best_until -%}{%- assign stage = "open" -%}{%- elsif y < wine.drink_by -%}{%- assign stage = "drink-up" -%}{%- else -%}{%- assign stage = "past" -%}{%- endif -%}
+<figure class="hill{% if size == 'lg' %} hill-lg{% endif %}" data-hill data-stage="{{ stage }}" data-years="{{ wine.vintage }} {{ wine.ready_from }} {{ wine.best_until }} {{ wine.drink_by }}" style="--vintage: {{ wine.vintage }}; --ready: {{ wine.ready_from }}; --best: {{ wine.best_until }}; --by: {{ wine.drink_by }}; --now: {{ y }}; --year: {{ y }}">
+  <div class="hill-land" aria-hidden="true">
+    <div class="hill-slope"></div>
+    <span class="hill-now" data-hill-now></span>
+  </div>
+  <div class="hill-years" aria-hidden="true">
+    <span class="hill-tick" data-y="ready"></span><span class="hill-tick" data-y="best"></span>
+    <span class="hill-year" data-y="vintage">{% if size == 'lg' %}<b>Picked</b>{% endif %}{{ wine.vintage }}</span>
+    <span class="hill-year" data-y="ready">{% if size == 'lg' %}<b>Ready</b>{% endif %}{{ wine.ready_from }}</span>
+    <span class="hill-year" data-y="best">{% if size == 'lg' %}<b>Best until</b>{% endif %}{{ wine.best_until }}</span>
+    <span class="hill-year" data-y="by">{% if size == 'lg' %}<b>Drink by</b>{% endif %}{{ wine.drink_by }}</span>
+  </div>
+  <figcaption class="hill-line">
+    <span data-when="keep"><span class="stage-dot" aria-hidden="true"></span>Keep it: best from {{ wine.ready_from }}</span>
+    <span data-when="open"><span class="stage-dot" aria-hidden="true"></span>Open it: at its best until {{ wine.best_until }}</span>
+    <span data-when="drink-up"><span class="stage-dot" aria-hidden="true"></span>Drink it up: good until {{ wine.drink_by }}</span>
+    <span data-when="past"><span class="stage-dot" aria-hidden="true"></span>Past its best: we keep it for the record</span>
+  </figcaption>
+</figure>
+{%- else -%}
+<p class="hill-line mt-4"><span class="stage-dot" aria-hidden="true"></span>Ask us when to open it</p>
+{%- endif -%}

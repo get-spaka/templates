@@ -1,0 +1,20 @@
+{%- comment -%} The club's two sizes (adapted from pricing-plan-rows over `club-levels`). {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-24">
+    <div class="grid gap-6 lg:grid-cols-2" data-reveal="stagger">
+      {% for level in data["club-levels"] %}
+      <article class="flex flex-col rounded-box border p-7 md:p-9 {% if level.featured %}border-primary bg-primary text-primary-content{% else %}border-base-300 bg-base-200{% endif %}">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-[2.25rem] leading-none">{{ level.name }}</h2>
+          <p><span class="price text-[1.5rem]">{{ level.price }}</span> <span class="{% if level.featured %}text-primary-content/80{% else %}text-base-content/75{% endif %}">{{ level.period }}</span></p>
+        </div>
+        <p class="mt-4 max-w-[48ch] {% if level.featured %}text-primary-content/90{% else %}body-copy{% endif %}">{{ level.description }}</p>
+        <ul class="mt-6 flex-1 space-y-2.5">
+          {% for feature in level.features %}<li class="flex gap-3"><span class="mt-[0.55em] block size-2 shrink-0 rounded-full {% if level.featured %}bg-primary-content{% else %}bg-accent{% endif %}" aria-hidden="true"></span>{{ feature }}</li>{% endfor %}
+        </ul>
+        <a href="{{ level.href }}" class="btn mt-8 self-start {% if level.featured %}border-primary-content bg-primary-content text-primary hover:bg-primary-content/90{% else %}btn-primary{% endif %}">{{ level.cta }}</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

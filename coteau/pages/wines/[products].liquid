@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>{{ record.name }} — Vossberg Hill</title>
+<meta name="description" content="{{ record.summary }}">
+<meta property="og:title" content="{{ record.name }} — Vossberg Hill">
+<meta property="og:description" content="{{ record.summary }}">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{%- assign block = data["vineyard-blocks"] | where: "name", record.block | first -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-12 px-5 pt-10 pb-20 md:px-8 md:pt-14 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-5">
+      <p class="mono-sm text-base-content/75"><a href="/wines" class="hover:underline">The wines</a> <span aria-hidden="true">/</span> {{ record.vintage }}</p>
+      <div class="mt-5 max-w-[30rem]">{% render 'wine-picture', wine: record %}</div>
+    </div>
+    <div class="lg:col-span-7 lg:pt-10">
+      <p class="eyebrow text-base-content/75">{{ record.vintage }} · {% case record.style %}{% when "sparkling" %}Sparkling wine{% when "white" %}White wine{% when "skin-contact" %}Skin contact{% when "rosé" %}Rosé{% when "red" %}Red wine{% when "sweet" %}Sweet wine{% endcase %}</p>
+      <h1 class="mt-4 text-[clamp(2.5rem,3vw+1rem,3.5rem)] leading-[1.04]">{{ record.wine }}</h1>
+      <p class="mono mt-3 text-base-content/75">{{ record.vintage }} · {{ record.grapes }} · {{ record.block }}</p>
+      <div class="mt-6 flex flex-wrap items-baseline gap-x-6 gap-y-2">
+        {% if record.available %}
+        <p class="price text-[1.5rem]">{{ record.price }}</p>
+        {% if record.club_price %}<p class="text-base-content/80">Hill Club <span class="price">{{ record.club_price }}</span></p>{% endif %}
+        {% if record.order_link %}<a href="{{ record.order_link }}" class="btn btn-primary" rel="noopener">Buy</a>{% else %}<a href="#hold" class="btn btn-primary">Hold bottles for me</a>{% endif %}
+        {% else %}
+        <p class="eyebrow text-[1rem]">Sold out: poured at library tastings</p>
+        <a href="/visit?tasting=the-library#book" class="btn btn-ink">Book the library</a>
+        {% endif %}
+      </div>
+      <div class="mt-8 max-w-[40rem]">{% render 'hill', wine: record, size: 'lg' %}</div>
+      <div class="note body-copy mt-12 max-w-[60ch]">{{ record.body }}</div>
+      {% if record.pairs_with %}<p class="mt-6 max-w-[60ch]"><span class="eyebrow mr-2 text-base-content/75">With</span>{{ record.pairs_with }}</p>{% endif %}
+    </div>
+  </div>
+</section>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 pb-20 md:px-8 lg:grid-cols-12 lg:gap-14">
+    <div class="lg:col-span-6">{% render 'back-label', wine: record %}</div>
+    {% if block %}
+    <div class="lg:col-span-6">
+      <p class="eyebrow text-base-content/75">From the block</p>
+      {% if block.image %}<img src="{{ block.image }}" class="mt-4 aspect-[3/2] w-full rounded-box object-cover">{% endif %}
+      <h2 class="mt-5 text-[2rem]"><a href="/estate#{{ block.id }}" class="hover:underline hover:decoration-1 hover:underline-offset-4">{{ block.name }}</a></h2>
+      <p class="mono mt-2 text-base-content/75">{{ block.grape }} · planted {{ block.planted }} · {{ block.slope }}</p>
+      <p class="body-copy mt-3 max-w-[52ch]">{{ block.text }}</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{%- assign vintages = data.products | where: "wine", record.wine | sort: "vintage" -%}
+{% if vintages.size > 1 %}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <p class="eyebrow text-base-content/75">The range</p>
+    <h2 class="mt-4 max-w-[24ch] text-[clamp(2rem,2.6vw+1rem,3.25rem)]">Other vintages of {{ record.wine }}</h2>
+    <p class="body-copy mt-4 max-w-[56ch]">Each hill is one vintage, on the same line of years. The one to open first is the one on its plateau.</p>
+    <div class="mt-10">{% render 'range', vintages: vintages, this: record.id %}</div>
+  </div>
+</section>
+{% endif %}
+{% if record.available and record.order_link == blank %}{% render 'hold-form', wine: record %}{% endif %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

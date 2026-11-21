@@ -1,0 +1,11 @@
+label: How the club works
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: icon
+    kind: choice
+    choices: [spark, chat, phone, calendar, clipboard, cart, package, truck, tool, home, check, smile]
+order: [send-a-request, priya-calls, we-email-the-release, pick-up-or-shipped, skip-or-leave]

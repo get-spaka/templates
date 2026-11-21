@@ -1,0 +1,14 @@
+label: The hill in figures
+fields:
+  - name: value
+    label: Figure
+    kind: text
+    required: true
+  - name: label
+    label: What it counts
+    kind: text
+    required: true
+  - name: note
+    label: Note
+    kind: text
+order: [acres, grapes, blocks, first-vines, cases]

@@ -1,0 +1,114 @@
+label: Wines
+fields:
+  - name: name
+    label: Name, with its vintage
+    kind: text
+    required: true
+  - name: wine
+    label: The wine, the same for every vintage (gathers its range)
+    kind: text
+    required: true
+  - name: vintage
+    label: Vintage
+    kind: number
+  - name: price
+    label: Price
+    kind: text
+  - name: club_price
+    label: Price for Hill Club members
+    kind: text
+  - name: summary
+    label: Summary
+    kind: text
+  - name: image
+    label: Bottle photo (its typed label when empty)
+    kind: image
+  - name: category
+    label: Category
+    kind: text
+  - name: badge
+    label: Badge
+    kind: text
+  - name: available
+    label: For sale
+    kind: boolean
+  - name: order_link
+    label: Order link
+    kind: link
+  - name: style
+    label: Style
+    kind: choice
+    required: true
+    choices: [sparkling, white, skin-contact, rosé, red, sweet]
+  - name: grapes
+    label: Grapes
+    kind: text
+  - name: block
+    label: Block
+    kind: text
+  - name: ready_from
+    label: Ready from (year)
+    kind: number
+  - name: best_until
+    label: At its best until (year)
+    kind: number
+  - name: drink_by
+    label: Drink by (year)
+    kind: number
+  - name: taste
+    label: Taste
+    kind: choice
+    choices: [dry, medium-dry, medium-sweet, sweet]
+  - name: alcohol
+    label: Alcohol
+    kind: text
+  - name: sugar
+    label: Residual sugar
+    kind: text
+  - name: acidity
+    label: Acidity
+    kind: text
+  - name: ph
+    label: pH
+    kind: text
+  - name: harvest
+    label: Harvest
+    kind: text
+  - name: bottles
+    label: Bottles made
+    kind: text
+  - name: closure
+    label: Closure
+    kind: text
+  - name: serve
+    label: Serve at
+    kind: text
+  - name: pairs_with
+    label: With
+    kind: text
+  - name: featured
+    label: On the home page
+    kind: boolean
+  - name: next_release
+    label: In the next club release
+    kind: boolean
+  - name: body
+    label: Tasting note
+    kind: markdown
+body: body
+order:
+  - 2024-kettle-block-dry-riesling
+  - 2023-barn-block-blaufrankisch
+  - 2025-pet-nat-rose
+  - 2024-kettle-block-riesling-medium-dry
+  - 2021-top-block-brut
+  - 2022-blaufrankisch-reserve
+  - 2024-gruner-veltliner
+  - 2024-orchard-block-pinot-blanc
+  - 2024-copper
+  - 2023-lower-block-gamay-cabernet-franc
+  - 2023-ice-wine
+  - 2022-kettle-block-dry-riesling
+  - 2019-kettle-block-dry-riesling
+  - 2016-kettle-block-dry-riesling
+  - 2019-blaufrankisch-reserve

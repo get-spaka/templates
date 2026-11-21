@@ -1,0 +1,9 @@
+label: Questions about visiting
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [do-i-need-to-book, fee-waived, group-of-twelve, is-the-walk-steep, open-in-winter, ship-wine-home]

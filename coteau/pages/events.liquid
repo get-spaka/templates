@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Events — Vossberg Hill</title>
+<meta name="description" content="The ice wine pick, a pruning walk in the snow, the spring release party, a Blaufränkisch dinner on the porch and the harvest lunch: a few evenings and mornings on the hill each year.">
+<meta property="og:title" content="Events — Vossberg Hill">
+<meta property="og:description" content="The ice wine pick, a pruning walk in the snow, the spring release party, a Blaufränkisch dinner on the porch and the harvest lunch: a few evenings and mornings on the hill each year.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "On the hill", title: "Events", text: "A few evenings and mornings on the hill each year. Seats are few; members hear first." %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28">
+    {% render 'events-list', limit: 20, summary: true %}
+  </div>
+</section>
+{% render 'verjus-band', text: "Hear about events first: join the release letter.", href: "#letter", button: "Sign up below" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

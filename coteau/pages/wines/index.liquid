@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The wines — Vossberg Hill, Leelanau Peninsula</title>
+<meta name="description" content="Riesling, Blaufränkisch, a traditional-method sparkling wine and an ice wine from Vossberg Hill, each with its hill: when to open it, and how long it keeps.">
+<meta property="og:title" content="The wines — Vossberg Hill, Leelanau Peninsula">
+<meta property="og:description" content="Riesling, Blaufränkisch, a traditional-method sparkling wine and an ice wine from Vossberg Hill, each with its hill: when to open it, and how long it keeps.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "Picked by hand on one hill", title: "The wines", text: "Everything we've made that's still worth opening, current and past. Buy at the cellar door, or ask us to hold bottles for you." %}
+{% render 'wine-list' %}
+{% render 'library' %}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-12 md:px-8">
+    <p class="flex flex-col gap-2 border-y border-base-300 py-6 md:flex-row md:items-baseline md:gap-8"><span class="eyebrow shrink-0 text-base-content/75">How to buy</span><span class="body-copy">Bottles are sold at the cellar door. Ask us to hold some on any wine's page; you pay when you collect. Club members save 15 to 20%.</span></p>
+  </div>
+</section>
+{% render 'verjus-band', text: "Want to taste before you buy?", href: "/visit#book", button: "Book a tasting" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

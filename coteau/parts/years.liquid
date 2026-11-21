@@ -1,0 +1,17 @@
+{%- comment -%} The years (adapted from about-timeline over `milestones`). {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="eyebrow text-base-content/75">The years</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">From cherries to Blaufränkisch</h2>
+    </div>
+    <ol class="border-t border-base-content/20 lg:col-span-7 lg:col-start-6" data-reveal="stagger">
+      {% for m in data.milestones %}
+      <li class="grid gap-x-6 gap-y-1 border-b border-base-content/20 py-5 sm:grid-cols-[6rem_1fr]">
+        <span class="font-heading text-[1.75rem] leading-none text-primary">{{ m.year }}</span>
+        <div><h3 class="plain-heading text-[1.25rem] font-semibold leading-snug">{{ m.title }}</h3><p class="body-copy mt-1">{{ m.text }}</p></div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

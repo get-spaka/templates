@@ -1,0 +1,15 @@
+{%- comment -%} The story, short, beside a photo (adapted from about-story-picture). Pass label, title, image, and link and link_label for its button. The paragraphs are in `text` and `text2`. {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] items-center gap-12 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <figure class="lg:col-span-6">
+      <img src="{{ image }}" class="aspect-[5/4] w-full rounded-box object-cover">
+    </figure>
+    <div class="lg:col-span-5 lg:col-start-8" data-reveal="stagger">
+      <p class="eyebrow text-base-content/75">{{ label }}</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">{{ title }}</h2>
+      <p class="body-copy mt-6 max-w-[56ch]">{{ text }}</p>
+      <p class="body-copy mt-4 max-w-[56ch]">{{ text2 }}</p>
+      {% if link %}<a href="{{ link }}" class="btn btn-ink mt-8 justify-self-start">{{ link_label }}</a>{% endif %}
+    </div>
+  </div>
+</section>

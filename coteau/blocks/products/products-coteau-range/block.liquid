@@ -1,0 +1,11 @@
+{%- comment -%} The vintages of one wine as a range of hills: write its name (the records' `wine`) below. {%- endcomment -%}
+{%- assign wine_name = "Kettle Block Dry Riesling" -%}
+{%- assign vintages = data.products | where: "wine", wine_name | sort: "vintage" -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <p class="eyebrow text-base-content/75">The range</p>
+    <h2 class="mt-4 max-w-[24ch] text-[clamp(2rem,2.6vw+1rem,3.25rem)]">Every vintage of {{ wine_name }}</h2>
+    <p class="body-copy mt-4 max-w-[56ch]">Each hill is one vintage, on the same line of years. The one to open first is the one on its plateau.</p>
+    {% if vintages.size > 0 %}<div class="mt-10">{% render 'range', vintages: vintages %}</div>{% endif %}
+  </div>
+</section>

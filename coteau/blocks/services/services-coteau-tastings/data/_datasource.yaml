@@ -1,0 +1,36 @@
+label: Tastings
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: summary
+    label: Summary
+    kind: text
+  - name: pours
+    label: What's poured
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: duration
+    label: Length
+    kind: text
+  - name: when
+    label: When
+    kind: text
+  - name: walk_in
+    label: Walk in or booked
+    kind: choice
+    choices: [walk-in, booked]
+  - name: icon
+    label: Icon
+    kind: choice
+    choices: [spark, chat, calendar, star, heart, home, wrench, scissors, brush, leaf, camera, car]
+  - name: image
+    label: Image
+    kind: image
+  - name: href
+    label: Link to book
+    kind: link
+order: [at-the-bar, on-the-porch, up-the-hill, the-library]

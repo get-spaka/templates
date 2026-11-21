@@ -1,0 +1,14 @@
+label: At the bar this week
+fields:
+  - name: name
+    label: Wine
+    kind: text
+    required: true
+  - name: description
+    label: A line
+    kind: text
+  - name: tags
+    label: Marks
+    kind: list
+    choices: [new release, chilled, from the cask]
+order: [pet-nat-rose, gruner-veltliner, kettle-block-dry-riesling, lower-block-gamay-cabernet-franc, barn-block-blaufrankisch]

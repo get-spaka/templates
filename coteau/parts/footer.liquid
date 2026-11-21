@@ -1,0 +1,57 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-20 pb-10 md:px-8 md:pt-24">
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        <a href="/" class="inline-flex flex-col items-start gap-2 text-neutral-content">
+          <span class="wordmark text-[1.75rem]">Vossberg Hill</span>
+          {% render 'mark', class: 'h-5 w-auto' %}
+        </a>
+        <address class="mt-8 not-italic leading-relaxed">3471 South Kettle Road<br>Lake Leelanau, Michigan&nbsp;49653</address>
+        <p class="mt-3"><a href="https://www.openstreetmap.org/search?query=Lake%20Leelanau%2C%20Michigan" class="underline decoration-1 underline-offset-4" rel="noopener" target="_blank">Get directions</a></p>
+        <p class="mono mt-6 space-y-1">
+          <a href="tel:+12315550148" class="block whitespace-nowrap hover:underline">(231) 555-0148</a>
+          <a href="mailto:hello@vossberghill.com" class="block hover:underline">hello@vossberghill.com</a>
+        </p>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="eyebrow text-neutral-content/75">The barn is open</p>
+        <div class="mt-4">{% render 'season-hours', hours: data.hours, tone: 'dark' %}</div>
+        <p class="mt-5 text-[0.9375rem] text-neutral-content/75">Closed Thanksgiving, Christmas Day, New Year's Day and the first two weeks of March.</p>
+        <nav aria-label="Footer" class="mt-8">
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 font-semibold">
+            {% for item in data.navigation %}{% if item.place != "social" %}
+            <li><a href="{{ item.href }}" class="hover:underline">{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+            {% for item in data.navigation %}{% if item.place == "social" %}
+            <li><a href="{{ item.href }}" class="hover:underline" rel="noopener" target="_blank">{{ item.label }}</a></li>
+            {% endif %}{% endfor %}
+          </ul>
+        </nav>
+      </div>
+      <div id="letter" class="lg:col-span-4">
+        <p class="eyebrow text-neutral-content/75">The release letter</p>
+        <p class="mt-4 font-heading text-[1.75rem] leading-[1.15]">Hear when the new wines are poured</p>
+        <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#letter-problems swap:innerHTML" class="mt-6 grid gap-3">
+          <div class="grid gap-3 sm:grid-cols-[2fr_3fr] lg:grid-cols-1 xl:grid-cols-[2fr_3fr]">
+            <label class="sr-only" for="letter-name">First name</label>
+            <input id="letter-name" name="name" type="text" class="input w-full border-neutral-content/30 bg-neutral text-neutral-content placeholder:text-neutral-content/60" maxlength="100" autocomplete="given-name" placeholder="First name">
+            <label class="sr-only" for="letter-email">Email address</label>
+            <input id="letter-email" name="email" type="email" class="input w-full border-neutral-content/30 bg-neutral text-neutral-content placeholder:text-neutral-content/60" required maxlength="200" autocomplete="email" placeholder="Email address">
+          </div>
+          <fieldset class="flex flex-wrap gap-x-5 gap-y-2 pt-1 text-[0.9375rem]">
+            <legend class="sr-only">What you'd like to hear about</legend>
+            <label class="flex items-center gap-2"><input type="checkbox" name="topics" value="New releases" class="checkbox checkbox-sm border-neutral-content/50" checked> New releases</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="topics" value="Events" class="checkbox checkbox-sm border-neutral-content/50"> Events</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="topics" value="Library offers" class="checkbox checkbox-sm border-neutral-content/50"> Library offers</label>
+          </fieldset>
+          <div id="letter-problems" class="empty:hidden"></div>
+          <button type="submit" class="btn mt-1 justify-self-start border-neutral-content bg-neutral-content text-neutral hover:bg-neutral-content/85">Sign me up</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-16 flex flex-col gap-3 border-t border-neutral-content/20 pt-6 text-[0.9375rem] text-neutral-content/75 md:flex-row md:justify-between">
+      <p>You must be 21 or older to taste or buy wine. Please drink with care.</p>
+      <p class="mono-sm">Vossberg Hill · Leelanau Peninsula · since 1998</p>
+    </div>
+  </div>
+</footer>

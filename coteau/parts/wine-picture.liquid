@@ -1,0 +1,2 @@
+{%- comment -%} The wine's bottle photo, or its typed label when it has none. Pass wine. {%- endcomment -%}
+{%- if wine.image -%}<img src="{{ wine.image }}" class="wine-photo">{%- else -%}{% render 'typed-label', wine: wine %}{%- endif -%}

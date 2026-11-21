@@ -1,0 +1,26 @@
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end" data-reveal>
+      <div class="lg:col-span-7">
+        <p class="eyebrow text-base-content/75">This year's wines</p>
+        <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">Open it or keep it</h2>
+      </div>
+      <p class="body-copy max-w-[52ch] lg:col-span-5">Each hill runs from the year we picked to the last year we'd still open it. The dot is where the wine is now.</p>
+    </div>
+    <div class="mt-10">
+      <div data-filter>
+        <fieldset class="flex flex-wrap gap-2">
+          <legend class="sr-only">Show</legend>
+          <input type="radio" class="chip-input" name="stage-block" id="stage-block-all" value="all" checked><label for="stage-block-all" class="chip">All</label>
+          <input type="radio" class="chip-input" name="stage-block" id="stage-block-tonight" value="tonight"><label for="stage-block-tonight" class="chip"><span class="stage-dot" data-dot="open" aria-hidden="true"></span>Open tonight</label>
+          <input type="radio" class="chip-input" name="stage-block" id="stage-block-cellar" value="cellar"><label for="stage-block-cellar" class="chip"><span class="stage-dot" aria-hidden="true"></span>For the cellar</label>
+        </fieldset>
+        <div class="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-reveal="stagger">
+          {% for wine in data.products %}{% if wine.featured and wine.available %}{% render 'wine-card', wine: wine %}{% endif %}{% endfor %}
+        </div>
+        <p class="filter-empty body-copy mt-6">None of these wines fits. Choose All to see them again.</p>
+      </div>
+    </div>
+    <a href="/wines" class="btn btn-ink mt-14">All the wines</a>
+  </div>
+</section>

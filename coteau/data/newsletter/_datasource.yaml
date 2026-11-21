@@ -1,0 +1,20 @@
+label: The release letter
+collected: true
+answer: newsletter-thanks
+messages:
+  required: "{field} is required."
+  invalid: "{field} does not look right."
+  too_many: "Too many sign-ups from here. Please try again in a few minutes."
+  sent: "Thank you, you're on the list."
+fields:
+  - name: email
+    label: Email address
+    kind: email
+    required: true
+  - name: name
+    label: First name
+    kind: text
+  - name: topics
+    label: What you'd like to hear about
+    kind: list
+    choices: [New releases, Events, Library offers]

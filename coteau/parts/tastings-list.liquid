@@ -1,0 +1,28 @@
+{%- comment -%} The four tastings with their photos (adapted from services-image-list over `services`). {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-24">
+    <div data-reveal>
+      <p class="eyebrow text-base-content/75">Four ways to taste</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">The tastings</h2>
+    </div>
+    <div class="mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2" data-reveal="stagger">
+      {% for tasting in data.services %}
+      <article class="flex flex-col">
+        {% if tasting.image %}<img src="{{ tasting.image }}" class="aspect-[3/2] w-full rounded-box object-cover">{% endif %}
+        <div class="mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+          <h3 class="text-[1.875rem] leading-[1.1]">{{ tasting.name }}</h3>
+          <p class="mono text-[1rem]"><span class="whitespace-nowrap">{{ tasting.duration }}</span> · <span class="whitespace-nowrap">{{ tasting.price }}</span></p>
+        </div>
+        <p class="body-copy mt-3 max-w-[54ch]">{{ tasting.summary }}</p>
+        <dl class="mono mt-4 grid grid-cols-[6rem_1fr] gap-x-4 gap-y-1 text-base-content/80">
+          <dt>Poured</dt><dd>{{ tasting.pours }}</dd>
+          <dt>When</dt><dd>{{ tasting.when }}</dd>
+        </dl>
+        <div class="mt-6">
+          {% if tasting.walk_in == "walk-in" %}<p class="inline-flex items-center gap-2 font-semibold"><span class="stage-dot" data-dot="walk-in" aria-hidden="true"></span>Just walk in</p>{% else %}<a href="{{ tasting.href }}" class="btn btn-primary">Book</a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+label: Club requests
+collected: true
+answer: club-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, Priya will call you within two working days."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+    required: true
+  - name: level
+    label: The size
+    kind: choice
+    required: true
+    choices: [Four bottles, Eight bottles]
+  - name: how
+    label: Pick up or ship
+    kind: choice
+    required: true
+    choices: [Pick up at the release party, Ship it to me]
+  - name: state
+    label: The state you'd ship to
+    kind: text
+  - name: over_21
+    label: I am 21 or older
+    kind: boolean
+    required: true
+  - name: note
+    label: A note
+    kind: markdown

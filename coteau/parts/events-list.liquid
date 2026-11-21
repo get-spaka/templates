@@ -1,0 +1,17 @@
+{%- comment -%} The coming events by date (adapted from events-date-list); past ones drop off. Pass limit (3 on the home page), and summary: true to show each one's summary. {%- endcomment -%}
+{%- assign today = "now" | date: "%Y-%m-%d" -%}
+{%- assign shown = 0 -%}
+<ul class="border-y border-base-300" data-reveal="stagger">
+  {% for event in data.events %}{% assign day = event.date | date: "%Y-%m-%d" %}{% if day >= today and shown < limit %}{% assign shown = shown | plus: 1 %}
+  <li class="grid gap-x-8 gap-y-3 border-base-300 py-7 not-first:border-t sm:grid-cols-[9rem_1fr_auto] sm:items-start">
+    <p class="font-heading leading-none"><span class="block text-[2.5rem]">{{ event.date | date: "%-d" }}</span><span class="eyebrow mt-1 block text-base-content/75">{{ event.date | date: "%B %Y" }}</span></p>
+    <div>
+      <h3 class="text-[1.5rem] leading-[1.15]">{{ event.title }}</h3>
+      <p class="mono mt-1.5 text-base-content/75">{{ event.time }}{% if event.place %} · {{ event.place }}{% endif %}{% if event.price != blank %} · <span class="whitespace-nowrap">{{ event.price }}</span>{% else %} · Free{% endif %}</p>
+      {% if summary %}<p class="body-copy mt-3 max-w-[60ch]">{{ event.summary }}</p>{% endif %}
+    </div>
+    {% if event.booking != blank %}<a href="{{ event.booking }}" class="btn btn-ink justify-self-start">Reserve a seat</a>{% else %}<p class="inline-flex items-center gap-2 font-semibold whitespace-nowrap"><span class="stage-dot" data-dot="walk-in" aria-hidden="true"></span>Just come</p>{% endif %}
+  </li>
+  {% endif %}{% endfor %}
+</ul>
+{% if shown == 0 %}<p class="body-copy mt-6">No dates on the calendar just now. Sign up to the release letter below and you'll hear first.</p>{% endif %}

@@ -1,0 +1,28 @@
+label: The vineyard's blocks
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: grape
+    label: Grapes
+    kind: text
+  - name: planted
+    label: Planted (year)
+    kind: number
+  - name: acres
+    label: Acres
+    kind: number
+  - name: soil
+    label: Soil
+    kind: text
+  - name: slope
+    label: Slope
+    kind: text
+  - name: text
+    label: A sentence
+    kind: text
+  - name: image
+    label: Photo
+    kind: image
+order: [kettle-block, barn-block, top-block, orchard-block, lower-block]

@@ -1,0 +1,83 @@
+{%- comment -%} Book a tasting (adapted from forms-booking-appointment over `bookings`), filled in from the link by scripts/prefill.js: ?tasting=<service id>, ?event=<event id>. {%- endcomment -%}
+{%- assign today = "now" | date: "%Y-%m-%d" -%}
+<section id="book" class="scroll-mt-32 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4">
+      <p class="eyebrow text-base-content/75">A request</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">Book a tasting</h2>
+      <div class="mt-8 rounded-box bg-base-200 p-7">
+        <p class="body-copy">We confirm by email within a day. Nothing is booked until we do. Card details are never asked here.</p>
+        <p class="body-copy mt-4">In a hurry? Call <a href="tel:+12315550148" class="text-link whitespace-nowrap">(231) 555-0148</a>.</p>
+      </div>
+    </div>
+    <form hx-post="/_data/bookings" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#book-problems swap:innerHTML" class="flex flex-col gap-10 lg:col-span-8" data-prefill>
+      <fieldset>
+        <legend class="flex items-center gap-3 text-[1.125rem] font-semibold"><span class="font-heading text-[1.5rem] text-primary">1</span>Which tasting</legend>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {% for tasting in data.services %}
+          <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-base-200">
+            <input type="radio" name="tasting" value="{{ tasting.name }}" class="radio radio-sm radio-primary mt-1" data-param="tasting" data-value="{{ tasting.id }}" required>
+            <span><span class="block font-semibold">{{ tasting.name }}</span><span class="mono-sm block text-base-content/75">{{ tasting.duration }} · {{ tasting.price }}</span></span>
+          </label>
+          {% endfor %}
+          <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-base-200">
+            <input type="radio" name="tasting" value="An event" class="radio radio-sm radio-primary mt-1" data-param="event" data-value="*">
+            <span class="flex-1"><span class="block font-semibold">An event</span>
+              <select name="event" class="select select-sm mt-2 w-full" aria-label="The event">
+                {% for event in data.events %}{% assign day = event.date | date: "%Y-%m-%d" %}{% if day >= today and event.booking != blank %}<option value="{{ event.title }}" data-param="event" data-value="{{ event.id }}">{{ event.title }}, {{ event.date | date: "%B %-d" }}</option>{% endif %}{% endfor %}
+              </select>
+            </span>
+          </label>
+          <label class="flex cursor-pointer items-start gap-3 rounded-box border border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-base-200">
+            <input type="radio" name="tasting" value="A group of 8 or more" class="radio radio-sm radio-primary mt-1">
+            <span><span class="block font-semibold">A group of 8 or more</span><span class="block text-[0.9375rem] text-base-content/75">Tell us about it in the note</span></span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="flex items-center gap-3 text-[1.125rem] font-semibold"><span class="font-heading text-[1.5rem] text-primary">2</span>When</legend>
+        <div class="mt-2 grid gap-x-5 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">The day</legend>
+            <input name="day" type="date" class="input w-full" required>
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Morning or afternoon</legend>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+              <label class="flex items-center gap-2"><input type="radio" name="part_of_day" value="morning" class="radio radio-sm"> Morning</label>
+              <label class="flex items-center gap-2"><input type="radio" name="part_of_day" value="afternoon" class="radio radio-sm" checked> Afternoon</label>
+            </div>
+          </fieldset>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend class="flex items-center gap-3 text-[1.125rem] font-semibold"><span class="font-heading text-[1.5rem] text-primary">3</span>Who's coming</legend>
+        <div class="mt-2 grid gap-x-5 gap-y-3 sm:grid-cols-2">
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">How many of you</legend>
+            <input name="guests" type="number" class="input w-full" required min="1" max="40" value="2">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your name</legend>
+            <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your email</legend>
+            <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+          </fieldset>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+            <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+          </fieldset>
+          <fieldset class="fieldset sm:col-span-2">
+            <legend class="fieldset-legend">A note <span class="font-normal text-base-content/70">(Celebrating something? Coming by bike?)</span></legend>
+            <textarea name="note" class="textarea w-full" rows="3" maxlength="2000"></textarea>
+          </fieldset>
+          <label class="flex items-center gap-3 pt-2 sm:col-span-2"><input type="checkbox" name="over_21" value="true" class="checkbox checkbox-sm" required> Everyone in my group is 21 or older</label>
+        </div>
+      </fieldset>
+      <div id="book-problems" class="empty:hidden"></div>
+      <div><button type="submit" class="btn btn-primary btn-lg">Send my request</button></div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+label: The years
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: year
+    kind: text
+  - name: text
+    kind: text
+order: [first-cherry-trees, four-acres-of-riesling, blaufrankisch-below-the-barn, last-orchard-block, teos-first-vintage, first-sparkling-wine]

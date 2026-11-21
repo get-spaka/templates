@@ -1,0 +1,19 @@
+{
+  "id": "coteau",
+  "version": "1.0.0",
+  "name": "Coteau",
+  "description": "A family winery in daylight: every wine is drawn as a small striped hillside from its vintage to its last good year, a marker climbs the slope to where the wine stands this year and one line says keep it, open it or drink it up; tastings, a club and the barn on the hill.",
+  "category": "business",
+  "tags": [
+    "winery",
+    "vineyard",
+    "wine",
+    "cellar door",
+    "tasting room",
+    "wine club",
+    "cidery",
+    "estate"
+  ],
+  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "licence": "MIT"
+}

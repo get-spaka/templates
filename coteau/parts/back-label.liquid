@@ -1,0 +1,23 @@
+{%- comment -%} The wine's facts as the back of its bottle, on stone, with the taste scale. Pass wine. {%- endcomment -%}
+<div class="rounded-box bg-base-200 p-6 md:p-8">
+  <p class="eyebrow text-base-content/75">The back label</p>
+  <dl class="back-label mt-4">
+    {% if wine.grapes %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Grapes</dt><dd>{{ wine.grapes }}</dd></div>{% endif %}
+    {% if wine.block %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Block</dt><dd>{{ wine.block }}</dd></div>{% endif %}
+    {% if wine.harvest %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Harvest</dt><dd>{{ wine.harvest }}</dd></div>{% endif %}
+    {% if wine.alcohol %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Alcohol</dt><dd>{{ wine.alcohol }}</dd></div>{% endif %}
+    {% if wine.sugar %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Residual sugar</dt><dd>{{ wine.sugar }}</dd></div>{% endif %}
+    {% if wine.acidity %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Acidity</dt><dd>{{ wine.acidity }}</dd></div>{% endif %}
+    {% if wine.ph %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>pH</dt><dd>{{ wine.ph }}</dd></div>{% endif %}
+    {% if wine.bottles %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Bottles made</dt><dd>{{ wine.bottles }}</dd></div>{% endif %}
+    {% if wine.closure %}<div class="flex justify-between gap-6 border-b border-base-300 py-2.5"><dt>Closure</dt><dd>{{ wine.closure }}</dd></div>{% endif %}
+    {% if wine.serve %}<div class="flex justify-between gap-6 py-2.5"><dt>Serve at</dt><dd>{{ wine.serve }}</dd></div>{% endif %}
+  </dl>
+  {% if wine.taste %}
+  <div class="mt-6" data-taste="{{ wine.taste }}">
+    <p class="sr-only">Taste: {{ wine.taste }}</p>
+    <div class="taste-steps" aria-hidden="true"><span>Dry</span><span>Medium dry</span><span>Medium sweet</span><span>Sweet</span></div>
+    <div class="taste-arrow" aria-hidden="true"></div>
+  </div>
+  {% endif %}
+</div>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Visit — Vossberg Hill, Lake Leelanau, Michigan</title>
+<meta name="description" content="Walk in to the bar of our 1911 stone barn any day we're open, or book the porch, the hill walk or a library tasting. Hours by season, directions and what to know before you come.">
+<meta property="og:title" content="Visit — Vossberg Hill, Lake Leelanau, Michigan">
+<meta property="og:description" content="Walk in to the bar of our 1911 stone barn any day we're open, or book the porch, the hill walk or a library tasting. Hours by season, directions and what to know before you come.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "3471 South Kettle Road · Lake Leelanau", title: "Visit", text: "The barn at the top of the hill, a porch over the rows and the lake beyond. Walk in to the bar any day we're open; book the porch, the walk or the library." %}
+{% render 'bar-flight' %}
+{% render 'tastings-list' %}
+{% render 'book-form' %}
+{% render 'hours' %}
+{% render 'getting-here' %}
+{% render 'visit-notes' %}
+{% render 'faq', items: data["visit-faq"], label: "Questions", title: "Before you book" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

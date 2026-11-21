@@ -1,0 +1,52 @@
+{%- comment -%} Join the club (adapted from forms-contact-card over `club-requests`), the size filled in from the link: ?level=<club-levels id>. {%- endcomment -%}
+<section id="join" class="scroll-mt-32 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 pb-20 md:px-8 md:pb-24 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4">
+      <p class="eyebrow text-base-content/75">Join</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">Send a request</h2>
+      <div class="mt-8 rounded-box bg-base-200 p-7">
+        <p class="body-copy">No payment here: we'll call within two working days to set it up.</p>
+      </div>
+    </div>
+    <form hx-post="/_data/club-requests" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#join-problems swap:innerHTML" class="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 lg:col-span-8" data-prefill>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">The size</legend>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {% for level in data["club-levels"] %}
+          <label class="flex cursor-pointer items-center gap-3 rounded-box border border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-base-200"><input type="radio" name="level" value="{{ level.name }}" class="radio radio-sm radio-primary" data-param="level" data-value="{{ level.id }}" required><span><span class="block font-semibold">{{ level.name }}</span><span class="mono-sm text-base-content/75">{{ level.price }} {{ level.period }}</span></span></label>
+          {% endfor %}
+        </div>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Pick up or ship</legend>
+        <div class="flex flex-wrap gap-x-8 gap-y-2 pt-1">
+          <label class="flex items-center gap-2"><input type="radio" name="how" value="Pick up at the release party" class="radio radio-sm" required checked> Pick up at the release party</label>
+          <label class="flex items-center gap-2"><input type="radio" name="how" value="Ship it to me" class="radio radio-sm"> Ship it to me</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The state you'd ship to <span class="font-normal text-base-content/70">(if shipped)</span></legend>
+        <input name="state" type="text" class="input w-full" maxlength="60" autocomplete="address-level1">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone</legend>
+        <input name="phone" type="tel" class="input w-full" required maxlength="30" autocomplete="tel">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">A note <span class="font-normal text-base-content/70">(a gift? wines you never drink?)</span></legend>
+        <textarea name="note" class="textarea w-full" rows="3" maxlength="2000"></textarea>
+      </fieldset>
+      <label class="flex items-center gap-3 pt-2 sm:col-span-2"><input type="checkbox" name="over_21" value="true" class="checkbox checkbox-sm" required> I am 21 or older</label>
+      <div id="join-problems" class="empty:hidden sm:col-span-2"></div>
+      <div class="mt-3 sm:col-span-2"><button type="submit" class="btn btn-primary btn-lg">Send my request</button></div>
+    </form>
+  </div>
+</section>

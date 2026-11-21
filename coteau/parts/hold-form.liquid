@@ -1,0 +1,48 @@
+{%- comment -%} Hold bottles for me (adapted from forms-contact-card over `holds`): the wine is a select of every wine for sale, this one chosen. Pass wine. {%- endcomment -%}
+<section id="hold" class="bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-24 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4">
+      <div class="rounded-box bg-base-200 p-7 lg:sticky lg:top-36">
+        <p class="eyebrow text-base-content/75">Bottles held for you</p>
+        <h2 class="mt-3 text-[clamp(1.75rem,1.6vw+1rem,2.5rem)]">Hold bottles for me</h2>
+        <p class="body-copy mt-5">We'll keep them for two weeks and confirm by email. You pay when you collect.</p>
+        <p class="body-copy mt-4">Questions? Call <a href="tel:+12315550148" class="text-link whitespace-nowrap">(231) 555-0148</a>.</p>
+      </div>
+    </div>
+    <form hx-post="/_data/holds" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#hold-problems swap:innerHTML" class="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 lg:col-span-8">
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">The wine</legend>
+        <select name="wine" class="select w-full" required>
+          {% for w in data.products %}{% if w.available %}<option value="{{ w.name }}"{% if w.id == wine.id %} selected{% endif %}>{{ w.name }}</option>{% endif %}{% endfor %}
+        </select>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">How many bottles</legend>
+        <input name="bottles" type="number" class="input w-full" required min="1" max="120" value="2">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">When you'll come by</legend>
+        <input name="pickup" type="date" class="input w-full" required>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone <span class="font-normal text-base-content/70">(optional)</span></legend>
+        <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">A note <span class="font-normal text-base-content/70">(optional)</span></legend>
+        <textarea name="note" class="textarea w-full" rows="3" maxlength="2000"></textarea>
+      </fieldset>
+      <label class="flex items-center gap-3 pt-2 sm:col-span-2"><input type="checkbox" name="over_21" value="true" class="checkbox checkbox-sm" required> Everyone collecting is 21 or older</label>
+      <div id="hold-problems" class="empty:hidden sm:col-span-2"></div>
+      <div class="mt-3 sm:col-span-2"><button type="submit" class="btn btn-primary btn-lg">Hold my bottles</button></div>
+    </form>
+  </div>
+</section>

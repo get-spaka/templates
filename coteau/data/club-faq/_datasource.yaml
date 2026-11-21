@@ -1,0 +1,9 @@
+label: Questions about the club
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [choose-my-wines, which-states, give-a-membership, away-for-a-release, how-do-i-leave]

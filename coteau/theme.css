@@ -1,0 +1,21 @@
+:root {
+  --theme-color-primary: oklch(0.43 0.135 330);
+  --theme-color-primary-content: oklch(0.97 0.007 100);
+  --theme-color-secondary: oklch(0.88 0.07 120);
+  --theme-color-secondary-content: oklch(0.25 0.03 330);
+  --theme-color-accent: oklch(0.5 0.11 140);
+  --theme-color-accent-content: oklch(0.97 0.007 100);
+  --theme-color-neutral: oklch(0.24 0.035 330);
+  --theme-color-neutral-content: oklch(0.95 0.01 100);
+  --theme-color-surface: oklch(0.965 0.007 100);
+  --theme-color-surface-alt: oklch(0.925 0.014 95);
+  --theme-color-border: oklch(0.87 0.012 95);
+  --theme-color-text: oklch(0.25 0.03 330);
+  --theme-font-heading: "Marcellus", "Optima", "Candara", Georgia, serif;
+  --theme-font-body: "Ysabeau Office", "Optima", ui-sans-serif, system-ui, sans-serif;
+  --theme-radius: 0.25rem;
+  --theme-radius-field: 0.25rem;
+  --theme-depth: 0;
+  --theme-size: 0.28125rem;
+  --theme-border: 1px;
+}

@@ -1,0 +1,13 @@
+{%- comment -%} This year's wines with the chips "Open tonight" and "For the cellar". Pass wines (the records to show), and name, unique on the page. {%- endcomment -%}
+<div data-filter>
+  <fieldset class="flex flex-wrap gap-2">
+    <legend class="sr-only">Show</legend>
+    <input type="radio" class="chip-input" name="stage-{{ name }}" id="stage-{{ name }}-all" value="all" checked><label for="stage-{{ name }}-all" class="chip">All</label>
+    <input type="radio" class="chip-input" name="stage-{{ name }}" id="stage-{{ name }}-tonight" value="tonight"><label for="stage-{{ name }}-tonight" class="chip"><span class="stage-dot" data-dot="open" aria-hidden="true"></span>Open tonight</label>
+    <input type="radio" class="chip-input" name="stage-{{ name }}" id="stage-{{ name }}-cellar" value="cellar"><label for="stage-{{ name }}-cellar" class="chip"><span class="stage-dot" aria-hidden="true"></span>For the cellar</label>
+  </fieldset>
+  <div class="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3" data-reveal="stagger">
+    {% for wine in wines %}{% render 'wine-card', wine: wine %}{% endfor %}
+  </div>
+  <p class="filter-empty body-copy mt-6">None of these wines fits. Choose All to see them again.</p>
+</div>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The estate — Vossberg Hill</title>
+<meta name="description" content="A glacial hill above Lake Leelanau, tart cherries from 1931, Riesling from 1998: the five blocks of Vossberg Hill, the family who farm them, and the stone barn at the top.">
+<meta property="og:title" content="The estate — Vossberg Hill">
+<meta property="og:description" content="A glacial hill above Lake Leelanau, tart cherries from 1931, Riesling from 1998: the five blocks of Vossberg Hill, the family who farm them, and the stone barn at the top.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-14 md:px-8 md:pt-20" data-reveal="stagger">
+    <p class="eyebrow text-base-content/75">A drumlin above Lake Leelanau</p>
+    <h1 class="mt-4 max-w-[16ch] text-[clamp(2.75rem,4.5vw+1rem,5rem)] leading-[1.02]">The estate</h1>
+    <p class="body-copy mt-6 max-w-[58ch] text-[1.1875rem]">A hill the glacier left, its south face gravel and sandy loam over clay, half a mile from the lake. Three generations of cherries, then twenty-eight years of vines.</p>
+  </div>
+  <div class="mx-auto mt-12 max-w-[90rem] px-5 md:px-8">
+    <img src="/media/estate-hill-lake.jpg" class="aspect-[16/9] w-full rounded-box object-cover md:aspect-[21/9]">
+  </div>
+</section>
+{% render 'estate-story' %}
+{% render 'vineyard-blocks' %}
+{% render 'people' %}
+{% render 'years' %}
+{% render 'estate-gallery' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

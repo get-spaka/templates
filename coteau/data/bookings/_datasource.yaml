@@ -1,0 +1,49 @@
+label: Tasting requests
+collected: true
+answer: bookings-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent. We'll confirm by email within a day."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: tasting
+    label: The tasting
+    kind: choice
+    required: true
+    choices: [At the bar, On the porch, Up the hill, The library, An event, A group of 8 or more]
+  - name: event
+    label: The event
+    kind: choice
+    choices: [The ice wine pick, Pruning walk in the snow, Spring release party, Blaufränkisch dinner on the porch, Harvest lunch]
+  - name: day
+    label: The day
+    kind: date
+    required: true
+  - name: part_of_day
+    label: Morning or afternoon
+    kind: choice
+    choices: [morning, afternoon]
+  - name: guests
+    label: How many of you
+    kind: number
+    required: true
+  - name: over_21
+    label: Everyone in my group is 21 or older
+    kind: boolean
+    required: true
+  - name: note
+    label: A note
+    kind: markdown

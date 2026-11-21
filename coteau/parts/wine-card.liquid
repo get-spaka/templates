@@ -1,0 +1,13 @@
+{%- comment -%} A wine as a tall card: its photo or typed label, name, vintage and style, price and hill. Pass wine, and size: "sm" for the library's. {%- endcomment -%}
+{%- case wine.style -%}{%- when "rosé", "skin-contact" -%}{%- assign kind = "pink" -%}{%- else -%}{%- assign kind = wine.style -%}{%- endcase -%}
+<article class="group flex flex-col" data-card data-kind="{{ kind }}">
+  <a href="/wines/{{ wine.id }}" class="block outline-offset-4 focus-visible:outline-2 focus-visible:outline-primary" aria-label="{{ wine.name }}">
+    {% render 'wine-picture', wine: wine %}
+  </a>
+  <div class="mt-5 flex items-baseline justify-between gap-4">
+    <h3 class="{% if size == 'sm' %}text-[1.25rem]{% else %}text-[1.5rem]{% endif %} leading-[1.15]"><a href="/wines/{{ wine.id }}" class="hover:underline hover:decoration-1 hover:underline-offset-4">{{ wine.wine }}</a></h3>
+    {% if wine.available %}<p class="price shrink-0 text-[1rem]">{{ wine.price }}</p>{% else %}<p class="eyebrow shrink-0 text-base-content/75">Sold out</p>{% endif %}
+  </div>
+  <p class="mono mt-1 text-base-content/75">{{ wine.vintage }} · {% case wine.style %}{% when "sparkling" %}Sparkling{% when "white" %}White{% when "skin-contact" %}Skin contact{% when "rosé" %}Rosé{% when "red" %}Red{% when "sweet" %}Sweet{% endcase %} · {{ wine.block }}</p>
+  {% render 'hill', wine: wine %}
+</article>

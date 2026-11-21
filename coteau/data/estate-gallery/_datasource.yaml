@@ -1,0 +1,19 @@
+label: The barn and the hill
+fields:
+  - name: title
+    label: Title
+    kind: text
+    required: true
+  - name: image
+    label: Picture
+    kind: image
+  - name: caption
+    label: Caption
+    kind: text
+  - name: category
+    label: Category
+    kind: text
+  - name: before
+    label: Before picture, for a before and after
+    kind: image
+order: [the-barn, the-porch, the-cask-cellar, harvest-crates, the-ice-wine-pick, pruning-in-the-snow]

@@ -1,0 +1,17 @@
+{%- comment -%} The barn and the hill (adapted from gallery-feature-mosaic over `estate-gallery`). {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div data-reveal>
+      <p class="eyebrow text-base-content/75">Around the year</p>
+      <h2 class="mt-4 text-[clamp(2rem,2.6vw+1rem,3.25rem)]">The barn and the hill</h2>
+    </div>
+    <div class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5" data-reveal="stagger">
+      {% for item in data["estate-gallery"] %}
+      <figure class="{% if forloop.index == 1 %}col-span-2 row-span-2{% elsif forloop.index > 3 %}col-span-2{% endif %}">
+        <img src="{{ item.image }}" class="{% if forloop.index > 3 %}aspect-[2/1]{% else %}aspect-square{% endif %} w-full rounded-box object-cover">
+        <figcaption class="mt-2 text-[0.9375rem]"><span class="font-semibold">{{ item.title }}.</span> <span class="text-base-content/75">{{ item.caption }}</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

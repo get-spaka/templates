@@ -1,0 +1,18 @@
+label: Opening hours
+fields:
+  - name: day
+    label: Day
+    kind: text
+    required: true
+  - name: hours
+    label: Hours
+    kind: text
+  - name: note
+    label: Note
+    kind: text
+  - name: season
+    label: Season
+    kind: choice
+    required: true
+    choices: [summer, winter]
+order: [summer-monday, summer-tuesday, summer-wednesday, summer-thursday, summer-friday, summer-saturday, summer-sunday, winter-thursday, winter-friday, winter-saturday, winter-sunday]

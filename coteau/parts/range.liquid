@@ -1,0 +1,38 @@
+{%- comment -%}
+  The range: every vintage of one wine (the records whose `wine` is the same) as hills on
+  one line of years, later vintages lower and in front, a marker on each at this year,
+  then the list of them, linked. Pass vintages (sorted by vintage) and this (the id of the
+  page's own record, or nothing).
+{%- endcomment -%}
+{%- assign y = "now" | date: "%Y" | plus: 0 -%}
+{%- assign dated = vintages | where: "drink_by" -%}
+{%- assign from = dated | map: "vintage" | sort | first -%}
+{%- assign to = dated | map: "drink_by" | sort | last -%}
+{%- assign last_index = dated.size | minus: 1 -%}
+<div class="vintages" data-range style="--from: {{ from }}; --to: {{ to }}; --now: {{ y }}; --year: {{ y }}">
+  <div class="vintages-land" aria-hidden="true">
+    {% for v in dated %}{% assign depth = last_index | minus: forloop.index0 %}{% assign tone = depth | times: 15 %}{% assign tone = 100 | minus: tone | at_least: 55 %}{% assign row_tone = depth | times: 20 %}{% assign row_tone = 100 | minus: row_tone | at_least: 40 %}
+    <div data-ridge{% if v.id == this %} data-this{% endif %} style="--vintage: {{ v.vintage }}; --ready: {{ v.ready_from }}; --best: {{ v.best_until }}; --by: {{ v.drink_by }}; --depth: {{ depth }}; --tone: {{ tone }}%; --row-tone: {{ row_tone }}%">
+      <div class="hill-slope"></div>
+      <span class="hill-now"></span>
+    </div>
+    {% endfor %}
+    <span class="vintages-now"></span>
+  </div>
+  <div class="vintages-axis" aria-hidden="true"><span>{{ from }}</span><span>{{ to }}</span></div>
+</div>
+<ol class="mt-8 border-t border-base-300">
+  {% for v in dated reversed %}
+  {%- if y < v.ready_from -%}{%- assign stage = "keep" -%}{%- elsif y < v.best_until -%}{%- assign stage = "open" -%}{%- elsif y < v.drink_by -%}{%- assign stage = "drink-up" -%}{%- else -%}{%- assign stage = "past" -%}{%- endif -%}
+  <li class="grid gap-x-6 gap-y-1 border-b border-base-300 py-4 sm:grid-cols-[6rem_1fr_auto] sm:items-baseline" data-stage="{{ stage }}" data-years="{{ v.vintage }} {{ v.ready_from }} {{ v.best_until }} {{ v.drink_by }}">
+    <p class="font-heading text-[1.5rem] leading-none">{% if v.id == this %}{{ v.vintage }}{% else %}<a href="/wines/{{ v.id }}" class="hover:underline hover:decoration-1 hover:underline-offset-4">{{ v.vintage }}</a>{% endif %}</p>
+    <p class="hill-line mt-0">
+      <span data-when="keep"><span class="stage-dot" aria-hidden="true"></span>Keep it: best from {{ v.ready_from }}</span>
+      <span data-when="open"><span class="stage-dot" aria-hidden="true"></span>Open it: at its best until {{ v.best_until }}</span>
+      <span data-when="drink-up"><span class="stage-dot" aria-hidden="true"></span>Drink it up: good until {{ v.drink_by }}</span>
+      <span data-when="past"><span class="stage-dot" aria-hidden="true"></span>Past its best: we keep it for the record</span>
+    </p>
+    <p class="text-[0.9375rem] text-base-content/75">{% if v.id == this %}This one{% elsif v.available %}<span class="price">{{ v.price }}</span>{% else %}Sold out: poured at library tastings{% endif %}</p>
+  </li>
+  {% endfor %}
+</ol>
