@@ -11,4 +11,11 @@ fields:
     label: Marks
     kind: list
     choices: [new release, chilled, from the cask]
-order: [pet-nat-rose, gruner-veltliner, kettle-block-dry-riesling, lower-block-gamay-cabernet-franc, barn-block-blaufrankisch]
+order:
+  [
+    pet-nat-rose,
+    gruner-veltliner,
+    kettle-block-dry-riesling,
+    lower-block-gamay-cabernet-franc,
+    barn-block-blaufrankisch,
+  ]

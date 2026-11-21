@@ -15,4 +15,17 @@ fields:
     kind: choice
     required: true
     choices: [summer, winter]
-order: [summer-monday, summer-tuesday, summer-wednesday, summer-thursday, summer-friday, summer-saturday, summer-sunday, winter-thursday, winter-friday, winter-saturday, winter-sunday]
+order:
+  [
+    summer-monday,
+    summer-tuesday,
+    summer-wednesday,
+    summer-thursday,
+    summer-friday,
+    summer-saturday,
+    summer-sunday,
+    winter-thursday,
+    winter-friday,
+    winter-saturday,
+    winter-sunday,
+  ]

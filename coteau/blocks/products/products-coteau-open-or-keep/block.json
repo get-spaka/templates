@@ -3,28 +3,9 @@
   "kind": "products",
   "source": "upstart",
   "description": "The featured wines as tall cards, each with its bottle photo or a typed label, its name, vintage, price and hill with the line that says keep it, open it or drink it up; chips above them keep only those to open tonight or those for the cellar, with no script.",
-  "tags": [
-    "products",
-    "wines",
-    "cellar",
-    "drinking window",
-    "filter",
-    "cards"
-  ],
-  "mood": [
-    "elegant",
-    "minimal"
-  ],
-  "synonyms": [
-    "wines",
-    "our wines",
-    "products",
-    "cellar",
-    "nos vins",
-    "la cave",
-    "produits",
-    "bouteilles"
-  ],
+  "tags": ["products", "wines", "cellar", "drinking window", "filter", "cards"],
+  "mood": ["elegant", "minimal"],
+  "synonyms": ["wines", "our wines", "products", "cellar", "nos vins", "la cave", "produits", "bouteilles"],
   "data": {
     "name": "products",
     "family": "collection"

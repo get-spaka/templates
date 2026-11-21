@@ -23,7 +23,20 @@ fields:
     label: The wine
     kind: choice
     required: true
-    choices: [2023 Barn Block Blaufränkisch, 2024 Kettle Block Dry Riesling, 2025 Pét-nat Rosé, 2024 Kettle Block Riesling Medium Dry, 2021 Top Block Brut, 2022 Blaufränkisch Reserve, 2024 Grüner Veltliner, 2024 Orchard Block Pinot Blanc, 2024 Copper, 2023 Lower Block Gamay & Cabernet Franc, 2023 Ice Wine]
+    choices:
+      [
+        2023 Barn Block Blaufränkisch,
+        2024 Kettle Block Dry Riesling,
+        2025 Pét-nat Rosé,
+        2024 Kettle Block Riesling Medium Dry,
+        2021 Top Block Brut,
+        2022 Blaufränkisch Reserve,
+        2024 Grüner Veltliner,
+        2024 Orchard Block Pinot Blanc,
+        2024 Copper,
+        2023 Lower Block Gamay & Cabernet Franc,
+        2023 Ice Wine,
+      ]
   - name: bottles
     label: How many bottles
     kind: number

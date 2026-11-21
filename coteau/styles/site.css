@@ -280,11 +280,7 @@
     position: absolute;
     inset: 0;
     background-color: var(--color-secondary);
-    background-image: repeating-linear-gradient(
-      104deg,
-      var(--row) 0 1.5px,
-      transparent 1.5px 7px
-    );
+    background-image: repeating-linear-gradient(104deg, var(--row) 0 1.5px, transparent 1.5px 7px);
     clip-path: polygon(
       0% 100%,
       calc(var(--r) * 100%) calc(100% - var(--plateau)),
@@ -293,11 +289,7 @@
     );
   }
   .hill-lg .hill-slope {
-    background-image: repeating-linear-gradient(
-      104deg,
-      var(--row) 0 2px,
-      transparent 2px 10px
-    );
+    background-image: repeating-linear-gradient(104deg, var(--row) 0 2px, transparent 2px 10px);
   }
   /* The marker: a must dot standing on the slope at --at, on a thin stem with the year above. */
   .hill-now {
@@ -395,11 +387,7 @@
     left: var(--label-at);
   }
   .hill-year[data-y="best"] {
-    left: clamp(
-      clamp(3rem, var(--r) * 100%, 100% - 5.25rem) + 2.25rem,
-      var(--b) * 100%,
-      100% - 3rem
-    );
+    left: clamp(clamp(3rem, var(--r) * 100%, 100% - 5.25rem) + 2.25rem, var(--b) * 100%, 100% - 3rem);
   }
   /* The ticks stay at the true years when a label had to step aside. */
   .hill-tick {
@@ -675,7 +663,8 @@
     display: none;
   }
   /* The line that says no wine fits the chips chosen. */
-  [data-filter]:has(.chip-input[value="tonight"]:checked):not(:has([data-stage="open"], [data-stage="drink-up"])) .filter-empty,
+  [data-filter]:has(.chip-input[value="tonight"]:checked):not(:has([data-stage="open"], [data-stage="drink-up"]))
+    .filter-empty,
   [data-filter]:has(.chip-input[value="tonight"]:checked):has(.chip-input[value="sparkling"]:checked):not(
       :has([data-card][data-kind="sparkling"] :is([data-stage="open"], [data-stage="drink-up"]))
     )

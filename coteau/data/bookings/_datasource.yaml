@@ -27,7 +27,14 @@ fields:
   - name: event
     label: The event
     kind: choice
-    choices: [The ice wine pick, Pruning walk in the snow, Spring release party, Blaufränkisch dinner on the porch, Harvest lunch]
+    choices:
+      [
+        The ice wine pick,
+        Pruning walk in the snow,
+        Spring release party,
+        Blaufränkisch dinner on the porch,
+        Harvest lunch,
+      ]
   - name: day
     label: The day
     kind: date

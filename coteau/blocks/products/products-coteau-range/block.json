@@ -3,17 +3,8 @@
   "kind": "products",
   "source": "upstart",
   "description": "Every vintage of one wine as a range of hills on one line of years, later vintages lower and in front, a marker on each at this year, then the list of vintages with what to do with each and a link to its page; the wine is chosen by its name at the top of the block.",
-  "tags": [
-    "products",
-    "vintages",
-    "wine",
-    "drinking window",
-    "library"
-  ],
-  "mood": [
-    "elegant",
-    "minimal"
-  ],
+  "tags": ["products", "vintages", "wine", "drinking window", "library"],
+  "mood": ["elegant", "minimal"],
   "synonyms": [
     "vintages",
     "range",

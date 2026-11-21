@@ -7,4 +7,12 @@ fields:
     kind: text
   - name: text
     kind: text
-order: [first-cherry-trees, four-acres-of-riesling, blaufrankisch-below-the-barn, last-orchard-block, teos-first-vintage, first-sparkling-wine]
+order:
+  [
+    first-cherry-trees,
+    four-acres-of-riesling,
+    blaufrankisch-below-the-barn,
+    last-orchard-block,
+    teos-first-vintage,
+    first-sparkling-wine,
+  ]
