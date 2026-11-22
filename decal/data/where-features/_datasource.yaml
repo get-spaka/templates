@@ -1,0 +1,19 @@
+label: At the window
+fields:
+  - name: title
+    kind: text
+    required: true
+  - name: text
+    kind: text
+  - name: icon
+    kind: choice
+    choices: [spark, bolt, shield, heart, clock, chat, leaf, star, chart, team, plug, sliders]
+order:
+  [
+    order-and-pay-at-the-window,
+    we-call-your-name,
+    come-at-eleven-thirty,
+    vegan-at-the-window,
+    bring-your-own-container,
+    dogs-welcome,
+  ]

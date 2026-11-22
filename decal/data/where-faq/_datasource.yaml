@@ -1,0 +1,9 @@
+label: Questions about the stops
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [when-it-rains, calling-ahead, my-neighborhood, parking, gift-cards, the-truck-at-our-office]

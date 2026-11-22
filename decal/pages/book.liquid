@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Book the truck — Pasada food truck for weddings and events, Durham</title>
+<meta name="description" content="Book Pasada's yellow truck for a wedding, an office lunch, a graduation or a block party around Durham: the window, a merienda spread or a boodle fight, from $1,400 with two hours of service.">
+<meta property="og:title" content="Book the truck — Pasada food truck for weddings and events, Durham">
+<meta property="og:description" content="Book Pasada's yellow truck for a wedding, an office lunch, a graduation or a block party around Durham: the window, a merienda spread or a boodle fight, from $1,400 with two hours of service.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "Events", title: "Book the truck", text: "Weddings, office lunches, graduations, block parties. We bring the window, the grill and three cooks, and you bring the hungry people." %}
+{% render 'data-plate' %}
+{% render 'plans' %}
+{% render 'figures' %}
+{% render 'steps' %}
+{% render 'request-form' %}
+{% render 'kind-words' %}
+{% render 'faq', items: data["book-faq"], label: "Questions", title: "Before you book", columns: true %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

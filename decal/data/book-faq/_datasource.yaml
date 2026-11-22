@@ -1,0 +1,9 @@
+label: Questions about booking
+fields:
+  - name: question
+    kind: text
+    required: true
+  - name: answer
+    kind: markdown
+body: answer
+order: [permit, parking-on-grass, vegan-and-gluten-free, plates-and-napkins, rain-on-the-day, service-charge-and-tips]

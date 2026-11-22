@@ -1,0 +1,34 @@
+{%- comment -%} The whole menu on the asphalt board, over `menu`, in columns by course (named for the truck), each dish in light capitals with its line, its price in yellow and its marks, the week's special on its card. {%- endcomment -%}
+<section id="board" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-6 pb-20 md:px-8 md:pb-28">
+    <div class="board px-6 pt-10 pb-10 md:px-10 md:pt-14" data-reveal>
+      <div class="mb-10 lg:mb-0">{% render 'special-card' %}</div>
+      <div class="lg:min-h-[8rem] lg:pr-[20rem]">
+        <p class="sign-label text-neutral-content/70">The board</p>
+        <p class="board-line mt-3"><span class="board-marks">V</span> vegetarian · <span class="board-marks">VG</span> vegan · <span class="board-marks">GF</span> gluten-free · <span class="board-marks">{% render 'chili' %}</span> spicy</p>
+      </div>
+      {%- assign courses = "mains,starters,sides,desserts,pastries,drinks" | split: "," -%}
+      <div class="mt-8 grid gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+        {%- for course in courses -%}
+        {%- assign dishes = data.menu | where: "course", course -%}
+        {%- if dishes.size > 0 %}
+        <div class="{% if course == 'mains' %}md:col-span-2 lg:col-span-2{% endif %}">
+          <h2 class="board-course">{% case course %}{% when "mains" %}Rice plates &amp; bowls{% when "starters" %}Skewers &amp; snacks{% when "sides" %}Sides{% when "desserts" %}Sweets{% when "pastries" %}From the oven{% else %}Drinks{% endcase %}</h2>
+          <ul class="{% if course == 'mains' %}grid gap-x-12 lg:grid-cols-2{% endif %}">
+            {%- for dish in dishes %}
+            <li class="border-b border-dashed border-neutral-content/25 py-4">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="board-dish">{{ dish.name }}</h3>
+                <span class="board-price">{{ dish.price }}</span>
+              </div>
+              <p class="board-line mt-1">{{ dish.description }} {% render 'marks', tags: dish.tags %}</p>
+            </li>
+            {%- endfor %}
+          </ul>
+        </div>
+        {%- endif -%}
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>

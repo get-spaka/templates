@@ -1,0 +1,24 @@
+{
+  "name": "Decal menu board",
+  "kind": "menu",
+  "source": "upstart",
+  "description": "The whole menu on an asphalt board in columns by course, each dish in light capitals with a line under it, its price in yellow and its diet marks in pink, and the week's special on a pink card pinned to the board's corner.",
+  "tags": ["menu", "board", "dark", "street food", "specials", "prices"],
+  "mood": ["bold", "dark"],
+  "synonyms": [
+    "menu board",
+    "menu",
+    "dishes",
+    "prices",
+    "the board",
+    "ardoise",
+    "la carte",
+    "les plats",
+    "tarifs",
+    "plat de la semaine"
+  ],
+  "data": {
+    "name": "menu",
+    "family": "collection"
+  }
+}

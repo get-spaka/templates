@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The menu — Pasada food truck, Durham</title>
+<meta name="description" content="Pasada's menu: silog plates, chicken and tofu adobo, pork sisig, pancit, pork barbecue skewers, lumpia, turon, leche flan and calamansi lemonade, cooked on the truck from Lola Nena's recipes.">
+<meta property="og:title" content="The menu — Pasada food truck, Durham">
+<meta property="og:description" content="Pasada's menu: silog plates, chicken and tofu adobo, pork sisig, pancit, pork barbecue skewers, lumpia, turon, leche flan and calamansi lemonade, cooked on the truck from Lola Nena's recipes.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'today-strip' %}
+{% render 'page-title', label: "The menu", title: "The menu", text: "Everything is cooked on the truck from Lola Nena's recipes. On Saturday mornings we serve the morning menu only: silog plates, pandesal and coffee." %}
+{% render 'menu-board' %}
+{% render 'dish-cards', limit: 6 %}
+{% render 'allergies' %}
+{% render 'crowd-band' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

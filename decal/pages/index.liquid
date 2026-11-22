@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Pasada — Filipino street food truck in Durham, NC</title>
+<meta name="description" content="Pasada is a yellow food truck serving Lola Nena's Filipino recipes at seven Durham stops a week: silog plates, pork barbecue skewers and lumpia. See where we are today, or book the truck for your event.">
+<meta property="og:title" content="Pasada — Filipino street food truck in Durham, NC">
+<meta property="og:description" content="Pasada is a yellow food truck serving Lola Nena's Filipino recipes at seven Durham stops a week: silog plates, pork barbecue skewers and lumpia. See where we are today, or book the truck for your event.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'hero' %}
+{% render 'this-week' %}
+{% render 'board-home' %}
+{% render 'events-list', limit: 3, more: true %}
+{% render 'booking-band' %}
+{% render 'story-short' %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

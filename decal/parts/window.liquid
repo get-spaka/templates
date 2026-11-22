@@ -1,0 +1,14 @@
+{%- comment -%} The truck's service window: a photo in a rounded opening cut in the yellow panel, a flat asphalt awning above it and the counter ledge under it. Nothing in it moves. Pass `image`. {%- endcomment -%}
+<div class="truck-window" data-window>
+  <div class="awning" aria-hidden="true"></div>
+  <div class="window-panel">
+    <div class="window-opening mt-5 aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
+      <img src="{{ image }}" class="h-full w-full object-cover object-[30%_50%]">
+    </div>
+    <div class="ledge" aria-hidden="true"></div>
+    <div class="mt-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-1">
+      <p class="font-heading text-[2.25rem] leading-none">Pasada</p>
+      <p class="sign-label pb-1">Order here · (919) 555-0148</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{%- comment -%} How it works at the window: notes from `where-features`, each with its icon. {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="sign-label text-base-content/75">At a stop</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">At the window</h2>
+    </div>
+    <ul class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:col-span-8" data-reveal="stagger">
+      {%- for item in data["where-features"] %}
+      <li class="flex gap-4 border-t-2 border-base-content pt-5">
+        <span class="grid size-11 shrink-0 place-items-center rounded-field bg-primary text-primary-content">{% render 'icon', name: item.icon %}</span>
+        <div>
+          <h3 class="plain-heading text-[1.0625rem] font-bold leading-snug">{{ item.title }}</h3>
+          <p class="body-copy mt-1 text-[0.9375rem]">{{ item.text }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

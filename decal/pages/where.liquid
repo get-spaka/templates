@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Where & when — Pasada food truck, Durham</title>
+<meta name="description" content="Pasada's regular week: lunch downtown, on Ninth Street and in Research Triangle Park, evenings at breweries, Saturday mornings at Durham Central Park. Directions, notes and the festivals off the usual route.">
+<meta property="og:title" content="Where & when — Pasada food truck, Durham">
+<meta property="og:description" content="Pasada's regular week: lunch downtown, on Ninth Street and in Research Triangle Park, evenings at breweries, Saturday mornings at Durham Central Park. Directions, notes and the festivals off the usual route.">
+</head>
+<body>
+{% render 'header' %}
+<main>
+{% render 'page-title', label: "The week", title: "Where & when", text: "Our regular week. We're out rain or shine unless it's lightning; if we change anything, it's on Instagram by 9 am and in Monday's email." %}
+{% render 'where-row' %}
+{% render 'at-the-window' %}
+{% render 'events-list' %}
+{% render 'faq', items: data["where-faq"], label: "Questions", title: "Before you come by" %}
+</main>
+{% render 'footer' %}
+</body>
+</html>

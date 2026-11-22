@@ -1,0 +1,13 @@
+{%- comment -%} A slim yellow strip with today's stop, or the next one, and its directions, over `stops`; scripts/parking-row.js chooses the line, in the truck's time zone (data-tz). With no script, the plain line. {%- endcomment -%}
+<div class="today-strip border-b-2 border-base-content bg-primary text-primary-content" data-tz="America/New_York">
+  <div class="mx-auto flex max-w-[80rem] items-center gap-3 px-5 py-3 md:px-8">
+    <svg class="h-4 w-8 shrink-0" viewBox="0 0 32 16" fill="none" aria-hidden="true"><rect x="1" y="2" width="28" height="12" rx="3" class="stroke-base-content" stroke-width="2"/><path d="M24 2v12" class="stroke-base-content" stroke-width="2"/><rect x="29" y="5" width="2" height="6" rx="1" class="fill-base-content"/></svg>
+    <p class="strip-plain text-[0.9375rem] font-semibold">Out Tuesday to Saturday&ensp;·&ensp;<a href="/where" class="text-link">See where</a></p>
+    {%- for stop in data.stops %}
+    <p class="strip-stop text-[0.9375rem] font-semibold" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+      <span hidden data-time="starts">{% render 'time', t: stop.starts %}</span><span hidden data-time="ends">{% render 'time', t: stop.ends %}</span>
+      <span data-when="today">Today: {{ stop.place }}, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop: {% render 'day-name', d: stop.day %}, {{ stop.place }}, <span data-slot="starts"></span> to <span data-slot="ends"></span></span>{% if stop.map != blank %}&ensp;·&ensp;<a href="{{ stop.map }}" class="text-link" target="_blank" rel="noopener">Directions</a>{% endif %}
+    </p>
+    {%- endfor %}
+  </div>
+</div>

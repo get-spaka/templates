@@ -1,0 +1,24 @@
+{%- comment -%} The crew, over `team`: round portraits, or initials on yellow until the maker sends photos, each with a role and one line. {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 py-20 md:px-8 md:py-28">
+    <div data-reveal>
+      <p class="sign-label text-base-content/75">The crew</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">Four people and a truck</h2>
+    </div>
+    <ul class="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4" data-reveal="stagger">
+      {%- for person in data.team %}
+      <li>
+        {%- if person.photo %}
+        <img src="{{ person.photo }}" class="size-24 rounded-full border-2 sm:size-32 border-base-content object-cover">
+        {%- else %}
+        {%- assign names = person.name | split: " " %}
+        <span class="grid size-24 place-items-center rounded-full border-2 border-base-content bg-primary font-heading text-[2rem] sm:size-32 sm:text-[2.5rem] text-primary-content" aria-hidden="true">{{ names.first | slice: 0 }}{{ names.last | slice: 0 }}</span>
+        {%- endif %}
+        <h3 class="mt-5 text-[1.25rem] sm:text-[1.5rem]">{{ person.name }}</h3>
+        <p class="sign-label mt-2 text-base-content/75">{{ person.role }}</p>
+        <p class="body-copy mt-3 max-w-[30ch] text-[0.9375rem]">{{ person.bio }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

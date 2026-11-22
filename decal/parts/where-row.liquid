@@ -1,0 +1,7 @@
+{%- comment -%} The Where & when page's parking row, with every stop's address and note. {%- endcomment -%}
+<section id="week" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28">
+    {% render 'parking-row', stops: data.stops, full: true %}
+    <p class="mono mt-8 max-w-[62ch] text-[0.875rem] text-base-content/75">Times are Durham time. A yellow box is a day we don&rsquo;t park anywhere.</p>
+  </div>
+</section>

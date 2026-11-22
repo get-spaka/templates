@@ -1,0 +1,20 @@
+{
+  "name": "Decal data plate",
+  "kind": "features",
+  "source": "upstart",
+  "description": "A food truck's facts for event planners set like the data plate inside a vehicle's door: a heading and a sentence beside ruled mono cells with four rivets, for the truck's size, the space and power it needs, how many it feeds an hour, setup, travel and the minimum.",
+  "tags": ["facts", "specifications", "events", "catering", "requirements"],
+  "mood": ["bold", "professional"],
+  "synonyms": [
+    "truck specs",
+    "requirements",
+    "what we need",
+    "the truck",
+    "facts",
+    "fiche technique",
+    "caractéristiques",
+    "besoins",
+    "le camion",
+    "conditions"
+  ]
+}

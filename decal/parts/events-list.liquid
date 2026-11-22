@@ -1,0 +1,31 @@
+{%- comment -%} Festivals and pop-ups off the usual route, over `events`, each with a guava date block. Pass `limit` (the home page shows the next three) and `more: true` for a link to every date. {%- endcomment -%}
+<section id="events" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4" data-reveal>
+      <p class="sign-label text-base-content/75">Off the usual route</p>
+      <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">Festivals &amp; pop-ups</h2>
+      <p class="body-copy mt-5 max-w-[40ch]">Where Nena parks on the weekends that aren&rsquo;t on the row.</p>
+      {%- if more %}
+      <p class="mt-6"><a href="/where#events" class="text-link font-semibold">Every date</a></p>
+      {%- endif %}
+    </div>
+    <ul class="border-t border-base-300 lg:col-span-8" data-reveal="stagger">
+      {%- for event in data.events limit: limit %}
+      <li class="flex gap-5 border-b border-base-300 py-6 sm:gap-8">
+        <div class="flex w-[4.5rem] shrink-0 flex-col items-center self-start rounded-box bg-secondary py-3 text-secondary-content sm:w-20">
+          <span class="font-heading text-[2.25rem] leading-none">{{ event.date | date: "%-d" }}</span>
+          <span class="sign-label mt-1.5">{{ event.date | date: "%b" }}</span>
+        </div>
+        <div class="min-w-0 flex-1">
+          <h3 class="text-[1.5rem]">{{ event.title }}</h3>
+          <p class="mono mt-2 text-[0.875rem] text-base-content/80">{{ event.date | date: "%A" }} · {{ event.time }} · {{ event.place }}</p>
+          <p class="body-copy mt-2 max-w-[60ch]">{{ event.summary }}</p>
+          {%- if event.booking %}
+          <p class="mt-3"><a href="{{ event.booking }}" class="text-link text-[0.9375rem] font-semibold" target="_blank" rel="noopener">The event&rsquo;s page</a></p>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

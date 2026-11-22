@@ -1,0 +1,753 @@
+/* Bagel Fat One, Overpass and Overpass Mono, files of the template,
+   under the SIL Open Font License (fonts/*-OFL.txt). */
+@font-face {
+  font-family: "Bagel Fat One";
+  src: url("/fonts/bagel-fat-one-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bagel Fat One";
+  src: url("/fonts/bagel-fat-one-latin-ext-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/overpass-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/overpass-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/overpass-latin-wght-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Overpass";
+  src: url("/fonts/overpass-latin-ext-wght-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Overpass Mono";
+  src: url("/fonts/overpass-mono-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Overpass Mono";
+  src: url("/fonts/overpass-mono-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --font-mono: "Overpass Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Road-paint white: the bay lines and the lane, on asphalt. */
+  --line: color-mix(in oklab, var(--color-neutral-content) 82%, transparent);
+  /* The truck, nose up: its width and length. */
+  --truck-w: 2rem;
+  --truck-l: 4.75rem;
+}
+@media (width >= 64rem) {
+  :root {
+    --truck-w: 3.125rem;
+    --truck-l: 7.5rem;
+  }
+}
+
+@layer base {
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  /* Bagel Fat One has one weight and no italic: never bold, never synthesized. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+    font-synthesis: none;
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+  /* The small print of a road sign: labels above headings. */
+  .sign-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  /* Hours, prices, the data plate: the mono, its figures in columns. */
+  .mono {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .body-copy {
+    color: color-mix(in oklab, var(--color-base-content) 80%, transparent);
+    line-height: 1.7;
+  }
+  /* Links in text: ink, underlined, a yellow ground under the pointer. */
+  .text-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    border-radius: 0.2rem;
+  }
+  .text-link:hover {
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  /* ---- Road paint: Overpass at its heaviest, stretched tall, painted once and never moving. ---- */
+  .paint {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--color-neutral-content);
+    transform: scaleY(1.8);
+    transform-origin: 50% 100%;
+    /* The stretched letters rise above their box: room for them. */
+    margin-top: 0.8em;
+  }
+  @media (width >= 64rem) {
+    .paint {
+      font-size: 2.125rem;
+    }
+  }
+
+  /* ---- The parking row: the week from above, bays on a band of asphalt. ---- */
+  .lot {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .bays {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+  /* On a phone, one bay to a line: the asphalt (a lane and the bay) on the left, the stop beside. */
+  .bay {
+    display: grid;
+    grid-template-columns: calc(var(--truck-l) + 3.25rem) minmax(0, 1fr);
+    --facing: 90;
+  }
+  .bay-asphalt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 7.5rem;
+    padding: 1rem 0.5rem 0.875rem 2rem;
+    background:
+      linear-gradient(to bottom, var(--line) 50%, transparent 0) 0.875rem 0 / 3px 1.5rem repeat-y,
+      var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+  /* The bay's white lines: across between bays, the back line on the right. */
+  .bay-asphalt::before {
+    content: "";
+    position: absolute;
+    inset: 0 0.625rem 0 1.75rem;
+    border-top: 2px solid var(--line);
+    border-right: 2px solid var(--line);
+    pointer-events: none;
+  }
+  .bays-bottom .bay:not(.bay-empty):nth-last-child(1 of :not(.bay-empty)) .bay-asphalt::before {
+    border-bottom: 2px solid var(--line);
+    bottom: 0.625rem;
+  }
+  .bays-top .bay:first-child .bay-asphalt {
+    border-top-left-radius: var(--radius-box);
+    padding-top: 1.5rem;
+  }
+  .bays-top .bay:first-child .bay-asphalt::before {
+    top: 0.625rem;
+  }
+  .bays-bottom .bay:not(.bay-empty):nth-last-child(1 of :not(.bay-empty)) .bay-asphalt {
+    border-bottom-left-radius: var(--radius-box);
+    padding-bottom: 1.5rem;
+  }
+  .bay-empty {
+    display: none;
+  }
+  /* On a phone the day is painted above the truck. */
+  .bay-asphalt > .paint {
+    order: -1;
+  }
+  .keep-clear .bay-asphalt {
+    justify-content: center;
+  }
+  .bay-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 1rem 1.125rem 1.125rem;
+    background: var(--color-base-200);
+    border-bottom: 1px solid var(--color-base-300);
+  }
+  .bays-top .bay:first-child .bay-details {
+    border-top-right-radius: var(--radius-box);
+  }
+  .bays-bottom .bay:not(.bay-empty):nth-last-child(1 of :not(.bay-empty)) .bay-details {
+    border-bottom-right-radius: var(--radius-box);
+    border-bottom: 0;
+  }
+  .lane {
+    display: none;
+  }
+  /* Where the truck parks: room for it nose to tail, whichever way it faces. */
+  .spot {
+    position: relative;
+    flex: none;
+    width: var(--truck-l);
+    height: calc(var(--truck-w) + 0.5rem);
+  }
+  .truck {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: var(--truck-w);
+    height: var(--truck-l);
+    margin-left: calc(var(--truck-w) / -2);
+    margin-top: calc(var(--truck-l) / -2);
+    z-index: 2;
+  }
+  .truck > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    rotate: calc(var(--facing, 0) * 1deg);
+  }
+  /* A day with no stop, or a stop not this week: a yellow keep-clear box. */
+  .keep-clear .bay-asphalt::after {
+    content: "";
+    position: absolute;
+    inset: 0.75rem 1.125rem 0.75rem 2.375rem;
+    border: 3px solid var(--color-primary);
+    background:
+      repeating-linear-gradient(45deg, var(--color-primary) 0 3px, transparent 3px 14px),
+      repeating-linear-gradient(-45deg, var(--color-primary) 0 3px, transparent 3px 14px);
+    pointer-events: none;
+  }
+  .clear-plate {
+    position: relative;
+    z-index: 1;
+    padding: 0.25rem 0.45rem 0.15rem;
+    border-radius: 0.375rem;
+    background: var(--color-neutral);
+    color: var(--color-neutral-content);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .bay-flag {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.25rem;
+    padding: 0.2rem 0.55rem 0.1rem;
+    border-radius: 0.375rem;
+    background: var(--color-accent);
+    color: var(--color-accent-content);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .bay-place {
+    font-size: 1.375rem;
+    line-height: 1.05;
+  }
+
+  @media (width >= 64rem) {
+    /* Two facing rows of bays across a lane: the stops above the top row and below the bottom one. */
+    .bays {
+      display: grid;
+      grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+    }
+    .bay {
+      grid-template-columns: none;
+      grid-template-rows: 1fr auto;
+      --facing: 0;
+    }
+    .bays-bottom .bay {
+      grid-template-rows: auto 1fr;
+      --facing: 180;
+    }
+    .bays-top .bay-details {
+      order: -1;
+      justify-content: flex-end;
+      margin: 0 0.375rem 0.75rem;
+      border: 0;
+      border-radius: var(--radius-box) var(--radius-box) 0.375rem 0.375rem;
+    }
+    .bays-bottom .bay-details {
+      margin: 0.75rem 0.375rem 0;
+      border: 0;
+      border-radius: 0.375rem 0.375rem var(--radius-box) var(--radius-box);
+    }
+    .bays-top .bay:first-child .bay-details,
+    .bays-bottom .bay:not(.bay-empty):nth-last-child(1 of :not(.bay-empty)) .bay-details {
+      border-radius: var(--radius-box);
+    }
+    .bay-empty {
+      display: grid;
+    }
+    .bay-empty .bay-details {
+      background: transparent;
+    }
+    .bay-asphalt {
+      min-height: 0;
+      height: calc(var(--truck-l) + 7rem);
+      justify-content: space-between;
+      padding: 1.5rem 0.75rem 1rem;
+      background: var(--color-neutral);
+    }
+    .bays-bottom .bay-asphalt {
+      padding: 1rem 0.75rem 1.5rem;
+    }
+    .bays-top .bay-asphalt > .paint {
+      order: 0;
+    }
+    .keep-clear .bay-asphalt {
+      justify-content: center;
+    }
+    /* The white lines: one between bays and the back line, an edge of asphalt outside them. */
+    .bay-asphalt::before,
+    .bays-top .bay:first-child .bay-asphalt::before {
+      inset: 0.75rem 0 0 0;
+      border-top: 2px solid var(--line);
+      border-right: 0;
+      border-bottom: 0;
+      border-left: 2px solid var(--line);
+    }
+    .bays-bottom .bay-asphalt::before,
+    .bays-bottom .bay:not(.bay-empty):nth-last-child(1 of :not(.bay-empty)) .bay-asphalt::before {
+      inset: 0 0 0.75rem 0;
+      border-top: 0;
+      border-bottom: 2px solid var(--line);
+      border-left: 2px solid var(--line);
+    }
+    .bay:last-child .bay-asphalt::before {
+      right: 0.75rem;
+      border-right: 2px solid var(--line);
+    }
+    .bays-bottom .bay:last-child:nth-last-child(1 of :not(.bay-empty)) .bay-asphalt::before {
+      right: 0.75rem;
+    }
+    .bay:first-child .bay-asphalt::before {
+      left: 0.75rem;
+    }
+    .bay:first-child .bay-asphalt {
+      padding-left: 1.5rem;
+    }
+    .bay:last-child .bay-asphalt {
+      padding-right: 1.5rem;
+    }
+    .bays-top .bay:first-child .bay-asphalt {
+      border-radius: var(--radius-box) 0 0 0;
+      padding-top: 1.5rem;
+    }
+    .bays-top .bay:last-child .bay-asphalt {
+      border-top-right-radius: var(--radius-box);
+    }
+    .bays-bottom .bay:first-child .bay-asphalt {
+      border-bottom-left-radius: var(--radius-box);
+    }
+    .bays-bottom .bay:not(.bay-empty):not(:first-child):nth-last-child(1 of :not(.bay-empty)) .bay-asphalt {
+      border-bottom-left-radius: 0;
+    }
+    .bays-bottom .bay:last-child .bay-asphalt {
+      border-bottom-right-radius: var(--radius-box);
+    }
+    .lane {
+      display: block;
+      height: 4.5rem;
+      background:
+        linear-gradient(to right, var(--line) 55%, transparent 0) 0 50% / 3rem 3px repeat-x,
+        var(--color-neutral);
+      background-clip: content-box, padding-box;
+      padding-inline: 1.5rem;
+    }
+    .spot {
+      width: var(--truck-l);
+      height: var(--truck-l);
+    }
+    .keep-clear .bay-asphalt::after {
+      inset: 2rem 1.25rem 1.25rem 1.5rem;
+    }
+    .bays-bottom .keep-clear .bay-asphalt::after {
+      inset: 1.25rem 1.25rem 2rem 1.5rem;
+    }
+    .bay-place {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* ---- The window: the hero's photo in a rounded opening of a yellow panel, under its awning. ---- */
+  .truck-window {
+    position: relative;
+  }
+  .awning {
+    position: relative;
+    z-index: 1;
+    height: 2.75rem;
+    margin-inline: -0.75rem;
+    border: 2px solid var(--color-base-content);
+    border-radius: 0.5rem 0.5rem 0.25rem 0.25rem;
+    background: var(--color-neutral);
+  }
+  /* The awning's two struts, down to the panel. */
+  .awning::before,
+  .awning::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 2px;
+    height: 1.25rem;
+    background: var(--color-base-content);
+  }
+  .awning::before {
+    left: 12%;
+  }
+  .awning::after {
+    right: 12%;
+  }
+  .window-panel {
+    padding: 1.25rem 1.25rem 1.5rem;
+    border: 2px solid var(--color-base-content);
+    border-top: 0;
+    border-radius: 0 0 var(--radius-box) var(--radius-box);
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+  .window-opening {
+    overflow: hidden;
+    border: 2px solid var(--color-base-content);
+    border-radius: 1rem;
+    background: var(--color-neutral);
+  }
+  .window-opening > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* The counter ledge under the window, a little wider than it. */
+  .ledge {
+    position: relative;
+    height: 1rem;
+    margin: -0.375rem -0.5rem 0;
+    border: 2px solid var(--color-base-content);
+    border-radius: 0.375rem;
+    background: var(--color-base-100);
+  }
+
+  /* ---- The board: the menu beside the window, light capitals on asphalt. ---- */
+  .board {
+    position: relative;
+    border-radius: var(--radius-box);
+    background: var(--color-neutral);
+    color: var(--color-neutral-content);
+  }
+  .board-course {
+    padding-bottom: 0.625rem;
+    border-bottom: 2px dashed var(--line);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+  .board-dish {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .board-line {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: color-mix(in oklab, var(--color-neutral-content) 75%, transparent);
+  }
+  .board-price {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--color-primary);
+  }
+  .board-marks {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-secondary);
+  }
+  /* The week's special, on a guava card pinned to the board's corner. */
+  .special-card {
+    position: relative;
+    border-radius: 0.625rem;
+    background: var(--color-secondary);
+    color: var(--color-secondary-content);
+    box-shadow: 0 0 0 2px var(--color-base-content);
+  }
+  .special-card::before {
+    content: "";
+    position: absolute;
+    top: 0.625rem;
+    left: 50%;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: -0.375rem;
+    border-radius: 9999px;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-base-content);
+  }
+  @media (width >= 64rem) {
+    .board .special-card {
+      position: absolute;
+      top: -1.75rem;
+      right: 2rem;
+      width: 17rem;
+      rotate: 3deg;
+    }
+  }
+
+  /* ---- The data plate: the truck's facts in ruled mono cells, like the plate inside a door. ---- */
+  .data-plate {
+    position: relative;
+    border: 2px solid var(--color-base-content);
+    border-radius: var(--radius-box);
+    background: var(--color-base-200);
+    padding: 1.5rem;
+  }
+  /* Its four rivets. */
+  .data-plate::before {
+    content: "";
+    position: absolute;
+    inset: 0.5rem;
+    pointer-events: none;
+    background:
+      radial-gradient(circle, var(--color-base-content) 0.2rem, transparent 0.22rem) 0 0 / 0.75rem 0.75rem no-repeat,
+      radial-gradient(circle, var(--color-base-content) 0.2rem, transparent 0.22rem) 100% 0 / 0.75rem 0.75rem no-repeat,
+      radial-gradient(circle, var(--color-base-content) 0.2rem, transparent 0.22rem) 0 100% / 0.75rem 0.75rem no-repeat,
+      radial-gradient(circle, var(--color-base-content) 0.2rem, transparent 0.22rem) 100% 100% / 0.75rem 0.75rem
+      no-repeat;
+  }
+  .plate-cells {
+    display: grid;
+    border-top: 1px solid var(--color-base-content);
+    border-left: 1px solid var(--color-base-content);
+  }
+  .plate-cells > div {
+    padding: 0.75rem 0.875rem 0.875rem;
+    border-right: 1px solid var(--color-base-content);
+    border-bottom: 1px solid var(--color-base-content);
+  }
+  .plate-cells dd {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (width >= 40rem) {
+    .plate-cells {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .plate-cells > .plate-wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* A dashed lane line, between the steps. */
+  .lane-dash {
+    height: 3px;
+    background: linear-gradient(to right, var(--line) 55%, transparent 0) 0 0 / 1.5rem 3px repeat-x;
+  }
+
+  /* The guest count's line, with its cone-orange marker. */
+  .count-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .count-line::before {
+    content: "";
+    flex: none;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 0.125rem;
+    background: var(--color-accent);
+    translate: 0 0.05rem;
+  }
+}
+
+/* Headings set in Overpass rather than Bagel Fat One (a note's title, a dish on the board):
+   outside any layer, as the theme's own rule for headings is. */
+.plain-heading,
+.board-dish {
+  font-family: var(--font-body);
+}
+
+/* ---- Where the truck is: the lines of each bay's state, shown by the stylesheet. ---- */
+/* scripts/parking-row.js sets data-state on each stop (today, next, past) and on the home
+   bay (home). A line says which states it is for (data-when="today"); with no script,
+   none is set, and only the plain lines show (data-when="plain"). */
+[data-when] {
+  display: none;
+}
+:root:not([data-week]) [data-when~="plain"],
+[data-state="today"] [data-when~="today"],
+[data-state="next"] [data-when~="next"],
+[data-state="home"] [data-when~="home"] {
+  display: inline;
+}
+.bay:is([data-state="today"], [data-state="next"], [data-state="home"]) .bay-flag {
+  display: inline-flex;
+}
+.bay[data-state="home"] .bay-flag {
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+.bay[data-state="today"] .bay-details {
+  box-shadow: inset 0 0 0 2px var(--color-accent);
+}
+.bay[data-state="past"] .paint,
+.bay[data-state="past"] .bay-details > * {
+  opacity: 0.5;
+}
+/* The strip of today's stop: today's line, else the next one, else the plain line. */
+.strip-stop {
+  display: none;
+}
+.strip-stop[data-state="today"],
+.today-strip:not(:has(.strip-stop[data-state="today"])) .strip-stop[data-state="next"] {
+  display: block;
+}
+.today-strip:has(.strip-stop[data-state="today"], .strip-stop[data-state="next"]) .strip-plain {
+  display: none;
+}
+/* The guest count: its plain line until the script has a count. */
+[data-headcount] [data-shows="count"] {
+  display: none;
+}
+[data-headcount][data-count] [data-shows="count"] {
+  display: inline;
+}
+[data-headcount][data-count] [data-shows="plain"] {
+  display: none;
+}
+
+/* The phone menu: a <details> whose panel covers the screen. */
+.site-menu > summary {
+  list-style: none;
+}
+.site-menu > summary::-webkit-details-marker {
+  display: none;
+}
+.site-menu .menu-close {
+  display: none;
+}
+.site-menu[open] .menu-open {
+  display: none;
+}
+.site-menu[open] .menu-close {
+  display: inline;
+}
+
+@layer components {
+  /* Buttons: sentence case, 700, their label on one line; yellow ones keep an ink edge on white. */
+  .btn {
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .btn:not(.btn-square, .btn-circle, .btn-sm) {
+    padding-inline: 1.375rem;
+  }
+  .btn-primary {
+    border-color: var(--color-base-content);
+  }
+  .btn-outline {
+    border-color: currentColor;
+  }
+  /* The form's fields and labels at a reading size. */
+  .fieldset {
+    font-size: 1rem;
+  }
+  .fieldset-legend {
+    font-size: 0.9375rem;
+    font-weight: 700;
+  }
+}
+
+/* Upstart's "Image credits" link, lined up with the footer's container. */
+footer [data-up-credits] {
+  padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
+  padding-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  opacity: 0.75;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}

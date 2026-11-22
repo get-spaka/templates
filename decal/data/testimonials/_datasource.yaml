@@ -1,0 +1,26 @@
+label: Testimonials
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: role
+    label: Role and company
+    kind: text
+  - name: quote
+    label: Quote
+    kind: text
+    required: true
+  - name: headline
+    label: Headline
+    kind: text
+  - name: rating
+    label: Rating (1 to 5)
+    kind: number
+  - name: photo
+    label: Photo
+    kind: image
+  - name: date
+    label: Date
+    kind: date
+sort: -date

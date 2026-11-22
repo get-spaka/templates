@@ -1,0 +1,22 @@
+{
+  "name": "Decal today's stop strip",
+  "kind": "banner",
+  "source": "upstart",
+  "description": "A slim yellow strip with a small truck icon and today's stop, or the next one, with its hours and a directions link; with no script it says which days the truck is out.",
+  "tags": ["banner", "today", "location", "food truck", "strip"],
+  "mood": ["bold", "colorful"],
+  "synonyms": [
+    "today's location",
+    "where today",
+    "announcement bar",
+    "next stop",
+    "bandeau",
+    "aujourd'hui",
+    "emplacement du jour",
+    "prochain arrêt"
+  ],
+  "data": {
+    "name": "stops",
+    "family": "collection"
+  }
+}

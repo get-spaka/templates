@@ -1,0 +1,59 @@
+label: Truck bookings
+collected: true
+answer: event-requests-thanks
+body: note
+messages:
+  required: "{field} is required."
+  invalid: "{field} doesn't look right. Please check it."
+  too_many: "Too many requests were sent from here. Please try again in a few minutes."
+  sent: "Thank you, your request was sent. We'll answer with a quote within two working days."
+fields:
+  - name: name
+    label: Your name
+    kind: text
+    required: true
+  - name: email
+    label: Your email
+    kind: email
+    required: true
+  - name: phone
+    label: Your phone
+    kind: phone
+  - name: date
+    label: The date
+    kind: date
+    required: true
+  - name: start
+    label: Service starts at
+    kind: text
+    required: true
+  - name: hours
+    label: Hours of service
+    kind: choice
+    required: true
+    choices: ["2", "3", "4"]
+  - name: guests
+    label: Guests
+    kind: number
+    required: true
+  - name: kind
+    label: The event
+    kind: choice
+    required: true
+    choices: [wedding, office, birthday or graduation, block party or festival, something else]
+  - name: package
+    label: The way to serve
+    kind: choice
+    required: true
+    choices: [the window, merienda, the boodle fight, not sure yet]
+  - name: place
+    label: Where
+    kind: text
+    required: true
+  - name: power
+    label: Power on site
+    kind: choice
+    choices: ["yes", "no", "not sure"]
+  - name: note
+    label: A note
+    kind: markdown

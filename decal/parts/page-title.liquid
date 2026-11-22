@@ -1,0 +1,8 @@
+{%- comment -%} A page's title: a label like a road sign's small print, the title in Bagel Fat One and a sentence. Pass `label`, `title` and `text`. {%- endcomment -%}
+<section class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-14 pb-12 md:px-8 md:pt-20 md:pb-16">
+    <p class="sign-label text-base-content/75">{{ label }}</p>
+    <h1 class="mt-4 text-[clamp(2.75rem,5vw+1rem,5rem)] leading-[0.98]">{{ title }}</h1>
+    <p class="body-copy mt-6 max-w-[62ch] text-[1.125rem]">{{ text }}</p>
+  </div>
+</section>

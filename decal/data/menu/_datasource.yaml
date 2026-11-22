@@ -1,0 +1,55 @@
+label: Menu
+fields:
+  - name: name
+    label: Name
+    kind: text
+    required: true
+  - name: description
+    label: Description
+    kind: text
+  - name: price
+    label: Price
+    kind: text
+  - name: course
+    label: Course
+    kind: choice
+    required: true
+    choices: [starters, mains, sides, desserts, pastries, drinks]
+  - name: tags
+    label: Tags
+    kind: list
+    choices: [vegetarian, vegan, gluten-free, spicy]
+  - name: image
+    label: Image
+    kind: image
+  - name: featured
+    label: On the home page's board
+    kind: boolean
+  - name: special
+    label: This week's special
+    kind: boolean
+order:
+  [
+    longsilog,
+    tocilog,
+    chicken-adobo,
+    tofu-adobo,
+    pork-sisig,
+    pancit-bihon,
+    chicken-inasal,
+    bistek-tagalog-plate,
+    pork-barbecue-skewers,
+    lumpia-shanghai,
+    vegetable-lumpia,
+    kwek-kwek,
+    garlic-rice,
+    atchara,
+    pandesal,
+    turon,
+    ube-crinkle-cookie,
+    leche-flan,
+    calamansi-lemonade,
+    iced-barako-coffee,
+    sagot-gulaman,
+    hot-barako-coffee,
+  ]

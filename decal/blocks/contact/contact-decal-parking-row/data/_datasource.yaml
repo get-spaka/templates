@@ -1,0 +1,44 @@
+label: Stops
+fields:
+  - name: place
+    label: Place
+    kind: text
+    required: true
+  - name: day
+    label: Day of the week
+    kind: choice
+    required: true
+    choices: [mon, tue, wed, thu, fri, sat, sun]
+  - name: starts
+    label: Starts at (24 h, e.g. 11:00)
+    kind: text
+    required: true
+  - name: ends
+    label: Ends at (24 h, e.g. 14:00)
+    kind: text
+    required: true
+  - name: area
+    label: Neighborhood
+    kind: text
+  - name: address
+    label: Address
+    kind: text
+  - name: map
+    label: Directions (a link to a map site)
+    kind: link
+  - name: note
+    label: Note
+    kind: text
+  - name: off
+    label: Not this week
+    kind: boolean
+order:
+  [
+    parrish-street,
+    hayloft-beer-garden,
+    ninth-street-lot,
+    tradewind-office-park,
+    cotton-mill-commons,
+    copperline-bottle-shop,
+    durham-central-park,
+  ]

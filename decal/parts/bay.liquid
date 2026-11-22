@@ -1,0 +1,51 @@
+{%- comment -%} One bay of the parking row. Pass `stop` (a record of stops) for a stop, or `d` (mon to sun) alone for a day with no stop, drawn as a keep-clear box; `full: true` adds the address and the note. The lines of the bay's state (data-when) are filled by scripts/parking-row.js. {%- endcomment -%}
+{%- if stop -%}
+<li class="bay{% if stop.off %} keep-clear{% endif %}" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="spot" data-truck-spot></span>
+    {%- if stop.off %}
+    <span class="clear-plate">Not this week</span>
+    {%- else %}
+    <span class="paint">{% render 'day-name', d: stop.day, form: 'short' %}</span>
+    {%- endif %}
+  </div>
+  <div class="bay-details">
+    <p class="bay-flag"><span data-when="today">Today, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop</span></p>
+    <p class="sign-label text-base-content/75">{% render 'day-name', d: stop.day %}</p>
+    <h3 class="bay-place mt-1">{{ stop.place }}</h3>
+    <p class="mono text-[0.875rem]"><span data-time="starts">{% render 'time', t: stop.starts %}</span> – <span data-time="ends">{% render 'time', t: stop.ends %}</span></p>
+    {%- if stop.area != blank %}
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ stop.area }}</p>
+    {%- endif %}
+    {%- if stop.off %}
+    <p class="mt-1 text-[0.9375rem] leading-snug font-semibold">Not this week{% if stop.note != blank %}: {{ stop.note }}{% endif %}</p>
+    {%- else %}
+    {%- if full and stop.address != blank %}
+    <p class="mono mt-2 text-[0.8125rem] leading-snug text-base-content/80">{{ stop.address }}</p>
+    {%- endif %}
+    {%- if full and stop.note != blank %}
+    <p class="mt-2 text-[0.9375rem] leading-snug text-base-content/80">{{ stop.note }}</p>
+    {%- endif %}
+    {%- if stop.map != blank %}
+    <a href="{{ stop.map }}" class="text-link mt-2 text-[0.9375rem] font-semibold" target="_blank" rel="noopener">Directions</a>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</li>
+{%- else -%}
+{%- case d -%}
+{%- when "mon" -%}{%- assign note = "Prep day" -%}{%- assign line = "At home base, cooking for the week." -%}
+{%- when "sun" -%}{%- assign note = "Family day" -%}{%- assign line = "No service. We're back on Tuesday." -%}
+{%- else -%}{%- assign note = "No stop" -%}{%- assign line = "The truck stays at home base." -%}
+{%- endcase -%}
+<li class="bay keep-clear">
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="clear-plate">{{ note }}</span>
+  </div>
+  <div class="bay-details">
+    <p class="sign-label text-base-content/75">{% render 'day-name', d: d %}</p>
+    <h3 class="bay-place mt-1">{{ note }}</h3>
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ line }}</p>
+  </div>
+</li>
+{%- endif -%}

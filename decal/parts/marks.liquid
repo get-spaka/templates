@@ -1,0 +1,13 @@
+{%- comment -%} A dish's marks on the board, from its tags: V, VG, GF and a small chili for spicy. Pass `tags`. {%- endcomment -%}
+{%- if tags.size > 0 -%}
+<span class="board-marks inline-flex items-center gap-1.5">
+{%- for tag in tags -%}
+{%- case tag -%}
+{%- when "vegetarian" -%}<abbr title="Vegetarian" class="no-underline">V</abbr>
+{%- when "vegan" -%}<abbr title="Vegan" class="no-underline">VG</abbr>
+{%- when "gluten-free" -%}<abbr title="Gluten-free" class="no-underline">GF</abbr>
+{%- when "spicy" -%}{% render 'chili' %}
+{%- endcase -%}
+{%- endfor -%}
+</span>
+{%- endif -%}

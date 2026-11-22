@@ -1,0 +1,10 @@
+{%- comment -%} The week's special, on its guava card pinned to the board: the first record of `menu` marked special. {%- endcomment -%}
+{%- assign specials = data.menu | where: "special", true -%}
+{%- for dish in specials limit: 1 -%}
+<div class="special-card px-5 pt-8 pb-5">
+  <p class="sign-label">This week</p>
+  <p class="mt-2 font-heading text-[1.5rem] leading-[1.05] [word-spacing:0.06em]">{{ dish.name }}</p>
+  <p class="mt-2 text-[0.9375rem] leading-snug">{{ dish.description }}</p>
+  <p class="mono mt-3 text-[1.0625rem]">{{ dish.price }}</p>
+</div>
+{%- endfor -%}

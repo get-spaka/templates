@@ -1,0 +1,5 @@
+{%- comment -%} The truck's name in Bagel Fat One beside Nena, seen from above, nose forward. Pass `text` for the name's size. {%- endcomment -%}
+<a href="/" class="inline-flex items-center gap-2.5 whitespace-nowrap" aria-label="Pasada, home">
+  <span class="relative inline-block h-[1.25rem] w-[3rem] shrink-0" aria-hidden="true"><span class="absolute top-1/2 left-1/2 block h-[3rem] w-[1.25rem] -translate-x-1/2 -translate-y-1/2 rotate-90">{% render 'truck' %}</span></span>
+  <span class="font-heading leading-none {{ text | default: 'text-[1.75rem]' }}">Pasada</span>
+</a>

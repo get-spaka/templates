@@ -1,0 +1,87 @@
+<section id="request" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="mx-auto grid max-w-[80rem] gap-10 px-5 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-4">
+      <div class="rounded-box bg-base-200 p-7 lg:sticky lg:top-28" data-reveal>
+        <p class="sign-label text-base-content/75">The request</p>
+        <h2 class="mt-3 text-[clamp(2rem,2vw+1rem,2.75rem)]">Tell us about the day</h2>
+        <p class="body-copy mt-5">We answer within two working days. Nothing is booked until you have our quote and the deposit is in.</p>
+        <p class="body-copy mt-4">Saturdays from April to June go first.</p>
+        <p class="mt-6 text-[0.9375rem]">Rather talk it through? Call Theo at <a href="tel:+19195550148" class="text-link whitespace-nowrap">(919) 555-0148</a>.</p>
+      </div>
+    </div>
+    <form hx-post="/_data/event-requests" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#request-form-problems swap:innerHTML" class="grid grid-cols-1 gap-x-5 gap-y-3 sm:grid-cols-2 lg:col-span-8" data-headcount data-per-hour="150" data-minimum-weekday="1400" data-minimum-saturday="1900" data-hours-included="2">
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Your name</legend>
+        <input name="name" type="text" class="input w-full" required maxlength="200" autocomplete="name">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your email</legend>
+        <input name="email" type="email" class="input w-full" required maxlength="200" autocomplete="email">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Your phone</legend>
+        <input name="phone" type="tel" class="input w-full" maxlength="30" autocomplete="tel">
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The date</legend>
+        <input name="date" type="date" class="input w-full" required>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Service starts at</legend>
+        <input name="start" type="text" class="input w-full" required maxlength="40" placeholder="5:30 pm">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Hours of service</legend>
+        <div class="flex flex-wrap gap-x-8 gap-y-2 pt-1">
+          <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="hours" value="2" class="radio radio-sm" required checked> 2 hours</label>
+          <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="hours" value="3" class="radio radio-sm"> 3 hours</label>
+          <label class="flex items-center gap-3 text-[1rem]"><input type="radio" name="hours" value="4" class="radio radio-sm"> 4 hours</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Guests</legend>
+        <input name="guests" type="number" class="input w-full sm:max-w-[12rem]" required min="20" max="400" placeholder="120">
+        <p class="count-line mt-3" aria-live="polite"><span data-shows="plain">We serve about 150 guests an hour. Events start at $1,400, two hours included.</span><span data-shows="count">About <span data-slot="duration"></span> of service · from $<span data-slot="price"></span> with <span data-slot="package"></span></span></p>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">The way to serve</legend>
+        <div class="grid gap-3 pt-1 sm:grid-cols-2">
+          <label class="flex cursor-pointer items-start gap-3 rounded-field border-2 border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-primary/25"><input type="radio" name="package" value="the window" class="radio radio-sm mt-0.5" required checked data-per-guest="16" data-min-guests="0" data-name="the window menu"><span><span class="block font-bold">The window</span><span class="mono block text-[0.875rem] text-base-content/75">$16 a guest</span></span></label>
+          <label class="flex cursor-pointer items-start gap-3 rounded-field border-2 border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-primary/25"><input type="radio" name="package" value="merienda" class="radio radio-sm mt-0.5" data-per-guest="12" data-min-guests="0" data-name="the merienda"><span><span class="block font-bold">Merienda</span><span class="mono block text-[0.875rem] text-base-content/75">$12 a guest</span></span></label>
+          <label class="flex cursor-pointer items-start gap-3 rounded-field border-2 border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-primary/25"><input type="radio" name="package" value="the boodle fight" class="radio radio-sm mt-0.5" data-per-guest="28" data-min-guests="40" data-name="the boodle fight"><span><span class="block font-bold">The boodle fight</span><span class="mono block text-[0.875rem] text-base-content/75">$28 a guest, 40 or more</span></span></label>
+          <label class="flex cursor-pointer items-start gap-3 rounded-field border-2 border-base-300 p-4 has-[input:checked]:border-base-content has-[input:checked]:bg-primary/25"><input type="radio" name="package" value="not sure yet" class="radio radio-sm mt-0.5"><span><span class="block font-bold">Not sure yet</span><span class="mono block text-[0.875rem] text-base-content/75">We&rsquo;ll suggest one</span></span></label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">The event</legend>
+        <select name="kind" class="select w-full" required>
+          <option value="wedding">A wedding</option>
+          <option value="office">An office lunch</option>
+          <option value="birthday or graduation">A birthday or graduation</option>
+          <option value="block party or festival">A block party or festival</option>
+          <option value="something else">Something else</option>
+        </select>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend">Power on site</legend>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 pt-2.5">
+          <label class="flex items-center gap-2.5 text-[1rem]"><input type="radio" name="power" value="yes" class="radio radio-sm"> Yes</label>
+          <label class="flex items-center gap-2.5 text-[1rem]"><input type="radio" name="power" value="no" class="radio radio-sm"> No</label>
+          <label class="flex items-center gap-2.5 text-[1rem]"><input type="radio" name="power" value="not sure" class="radio radio-sm" checked> Not sure</label>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">Where <span class="font-normal text-base-content/70">(an address or a venue)</span></legend>
+        <input name="place" type="text" class="input w-full" required maxlength="300" autocomplete="street-address">
+      </fieldset>
+      <fieldset class="fieldset sm:col-span-2">
+        <legend class="fieldset-legend">A note <span class="font-normal text-base-content/70">(the space, the crowd, allergies)</span></legend>
+        <textarea name="note" class="textarea w-full" rows="4" maxlength="3000"></textarea>
+      </fieldset>
+      <div id="request-form-problems" class="empty:hidden sm:col-span-2"></div>
+      <div class="mt-3 sm:col-span-2">
+        <button type="submit" class="btn btn-primary btn-lg">Send the request</button>
+      </div>
+    </form>
+  </div>
+</section>

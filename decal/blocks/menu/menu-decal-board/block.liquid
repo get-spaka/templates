@@ -1,0 +1,52 @@
+<section id="board" class="bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-6 pb-20 md:px-8 md:pb-28">
+    <div class="board px-6 pt-10 pb-10 md:px-10 md:pt-14" data-reveal>
+      <div class="mb-10 lg:mb-0">{%- assign specials = data.menu | where: "special", true -%}
+{%- for dish in specials limit: 1 -%}
+<div class="special-card px-5 pt-8 pb-5">
+  <p class="sign-label">This week</p>
+  <p class="mt-2 font-heading text-[1.5rem] leading-[1.05] [word-spacing:0.06em]">{{ dish.name }}</p>
+  <p class="mt-2 text-[0.9375rem] leading-snug">{{ dish.description }}</p>
+  <p class="mono mt-3 text-[1.0625rem]">{{ dish.price }}</p>
+</div>
+{%- endfor -%}</div>
+      <div class="lg:min-h-[8rem] lg:pr-[20rem]">
+        <p class="sign-label text-neutral-content/70">The board</p>
+        <p class="board-line mt-3"><span class="board-marks">V</span> vegetarian · <span class="board-marks">VG</span> vegan · <span class="board-marks">GF</span> gluten-free · <span class="board-marks"><svg class="inline size-3.5 align-[-0.1em]" viewBox="0 0 16 16" fill="currentColor" role="img" aria-label="Spicy"><path d="M10.6 1.2c.4-.3.9-.2 1.1.2l.4.8c.9-.1 1.8.4 2.2 1.3.3.7.2 1.4-.1 2-.4 3.6-3.4 8.4-10.2 9.3-.9.1-1.4-.9-.8-1.5 2.6-2.4 3.6-4.8 4.3-6.8.3-.9.6-1.8 1.2-2.4.6-.7 1.4-1 2.2-1l-.4-.8c-.2-.4 0-.9.1-1.1z"/></svg></span> spicy</p>
+      </div>
+      {%- assign courses = "mains,starters,sides,desserts,pastries,drinks" | split: "," -%}
+      <div class="mt-8 grid gap-x-12 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+        {%- for course in courses -%}
+        {%- assign dishes = data.menu | where: "course", course -%}
+        {%- if dishes.size > 0 %}
+        <div class="{% if course == 'mains' %}md:col-span-2 lg:col-span-2{% endif %}">
+          <h2 class="board-course">{% case course %}{% when "mains" %}Rice plates &amp; bowls{% when "starters" %}Skewers &amp; snacks{% when "sides" %}Sides{% when "desserts" %}Sweets{% when "pastries" %}From the oven{% else %}Drinks{% endcase %}</h2>
+          <ul class="{% if course == 'mains' %}grid gap-x-12 lg:grid-cols-2{% endif %}">
+            {%- for dish in dishes %}
+            <li class="border-b border-dashed border-neutral-content/25 py-4">
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="board-dish">{{ dish.name }}</h3>
+                <span class="board-price">{{ dish.price }}</span>
+              </div>
+              <p class="board-line mt-1">{{ dish.description }} {%- assign tags = dish.tags -%}{%- if tags.size > 0 -%}
+<span class="board-marks inline-flex items-center gap-1.5">
+{%- for tag in tags -%}
+{%- case tag -%}
+{%- when "vegetarian" -%}<abbr title="Vegetarian" class="no-underline">V</abbr>
+{%- when "vegan" -%}<abbr title="Vegan" class="no-underline">VG</abbr>
+{%- when "gluten-free" -%}<abbr title="Gluten-free" class="no-underline">GF</abbr>
+{%- when "spicy" -%}<svg class="inline size-3.5 align-[-0.1em]" viewBox="0 0 16 16" fill="currentColor" role="img" aria-label="Spicy"><path d="M10.6 1.2c.4-.3.9-.2 1.1.2l.4.8c.9-.1 1.8.4 2.2 1.3.3.7.2 1.4-.1 2-.4 3.6-3.4 8.4-10.2 9.3-.9.1-1.4-.9-.8-1.5 2.6-2.4 3.6-4.8 4.3-6.8.3-.9.6-1.8 1.2-2.4.6-.7 1.4-1 2.2-1l-.4-.8c-.2-.4 0-.9.1-1.1z"/></svg>
+{%- endcase -%}
+{%- endfor -%}
+</span>
+{%- endif -%}</p>
+            </li>
+            {%- endfor %}
+          </ul>
+        </div>
+        {%- endif -%}
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>

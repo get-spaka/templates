@@ -1,0 +1,46 @@
+{%- comment -%} The week as a parking row seen from above: home base, then each day's stops in their bays, a keep-clear box for a day with none, in two facing rows across a lane on a desktop and one bay to a line on a phone. The truck sits at home base; scripts/parking-row.js parks it in today's bay, in the truck's time zone (data-tz). Pass `stops` (data.stops); `full: true` shows each stop's address and note. {%- endcomment -%}
+{%- assign days = "mon,tue,wed,thu,fri,sat,sun" | split: "," -%}
+{%- assign cells = 1 -%}
+{%- for d in days -%}{%- assign on_day = stops | where: "day", d -%}{%- if on_day.size > 0 -%}{%- assign cells = cells | plus: on_day.size -%}{%- else -%}{%- assign cells = cells | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- assign top = cells | plus: 1 | divided_by: 2 | floor -%}
+<div class="lot" data-parking-row data-tz="America/New_York" style="--cols: {{ top }}">
+  <ol class="bays bays-top">
+    <li class="bay" data-home-bay>
+      <div class="bay-asphalt" aria-hidden="true">
+        <span class="spot" data-truck-spot><span class="truck" data-truck>{% render 'truck' %}</span></span>
+        <span class="paint">Home</span>
+      </div>
+      <div class="bay-details">
+        <p class="bay-flag"><span data-when="home">Parked here</span></p>
+        <p class="sign-label text-base-content/75">Home base</p>
+        <h3 class="bay-place mt-1">The commissary</h3>
+        <p class="text-[0.9375rem] leading-snug text-base-content/75">A shared kitchen east of downtown. No service here.</p>
+      </div>
+    </li>
+    {%- assign i = 1 -%}
+    {%- for d in days -%}
+    {%- assign on_day = stops | where: "day", d | sort: "starts" -%}
+    {%- if on_day.size > 0 -%}
+    {%- for stop in on_day -%}{%- assign i = i | plus: 1 -%}{%- if i <= top -%}{% render 'bay', stop: stop, full: full %}{%- endif -%}{%- endfor -%}
+    {%- else -%}
+    {%- assign i = i | plus: 1 -%}{%- if i <= top -%}{% render 'bay', d: d %}{%- endif -%}
+    {%- endif -%}
+    {%- endfor %}
+  </ol>
+  <div class="lane" aria-hidden="true"></div>
+  <ol class="bays bays-bottom" start="{{ top | plus: 1 }}">
+    {%- assign i = 1 -%}
+    {%- for d in days -%}
+    {%- assign on_day = stops | where: "day", d | sort: "starts" -%}
+    {%- if on_day.size > 0 -%}
+    {%- for stop in on_day -%}{%- assign i = i | plus: 1 -%}{%- if i > top -%}{% render 'bay', stop: stop, full: full %}{%- endif -%}{%- endfor -%}
+    {%- else -%}
+    {%- assign i = i | plus: 1 -%}{%- if i > top -%}{% render 'bay', d: d %}{%- endif -%}
+    {%- endif -%}
+    {%- endfor %}
+    {%- assign bottom = cells | minus: top -%}
+    {%- if bottom < top %}
+    <li class="bay bay-empty" aria-hidden="true"><div class="bay-asphalt"></div><div class="bay-details"></div></li>
+    {%- endif %}
+  </ol>
+</div>

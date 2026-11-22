@@ -1,0 +1,6 @@
+{%- comment -%} A day of the stops (mon to sun) in the site's language: `form: "short"` gives the road paint's three letters (Tue), otherwise the whole name (Tuesday). {%- endcomment -%}
+{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}

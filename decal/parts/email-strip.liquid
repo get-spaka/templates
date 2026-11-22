@@ -1,0 +1,18 @@
+{%- comment -%} The Monday email: a sign-up to `newsletter`, on asphalt in the footer. {%- endcomment -%}
+<div class="flex flex-col gap-5 rounded-box border border-neutral-content/25 p-5 md:flex-row md:items-center md:justify-between md:p-6">
+  <div class="flex items-center gap-4">
+    <svg class="size-7 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <div>
+      <h2 class="plain-heading text-[1.0625rem] font-bold">Get the week&rsquo;s stops by email on Mondays</h2>
+      <p class="text-[0.9375rem] text-neutral-content/75">One short email a week, with any change and the special.</p>
+    </div>
+  </div>
+  <form hx-post="/_data/newsletter" hx-target="this" hx-swap="outerHTML" hx-status:422="target:#email-strip-problems swap:innerHTML" class="w-full md:max-w-md">
+    <div class="flex w-full gap-2">
+      <label class="sr-only" for="email-strip-email">Email address</label>
+      <input id="email-strip-email" name="email" type="email" required maxlength="200" autocomplete="email" placeholder="you@example.com" class="input w-full min-w-0 border-neutral-content/40 bg-neutral text-neutral-content">
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
+    <div id="email-strip-problems" class="mt-2 empty:hidden"></div>
+  </form>
+</div>

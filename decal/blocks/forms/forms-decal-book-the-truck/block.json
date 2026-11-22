@@ -1,0 +1,23 @@
+{
+  "name": "Decal book-the-truck request",
+  "kind": "forms",
+  "source": "upstart",
+  "description": "A request to book a food truck for an event, with the date, the guests, the way to serve and the place, whose guest count works out the service time and the price as it is typed, beside a wax-paper panel on how bookings are answered.",
+  "tags": ["booking", "catering", "events", "quote", "form", "food truck"],
+  "mood": ["friendly", "professional"],
+  "synonyms": [
+    "book the truck",
+    "event booking",
+    "catering request",
+    "quote request",
+    "réserver le camion",
+    "demande de devis",
+    "privatisation",
+    "traiteur",
+    "événement"
+  ],
+  "data": {
+    "name": "event-requests",
+    "family": "collection"
+  }
+}

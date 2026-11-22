@@ -1,0 +1,38 @@
+<footer class="bg-neutral text-neutral-content">
+  <div class="mx-auto max-w-[80rem] px-5 pt-20 pb-10 md:px-8 md:pt-24">
+    <div class="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+      <div class="lg:col-span-7">
+        <p class="font-heading text-[clamp(2.75rem,4vw+1.5rem,4.5rem)] leading-[0.98]">Follow the truck</p>
+        <p class="mt-4 text-[1.0625rem] text-neutral-content/80">Changes go up on Instagram by 9 am.</p>
+      </div>
+      <div class="lg:col-span-5">
+        <a href="https://www.instagram.com/" class="btn btn-primary" rel="noopener" target="_blank">Pasada on Instagram</a>
+      </div>
+    </div>
+    <div class="mt-12">{% render 'email-strip' %}</div>
+    <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-4">
+        {% render 'logo', text: 'text-[2rem]' %}
+        <p class="mt-5 max-w-[34ch] text-neutral-content/80">Filipino street food from a yellow truck called Nena, around Durham, Tuesday to Saturday.</p>
+      </div>
+      <div class="lg:col-span-4">
+        <p class="sign-label text-neutral-content/70">Book the truck</p>
+        <p class="mt-4"><a href="tel:+19195550148" class="text-link whitespace-nowrap">(919) 555-0148</a></p>
+        <p class="mt-2"><a href="mailto:events@pasadatruck.com" class="text-link">events@pasadatruck.com</a></p>
+        <p class="mt-5 max-w-[34ch] text-[0.9375rem] text-neutral-content/75">Home base: a shared kitchen east of downtown (no service there).</p>
+      </div>
+      <nav aria-label="Footer" class="lg:col-span-4">
+        <p class="sign-label text-neutral-content/70">Pasada</p>
+        <ul class="mt-4 space-y-1.5">
+          {% for item in data.navigation %}{% if item.place != "social" %}
+          <li><a href="{{ item.href }}" class="text-link">{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+          {% for item in data.navigation %}{% if item.place == "social" %}
+          <li><a href="{{ item.href }}" class="text-link" rel="noopener" target="_blank">{{ item.label }}</a></li>
+          {% endif %}{% endfor %}
+        </ul>
+      </nav>
+    </div>
+    <p class="sign-label mt-16 border-t border-neutral-content/20 pt-6 text-neutral-content/70">Pasada · Durham, North Carolina · Since 2021 · © 2026</p>
+  </div>
+</footer>

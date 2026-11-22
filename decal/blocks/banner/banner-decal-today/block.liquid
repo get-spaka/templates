@@ -1,0 +1,28 @@
+<div class="today-strip border-b-2 border-base-content bg-primary text-primary-content" data-tz="America/New_York">
+  <div class="mx-auto flex max-w-[80rem] items-center gap-3 px-5 py-3 md:px-8">
+    <svg class="h-4 w-8 shrink-0" viewBox="0 0 32 16" fill="none" aria-hidden="true"><rect x="1" y="2" width="28" height="12" rx="3" class="stroke-base-content" stroke-width="2"/><path d="M24 2v12" class="stroke-base-content" stroke-width="2"/><rect x="29" y="5" width="2" height="6" rx="1" class="fill-base-content"/></svg>
+    <p class="strip-plain text-[0.9375rem] font-semibold">Out Tuesday to Saturday&ensp;·&ensp;<a href="/where" class="text-link">See where</a></p>
+    {%- for stop in data.stops %}
+    <p class="strip-stop text-[0.9375rem] font-semibold" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+      <span hidden data-time="starts">{%- assign t = stop.starts -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span><span hidden data-time="ends">{%- assign t = stop.ends -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span>
+      <span data-when="today">Today: {{ stop.place }}, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop: {%- assign d = stop.day -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}, {{ stop.place }}, <span data-slot="starts"></span> to <span data-slot="ends"></span></span>{% if stop.map != blank %}&ensp;·&ensp;<a href="{{ stop.map }}" class="text-link" target="_blank" rel="noopener">Directions</a>{% endif %}
+    </p>
+    {%- endfor %}
+  </div>
+</div>

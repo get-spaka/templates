@@ -1,0 +1,362 @@
+<section id="week" class="scroll-mt-24 bg-base-100 text-base-content">
+  <div class="mx-auto max-w-[80rem] px-5 pb-20 md:px-8 md:pb-28">
+    <div class="grid gap-5 lg:grid-cols-12 lg:items-end lg:gap-10" data-reveal>
+      <div class="lg:col-span-6">
+        <p class="sign-label text-base-content/75">This week</p>
+        <h2 class="mt-3 text-[clamp(2rem,3vw+1rem,3.25rem)]">Find the truck</h2>
+      </div>
+      <p class="body-copy max-w-[52ch] lg:col-span-5 lg:col-start-8">Tuesday to Saturday, rain or shine. If plans change, it&rsquo;s on Instagram by 9 am.</p>
+    </div>
+    <div class="mt-12">
+      {%- assign full = false -%}{%- assign stops = data.stops -%}{%- assign full = nil -%}{%- assign days = "mon,tue,wed,thu,fri,sat,sun" | split: "," -%}
+{%- assign cells = 1 -%}
+{%- for d in days -%}{%- assign on_day = stops | where: "day", d -%}{%- if on_day.size > 0 -%}{%- assign cells = cells | plus: on_day.size -%}{%- else -%}{%- assign cells = cells | plus: 1 -%}{%- endif -%}{%- endfor -%}
+{%- assign top = cells | plus: 1 | divided_by: 2 | floor -%}
+<div class="lot" data-parking-row data-tz="America/New_York" style="--cols: {{ top }}">
+  <ol class="bays bays-top">
+    <li class="bay" data-home-bay>
+      <div class="bay-asphalt" aria-hidden="true">
+        <span class="spot" data-truck-spot><span class="truck" data-truck><svg viewBox="0 0 48 116" fill="none" aria-hidden="true" focusable="false">
+  <rect x="1" y="16" width="3.5" height="7" rx="1.2" class="fill-base-content"/>
+  <rect x="43.5" y="16" width="3.5" height="7" rx="1.2" class="fill-base-content"/>
+  <rect x="4" y="2" width="40" height="112" rx="8" class="fill-primary stroke-base-content" stroke-width="2"/>
+  <path d="M8 13.5c0-3 2.4-5.5 5.4-5.5h21.2c3 0 5.4 2.5 5.4 5.5V20H8z" class="fill-neutral"/>
+  <path d="M4 26h40" class="stroke-base-content" stroke-width="2"/>
+  <rect x="15" y="32" width="18" height="11" rx="2" class="fill-base-100 stroke-base-content" stroke-width="2"/>
+  <rect x="15" y="91" width="18" height="11" rx="2" class="fill-base-100 stroke-base-content" stroke-width="2"/>
+  <text x="24" y="67" transform="rotate(90 24 67)" text-anchor="middle" dominant-baseline="central" class="fill-base-content" style="font-family: var(--font-heading); font-size: 10px; letter-spacing: 0.04em">PASADA</text>
+  <rect class="truck-tail fill-accent" x="7.5" y="109" width="8" height="3.5" rx="1"/>
+  <rect class="truck-tail fill-accent" x="32.5" y="109" width="8" height="3.5" rx="1"/>
+</svg></span></span>
+        <span class="paint">Home</span>
+      </div>
+      <div class="bay-details">
+        <p class="bay-flag"><span data-when="home">Parked here</span></p>
+        <p class="sign-label text-base-content/75">Home base</p>
+        <h3 class="bay-place mt-1">The commissary</h3>
+        <p class="text-[0.9375rem] leading-snug text-base-content/75">A shared kitchen east of downtown. No service here.</p>
+      </div>
+    </li>
+    {%- assign i = 1 -%}
+    {%- for d in days -%}
+    {%- assign on_day = stops | where: "day", d | sort: "starts" -%}
+    {%- if on_day.size > 0 -%}
+    {%- for stop in on_day -%}{%- assign i = i | plus: 1 -%}{%- if i <= top -%}{%- assign stop = stop -%}{%- assign d = nil -%}{%- assign full = full -%}{%- if stop -%}
+<li class="bay{% if stop.off %} keep-clear{% endif %}" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="spot" data-truck-spot></span>
+    {%- if stop.off %}
+    <span class="clear-plate">Not this week</span>
+    {%- else %}
+    <span class="paint">{%- assign d = stop.day -%}{%- assign form = 'short' -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</span>
+    {%- endif %}
+  </div>
+  <div class="bay-details">
+    <p class="bay-flag"><span data-when="today">Today, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop</span></p>
+    <p class="sign-label text-base-content/75">{%- assign d = stop.day -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ stop.place }}</h3>
+    <p class="mono text-[0.875rem]"><span data-time="starts">{%- assign t = stop.starts -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span> – <span data-time="ends">{%- assign t = stop.ends -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span></p>
+    {%- if stop.area != blank %}
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ stop.area }}</p>
+    {%- endif %}
+    {%- if stop.off %}
+    <p class="mt-1 text-[0.9375rem] leading-snug font-semibold">Not this week{% if stop.note != blank %}: {{ stop.note }}{% endif %}</p>
+    {%- else %}
+    {%- if full and stop.address != blank %}
+    <p class="mono mt-2 text-[0.8125rem] leading-snug text-base-content/80">{{ stop.address }}</p>
+    {%- endif %}
+    {%- if full and stop.note != blank %}
+    <p class="mt-2 text-[0.9375rem] leading-snug text-base-content/80">{{ stop.note }}</p>
+    {%- endif %}
+    {%- if stop.map != blank %}
+    <a href="{{ stop.map }}" class="text-link mt-2 text-[0.9375rem] font-semibold" target="_blank" rel="noopener">Directions</a>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</li>
+{%- else -%}
+{%- case d -%}
+{%- when "mon" -%}{%- assign note = "Prep day" -%}{%- assign line = "At home base, cooking for the week." -%}
+{%- when "sun" -%}{%- assign note = "Family day" -%}{%- assign line = "No service. We're back on Tuesday." -%}
+{%- else -%}{%- assign note = "No stop" -%}{%- assign line = "The truck stays at home base." -%}
+{%- endcase -%}
+<li class="bay keep-clear">
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="clear-plate">{{ note }}</span>
+  </div>
+  <div class="bay-details">
+    <p class="sign-label text-base-content/75">{%- assign d = d -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ note }}</h3>
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ line }}</p>
+  </div>
+</li>
+{%- endif -%}{%- endif -%}{%- endfor -%}
+    {%- else -%}
+    {%- assign i = i | plus: 1 -%}{%- if i <= top -%}{%- assign stop = nil -%}{%- assign d = d -%}{%- assign full = nil -%}{%- if stop -%}
+<li class="bay{% if stop.off %} keep-clear{% endif %}" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="spot" data-truck-spot></span>
+    {%- if stop.off %}
+    <span class="clear-plate">Not this week</span>
+    {%- else %}
+    <span class="paint">{%- assign d = stop.day -%}{%- assign form = 'short' -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</span>
+    {%- endif %}
+  </div>
+  <div class="bay-details">
+    <p class="bay-flag"><span data-when="today">Today, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop</span></p>
+    <p class="sign-label text-base-content/75">{%- assign d = stop.day -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ stop.place }}</h3>
+    <p class="mono text-[0.875rem]"><span data-time="starts">{%- assign t = stop.starts -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span> – <span data-time="ends">{%- assign t = stop.ends -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span></p>
+    {%- if stop.area != blank %}
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ stop.area }}</p>
+    {%- endif %}
+    {%- if stop.off %}
+    <p class="mt-1 text-[0.9375rem] leading-snug font-semibold">Not this week{% if stop.note != blank %}: {{ stop.note }}{% endif %}</p>
+    {%- else %}
+    {%- if full and stop.address != blank %}
+    <p class="mono mt-2 text-[0.8125rem] leading-snug text-base-content/80">{{ stop.address }}</p>
+    {%- endif %}
+    {%- if full and stop.note != blank %}
+    <p class="mt-2 text-[0.9375rem] leading-snug text-base-content/80">{{ stop.note }}</p>
+    {%- endif %}
+    {%- if stop.map != blank %}
+    <a href="{{ stop.map }}" class="text-link mt-2 text-[0.9375rem] font-semibold" target="_blank" rel="noopener">Directions</a>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</li>
+{%- else -%}
+{%- case d -%}
+{%- when "mon" -%}{%- assign note = "Prep day" -%}{%- assign line = "At home base, cooking for the week." -%}
+{%- when "sun" -%}{%- assign note = "Family day" -%}{%- assign line = "No service. We're back on Tuesday." -%}
+{%- else -%}{%- assign note = "No stop" -%}{%- assign line = "The truck stays at home base." -%}
+{%- endcase -%}
+<li class="bay keep-clear">
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="clear-plate">{{ note }}</span>
+  </div>
+  <div class="bay-details">
+    <p class="sign-label text-base-content/75">{%- assign d = d -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ note }}</h3>
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ line }}</p>
+  </div>
+</li>
+{%- endif -%}{%- endif -%}
+    {%- endif -%}
+    {%- endfor %}
+  </ol>
+  <div class="lane" aria-hidden="true"></div>
+  <ol class="bays bays-bottom" start="{{ top | plus: 1 }}">
+    {%- assign i = 1 -%}
+    {%- for d in days -%}
+    {%- assign on_day = stops | where: "day", d | sort: "starts" -%}
+    {%- if on_day.size > 0 -%}
+    {%- for stop in on_day -%}{%- assign i = i | plus: 1 -%}{%- if i > top -%}{%- assign stop = stop -%}{%- assign d = nil -%}{%- assign full = full -%}{%- if stop -%}
+<li class="bay{% if stop.off %} keep-clear{% endif %}" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="spot" data-truck-spot></span>
+    {%- if stop.off %}
+    <span class="clear-plate">Not this week</span>
+    {%- else %}
+    <span class="paint">{%- assign d = stop.day -%}{%- assign form = 'short' -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</span>
+    {%- endif %}
+  </div>
+  <div class="bay-details">
+    <p class="bay-flag"><span data-when="today">Today, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop</span></p>
+    <p class="sign-label text-base-content/75">{%- assign d = stop.day -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ stop.place }}</h3>
+    <p class="mono text-[0.875rem]"><span data-time="starts">{%- assign t = stop.starts -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span> – <span data-time="ends">{%- assign t = stop.ends -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span></p>
+    {%- if stop.area != blank %}
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ stop.area }}</p>
+    {%- endif %}
+    {%- if stop.off %}
+    <p class="mt-1 text-[0.9375rem] leading-snug font-semibold">Not this week{% if stop.note != blank %}: {{ stop.note }}{% endif %}</p>
+    {%- else %}
+    {%- if full and stop.address != blank %}
+    <p class="mono mt-2 text-[0.8125rem] leading-snug text-base-content/80">{{ stop.address }}</p>
+    {%- endif %}
+    {%- if full and stop.note != blank %}
+    <p class="mt-2 text-[0.9375rem] leading-snug text-base-content/80">{{ stop.note }}</p>
+    {%- endif %}
+    {%- if stop.map != blank %}
+    <a href="{{ stop.map }}" class="text-link mt-2 text-[0.9375rem] font-semibold" target="_blank" rel="noopener">Directions</a>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</li>
+{%- else -%}
+{%- case d -%}
+{%- when "mon" -%}{%- assign note = "Prep day" -%}{%- assign line = "At home base, cooking for the week." -%}
+{%- when "sun" -%}{%- assign note = "Family day" -%}{%- assign line = "No service. We're back on Tuesday." -%}
+{%- else -%}{%- assign note = "No stop" -%}{%- assign line = "The truck stays at home base." -%}
+{%- endcase -%}
+<li class="bay keep-clear">
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="clear-plate">{{ note }}</span>
+  </div>
+  <div class="bay-details">
+    <p class="sign-label text-base-content/75">{%- assign d = d -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ note }}</h3>
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ line }}</p>
+  </div>
+</li>
+{%- endif -%}{%- endif -%}{%- endfor -%}
+    {%- else -%}
+    {%- assign i = i | plus: 1 -%}{%- if i > top -%}{%- assign stop = nil -%}{%- assign d = d -%}{%- assign full = nil -%}{%- if stop -%}
+<li class="bay{% if stop.off %} keep-clear{% endif %}" data-stop="{{ stop.id }}" data-day="{{ stop.day }}" data-starts="{{ stop.starts }}" data-ends="{{ stop.ends }}"{% if stop.off %} data-off{% endif %}>
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="spot" data-truck-spot></span>
+    {%- if stop.off %}
+    <span class="clear-plate">Not this week</span>
+    {%- else %}
+    <span class="paint">{%- assign d = stop.day -%}{%- assign form = 'short' -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</span>
+    {%- endif %}
+  </div>
+  <div class="bay-details">
+    <p class="bay-flag"><span data-when="today">Today, <span data-slot="starts"></span> to <span data-slot="ends"></span></span><span data-when="next">Next stop</span></p>
+    <p class="sign-label text-base-content/75">{%- assign d = stop.day -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ stop.place }}</h3>
+    <p class="mono text-[0.875rem]"><span data-time="starts">{%- assign t = stop.starts -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span> – <span data-time="ends">{%- assign t = stop.ends -%}{%- assign hm = t | split: ":" -%}
+{%- assign h = hm[0] | plus: 0 -%}
+{%- assign m = hm[1] | default: "00" -%}
+{%- if h >= 12 -%}{%- assign half = "pm" -%}{%- else -%}{%- assign half = "am" -%}{%- endif -%}
+{%- assign h12 = h | modulo: 12 -%}
+{%- if h12 == 0 -%}{%- assign h12 = 12 -%}{%- endif -%}
+{%- if h == 12 and m == "00" -%}noon{%- else -%}{{ h12 }}{% if m != "00" %}:{{ m }}{% endif %}&nbsp;{{ half }}{%- endif -%}</span></p>
+    {%- if stop.area != blank %}
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ stop.area }}</p>
+    {%- endif %}
+    {%- if stop.off %}
+    <p class="mt-1 text-[0.9375rem] leading-snug font-semibold">Not this week{% if stop.note != blank %}: {{ stop.note }}{% endif %}</p>
+    {%- else %}
+    {%- if full and stop.address != blank %}
+    <p class="mono mt-2 text-[0.8125rem] leading-snug text-base-content/80">{{ stop.address }}</p>
+    {%- endif %}
+    {%- if full and stop.note != blank %}
+    <p class="mt-2 text-[0.9375rem] leading-snug text-base-content/80">{{ stop.note }}</p>
+    {%- endif %}
+    {%- if stop.map != blank %}
+    <a href="{{ stop.map }}" class="text-link mt-2 text-[0.9375rem] font-semibold" target="_blank" rel="noopener">Directions</a>
+    {%- endif %}
+    {%- endif %}
+  </div>
+</li>
+{%- else -%}
+{%- case d -%}
+{%- when "mon" -%}{%- assign note = "Prep day" -%}{%- assign line = "At home base, cooking for the week." -%}
+{%- when "sun" -%}{%- assign note = "Family day" -%}{%- assign line = "No service. We're back on Tuesday." -%}
+{%- else -%}{%- assign note = "No stop" -%}{%- assign line = "The truck stays at home base." -%}
+{%- endcase -%}
+<li class="bay keep-clear">
+  <div class="bay-asphalt" aria-hidden="true">
+    <span class="clear-plate">{{ note }}</span>
+  </div>
+  <div class="bay-details">
+    <p class="sign-label text-base-content/75">{%- assign d = d -%}{%- assign form = nil -%}{%- if form == "short" -%}
+{%- case d -%}{%- when "mon" -%}Mon{%- when "tue" -%}Tue{%- when "wed" -%}Wed{%- when "thu" -%}Thu{%- when "fri" -%}Fri{%- when "sat" -%}Sat{%- when "sun" -%}Sun{%- endcase -%}
+{%- else -%}
+{%- case d -%}{%- when "mon" -%}Monday{%- when "tue" -%}Tuesday{%- when "wed" -%}Wednesday{%- when "thu" -%}Thursday{%- when "fri" -%}Friday{%- when "sat" -%}Saturday{%- when "sun" -%}Sunday{%- endcase -%}
+{%- endif -%}</p>
+    <h3 class="bay-place mt-1">{{ note }}</h3>
+    <p class="text-[0.9375rem] leading-snug text-base-content/75">{{ line }}</p>
+  </div>
+</li>
+{%- endif -%}{%- endif -%}
+    {%- endif -%}
+    {%- endfor %}
+    {%- assign bottom = cells | minus: top -%}
+    {%- if bottom < top %}
+    <li class="bay bay-empty" aria-hidden="true"><div class="bay-asphalt"></div><div class="bay-details"></div></li>
+    {%- endif %}
+  </ol>
+</div>
+    </div>
+    <p class="mt-8"><a href="/where" class="text-link font-semibold">The whole week, with notes</a></p>
+  </div>
+</section>
