@@ -1,0 +1,19 @@
+{%- comment -%} What happens to the crew's numbers, from `crew-privacy`. {%- endcomment -%}
+<section class="bg-base-200 text-base-content">
+  <div class="mx-auto max-w-[84rem] px-5 py-20 md:px-8 md:py-24">
+    <div class="grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="kicker text-primary">Your crew&rsquo;s numbers</p>
+        <h2 class="heading-section mt-3 max-w-[14ch]">In plain words</h2>
+      </div>
+      <ul class="grid gap-8 md:grid-cols-3 lg:col-span-8">
+        {%- for point in data["crew-privacy"] %}
+        <li class="border-t-2 border-base-content pt-5">
+          <h3 class="text-[1.125rem]">{{ point.title }}</h3>
+          {%- if point.text %}<p class="mt-2 leading-relaxed text-base-content/80">{{ point.text }}</p>{% endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
