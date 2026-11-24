@@ -774,3 +774,16 @@ option[data-when="past"] {
 [data-upcoming] > [data-beyond] {
   display: none;
 }
+
+/* Upstart's "Image credits" link, lined up with the footer's container. */
+footer [data-up-credits] {
+  padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
+  padding-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  opacity: 0.75;
+}
+@media (width >= 48rem) {
+  footer [data-up-credits] {
+    padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
+  }
+}
