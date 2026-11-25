@@ -1,7 +1,7 @@
 {
   "name": "Seam pinked swatch cards",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Swatch cards on manila, each a close-up of a cloth cut with pinking shears, with its name, where it is made and its weight in typewriter type, and a sentence below.",
   "tags": ["features", "materials", "fabrics", "swatches", "pinking shears", "sourcing"],
   "mood": ["warm", "elegant", "minimal"],

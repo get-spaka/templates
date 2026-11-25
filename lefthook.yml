@@ -1,5 +1,5 @@
 # Git hooks (Lefthook): before each commit, the lint the CI runs, with this
-# repository's biome.json. Upstart's `pnpm install` installs them in its
+# repository's biome.json. Spaka's `pnpm install` installs them in its
 # submodule; in a clone of this repository alone, run `npx lefthook install`
 # once. `git commit --no-verify` skips them once.
 # Only what the commands print and what fails.
@@ -9,7 +9,7 @@ output:
 pre-commit:
   commands:
     # Biome's fixes on the staged files, staged again; what it cannot fix stops the commit.
-    # Biome 2.6.6, the version in Upstart's package.json: change them together.
+    # Biome 2.6.6, the version in Spaka's package.json: change them together.
     biome:
       run: npx --yes @biomejs/biome@2.6.6 check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true

@@ -24,7 +24,7 @@ The hero with its redline and the townhouse's door over four facts, the tabbed i
 
 #### How do clients ask for a first meeting?
 
-- **A request form, confirmed by the firm** (as built): requests arrive in Upstart's Content tab; the firm checks for conflicts and replies within a day. Every "Request a consultation" button leads to `/consultation`, the area or the partner filled in from the link.
+- **A request form, confirmed by the firm** (as built): requests arrive in Spaka's Content tab; the firm checks for conflicts and replies within a day. Every "Request a consultation" button leads to `/consultation`, the area or the partner filled in from the link.
 - **They call first**: every request button becomes a call button (`tel:` with the number, "Call to arrange a meeting"): in `parts/header.liquid`, `parts/hero.liquid`, `parts/request-band.liquid`, `pages/practice/[practice-areas].liquid`, `pages/people/[team].liquid` and `pages/articles/[blog].liquid`; the request page changes in its turn, and the conflict-check line moves into the footer's notice.
 - **Through the firm's own scheduling page elsewhere** (Clio Grow, Calendly, Lawmatics…): point every `href="/consultation…"` in the same files to that page's address and say "Book a consultation"; the request page changes in its turn.
 

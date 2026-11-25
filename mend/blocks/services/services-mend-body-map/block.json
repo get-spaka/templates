@@ -1,7 +1,7 @@
 {
   "name": "Mend body map",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A faceless jointed figure drawn in a fine line beside the areas of the body as a list of disclosures: the open area's joints glow in terracotta and breathe, and the figure moves that joint through its range like an exercise. Works with no script.",
   "tags": ["services", "body", "areas", "conditions", "physiotherapy", "osteopathy", "figure", "interactive"],
   "mood": ["warm", "minimal", "professional"],

@@ -1,6 +1,6 @@
 {
   "id": "overhead",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Overhead",
   "description": "A coworking floor drawn from above: pick a plan and the rooms it opens light up one after another from the elevator, beside the building's front with its floor lit, rooms by the hour, events and a visit request.",
   "category": "business",
@@ -17,8 +17,8 @@
     "community events"
   ],
   "author": {
-    "name": "Upstart",
-    "url": "https://upstart.gg"
+    "name": "Spaka",
+    "url": "https://spaka.app"
   },
   "licence": "MIT",
   "app": "0.2.0"

@@ -1,7 +1,7 @@
 {
   "name": "Bolster class mats",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The class styles as wide mats in their own tones, each unrolling from its end, with its line, its length, its pace and its room.",
   "tags": ["classes", "mats", "services", "list"],
   "mood": ["warm", "elegant", "colorful"],

@@ -1,7 +1,7 @@
 {
   "name": "Commons noticeboard",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The next three events as paper notices on a sky band torn at both edges, each with its day at poster size, its kind, time and place, Free on marigold or its price, and a fringe of tear-off tabs that flutter as the notice comes into view.",
   "tags": ["events", "agenda", "calendar", "noticeboard", "tear-off tabs", "nonprofit"],
   "mood": ["friendly", "colorful", "playful"],

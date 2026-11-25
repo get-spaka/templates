@@ -1,6 +1,6 @@
 {
   "id": "spindle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Spindle",
   "description": "A neighborhood restaurant read like its own counter: the name huge behind a cut-out plate, the day's specials typed on tickets that slide onto a steel rail, \"86\" when one is gone, and the week's lunch and supper as a staff time card.",
   "category": "business",
@@ -17,8 +17,8 @@
     "private hire"
   ],
   "author": {
-    "name": "Upstart",
-    "url": "https://upstart.gg"
+    "name": "Spaka",
+    "url": "https://spaka.app"
   },
   "licence": "MIT",
   "app": "0.2.0"

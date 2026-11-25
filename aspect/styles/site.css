@@ -514,7 +514,7 @@ html.lenis body {
   }
 }
 
-/* Upstart's own heading rule comes after the layers: an eyebrow or a chapter heading stays in Albert Sans. */
+/* Spaka's own heading rule comes after the layers: an eyebrow or a chapter heading stays in Albert Sans. */
 :is(h1, h2, h3, h4).eyebrow,
 .prose-aspect :is(h2, h3) {
   font-family: var(--theme-font-body);

@@ -1,7 +1,7 @@
 {
   "name": "Coteau vineyard blocks",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A vineyard's blocks as ruled rows, each with its photo, its name, the grapes, the year planted, the acres, the soil and the slope in mono, and a sentence.",
   "tags": ["features", "vineyard", "blocks", "terroir", "estate"],
   "mood": ["minimal", "warm", "editorial"],

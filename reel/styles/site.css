@@ -21,7 +21,7 @@
 }
 
 /* In the base layer, so that Tailwind's classes (normal-case, leading-…, font-…) win over
-   them. Not the components layer: in Upstart's preview, daisyUI's stylesheet declares its
+   them. Not the components layer: in Spaka's preview, daisyUI's stylesheet declares its
    layers first (base, then utilities), so a components layer would come after the
    utilities and beat them there. */
 @layer base {
@@ -331,8 +331,8 @@ html[data-cursoring] [data-cursor] * {
   margin-top: 1rem;
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   padding: 0 1.25rem 2rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -341,7 +341,7 @@ footer [data-up-credits] {
   opacity: 0.7;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: 2.5rem;
     font-size: 0.8125rem;
   }

@@ -1,7 +1,7 @@
 {
   "name": "Strum concert rows",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The recitals and concerts on night blue as strung rows, the day in large tangerine figures over its month, then the title, the time and place, the price and a link to each; Today and Coming up mark themselves in the school's time zone, and past ones fade.",
   "tags": ["events", "concerts", "recitals", "music school", "dates"],
   "mood": ["bold", "dark"],

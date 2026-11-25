@@ -1,7 +1,7 @@
 {
   "name": "Spindle two services footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The footer on deep teal: the name, a reserve button, the address with directions, the phone and email, lunch and supper in a typed line each, and the site's links.",
   "tags": ["footer", "restaurant", "hours", "address"],
   "mood": ["warm", "friendly", "dark"],

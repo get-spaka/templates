@@ -1,7 +1,7 @@
 {
   "name": "Bolster studio footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The footer on night: the name, a booking button, the address with directions, the front desk's hours and the site's links.",
   "tags": ["footer", "address", "hours", "studio"],
   "mood": ["dark", "elegant"],

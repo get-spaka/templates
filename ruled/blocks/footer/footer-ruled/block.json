@@ -1,7 +1,7 @@
 {
   "name": "Ruled footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A quiet footer on the second sheet: the name and a compact waitlist field, the next cohorts as ruled lines with their dates and status, the links underlined in highlighter, the email and the phone.",
   "tags": ["footer", "links", "waitlist", "cohorts"],
   "mood": ["minimal", "editorial"],

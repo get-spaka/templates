@@ -1,7 +1,7 @@
 {
   "name": "Folio name hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The person's or studio's name at poster size across the whole width, its letters rising one after another, with a line on what they do, a statement with a few words in italic and an availability line.",
   "tags": ["hero", "name", "large type", "portfolio", "availability"],
   "mood": ["editorial", "minimal"],

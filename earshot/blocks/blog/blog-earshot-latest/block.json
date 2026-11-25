@@ -1,7 +1,7 @@
 {
   "name": "Earshot latest episode",
   "kind": "blog",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The newest episode at full width: its sound print drawn from its number in its own color, the number set huge, the title, the guest, the date, minutes and topic in a mono, the summary, a play button and the other apps.",
   "tags": ["podcast", "latest episode", "episode", "sound print", "listen"],
   "mood": ["bold", "colorful", "editorial"],

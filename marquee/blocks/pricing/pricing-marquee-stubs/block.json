@@ -1,7 +1,7 @@
 {
   "name": "Marquee ticket stubs",
   "kind": "pricing",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Passes as ticket stubs notched on both sides, each with its number, name, price, what it includes, a status stamp (on sale, few left, sold out) and a button; with a mouse a stub leans toward the cursor.",
   "tags": ["tickets", "passes", "pricing", "stubs", "festival"],
   "mood": ["bold", "playful", "colorful"],

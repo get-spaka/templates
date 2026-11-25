@@ -1,7 +1,7 @@
 {
   "name": "Overhead floor plan",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The floor from above with a plan picker: the rooms a plan opens light up from the elevator, over the list of rooms with what each holds and costs, and a dated line on the offices.",
   "tags": ["features", "floor plan", "plans", "pricing", "rooms", "coworking"],
   "mood": ["professional", "minimal"],

@@ -1,13 +1,13 @@
 {
   "id": "decal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Decal",
   "description": "A food truck's site that answers where it is today: the week as parking bays painted on asphalt, a yellow truck pulling into today's bay, the menu on the board by the window, and a booking form that prices the event as you type.",
   "category": "business",
   "tags": ["food truck", "street food", "catering", "events", "weekly schedule", "menu", "mobile kitchen"],
   "author": {
-    "name": "Upstart",
-    "url": "https://upstart.gg"
+    "name": "Spaka",
+    "url": "https://spaka.app"
   },
   "licence": "MIT",
   "shoot": {

@@ -1,7 +1,7 @@
 {
   "name": "Ember hearth footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A night footer lit by a soft light that follows the pointer: the address, the hours (read by the open tonight line), the monthly letter, a gift card link, the name at full width and the links.",
   "tags": ["footer", "restaurant", "hours", "address", "newsletter", "gift cards", "wordmark"],
   "mood": ["dark", "warm", "elegant"],

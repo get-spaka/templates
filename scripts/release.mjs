@@ -1,4 +1,4 @@
-// Built by `pnpm template:release-script` in Upstart's repository, from the app's own checks: do not edit.
+// Built by `pnpm template:release-script` in Spaka's repository, from the app's own checks: do not edit.
 import { createRequire } from "node:module";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative, resolve, sep } from "node:path";
@@ -8460,7 +8460,7 @@ function splitRecord(text) {
 	};
 }
 /** Where test records are kept in a project (Q172). */
-const TEST_RECORDS_DIR = ".upstart/test-records";
+const TEST_RECORDS_DIR = ".spaka/test-records";
 /** The project's datasources, read from its files; parsed files are kept by content. */
 var Datasources = class {
 	source;
@@ -9028,11 +9028,11 @@ async function fingerprint(address, secret) {
 }
 /** The built-in alert listing what is wrong (Q173), in the site's theme. */
 function problemsAlert(problems) {
-	return `<div role="alert" class="alert alert-error alert-soft" data-up-problems><ul class="list-disc ps-4">${problems.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`;
+	return `<div role="alert" class="alert alert-error alert-soft" data-spaka-problems><ul class="list-disc ps-4">${problems.map((p) => `<li>${escapeHtml(p)}</li>`).join("")}</ul></div>`;
 }
 /** What a valid submission is answered with when the definition names no fragment. */
 function sentAlert(text) {
-	return `<div role="status" class="alert alert-success alert-soft" data-up-sent>${escapeHtml(text)}</div>`;
+	return `<div role="status" class="alert alert-success alert-soft" data-spaka-sent>${escapeHtml(text)}</div>`;
 }
 /**
 * Adds the hidden trap field to every form that posts to /_data/<name>
@@ -9656,7 +9656,7 @@ function injectTrace(src, file) {
 				const marked = !inText;
 				if (marked) inserts.push({
 					at: t.start,
-					text: `<!--up-inc ${file}:${t.start}:${t.end}-->`
+					text: `<!--spaka-inc ${file}:${t.start}:${t.end}-->`
 				});
 				if (record() && !/\b__rec\s*:/.test(t.args)) {
 					const close = src.slice(t.start, t.end).search(/-?%\}$/);
@@ -9667,15 +9667,15 @@ function injectTrace(src, file) {
 				}
 				if (marked) inserts.push({
 					at: t.end,
-					text: "<!--/up-inc-->"
+					text: "<!--/spaka-inc-->"
 				});
 			}
 		} else if (t.type === "htmlOpen" && (t.name === "title" || t.name === "textarea") && !t.selfClosing) inText = t.name;
 		else if (t.type === "htmlClose" && t.name === inText) inText = null;
 		if (t.type === "htmlOpen" && !UNTRACED.has(t.name)) {
-			let text = ` data-up-src="${file}:${lineAt(t.start)}:${t.start}"`;
+			let text = ` data-spaka-src="${file}:${lineAt(t.start)}:${t.start}"`;
 			const rec = trace();
-			if (rec) text += ` data-up-rec="${rec}"`;
+			if (rec) text += ` data-spaka-rec="${rec}"`;
 			inserts.push({
 				at: t.nameEnd,
 				text
@@ -9748,7 +9748,7 @@ function fillAlts(html, source) {
 		return tag.replace(/^<img\b/i, `<img alt="${escapeHtml(alt)}"`);
 	});
 }
-/** The languages Upstart writes the credits in; any other gets English. */
+/** The languages Spaka writes the credits in; any other gets English. */
 const ENGLISH = {
 	title: "Image credits",
 	by: "by",
@@ -9839,10 +9839,10 @@ function creditsWords(language) {
 * the credits, whoever wrote that link (Q325).
 */
 function addCreditsLink(html) {
-	if (/<[a-z][^>]*\sdata-up-credits\b/i.test(html)) return html;
+	if (/<[a-z][^>]*\sdata-spaka-credits\b/i.test(html)) return html;
 	if (/<a\b[^>]*\shref\s*=\s*["']?\/credits\/?(?=["'\s>#?])/i.test(html)) return html;
 	const words = creditsWords(pageLanguage(html));
-	const link = `<p data-up-credits style="margin:0.75rem 0 0;font-size:0.75rem;opacity:0.7"><a href="${CREDITS_ROUTE}" style="color:inherit">${escapeHtml(words.title)}</a></p>`;
+	const link = `<p data-spaka-credits style="margin:0.75rem 0 0;font-size:0.75rem;opacity:0.7"><a href="${CREDITS_ROUTE}" style="color:inherit">${escapeHtml(words.title)}</a></p>`;
 	const footer = html.toLowerCase().lastIndexOf("</footer>");
 	if (footer >= 0) return html.slice(0, footer) + link + html.slice(footer);
 	const body = html.toLowerCase().lastIndexOf("</body>");
@@ -9919,7 +9919,7 @@ function recordTitle(record, definition) {
 	return typeof value === "string" && value.trim() ? value.trim() : record.id;
 }
 /* istanbul ignore file */
-// packages/runtime/src/runtime.ts
+// packages/runtime/src/dates.ts
 var import_liquid_node = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var stream = __require("stream");
@@ -14602,6 +14602,39 @@ var import_liquid_node = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	exports.toValueSync = toValueSync;
 	exports.version = version;
 })))();
+/** `2027-01-12`, or the month alone: the forms JavaScript reads as UTC. */
+const DATE_ONLY = /^\d{4}-\d{2}(-\d{2})?$/;
+/** Midnight of the day written, in the machine's time zone. */
+const localMidnight = (day) => `${day.length === 7 ? `${day}-01` : day}T00:00:00`;
+/**
+* The offset, in minutes, at which Liquid prints midnight UTC of the day as that day.
+* That is 0, but for the hour Liquid is off when the machine's clocks change that day.
+*/
+function offsetOf(day) {
+	const utc = new Date(day);
+	return utc.getTimezoneOffset() - (new Date(localMidnight(day)).getTime() - utc.getTime()) / 6e4;
+}
+const isDay = (value) => typeof value === "string" && DATE_ONLY.test(value);
+/** The date filters, with days that print as written. */
+function registerDateFilters(liquid) {
+	const date = import_liquid_node.filters.date;
+	liquid.registerFilter("date", function(value, format, timezone) {
+		return date.call(this, value, format, isDay(value) ? offsetOf(value) : timezone);
+	});
+	for (const name of [
+		"date_to_string",
+		"date_to_long_string",
+		"date_to_xmlschema",
+		"date_to_rfc822"
+	]) {
+		const filter = import_liquid_node.filters[name];
+		liquid.registerFilter(name, function(value, ...args) {
+			const day = isDay(value) && !Number.isNaN(Date.parse(value));
+			return filter.call(this, day ? localMidnight(value) : value, ...args);
+		});
+	}
+}
+// packages/runtime/src/runtime.ts
 const PAGE_EXTENSIONS = [".liquid", ".html"];
 var Runtime = class {
 	source;
@@ -14645,6 +14678,7 @@ var Runtime = class {
 				sep: "/"
 			}
 		});
+		registerDateFilters(this.liquid);
 	}
 	routes() {
 		const pages = [];
@@ -14690,7 +14724,7 @@ var Runtime = class {
 	pageNotes() {
 		return this.source.list("pages").filter((file) => PAGE_EXTENSIONS.some((e) => file.endsWith(e))).filter((file) => file.slice(6).split("/").some((part) => part.startsWith("_"))).map((file) => ({
 			file,
-			note: "gets no address: addresses starting with an underscore are Upstart's own (/_data/, /_upstart/); rename it"
+			note: "gets no address: addresses starting with an underscore are Spaka's own (/_data/, /_spaka/); rename it"
 		}));
 	}
 	/** The collected datasources' names (Q171). */
@@ -14799,7 +14833,7 @@ var Runtime = class {
 	/** Answers a standard web request: pages, fragments, the theme, form submissions and the management API. */
 	async fetch(request, info = {}) {
 		const url = new URL(request.url);
-		if (url.pathname.startsWith("/_upstart/")) return this.manage(request, url);
+		if (url.pathname.startsWith("/_spaka/")) return this.manage(request, url);
 		if (url.pathname.startsWith("/_data/")) {
 			if (request.method !== "POST") return new Response("Method not allowed", {
 				status: 405,
@@ -14897,7 +14931,7 @@ var Runtime = class {
 		const store = this.options.collected;
 		if (!token || !store) return json({ error: "not found" }, 404);
 		if (!sameToken((request.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, ""), token)) return json({ error: "wrong token" }, 401);
-		const [what, name, id, action] = url.pathname.slice(10).split("/").filter(Boolean);
+		const [what, name, id, action] = url.pathname.slice(8).split("/").filter(Boolean);
 		const collected = this.collectedNames();
 		try {
 			if (what === "ping" && request.method === "GET") return json({
@@ -15032,11 +15066,11 @@ function injectHead(html, head) {
 	if (root) return `${html.slice(0, root.index + root[0].length)}<head>${head}</head>${html.slice(root.index + root[0].length)}`;
 	return `<!doctype html><html><head>${head}</head><body>${html}</body></html>`;
 }
-/** Adds data-up-page to the <style> and <link rel="stylesheet"> elements of the page's head. */
+/** Adds data-spaka-page to the <style> and <link rel="stylesheet"> elements of the page's head. */
 function markPageStyles(html) {
 	const end = html.search(/<\/head\s*>/i);
 	if (end < 0) return html;
-	return html.slice(0, end).replace(/<(style|link)\b(?![^>]*\sdata-up-(?:page|runtime)\b)([^>]*)>/gi, (tag, name, rest) => name.toLowerCase() === "link" && !/\brel\s*=\s*["']?stylesheet/i.test(rest) ? tag : `<${name} data-up-page${rest}>`) + html.slice(end);
+	return html.slice(0, end).replace(/<(style|link)\b(?![^>]*\sdata-spaka-(?:page|runtime)\b)([^>]*)>/gi, (tag, name, rest) => name.toLowerCase() === "link" && !/\brel\s*=\s*["']?stylesheet/i.test(rest) ? tag : `<${name} data-spaka-page${rest}>`) + html.slice(end);
 }
 function renderError(error) {
 	return `<!doctype html><html><head><title>Render error</title></head><body><pre style="padding:2rem;white-space:pre-wrap">${escapeHtml(error instanceof Error ? error.message : String(error))}</pre></body></html>`;
@@ -20126,8 +20160,8 @@ const Described = object({
 		"meraki-ui": "LICENSE-Meraki-UI",
 		"mamba-ui": "LICENSE-Mamba-UI",
 		"wicked-blocks": "LICENSE-Wicked-Blocks",
-		upstart: void 0
-	})).default("upstart"),
+		spaka: void 0
+	})).default("spaka"),
 	data: object({
 		name: string().regex(/^[a-z][a-z0-9-]*$/),
 		family: _enum(["collection", "section"])
@@ -20279,7 +20313,7 @@ function writeZip(files) {
 // apps/desktop/src/main/templates/reader.ts
 const PICTURES = "pictures";
 const BLOCKS = "blocks";
-const DESIGN_SKILL = (id) => `.upstart/skills/${id}-design`;
+const DESIGN_SKILL = (id) => `.spaka/skills/${id}-design`;
 /** Its guide, for the agent that adapts it (Q299): kept for the adaptation only, never among the website's files (Q307). */
 const GUIDE = "TEMPLATE.md";
 /** What a template holds at its root; anything else is not copied into a project. */
@@ -20296,7 +20330,7 @@ const TEMPLATE_ENTRIES = /* @__PURE__ */ new Set([
 	"styles",
 	"blocks",
 	"pictures",
-	".upstart",
+	".spaka",
 	"TEMPLATE.md",
 	"README.md",
 	"LICENSE",
@@ -20311,8 +20345,8 @@ const LEFT_OUT = /* @__PURE__ */ new Set([
 	".DS_Store",
 	"Thumbs.db"
 ]);
-/** Of .upstart/, a template keeps its skills and its test records only: never a project's id or history. */
-const KEPT_HIDDEN = /^\.upstart\/(?:skills|test-records)\//;
+/** Of .spaka/, a template keeps its skills and its test records only: never a project's id or history. */
+const KEPT_HIDDEN = /^\.spaka\/(?:skills|test-records)\//;
 /** The files of a template folder, by path; what is no template's is left out. */
 function readTemplateFolder(dir) {
 	const files = /* @__PURE__ */ new Map();
@@ -20322,9 +20356,9 @@ function readTemplateFolder(dir) {
 			if (LEFT_OUT.has(entry.name)) continue;
 			const child = join(abs, entry.name);
 			const path = relative(dir, child).split(sep).join("/");
-			if (path.startsWith(".") && !path.startsWith(".upstart")) continue;
+			if (path.startsWith(".") && !path.startsWith(".spaka")) continue;
 			if (entry.isDirectory()) walk(child);
-			else if (entry.isFile() && (!path.startsWith(".upstart/") || KEPT_HIDDEN.test(path))) {
+			else if (entry.isFile() && (!path.startsWith(".spaka/") || KEPT_HIDDEN.test(path))) {
 				if (files.size >= ZIP_LIMITS.files) throw new Error(`This folder holds more than ${ZIP_LIMITS.files} files.`);
 				const bytes = readFileSync(child);
 				total += bytes.length;
@@ -20461,12 +20495,12 @@ function checkTemplate(files, { finished = false } = {}) {
 	const total = [...files.values()].reduce((n, b) => n + b.length, 0);
 	if (total > TOTAL_LIMIT) warnings.push(`The template weighs ${Math.round(total / 1024 / 1024)} MB: keep it under 50.`);
 	for (const required of ["pages/index.liquid", "theme.css"]) if (!files.has(required)) errors.push(`${required} is missing.`);
-	if (!OPEN_LICENCES.includes(manifest.licence) && !/^CC/i.test(manifest.licence)) warnings.push(`template.json: licence "${manifest.licence}" is not an open licence Upstart knows (${OPEN_LICENCES.join(", ")}).`);
+	if (!OPEN_LICENCES.includes(manifest.licence) && !/^CC/i.test(manifest.licence)) warnings.push(`template.json: licence "${manifest.licence}" is not an open licence Spaka knows (${OPEN_LICENCES.join(", ")}).`);
 	for (const path of paths.filter((p) => p.endsWith(`/${DEFINITION_FILE}`))) {
 		const definition = new Datasources(memorySource({ [`data/d/${DEFINITION_FILE}`]: text(path) })).get("d").definition;
 		for (const kind of new Set(definition?.fields.map((f) => f.kind))) {
 			const needed = FIELD_KIND_APP[kind];
-			if (needed && olderVersion(manifest.app ?? "0.0.0", needed)) errors.push(`${path}: the ${kind} field kind needs Upstart ${needed} or later: add "app": "${needed}" to template.json.`);
+			if (needed && olderVersion(manifest.app ?? "0.0.0", needed)) errors.push(`${path}: the ${kind} field kind needs Spaka ${needed} or later: add "app": "${needed}" to template.json.`);
 		}
 	}
 	const source = textSource(files);
@@ -20496,7 +20530,7 @@ function checkTemplate(files, { finished = false } = {}) {
 	const templates = under("pages", "parts", "fragments", BLOCKS).filter((p) => p.endsWith(".liquid"));
 	for (const path of templates) {
 		const src = text(path);
-		if (/<script\b|<style\b|<link\b/i.test(src)) errors.push(`${path}: no <script>, <style> or <link> tags; Upstart adds the site's scripts and stylesheet.`);
+		if (/<script\b|<style\b|<link\b/i.test(src)) errors.push(`${path}: no <script>, <style> or <link> tags; Spaka adds the site's scripts and stylesheet.`);
 		if (/\sdata-theme\s*=/.test(src)) errors.push(`${path}: no data-theme attribute; the theme is theme.css.`);
 		if (/lorem ipsum/i.test(src)) warnings.push(`${path}: lorem ipsum; a template's texts read as a real site's.`);
 	}
@@ -20515,7 +20549,7 @@ function checkTemplate(files, { finished = false } = {}) {
 		if (!/\.(?:jpe?g|png|webp|gif|avif|svg|mp4|webm)$/i.test(path)) continue;
 		if (generated && !credit) {
 			if (typeof generated.model !== "string" || !generated.model || typeof generated.prompt !== "string" || !generated.prompt.trim()) errors.push(`${path} is generated: ${infoFile(path)} gives the model and the prompt it was generated with.`);
-			if (olderVersion(manifest.app ?? "0.0.0", "0.2.0")) errors.push(`${path} is generated: it needs Upstart ${GENERATED_APP} or later: add "app": "${GENERATED_APP}" to template.json.`);
+			if (olderVersion(manifest.app ?? "0.0.0", "0.2.0")) errors.push(`${path} is generated: it needs Spaka ${GENERATED_APP} or later: add "app": "${GENERATED_APP}" to template.json.`);
 		} else if (!credit?.license) {
 			errors.push(`${path} has no credit: ${infoFile(path)} gives its licence, its author and where it was found.`);
 			continue;
@@ -20547,7 +20581,7 @@ function checkTemplate(files, { finished = false } = {}) {
 	const modules = paths.filter((p) => /^scripts\/[^/]+\.m?js$/.test(p));
 	for (const path of modules) {
 		const src = text(path);
-		if (!/export\s+(?:async\s+)?function\s+start\b|export\s+(?:const|let|var)\s+start\b|export\s*\{[^}]*\bstart\b/.test(src)) errors.push(`${path}: a module exports start(root), which Upstart calls.`);
+		if (!/export\s+(?:async\s+)?function\s+start\b|export\s+(?:const|let|var)\s+start\b|export\s*\{[^}]*\bstart\b/.test(src)) errors.push(`${path}: a module exports start(root), which Spaka calls.`);
 		for (const m of src.matchAll(/(?:\bfrom\s*|\bimport\s*\(\s*)["'](https?:[^"']+)["']/g)) if (!pinned(m[1])) errors.push(`${path}: ${m[1]} is imported from cdn.jsdelivr.net or unpkg.com, with its version.`);
 		const elsewhere = [...src.matchAll(/["'`](https?:\/\/[^"'`\s]+)/g)].map((m) => m[1]).filter((url) => !pinned(url) && !/^https?:\/\/(?:www\.)?w3\.org\//.test(url));
 		for (const url of new Set(elsewhere)) warnings.push(`${path} reaches ${url}: a site takes nothing from outside but its libraries.`);
@@ -20585,7 +20619,7 @@ function checkTemplate(files, { finished = false } = {}) {
 	for (const b of template.blocks) {
 		if (!new RegExp(`^${b.kind}-[a-z0-9-]+$`).test(b.id)) errors.push(`${BLOCKS}/${b.kind}/${b.id}: its id starts with ${b.kind}-.`);
 		if (b.synonyms.length < 4) warnings.push(`${BLOCKS}/${b.kind}/${b.id}: give it four synonyms or more, English and French.`);
-		const page = "pages/upstart-block-check.liquid";
+		const page = "pages/spaka-block-check.liquid";
 		const dropped = droppedFiles(b);
 		const overlay = {};
 		for (const [path, value] of Object.entries(dropped)) if (path === "pages/index.liquid") overlay[page] = value;
@@ -20598,7 +20632,7 @@ function checkTemplate(files, { finished = false } = {}) {
 			trace: false,
 			testRecords: tests
 		});
-		for (const note of checking.renderRoute("/upstart-block-check").notes) errors.push(`${BLOCKS}/${b.kind}/${b.id}, dropped into a page: ${note.note}`);
+		for (const note of checking.renderRoute("/spaka-block-check").notes) errors.push(`${BLOCKS}/${b.kind}/${b.id}, dropped into a page: ${note.note}`);
 	}
 	const missing = [];
 	if (!template.pictures.cover) missing.push("pictures/cover.webp");

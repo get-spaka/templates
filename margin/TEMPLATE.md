@@ -20,7 +20,7 @@ The masthead, the lead letter and "This season", the letterbox, the topics' plat
 
 #### Where do readers subscribe?
 
-- **Here, in Upstart** (as built): the sign-up forms stay; subscribers arrive in Upstart's Content tab. Keep the letterbox's form posting to `newsletter`.
+- **Here, in Spaka** (as built): the sign-up forms stay; subscribers arrive in Spaka's Content tab. Keep the letterbox's form posting to `newsletter`.
 - **On another service**: the forms become a button to the maker's Substack, Buttondown or other page. Replace the letterbox's form by a `btn btn-primary` "Subscribe" link to the maker's newsletter page (ask its address, or `#` until given), keeping the sentence beside it; the newsletter page follows in its turn.
 
 #### Who writes?

@@ -1,7 +1,7 @@
 {
   "name": "Plinth colophon",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A footer written like an exhibition's colophon, on night: the credit line in a light serif (organized by, curated by, supported by), then the address, the hours, the links and the socials in four columns, and a Buy tickets button. No giant wordmark.",
   "tags": ["footer", "colophon", "credits", "address", "hours", "museum"],
   "mood": ["dark", "elegant", "editorial"],

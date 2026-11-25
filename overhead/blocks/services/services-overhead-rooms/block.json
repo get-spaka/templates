@@ -1,7 +1,7 @@
 {
   "name": "Overhead rooms by the hour",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Meeting rooms by the hour as wide rows: the photo, the seats and equipment, the rates as a ruled list, a small plan with the room lit and a button to ask for it.",
   "tags": ["services", "meeting rooms", "rates", "hire", "floor plan"],
   "mood": ["professional", "minimal"],

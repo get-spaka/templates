@@ -1,7 +1,7 @@
 {
   "name": "Folio labelled lists",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Labelled lists of an info page on a light band: services in two columns, recognition by year with its publication or prize, and who represents the person.",
   "tags": ["about", "services", "recognition", "awards", "press", "lists"],
   "mood": ["editorial", "minimal"],

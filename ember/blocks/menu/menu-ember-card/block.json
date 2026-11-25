@@ -1,7 +1,7 @@
 {
   "name": "Ember menu card",
   "kind": "menu",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A tilted cream menu card overlapping a drifting photo of a dish: the featured dishes with dotted leaders and their prices, straightening under the pointer, then a link to the whole menu.",
   "tags": ["menu", "restaurant", "dishes", "featured", "card", "prices"],
   "mood": ["elegant", "warm", "dark"],

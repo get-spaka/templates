@@ -791,8 +791,8 @@
   }
 }
 
-/* Upstart's credits link, at the footer's measure. */
-footer [data-up-credits] {
+/* Spaka's credits link, at the footer's measure. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
   padding-bottom: 1.5rem;
   font-family: var(--font-mono);
@@ -800,12 +800,12 @@ footer [data-up-credits] {
   opacity: 0.75;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }
 
-/* A heading set in the body face (the years' titles): Upstart's heading rule comes after the layers. */
+/* A heading set in the body face (the years' titles): Spaka's heading rule comes after the layers. */
 h3.plain-heading {
   font-family: var(--theme-font-body);
   font-weight: 600;

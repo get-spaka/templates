@@ -271,8 +271,8 @@ select.field-ember option {
   color: var(--color-base-content);
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.2em;

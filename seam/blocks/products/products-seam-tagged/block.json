@@ -1,7 +1,7 @@
 {
   "name": "Seam pieces with hang tags",
   "kind": "products",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Tall portraits of pieces, each with a manila hang tag over the photo's top corner (name, kind, price and whether it is made to order), straightening on hover while the photo wipes to the close-up of its cloth.",
   "tags": ["products", "clothing", "fashion", "hang tag", "price", "made to order"],
   "mood": ["elegant", "minimal", "warm"],

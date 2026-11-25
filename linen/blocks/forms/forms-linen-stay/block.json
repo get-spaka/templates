@@ -1,7 +1,7 @@
 {
   "name": "Linen request for dates",
   "kind": "forms",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A request for dates in three numbered steps on an oatmeal panel: arrival, departure and guests; the room, as cards with each room's color, or no preference, and a stay or the whole house; then name, email, phone and a note. The house answers by email with the room and the price; nothing is charged.",
   "tags": ["booking", "request", "hotel", "guesthouse", "rooms", "dates", "form"],
   "mood": ["elegant", "warm", "professional"],

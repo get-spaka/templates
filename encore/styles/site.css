@@ -173,7 +173,7 @@ html.lenis body {
 }
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
-    :root:is([data-up-moving], :not(:has(#up-still))) .site-header {
+    :root:is([data-spaka-moving], :not(:has(#spaka-still))) .site-header {
       animation: header-fill linear both;
       animation-timeline: scroll(root);
       animation-range: 0 10rem;
@@ -517,7 +517,7 @@ a.board-row:is(:hover, :focus-visible) .board-status {
   mask-size: 160px 160px;
 }
 @media (prefers-reduced-motion: no-preference) {
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-bw]::after {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-bw]::after {
     animation: grain 1s steps(8) infinite;
   }
   @keyframes grain {
@@ -607,8 +607,8 @@ a.board-row:is(:hover, :focus-visible) .board-status {
   white-space: nowrap;
 }
 
-/* The credits link that Upstart adds to the footer, lined up with the page. */
-footer [data-up-credits] {
+/* The credits link that Spaka adds to the footer, lined up with the page. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 90rem) / 2) + 1rem);
   padding-bottom: 1.5rem;
   font-family: "Azeret Mono", ui-monospace, monospace;
@@ -617,7 +617,7 @@ footer [data-up-credits] {
   text-transform: uppercase;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 90rem) / 2) + 2.5rem);
   }
 }

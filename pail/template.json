@@ -1,6 +1,6 @@
 {
   "id": "pail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Pail",
   "description": "A flower shop read like its sidewalk on a market morning: this week's stems standing in zinc pails with their enamel price plates, picked by the visitor for their bunch, a line on every page saying whether an order goes out today, and a ZIP code check.",
   "category": "business",
@@ -16,8 +16,8 @@
     "seasonal"
   ],
   "author": {
-    "name": "Upstart",
-    "url": "https://upstart.gg"
+    "name": "Spaka",
+    "url": "https://spaka.app"
   },
   "licence": "MIT",
   "app": "0.2.0",

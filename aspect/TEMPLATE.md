@@ -26,7 +26,7 @@ The hero with its headline and the first featured home behind its opening door, 
 
 #### How do owners ask what their home is worth?
 
-- **With the valuation form** (as built): requests arrive in Upstart's Content tab and a broker calls back. Every "Free valuation" and "Ask for a valuation" button leads to `/sell#valuation`, the broker or the neighborhood filled in from the link (`?with=<broker id>`, `?hood=<neighborhood id>`).
+- **With the valuation form** (as built): requests arrive in Spaka's Content tab and a broker calls back. Every "Free valuation" and "Ask for a valuation" button leads to `/sell#valuation`, the broker or the neighborhood filled in from the link (`?with=<broker id>`, `?hood=<neighborhood id>`).
 - **By phone**: every valuation button becomes a call button (`tel:` with the number): in `parts/header.liquid`, `parts/hero.liquid`, `parts/valuation-band.liquid`, `parts/footer.liquid`, `pages/neighborhoods.liquid` and `pages/brokers/[team].liquid`; the sell page shows the number large with the hours to call in place of the form (its own turn); delete `data/valuations/`, `fragments/valuations-thanks.liquid` and `scripts/prefill.js`.
 - **On a booking page elsewhere** (a calendar the agency already uses): point every `href="/sell#valuation"` and `/sell?…#valuation` in the same files to that page's address and say "Book a valuation visit"; the sell page keeps its steps, ledger and questions, and its form goes in its turn.
 

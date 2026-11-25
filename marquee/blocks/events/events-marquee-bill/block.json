@@ -1,7 +1,7 @@
 {
   "name": "Marquee bill",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A lineup set like a festival bill, one column per day: the headliner very large, then the main acts separated by stars, then the support, each a link to its page; a hovered name widens.",
   "tags": ["lineup", "bill", "acts", "festival", "artists", "program"],
   "mood": ["bold", "editorial"],

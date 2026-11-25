@@ -733,17 +733,17 @@
   outline-color: var(--color-base-content);
 }
 
-/* Upstart's "Image credits" link, lined up with the footer's container. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, lined up with the footer's container. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 84rem) / 2) + 1.25rem) 2rem;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 84rem) / 2) + 2rem);
   }
 }
 
-/* Spec labels that are headings: Upstart's own rule gives headings the heading font, outside any layer. */
+/* Spec labels that are headings: Spaka's own rule gives headings the heading font, outside any layer. */
 h2.spec,
 h3.spec {
   font-family: "Victor Mono", ui-monospace, monospace;

@@ -108,13 +108,13 @@ h4 {
 /* On a desktop, once the page moves (never while editing), hovering or focusing the
    link of an inked picture brings its color back. */
 @media (hover: hover) {
-  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink] {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) a:is(:hover, :focus-visible) [data-ink] {
     background-color: transparent;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink] img {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) a:is(:hover, :focus-visible) [data-ink] img {
     filter: none;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) a:is(:hover, :focus-visible) [data-ink]::after {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) a:is(:hover, :focus-visible) [data-ink]::after {
     background-color: transparent;
   }
 }
@@ -306,8 +306,8 @@ details.margin-menu > summary::-webkit-details-marker {
   background-color: color-mix(in oklch, var(--color-accent) 35%, var(--color-base-100));
 }
 
-/* Upstart's "Image credits" link, centered at the end of the footer like the rest of it. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, centered at the end of the footer like the rest of it. */
+footer [data-spaka-credits] {
   padding: 0 1.25rem 2.5rem;
   text-align: center;
   font-family: var(--font-sans);

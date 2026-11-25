@@ -1,7 +1,7 @@
 {
   "name": "Ember candlelight hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The dark room under a warm pool of light that follows the pointer and flickers (WebGL, with a CSS light where it is not available), the name at poster size crossing the photo's foot, an open tonight line read from the page's hours, and two buttons.",
   "tags": ["hero", "restaurant", "bar", "candlelight", "dark", "photo", "webgl", "open now"],
   "mood": ["dark", "warm", "elegant"],

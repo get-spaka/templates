@@ -634,7 +634,7 @@ a.bay:hover .frame {
 /* ---- Rises (data-rise): headings and paragraphs rise into view, in CSS. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) {
-    :root:is([data-up-moving], :not(:has(#up-still))) [data-rise] {
+    :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-rise] {
       animation: plinth-rise linear both;
       animation-timeline: view();
       animation-range: entry 0% entry 45%;
@@ -658,14 +658,14 @@ a.bay:hover .frame {
   }
 }
 
-/* ---- Upstart's credits link at the foot of the footer, lined up with its content. */
-footer [data-up-credits] {
+/* ---- Spaka's credits link at the foot of the footer, lined up with its content. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 84rem) / 2) + 1.25rem) 2.5rem;
   font-family: var(--theme-font-heading);
   font-size: 0.8125rem;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 84rem) / 2) + 2rem);
   }
 }

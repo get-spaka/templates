@@ -1,7 +1,7 @@
 {
   "name": "Margin letterbox",
   "kind": "newsletter",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A plain newsletter signup on a pale band: when the letter comes as the heading, one sentence, first name, email and Subscribe on one line, and a line saying how many read it and how often it comes.",
   "tags": ["newsletter", "signup", "subscribe", "email", "weekly letter"],
   "mood": ["editorial", "minimal"],

@@ -1,7 +1,7 @@
 {
   "name": "Reel statement slab",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "About forty words at heading size on a slab of the main color, tilted a couple of degrees, that drops into place as it comes into view.",
   "tags": ["statement", "manifesto", "about", "studio", "slab", "quote"],
   "mood": ["bold", "dark"],

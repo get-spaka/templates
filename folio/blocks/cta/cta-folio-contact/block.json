@@ -1,7 +1,7 @@
 {
   "name": "Folio contact band",
   "kind": "cta",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark band asking whether the visitor has a project in mind, with the email address at large size, the reply time and the social links.",
   "tags": ["contact", "email", "call to action", "dark"],
   "mood": ["editorial", "bold"],

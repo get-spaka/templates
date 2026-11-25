@@ -1,7 +1,7 @@
 {
   "name": "Ruled picture-first hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A wide picture across the page with its caption, then every word under it: a label, a large serif headline with one phrase in highlighter, a short paragraph, and a ruled row with the cohort's facts on one line beside the button, the places left, the closing date and the price under it.",
   "tags": ["hero", "course", "cohort", "picture first", "enrollment"],
   "mood": ["editorial", "minimal"],

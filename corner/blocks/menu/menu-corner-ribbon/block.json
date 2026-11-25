@@ -1,7 +1,7 @@
 {
   "name": "Corner ribbon",
   "kind": "menu",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A slightly tilted band in the main color whose items, separated by stars, loop sideways: the day's breads, dishes or products.",
   "tags": ["ribbon", "marquee", "ticker", "products"],
   "mood": ["bold", "playful"],

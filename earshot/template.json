@@ -1,6 +1,6 @@
 {
   "id": "earshot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Earshot",
   "description": "A podcast's site you can almost hear: quotes play as captions, word by word at the pace of the voice, each episode has a sound print of its own cut into its chapters, section titles sit on subtitle boxes, and an on-air lamp lights on release day.",
   "category": "blog",
@@ -16,7 +16,7 @@
     "membership",
     "listener questions"
   ],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT",
   "shoot": { "clock": "2026-11-10T09:30:00-05:00" }
 }

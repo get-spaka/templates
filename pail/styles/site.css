@@ -662,14 +662,14 @@
   }
 }
 
-/* Upstart's credits link, aligned with the footer's container. */
-footer [data-up-credits] {
+/* Spaka's credits link, aligned with the footer's container. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 80rem) / 2) + 1.40625rem) 2rem;
   font-size: 0.8125rem;
   opacity: 0.7;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2.25rem);
   }
 }

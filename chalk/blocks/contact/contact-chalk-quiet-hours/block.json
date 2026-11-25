@@ -1,7 +1,7 @@
 {
   "name": "Chalk quiet hours",
   "kind": "contact",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Each day of the week as a bar from opening to closing on a 6 am to 10 pm scale, its busy hours shaded and its quiet ones in mint, with the hours written out below each bar.",
   "tags": ["hours", "opening hours", "busy times", "schedule"],
   "mood": ["minimal", "colorful"],

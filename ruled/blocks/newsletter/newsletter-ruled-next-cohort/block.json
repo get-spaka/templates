@@ -1,7 +1,7 @@
 {
   "name": "Ruled next cohort",
   "kind": "newsletter",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The next cohort's waitlist on the palest highlighter: its dates as the heading, a first name and an email on one line with the button, and the promise of one email when enrollment opens.",
   "tags": ["newsletter", "waitlist", "email capture", "cohort"],
   "mood": ["minimal", "warm"],

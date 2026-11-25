@@ -1,7 +1,7 @@
 {
   "name": "Decal parking row of the week",
   "kind": "contact",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The week drawn from above as parking bays on asphalt, each day painted on the road in long white letters, keep-clear boxes for days off, and a small yellow truck parked in today's bay; beside each bay the stop's place, hours and directions.",
   "tags": ["schedule", "weekly stops", "where we are", "food truck", "locations", "today"],
   "mood": ["bold", "playful"],

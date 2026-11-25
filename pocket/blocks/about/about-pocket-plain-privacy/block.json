@@ -1,7 +1,7 @@
 {
   "name": "Pocket privacy in plain words",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Privacy promises in plain words: a heading, one line and a link to the privacy page, over soft cards in the second and third colors, each marked We keep or We never, with a short title and a sentence.",
   "tags": ["privacy", "promises", "trust", "data", "cards", "app"],
   "mood": ["friendly", "minimal", "colorful"],

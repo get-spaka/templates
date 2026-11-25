@@ -1,11 +1,11 @@
 {
   "id": "saucer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Saucer",
   "description": "A daytime café you read like its front door: the hours typed on the door's glass with a card that turns to open or closed, a menu that opens on what the kitchen is serving, and round plates set down on the table as you scroll.",
   "category": "business",
   "tags": ["café", "breakfast", "brunch", "lunch", "coffee", "restaurant", "opening hours", "menu", "catering"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT",
   "shoot": { "clock": "2027-04-14T09:30:00-05:00" }
 }

@@ -1,7 +1,7 @@
 {
   "name": "Spindle two menus",
   "kind": "menu",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Lunch and supper as two printed cards side by side, each with its hours and its dishes by course, dotted leaders to the prices in typewriter figures, descriptions in italic and diet marks.",
   "tags": ["menu", "lunch menu", "dinner menu", "prices", "courses", "restaurant"],
   "mood": ["warm", "friendly"],

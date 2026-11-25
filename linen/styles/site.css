@@ -480,8 +480,8 @@ img[data-sun] {
   border-left: 1.5px dashed var(--color-primary);
 }
 
-/* Upstart's "Image credits" link, at the end of the indigo footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the indigo footer. */
+footer [data-spaka-credits] {
   font-family: var(--font-body);
   font-size: 0.75rem;
   letter-spacing: 0.16em;

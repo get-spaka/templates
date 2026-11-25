@@ -1,7 +1,7 @@
 {
   "name": "Ruled evening",
   "kind": "steps",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An evening of the course as times along an upright ink rule, each with what happens then and one phrase in highlighter, beside the section's heading.",
   "tags": ["steps", "timeline", "schedule", "course"],
   "mood": ["editorial", "minimal"],

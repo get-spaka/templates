@@ -1,7 +1,7 @@
 {
   "name": "Aspect sold ledger",
   "kind": "stats",
-  "source": "upstart",
+  "source": "spaka",
   "description": "On a deep blue band, three figures in brass over a ruled ledger of sales: each row led by its house number, then the street, the neighborhood, the asking price, the sold price in brass, the days on the market and the broker.",
   "tags": ["sold", "results", "ledger", "real estate", "figures", "table"],
   "mood": ["dark", "elegant", "professional"],

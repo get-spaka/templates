@@ -1,7 +1,7 @@
 {
   "name": "Taper chair-time grid",
   "kind": "pricing",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Prices as a grid of chair times against four levels, each column a step from pale to deep blue-green like a fade, darkening in turn as it comes into view; on a phone, level chips choose the column.",
   "tags": ["pricing", "price list", "levels", "salon", "barbershop", "grid"],
   "mood": ["minimal", "professional", "editorial"],

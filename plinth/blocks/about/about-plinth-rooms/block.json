@@ -1,7 +1,7 @@
 {
   "name": "Plinth painted rooms",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An exhibition's rooms stacked like paint chips, each a full-width band in its wall color from the theme, with its number at poster size, its title, one line and a link to the room; a band opens a little under the pointer.",
   "tags": ["rooms", "sections", "exhibition", "chapters", "museum", "galleries"],
   "mood": ["colorful", "elegant", "editorial"],

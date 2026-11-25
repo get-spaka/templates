@@ -1,7 +1,7 @@
 {
   "name": "Commons program cards",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Programs as cards of unequal width in their own flyer colors, the first two wide, each with a photo torn at its foot, its name, one line, when it is open and a link to its page.",
   "tags": ["services", "programs", "cards", "nonprofit", "torn paper"],
   "mood": ["friendly", "colorful"],

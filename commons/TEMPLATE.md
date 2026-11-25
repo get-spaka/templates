@@ -26,7 +26,7 @@ The two doors under "What we have, we share.", the founders' promise, last year'
 
 #### How do people give money?
 
-- **On your own donation page** (as built): every Donate button opens, in a new tab, the page where the nonprofit already takes gifts (its bank's, PayPal, Givebutter, Donorbox, Zeffy…); Upstart takes no payments. Put its address in `data/appeal/cooler.md` (`link`), which the header's and footer's Donate buttons, the jar and the give levels read.
+- **On your own donation page** (as built): every Donate button opens, in a new tab, the page where the nonprofit already takes gifts (its bank's, PayPal, Givebutter, Donorbox, Zeffy…); Spaka takes no payments. Put its address in `data/appeal/cooler.md` (`link`), which the header's and footer's Donate buttons, the jar and the give levels read.
 - **With a pledge form**: visitors say what they mean to give, once or monthly, and leave their name and email; the nonprofit then writes back with how to pay. Add a collected `pledges` datasource (amount, frequency as a choice of Once and Monthly, name, email, note) with `fragments/pledge-thanks.liquid`; in `parts/give-levels.liquid` replace each level's button with a link to `#pledge` and add the form under the levels (`<div id="pledge">`); empty `appeal.link` and point the Donate buttons (`parts/header.liquid`, `parts/footer.liquid`, `parts/jar.liquid`) to `/give#pledge`.
 - **By check or in person only**: the give page says to whom to make the check out, where to send it, and when the shed takes gifts in person (`data/give-ways/`). Empty `appeal.link`, point the Donate buttons to `/give#ways`, and in `parts/give-levels.liquid` remove the levels' buttons and the line about the secure donation page.
 - **Things and time, not money**: "Donate" becomes "Give things" and points to `/give#things` (header, footer, jar). The jar counts things instead of dollars: put the count in `goal` and `raised`, and in `parts/jar.liquid` replace the `dollars` renders with the plain numbers and their unit ("120 winter coats by November 30: 74 so far"). Remove `parts/give-levels.liquid` and `parts/give-spending.liquid` from the give page and delete `data/give-levels/` and `data/give-spending/`.
@@ -39,7 +39,7 @@ The two doors under "What we have, we share.", the founders' promise, last year'
 
 #### Does it send a newsletter?
 
-- **Yes, sign-ups kept in Upstart** (as built): the footer's Porch Letter form posts to `newsletter`. Sign-ups arrive in the Content tab, to be copied into whatever tool sends the email; Upstart does not send it. Rename the letter after the maker's.
+- **Yes, sign-ups kept in Spaka** (as built): the footer's Porch Letter form posts to `newsletter`. Sign-ups arrive in the Content tab, to be copied into whatever tool sends the email; Spaka does not send it. Rename the letter after the maker's.
 - **On another service**: in `parts/footer.liquid` replace the form with a "Get the letter" button to the maker's Mailchimp, Buttondown or other page; delete `data/newsletter/` and `fragments/newsletter-thanks.liquid`.
 - **No newsletter**: remove the letter's block from `parts/footer.liquid`; delete `data/newsletter/` and `fragments/newsletter-thanks.liquid`.
 

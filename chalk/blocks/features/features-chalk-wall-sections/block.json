@@ -1,7 +1,7 @@
 {
   "name": "Chalk walls in section",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The gym's walls drawn side by side on one floor line like an architect's section, each leaning at its real angle from a slab to a cave, with its name, angle, height, number of problems and next reset below; the walls lean into place as they come into view.",
   "tags": ["climbing", "walls", "areas", "rooms", "diagram", "angles"],
   "mood": ["bold", "playful"],

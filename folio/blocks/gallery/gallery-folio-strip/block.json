@@ -1,7 +1,7 @@
 {
   "name": "Folio image strip",
   "kind": "gallery",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An endless strip of images at the same height, each with a small caption, looping slowly sideways and pausing under the mouse.",
   "tags": ["strip", "images", "marquee", "carousel", "photos"],
   "mood": ["editorial", "calm"],

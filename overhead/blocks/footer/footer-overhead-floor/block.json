@@ -1,7 +1,7 @@
 {
   "name": "Overhead footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark footer with the name, the address and directions, the bus, the phone and email, the hours and the links.",
   "tags": ["footer", "address", "hours", "links", "contact"],
   "mood": ["dark", "professional"],

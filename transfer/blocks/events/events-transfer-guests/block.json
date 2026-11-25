@@ -1,7 +1,7 @@
 {
   "name": "Transfer guest sheet",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The guest chair as a flash sheet: six month panels ruled in violet, each guest's dates as a big blackletter numeral with their name, home city and mark (which transfers), \"Chair open\" for a month without one; the guest in the chair now is marked with a yellow dot, the next one counts down the days.",
   "tags": ["events", "guests", "guest artists", "calendar", "tattoo", "visits"],
   "mood": ["playful", "editorial"],

@@ -1,7 +1,7 @@
 {
   "name": "Gnomon day in hours",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Hours of a day as cards on palo verde, each with its hour in large figures, a small solid model of a house in isometric view and the shadow it casts at that hour (none at night, one window lit), a title and a line; hovering a card runs its sun through the day.",
   "tags": ["features", "approach", "process", "day", "hours", "sun", "models"],
   "mood": ["warm", "playful", "colorful"],

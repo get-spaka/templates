@@ -1,7 +1,7 @@
 {
   "name": "Transfer artists roster",
   "kind": "team",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The artists on ink, one row each: the name in blackletter at 5rem, their styles as pills, their books (open, waitlist, closed, flash only) and their mark, a flash design that transfers, each row linking to the artist's page.",
   "tags": ["team", "artists", "tattoo", "roster", "books"],
   "mood": ["bold", "dark"],

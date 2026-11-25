@@ -1,7 +1,7 @@
 {
   "name": "Commons figures on torn slips",
   "kind": "stats",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Large figures at poster size, each on its own slip of colored paper torn at the top, in two staggered columns, with a line written by hand pinned under one of them.",
   "tags": ["stats", "figures", "impact", "numbers", "torn paper", "handwriting"],
   "mood": ["friendly", "colorful", "bold"],

@@ -72,8 +72,8 @@ h3,
   background: var(--color-error);
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   max-width: 80rem;
   margin-inline: auto;
   padding: 0 2rem 1.5rem;

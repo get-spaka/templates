@@ -1,7 +1,7 @@
 {
   "name": "Pocket download band",
   "kind": "cta",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A closing download band over a soft glow: a large headline, one sentence, the store buttons and the rating, beside a phone whose Today screen is drawn in HTML, rising from the band's bottom edge, with a notification card that drops from its island.",
   "tags": ["cta", "download", "app", "phone", "store buttons", "notification", "glow"],
   "mood": ["friendly", "playful", "colorful"],

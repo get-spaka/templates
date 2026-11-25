@@ -1,6 +1,6 @@
 {
   "kind": "steps",
-  "source": "upstart",
+  "source": "spaka",
   "name": "Kindly stamps",
   "description": "The way to a place as postage stamps with perforated edges along a still dotted route, each with its photo, its value (a time or a distance) and its name, slightly tilted.",
   "tags": ["steps", "travel", "directions", "getting here", "stamps"],

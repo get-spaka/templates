@@ -104,8 +104,8 @@ h3 {
   overflow: hidden;
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   max-width: 96rem;
   margin-inline: auto;
   padding: 0 1.25rem 2rem;
@@ -116,7 +116,7 @@ footer [data-up-credits] {
   opacity: 0.6;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: 2.5rem;
   }
 }

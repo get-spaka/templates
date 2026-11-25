@@ -1,7 +1,7 @@
 {
   "name": "Beacon labelled feature cards",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A bento of feature cards labelled like figures in a lab notebook (Fig. 01-06), the first ones wide, each with a small abstract figure drawn in SVG (rings, grid, bars, nodes, wave or stack) and a violet light that follows the pointer over it.",
   "tags": ["features", "bento", "cards", "benefits", "grid", "glow"],
   "mood": ["dark", "professional", "minimal"],

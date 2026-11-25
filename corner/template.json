@@ -1,10 +1,10 @@
 {
   "id": "corner",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "Corner",
   "description": "A neighborhood shop that reads like its shopfront: poster-sized type on warm paper, one strong color, the day's hours always in sight and a ribbon of what is on the counter.",
   "category": "business",
   "tags": ["bakery", "café", "shop", "local", "opening hours", "menu"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

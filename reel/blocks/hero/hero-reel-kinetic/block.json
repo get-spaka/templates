@@ -1,7 +1,7 @@
 {
   "name": "Reel kinetic hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A loud headline in heavy extended capitals whose letters rise line after line and drift apart as the page scrolls, a tilted slab of the main color overlapping its last line with two sentences and two buttons, a tilted still at the top right and a slow WebGL smoke of the main color behind.",
   "tags": ["hero", "headline", "kinetic type", "studio", "agency", "smoke", "slab"],
   "mood": ["bold", "dark"],

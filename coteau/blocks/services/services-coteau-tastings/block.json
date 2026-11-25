@@ -1,7 +1,7 @@
 {
   "name": "Coteau tastings with the hours",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "On stone, the tastings as ruled rows with a line, their length and price in mono and a Book button or a Walk in mark, beside the hours by season and the address.",
   "tags": ["services", "tastings", "visit", "booking", "hours"],
   "mood": ["minimal", "warm"],

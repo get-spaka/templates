@@ -10,7 +10,7 @@ A tattoo shop on a sheet of flash. Bristol board and India ink, three flash colo
 ## Type
 
 - **Grenze Gotisch** (a readable blackletter) for the wordmark, page titles, section titles, the artists' names, flash numbers and prices, and the guests' dates. The hero's wordmark `gothic text-[clamp(6rem,27vw,19rem)] leading-[0.8] tracking-[-0.02em]`, one word a line on a phone; a page title `text-[clamp(3.5rem,11vw,9rem)] leading-[0.85]`; a section title `text-[clamp(2.5rem,5vw,4.25rem)] leading-[0.95]`; sentence case. Outside a heading, `class="gothic"` sets it ("No. 14", "$180", "3–7").
-- **Encode Sans** for everything else: text at 1.0625rem, `leading-relaxed text-base-content/80`; smaller headings (cards, steps, forms) in Encode Sans 600 with `class="sans"` on the `<h3>` (Upstart's heading rule would set them in blackletter otherwise); `class="caps"` (600, condensed width 75, 0.75rem, uppercase, spaced, tabular figures) for labels, sizes ("4 in."), dates, styles and books; buttons and header links at width 87.5.
+- **Encode Sans** for everything else: text at 1.0625rem, `leading-relaxed text-base-content/80`; smaller headings (cards, steps, forms) in Encode Sans 600 with `class="sans"` on the `<h3>` (Spaka's heading rule would set them in blackletter otherwise); `class="caps"` (600, condensed width 75, 0.75rem, uppercase, spaced, tabular figures) for labels, sizes ("4 in."), dates, styles and books; buttons and header links at width 87.5.
 - `class="pill"` for an artist's or guest's styles; `class="dot"` (flash yellow) before "Books open", "In the chair now", "New", "Walk-ins".
 
 ## Color and shape

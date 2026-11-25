@@ -1,7 +1,7 @@
 {
   "name": "Coteau one-hill hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A headline in flared label capitals with a sentence, two buttons and, on stone, the wine to open tonight with its hill: a striped vineyard slope from its vintage to its drink-by year and a marker at this year; beside it a tall photo of the rows climbing the slope.",
   "tags": ["hero", "winery", "vineyard", "wine", "drinking window", "photo"],
   "mood": ["elegant", "minimal", "warm"],

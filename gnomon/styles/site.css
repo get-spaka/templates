@@ -141,7 +141,7 @@ h1[data-cast] {
 }
 
 /* Specs, labels, status, plaques: Instrument Sans at width 85, uppercase. Unlayered,
-   so it also holds on a heading (Upstart's heading rule comes after the layers). */
+   so it also holds on a heading (Spaka's heading rule comes after the layers). */
 .spec {
   font-family: var(--font-body, "Instrument Sans"), ui-sans-serif, system-ui, sans-serif;
   font-stretch: 85%;
@@ -576,14 +576,14 @@ form:has(#brief-you:focus-within) .brief-index a[href="#brief-you"] {
   background: color-mix(in oklch, var(--color-base-content) 30%, transparent);
 }
 
-/* Upstart's "Image credits" link, at the end of the footer, lined up with its container. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer, lined up with its container. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 90rem) / 2) + 1.25rem) 2rem;
   font-size: 0.8125rem;
   opacity: 0.7;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 90rem) / 2) + 2.5rem);
   }
 }

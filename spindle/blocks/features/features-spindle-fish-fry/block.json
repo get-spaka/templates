@@ -1,7 +1,7 @@
 {
   "name": "Spindle fish fry",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A weekly event's band on turquoise: a cut-out plate beside its name and hours, three plates with their prices, and a line on how guests sit.",
   "tags": ["features", "weekly special", "fish fry", "restaurant", "event night"],
   "mood": ["bold", "friendly", "colorful"],

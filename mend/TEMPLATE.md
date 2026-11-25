@@ -23,7 +23,7 @@ The hero (headline, two buttons, the reply line and a photo) with four reassuran
 
 #### How do patients book?
 
-- **A request form, confirmed by the practice** (as built): requests arrive in Upstart's Content tab, and the practice calls or emails to set a time. Every booking button leads to `/book`, with the treatment, the practitioner or the area filled in from the link.
+- **A request form, confirmed by the practice** (as built): requests arrive in Spaka's Content tab, and the practice calls or emails to set a time. Every booking button leads to `/book`, with the treatment, the practitioner or the area filled in from the link.
 - **On the practice's own online booking page** (Jane, Cliniko, Acuity…): every booking button opens that page and says "Book online". Point every `href="/book…"` (header, hero, the areas, request band, treatment and practitioner pages, advice notes) to the booking page's address, and rename those buttons; the `/book` page changes in its turn.
 - **By phone**: every booking button becomes a call button. Point every `href="/book…"` to `tel:` with the number and rename them "Call to book"; the `/book` page changes in its turn.
 

@@ -1,7 +1,7 @@
 {
   "name": "Mend fee card",
   "kind": "pricing",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Plain fees on an oat card, each with its visit, minutes and price in large serif figures, beside three lines on referral, direct billing and receipts.",
   "tags": ["pricing", "fees", "insurance", "prices", "clinic", "sessions"],
   "mood": ["warm", "minimal", "professional"],

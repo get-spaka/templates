@@ -51,7 +51,7 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* Upstart's own heading rule comes after the layers: a heading set in Encode Sans says so here. */
+/* Spaka's own heading rule comes after the layers: a heading set in Encode Sans says so here. */
 :is(h1, h2, h3, h4).sans {
   font-family: var(--theme-font-body);
 }

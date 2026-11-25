@@ -1,6 +1,6 @@
 {
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "name": "Kindly run-of-show",
   "description": "The days of a weekend, each opening with its number set huge, its weekday and month in engraved capitals, its name and a die-cut photo, then ruled rows: the time, the title, the place with directions, a sentence, what to wear and who it is for.",
   "tags": ["schedule", "program", "timeline", "weekend", "times", "agenda"],

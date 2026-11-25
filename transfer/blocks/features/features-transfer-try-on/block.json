@@ -1,7 +1,7 @@
 {
   "name": "Transfer try it on",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A flash design on a photograph of skin at its real size, blended into it: chips switch between a forearm, a shoulder and a shoulder blade, and the visitor can drag the design into place and turn it.",
   "tags": ["features", "try on", "tattoo", "placement", "skin", "preview"],
   "mood": ["playful", "minimal"],

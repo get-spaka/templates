@@ -1,7 +1,7 @@
 {
   "name": "Pocket phone story",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An app's story in numbered chapters (01, 02…), each a kicker, a title, two sentences and its own phone screen drawn in HTML; on a desktop one phone stays in place beside the texts and its screen slides to the next as each chapter reaches the middle, with a rail of chapter numbers; on a phone each chapter's phone tilts in below its text.",
   "tags": ["features", "how it works", "story", "chapters", "app", "phone", "sticky", "scroll"],
   "mood": ["friendly", "playful", "minimal"],

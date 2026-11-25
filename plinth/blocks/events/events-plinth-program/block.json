@@ -1,7 +1,7 @@
 {
   "name": "Plinth program",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An exhibition's talks, tours, family afternoons and evenings by date, the day at poster size or the repeat (Every Saturday), the kind and the place, the title and a line, the time and the price or Free with admission, with a filter by kind.",
   "tags": ["events", "program", "talks", "tours", "calendar", "museum", "exhibition"],
   "mood": ["minimal", "editorial", "elegant"],

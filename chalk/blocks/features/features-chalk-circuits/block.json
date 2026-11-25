@@ -1,7 +1,7 @@
 {
   "name": "Chalk circuits",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A grade ladder of six chunky holds rising in a row, one per color circuit, each with its name, its grades and a few words, screwed on one by one as it comes into view.",
   "tags": ["climbing", "grades", "levels", "circuits", "colors", "ladder"],
   "mood": ["playful", "colorful"],

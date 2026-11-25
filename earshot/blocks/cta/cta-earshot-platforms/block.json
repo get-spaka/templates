@@ -1,7 +1,7 @@
 {
   "name": "Earshot listen everywhere",
   "kind": "cta",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Every app the show is on as a large rounded row with its name, a line and an Open button, two columns on a desktop, then the RSS feed's address in a read-only field to paste into any podcast app.",
   "tags": ["listen", "platforms", "podcast", "apps", "rss", "subscribe"],
   "mood": ["bold", "friendly"],

@@ -32,7 +32,7 @@ The hero (the headline, two buttons, the open sign and a tall photo) with the fo
 
 #### How do clients book?
 
-- **A request form, confirmed by text** (as built): requests arrive in Upstart's Content tab; the shop texts back to set a time. Every booking button leads to `/book`, with the service, the person or the level filled in from the link (`?service=`, `?with=`, `?level=`).
+- **A request form, confirmed by text** (as built): requests arrive in Spaka's Content tab; the shop texts back to set a time. Every booking button leads to `/book`, with the service, the person or the level filled in from the link (`?service=`, `?with=`, `?level=`).
 - **On the shop's own booking page** (Squire, Booksy, Fresha, Boulevard, Square Appointments…): ask for its address, never invent it. Point every `href="/book…"` (header, hero, booking band, the chairs, the team pages, a cut's "Book this cut", the grid's "Book at this level", the consultation link) to that address and rename those buttons "Book online"; `/book` changes in its turn.
 - **Walk-ins and phone only**: every booking button becomes "Call the shop" (`tel:`); `/book` becomes Visit (`/visit`) in its turn, leading with the week chart and the walk-in line.
 
@@ -110,7 +110,7 @@ The story of the shop beside a photo of its windows, three photos of the room, t
 #### Do you sell what you use?
 
 - **At the desk only** (as built): the shelf lists the products with "Sold in the shop only".
-- **In an online store too**: each product in `shelf` links to the maker's store elsewhere and a "Shop online" record joins `navigation` (place `footer`); nothing is sold through Upstart. Replace "Sold in the shop only" in `parts/shelf.liquid`.
+- **In an online store too**: each product in `shelf` links to the maker's store elsewhere and a "Shop online" record joins `navigation` (place `footer`); nothing is sold through Spaka. Replace "Sold in the shop only" in `parts/shelf.liquid`.
 - **No products**: remove `{% render 'shelf' %}`, delete `parts/shelf.liquid` and `data/shelf/`, and "On my station" from `pages/team/[team].liquid`.
 
 #### Are you hiring?

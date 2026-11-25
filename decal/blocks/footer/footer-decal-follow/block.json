@@ -1,7 +1,7 @@
 {
   "name": "Decal follow-the-truck footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An asphalt footer that says 'Follow the truck' in large friendly letters with an Instagram button, a strip to get the week's stops by email, the booking phone and email, the home base and the site's links.",
   "tags": ["footer", "food truck", "newsletter", "social", "contact"],
   "mood": ["bold", "dark"],

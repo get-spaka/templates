@@ -1,7 +1,7 @@
 {
   "name": "Earshot captions hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The show's name at poster size with its phonetic line and two buttons, over a wide dark frame like a paused video call: a studio photo, an on-air lamp and the running time in its corners, and two lines of captions that play word by word as a conversation.",
   "tags": ["hero", "podcast", "captions", "show", "radio", "on air"],
   "mood": ["bold", "dark", "playful"],

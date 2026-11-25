@@ -1,6 +1,6 @@
-# The lint Upstart's repository runs on this one as its submodule, on every
+# The lint Spaka's repository runs on this one as its submodule, on every
 # push and pull request: Biome with this repository's biome.json, at the
-# version Upstart's repository uses (keep the two the same).
+# version Spaka's repository uses (keep the two the same).
 name: Lint
 on:
   push:

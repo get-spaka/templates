@@ -1,7 +1,7 @@
 {
   "name": "Earshot episode rows",
   "kind": "blog",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Episodes as ruled, numbered rows, newest first: the number large in the episode's color, the title, the guest, topic, date and minutes, and a small sound print that ripples under the pointer, with topic chips that filter the list without a script.",
   "tags": ["podcast", "episodes", "archive", "list", "filter", "topics"],
   "mood": ["bold", "editorial", "colorful"],

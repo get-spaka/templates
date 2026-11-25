@@ -1,7 +1,7 @@
 {
   "name": "Bolster week of mats",
   "kind": "events",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The week at a glance: a strip of days that opens on today, and the day's classes as mats that unroll, each with its time, its teacher and Book.",
   "tags": ["timetable", "week", "classes", "booking"],
   "mood": ["warm", "elegant", "friendly"],

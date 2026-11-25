@@ -1,7 +1,7 @@
 {
   "name": "Cursus skills",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Skills in three columns (known for, tools, languages), each with its line of evidence under it: where it was used, or how well. No levels, no bars.",
   "tags": ["skills", "expertise", "tools", "languages", "résumé", "CV"],
   "mood": ["professional", "minimal", "editorial"],

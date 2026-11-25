@@ -1,7 +1,7 @@
 {
   "name": "Margin now list",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A now page's list on a pale band: a heading with the date it was last updated, beside labelled lines of what the person is doing, reading, looking for and wondering about now.",
   "tags": ["now", "about", "currently", "personal", "labelled list"],
   "mood": ["editorial", "friendly"],

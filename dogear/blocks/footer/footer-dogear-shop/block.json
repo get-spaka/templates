@@ -1,7 +1,7 @@
 {
   "name": "Dogear shop footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An ink footer with the shop's italic wordmark, the Tuesday letter's sign-up, the address with directions, the phone and email, the week's hours and the pages.",
   "tags": ["footer", "opening hours", "address", "newsletter", "links", "bookshop"],
   "mood": ["editorial", "dark"],

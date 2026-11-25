@@ -1,7 +1,7 @@
 {
   "name": "Ruled tuition",
   "kind": "pricing",
-  "source": "upstart",
+  "source": "spaka",
   "description": "One wide card for one price: what the course includes as a two-column ruled list on paper, and beside it on the second sheet the price, the payments, the pay-what-you-can line in highlighter and the button.",
   "tags": ["pricing", "tuition", "single price", "course"],
   "mood": ["minimal", "editorial"],

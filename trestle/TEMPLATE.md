@@ -24,7 +24,7 @@ The hero (the headline, the booking line and the measured photograph), a project
 
 #### How do clients ask for a quote?
 
-- **They request a site visit with the form** (as built): a request in four parts on the request page; requests arrive in Upstart's Content tab. Keep `parts/request-form.liquid` and `data/quote-requests/`; every "Request a visit" button points to `/quote#request`.
+- **They request a site visit with the form** (as built): a request in four parts on the request page; requests arrive in Spaka's Content tab. Keep `parts/request-form.liquid` and `data/quote-requests/`; every "Request a visit" button points to `/quote#request`.
 - **They call first**: the phone number set large with a call button in place of the form. Replace the form in `parts/request-form.liquid` with the number and a `tel:` button (keep its title and "What happens next"), point the header's button, the hero's, the request band's and the footer's to `tel:`, and delete `data/quote-requests/` and `fragments/quote-thanks.liquid`. The request page changes in its turn.
 - **Through their own booking page elsewhere**: every request button links out to it. Point the header's, the hero's, the request band's and the footer's buttons to the maker's address, remove the form from `parts/request-form.liquid` (keep its title, "What happens next" and a button out), and delete `data/quote-requests/` and `fragments/quote-thanks.liquid`.
 

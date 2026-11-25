@@ -42,7 +42,7 @@ When removed: delete `pages/studio.liquid`, `parts/principles.liquid`, `parts/te
 
 #### How do clients get in touch?
 
-- **The brief form** (as built): the form asks for needs, budget and timing; briefs arrive in Upstart's Content tab. Keep `parts/brief-form.liquid` on the contact page and `briefs`, its choices rewritten for the business.
+- **The brief form** (as built): the form asks for needs, budget and timing; briefs arrive in Spaka's Content tab. Keep `parts/brief-form.liquid` on the contact page and `briefs`, its choices rewritten for the business.
 - **Email and phone**: the form goes; the contact page gives the address, email and phone. Replace the form on the contact page by the email and phone set in the display face, as links; "Got a brief?" stays as the question; delete `data/briefs/` and `fragments/brief-thanks.liquid`.
 
 When removed: delete `pages/contact.liquid`, `parts/brief-form.liquid`, `fragments/brief-thanks.liquid`, `data/briefs/` and its navigation record; the footer's "Got a brief?" band and the header's contact link go to the email (`mailto:`).

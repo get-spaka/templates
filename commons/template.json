@@ -1,10 +1,10 @@
 {
   "id": "commons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Commons",
   "description": "A neighborhood nonprofit's site made like the noticeboard by its door: big friendly type on newsprint, two doors to help or be helped, figures on torn slips of color, an appeal's jar that fills to where it stands, and events as notices with tear-off tabs.",
   "category": "business",
   "tags": ["nonprofit", "charity", "community", "association", "food bank", "volunteers", "donations", "events"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

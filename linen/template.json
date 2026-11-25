@@ -1,10 +1,10 @@
 {
   "id": "linen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Linen",
   "description": "A guesthouse seen the way you wake in it: a sheer linen curtain that moves in the breeze over the courtyard and draws aside as you scroll, the rooms hanging as dyed keys on the reception's board, each with its own page, and a request for your dates always in reach.",
   "category": "business",
   "tags": ["hotel", "guesthouse", "bed and breakfast", "inn", "rooms", "booking request", "travel", "breakfast"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

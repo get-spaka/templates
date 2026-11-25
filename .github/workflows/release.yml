@@ -1,6 +1,6 @@
 # Each tag v* builds a release of the templates from their sources: the
 # catalogue, the pictures and one .zip per template, attached to the GitHub
-# release the Upstart app reads (its latest one). Nothing built is committed.
+# release the Spaka app reads (its latest one). Nothing built is committed.
 name: Release
 on:
   push:
@@ -15,18 +15,18 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
-      - name: Lint, as Upstart's repository does
+      - name: Lint, as Spaka's repository does
         run: npx --yes @biomejs/biome@2.6.6 ci .
       - name: Check and build the templates
         # The previous release's catalogue gives the earlier versions older apps
-        # still need: the latest release's, except for v10, which starts from
-        # v8's (Q380): v9 lists Aspect 1.1.0 without the app it needs, and
-        # Aspect 1.0.0, which any app opens, is in v8 only.
+        # still need. This repository's first release has none before it.
         run: |
-          releases="https://github.com/$GITHUB_REPOSITORY/releases"
-          if [ "$GITHUB_REF_NAME" = v10 ]; then previous="$releases/download/v8/catalogue.json"
-          else previous="$releases/latest/download/catalogue.json"; fi
-          node scripts/release.mjs . dist "$GITHUB_REF_NAME" "$previous"
+          releases=$(gh release list --limit 1 --json tagName --jq '.[].tagName')
+          previous=()
+          [ -n "$releases" ] && previous=("https://github.com/$GITHUB_REPOSITORY/releases/latest/download/catalogue.json")
+          node scripts/release.mjs . dist "$GITHUB_REF_NAME" "${previous[@]}"
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Publish the release
         run: gh release create "$GITHUB_REF_NAME" dist/catalogue.json dist/*.webp dist/*.zip --title "$GITHUB_REF_NAME" --notes-file dist/notes.md --latest
         env:

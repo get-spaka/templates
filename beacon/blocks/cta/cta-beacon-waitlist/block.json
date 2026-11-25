@@ -1,7 +1,7 @@
 {
   "name": "Beacon closing waitlist",
   "kind": "cta",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark closing band under a smaller aperture of rings and a violet sweep: a short headline, a sentence, a waitlist form with an optional team size, and the count of people on the list.",
   "tags": ["waitlist", "call to action", "signup", "launch", "dark", "form"],
   "mood": ["dark", "bold"],

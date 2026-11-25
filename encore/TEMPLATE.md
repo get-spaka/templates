@@ -6,7 +6,7 @@ A band's website as a record shop and a tour board: every record is a square sle
 
 - The header (the name, the links and an aqua "Listen" pill to the featured record's listen row) and the footer (on the record's black: "Encore" over "Bring Velvet Freight to your town" with "Book the band", the links, the listen and follow links, and the name across the width) are on every page.
 - The lists: `releases` (the hero's featured record, the home page's row of sleeves, the music page, a page per record, the header's Listen button), `events` (the hero's next show, the home page's board, the shows page's board and past shows), `videos` (the home page, the videos page, each record's videos by its `release`), `team` (the home page's band), `quotes` (the home page's three and the press page's all), `press-photos` (the press page), `contacts` (the press page's contacts, the contact page's cards and its publicist line), `contact-rider` (for promoters, beside the booking form) and `navigation` (the header and footer links, with `place: listen` for the band's profile on each service and `place: social` for its social pages); `bookings` collects the booking form and `newsletter` the mailing list. The design notes explain how each works.
-- Upstart plays no audio and embeds no video: each record's listen row links out to the services filled in its `listen` links, and each video is a poster linking to YouTube or Vimeo. Tickets and records are sold elsewhere (the venue's or the seller's page, Bandcamp).
+- Spaka plays no audio and embeds no video: each record's listen row links out to the services filled in its `listen` links, and each video is a poster linking to YouTube or Vimeo. Tickets and records are sold elsewhere (the venue's or the seller's page, Bandcamp).
 - A show is upcoming or past by its date, compared with today's on every request; a static export fixes the split on the day it is made.
 
 ## When adapting
@@ -37,13 +37,13 @@ The name at poster size with the next show flipping in and the featured record's
 
 #### How do promoters book the band?
 
-- **With the booking form** (as built): requests arrive in Upstart's Content tab. Keep `parts/booking.liquid`, `data/bookings/`, `fragments/booking-thanks.liquid` and every "Book the band" link to `/contact#booking` (the footer, the mobile menu, the shows page's `parts/bring-us.liquid`, the press facts).
+- **With the booking form** (as built): requests arrive in Spaka's Content tab. Keep `parts/booking.liquid`, `data/bookings/`, `fragments/booking-thanks.liquid` and every "Book the band" link to `/contact#booking` (the footer, the mobile menu, the shows page's `parts/bring-us.liquid`, the press facts).
 - **Through a booking agent**: replace the form in `parts/booking.liquid` with the agent's name, agency and email set large (`display`), keep "For promoters" beside it, and point every "Book the band" link to `mailto:` that email; delete `data/bookings/` and `fragments/booking-thanks.liquid`.
 - **Not booking shows**: delete `parts/booking.liquid` and its render, `parts/bring-us.liquid` and its render, `data/bookings/`, `data/contact-rider/` and `fragments/booking-thanks.liquid`; in the footer, replace the "Encore" call with the mailing list's line ("Hear first when …") and a link to `#mailing-list`, and remove "Book the band" from the mobile menu.
 
 #### How do fans hear about new shows?
 
-- **The mailing list form** (as built): an email and a city, kept by Upstart and downloadable as CSV from the Content tab (`parts/mailing-list.liquid`, `data/newsletter/`, `fragments/newsletter-thanks.liquid`).
+- **The mailing list form** (as built): an email and a city, kept by Spaka and downloadable as CSV from the Content tab (`parts/mailing-list.liquid`, `data/newsletter/`, `fragments/newsletter-thanks.liquid`).
 - **The maker's newsletter service**: replace the form in `parts/mailing-list.liquid` with one "Join the list" button (`btn btn-primary btn-lg`) to its sign-up page (Mailchimp, Substack, Laylo…); delete `data/newsletter/` and `fragments/newsletter-thanks.liquid`.
 - **Follow links only**: delete `parts/mailing-list.liquid` and its renders (home, shows, contact), `data/newsletter/` and `fragments/newsletter-thanks.liquid`; the board's empty line points to the band's social pages instead ("Follow us on Instagram to hear first").
 

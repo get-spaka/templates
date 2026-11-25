@@ -1,7 +1,7 @@
 {
   "name": "Mend practitioners",
   "kind": "team",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Tall portraits in soft frames, or initials on clay, each with the name, the role and a \"Sees most\" line, linking to the practitioner's page.",
   "tags": ["team", "practitioners", "portraits", "clinic", "people"],
   "mood": ["warm", "professional", "minimal"],

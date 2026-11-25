@@ -1,7 +1,7 @@
 {
   "name": "Strum week of classes",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The week as strung days, each with its group classes and ensembles in order: the time, the name, what it is, the ages, the room and the teacher, the price and the seats left, with a link to the waitlist when a class is full.",
   "tags": ["services", "timetable", "classes", "schedule", "week", "music school"],
   "mood": ["professional", "friendly"],

@@ -22,7 +22,7 @@ When a page type goes, the home page keeps its rhythm: one scene per screen, one
 
 #### How do guests book a table?
 
-- **Online, with the form** (as built): the reservation form stays; requests arrive in Upstart's Content tab. Keep the booking links (`/visit#reserve`); the visit page keeps its form.
+- **Online, with the form** (as built): the reservation form stays; requests arrive in Spaka's Content tab. Keep the booking links (`/visit#reserve`); the visit page keeps its form.
 - **By phone**: a call button and the number in place of the form. Point every booking link (`/visit#reserve`) in the header, the hero and the other parts to the phone (`href="tel:…"`); the visit page's form gives way to the number in its turn.
 - **Walk-ins only**: the booking buttons and form go; the visit page says how it works. Remove the booking buttons from the header and the hero; the visit page says how the evening works in its turn.
 

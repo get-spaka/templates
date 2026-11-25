@@ -1,7 +1,7 @@
 {
   "name": "Corner hours board",
   "kind": "contact",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The opening hours as large ruled rows on the main color, today's day underlined and an open-now line, beside the address, the phone and a directions button.",
   "tags": ["opening hours", "open now", "address", "directions"],
   "mood": ["bold", "warm"],

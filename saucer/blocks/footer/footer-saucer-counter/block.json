@@ -1,7 +1,7 @@
 {
   "name": "Saucer counter footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A coffee-brown footer with the café's name and steaming cup, the line of what is served now, the week's hours as rows (which the now line reads), the address with directions, the phone and the pages.",
   "tags": ["footer", "opening hours", "address", "links", "café"],
   "mood": ["warm", "friendly"],

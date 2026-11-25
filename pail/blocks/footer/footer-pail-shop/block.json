@@ -1,7 +1,7 @@
 {
   "name": "Pail shop footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A zinc footer with the shop's name in a Victorian fat face, the line saying whether an order goes out today, the week as rows with each day's delivery cutoff (which that line reads), the address with directions, the phone, the email and the pages.",
   "tags": ["footer", "opening hours", "address", "links", "florist", "delivery cutoff"],
   "mood": ["elegant", "professional"],

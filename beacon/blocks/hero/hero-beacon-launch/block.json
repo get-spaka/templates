@@ -1,7 +1,7 @@
 {
   "name": "Beacon launch hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark launch hero: an update pill, a status line, a two-sentence headline whose words come out of a blur, one sentence, a waitlist form and the count of people on the list, over concentric rings with a violet sweep turning round them like a radar.",
   "tags": ["hero", "launch", "waitlist", "signup", "product", "dark", "radar"],
   "mood": ["dark", "professional", "bold"],

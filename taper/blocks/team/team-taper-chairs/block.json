@@ -1,7 +1,7 @@
 {
   "name": "Taper chairs",
   "kind": "team",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Tall portraits, or initials on the person's step of the fade, each with name, pronouns, a level chip, what they cut most and a \"Book with\" link.",
   "tags": ["team", "barbers", "stylists", "levels", "portraits", "booking"],
   "mood": ["minimal", "warm", "friendly"],

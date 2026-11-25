@@ -1,7 +1,7 @@
 {
   "name": "Dogear book of the week",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "One book large on greyboard with its bookseller's card, the start of their note, its facts in a ruled line, Hold a copy and a link to its page; then the next four picks as small rows with their jackets.",
   "tags": ["features", "book of the week", "featured book", "staff pick", "bookshop"],
   "mood": ["editorial", "warm"],

@@ -1,7 +1,7 @@
 {
   "name": "Transfer ink footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A footer on ink: the name in blackletter, a fresh-flash sign-up, the hours with the walk-in line, the address with \"18+ with a photo ID\", the links and Instagram, and a small \"Thank you\" heart that transfers as the footer comes into view.",
   "tags": ["footer", "newsletter", "hours", "address", "tattoo"],
   "mood": ["dark", "bold"],

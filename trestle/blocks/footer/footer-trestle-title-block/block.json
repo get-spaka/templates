@@ -1,7 +1,7 @@
 {
   "name": "Trestle title block footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark footer drawn as the title block of a joinery drawing: ruled cells with small labels for the firm, the address, the hours, the phone and email, the certifications, the pages and the social links.",
   "tags": ["footer", "address", "hours", "contact", "title block"],
   "mood": ["dark", "professional"],

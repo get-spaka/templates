@@ -1,7 +1,7 @@
 {
   "name": "Taper open sign strip",
   "kind": "banner",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A slim strip with the barber pole and the line that says whether the shop is open now, the walk-in hours and a Book a chair pill.",
   "tags": ["banner", "open now", "hours", "announcement", "barbershop"],
   "mood": ["minimal", "friendly"],

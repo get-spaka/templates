@@ -1,7 +1,7 @@
 {
   "name": "Ember evening",
   "kind": "steps",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An evening hour by hour: the hour pinned at poster size on the left while its moments, each with a photo, scroll past beside it, the background deepening from the second surface through the second color to night.",
   "tags": ["steps", "timeline", "evening", "hours", "story", "sticky", "scroll"],
   "mood": ["dark", "warm", "editorial"],

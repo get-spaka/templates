@@ -230,8 +230,8 @@
   color: var(--color-base-100);
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   max-width: 90rem;
   margin-inline: auto;
   padding: 0 1.25rem 2rem;
@@ -243,7 +243,7 @@ footer [data-up-credits] {
   opacity: 0.7;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: 2.5rem;
   }
 }

@@ -16,7 +16,7 @@ A website for a podcast that you can almost hear: its quotes are played as capti
 - Episodes are the maker's own: ask for their latest episodes (title, number, date, running time, guest) rather than inventing a show's history. Keep the six records only as examples until they give theirs, and say so. The hero's two caption lines, the conversations and the quotes are lines from the show: write them from what the maker says about it, short, in the hosts' voices, and never put invented words in a real person's mouth.
 - Reviews and listener numbers are copied from the apps by the maker: keep the examples only until they give theirs, and never invent a ranking or a chart position.
 - The hosts are shown as initials in round frames until the maker gives their portraits (`team`'s `photo`). The hero's photo is `media/hosts-at-the-mics.jpg`: replace it with the maker's own studio, or remove the `<img>` and the frame shows the latest episode's sound print.
-- Upstart serves no audio: never add an `<audio>`, `<video>` or `<iframe>` from another site. Episodes are played on the platforms; a host's player is embedded only through the choice below.
+- Spaka serves no audio: never add an `<audio>`, `<video>` or `<iframe>` from another site. Episodes are played on the platforms; a host's player is embedded only through the choice below.
 
 ## Pages
 

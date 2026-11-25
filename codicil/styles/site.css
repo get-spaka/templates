@@ -139,7 +139,7 @@
   }
 }
 
-/* An eyebrow or a heading set in small capitals: Upstart's own heading rule comes after the layers. */
+/* An eyebrow or a heading set in small capitals: Spaka's own heading rule comes after the layers. */
 :is(h1, h2, h3, h4).sc {
   font-family: "Baskervville SC", var(--theme-font-heading);
 }
@@ -468,20 +468,20 @@
   }
 }
 
-/* Upstart's "Image credits" link, at the end of the footer: its own inline margin wins, so it lines up with padding. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer: its own inline margin wins, so it lines up with padding. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 80rem) / 2) + 1.25rem) 2rem;
   font-size: 0.8125rem;
   font-weight: 500;
   opacity: 0.7;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }
 
-/* ---- Movement: only for visitors who have not asked for less. Upstart stops it all while editing. ---- */
+/* ---- Movement: only for visitors who have not asked for less. Spaka stops it all while editing. ---- */
 @media (prefers-reduced-motion: no-preference) {
   /* The chosen sheet rises into place. */
   [data-index] .index-input:checked + .index-tab + .index-sheet {

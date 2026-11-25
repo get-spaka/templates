@@ -1,7 +1,7 @@
 {
   "name": "Seam selvedge footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A footer on ink with its top edge cut by pinking shears: the letter's line, the studio's address and hours in typewriter type, the links, a notched rule, and the wordmark set across the full width.",
   "tags": ["footer", "address", "hours", "links", "wordmark", "pinking shears"],
   "mood": ["dark", "elegant", "minimal"],

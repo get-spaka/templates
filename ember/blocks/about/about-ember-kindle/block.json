@@ -1,7 +1,7 @@
 {
   "name": "Ember kindled statement",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Three sentences at large size in the display serif whose words light up one by one as they cross the middle of the screen, with a label and a link.",
   "tags": ["about", "statement", "manifesto", "text", "scroll", "words"],
   "mood": ["elegant", "warm", "editorial"],

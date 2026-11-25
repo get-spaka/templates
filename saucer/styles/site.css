@@ -476,8 +476,8 @@
   padding-inline: 1.5rem;
 }
 
-/* Upstart's "Image credits" link, lined up with the footer's container. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, lined up with the footer's container. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
   padding-bottom: 1.5rem;
   font-family: var(--font-mono);
@@ -485,7 +485,7 @@ footer [data-up-credits] {
   opacity: 0.75;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }
@@ -496,19 +496,19 @@ footer [data-up-credits] {
   .logo-cup .puff {
     display: none;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) .logo-cup .puff {
     display: inline;
     transform-box: fill-box;
     transform-origin: center;
     animation: steam 2.4s ease-out 2 both;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff:nth-child(2) {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) .logo-cup .puff:nth-child(2) {
     animation-delay: 0.35s;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) .logo-cup .puff:nth-child(3) {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) .logo-cup .puff:nth-child(3) {
     animation-delay: 0.7s;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) :is(a:hover, a:focus-visible) > .logo-cup .puff {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) :is(a:hover, a:focus-visible) > .logo-cup .puff {
     animation-name: steam-again;
     animation-iteration-count: infinite;
   }

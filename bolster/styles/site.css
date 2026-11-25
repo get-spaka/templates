@@ -673,26 +673,26 @@
   }
 }
 
-/* A small heading in the body font, over Upstart's rule that sets every heading in the other. */
+/* A small heading in the body font, over Spaka's rule that sets every heading in the other. */
 :is(h1, h2, h3, h4).eyebrow {
   font-family: var(--theme-font-body);
   font-weight: 600;
 }
 
-/* Upstart's "Image credits" link, lined up with the footer's container. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, lined up with the footer's container. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
   padding-bottom: 1.5rem;
   font-size: 0.9375rem;
   opacity: 0.75;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }
 
-/* On Upstart's credits page, a long author's name wraps rather than widen a phone's screen. */
+/* On Spaka's credits page, a long author's name wraps rather than widen a phone's screen. */
 .link {
   overflow-wrap: anywhere;
 }

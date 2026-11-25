@@ -152,7 +152,7 @@
   }
 }
 
-/* A heading set as a label: Upstart's own heading rule comes after the layers, so this one is outside them too. */
+/* A heading set as a label: Spaka's own heading rule comes after the layers, so this one is outside them too. */
 :is(h1, h2, h3, h4).tag {
   font-family: var(--theme-font-body);
 }
@@ -313,8 +313,8 @@
   outline-offset: 2px;
 }
 
-/* Upstart's "Image credits" link, at the end of the footer. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer. */
+footer [data-spaka-credits] {
   max-width: 80rem;
   margin-inline: auto;
   padding: 0 1.25rem 2rem;
@@ -324,7 +324,7 @@ footer [data-up-credits] {
   opacity: 0.7;
 }
 @media (min-width: 768px) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: 2rem;
   }
 }
@@ -341,7 +341,7 @@ html.lenis body {
   pointer-events: none;
 }
 
-/* ---- Movement: only for visitors who have not asked for less. Upstart stops it all while editing. ---- */
+/* ---- Movement: only for visitors who have not asked for less. Spaka stops it all while editing. ---- */
 @media (prefers-reduced-motion: no-preference) {
   /* The breath: three seconds in, five out. */
   .breath-dot[data-breath]::after {

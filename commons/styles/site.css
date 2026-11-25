@@ -320,19 +320,23 @@ img[data-torn],
       translate 0.45s var(--commons-ease) calc(var(--i, 0) * 60ms),
       opacity 0.4s ease;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-doors] > .door:is(:hover, :focus-within) {
     flex-grow: 1.7;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-photo img {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still)))
+    [data-doors]
+    > .door:is(:hover, :focus-within)
+    .door-photo
+    img {
     scale: 1.04;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-arrow {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-doors] > .door:is(:hover, :focus-within) .door-arrow {
     translate: 0.6rem 0;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-doors] > .door:is(:hover, :focus-within) .door-way {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-doors] > .door:is(:hover, :focus-within) .door-way {
     translate: calc(var(--dir) * 0.5rem) 0;
   }
-  :root:is([data-up-moving], :not(:has(#up-still)))
+  :root:is([data-spaka-moving], :not(:has(#spaka-still)))
     [data-doors]:has(> .door:is(:hover, :focus-within))
     > .door:not(:hover, :focus-within)
     .door-photo
@@ -342,7 +346,7 @@ img[data-torn],
   }
 }
 @media (min-width: 64rem) {
-  :root:is([data-up-moving], :not(:has(#up-still)))
+  :root:is([data-spaka-moving], :not(:has(#spaka-still)))
     [data-doors]:has(> .door:is(:hover, :focus-within))
     > .door:not(:hover, :focus-within)
     .door-way {
@@ -498,8 +502,8 @@ img[data-torn],
       box-shadow 0.3s ease,
       background-color 0.2s ease;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) .notice-tabs:hover .tab:hover,
-  :root:is([data-up-moving], :not(:has(#up-still))) .notice-tabs:focus-visible .tab:first-child {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) .notice-tabs:hover .tab:hover,
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) .notice-tabs:focus-visible .tab:first-child {
     rotate: 8deg;
     box-shadow: 0.35rem 0.5rem 0.6rem oklch(from var(--color-base-content) l c h / 0.15);
   }
@@ -596,12 +600,12 @@ img[data-torn],
   display: block;
 }
 
-/* ---- Upstart's credits link at the foot of the footer, lined up with its content. */
-footer [data-up-credits] {
+/* ---- Spaka's credits link at the foot of the footer, lined up with its content. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 80rem) / 2) + 1.25rem);
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }

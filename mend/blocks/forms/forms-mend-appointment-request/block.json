@@ -1,7 +1,7 @@
 {
   "name": "Mend appointment request",
   "kind": "forms",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An appointment request in four numbered steps (what for, when suits you, where it hurts, your details) with choice cards, beside a sticky aside with the phone, the hours and a line that it is not for emergencies; it says when the practice replies.",
   "tags": ["form", "booking", "appointment", "request", "clinic", "contact"],
   "mood": ["warm", "professional", "minimal"],

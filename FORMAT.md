@@ -1,10 +1,10 @@
 # Templates
 
-A template starts a website: the maker chooses one on the start screen, describes their business, and the agent adapts it, rewriting its texts, replacing its images, adding or removing pages, keeping its design (Q229, Q246). This repository holds Upstart's own, one folder per template named after its `id`; Upstart's tests check each as a finished template, and so does each release.
+A template starts a website: the maker chooses one on the start screen, describes their business, and the agent adapts it, rewriting its texts, replacing its images, adding or removing pages, keeping its design (Q229, Q246). This repository holds Spaka's own, one folder per template named after its `id`; Spaka's tests check each as a finished template, and so does each release.
 
 ## On disk
 
-A template is an ordinary Upstart project folder, which its author opens in Upstart to see it and change it with the agent, plus:
+A template is an ordinary Spaka project folder, which its author opens in Spaka to see it and change it with the agent, plus:
 
 - `template.json`, its manifest:
 
@@ -16,13 +16,13 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
     "description": "A calm studio site whose sections rise into view, with a large type hero.",
     "category": "portfolio",
     "tags": ["studio", "ceramics"],
-    "author": { "name": "Upstart", "url": "https://upstart.gg" },
+    "author": { "name": "Spaka", "url": "https://spaka.app" },
     "licence": "MIT"
   }
   ```
 
   `category` is one of `business`, `portfolio`, `blog`, `launch`, `event`, `app`. A template whose look follows the time of day (a café's card that reads open or closed) adds `"shoot": { "clock": "2027-04-14T09:30:00-05:00" }`, the instant its pictures are taken at whatever the day of the shoot; the app reads nothing else of it. A template that uses something an older app reads otherwise adds `"app"`, the oldest app version it needs: `"app": "0.2.0"` for the `images` field kind or a generated image, which the checks require (Q368). An older app then takes the template's latest version it can open, kept in the catalogue, or does not show it. What the project's own files say is not repeated there: the libraries' licences are in `scripts/libraries.json` and at the top of `scripts/lib/` files, each image's credits beside it in `media/`, the pictures in `pictures/`.
-- `TEMPLATE.md`, its guide for the agent that adapts it (Q299, Q306): Upstart keeps it beside a website started from the template while the website is adapted, page type by page type, and does not copy it into the website. A page type is the pages that share a first folder of `pages/`, with their records: `pages/index.liquid` is the home page, `/`; `pages/events/[events].liquid` belongs to `/events`. The guide says what matters only while adapting:
+- `TEMPLATE.md`, its guide for the agent that adapts it (Q299, Q306): Spaka keeps it beside a website started from the template while the website is adapted, page type by page type, and does not copy it into the website. A page type is the pages that share a first folder of `pages/`, with their records: `pages/index.liquid` is the home page, `/`; `pages/events/[events].liquid` belongs to `/events`. The guide says what matters only while adapting:
 
   ```markdown
   # Ember
@@ -56,11 +56,11 @@ A template is an ordinary Upstart project folder, which its author opens in Upst
   ```
 
   `## Pages` is the section `template:check` asks for: a `### Name (`/route`)` section per page type, the home page first, in the order the agent adapts them (Q303). A section's first paragraph says what the page shows: the agent starts from it to describe the page to the maker in the card of pages (Q302). Its `####` choices are those that really vary on that page and cost the agent work to change (how a visitor books, orders or signs up, what is sold and how), each written as a question, with 2 to 4 options: its label in bold, a sentence for the maker on what it means, then what to change in the files. The first option is the one recommended, most often the template as built, which `(as built)` marks wherever it is: Reel recommends "No open roles", since its invented jobs are not the maker's. A choice for the whole website goes with the home page, which is adapted with what every page shares; a page it also changes says so in its own section ("Its reserve section follows how guests book, chosen with the home page"). Whether a page exists is not a choice: the maker keeps or leaves page types in the card of pages, and each section's `When removed:` line says what to delete with it and where to point what led to it (Q304, Q307). The agent asks a page type's choices the maker's messages leave open in its turn, before changing its files. Facts (the hours, the prices) are not choices: the agent asks about them once the page is built. During the adaptation, the agent gets the guide's general part and the section of the page type it adapts.
-- `blocks/<kind>/<id>/`: its own blocks, in the format of Upstart's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
-- `.upstart/skills/<id>-design/SKILL.md`: its design notes, a skill named `<id>-design`, which stays with the website for the agent's later turns (Q239): its spirit, its type, colors and shapes, its effects and the attribute or class that turns each on, how its lists work, and the rules that hold for the website's whole life ("keep one oxblood band per page"). What only matters while adapting goes in the guide.
+- `blocks/<kind>/<id>/`: its own blocks, in the format of Spaka's gallery, which the Blocks tab offers first once a site starts from it (Q235). They may overlap and tilt (Q256).
+- `.spaka/skills/<id>-design/SKILL.md`: its design notes, a skill named `<id>-design`, which stays with the website for the agent's later turns (Q239): its spirit, its type, colors and shapes, its effects and the attribute or class that turns each on, how its lists work, and the rules that hold for the website's whole life ("keep one oxblood band per page"). What only matters while adapting goes in the guide.
 - `pictures/`: made by `pnpm template:shoot`: `cover.webp` (the home page's first screen), `hover.webp` (an animated sequence of it, for the start screen), and `pages/<page>-desktop.webp` and `pages/<page>-phone.webp` for each page (`home` for `/`) and for the first record's page of each page per record (`work-casa-do-pinhal` for `/work/casa-do-pinhal`).
 
-A new site copies everything but `template.json`, `TEMPLATE.md`, `pictures/`, a readme and a licence. Of `.upstart/`, a template keeps only `skills/` and `test-records/`.
+A new site copies everything but `template.json`, `TEMPLATE.md`, `pictures/`, a readme and a licence. Of `.spaka/`, a template keeps only `skills/` and `test-records/`.
 
 As a `.zip` (an outside author's, Q236), the same files at its root or in the one folder it holds.
 
@@ -69,7 +69,7 @@ As a `.zip` (an outside author's, Q236), the same files at its root or in the on
 `pnpm template:check` checks them:
 
 - it has `pages/index.liquid` and `theme.css`, and every page renders with no note from the runtime;
-- pages, parts, fragments and blocks hold no `<script>`, `<style>` or `<link>` tag and no `data-theme`: Upstart adds the site's scripts, stylesheet and theme;
+- pages, parts, fragments and blocks hold no `<script>`, `<style>` or `<link>` tag and no `data-theme`: Spaka adds the site's scripts, stylesheet and theme;
 - colors come from the theme (Q234): no `bg-blue-600`, `text-white` or `bg-[#…]` in the templates, no `#hex`, `rgb()`, `oklch(…)` or named color in `styles/*.css` or a `style` attribute; a color made from the theme's is fine (`oklch(from var(--color-primary) l c h / 0.4)`, `color-mix(in oklch, var(--color-primary), transparent)`);
 - nothing is taken from another site but the libraries: images, videos, fonts and stylesheets are files of the template;
 - each image has its credits in `media/<name>.json` (`credit.license`, `credit.author` for a CC BY licence, and `alt`), under a licence a business site may use: no NC or ND (Q231), or, generated, how it was made in their place (`generated.model`, `generated.prompt`), with `"app": "0.2.0"` (Q432);
@@ -83,7 +83,7 @@ No program, no `package.json`; anything at its root that is not part of a templa
 
 ## Starting a website from one
 
-The start screen lists the templates by name and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.upstart/template-texts.json`, and the website is adapted page type by page type (Q302-Q313). In the first turn the agent shows the maker the card of pages, asks the home page's choices the message leaves open, then adapts the home page and what every page shares and removes the page types not kept; it stops after each page type with a line on what it invented, and the maker continues to the next from the list under the conversation. The pages still to do keep the template's contents meanwhile. At the end of its turns Upstart names the template's sentences still in what was adapted to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
+The start screen lists the templates by name and shows one large, real and moving. Chosen, the template's site is copied into the new project (not its manifest, guide or pictures), its sentences are noted in `.spaka/template-texts.json`, and the website is adapted page type by page type (Q302-Q313). In the first turn the agent shows the maker the card of pages, asks the home page's choices the message leaves open, then adapts the home page and what every page shares and removes the page types not kept; it stops after each page type with a line on what it invented, and the maker continues to the next from the list under the conversation. The pages still to do keep the template's contents meanwhile. At the end of its turns Spaka names the template's sentences still in what was adapted to the agent once, as it does for lorem ipsum. So write texts that are plainly of the invented business, in full sentences: a sentence of three words or more is checked; a short label (Menu, See the work) is not.
 
 ## Commands
 

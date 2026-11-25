@@ -1,7 +1,7 @@
 {
   "name": "Taper week at the chair",
   "kind": "contact",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The opening hours drawn as seven bars on a day from 8 am to 9 pm, the walk-in hours striped, today marked and a fine line at the current time, beside the address, directions, the phone and the walk-in line.",
   "tags": ["hours", "opening hours", "contact", "address", "walk-ins", "chart"],
   "mood": ["minimal", "warm", "professional"],

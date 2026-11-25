@@ -1,7 +1,7 @@
 {
   "name": "Covered split screen with a product card",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The split screen: a work photo to the window's left edge with a small card of the product floating over it near the seam, beside a deep panel in the primary color holding the label, the headline, two buttons and the proof line under them.",
   "tags": ["hero", "split screen", "software", "saas", "app", "free trial", "product card"],
   "mood": ["bold", "professional", "warm"],

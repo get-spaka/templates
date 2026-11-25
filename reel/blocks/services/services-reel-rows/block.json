@@ -1,7 +1,7 @@
 {
   "name": "Reel numbered service rows",
   "kind": "services",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Huge numbered rows in extended capitals that fill with the main color from the left under the pointer, each opening on its summary and the list of what it delivers.",
   "tags": ["services", "numbered", "accordion", "offer", "studio", "rows"],
   "mood": ["bold", "dark"],

@@ -1,7 +1,7 @@
 {
   "name": "Strum term strip",
   "kind": "banner",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A thin night blue strip with the term's line and the free first lesson's link, for the top of any page.",
   "tags": ["banner", "announcement", "term", "enrollment"],
   "mood": ["bold", "minimal"],

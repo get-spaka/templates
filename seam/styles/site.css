@@ -558,12 +558,12 @@ html.lenis body {
   }
 }
 
-/* The credits link Upstart adds to the footer, lined up with its columns. */
-footer [data-up-credits] {
+/* The credits link Spaka adds to the footer, lined up with its columns. */
+footer [data-spaka-credits] {
   padding-inline: calc(max(0px, (100% - 90rem) / 2) + 1.25rem);
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 90rem) / 2) + 2rem);
   }
 }
@@ -571,7 +571,7 @@ footer [data-up-credits] {
 /* ---- Movement in CSS, only once the page moves (never while editing) and only under no-preference. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: scroll()) {
-    :root:is([data-up-moving], :not(:has(#up-still))) .site-header {
+    :root:is([data-spaka-moving], :not(:has(#spaka-still))) .site-header {
       animation: header-fill linear both;
       animation-timeline: scroll(root);
       animation-range: 0 6rem;

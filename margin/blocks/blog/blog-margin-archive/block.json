@@ -1,7 +1,7 @@
 {
   "name": "Margin archive by year",
   "kind": "blog",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Every post grouped by year under a large year figure, each a ruled row with its date, number, title, kind, topics and minutes, ending on a band with a Read one at random link.",
   "tags": ["archive", "blog", "by year", "list", "random", "back issues"],
   "mood": ["editorial", "minimal"],

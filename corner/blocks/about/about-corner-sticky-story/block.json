@@ -1,7 +1,7 @@
 {
   "name": "Corner sticky story",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A photo in an arch that stays in place while the story scrolls beside it: a heading, three paragraphs, a pull quote, three key figures and a button.",
   "tags": ["story", "sticky photo", "quote", "figures"],
   "mood": ["warm", "editorial"],

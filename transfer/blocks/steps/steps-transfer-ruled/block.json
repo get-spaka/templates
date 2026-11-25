@@ -1,7 +1,7 @@
 {
   "name": "Transfer ruled steps",
   "kind": "steps",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Numbered steps on a heavy ruled line, each with a big blackletter number in violet, a small line drawing that lands as a stencil and is inked over, a title and a sentence.",
   "tags": ["steps", "process", "how it works", "tattoo"],
   "mood": ["minimal", "playful"],

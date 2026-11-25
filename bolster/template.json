@@ -1,6 +1,6 @@
 {
   "id": "bolster",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Bolster",
   "description": "A yoga and Pilates studio laid out like its own floor: the day's classes are mats that unroll as they come into view, the week opens on today, and the offer for new students docks small at the foot of the screen.",
   "category": "business",
@@ -16,7 +16,7 @@
     "workshops",
     "retreat"
   ],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT",
   "app": "0.2.0",
   "shoot": { "clock": "2027-03-09T07:40:00-07:00" }

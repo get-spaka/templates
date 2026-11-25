@@ -599,19 +599,19 @@ html:has([data-sheet][data-pages]:not([data-pages="1"])) [data-count="more"] {
   filter: saturate(0.85) contrast(1.05);
 }
 
-/* Upstart's "Image credits" link, at the end of the footer, lined up with the footer's text. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, at the end of the footer, lined up with the footer's text. */
+footer [data-spaka-credits] {
   padding: 0 calc(max(0px, (100% - 72rem) / 2) + 1.25rem) 2rem;
   font-size: 0.8125rem;
   opacity: 0.75;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 72rem) / 2) + 2rem);
   }
 }
 
-/* ---- Movement: only for visitors who have not asked for less. Upstart stops it all while editing. ---- */
+/* ---- Movement: only for visitors who have not asked for less. Spaka stops it all while editing. ---- */
 @media (prefers-reduced-motion: no-preference) {
   /* Each bar grows from its start as the ledger comes into view. */
   [data-span] {

@@ -1,7 +1,7 @@
 {
   "name": "Marquee countdown footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark footer with a countdown to the opening, the event's name across the whole width at its widest, the menu, the social links and the press and access contacts.",
   "tags": ["footer", "countdown", "name", "festival", "contacts"],
   "mood": ["bold", "dark"],

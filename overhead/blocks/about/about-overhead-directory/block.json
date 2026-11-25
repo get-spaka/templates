@@ -1,7 +1,7 @@
 {
   "name": "Overhead directory",
   "kind": "about",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Who's on the floor, as an old lobby directory: each member's name and trade, a dotted line, and where they sit.",
   "tags": ["about", "members", "directory", "community", "tenants"],
   "mood": ["professional", "editorial"],

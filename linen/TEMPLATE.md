@@ -6,7 +6,7 @@ A guesthouse seen the way you wake in it: a sheer linen curtain moves over the w
 
 - The header (with "Book a room") and the footer (on indigo: "Come and stay", the address, the contacts, the season's letter and the links) are on every page.
 - The lists: `rooms` (the key board on the home and rooms pages, a page per room, and the room cards of the request form), `testimonials` (the home page's guests' words), `places` (from the door, on the home and around pages), `outings` (the around page), `home-table` (the home page), `rooms-every` (the rooms page), `book-steps` and `book-faq` (the book page), `story-milestones`, `story-makers` and `team` (the story page), `table-breakfast` and `table-supper` (the table page), `around-seasons` (the around page) and `navigation` (the header and the footer); `stays` collects the request form's answers and `newsletter` the footer's letter. The design notes explain how each works.
-- Booking is a request, never a sale: Upstart takes no payments and has no availability calendar. The home page's booking bar is a plain form to `/book#request`, whose script copies the dates into the request form.
+- Booking is a request, never a sale: Spaka takes no payments and has no availability calendar. The home page's booking bar is a plain form to `/book#request`, whose script copies the dates into the request form.
 
 ## When adapting
 

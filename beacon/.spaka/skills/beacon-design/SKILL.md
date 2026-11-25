@@ -21,7 +21,7 @@ A product's page in the weeks before and after its launch. Dark and precise, lik
 - `primary` (violet) is the one light: buttons, the sweep, the lit part of the track, the cards' glow, links on hover, section labels. `accent` (pale lilac) marks what is new or current: the "New in 0.9" pill, the founding offer, the "now" milestone. `secondary` is used only inside the glow gradients, never alone.
 - Status colors for status: `bg-success` for up and "All systems normal", `bg-warning` for degraded, `bg-error` for down. Never colors of their own.
 - Cards: `rounded-box border border-base-300 bg-base-200/60`, a hairline, no shadow. The only shadow is the window's violet glow.
-- The footer's last line holds the "Image credits" link itself (`<p data-up-credits>`), beside the social links: keep it there, so Upstart does not add another.
+- The footer's last line holds the "Image credits" link itself (`<p data-spaka-credits>`), beside the social links: keep it there, so Spaka does not add another.
 
 ## Effects, and the attribute or class that turns each on
 

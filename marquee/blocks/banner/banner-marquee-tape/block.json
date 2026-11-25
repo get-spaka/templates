@@ -1,7 +1,7 @@
 {
   "name": "Marquee crossing tape",
   "kind": "banner",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Two tilted bands of words, one in the main color and one dark, crossing over the edge between two sections and running in opposite directions.",
   "tags": ["tape", "ticker", "marquee", "band", "words"],
   "mood": ["bold", "playful", "colorful"],

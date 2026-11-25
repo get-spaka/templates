@@ -582,8 +582,8 @@ li:nth-child(3) > [data-water] {
   font-weight: 650;
 }
 
-/* The "Image credits" line Upstart adds at the end of the footer. */
-footer [data-up-credits] {
+/* The "Image credits" line Spaka adds at the end of the footer. */
+footer [data-spaka-credits] {
   padding: 0 max(1.25rem, calc((100% - 72rem) / 2 + 2rem)) 2rem;
   color: oklch(from var(--color-neutral-content) l c h / 0.6);
   font-size: 0.875rem;

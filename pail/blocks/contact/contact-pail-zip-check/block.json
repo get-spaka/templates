@@ -1,7 +1,7 @@
 {
   "name": "Pail ZIP code check",
   "kind": "contact",
-  "source": "upstart",
+  "source": "spaka",
   "description": "\"Do we deliver to you?\": one ZIP code field whose answer is typed under it from the zones (the zone, its fee, same day or next day, or where to go instead), beside the zones as zinc rows with their neighborhoods, every ZIP code in a monospace face, the fee and whether it goes the same day.",
   "tags": ["delivery", "zones", "zip code", "postcode", "area", "fees"],
   "mood": ["professional", "minimal"],

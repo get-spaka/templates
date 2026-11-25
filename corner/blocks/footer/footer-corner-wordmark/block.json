@@ -1,7 +1,7 @@
 {
   "name": "Corner wordmark footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark footer with the address, the hours, the pages and the social links in four columns, above the business's name across the whole width.",
   "tags": ["footer", "wordmark", "address", "links"],
   "mood": ["bold", "dark"],

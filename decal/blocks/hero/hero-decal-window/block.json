@@ -1,7 +1,7 @@
 {
   "name": "Decal window hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A large friendly headline, a sentence and two buttons beside a photo framed as a food truck's service window: a rounded opening in a yellow panel under a flat dark awning, with a counter ledge and the truck's name lettered below.",
   "tags": ["hero", "food truck", "window", "street food", "headline"],
   "mood": ["bold", "friendly", "colorful"],

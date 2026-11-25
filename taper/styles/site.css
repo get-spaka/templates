@@ -159,7 +159,7 @@
   }
 }
 
-/* A heading set as a label: Upstart's own heading rule comes after the layers, so this one is outside them too. */
+/* A heading set as a label: Spaka's own heading rule comes after the layers, so this one is outside them too. */
 :is(h1, h2, h3, h4).board {
   font-family: var(--theme-font-body);
   font-weight: 600;
@@ -428,8 +428,8 @@
   opacity: 0.7;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html[data-up-moving] [data-open-sign][data-state="open"] .pole,
-  html:not(:has(#up-still)) [data-open-sign][data-state="open"] .pole {
+  html[data-spaka-moving] [data-open-sign][data-state="open"] .pole,
+  html:not(:has(#spaka-still)) [data-open-sign][data-state="open"] .pole {
     animation: pole-turn 6s linear infinite;
   }
   @keyframes pole-turn {
@@ -571,29 +571,29 @@
   display: none;
 }
 @media (hover: hover) {
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) [data-back] {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-mirror]:is(:hover, :focus-within) [data-back] {
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     border-radius: 0;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim {
     border-color: transparent;
     transform: scale(2.6);
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim::after {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-mirror]:is(:hover, :focus-within) .mirror-rim::after {
     background: transparent;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-front {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-front {
     display: none;
   }
-  :root:is([data-up-moving], :not(:has(#up-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-back {
+  :root:is([data-spaka-moving], :not(:has(#spaka-still))) [data-mirror]:is(:hover, :focus-within) .mirror-label-back {
     display: inline;
   }
 }
 
-/* ---- Movement: only under no-preference, and never while editing (Upstart stops it there). */
+/* ---- Movement: only under no-preference, and never while editing (Spaka stops it there). */
 @media (prefers-reduced-motion: no-preference) {
   @media (hover: hover) {
     [data-mirror] [data-back] {
@@ -658,12 +658,12 @@
   background: color-mix(in oklab, var(--color-base-100) 95%, transparent);
 }
 
-/* The credits link Upstart adds to the footer, lined up with the footer's columns. */
-footer [data-up-credits] {
+/* The credits link Spaka adds to the footer, lined up with the footer's columns. */
+footer [data-spaka-credits] {
   padding-inline: 1.25rem;
 }
 @media (width >= 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "Seam contact sheet",
   "kind": "gallery",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A dark photographer's proof sheet: numbered frames in calico borders between film edges, the picks circled in rose grease pencil that draws itself as the sheet comes into view; each frame links to its look.",
   "tags": ["gallery", "lookbook", "photos", "contact sheet", "fashion", "portfolio"],
   "mood": ["dark", "editorial", "elegant"],

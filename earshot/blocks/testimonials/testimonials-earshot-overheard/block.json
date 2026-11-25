@@ -1,7 +1,7 @@
 {
   "name": "Earshot overheard captions",
   "kind": "testimonials",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Quotes from the show as captions on a dark band: one large and two smaller, each with its speaker and a moving level meter, their words lighting up one after another at the pace of speech, a yellow marker under the word being said.",
   "tags": ["quotes", "podcast", "captions", "testimonials", "read-along"],
   "mood": ["dark", "bold", "editorial"],

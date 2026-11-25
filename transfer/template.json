@@ -1,6 +1,6 @@
 {
   "id": "transfer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Transfer",
   "description": "A tattoo shop on a sheet of flash: every design lands as a violet stencil, a little off register, and the ink takes over it; flash to claim, a guest chair month by month, a design tried on skin at its size, and a dial of healing days.",
   "category": "business",
@@ -16,8 +16,8 @@
     "illustration"
   ],
   "author": {
-    "name": "Upstart",
-    "url": "https://upstart.gg"
+    "name": "Spaka",
+    "url": "https://spaka.app"
   },
   "licence": "MIT",
   "shoot": {

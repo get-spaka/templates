@@ -1,7 +1,7 @@
 {
   "name": "Pail order request",
   "kind": "forms",
-  "source": "upstart",
+  "source": "spaka",
   "description": "An order request in four numbered parts: this week's pails as checkboxes (read from the stems list), the size as three cards with a vase option, delivery or pickup with the date and the recipient, and the sender with a handwritten card; beside it a sticky zinc panel with the order-by line and the fees. The shop calls back to confirm and take payment.",
   "tags": ["form", "order", "flowers", "delivery", "florist", "request"],
   "mood": ["elegant", "professional"],

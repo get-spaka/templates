@@ -417,8 +417,8 @@
   border-bottom: 1px solid color-mix(in oklch, currentColor 30%, transparent);
 }
 
-/* Upstart's "Image credits" link, the last line of the title block. */
-footer [data-up-credits] {
+/* Spaka's "Image credits" link, the last line of the title block. */
+footer [data-spaka-credits] {
   /* Lined up with the footer's content (max-w-7xl, px-5 then px-8); the link's own style sets its margin. */
   padding: 0 calc(max(0px, (100% - 80rem) / 2) + 1.25rem) 2rem;
   font-family: var(--font-mono);
@@ -428,7 +428,7 @@ footer [data-up-credits] {
   opacity: 0.7;
 }
 @media (min-width: 48rem) {
-  footer [data-up-credits] {
+  footer [data-spaka-credits] {
     padding-inline: calc(max(0px, (100% - 80rem) / 2) + 2rem);
   }
 }

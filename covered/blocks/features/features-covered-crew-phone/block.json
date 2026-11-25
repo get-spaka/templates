@@ -1,7 +1,7 @@
 {
   "name": "Covered crew phone beside its points",
   "kind": "features",
-  "source": "upstart",
+  "source": "spaka",
   "description": "One flat phone drawn in HTML, never tilted, showing the next shift, a shift to take and the clock-in button, beside a heading and four ruled points, on a pale panel in the secondary color.",
   "tags": ["features", "mobile app", "phone", "crew", "employees", "app"],
   "mood": ["friendly", "professional"],

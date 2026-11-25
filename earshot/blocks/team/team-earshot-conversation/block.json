@@ -1,7 +1,7 @@
 {
   "name": "Earshot conversation",
   "kind": "team",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Round portraits like a video call's tiles above a short exchange that plays line by line as captions: the ring of whoever is speaking pulses in blue while the other dims.",
   "tags": ["team", "hosts", "conversation", "podcast", "captions", "dialogue"],
   "mood": ["playful", "friendly", "bold"],

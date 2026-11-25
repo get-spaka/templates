@@ -1,7 +1,7 @@
 {
   "name": "Aspect brokers",
   "kind": "team",
-  "source": "upstart",
+  "source": "spaka",
   "description": "Tall portraits, or initials in a light serif on plaster, each with the name, the role and the neighborhoods the broker knows best, linking to their page.",
   "tags": ["team", "brokers", "agents", "portraits", "real estate", "people"],
   "mood": ["elegant", "minimal", "warm"],

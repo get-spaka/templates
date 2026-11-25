@@ -1,10 +1,10 @@
 {
   "id": "ember",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "name": "Ember",
   "description": "An evening restaurant and wine bar seen by candlelight: a warm light that follows the pointer over the dark room, the name at poster size, an evening that runs from the first pour to the last glass as you scroll, a tilted cream menu card, a cellar page and private dining.",
   "category": "business",
   "tags": ["restaurant", "wine bar", "bar", "dinner", "menu", "reservations", "private dining", "events"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

@@ -1,6 +1,6 @@
 {
   "id": "codicil",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Codicil",
   "description": "A small law firm that writes the law in plain English: a Baskerville on bond paper, a lawyer's phrase struck through in red with the plain words written in, the practice areas as a file of manila dividers, and articles that open as memos.",
   "category": "business",
@@ -14,6 +14,6 @@
     "accountant",
     "consultation request"
   ],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

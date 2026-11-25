@@ -19,7 +19,7 @@ function setUp(link, dialog) {
   const open = (event) => {
     event.preventDefault();
     img.src = link.getAttribute("href");
-    // The alternative text Upstart gave the same image on the page.
+    // The alternative text Spaka gave the same image on the page.
     const same = [...document.images].find((i) => i !== img && i.getAttribute("src") === link.getAttribute("href"));
     img.alt = same?.alt || "";
     dialog.showModal();

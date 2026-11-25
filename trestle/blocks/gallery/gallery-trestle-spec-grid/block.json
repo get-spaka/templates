@@ -1,7 +1,7 @@
 {
   "name": "Trestle projects with their weeks",
   "kind": "gallery",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The featured projects as tall photos, each with a dimension line under it giving its weeks of work, then its name, its town and its year; each opens the project's page.",
   "tags": ["projects", "portfolio", "work", "grid", "dimension lines"],
   "mood": ["minimal", "professional"],

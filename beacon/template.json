@@ -1,10 +1,10 @@
 {
   "id": "beacon",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "name": "Beacon",
   "description": "A dark, precise launch page: one promise, the product's own interface drawn in the page and rising out of a violet glow, a launch track lit up to now, pricing, updates and a waitlist at both ends.",
   "category": "launch",
   "tags": ["launch", "waitlist", "software", "saas", "app", "product", "changelog", "pre-order"],
-  "author": { "name": "Upstart", "url": "https://upstart.gg" },
+  "author": { "name": "Spaka", "url": "https://spaka.app" },
   "licence": "MIT"
 }

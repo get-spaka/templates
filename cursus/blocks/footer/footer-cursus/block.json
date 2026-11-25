@@ -1,7 +1,7 @@
 {
   "name": "Cursus footer",
   "kind": "footer",
-  "source": "upstart",
+  "source": "spaka",
   "description": "A footer on night with the monogram and the name, the availability in a line, the contact line, the links and the date of the last update.",
   "tags": ["footer", "contact", "résumé", "availability", "links"],
   "mood": ["dark", "professional", "minimal"],

@@ -1,7 +1,7 @@
 {
   "name": "Bolster offer hero",
   "kind": "hero",
-  "source": "upstart",
+  "source": "spaka",
   "description": "The aubergine field, a tall thin headline, and the room's photo with the offer for new students on a chalk-pink card over its edge.",
   "tags": ["overlap", "studio", "offer", "field"],
   "mood": ["elegant", "warm", "dark"],
