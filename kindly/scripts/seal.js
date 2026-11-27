@@ -3,6 +3,8 @@
 // slides down into the open envelope, the flap closes over it, the seal drops and presses,
 // then the thank-you line rises in. The copy is removed at the end. With no script, under
 // reduced motion and in edit mode, the sealed envelope and the line.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -40,8 +42,8 @@ function seal(reply) {
   }
 
   controls.push(
-    Motion.animate(copy, { y: ["-70%", "0%"] }, { duration: 0.7, ease: [0.45, 0, 0.2, 1], delay: 0.2 }),
-    Motion.animate(
+    animate(copy, { y: ["-70%", "0%"] }, { duration: 0.7, ease: [0.45, 0, 0.2, 1], delay: 0.2 }),
+    animate(
       flap,
       { transform: ["perspective(1200px) rotateX(180deg)", "perspective(1200px) rotateX(0deg)"] },
       { duration: 0.6, ease: [0.65, 0, 0.35, 1], delay: 0.95 },
@@ -50,12 +52,12 @@ function seal(reply) {
   timers.push(setTimeout(() => (flap.style.zIndex = ""), 1250));
   if (wax)
     controls.push(
-      Motion.animate(wax, { opacity: [0, 1] }, { duration: 0.15, delay: 1.55 }),
-      Motion.animate(wax, { scale: [1.5, 0.92, 1] }, { duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 1.55 }),
+      animate(wax, { opacity: [0, 1] }, { duration: 0.15, delay: 1.55 }),
+      animate(wax, { scale: [1.5, 0.92, 1] }, { duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 1.55 }),
     );
   if (thanks)
     controls.push(
-      Motion.animate(thanks, { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.05 }),
+      animate(thanks, { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 2.05 }),
     );
 
   const clean = () => {

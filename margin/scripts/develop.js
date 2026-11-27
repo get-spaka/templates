@@ -3,6 +3,8 @@
 // as they come into view. The inked state is set here: with no script, under reduced
 // motion and while editing, they are in full color. The change itself is a CSS
 // transition of the frame (styles/site.css), started by taking data-inked away.
+import { inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const FRAMES = "[data-develop], [data-letter] p:has(> img)";
 const within = (root, selector) =>
@@ -17,7 +19,7 @@ export function start(root) {
   for (const frame of within(root, FRAMES)) {
     frame.setAttribute("data-inked", "");
     stops.push(
-      Motion.inView(
+      inView(
         frame,
         () => {
           // A moment in view first, so that the ink is seen before it develops.

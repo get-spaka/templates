@@ -7,6 +7,8 @@
 // asked for; from 1.0 to 1.8 s the sheet gives way to the card; at 1.5 s the toast rises; from 2.0 to 2.5 s
 // the coffee ring goes last. Then every inline style is cleared and the paper hidden again. It never replays
 // and follows neither the pointer nor the scroll.
+import { inView, animate as motionAnimate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -47,7 +49,7 @@ function setUp(section) {
   }
 
   // Played as soon as the stage enters the screen, so the week is never seen hidden without the play running.
-  run.stopView = Motion.inView(
+  run.stopView = inView(
     stage,
     () => {
       run.stopView?.();
@@ -63,7 +65,7 @@ function play(run, { chips, chrome, toast }) {
   const { section } = run;
   const animate = (el, keyframes, options) => {
     run.styled.add(el);
-    run.animations.push(Motion.animate(el, keyframes, { ease: EASE, ...options }));
+    run.animations.push(motionAnimate(el, keyframes, { ease: EASE, ...options }));
   };
   const style = (el, props) => {
     Object.assign(el.style, props);

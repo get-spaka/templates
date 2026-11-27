@@ -1,10 +1,11 @@
 {
   "id": "encore",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Encore",
   "description": "A band's website as a record shop and a tour board: every record a square sleeve whose disc slides out and turns at its own speed, flying to its own page with the tracklist on the back, and the shows on a departure board whose letters flip into place.",
   "category": "portfolio",
   "tags": ["band", "musician", "music", "records", "discography", "tour dates", "concerts", "press kit", "booking"],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

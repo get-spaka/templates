@@ -4,7 +4,7 @@
 // colors from the theme when it starts, runs at 30 frames a second at most, and stops
 // while off screen. Under it, the section's printed CSS halftone is what shows with
 // no script, no WebGL, under reduced motion and while editing.
-import { Mesh, Program, Renderer, Triangle } from "https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm";
+import { Mesh, Program, Renderer, Triangle } from "ogl";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>

@@ -2,6 +2,8 @@
 // data-reveal="stagger" its children follow one another, 70 ms apart; data-reveal="late" rises once the
 // page has loaded, after half a second (the hero's floating card). Used sparingly. With no script,
 // under reduced motion and while editing, everything is simply there.
+import { animate, inView, stagger } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -27,21 +29,17 @@ export function start(root) {
     const how = el.dataset.reveal;
     if (how === "late") {
       hide(el, 12);
-      animations.push(Motion.animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.5, ease: EASE }));
+      animations.push(animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, delay: 0.5, ease: EASE }));
       continue;
     }
     const items = how === "stagger" ? [...el.children] : [el];
     for (const item of items) hide(item, 16);
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           animations.push(
-            Motion.animate(
-              items,
-              { opacity: [0, 1], y: [16, 0] },
-              { duration: 0.7, ease: EASE, delay: Motion.stagger(0.07) },
-            ),
+            animate(items, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, ease: EASE, delay: stagger(0.07) }),
           );
         },
         { amount: 0.15 },

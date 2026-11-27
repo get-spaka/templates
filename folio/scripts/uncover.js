@@ -2,6 +2,8 @@
 // the figure comes into view, settling from a little larger. The image is
 // clipped, not the figure: what is clipped to nothing is never seen to come
 // into view.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -17,10 +19,10 @@ export function start(root) {
     if (!img) continue;
     img.style.clipPath = "inset(100% 0% 0% 0%)";
     stops.push(
-      Motion.inView(
+      inView(
         figure,
         () => {
-          Motion.animate(
+          animate(
             img,
             { clipPath: ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"], scale: [1.15, 1] },
             { duration: 1.2, ease: [0.65, 0, 0.35, 1] },

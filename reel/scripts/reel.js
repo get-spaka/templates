@@ -5,6 +5,8 @@
 // panel leaning (skewX, 3° at most) with the speed of the scroll. Below that width, with
 // no script, under reduced motion and while editing, the stylesheet makes it a row that
 // scrolls sideways (a stack on a phone).
+import { scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -67,7 +69,7 @@ export function start(root) {
       const distance = Math.max(0, end + padding - track.clientWidth);
       section.style.height = `${stage.offsetHeight + distance}px`;
       x = lastX = 0;
-      stopScroll = Motion.scroll(
+      stopScroll = scroll(
         (progress) => {
           x = -distance * progress;
           bar?.style.setProperty("--progress", progress.toFixed(4));

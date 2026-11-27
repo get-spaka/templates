@@ -2,6 +2,8 @@
 // a disc of the main color follows the pointer over it, reading the attribute's word, and
 // the normal cursor hides there. With no script, on touch screens and under reduced
 // motion, the normal cursor.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = () => matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -12,7 +14,7 @@ export function start(root) {
   const disc = document.createElement("div");
   disc.className = "reel-cursor";
   disc.setAttribute("aria-hidden", "true");
-  Motion.animate(disc, { scale: 0 }, { duration: 0 });
+  animate(disc, { scale: 0 }, { duration: 0 });
   document.body.append(disc);
   document.documentElement.setAttribute("data-cursoring", "");
 
@@ -27,7 +29,7 @@ export function start(root) {
     if (target === over) return;
     over = target;
     if (target) disc.textContent = target.dataset.cursor;
-    Motion.animate(disc, { scale: target ? 1 : 0 }, { duration: target ? 0.35 : 0.2, ease: [0.22, 1, 0.36, 1] });
+    animate(disc, { scale: target ? 1 : 0 }, { duration: target ? 0.35 : 0.2, ease: [0.22, 1, 0.36, 1] });
   };
   const move = (event) => {
     x = event.clientX;

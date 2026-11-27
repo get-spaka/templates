@@ -2,6 +2,8 @@
 // opacity, 0.7 s). data-reveal="stagger" on a list does the same for its children,
 // 70 ms apart. Never on the ticket rail, which has its own entrance. Under reduced
 // motion and in edit mode, everything is in place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -26,11 +28,11 @@ export function start(root) {
     const items = el.dataset.reveal === "stagger" ? [...el.children] : [el];
     items.forEach(hide);
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           items.forEach((item, i) => {
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, delay: i * 0.07, ease: EASE });
+            animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, delay: i * 0.07, ease: EASE });
           });
         },
         { amount: 0.05 },

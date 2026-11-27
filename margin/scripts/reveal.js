@@ -1,4 +1,6 @@
 // Each element marked data-reveal (a row of letters, a heading) rises a little into view as the page scrolls to it.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -13,10 +15,10 @@ export function start(root) {
     el.style.opacity = "0";
     el.style.transform = "translateY(12px)";
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, ease: [0.22, 1, 0.36, 1] });
+          animate(el, { opacity: [0, 1], y: [12, 0] }, { duration: 0.6, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.05 },
       ),

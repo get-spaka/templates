@@ -2,6 +2,9 @@
 // the screen. Splitting cuts it into words, the script dims each to 25% and Motion's scroll
 // brings them up in turn. With no script, under reduced motion and while editing, every
 // word is at full.
+import { scroll } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -17,7 +20,7 @@ export function start(root) {
     const html = el.innerHTML;
     const words = Splitting({ target: el, by: "words" })[0]?.words ?? [];
     for (const word of words) word.style.opacity = "0.25";
-    const stopScroll = Motion.scroll(
+    const stopScroll = scroll(
       (progress) => {
         const lit = progress * (words.length + 2);
         words.forEach((word, i) => {

@@ -6,6 +6,8 @@
 // most one after another, the rest together. Picking another day in a [data-week] unrolls
 // that day's rows again, in 0.45 s, 35 ms apart. With no script, under reduced motion and
 // in edit mode the mats lie flat; stop takes off everything start set.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -53,7 +55,7 @@ function roller(mat) {
     unroll({ duration }, delay) {
       this.waiting = false;
       rolledUp(0);
-      playing = Motion.animate(0, 1, {
+      playing = animate(0, 1, {
         duration,
         delay,
         ease: EASE,
@@ -92,7 +94,7 @@ export function start(root) {
         });
       queue = [];
     };
-    const stopView = Motion.inView(
+    const stopView = inView(
       rollers.map((r) => r.mat.parentElement),
       (box) => {
         const r = of.get(box);

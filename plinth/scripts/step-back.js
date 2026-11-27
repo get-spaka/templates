@@ -4,6 +4,8 @@
 // once the work is in place. The script makes the hero about 220svh tall (data-step-back-on)
 // with its stage sticky; with no script, under reduced motion and in edit mode, the hero is one
 // screen with everything in place.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -71,11 +73,9 @@ function setUp(hero) {
         const inner = line.firstElementChild;
         if (!inner) return;
         line.style.overflow = "clip";
-        Motion.animate(inner, { y: ["105%", "0%"] }, { duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }).then(
-          () => {
-            line.style.overflow = "";
-          },
-        );
+        animate(inner, { y: ["105%", "0%"] }, { duration: 0.9, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }).then(() => {
+          line.style.overflow = "";
+        });
       });
     }
   };
@@ -93,7 +93,7 @@ function setUp(hero) {
       line.style.overflow = "clip";
       inner.style.transform = "translateY(105%)";
     }
-    cancelScroll = Motion.scroll((p) => render(p), { target: hero, offset: ["start start", "end end"] });
+    cancelScroll = scroll((p) => render(p), { target: hero, offset: ["start start", "end end"] });
   };
 
   const turnOff = () => {

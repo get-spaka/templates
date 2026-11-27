@@ -1,6 +1,6 @@
 {
   "id": "heats",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "name": "Heats",
   "description": "An open project's site drawn as an engineering sheet on graph paper: it opens on the family as a numbered index with its figures and the command to copy, and runs each benchmark as a heat whose bars leave together and finish in the order of their figures.",
   "category": "app",

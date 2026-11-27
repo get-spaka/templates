@@ -2,6 +2,8 @@
 // data-reveal="stagger" its children follow one another, 60 ms apart. The index (data-index) rises 12 px over
 // 0.5 s, everything else 16 px over 0.6 s. With no script, under reduced motion and while editing, everything
 // is simply there.
+import { animate, inView, stagger } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -23,14 +25,14 @@ export function start(root) {
       item.style.transform = `translateY(${rise}px)`;
     }
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           animations.push(
-            Motion.animate(
+            animate(
               items,
               { opacity: [0, 1], y: [rise, 0] },
-              { duration: index ? 0.5 : 0.6, ease: EASE, delay: Motion.stagger(0.06) },
+              { duration: index ? 0.5 : 0.6, ease: EASE, delay: stagger(0.06) },
             ),
           );
         },

@@ -1,6 +1,8 @@
 // Tilt (data-tilt on a phone): with a mouse, the phone turns toward the cursor in 3D, 6° at
 // most, while the cursor is over its section, and settles back when it leaves. No tilt on a
 // touch screen, under reduced motion or while editing.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -15,7 +17,7 @@ export function start(root) {
   for (const phone of within(root, "[data-tilt]")) {
     const area = phone.closest("section") ?? phone.parentElement;
     const turn = (x, y, duration) =>
-      Motion.animate(
+      animate(
         phone,
         { transform: `perspective(1200px) rotateX(${(-y * MAX).toFixed(2)}deg) rotateY(${(x * MAX).toFixed(2)}deg)` },
         { duration, ease: "easeOut" },

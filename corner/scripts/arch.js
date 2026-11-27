@@ -1,4 +1,6 @@
 // The photo in an arch (data-arch) settles from slightly close to its frame as the page scrolls past it.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -10,8 +12,8 @@ let stops = [];
 export function start(root) {
   if (reduced()) return;
   for (const img of within(root, "[data-arch]")) {
-    const zoom = Motion.animate(img, { scale: [1.12, 1] }, { ease: "linear" });
-    stops.push(Motion.scroll(zoom, { target: img.parentElement, offset: ["start end", "end start"] }));
+    const zoom = animate(img, { scale: [1.12, 1] }, { ease: "linear" });
+    stops.push(scroll(zoom, { target: img.parentElement, offset: ["start end", "end start"] }));
   }
 }
 

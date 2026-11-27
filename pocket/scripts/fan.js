@@ -3,6 +3,8 @@
 // the middle one. Each slot (.fan-slot) is placed and turned by the stylesheet, and holds a
 // .fan-move (moved by the scroll) around a .fan-rise (the rise). With no script, under reduced
 // motion and while editing, the fan is as the stylesheet places it.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -28,7 +30,7 @@ export function start(root) {
     if (rise) {
       rise.style.opacity = "0";
       rise.style.transform = "translateY(60px)";
-      Motion.animate(
+      animate(
         rise,
         { opacity: [0, 1], y: [60, 0] },
         { type: "spring", stiffness: 140, damping: 18, opacity: { duration: 0.4 } },
@@ -45,7 +47,7 @@ export function start(root) {
         // From the stack: straight, behind the middle phone, then out into the fan.
         lift.style.opacity = "0";
         lift.style.transform = `translateX(${dx}px) rotate(${-turned}deg) translateY(40px)`;
-        Motion.animate(
+        animate(
           lift,
           { opacity: [0, 1], x: [dx, 0], rotate: [-turned, 0], y: [40, 0] },
           {
@@ -60,7 +62,7 @@ export function start(root) {
       }
       if (move) {
         undo.push(
-          Motion.scroll(Motion.animate(move, { x: [0, dx * 0.6] }, { ease: "linear" }), {
+          scroll(animate(move, { x: [0, dx * 0.6] }, { ease: "linear" }), {
             target: area,
             offset: ["start start", "end start"],
           }),

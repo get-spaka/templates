@@ -2,6 +2,8 @@
 // rounded window in the middle to the whole shape (its arch, pebble or scallop stays), while
 // the image inside eases from 1.12 to 1. With no script, under reduced motion and in edit
 // mode, the full die-cut.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,13 +22,13 @@ export function start(root) {
     cut.style.clipPath = CLOSED;
     if (img) img.style.transform = "scale(1.12)";
     stops.push(
-      Motion.inView(
+      inView(
         cut,
         () => {
-          Motion.animate(cut, { clipPath: [CLOSED, OPEN] }, { duration: 1, ease: EASE }).finished.then(() => {
+          animate(cut, { clipPath: [CLOSED, OPEN] }, { duration: 1, ease: EASE }).finished.then(() => {
             cut.style.clipPath = "";
           });
-          if (img) Motion.animate(img, { scale: [1.12, 1] }, { duration: 1.2, ease: EASE });
+          if (img) animate(img, { scale: [1.12, 1] }, { duration: 1.2, ease: EASE });
         },
         { amount: 0.15 },
       ),

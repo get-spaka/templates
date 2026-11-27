@@ -1,5 +1,7 @@
 // A section's main elements rise a little as they come into view: data-reveal
 // on an element, or data-reveal="stagger" on a list whose children rise 80 ms apart.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -18,11 +20,11 @@ export function start(root) {
       item.style.transform = "translateY(16px)";
     }
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           for (const [i, item] of items.entries())
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.9, ease: EASE, delay: i * 0.08 });
+            animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.9, ease: EASE, delay: i * 0.08 });
         },
         { amount: 0.05 },
       ),

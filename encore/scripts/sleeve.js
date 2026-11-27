@@ -4,6 +4,8 @@
 // disc 55% out and turns it at the record's speed (data-rpm). The hero's record
 // (data-sleeve="hero") slides out on load and turns while it is in view; a record's page
 // (data-sleeve="scroll") rolls its disc out as the first screen scrolls away.
+import { animate, inView, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -29,8 +31,8 @@ export function start(root) {
       // The disc starts inside the sleeve and slides out, then turns while in view.
       const axis = down(sleeve) ? "y" : "x";
       sleeve.style.setProperty("--out", "0");
-      const slide = Motion.animate(disc, { [axis]: ["0%", "55%"] }, { duration: 1.2, delay: 0.35, ease: EASE });
-      const stopView = Motion.inView(
+      const slide = animate(disc, { [axis]: ["0%", "55%"] }, { duration: 1.2, delay: 0.35, ease: EASE });
+      const stopView = inView(
         sleeve,
         () => {
           sleeve.setAttribute("data-turning", "");
@@ -51,12 +53,12 @@ export function start(root) {
       const axis = down(sleeve) ? "y" : "x";
       const reach = Math.round(100 * (parseFloat(getComputedStyle(sleeve).getPropertyValue("--reach")) || 0.6));
       sleeve.style.setProperty("--out", "0");
-      const roll = Motion.animate(
+      const roll = animate(
         disc,
         { [axis]: ["18%", `${reach}%`], rotate: [0, 540] },
         { duration: 1, ease: "linear", autoplay: false },
       );
-      const cancel = Motion.scroll(roll, { target: stage, offset: ["start start", "end start"] });
+      const cancel = scroll(roll, { target: stage, offset: ["start start", "end start"] });
       stops.push(() => {
         cancel();
         roll.stop();

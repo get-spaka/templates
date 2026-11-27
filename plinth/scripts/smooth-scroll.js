@@ -1,5 +1,7 @@
 // Smooth scrolling for the whole page, with Lenis, light (lerp 0.1). Look closer stops it while
 // its dialog is open, with the plinth:hold and plinth:release events.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 let lenis;
 const hold = () => lenis?.stop();

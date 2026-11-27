@@ -1,6 +1,6 @@
 {
   "id": "mend",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Mend",
   "description": "A calm, warm practice that explains before it treats: a soft serif on warm white, a jointed figure that moves the joint you choose and shows what is treated there, the first visit as an hour divided into its steps, plain fees and insurance, and a request answered within a day.",
   "category": "business",
@@ -15,5 +15,6 @@
     "appointments"
   ],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

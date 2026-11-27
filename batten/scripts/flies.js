@@ -10,6 +10,8 @@
 // - data-fly-in="load": a cloth that comes down on its pipe once the page has painted.
 // - data-fly-out: a production's first screen, which rises into the flies as the visitor scrolls
 //   the first 70% of a screen, uncovering the page behind it.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -26,13 +28,13 @@ const running = new Map();
 /** The cloth settles, swinging about its pipe, its hem a little late. */
 function swing(cloth) {
   const hem = cloth.querySelector(".cloth-hem");
-  const moves = [Motion.animate(cloth, { rotate: [0, 0.8, -0.45, 0.2, 0] }, { duration: 1.2, ease: "easeOut" })];
-  if (hem) moves.push(Motion.animate(hem, { y: [0, 3, 0] }, { duration: 1.2, delay: 0.08, ease: "easeOut" }));
+  const moves = [animate(cloth, { rotate: [0, 0.8, -0.45, 0.2, 0] }, { duration: 1.2, ease: "easeOut" })];
+  if (hem) moves.push(animate(hem, { y: [0, 3, 0] }, { duration: 1.2, delay: 0.08, ease: "easeOut" }));
   return moves;
 }
 
 /** Puts a cloth where it is at once: at its trim or up in the flies. */
-const place = (cloth, y) => Motion.animate(cloth, { y: [y, y], rotate: [0, 0] }, { duration: 0 });
+const place = (cloth, y) => animate(cloth, { y: [y, y], rotate: [0, 0] }, { duration: 0 });
 
 function flies(section) {
   const stage = section.querySelector("[data-flies-stage]");
@@ -91,8 +93,8 @@ function flies(section) {
       show(front);
       front.style.filter = "";
       const behind = cloths[from];
-      moves.push(Motion.animate(behind, { filter: ["brightness(1)", "brightness(0.55)"] }, { duration: 0.5 }));
-      const flight = Motion.animate(front, { y: [UP, "0%"], rotate: [0, 0] }, IN);
+      moves.push(animate(behind, { filter: ["brightness(1)", "brightness(0.55)"] }, { duration: 0.5 }));
+      const flight = animate(front, { y: [UP, "0%"], rotate: [0, 0] }, IN);
       moves.push(flight);
       flight.then(() => {
         if (current !== to) return;
@@ -107,8 +109,8 @@ function flies(section) {
       }
       const back = cloths[to];
       show(back);
-      moves.push(Motion.animate(back, { filter: ["brightness(0.55)", "brightness(1)"] }, { duration: 0.5 }));
-      moves.push(Motion.animate(cloths[from], { y: ["0%", UP], rotate: [0, 0] }, OUT));
+      moves.push(animate(back, { filter: ["brightness(0.55)", "brightness(1)"] }, { duration: 0.5 }));
+      moves.push(animate(cloths[from], { y: ["0%", UP], rotate: [0, 0] }, OUT));
     }
   };
 
@@ -137,7 +139,7 @@ function flies(section) {
     // cannot stick: leave the cloths stacked, as with no script.
     if (getComputedStyle(stage).position !== "sticky") return ground();
     section.style.height = `calc(${cloths.length} * 100svh)`;
-    stopScroll = Motion.scroll(
+    stopScroll = scroll(
       (progress) => go(Math.min(cloths.length - 1, Math.max(0, Math.floor(progress * cloths.length)))),
       { target: section, offset: ["start start", "end end"] },
     );
@@ -194,7 +196,7 @@ function flies(section) {
 function flyIn(cloth) {
   cloth.style.transform = "translateY(-105%)";
   let moves = [];
-  const flight = Motion.animate(cloth, { y: ["-105%", "0%"], rotate: [0, 0] }, { ...IN, delay: 0.2 });
+  const flight = animate(cloth, { y: ["-105%", "0%"], rotate: [0, 0] }, { ...IN, delay: 0.2 });
   moves.push(flight);
   flight.then(() => moves.push(...swing(cloth)));
   return () => {

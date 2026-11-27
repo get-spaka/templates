@@ -1,6 +1,8 @@
 // data-reveal: a section's main elements rise a little into view (y 16 → 0, with their
 // opacity, 0.8 s). data-reveal="stagger" on a list does the same for its children,
 // 80 ms apart. Under reduced motion and in edit mode, everything is in place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -25,11 +27,11 @@ export function start(root) {
     const items = el.dataset.reveal === "stagger" ? [...el.children] : [el];
     items.forEach(hide);
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           items.forEach((item, i) => {
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, delay: i * 0.08, ease: EASE });
+            animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.8, delay: i * 0.08, ease: EASE });
           });
         },
         { amount: 0.05 },

@@ -1,6 +1,8 @@
 // Light smooth scrolling (Lenis), on wheel and trackpad only: touch screens keep their own.
 // Links to #plan, #visit and #ask on the page glide there, under the sticky header.
 // Not under reduced motion.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const TARGETS = ["#plan", "#visit", "#ask"];
 

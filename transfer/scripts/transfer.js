@@ -8,6 +8,8 @@
 // loaded; inside data-transfer-stagger, figures follow each other 0.12 s apart.
 // Under reduced motion the layer is made for the lift (CSS) without the
 // entrance. With no script, and in edit mode, each image is plain ink.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -41,17 +43,17 @@ function stencilLayer(figure, img) {
 
 function play(layer, img, delay) {
   const off = { x: 4, y: -3, rotate: -0.6 };
-  const landing = Motion.animate(
+  const landing = animate(
     layer,
     { opacity: [0, 1], x: [off.x, off.x], y: [off.y, off.y], rotate: [off.rotate, off.rotate] },
     { duration: 0.3, delay, ease: "easeOut" },
   );
-  const inking = Motion.animate(
+  const inking = animate(
     img,
     { opacity: [0, 1], filter: ["blur(2px)", "blur(0px)"] },
     { duration: 0.6, delay: delay + 0.5, ease: EASE },
   );
-  const register = Motion.animate(
+  const register = animate(
     layer,
     { opacity: [1, 0], x: [off.x, 0], y: [off.y, 0], rotate: [off.rotate, 0] },
     { duration: 0.6, delay: delay + 0.5, ease: EASE },
@@ -105,7 +107,7 @@ export function start(root) {
         watch = () => clearTimeout(timer);
       } else {
         let done = false;
-        watch = Motion.inView(
+        watch = inView(
           figure,
           () => {
             if (done) return;

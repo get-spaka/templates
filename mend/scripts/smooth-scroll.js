@@ -1,4 +1,6 @@
 // Smooth scrolling for the whole page, with Lenis, light; links to an anchor glide to it.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 let lenis;
 

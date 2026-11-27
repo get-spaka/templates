@@ -1,5 +1,7 @@
 // data-reveal: a text rises a little into view (y 20 → 0, with its opacity, 0.8 s).
 // Siblings that reveal too follow each other 0.08 s apart.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -21,10 +23,10 @@ export function start(root) {
     el.style.transform = "translateY(20px)";
     const delay = rank(el) * 0.08;
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] });
+          animate(el, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.05 },
       ),

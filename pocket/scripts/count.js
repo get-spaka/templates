@@ -1,6 +1,8 @@
 // Counts (data-count): a figure counts up to the number written in the page as it comes into
 // view ("4.8", "21,400", "310k", "9 in 10"), keeping its decimals, its commas and what follows.
 // With no script, under reduced motion and while editing, the written figure shows.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -27,10 +29,10 @@ export function start(root) {
     };
     show(0);
     let animation;
-    const stopView = Motion.inView(
+    const stopView = inView(
       el,
       () => {
-        animation = Motion.animate(0, target, {
+        animation = animate(0, target, {
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
           onUpdate: show,

@@ -3,7 +3,7 @@
 // starts, drift slowly and lean toward the cursor. It runs at 30 frames a second at most, at a
 // pixel ratio of 1, and stops while off screen. Under it, the section's own CSS lights are what
 // show with no script, without WebGL and while editing; under reduced motion no glow is made.
-import { Mesh, Program, Renderer, Triangle } from "https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm";
+import { Mesh, Program, Renderer, Triangle } from "ogl";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>

@@ -1,10 +1,11 @@
 {
   "id": "reel",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "name": "Reel",
   "description": "A loud studio site where the work moves sideways: heavy extended capitals on black, tilted chartreuse slabs, a pinned reel of case panels each in its own color, a page per case and a real brief to send.",
   "category": "portfolio",
   "tags": ["studio", "agency", "branding", "motion", "film", "design", "portfolio", "case studies"],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

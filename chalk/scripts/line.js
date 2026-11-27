@@ -7,6 +7,8 @@
 // crosses the middle of the screen, and the stop lights up (data-hold-on). Under
 // reduced motion the whole route is drawn at once and stays still; with no
 // script and in edit mode the holds are there, filled, with no line.
+import { scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const NS = "http://www.w3.org/2000/svg";
 const within = (root, selector) =>
@@ -146,13 +148,7 @@ function route(el) {
   addEventListener("resize", later);
   document.fonts?.ready.then(later);
   let unscroll = () => {};
-  if (!reduced()) {
-    if (globalThis.Motion?.scroll) unscroll = Motion.scroll(() => update());
-    else {
-      addEventListener("scroll", update, { passive: true });
-      unscroll = () => removeEventListener("scroll", update);
-    }
-  }
+  if (!reduced()) unscroll = scroll(() => update());
   measure();
 
   return {

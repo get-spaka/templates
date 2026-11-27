@@ -3,6 +3,9 @@
 // when the page opens, line after line; then, as the page scrolls, each line slides
 // toward its side, 6vw at most. The heading is put back as written when the script
 // stops; with no script, under reduced motion and while editing, the lines stand still.
+import { animate, scroll, stagger } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -24,17 +27,17 @@ export function start(root) {
       const chars = result?.chars ?? [];
       // The line's lower edge is the mask the letters rise out of; caps may pass above it.
       line.style.clipPath = "inset(-0.4em -0.6em 0 -0.6em)";
-      Motion.animate(chars, { y: "120%" }, { duration: 0 });
-      Motion.animate(
+      animate(chars, { y: "120%" }, { duration: 0 });
+      animate(
         chars,
         { y: ["120%", "0%"] },
-        { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: Motion.stagger(0.03, { startDelay: 0.15 + i * 0.16 }) },
+        { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: stagger(0.03, { startDelay: 0.15 + i * 0.16 }) },
       ).then(() => {
         line.style.clipPath = "";
       });
       const side = line.dataset.drift === "right" ? 1 : -1;
       stops.push(
-        Motion.scroll(Motion.animate(line, { x: ["0vw", `${side * DRIFT}vw`] }, { ease: "linear" }), {
+        scroll(animate(line, { x: ["0vw", `${side * DRIFT}vw`] }, { ease: "linear" }), {
           target: heading,
           offset: ["start start", "end start"],
         }),

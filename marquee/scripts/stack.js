@@ -2,6 +2,8 @@
 // makes each card stick a little lower than the one before, so it slides over it like
 // a flyer pasted on a wall; a card being covered shrinks a little. With no script, under
 // reduced motion and while editing, the cards are a plain column, each slightly askew.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -21,7 +23,7 @@ export function start(root) {
     cards.slice(0, -1).forEach((card, i) => {
       const next = cards[i + 1];
       stops.push(
-        Motion.scroll(Motion.animate(card, { scale: [1, 0.94] }, { ease: "linear" }), {
+        scroll(animate(card, { scale: [1, 0.94] }, { ease: "linear" }), {
           target: next,
           offset: ["start end", "start start"],
         }),

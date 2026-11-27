@@ -4,6 +4,8 @@
 // of a picked stem are the stylesheet's (CSS transitions on `translate` and `rotate`,
 // which compose with the transform set here). Under reduced motion and in edit mode,
 // every stem is in its pail.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -27,7 +29,7 @@ export function start(root) {
     let batch = 0;
     let frame = 0;
     const timers = new Set();
-    const stopView = Motion.inView(
+    const stopView = inView(
       pails,
       (pail) => {
         const stem = pail.querySelector(".pail-stem");
@@ -39,7 +41,7 @@ export function start(root) {
         });
         // Motion writes its last values just after it finishes: clear them a moment later,
         // so the stylesheet's own transforms (a picked stem's lift) stay alone.
-        Motion.animate(stem, { opacity: [0, 1], y: [-28, 0] }, { duration: 0.7, delay: i * 0.08, ease: EASE })
+        animate(stem, { opacity: [0, 1], y: [-28, 0] }, { duration: 0.7, delay: i * 0.08, ease: EASE })
           .finished.then(() => {
             const timer = setTimeout(() => {
               timers.delete(timer);

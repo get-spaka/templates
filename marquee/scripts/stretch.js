@@ -4,6 +4,9 @@
 // cursor widen while the others narrow so the word keeps its length; on a phone, the
 // name narrows as the poster scrolls away. The heading's text is put back as written
 // when the script stops, and with no script it is plain text at its own width.
+import { scroll } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -47,7 +50,7 @@ export function start(root) {
     }
     const stopScroll = fine
       ? undefined
-      : Motion.scroll(
+      : scroll(
           (progress) => {
             base = rest - (rest - 60) * progress;
           },

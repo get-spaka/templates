@@ -1,6 +1,9 @@
 // Each heading marked data-split has its letters rise one after another when the
 // page opens (Splitting cuts it into words and letters, Motion moves them). The
 // heading's text is kept and put back as it was when the script stops.
+import { animate } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,7 +23,7 @@ export function start(root) {
     result.chars.forEach((char, i) => {
       char.style.display = "inline-block";
       char.style.transform = "translateY(105%)";
-      Motion.animate(char, { y: ["105%", "0%"] }, { duration: 0.9, delay: 0.1 + i * 0.035, ease: [0.22, 1, 0.36, 1] });
+      animate(char, { y: ["105%", "0%"] }, { duration: 0.9, delay: 0.1 + i * 0.035, ease: [0.22, 1, 0.36, 1] });
     });
   }
 }
