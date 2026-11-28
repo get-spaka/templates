@@ -1,6 +1,8 @@
 // A <mark> in a text marked data-highlight has its fern highlight swept in from the
 // left once it is in view. The unswept state is set here: with no script, under
 // reduced motion and while editing, it is simply highlighted.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -14,10 +16,10 @@ export function start(root) {
   for (const mark of within(root, "[data-highlight] mark")) {
     mark.style.backgroundSize = "0% 100%";
     stops.push(
-      Motion.inView(
+      inView(
         mark,
         () => {
-          Motion.animate(
+          animate(
             mark,
             { backgroundSize: ["0% 100%", "100% 100%"] },
             { duration: 0.9, delay: 0.2, ease: [0.65, 0, 0.35, 1] },

@@ -2,6 +2,8 @@
 // (data-track-lit, one piece after each milestone that is done) grows from the
 // first milestone to the one marked now, piece after piece: sideways on a wide
 // screen, downward on a phone. With no script, the line is lit up to now.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -22,11 +24,11 @@ export function start(root) {
       for (const lit of lits) lit.style.transform = "";
     });
     undo.push(
-      Motion.inView(
+      inView(
         track,
         () => {
           lits.forEach((lit, i) => {
-            Motion.animate(lit, wide ? { scaleX: [0, 1] } : { scaleY: [0, 1] }, {
+            animate(lit, wide ? { scaleX: [0, 1] } : { scaleY: [0, 1] }, {
               duration: 0.7,
               delay: 0.3 + i * 0.7,
               ease: "linear",

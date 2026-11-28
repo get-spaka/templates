@@ -12,6 +12,8 @@
 //   moving into a row too (3 px, at 30 %).
 // No sound, no change of color, nothing follows the pointer. Under reduced motion and in
 // edit mode every string lies straight. stop puts every path back and removes it all.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -68,7 +70,7 @@ function pluck(string, at, depth) {
     ghost.style.opacity = (0.5 * left).toFixed(3);
   };
   draw(depth);
-  const playing = Motion.animate(depth, 0, {
+  const playing = animate(depth, 0, {
     type: "spring",
     stiffness,
     damping,
@@ -93,7 +95,7 @@ function strum(list, delay = 0) {
         pluck(string, 0.3, string.clientWidth < 480 ? 4 : 6);
         const tick = delay ? string.closest("li")?.querySelector("[data-tick]") : undefined;
         if (tick && string.closest("li").querySelector("[data-string]") === string) {
-          const bounce = Motion.animate(tick, { scale: [0.7, 1.15, 1] }, { duration: 0.45, ease: "easeOut" });
+          const bounce = animate(tick, { scale: [0.7, 1.15, 1] }, { duration: 0.45, ease: "easeOut" });
           stops.push(() => {
             bounce.stop();
             tick.style.transform = "";
@@ -203,7 +205,7 @@ export function start(root) {
     }
     // A third of the list, or as much as the screen can show of a longer one.
     const amount = Math.min(1 / 3, (0.5 * innerHeight) / Math.max(1, list.offsetHeight));
-    stops.push(Motion.inView(list, () => strum(list), { amount }));
+    stops.push(inView(list, () => strum(list), { amount }));
   }
 }
 

@@ -3,6 +3,8 @@
 // it, their red rule following, line by line when they wrap. data-redline="load" plays as
 // the page opens (the hero); any other plays when the line comes into view. Once per page view.
 // With no script, under reduced motion and while editing, the markup is simply there.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -37,12 +39,8 @@ export function start(root) {
     let animations = [];
     let timer;
     const go = () => {
-      const strike = Motion.animate(del, { backgroundSize: ["0% 2px", "100% 2px"] }, { duration: 0.45, ease: EASE });
-      const write = Motion.animate(
-        ins,
-        { maskSize: ["0% 100%", "100% 100%"] },
-        { duration: 0.6, ease: EASE, delay: 0.6 },
-      );
+      const strike = animate(del, { backgroundSize: ["0% 2px", "100% 2px"] }, { duration: 0.45, ease: EASE });
+      const write = animate(ins, { maskSize: ["0% 100%", "100% 100%"] }, { duration: 0.6, ease: EASE, delay: 0.6 });
       animations = [strike, write];
       Promise.resolve(strike).then(
         () => (del.style.backgroundSize = ""),
@@ -56,7 +54,7 @@ export function start(root) {
     if (line.dataset.redline === "load") {
       timer = setTimeout(go, 300);
     } else {
-      const stopView = Motion.inView(
+      const stopView = inView(
         line,
         () => {
           go();

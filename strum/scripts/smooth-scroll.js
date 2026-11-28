@@ -1,6 +1,8 @@
 // Smooth scrolling (Lenis), light, so that "Book a free first lesson" glides to its form.
 // Touch screens keep their own scroll. In-page links land under the sticky header, as the
 // targets' scroll-margin has them without a script.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let lenis;

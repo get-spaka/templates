@@ -7,6 +7,8 @@
 // data-pleat="load" opens once the page has loaded (the hero's photos, one after the other);
 // any other value opens as the picture comes into view.
 // With no script, under reduced motion and in edit mode, the picture is simply there.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -91,16 +93,16 @@ function open(state, delay) {
     const from = i % 2 ? -TURN : TURN;
     const at = delay + i * STAGGER;
     state.controls.push(
-      Motion.animate(
+      animate(
         strip,
         { transform: [`rotateY(${from}deg)`, "rotateY(0deg)"] },
         { duration: DURATION, delay: at, ease: EASE },
       ),
-      Motion.animate(shades[i], { opacity: [1, 0] }, { duration: DURATION, delay: at, ease: EASE }),
+      animate(shades[i], { opacity: [1, 0] }, { duration: DURATION, delay: at, ease: EASE }),
     );
   });
   state.controls.push(
-    Motion.animate(ground, { opacity: [1, 0] }, { duration: DURATION + STAGGER * strips.length, delay, ease: EASE }),
+    animate(ground, { opacity: [1, 0] }, { duration: DURATION + STAGGER * strips.length, delay, ease: EASE }),
   );
   Promise.all(state.controls).then(() => flatten(state));
 }
@@ -117,7 +119,7 @@ export function start(root) {
       ready(state.img).then(() => open(state, delay));
     } else {
       stops.push(
-        Motion.inView(
+        inView(
           figure,
           () => {
             ready(state.img).then(() => open(state, 0));

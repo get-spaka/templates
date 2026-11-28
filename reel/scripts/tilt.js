@@ -1,6 +1,8 @@
 // Tilted slabs (data-tilt, the tilt itself a class such as -rotate-3): each drops in from
 // 12° further than its tilt and settles at it as it comes into view. With no script,
 // under reduced motion and while editing, it simply sits at its tilt.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -16,11 +18,11 @@ export function start(root) {
     // Further in the direction it already leans (its CSS rotate), counterclockwise if flat.
     const tilt = parseFloat(getComputedStyle(slab).rotate) || 0;
     const extra = tilt > 0 ? 12 : -12;
-    Motion.animate(slab, { rotate: extra, y: -56 }, { duration: 0 });
-    const stopView = Motion.inView(
+    animate(slab, { rotate: extra, y: -56 }, { duration: 0 });
+    const stopView = inView(
       slab,
       () => {
-        Motion.animate(slab, { rotate: [extra, 0], y: [-56, 0] }, { type: "spring", bounce: 0.3, duration: 0.9 });
+        animate(slab, { rotate: [extra, 0], y: [-56, 0] }, { type: "spring", bounce: 0.3, duration: 0.9 });
       },
       { amount: 0.05 },
     );

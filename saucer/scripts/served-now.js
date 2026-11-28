@@ -11,6 +11,8 @@
 //
 // It also turns the door cards ([data-door-card]) to the side that is true, and
 // opens the menu ([data-served-now]) on the tab of the service of the hour.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -132,7 +134,7 @@ function turn(card, back, duration) {
     return;
   }
   state.animation?.stop();
-  state.animation = Motion.animate(inner, { rotateY: [from, to] }, { duration, ease: EASE });
+  state.animation = animate(inner, { rotateY: [from, to] }, { duration, ease: EASE });
 }
 
 function setUpCard(card, open) {
@@ -150,7 +152,7 @@ function setUpCard(card, open) {
     turn(card, !state.back, 0.6);
   };
   card.addEventListener("click", onTap);
-  const stopView = Motion.inView(
+  const stopView = inView(
     card,
     () => {
       state.seen = true;

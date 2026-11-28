@@ -2,6 +2,8 @@
 // the left edge, no loop, no autoplay. Its links become previous and next buttons, and the
 // line's slots (data-slot) get the figures, never words. With no script it is a row that
 // snaps, its links leading to the first and last slides. Under reduced motion it jumps.
+import EmblaCarousel from "embla-carousel";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document

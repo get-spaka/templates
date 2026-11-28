@@ -1,6 +1,8 @@
 // The hour (data-hour): as the section comes into view, its ring's arcs empty
 // and fill in turn, 0.5 s each, 0.1 s apart. With no script, under reduced
 // motion and while editing, the ring is whole.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -19,12 +21,12 @@ export function start(root) {
     const whole = (arc) => arc.getAttribute("pathLength") || "60";
     for (const arc of arcs) arc.setAttribute("stroke-dasharray", `0 ${whole(arc)}`);
     const running = [];
-    const stopView = Motion.inView(
+    const stopView = inView(
       hour,
       () => {
         arcs.forEach((arc, i) => {
           running.push(
-            Motion.animate(0, length(i), {
+            animate(0, length(i), {
               duration: 0.5,
               delay: 0.15 + i * 0.6,
               ease: [0.65, 0, 0.35, 1],

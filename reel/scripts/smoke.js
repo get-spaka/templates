@@ -5,7 +5,7 @@
 // at a low resolution (smoke is soft), and stops while the section is off screen. Under
 // reduced motion it draws one still frame. Under it, the section's CSS glow is what shows
 // with no script, without WebGL and while editing.
-import { Mesh, Program, Renderer, Triangle } from "https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm";
+import { Mesh, Program, Renderer, Triangle } from "ogl";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>

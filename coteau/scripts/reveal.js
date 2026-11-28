@@ -1,6 +1,7 @@
 // A section's main elements rise a little as they come into view (data-reveal);
 // under data-reveal="stagger" its children rise one after another. The page is
 // complete with no script: the hidden state is set here, just before rising.
+import { animate, inView, stagger } from "motion";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -22,14 +23,14 @@ export function start(root) {
     }
     const running = [];
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           running.push(
-            Motion.animate(
+            animate(
               items,
               { opacity: [0, 1], y: [16, 0] },
-              { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: Motion.stagger(0.08) },
+              { duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: stagger(0.08) },
             ),
           );
         },

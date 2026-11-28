@@ -1,5 +1,7 @@
 // Smooth scrolling (Lenis), so that the cues of the flies come in evenly. The instance is
 // kept on window.battenLenis for the flies' rail, which scrolls to a cue with it.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let lenis;

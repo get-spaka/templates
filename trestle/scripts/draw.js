@@ -3,6 +3,8 @@
 // is CSS (styles/site.css); this only holds it ("wait") until the element is on
 // the screen, then lets it run ("go"). With no script, in edit mode and under
 // reduced motion, everything is simply drawn.
+import { inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -16,7 +18,7 @@ export function start(root) {
   for (const el of within(root, "[data-measure]:not([data-measure-on]), [data-rings], [data-ruler]")) {
     el.setAttribute("data-draw", "wait");
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           el.setAttribute("data-draw", "go");

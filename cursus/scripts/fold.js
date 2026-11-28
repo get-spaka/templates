@@ -1,5 +1,7 @@
 // The résumé's fold. The state is CSS (the "length" radios of [data-fold-switch]); this module
 // animates the change, opens /resume#one-page folded, and counts the sheet's pages for the toolbar.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const paper = () => matchMedia("(min-width: 64rem)").matches;
 const within = (root, selector) =>
@@ -84,7 +86,7 @@ export function start(root) {
         const gone = leaving.filter((el) => !last.items.has(el));
         sheet.dataset.hold = before;
         await Promise.all(
-          gone.map((el) => Motion.animate(el, { opacity: [1, 0] }, { duration: 0.2, ease: "easeOut" }).finished),
+          gone.map((el) => animate(el, { opacity: [1, 0] }, { duration: 0.2, ease: "easeOut" }).finished),
         );
         for (const el of gone) el.style.opacity = "";
       }
@@ -101,18 +103,18 @@ export function start(root) {
         if (!was) {
           if (!outermost.has(el)) continue;
           el.style.opacity = "0";
-          animations.push(Motion.animate(el, { opacity: [0, 1] }, { duration: 0.3, delay: 0.3, ease: "easeOut" }));
+          animations.push(animate(el, { opacity: [0, 1] }, { duration: 0.3, delay: 0.3, ease: "easeOut" }));
           continue;
         }
         if (!el.matches(MOVING)) continue;
         const dy = (was.top - rect.top) / zoom;
         if (Math.abs(dy) < 0.5) continue;
         el.style.transform = `translateY(${dy}px)`;
-        animations.push(Motion.animate(el, { y: [dy, 0] }, { duration: 0.45, ease: EASE }));
+        animations.push(animate(el, { y: [dy, 0] }, { duration: 0.45, ease: EASE }));
       }
       sheet.style.overflow = "clip";
       animations.push(
-        Motion.animate(
+        animate(
           sheet,
           { height: [`${first.height / zoom}px`, `${last.height / zoom}px`] },
           { duration: 0.45, ease: EASE },

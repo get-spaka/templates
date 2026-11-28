@@ -1,4 +1,6 @@
 // A section's main elements, marked data-reveal, rise into view.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -13,10 +15,10 @@ export function start(root) {
     el.style.opacity = "0";
     el.style.transform = "translateY(24px)";
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, ease: [0.22, 1, 0.36, 1] });
+          animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.08 },
       ),

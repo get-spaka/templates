@@ -8,7 +8,8 @@
 // Without WebGL the script sets data-sheer-css on the window, whose stylesheet draws two CSS
 // panels, and draws them aside through --sheer-open. Under reduced motion: one still frame, the
 // panels gathered at both edges. With no script and while editing: the photo alone.
-import { Mesh, Program, Renderer, Triangle } from "https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm";
+import { scroll } from "motion";
+import { Mesh, Program, Renderer, Triangle } from "ogl";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
@@ -195,7 +196,7 @@ export function start(root) {
       }
       const top = figure.getBoundingClientRect().top + scrollY;
       cleanups.push(
-        Motion.scroll((progress) => figure.style.setProperty("--sheer-open", progress.toFixed(3)), {
+        scroll((progress) => figure.style.setProperty("--sheer-open", progress.toFixed(3)), {
           target: figure,
           offset: [`start ${Math.round(top)}px`, "center start"],
         }),
@@ -242,7 +243,7 @@ export function start(root) {
     let target = 0;
     const top = figure.getBoundingClientRect().top + scrollY;
     cleanups.push(
-      Motion.scroll(
+      scroll(
         (progress) => {
           target = progress;
         },

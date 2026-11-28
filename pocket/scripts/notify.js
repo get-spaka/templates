@@ -1,5 +1,7 @@
 // The notification (data-notify): it drops from the phone's island with a spring when its band
 // comes into view. With no script, under reduced motion and while editing, it sits in its place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -15,10 +17,10 @@ export function start(root) {
     card.style.transform = "translateY(-36px) scale(0.86)";
     const band = card.closest("section") ?? card;
     stops.push(
-      Motion.inView(
+      inView(
         band,
         () => {
-          Motion.animate(
+          animate(
             card,
             { opacity: [0, 1], y: [-36, 0], scale: [0.86, 1] },
             { delay: 0.5, type: "spring", stiffness: 260, damping: 18, opacity: { duration: 0.25, delay: 0.5 } },

@@ -1,6 +1,8 @@
 // Cover zoom (data-zoom on an image's frame): the image goes from scale 1.12 to 1 as the
 // page scrolls past it. With no script, under reduced motion and while editing, it
 // stays at 1.
+import { animate, scroll } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -14,7 +16,7 @@ export function start(root) {
   for (const frame of within(root, "[data-zoom]")) {
     const image = frame.querySelector("img");
     if (!image || running.has(frame)) continue;
-    const stopScroll = Motion.scroll(Motion.animate(image, { scale: [1.12, 1] }, { ease: "linear" }), {
+    const stopScroll = scroll(animate(image, { scale: [1.12, 1] }, { ease: "linear" }), {
       target: frame,
       offset: ["start end", "end start"],
     });

@@ -5,6 +5,8 @@
 // On a phone, each card's key swings as the card scrolls into view. data-key-once: a room's
 // large key, which swings once as its page opens.
 // Under reduced motion, with no script and while editing, the keys hang straight.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -18,7 +20,7 @@ const playing = new Map();
 /** Swings a key, stopping what it was doing first. */
 function swing(key, rotate, options) {
   playing.get(key)?.stop();
-  const animation = Motion.animate(key, { rotate }, options);
+  const animation = animate(key, { rotate }, options);
   playing.set(key, animation);
 }
 
@@ -39,7 +41,7 @@ export function start(root) {
     if (wide && mouse) {
       const keys = cards.map((card) => card.querySelector("[data-key]")).filter(Boolean);
       stops.push(
-        Motion.inView(
+        inView(
           board,
           () => {
             for (const [i, key] of keys.entries()) draft(key, i * 0.09);
@@ -50,7 +52,7 @@ export function start(root) {
     } else {
       for (const card of cards) {
         const key = card.querySelector("[data-key]");
-        if (key) stops.push(Motion.inView(card, () => draft(key), { amount: 0.2 }));
+        if (key) stops.push(inView(card, () => draft(key), { amount: 0.2 }));
       }
     }
     for (const card of cards) {

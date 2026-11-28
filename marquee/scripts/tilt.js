@@ -1,6 +1,8 @@
 // The passes (each <li> of data-tilt): with a mouse, a hovered stub leans toward the
 // cursor in 3D, 8° at most, and settles back when it leaves. With no script, under
 // reduced motion and while editing, the stubs sit flat at their own slight angle.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,7 +22,7 @@ export function start(root) {
         const box = item.getBoundingClientRect();
         const x = (event.clientX - box.left) / box.width - 0.5;
         const y = (event.clientY - box.top) / box.height - 0.5;
-        Motion.animate(
+        animate(
           stub,
           {
             transform: `perspective(900px) rotateX(${(-y * MAX * 2).toFixed(2)}deg) rotateY(${(x * MAX * 2).toFixed(2)}deg)`,
@@ -29,7 +31,7 @@ export function start(root) {
         );
       };
       const leave = () => {
-        Motion.animate(stub, { transform: "perspective(900px) rotateX(0deg) rotateY(0deg)" }, { duration: 0.5 });
+        animate(stub, { transform: "perspective(900px) rotateX(0deg) rotateY(0deg)" }, { duration: 0.5 });
       };
       item.addEventListener("pointermove", move);
       item.addEventListener("pointerleave", leave);

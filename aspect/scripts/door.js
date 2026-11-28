@@ -5,6 +5,8 @@
 // its left hinge as the frame comes into view (data-door="load": once the page
 // has loaded); doors in a list marked data-door-stagger open 120 ms apart.
 // Once open, the door goes again and the photo is whole.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -17,8 +19,8 @@ let stops = [];
 
 function swing(door, delay) {
   const shade = door.querySelector(".door-shade");
-  const opening = Motion.animate(door, { rotateY: [0, -104] }, { duration: 1.1, ease: EASE, delay });
-  const shading = shade ? Motion.animate(shade, { opacity: [0, 0.35] }, { duration: 1.1, ease: EASE, delay }) : null;
+  const opening = animate(door, { rotateY: [0, -104] }, { duration: 1.1, ease: EASE, delay });
+  const shading = shade ? animate(shade, { opacity: [0, 0.35] }, { duration: 1.1, ease: EASE, delay }) : null;
   opening.finished
     .then(() => {
       door.style.display = "none";
@@ -59,7 +61,7 @@ export function start(root) {
       watch = () => clearTimeout(timer);
     } else {
       let done = false;
-      watch = Motion.inView(
+      watch = inView(
         frame,
         () => {
           if (done) return;

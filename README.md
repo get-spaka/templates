@@ -34,4 +34,4 @@ npx lefthook install
 
 The hook and the CI use Biome 2.6.6, the version in Spaka's `package.json`: change them together.
 
-Each template's licence is in its `template.json`; its fonts, libraries and images carry their own licences and credits in its folders.
+Each template's licence is in its `template.json`; its fonts and images carry their own licences and credits in its folders, and its packages, listed in its `package.json`, theirs.

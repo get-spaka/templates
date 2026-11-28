@@ -4,6 +4,8 @@
 // reading order. The rest height is the stylesheet's (the whole card, or only its
 // band where the card peeks): Motion's y adds to it, so with no script, under reduced
 // motion and in edit mode every card simply stands at rest. stop takes off what it set.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -31,11 +33,11 @@ export function start(root) {
       card.style.transform = `translateY(${lows[i]}px)`;
     });
     const delay = table.dataset.picks === "load" ? 0.25 : 0;
-    const stopView = Motion.inView(
+    const stopView = inView(
       table,
       () => {
         cards.forEach((card, i) => {
-          Motion.animate(card, { y: [lows[i], 0] }, { duration: 0.6, delay: delay + i * 0.09, ease: EASE });
+          animate(card, { y: [lows[i], 0] }, { duration: 0.6, delay: delay + i * 0.09, ease: EASE });
         });
       },
       { amount: 0.15 },

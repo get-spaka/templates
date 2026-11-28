@@ -6,6 +6,9 @@
 // data-voice="<speaker>" on each portrait): its lines play one after another, and the portrait
 // of whoever speaks gets data-speaking.
 // With no script, under reduced motion and while editing, every word is simply there.
+import { inView } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -103,7 +106,7 @@ function play(item, done = () => {}) {
 }
 
 export function start(root) {
-  if (reduced() || typeof Splitting !== "function") return;
+  if (reduced()) return;
 
   for (const talk of within(root, "[data-conversation]")) {
     const lines = [...talk.querySelectorAll("[data-turn]")]
@@ -130,7 +133,7 @@ export function start(root) {
         timer = setTimeout(() => run(i + 1), 450);
       });
     };
-    const stopView = Motion.inView(
+    const stopView = inView(
       talk,
       () => {
         stopView();
@@ -154,7 +157,7 @@ export function start(root) {
     const again = () => {
       if (item.played && !item.playing) play(item);
     };
-    const stopView = Motion.inView(
+    const stopView = inView(
       el,
       () => {
         stopView();

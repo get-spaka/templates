@@ -1,10 +1,11 @@
 {
   "id": "chalk",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Chalk",
   "description": "A climbing gym's site drawn like one of its walls: chalk-white and birch-ply panels with bolt holes, chunky holds in the circuit colors bolted on, a route that draws itself down the page from START to TOP as you scroll, and the walls drawn in section at their real angles.",
   "category": "business",
   "tags": ["climbing gym", "bouldering", "fitness", "gym", "classes", "timetable", "memberships", "kids", "events"],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

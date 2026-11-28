@@ -3,6 +3,8 @@
 // larger and turned, 90 ms after the one before. The hero's plate ([data-plate="load"]) is
 // set down the same way when the page loads. With no script, under reduced motion and in
 // edit mode, every plate is in place and still.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -26,18 +28,18 @@ export function start(root) {
   if (reduced()) return;
   for (const plate of within(root, '[data-plate="load"]')) {
     hide(plate);
-    Motion.animate(plate, SET_DOWN, { duration: 0.9, delay: 0.15, ease: EASE });
+    animate(plate, SET_DOWN, { duration: 0.9, delay: 0.15, ease: EASE });
   }
   for (const list of within(root, "[data-plates]")) {
     const plates = [...list.querySelectorAll('[data-plate]:not([data-plate="load"])')];
     if (!plates.length) continue;
     plates.forEach(hide);
     stops.push(
-      Motion.inView(
+      inView(
         list,
         () => {
           plates.forEach((plate, i) => {
-            Motion.animate(plate, SET_DOWN, { duration: 0.7, delay: i * 0.09, ease: EASE });
+            animate(plate, SET_DOWN, { duration: 0.7, delay: i * 0.09, ease: EASE });
           });
         },
         { amount: 0.05 },

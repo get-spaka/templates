@@ -6,6 +6,8 @@
 // pinned. On a narrower screen, each chapter's phone tilts in from 4° as it comes into view.
 // With no script, under reduced motion and while editing, each chapter shows its text beside
 // its own phone.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -58,14 +60,14 @@ function gather(section, unpinned) {
       screen.inert = i !== next;
       if (i === next) {
         screen.style.zIndex = "2";
-        Motion.animate(
+        animate(
           screen,
           { y: [down ? "100%" : "-30%", "0%"], opacity: [down ? 1 : 0.4, 1] },
           { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
         );
       } else if (i === active) {
         screen.style.zIndex = "1";
-        Motion.animate(
+        animate(
           screen,
           { y: down ? "-30%" : "100%", opacity: down ? 0.4 : 1 },
           { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
@@ -81,7 +83,7 @@ function gather(section, unpinned) {
     active = next;
   };
   texts[0].setAttribute("data-active", "");
-  const views = texts.map((text, i) => Motion.inView(text, () => show(i), { margin: "-45% 0px -45% 0px" }));
+  const views = texts.map((text, i) => inView(text, () => show(i), { margin: "-45% 0px -45% 0px" }));
 
   // If the stage cannot stay pinned (sticky positioning turned off, as a page capture
   // does), each chapter gets its own phone back rather than one phone left at the top.
@@ -115,14 +117,10 @@ function tiltIn(section) {
   const stops = [...section.querySelectorAll(".story-phone")].map((cell) => {
     cell.style.opacity = "0";
     cell.style.transform = "translateY(32px) rotate(4deg)";
-    const stopView = Motion.inView(
+    const stopView = inView(
       cell,
       () => {
-        Motion.animate(
-          cell,
-          { opacity: [0, 1], y: [32, 0], rotate: [4, 0] },
-          { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-        );
+        animate(cell, { opacity: [0, 1], y: [32, 0], rotate: [4, 0] }, { duration: 0.9, ease: [0.22, 1, 0.36, 1] });
       },
       { amount: 0.1 },
     );

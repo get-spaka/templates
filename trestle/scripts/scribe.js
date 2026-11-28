@@ -5,6 +5,8 @@
 // data-scribe-label; the photos and their captions stay in the page. Without
 // the script, in edit mode, or for photos not taken from the same spot
 // (no data-same-view), the two stand side by side.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -41,10 +43,10 @@ export function start(root) {
     else {
       set(100);
       input.value = "100";
-      stopView = Motion.inView(
+      stopView = inView(
         frame,
         () => {
-          sweep = Motion.animate(100, 50, {
+          sweep = animate(100, 50, {
             duration: 1.6,
             ease: [0.65, 0, 0.35, 1],
             onUpdate: (value) => {

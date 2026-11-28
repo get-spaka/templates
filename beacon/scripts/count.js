@@ -1,6 +1,8 @@
 // A figure marked data-count counts up to its own text when it comes into view
 // ("4,100", "38 s", "$19"), then shows that text exactly as written. With no
 // script, and under reduced motion, it is simply its text.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -29,10 +31,10 @@ export function start(root) {
     };
     write(0);
     let controls;
-    const stopView = Motion.inView(
+    const stopView = inView(
       el,
       () => {
-        controls = Motion.animate(0, target, {
+        controls = animate(0, target, {
           duration: 1.4,
           ease: [0.22, 1, 0.36, 1],
           onUpdate: (value) => write(value),

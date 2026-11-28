@@ -1,4 +1,6 @@
 // Light smooth scrolling with Lenis, left out under reduced motion.
+import Lenis from "lenis";
+
 let lenis = null;
 
 export function start(root) {

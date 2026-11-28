@@ -7,6 +7,8 @@
 // lights its room (data-active); pointing at a room marks its line, a tap opens it.
 // Under reduced motion the rooms come on at once. The dark state is set just before a room
 // is lit; with no script every room of the plan is simply lit.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -64,7 +66,7 @@ export function start(root) {
             circle.setAttribute("r", "0");
             circles.add(circle);
             running.push(
-              Motion.animate(0, 1, {
+              animate(0, 1, {
                 duration: 0.5,
                 delay: i * STEP,
                 ease: EASE,
@@ -115,7 +117,7 @@ export function start(root) {
     if (!reduced()) {
       const drawing = [...plan.querySelectorAll(".plan")].find((el) => el.offsetParent) ?? plan;
       stops.push(
-        Motion.inView(
+        inView(
           drawing,
           () => {
             turnOn(lit(plan));

@@ -1,6 +1,8 @@
 // A section's main elements rise a little as they come into view: data-reveal on an
 // element, or data-reveal="stagger" on a list whose children rise 70 ms apart.
 // The small sheet of the home page (data-sheet-mini) rises from the desk and straightens as the page opens.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -15,7 +17,7 @@ export function start(root) {
   for (const el of within(root, "[data-sheet-mini]")) {
     el.style.opacity = "0";
     el.style.transform = "translateY(40px) rotate(-2.5deg)";
-    Motion.animate(el, { opacity: [0, 1], y: [40, 0], rotate: [-2.5, 0] }, { duration: 0.9, ease: EASE, delay: 0.15 });
+    animate(el, { opacity: [0, 1], y: [40, 0], rotate: [-2.5, 0] }, { duration: 0.9, ease: EASE, delay: 0.15 });
     stops.push(() => {
       el.style.opacity = "";
       el.style.transform = "";
@@ -28,11 +30,11 @@ export function start(root) {
       item.style.transform = "translateY(16px)";
     }
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           for (const [i, item] of items.entries())
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, ease: EASE, delay: i * 0.07 });
+            animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, ease: EASE, delay: i * 0.07 });
         },
         { amount: 0.05 },
       ),

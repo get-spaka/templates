@@ -3,6 +3,8 @@
 // screwed onto the wall. data-bolt="load" starts on load (the hero's); the others
 // as they come into view. With no script, in edit mode and under reduced motion,
 // the holds are simply there.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -23,16 +25,12 @@ export function start(root) {
     const go = () => {
       holds.forEach((hold, i) => {
         const delay = 0.12 + i * 0.09;
-        Motion.animate(hold, { opacity: [0, 1] }, { duration: 0.2, delay });
-        Motion.animate(
-          hold,
-          { scale: [0.4, 1], rotate: [-90, 0] },
-          { type: "spring", stiffness: 260, damping: 13, delay },
-        );
+        animate(hold, { opacity: [0, 1] }, { duration: 0.2, delay });
+        animate(hold, { scale: [0.4, 1], rotate: [-90, 0] }, { type: "spring", stiffness: 260, damping: 13, delay });
       });
     };
     if (group.getAttribute("data-bolt") === "load") go();
-    else stops.push(Motion.inView(group, go, { amount: 0.1 }));
+    else stops.push(inView(group, go, { amount: 0.1 }));
     stops.push(() => {
       for (const hold of holds) {
         hold.style.opacity = "";

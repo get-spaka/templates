@@ -1,5 +1,7 @@
 // Light smooth scrolling (Lenis), so the neighborhoods' index glides to each one;
 // anchored sections carry scroll-margin-top for the sticky header.
+import Lenis from "lenis";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 let lenis = null;
 

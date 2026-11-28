@@ -1,10 +1,11 @@
 {
   "id": "pocket",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "name": "Pocket",
   "description": "A light, playful app site where the app does the talking: its screens built in the page inside phone frames, three phones fanned over a soft living glow, then one phone that stays while its screen changes with each chapter of the story.",
   "category": "app",
   "tags": ["app", "mobile app", "ios", "android", "consumer", "download", "pricing", "help center", "privacy"],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

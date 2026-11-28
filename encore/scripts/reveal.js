@@ -1,6 +1,8 @@
 // data-reveal: headings, rows and cards rise into place as they come into view.
 // The script sets where they start from, just before; with no script, under reduced motion
 // and while editing, they are in place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -17,10 +19,10 @@ export function start(root) {
     el.style.transform = "translateY(24px)";
     touched.push(el);
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1] });
+          animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.05 },
       ),

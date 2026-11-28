@@ -2,6 +2,8 @@
 // marked data-mark-path, with pathLength="1"; as the sheet comes into view they draw
 // themselves one after another (0.6 s each, 0.25 s apart).
 // With no script, under reduced motion and in edit mode, the loops are drawn.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,15 +22,11 @@ export function start(root) {
       path.style.strokeDashoffset = "1";
     }
     stops.push(
-      Motion.inView(
+      inView(
         sheet,
         () => {
           paths.forEach((path, i) => {
-            Motion.animate(
-              path,
-              { strokeDashoffset: [1, 0] },
-              { duration: 0.6, delay: 0.2 + i * 0.25, ease: "easeInOut" },
-            );
+            animate(path, { strokeDashoffset: [1, 0] }, { duration: 0.6, delay: 0.2 + i * 0.25, ease: "easeInOut" });
           });
         },
         { amount: 0.1 },

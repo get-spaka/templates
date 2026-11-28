@@ -1,6 +1,8 @@
 // The tear-off tabs (data-tabs on a notice's fringe): as the notice comes into view,
 // its tabs flutter once from their top edge, like paper in a draft from the door.
 // With no script, under reduced motion and in edit mode they hang straight.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -15,11 +17,11 @@ export function start(root) {
     const tabs = [...fringe.querySelectorAll(".tab")];
     if (!tabs.length) continue;
     stops.push(
-      Motion.inView(
+      inView(
         fringe,
         () => {
           tabs.forEach((tab, i) => {
-            Motion.animate(
+            animate(
               tab,
               { rotate: [6 - (i % 2) * 3, 0] },
               { type: "spring", stiffness: 140, damping: 5, mass: 0.6, delay: 0.25 + i * 0.05 },

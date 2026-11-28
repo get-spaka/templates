@@ -3,6 +3,8 @@
 // fan, 0.09 s apart, with a spring; on a phone each card swings to its tilt and rises 24 px
 // as it enters. The fan itself is CSS: with no script, under reduced motion and in edit
 // mode, every card is in its place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -36,12 +38,12 @@ function deal(suite) {
       card.style.transform = `translateX(${offsets[i]}px) rotate(${-tiltOf(card)}deg)`;
     });
     stops.push(
-      Motion.inView(
+      inView(
         suite,
         () => {
           cards.forEach((card, i) => {
             const tilt = tiltOf(card);
-            Motion.animate(
+            animate(
               card,
               { x: [offsets[i], 0], rotate: [-tilt, 0] },
               { type: "spring", stiffness: 170, damping: 17, delay: 0.25 + i * 0.09 },
@@ -59,10 +61,10 @@ function deal(suite) {
       const tilt = tiltOf(card);
       card.style.transform = `translateY(24px) rotate(${-tilt}deg)`;
       stops.push(
-        Motion.inView(
+        inView(
           card,
           () => {
-            Motion.animate(
+            animate(
               card,
               { y: [24, 0], rotate: [-tilt, 0] },
               { duration: 0.8, ease: [0.22, 1, 0.36, 1] },

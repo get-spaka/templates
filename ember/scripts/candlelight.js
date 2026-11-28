@@ -6,7 +6,7 @@
 // Without WebGL, the same script sets --candle-x and --candle-y on the figure and the
 // stylesheet's radial gradients do the darkening and the light (data-lit="css").
 // With no script, under reduced motion and while editing: the photo as it is.
-import { Mesh, Program, Renderer, Texture, Triangle } from "https://cdn.jsdelivr.net/npm/ogl@1.0.11/+esm";
+import { Mesh, Program, Renderer, Texture, Triangle } from "ogl";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>

@@ -4,6 +4,9 @@
 // its own, left to right, a row after the other. The page's text never changes: only each
 // tile's data-glyph does, which a ::before shows over the letter while it flips.
 // With no script, while editing and under reduced motion, each cell is a plain strip.
+import { animate, inView } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -28,7 +31,7 @@ function flip(char, delay, timers) {
         () => {
           if (i < steps) char.setAttribute("data-glyph", random());
           else char.removeAttribute("data-glyph");
-          Motion.animate(char, { rotateX: [-80, 0] }, { duration: STEP / 1000, ease: "easeOut" });
+          animate(char, { rotateX: [-80, 0] }, { duration: STEP / 1000, ease: "easeOut" });
         },
         delay + i * STEP,
       ),
@@ -63,7 +66,7 @@ export function start(root) {
     for (const char of board.querySelectorAll("[data-flap] .char")) char.setAttribute("data-glyph", random());
     let stopView = () => {};
     if (board.getAttribute("data-board") === "load") timers.push(setTimeout(play, 250));
-    else stopView = Motion.inView(board, play, { amount: 0.05 });
+    else stopView = inView(board, play, { amount: 0.05 });
 
     stops.push(() => {
       stopView();

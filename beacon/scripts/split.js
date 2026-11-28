@@ -1,6 +1,9 @@
 // Each heading marked data-split has its words come out of a blur one after
 // another when the page opens (Splitting cuts it into words, Motion moves them).
 // The heading's own markup is kept and put back as it was when the script stops.
+import { animate } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,7 +23,7 @@ export function start(root) {
       word.style.opacity = "0";
       word.style.filter = "blur(8px)";
       word.style.transform = "translateY(0.25em)";
-      Motion.animate(
+      animate(
         word,
         { opacity: [0, 1], filter: ["blur(8px)", "blur(0px)"], y: ["0.25em", "0em"] },
         { duration: 0.9, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] },

@@ -1,5 +1,7 @@
 // data-reveal: headings, paragraphs and cards rise into view (y 24 → 0 with their opacity,
 // 0.8 s). Under reduced motion and in edit mode, everything is in place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -14,10 +16,10 @@ export function start(root) {
     el.style.opacity = "0";
     el.style.transform = "translateY(24px)";
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1] });
+          animate(el, { opacity: [0, 1], y: [24, 0] }, { duration: 0.8, ease: [0.22, 1, 0.36, 1] });
         },
         { amount: 0.1 },
       ),

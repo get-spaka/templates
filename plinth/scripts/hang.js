@@ -2,6 +2,8 @@
 // 14 px onto its hook with a slight swing, the frames following each other 80 ms apart along
 // the line, and each label ([data-hang-label]) fades in after its frame. With no script, under
 // reduced motion and in edit mode, the frames are in place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -28,16 +30,16 @@ export function start(root) {
     if (label) label.style.opacity = "0";
     const delay = rank(bay) * 0.08;
     stops.push(
-      Motion.inView(
+      inView(
         bay,
         () => {
-          Motion.animate(frame, { opacity: [0, 1] }, { duration: 0.35, delay });
-          Motion.animate(
+          animate(frame, { opacity: [0, 1] }, { duration: 0.35, delay });
+          animate(
             frame,
             { transform: ["translateY(-14px) rotate(1.2deg)", "translateY(0px) rotate(0deg)"] },
             { type: "spring", stiffness: 180, damping: 14, mass: 1, delay },
           );
-          if (label) Motion.animate(label, { opacity: [0, 1] }, { duration: 0.5, delay: delay + 0.3 });
+          if (label) animate(label, { opacity: [0, 1] }, { duration: 0.5, delay: delay + 0.3 });
         },
         { amount: 0.05 },
       ),

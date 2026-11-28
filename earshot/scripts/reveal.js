@@ -1,6 +1,8 @@
 // data-reveal: a section's main element rises into view; data-reveal="stagger" on a list rises
 // its children 70 ms apart. data-reveal-bars: a sound print's bars grow from a tenth of their
 // height, left to right, as it comes into view. With no script everything stands as written.
+import { animate, inView, stagger } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -19,11 +21,11 @@ export function start(root) {
       item.style.transform = "translateY(24px)";
     }
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           for (const [i, item] of items.entries())
-            Motion.animate(item, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, ease: EASE, delay: i * 0.07 });
+            animate(item, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, ease: EASE, delay: i * 0.07 });
         },
         { amount: 0.05 },
       ),
@@ -39,10 +41,10 @@ export function start(root) {
     const bars = [...el.querySelectorAll("i")];
     for (const bar of bars) bar.style.transform = "scaleY(0.1)";
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(bars, { scaleY: [0.1, 1] }, { duration: 0.6, ease: EASE, delay: Motion.stagger(0.012) });
+          animate(bars, { scaleY: [0.1, 1] }, { duration: 0.6, ease: EASE, delay: stagger(0.012) });
         },
         { amount: 0.3 },
       ),

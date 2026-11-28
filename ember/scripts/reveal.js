@@ -2,6 +2,8 @@
 // data-curtain: a large image opens from its middle outward. Both are set and played by
 // the script, with Motion's inView; with no script, under reduced motion and while editing,
 // everything is in its place.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -20,14 +22,10 @@ export function start(root) {
     el.style.filter = "blur(6px)";
     touched.push(el);
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
-          Motion.animate(
-            el,
-            { opacity: [0, 1], y: [32, 0], filter: ["blur(6px)", "blur(0px)"] },
-            { duration: 1.2, ease },
-          );
+          animate(el, { opacity: [0, 1], y: [32, 0], filter: ["blur(6px)", "blur(0px)"] }, { duration: 1.2, ease });
         },
         { amount: 0.05 },
       ),
@@ -41,7 +39,7 @@ export function start(root) {
       touched.push(child);
     }
     stops.push(
-      Motion.inView(
+      inView(
         el,
         () => {
           for (const child of content)

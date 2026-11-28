@@ -5,6 +5,8 @@
 // rises in and sinks out in 0.4 s, and being sticky, settles into its own place above the
 // footer. Dismissed, it stays away for the visit. With no script it is a plain band,
 // dismissed by its checkbox alone; under reduced motion it comes and goes at once.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -48,8 +50,8 @@ export function start(root) {
         return;
       }
       playing = yes
-        ? Motion.animate(dock, { opacity: [0, 1], y: [16, 0] }, { duration: 0.4, ease: EASE })
-        : Motion.animate(dock, { opacity: [1, 0], y: [0, 16] }, { duration: 0.4, ease: EASE });
+        ? animate(dock, { opacity: [0, 1], y: [16, 0] }, { duration: 0.4, ease: EASE })
+        : animate(dock, { opacity: [1, 0], y: [0, 16] }, { duration: 0.4, ease: EASE });
     };
     const look = () => {
       const boxes = offers.map((offer) => offer.getBoundingClientRect()).filter((box) => box.height > 0);

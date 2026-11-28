@@ -3,6 +3,7 @@
 // (--now, --year), puts right a stage passed since the site was published, and,
 // when a hill comes into view, walks its marker up the slope from the vintage to
 // today. Under reduced motion the marker stands at today without walking.
+import { animate, inView } from "motion";
 
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -67,11 +68,11 @@ function walk(el, from, now, line) {
   el.style.setProperty("--at", String(from));
   if (line) line.style.opacity = "0";
   const running = [];
-  const stopView = Motion.inView(
+  const stopView = inView(
     el,
     () => {
       running.push(
-        Motion.animate(from, now, {
+        animate(from, now, {
           duration: 1.4,
           ease: [0.33, 1, 0.68, 1],
           onUpdate: (at) => el.style.setProperty("--at", String(at)),
@@ -79,7 +80,7 @@ function walk(el, from, now, line) {
       );
       if (line) {
         running.push(
-          Motion.animate(line, { opacity: [0, 1], y: [8, 0] }, { duration: 0.5, delay: 1.1, ease: [0.22, 1, 0.36, 1] }),
+          animate(line, { opacity: [0, 1], y: [8, 0] }, { duration: 0.5, delay: 1.1, ease: [0.22, 1, 0.36, 1] }),
         );
       }
     },

@@ -3,6 +3,8 @@
 // the script empties it and raises the fill to its level with a spring; the
 // handwritten note ([data-jar-note]) fades in last. With no script, under reduced
 // motion and in edit mode, the jar stands at its level.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -21,12 +23,12 @@ export function start(root) {
     fill.style.transform = `translateY(${depth()}px)`;
     for (const note of notes) note.style.opacity = "0";
     stops.push(
-      Motion.inView(
+      inView(
         jar,
         () => {
           jar.setAttribute("data-filling", "");
-          Motion.animate(fill, { y: [depth(), 0] }, { type: "spring", duration: 1.4, bounce: 0.28 });
-          for (const note of notes) Motion.animate(note, { opacity: [0, 1] }, { duration: 0.5, delay: 1.2 });
+          animate(fill, { y: [depth(), 0] }, { type: "spring", duration: 1.4, bounce: 0.28 });
+          for (const note of notes) animate(note, { opacity: [0, 1] }, { duration: 0.5, delay: 1.2 });
         },
         { amount: 0.5 },
       ),

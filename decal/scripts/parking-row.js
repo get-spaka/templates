@@ -15,6 +15,8 @@
 // In each parking row ([data-parking-row]) it parks the truck ([data-truck], in the
 // home bay in the markup) in today's bay: when the row comes into view, the truck
 // noses in from the lane. At home base it does not move.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
@@ -150,12 +152,12 @@ function arrive(row) {
   state.arrived = true;
   const at = where(row, state.target);
   if (!at || reduced()) return place(row);
-  state.moving = Motion.animate(state.truck, { transform: [at.waiting, at.parked] }, { duration: 0.9, ease: EASE });
+  state.moving = animate(state.truck, { transform: [at.waiting, at.parked] }, { duration: 0.9, ease: EASE });
   state.moving.then(() => {
     state.moving = undefined;
     place(row);
     for (const tail of state.truck.querySelectorAll(".truck-tail"))
-      state.tails.push(Motion.animate(tail, { opacity: [0.4, 1, 0.6] }, { duration: 0.4 }));
+      state.tails.push(animate(tail, { opacity: [0.4, 1, 0.6] }, { duration: 0.4 }));
   });
 }
 
@@ -175,7 +177,7 @@ function setUpRow(row, target) {
   place(row);
   const observer = new ResizeObserver(() => place(row));
   observer.observe(row);
-  const stopView = Motion.inView(row, () => arrive(row), { amount: 0.25 });
+  const stopView = inView(row, () => arrive(row), { amount: 0.25 });
   state.undo = () => {
     observer.disconnect();
     stopView();

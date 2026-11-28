@@ -1,10 +1,11 @@
 {
   "id": "folio",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "name": "Folio",
   "description": "A quiet, editorial portfolio: a numbered index of projects whose pictures follow the cursor, the name at poster size, a page per project and small signs that someone is there.",
   "category": "portfolio",
   "tags": ["photographer", "architect", "designer", "studio", "projects", "index"],
   "author": { "name": "Spaka", "url": "https://spaka.app" },
-  "licence": "MIT"
+  "licence": "MIT",
+  "app": "0.2.0"
 }

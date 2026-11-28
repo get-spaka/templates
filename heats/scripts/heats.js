@@ -5,6 +5,8 @@
 // arrives, and the leader's tape drops in once the leader has finished. "Run again" (data-heats-rerun) sets
 // the section's bars back to zero and runs its heats again, 120 ms apart. A lane without a figure is left
 // alone. With no script, under reduced motion and while editing, every bar stands at its full length.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -61,7 +63,7 @@ function clear(run) {
 
 function play(run, wait = 0) {
   run.ran = true;
-  const move = (el, keyframes, options) => run.animations.push(Motion.animate(el, keyframes, options));
+  const move = (el, keyframes, options) => run.animations.push(animate(el, keyframes, options));
   for (const { bar, label, tape, place } of run.lanes) {
     const duration = LEADER + place * PLACE;
     const arrives = wait + SET + duration;
@@ -80,7 +82,7 @@ export function start(root) {
       const run = { heat, lanes: lanesOf(heat), animations: [], ran: false };
       setBack(run);
       stops.push(
-        Motion.inView(
+        inView(
           heat,
           () => {
             if (!run.ran) play(run);

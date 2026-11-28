@@ -1,5 +1,7 @@
 // Reveals on the practical sections: data-reveal rises a little into view; data-reveal="stagger"
 // does it for each of its children, 70 ms apart. Never under the flies, never on a first screen.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -24,7 +26,7 @@ export function start(root) {
     let frame;
     for (const item of items) {
       stops.push(
-        Motion.inView(
+        inView(
           item,
           () => {
             const delay = stagger ? 0.07 * batch++ : 0;
@@ -32,7 +34,7 @@ export function start(root) {
             frame = requestAnimationFrame(() => {
               batch = 0;
             });
-            Motion.animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay });
+            animate(item, { opacity: [0, 1], y: [16, 0] }, { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay });
           },
           { amount: 0.1 },
         ),

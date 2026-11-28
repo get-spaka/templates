@@ -5,6 +5,8 @@
 // reduced motion and in edit mode every ticket is already there. stop cancels what plays
 // and takes off what start set; every value says where it starts from, so it plays again
 // the same way.
+import { animate, inView } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -30,7 +32,7 @@ export function start(root) {
     // The slots of a row are the same height, so a row goes as one; rows that come
     // into view together follow one another.
     let free = 0;
-    const stopView = Motion.inView(
+    const stopView = inView(
       slots,
       (slot) => {
         const ticket = slot.querySelector("[data-ticket]");
@@ -38,9 +40,9 @@ export function start(root) {
         const delay = Math.max(0, free - now) / 1000;
         free = Math.max(free, now) + 120;
         playing.push(
-          Motion.animate(ticket, { x: [from(slot, slots), 0] }, { duration: 0.7, delay, ease: EASE }),
-          Motion.animate(ticket, { opacity: [0, 1] }, { duration: 0.25, delay, ease: "linear" }),
-          Motion.animate(ticket, { y: [0, 2, 0] }, { duration: 0.18, delay: delay + 0.6, ease: "easeInOut" }),
+          animate(ticket, { x: [from(slot, slots), 0] }, { duration: 0.7, delay, ease: EASE }),
+          animate(ticket, { opacity: [0, 1] }, { duration: 0.25, delay, ease: "linear" }),
+          animate(ticket, { y: [0, 2, 0] }, { duration: 0.18, delay: delay + 0.6, ease: "easeInOut" }),
         );
       },
       { amount: 0.4 },

@@ -4,6 +4,9 @@
 // saves the headline's markup and stop puts it back; force makes Splitting, which keeps
 // what it cut, cut the headline again. With no script, under reduced motion
 // and in edit mode the headline is whole and still.
+import { animate } from "motion";
+import Splitting from "splitting";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -21,7 +24,7 @@ export function start(root) {
     const words = [...heading.querySelectorAll(".word")];
     for (const word of words) word.style.opacity = "0";
     const playing = words.map((word, i) =>
-      Motion.animate(
+      animate(
         word,
         { opacity: [0, 1], y: [28, 0], rotate: [-3, 0] },
         { duration: 0.6, delay: 0.15 + i * 0.07, ease: EASE },

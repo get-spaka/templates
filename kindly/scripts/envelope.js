@@ -2,6 +2,8 @@
 // standing out (edit mode, no script, reduced motion); the script sets the closed state,
 // then the seal lifts, the flap turns open from its top edge and passes behind the card,
 // the card rises out and grows a little, and the envelope settles. About 2.2 s.
+import { animate } from "motion";
+
 const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const within = (root, selector) =>
   root === document
@@ -36,18 +38,18 @@ function open(envelope) {
 
   if (seal) {
     controls.push(
-      Motion.animate(seal, { y: [drop, drop - 14], rotate: [0, -10] }, { duration: 0.45, ease: RISE, delay: 0.25 }),
-      Motion.animate(seal, { y: [drop - 14, 0], rotate: [-10, 0] }, { duration: 0.9, ease: FOLD, delay: 0.7 }),
+      animate(seal, { y: [drop, drop - 14], rotate: [0, -10] }, { duration: 0.45, ease: RISE, delay: 0.25 }),
+      animate(seal, { y: [drop - 14, 0], rotate: [-10, 0] }, { duration: 0.9, ease: FOLD, delay: 0.7 }),
     );
   }
   controls.push(
-    Motion.animate(
+    animate(
       flap,
       { transform: ["perspective(1400px) rotateX(0deg)", "perspective(1400px) rotateX(180deg)"] },
       { duration: 0.9, ease: FOLD, delay: 0.6 },
     ),
-    Motion.animate(card, { y: ["70%", "0%"], scale: [0.94, 1] }, { duration: 1.1, ease: RISE, delay: 1.05 }),
-    Motion.animate(envelope, { y: ["-2%", "0%"] }, { duration: 0.9, ease: RISE, delay: 1.3 }),
+    animate(card, { y: ["70%", "0%"], scale: [0.94, 1] }, { duration: 1.1, ease: RISE, delay: 1.05 }),
+    animate(envelope, { y: ["-2%", "0%"] }, { duration: 0.9, ease: RISE, delay: 1.3 }),
   );
   // At 90° the flap passes behind the card.
   timers.push(setTimeout(() => (flap.style.zIndex = ""), 1050));
